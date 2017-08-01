@@ -1,0 +1,45 @@
+#map {
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+#map-sistema {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+    color: #333;
+    width: 360px;
+}
+
+.leaflet-popup-content {
+  text-align: center;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  margin-right: 2px;
+}
+
+.leaflet-popup-pane, .leaflet-control {
+    cursor: auto;
+    text-align: justify;
+}
+
+.leaflet-control-layers-toggle {
+    background-image: url("leaflet/images/layers.png");
+    height: 36px;
+    width: 36px;
+}
+
+.leaflet-control-layers-selector {
+    margin-top: 2px;
+    position: relative;
+    top: 1px;
+    margin-right: 8px;
+}

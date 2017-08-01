@@ -1,0 +1,49 @@
+<ul class="nav nav-tabs">
+  <% if usuario_signed_in? %>
+    <% if current_usuario.admin %>
+      <li class="nav-item">
+        <%= link_to t(:all), usuarios_path, :class => "nav-link" %>
+      </li>
+    <% end %>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to @usuario.nome, usuario_path(@usuario.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br/>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <div id="usuario-info">
+      <dl class="row">
+        <dt class="col-sm-3"><strong>Name:</strong></dt>
+        <dd class="col-sm-9"><%= @usuario.nome %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>E-Mail:</strong></dt>
+        <dd class="col-sm-9"><%= @usuario.email %>&nbsp;</dd>
+
+        <% if usuario_signed_in? %>
+          <% if current_usuario.admin? %>
+            <dt class="col-sm-3"><strong>Administrator:</strong></dt>
+            <dd class="col-sm-9"><%= t("#{@usuario.admin}_value") %>&nbsp;</dd>
+          <% end %>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+</div>
+
+  <hr/>
+
+  <% if usuario_signed_in? %>    
+    <% if current_usuario.admin? or current_usuario.id == @usuario.id %>        
+      <div class="form-actions">
+      <%= link_to t('.edit', :default => "Editar"), edit_usuario_path(@usuario), :class => 'btn btn-warning' %>
+        <% if current_usuario.admin? %>
+          <%= link_to t(:back), usuarios_path, :class => 'btn btn-success'  %>
+          <%= link_to t(:destroy), usuario_path(@usuario), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' if @usuario.id != 1 %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>

@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+	  <li class="nav-item">
+    <%= link_to t(:all), usuarios_path, :class => "nav-link active" %>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active"><br/>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-Mail</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @usuarios.each do |usuario| %>
+        <tr>
+          <td scope="row"><%= link_to usuario.nome, usuario_path(usuario) %></td>
+          <td><%= usuario.email %></td>
+          <td>
+            <%= link_to t(:edit), edit_usuario_path(usuario), :class => 'btn btn-mini btn-success' %>
+            <%= link_to t(:destroy), usuario_path(usuario), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' if usuario.id != 1 %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

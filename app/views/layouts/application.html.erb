@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= CONFIG['lang'] %>">
   <head>
-    <title>Mapadaagroecologia</title>
-    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="<%= image_url "favicon.ico" %>">
 
+    <title><%= CONFIG['title'] %></title>
+
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <%= render 'layouts/menu' %>
+    <%= render 'layouts/main' %>
+    <%= render 'layouts/footer' %>
+
   </body>
 </html>

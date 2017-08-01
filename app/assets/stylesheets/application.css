@@ -13,3 +13,95 @@
  *= require_tree .
  *= require_self
  */
+
+.search-box {
+  float: right;
+}
+.img-grid {
+  /*
+    overflow: hidden;
+    max-height: 180px;
+  */
+}
+
+b a, b a:visited, b a:hover {
+  font-size: 16px;
+  color: #90AD34;
+}
+
+a,  a:visited {
+
+  color: #0078a8;
+}
+
+.starter-template {
+  text-align: center;
+}
+
+.error {
+  border-color: red;
+}
+
+table thead th {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.table th, .table td {
+  border-top: none;
+  vertical-align: bottom;
+  text-align: center;
+
+}
+
+.btn:visited {
+  color: #fff;
+
+}
+
+#error_explanation {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  text-align: justify;
+}
+
+.list:hover img {
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.05);
+    -o-transform:scale(1.05);
+     transform:scale(1.05);
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #e1f7e8;
+}
+
+a:focus, a:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+@media all and (max-width:768px){
+    table{
+        width:100%;
+    }
+
+    td{
+        display:block;
+        width:100%;
+    }
+
+    tr{
+        display:block;
+        margin-bottom:30px;
+    }
+
+    tr tr{
+        margin-bottom:0;
+    }
+}
