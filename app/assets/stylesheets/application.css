@@ -50,7 +50,7 @@ table thead th {
 
 .table th, .table td {
   border-top: none;
-  vertical-align: bottom;
+  vertical-align: middle;
   text-align: center;
 
 }
@@ -104,4 +104,21 @@ a:focus, a:hover {
     tr tr{
         margin-bottom:0;
     }
+}
+
+#usuario-imagem {
+  float: left;
+  min-width: 155px;
+  min-height: 155px;
+}
+
+#usuario-info {
+  float: right;
+  min-width: 85%;
+  min-height: 155px;
+  text-align: left;
+}
+
+#usuario-footer {
+  float: right;
 }
