@@ -19,7 +19,7 @@
       <tbody>
         <% @usuarios.each do |usuario| %>
         <tr>
-          <td scope="row"><%= link_to image_tag(usuario.imagem.url(:thumb), :width => "100"), usuario_path(usuario) %></td>
+          <td scope="row"><%= link_to image_tag(usuario.imagem.url(:thumb), :height => "80"), usuario_path(usuario) %></td>
           <td><%= link_to usuario.nome, usuario_path(usuario) %></td>
           <td><%= usuario.email %></td>
           <td>

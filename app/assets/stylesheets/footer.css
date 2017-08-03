@@ -2,13 +2,17 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   margin-bottom: 60px;
+  background: url(background.png) no-repeat;
+  background-attachment: scroll;
+  background-position: center bottom; 
 }
 
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
   height: 60px;
   line-height: 60px;
