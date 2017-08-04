@@ -1,9 +1,26 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 14px;
   line-height: 18px;
+
+  margin-bottom: 60px;
+  background: url(background.png) no-repeat;
+  background-attachment: scroll;
+  background-position: center bottom; 
+}
+
+@media all and (max-width:768px){
+  body {
+    background-position: 50% 92%;
+    background-size: 75px 85px;
+  }
 }
 
 p, ol, ul, td {

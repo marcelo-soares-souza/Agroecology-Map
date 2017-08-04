@@ -1,15 +1,3 @@
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-  background: url(background.png) no-repeat;
-  background-attachment: scroll;
-  background-position: center bottom; 
-}
-
 .footer {
   position: absolute;
   bottom: 0px;
