@@ -1,1 +1,1 @@
-usuario = Usuario.new(nome: "Administrador", email: "admin@localhost", password: "mapadaagroecologia", password_confirmation: "mapadaagroecologia", admin: "t").save(validate: false)
+usuario = Usuario.new(nome: "Administrador", email: "admin@agroecologia", password: "agroecologia", password_confirmation: "agroecologia", admin: "t").save(validate: false)
