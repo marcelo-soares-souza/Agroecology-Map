@@ -13,12 +13,12 @@ body {
   margin-bottom: 60px;
   background: url(background.png) no-repeat;
   background-attachment: scroll;
-  background-position: center bottom; 
+  background-position: 99% bottom;
 }
 
 @media all and (max-width:768px){
   body {
-    background-position: 50% 92%;
+    background-position: 99% 93%;
     background-size: 75px 85px;
   }
 }
