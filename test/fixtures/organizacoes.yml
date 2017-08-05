@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  slug: MyString
+  sigla: MyString
+  tipo_organizacao: one
+  email: MyString
+  telefone: MyString
+  site: MyString
+  descricao: MyText
+  cidade: MyString
+  uf: MyString
+  pais: MyString
+  latitude: 1.5
+  longitude: 1.5
+  observacao: MyString
+  usuario: one
+
+two:
+  nome: MyString
+  slug: MyString
+  sigla: MyString
+  tipo_organizacao: two
+  email: MyString
+  telefone: MyString
+  site: MyString
+  descricao: MyText
+  cidade: MyString
+  uf: MyString
+  pais: MyString
+  latitude: 1.5
+  longitude: 1.5
+  observacao: MyString
+  usuario: two

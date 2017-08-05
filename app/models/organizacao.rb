@@ -1,6 +1,6 @@
-class TipoOrganizacao < ApplicationRecord
+class Organizacao < ApplicationRecord
+  belongs_to :tipo_organizacao
   belongs_to :usuario
-  has_many :organizacoes
 
   extend FriendlyId
   friendly_id :nome, use: :slugged
@@ -11,4 +11,5 @@ class TipoOrganizacao < ApplicationRecord
     def should_generate_new_friendly_id?
       nome_changed?
     end
+
 end

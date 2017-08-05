@@ -1,4 +1,7 @@
 class Usuario < ApplicationRecord
+  has_many :tipo_organizacoes
+  has_many :usuarios
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   extend FriendlyId

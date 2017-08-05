@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805180818) do
+ActiveRecord::Schema.define(version: 20170805185546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organizacoes", force: :cascade do |t|
+    t.string "nome"
+    t.string "slug"
+    t.string "sigla"
+    t.bigint "tipo_organizacao_id"
+    t.string "email"
+    t.string "telefone"
+    t.string "site"
+    t.text "descricao"
+    t.string "cidade"
+    t.string "uf"
+    t.string "pais"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "observacao"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_organizacoes_on_email", unique: true
+    t.index ["slug"], name: "index_organizacoes_on_slug", unique: true
+    t.index ["tipo_organizacao_id"], name: "index_organizacoes_on_tipo_organizacao_id"
+    t.index ["usuario_id"], name: "index_organizacoes_on_usuario_id"
+  end
 
   create_table "tipo_organizacoes", force: :cascade do |t|
     t.string "nome"
@@ -50,5 +74,7 @@ ActiveRecord::Schema.define(version: 20170805180818) do
     t.index ["slug"], name: "index_usuarios_on_slug", unique: true
   end
 
+  add_foreign_key "organizacoes", "tipo_organizacoes"
+  add_foreign_key "organizacoes", "usuarios"
   add_foreign_key "tipo_organizacoes", "usuarios"
 end

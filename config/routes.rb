@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :organizacoes
   resources :tipo_organizacoes
   devise_for :usuarios
   resources :usuarios
