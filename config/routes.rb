@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locais
   resources :organizacoes
   resources :tipo_organizacoes
   devise_for :usuarios

@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to t(:all), locais_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:edit)} #{@local.nome}", edit_local_path(@local), :class => "nav-link active" %>
+  </li>
+</ul>
+<br/>
+<%= render 'form', local: @local %>

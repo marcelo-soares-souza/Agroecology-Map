@@ -1,2 +1,55 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+  <style>
+    footer .container {
+       width: 80%;
+    }
+
+    .container {
+       width: 100%;
+       padding-left: 0px;
+       padding-right: 0px;
+    }
+  </style>
+
+  <div id="map"></div>
+
+  <script>
+    $( document ).ready(function() {
+      lat = <%= request.safe_location.latitude %>;
+      lon = <%= request.safe_location.longitude %>;
+
+      if (lat == 0.0 || lon == 0.0) {
+        lat = -15.77835833463309;
+        lon = -47.88219451904297;
+      }
+
+      var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], 5);
+
+      $(window).on("resize", function () { $("#map").height($(window).height() - 60); map.invalidateSize(); }).trigger("resize");
+
+      L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'OpenStreetMap', maxZoom: 18,}).addTo(map);
+      L.control.zoom({position:'topright'}).addTo(map);
+
+      <% if @locais %>
+        var markers = L.markerClusterGroup();
+        var Icon = L.icon({
+                            iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
+                            shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+                            iconSize:     [38, 95],
+                            shadowSize:   [50, 64],
+                            iconAnchor:   [22, 94],
+                            shadowAnchor: [4, 62],
+                            popupAnchor:  [-3, -76]
+                          });
+
+        <% @locais.each do |local| %>
+          <% if local.latitude and local.longitude %>
+            var popup = '<b><%= link_to local.nome, local_path(local) %></b>';
+            var marker = L.marker(L.latLng([<%= local.latitude %>, <%= local.longitude %>]), {icon: Icon});
+            marker.bindPopup(popup);
+            markers.addLayer(marker);
+          <% end %>
+        <% end %>
+        map.addLayer(markers);
+      <% end %>
+    });
+  </script>

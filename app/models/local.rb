@@ -1,9 +1,5 @@
-class Usuario < ApplicationRecord
-  has_many :tipo_organizacoes
-  has_many :usuarios
-  has_many :locais
-
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+class Local < ApplicationRecord
+  belongs_to :usuario
 
   extend FriendlyId
   friendly_id :nome, use: :slugged

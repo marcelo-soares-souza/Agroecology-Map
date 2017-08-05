@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805185546) do
+ActiveRecord::Schema.define(version: 20170805201152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locais", force: :cascade do |t|
+    t.string "nome"
+    t.string "slug"
+    t.string "observacao"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "imagem_file_name"
+    t.string "imagem_content_type"
+    t.integer "imagem_file_size"
+    t.datetime "imagem_updated_at"
+    t.index ["slug"], name: "index_locais_on_slug", unique: true
+    t.index ["usuario_id"], name: "index_locais_on_usuario_id"
+  end
 
   create_table "organizacoes", force: :cascade do |t|
     t.string "nome"
@@ -74,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170805185546) do
     t.index ["slug"], name: "index_usuarios_on_slug", unique: true
   end
 
+  add_foreign_key "locais", "usuarios"
   add_foreign_key "organizacoes", "tipo_organizacoes"
   add_foreign_key "organizacoes", "usuarios"
   add_foreign_key "tipo_organizacoes", "usuarios"
