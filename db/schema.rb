@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801191248) do
+ActiveRecord::Schema.define(version: 20170805180818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tipo_organizacoes", force: :cascade do |t|
+    t.string "nome"
+    t.string "slug"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_tipo_organizacoes_on_slug", unique: true
+    t.index ["usuario_id"], name: "index_tipo_organizacoes_on_usuario_id"
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,4 +50,5 @@ ActiveRecord::Schema.define(version: 20170801191248) do
     t.index ["slug"], name: "index_usuarios_on_slug", unique: true
   end
 
+  add_foreign_key "tipo_organizacoes", "usuarios"
 end

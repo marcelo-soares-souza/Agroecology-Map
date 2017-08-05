@@ -1,0 +1,43 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to t(:all), tipo_organizacoes_path, :class => "nav-link active" %>
+  </li>
+  <% if usuario_signed_in? %>
+    <% if current_usuario.admin? %>
+      <li class="nav-item">
+        <%= link_to t(:new), new_tipo_organizacao_path, :class => "nav-link" %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% if @tipo_organizacoes.empty? %>
+  <br/>
+  <h3>Nenhum Dado Encontrado</h3>
+<% else %>
+
+<div class="tab-content">
+  <div class="tab-pane active"><br/>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @tipo_organizacoes.each do |tipo_organizacao| %>
+        <tr>
+          <td><%= link_to tipo_organizacao.nome, tipo_organizacao_path(tipo_organizacao) %></td>
+          <td>
+            <%= link_to t(:edit), edit_tipo_organizacao_path(tipo_organizacao), :class => 'btn btn-mini btn-success' %>
+            <%= link_to t(:destroy), tipo_organizacao_path(tipo_organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' if tipo_organizacao.id != 1 %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% end %>

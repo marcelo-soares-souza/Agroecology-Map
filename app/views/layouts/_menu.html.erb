@@ -11,9 +11,13 @@
 
           <% if current_usuario %>
             <% if current_usuario.admin? %>
-              <li class="nav-item">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Adminstrar</a>
+              <div class="dropdown-menu">
                 <%= link_to("Usuários", usuarios_path, :class => "nav-link") %>
-              </li>
+                <%= link_to("Tipo de Organizações", tipo_organizacoes_path, :class => "nav-link") %>
+              </div>
+            </li>
             <% end %>
           <% end %>
         </ul>

@@ -1,0 +1,37 @@
+<ul class="nav nav-tabs">
+  <% if usuario_signed_in? %>
+    <% if current_usuario.admin %>
+      <li class="nav-item">
+        <%= link_to t(:all), tipo_organizacoes_path, :class => "nav-link" %>
+      </li>
+    <% end %>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to @tipo_organizacao.nome, tipo_organizacao_path(@tipo_organizacao.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br/>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+      <dl class="row">
+        <dt class="col-sm-3"><strong>Nome:</strong></dt>
+        <dd class="col-sm-9"><%= @tipo_organizacao.nome %>&nbsp;</dd>
+      </dl>
+    </div>
+</div>
+
+<% if usuario_signed_in? %>
+<div id="tipo_organizacao-footer">
+  <% if current_usuario.admin? or current_usuario.id == @tipo_organizacao.usuario.id %>        
+    <div class="form-actions">
+    <%= link_to t('.edit', :default => "Editar"), edit_tipo_organizacao_path(@tipo_organizacao), :class => 'btn btn-warning' %>
+      <% if current_usuario.admin? %>
+        <%= link_to t(:back), tipo_organizacoes_path, :class => 'btn btn-success'  %>
+        <%= link_to t(:destroy), tipo_organizacao_path(@tipo_organizacao), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% end %>
