@@ -1,6 +1,10 @@
 class Local < ApplicationRecord
   belongs_to :usuario
 
+  has_many :organizacao_locais, dependent: :nullify
+  has_many :organizacoes, through: :organizacao_locais
+  accepts_nested_attributes_for :organizacao_locais, allow_destroy: true
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 

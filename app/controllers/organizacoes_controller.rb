@@ -4,6 +4,7 @@ class OrganizacoesController < ApplicationController
   before_action only: [:edit, :update, :destroy] { check_owner Organizacao.friendly.find(params[:id]).usuario_id }
   before_action :load_tipo_organizacoes, except: [:index]
   before_action :load_ufs, except: [:index]
+  before_action :load_locais, except: [:index]
 
   # GET /organizacoes
   # GET /organizacoes.json
@@ -19,10 +20,12 @@ class OrganizacoesController < ApplicationController
   # GET /organizacoes/new
   def new
     @organizacao = Organizacao.new
+    @organizacao.organizacao_locais.build
   end
 
   # GET /organizacoes/1/edit
   def edit
+    @organizacao.organizacao_locais.build
   end
 
   # POST /organizacoes
@@ -74,11 +77,18 @@ class OrganizacoesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organizacao_params
-      params.require(:organizacao).permit(:nome, :slug, :sigla, :tipo_organizacao_id, :email, :telefone, :site, :descricao, :cidade, :uf, :pais, :latitude, :longitude, :observacao, :usuario_id)
+      params.require(:organizacao).permit(:nome, :slug, :sigla, :tipo_organizacao_id, :email, :telefone, :site, :descricao, :cidade, :uf, :pais, :latitude, :longitude, :observacao, :usuario_id, local_ids: [])
     end
 
     def load_tipo_organizacoes
       @tipo_organizacoes = TipoOrganizacao.all
     end
 
+    def load_locais
+      if current_usuario.admin?
+        @locais = Local.all
+      else
+        @locais = Local.where(usuario_id: current_usuario.id)
+      end
+    end
 end

@@ -44,6 +44,13 @@
 
         <dt class="col-sm-3"><strong>Observação:</strong></dt>
         <dd class="col-sm-9"><%= @organizacao.observacao %>&nbsp;</dd>
+
+        <% if @organizacao.locais.count > 0 %>
+          <dt class="col-sm-3"><strong>Locais:</strong></dt>
+          <dd class="col-sm-9">
+            <%= @organizacao.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe %>&nbsp;
+          </dd>
+        <% end %>
       </dl>
 
 
