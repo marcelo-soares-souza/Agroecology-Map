@@ -16,7 +16,7 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <div id="show-imagem">
-      <%= image_tag(@usuario.imagem.url(:thumb), :width => "150") %>
+      <%= image_tag(@usuario.imagem.url(:thumb), :width => "100") %>
     </div>
     <div id="show-info">
       <dl class="row">
@@ -25,6 +25,24 @@
 
         <dt class="col-sm-3"><strong>E-Mail:</strong></dt>
         <dd class="col-sm-9"><%= @usuario.email %>&nbsp;</dd>
+
+          <dt class="col-sm-3"><strong>Organizações:</strong></dt>
+          <dd class="col-sm-9">
+            <% if @usuario.organizacoes.count > 0 %>
+              <%= @usuario.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp;
+            <% else %>
+              Nenhuma Cadastrada. <%= link_to "Cadastrar Organização?", new_organizacao_path %>
+            <% end %>
+          </dd>
+
+          <dt class="col-sm-3"><strong>Locais:</strong></dt>
+          <dd class="col-sm-9">
+            <% if @usuario.locais.count > 0 %>
+              <%= @usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe %>&nbsp;
+            <% else %>
+              Nenhuma Cadastrada. <%= link_to "Cadastrar Local?", new_local_path %>
+            <% end %>
+          </dd>
 
         <% if usuario_signed_in? %>
           <% if current_usuario.admin? %>
@@ -38,6 +56,8 @@
 </div>
 
 <% if usuario_signed_in? %>
+<br/><br/>
+<br/><br/>
 <div id="usuario-footer">
   <% if current_usuario.admin? or current_usuario.id == @usuario.id %>        
     <div class="form-actions">

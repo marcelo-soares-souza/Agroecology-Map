@@ -108,18 +108,21 @@ a:focus, a:hover {
 
 #show-imagem {
   float: left;
-  min-width: 155px;
-  min-height: 155px;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 #show-info {
   float: right;
-  min-width: 85%;
-  min-height: 155px;
+  max-width: 90%;
+  min-height: 150px;
   text-align: left;
   padding-left: 16px;
 }
 
 #usuario-footer {
+  margin: 16px 16px 16px 16px;
+  min-width: 360px;
+  min-heigth: 128px;
   float: right;
 }

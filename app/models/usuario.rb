@@ -2,6 +2,7 @@ class Usuario < ApplicationRecord
   has_many :tipo_organizacoes
   has_many :usuarios
   has_many :locais
+  has_many :organizacoes
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
