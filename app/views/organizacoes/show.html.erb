@@ -14,7 +14,66 @@
       <dl class="row">
         <dt class="col-sm-3"><strong>Nome:</strong></dt>
         <dd class="col-sm-9"><%= @organizacao.nome %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Sigla:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.sigla %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Tipo:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.tipo_organizacao.nome %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>E-Mail:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.email %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Telefone:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.telefone %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Site:</strong></dt>
+        <dd class="col-sm-9"><%= link_to @organizacao.site, @organizacao.site, :target => "_blank" %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Descrição:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.descricao %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Cidade:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.cidade %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>UF:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.uf %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>País:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.pais %>&nbsp;</dd>
+
+        <dt class="col-sm-3"><strong>Observação:</strong></dt>
+        <dd class="col-sm-9"><%= @organizacao.observacao %>&nbsp;</dd>
       </dl>
+
+
+    <% if @organizacao.latitude and @organizacao.longitude %>
+      <div class="col-form-label-lg">Localização</div>
+      <div class="form-group row">
+        <div id="map"></div>
+      </div>
+
+      <script>
+        $( document ).ready(function() {
+          var map = L.map('map').setView([<%= @organizacao.latitude %>, <%= @organizacao.longitude %>], 10);
+          L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Mapas OBSAM - Leaflet - OpenStreetMap', maxZoom: 18,}).addTo(map);
+          var Icon = L.icon({
+                            iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
+                            shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+                            iconSize:     [38, 95],
+                            shadowSize:   [50, 64],
+                            iconAnchor:   [22, 94],
+                            shadowAnchor: [4, 62],
+                            popupAnchor:  [-3, -76]
+                          });
+          $(window).on("resize", function () { $("#map").width($(window).width() - 30); map.invalidateSize(); }).trigger("resize");
+          $(window).on("resize", function () { $("#map").height($(window).height()); map.invalidateSize(); }).trigger("resize");
+
+          L.marker([<%= @organizacao.latitude %>, <%= @organizacao.longitude %>], {icon: Icon}).addTo(map);
+        });
+      </script>
+    <br/><br/></br><br/><br/>
+    <% end %>
     </div>
 </div>
 

@@ -16,10 +16,13 @@
 
 <div class="tab-content">
   <div class="tab-pane active"><br/>
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Nome</th>
+          <th>Cidade</th>
+          <th>UF</th>
+          <th>Tipo</th>
           <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
@@ -28,6 +31,9 @@
         <% @organizacoes.each do |organizacao| %>
         <tr>
           <td><%= link_to organizacao.nome, organizacao_path(organizacao) %></td>
+          <td><%= organizacao.cidade %></td>
+          <td><%= organizacao.uf %></td>
+          <td><%= organizacao.tipo_organizacao.nome %></td>
           <% if usuario_signed_in? %>
             <td>
             <% if current_usuario.admin? or organizacao.usuario.id == current_usuario.id %>

@@ -1,11 +1,7 @@
 <ul class="nav nav-tabs">
-  <% if usuario_signed_in? %>
-    <% if current_usuario.admin %>
-      <li class="nav-item">
-        <%= link_to t(:all), organizacoes_path, :class => "nav-link" %>
-      </li>
-    <% end %>
-  <% end %>
+  <li class="nav-item">
+    <%= link_to t(:all), organizacoes_path, :class => "nav-link" %>
+  </li>
   <li class="nav-item">
     <%= link_to "#{t(:edit)} #{@organizacao.nome}", edit_organizacao_path(@organizacao), :class => "nav-link active" %>
   </li>
