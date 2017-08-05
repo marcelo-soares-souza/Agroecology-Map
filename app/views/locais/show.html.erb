@@ -23,7 +23,7 @@
         <dd class="col-sm-9"><%= @local.observacao %>&nbsp;</dd>
 
         <% if @local.organizacoes.count > 0 %>
-          <dt class="col-sm-3"><strong>Observação:</strong></dt>
+          <dt class="col-sm-3"><strong>Organizações:</strong></dt>
           <dd class="col-sm-9">
             <%= @local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp;
           </dd>
