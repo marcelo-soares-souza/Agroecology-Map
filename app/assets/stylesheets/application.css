@@ -106,17 +106,18 @@ a:focus, a:hover {
     }
 }
 
-#usuario-imagem {
+#show-imagem {
   float: left;
   min-width: 155px;
   min-height: 155px;
 }
 
-#usuario-info {
+#show-info {
   float: right;
   min-width: 85%;
   min-height: 155px;
   text-align: left;
+  padding-left: 16px;
 }
 
 #usuario-footer {

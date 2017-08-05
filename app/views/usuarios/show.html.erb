@@ -15,10 +15,10 @@
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <div id="usuario-imagem">
+    <div id="show-imagem">
       <%= image_tag(@usuario.imagem.url(:thumb), :width => "150") %>
     </div>
-    <div id="usuario-info">
+    <div id="show-info">
       <dl class="row">
         <dt class="col-sm-3"><strong>Nome:</strong></dt>
         <dd class="col-sm-9"><%= @usuario.nome %>&nbsp;</dd>
