@@ -1,7 +1,7 @@
 class OrganizacoesController < ApplicationController
   before_action :set_organizacao, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] { check_owner Organizacao.friendly.find(params[:id]).organizacao.user_id }
+  before_action only: [:edit, :update, :destroy] { check_owner Organizacao.friendly.find(params[:id]).usuario_id }
   before_action :load_tipo_organizacoes, except: [:index]
   before_action :load_ufs, except: [:index]
 

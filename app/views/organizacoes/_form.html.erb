@@ -140,6 +140,12 @@
       $('#latitude').val(lat);
       $('#longitude').val(lon);
 
+      map.on('click', function (e) {
+        marker.setLatLng(e.latlng);
+        $('#latitude').val(marker.getLatLng().lat);
+        $('#longitude').val(marker.getLatLng().lng);
+      });
+
       marker.on('dragend', function (e) {
         $('#latitude').val(marker.getLatLng().lat);
         $('#longitude').val(marker.getLatLng().lng);

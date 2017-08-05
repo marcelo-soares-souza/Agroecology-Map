@@ -3,11 +3,9 @@
     <%= link_to t(:all), organizacoes_path, :class => "nav-link active" %>
   </li>
   <% if usuario_signed_in? %>
-    <% if current_usuario.admin? %>
-      <li class="nav-item">
-        <%= link_to t(:new), new_organizacao_path, :class => "nav-link" %>
-      </li>
-    <% end %>
+    <li class="nav-item">
+      <%= link_to t(:new), new_organizacao_path, :class => "nav-link" %>
+    </li>
   <% end %>
 </ul>
 
@@ -22,7 +20,7 @@
       <thead>
         <tr>
           <th>Nome</th>
-          <th></th>
+          <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
 
@@ -30,10 +28,14 @@
         <% @organizacoes.each do |organizacao| %>
         <tr>
           <td><%= link_to organizacao.nome, organizacao_path(organizacao) %></td>
-          <td>
-            <%= link_to t(:edit), edit_organizacao_path(organizacao), :class => 'btn btn-mini btn-success' %>
-            <%= link_to t(:destroy), organizacao_path(organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
-          </td>
+          <% if usuario_signed_in? %>
+            <td>
+            <% if current_usuario.admin? or organizacao.usuario.id == current_usuario.id %>
+              <%= link_to t(:edit), edit_organizacao_path(organizacao), :class => 'btn btn-mini btn-success' %>
+              <%= link_to t(:destroy), organizacao_path(organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+            <% end %>
+            </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
