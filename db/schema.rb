@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20170805223943) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "nome"
     t.string "slug"
     t.string "imagem_file_name"
