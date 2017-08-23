@@ -69,8 +69,9 @@
 
   <div class="form-group row">
     <%= f.label 'UF', class: "col-sm-2 col-form-label col-form-label-lg text-uppercase" %>
-    <div class="col-sm-5">
-      <%= f.collection_select(:uf, @ufs, :last, :first, {}, { class: "form-control" } ) %>
+    <div class="col-sm-2">
+      <!-- <%= f.collection_select(:uf, @ufs, :last, :first, {}, { class: "form-control" } ) %> -->
+      <%= f.text_field :uf, class: "form-control" %>
     </div>
   </div>
 

@@ -1,0 +1,49 @@
+<ul class="nav nav-tabs">
+  <% if usuario_signed_in? %>
+    <% if current_usuario.admin %>
+      <li class="nav-item">
+        <%= link_to t(:all), safs_path, :class => "nav-link" %>
+      </li>
+    <% end %>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to @saf.nome, saf_path(@saf.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br/>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <center>
+      <br/><br/>
+      <h3><%= @saf.nome %></h3>
+
+      <br/>
+      <%= "<strong>Local:</strong><br/>#{link_to @saf.local.nome, local_path(@saf.local)}&nbsp;".html_safe if @saf.local.nome?%>
+      <%= "<br/><br/><strong>Objetivo Principal:</strong><br/>#{@saf.objetivo}&nbsp;".html_safe if @saf.objetivo?%>
+      <%= "<br/><br/><strong>Produto Principal:</strong><br/>#{@saf.produto_principal}&nbsp;".html_safe if @saf.produto_principal?%>
+      <%= "<br/><br/><strong>Início:</strong><br/>#{@saf.inicio}&nbsp;".html_safe if @saf.inicio?%>
+      <%= "<br/><br/><strong>Fim:</strong><br/>#{@saf.fim}&nbsp;".html_safe if @saf.fim?%>
+      <%= "<br/><br/><strong>Área (ha):</strong><br/>#{@saf.area}&nbsp;".html_safe if @saf.area?%>
+      <%= "<br/><br/><strong>Responsável pela Informação:</strong><br/>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome?%>
+      <%= "<br/><br/><strong>Organização:</strong><br/>#{@saf.local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0%>
+      <%= "<br/><br/><strong>Observação:</strong><br/>#{@saf.observacao}&nbsp;".html_safe if @saf.observacao?%>
+
+    </center>
+  </div>
+</div>
+
+<% if usuario_signed_in? %>
+<br/><br/>
+<div id="saf-footer">
+  <% if current_usuario.admin? or current_usuario.id == @saf.usuario.id %>        
+    <div class="form-actions">
+    <%= link_to t('.edit', :default => "Editar"), edit_saf_path(@saf), :class => 'btn btn-warning' %>
+      <% if current_usuario.admin? %>
+        <%= link_to t(:destroy), saf_path(@saf), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% end %>

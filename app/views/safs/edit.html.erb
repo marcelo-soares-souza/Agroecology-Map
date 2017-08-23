@@ -1,0 +1,20 @@
+<ul class="nav nav-tabs">
+  <% if usuario_signed_in? %>
+    <% if current_usuario.admin %>
+      <li class="nav-item">
+        <%= link_to t(:all), safs_path, :class => "nav-link" %>
+      </li>
+    <% end %>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to "#{t(:edit)} #{@saf.nome}", edit_saf_path(@saf), :class => "nav-link active" %>
+  </li>
+</ul>
+<br/>
+
+<% if ! @locais.empty? %>
+  <%= render 'form', saf: @saf %>
+<% else %>
+  <br/>
+  <h3>Nenhum Local Cadastrado. Deseja <%= link_to "Cadastrar um Local Agora?", new_local_url %></h3>
+<% end %>

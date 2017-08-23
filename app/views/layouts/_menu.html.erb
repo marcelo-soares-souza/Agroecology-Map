@@ -21,6 +21,10 @@
             <%= link_to("Organizações", organizacoes_path, :class => "nav-link") %>
           </li>
 
+          <li class="nav-item">
+            <%= link_to("SAF", safs_path, :class => "nav-link") %>
+          </li>
+
           <% if current_usuario %>
             <% if current_usuario.admin? %>
             <li class="nav-item dropdown">

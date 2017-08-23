@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :safs
   resources :locais
   resources :organizacoes
   resources :tipo_organizacoes

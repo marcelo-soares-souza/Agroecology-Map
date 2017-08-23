@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805223943) do
+ActiveRecord::Schema.define(version: 20170823125336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,24 @@ ActiveRecord::Schema.define(version: 20170805223943) do
     t.index ["usuario_id"], name: "index_organizacoes_on_usuario_id"
   end
 
+  create_table "safs", force: :cascade do |t|
+    t.string "nome"
+    t.string "slug"
+    t.string "objetivo"
+    t.string "produto_principal"
+    t.date "inicio"
+    t.date "fim"
+    t.string "area"
+    t.bigint "local_id"
+    t.bigint "usuario_id"
+    t.text "observacao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["local_id"], name: "index_safs_on_local_id"
+    t.index ["slug"], name: "index_safs_on_slug", unique: true
+    t.index ["usuario_id"], name: "index_safs_on_usuario_id"
+  end
+
   create_table "tipo_organizacoes", force: :cascade do |t|
     t.string "nome"
     t.string "slug"
@@ -105,5 +123,7 @@ ActiveRecord::Schema.define(version: 20170805223943) do
   add_foreign_key "organizacao_locais", "organizacoes"
   add_foreign_key "organizacoes", "tipo_organizacoes"
   add_foreign_key "organizacoes", "usuarios"
+  add_foreign_key "safs", "locais"
+  add_foreign_key "safs", "usuarios"
   add_foreign_key "tipo_organizacoes", "usuarios"
 end

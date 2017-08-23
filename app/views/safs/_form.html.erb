@@ -1,0 +1,74 @@
+<%= form_for(saf, html: { multipart: true }) do |f| %>
+  <% if saf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(saf.errors.count, "error") %> encontrado(s):</h2>
+
+      <ul>
+      <% saf.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= f.label 'Local', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-10">
+      <%= f.collection_select(:local_id, @locais, :id, :nome,  {}, { class: "form-control" } ) %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Nome', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-5">
+      <%= f.text_field :nome, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Objetivo Principal', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-10">
+      <%= f.text_field :objetivo, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Produto Principal', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-10">
+      <%= f.text_field :produto_principal, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Data de Início', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-5">
+      <%= f.date_field :inicio, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Data de Fim (Opcional)', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-5">
+      <%= f.date_field :fim, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Área (ha)', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-2">
+      <%= f.text_field :area, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-10">
+      <%= f.text_field :observacao, class: "form-control" %>
+    </div>
+  </div>
+
+  <br/>
+  <div class="actions">
+    <%= f.submit t(:submit), class: "btn btn-primary" %>
+  </div>
+<% end %>
