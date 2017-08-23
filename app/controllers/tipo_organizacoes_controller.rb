@@ -32,7 +32,7 @@ class TipoOrganizacoesController < ApplicationController
 
     respond_to do |format|
       if @tipo_organizacao.save
-        format.html { redirect_to @tipo_organizacao, notice: 'Tipo organizacao was successfully created.' }
+        format.html { redirect_to @tipo_organizacao, notice: 'Tipo de Organização foi cadastrada.' }
         format.json { render :show, status: :created, location: @tipo_organizacao }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class TipoOrganizacoesController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_organizacao.update(tipo_organizacao_params)
-        format.html { redirect_to @tipo_organizacao, notice: 'Tipo organizacao was successfully updated.' }
+        format.html { redirect_to @tipo_organizacao, notice: 'Tipo de Organização foi atualizada.' }
         format.json { render :show, status: :ok, location: @tipo_organizacao }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class TipoOrganizacoesController < ApplicationController
   def destroy
     @tipo_organizacao.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_organizacoes_url, notice: 'Tipo organizacao was successfully destroyed.' }
+      format.html { redirect_to tipo_organizacoes_url, notice: 'Tipo de Organização foi removida.' }
       format.json { head :no_content }
     end
   end

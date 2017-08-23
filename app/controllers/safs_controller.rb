@@ -32,7 +32,7 @@ class SafsController < ApplicationController
 
     respond_to do |format|
       if @saf.save
-        format.html { redirect_to @saf, notice: 'Saf was successfully created.' }
+        format.html { redirect_to @saf, notice: 'SAF foi cadastrado.' }
         format.json { render :show, status: :created, location: @saf }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class SafsController < ApplicationController
   def update
     respond_to do |format|
       if @saf.update(saf_params)
-        format.html { redirect_to @saf, notice: 'Saf was successfully updated.' }
+        format.html { redirect_to @saf, notice: 'SAF foi atualizado.' }
         format.json { render :show, status: :ok, location: @saf }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class SafsController < ApplicationController
   def destroy
     @saf.destroy
     respond_to do |format|
-      format.html { redirect_to safs_url, notice: 'Saf was successfully destroyed.' }
+      format.html { redirect_to safs_url, notice: 'SAF foi removido.' }
       format.json { head :no_content }
     end
   end

@@ -3,11 +3,9 @@
     <%= link_to t(:all), safs_path, :class => "nav-link active" %>
   </li>
   <% if usuario_signed_in? %>
-    <% if current_usuario.admin? %>
-      <li class="nav-item">
-        <%= link_to t(:new), new_saf_path, :class => "nav-link" %>
-      </li>
-    <% end %>
+    <li class="nav-item">
+      <%= link_to t(:new), new_saf_path, :class => "nav-link" %>
+    </li>
   <% end %>
 </ul>
 
@@ -33,8 +31,10 @@
           <td><%= link_to saf.local.nome, local_path(saf.local) %></td>
           <% if usuario_signed_in? %>
             <td>
-              <%= link_to t(:edit), edit_saf_path(saf), :class => 'btn btn-mini btn-success' %>
-              <%= link_to t(:destroy), saf_path(saf), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+              <% if current_usuario.admin? or saf.usuario.id == current_usuario.id %>
+                <%= link_to t(:edit), edit_saf_path(saf), :class => 'btn btn-mini btn-success' %>
+                <%= link_to t(:destroy), saf_path(saf), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+              <% end %>
             </td>
           <% end %>
         </tr>

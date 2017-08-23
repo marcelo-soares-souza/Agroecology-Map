@@ -36,7 +36,7 @@ class OrganizacoesController < ApplicationController
 
     respond_to do |format|
       if @organizacao.save
-        format.html { redirect_to @organizacao, notice: 'Organizacao was successfully created.' }
+        format.html { redirect_to @organizacao, notice: 'Organização foi cadastrada.' }
         format.json { render :show, status: :created, location: @organizacao }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class OrganizacoesController < ApplicationController
   def update
     respond_to do |format|
       if @organizacao.update(organizacao_params)
-        format.html { redirect_to @organizacao, notice: 'Organizacao was successfully updated.' }
+        format.html { redirect_to @organizacao, notice: 'Organização foi atualizada.' }
         format.json { render :show, status: :ok, location: @organizacao }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class OrganizacoesController < ApplicationController
   def destroy
     @organizacao.destroy
     respond_to do |format|
-      format.html { redirect_to organizacoes_url, notice: 'Organizacao was successfully destroyed.' }
+      format.html { redirect_to organizacoes_url, notice: 'Organização foi removida.' }
       format.json { head :no_content }
     end
   end

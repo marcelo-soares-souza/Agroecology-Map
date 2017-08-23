@@ -5,6 +5,8 @@ class Local < ApplicationRecord
   has_many :organizacoes, through: :organizacao_locais
   accepts_nested_attributes_for :organizacao_locais, allow_destroy: true
 
+  has_many :safs, dependent: :destroy
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 

@@ -1,10 +1,8 @@
 <ul class="nav nav-tabs">
   <% if usuario_signed_in? %>
-    <% if current_usuario.admin %>
-      <li class="nav-item">
-        <%= link_to t(:all), safs_path, :class => "nav-link" %>
-      </li>
-    <% end %>
+    <li class="nav-item">
+      <%= link_to t(:all), safs_path, :class => "nav-link" %>
+    </li>
   <% end %>
   <li class="nav-item">
     <%= link_to @saf.nome, saf_path(@saf.id), :class => "nav-link active" %>
@@ -39,10 +37,8 @@
 <div id="saf-footer">
   <% if current_usuario.admin? or current_usuario.id == @saf.usuario.id %>        
     <div class="form-actions">
-    <%= link_to t('.edit', :default => "Editar"), edit_saf_path(@saf), :class => 'btn btn-warning' %>
-      <% if current_usuario.admin? %>
-        <%= link_to t(:destroy), saf_path(@saf), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
-      <% end %>
+      <%= link_to t('.edit', :default => "Editar"), edit_saf_path(@saf), :class => 'btn btn-warning' %>
+      <%= link_to t(:destroy), saf_path(@saf), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
     </div>
   <% end %>
 </div>
