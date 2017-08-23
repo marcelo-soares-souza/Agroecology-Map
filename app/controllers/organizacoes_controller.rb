@@ -83,12 +83,4 @@ class OrganizacoesController < ApplicationController
     def load_tipo_organizacoes
       @tipo_organizacoes = TipoOrganizacao.all
     end
-
-    def load_locais
-      if current_usuario.admin?
-        @locais = Local.all
-      else
-        @locais = Local.where(usuario_id: current_usuario.id)
-      end
-    end
 end

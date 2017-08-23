@@ -75,12 +75,4 @@ class SafsController < ApplicationController
     def saf_params
       params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id, :usuario_id, :observacao)
     end
-
-    def load_locais
-      if current_usuario.admin?
-        @locais = Local.all
-      else
-        @locais = Local.where(usuario_id: current_usuario.id)
-      end
-    end
 end

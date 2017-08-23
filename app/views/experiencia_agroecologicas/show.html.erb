@@ -1,0 +1,42 @@
+<ul class="nav nav-tabs">
+  <% if usuario_signed_in? %>
+    <li class="nav-item">
+      <%= link_to t(:all), experiencia_agroecologicas_path, :class => "nav-link" %>
+    </li>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br/>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <center>
+      <br/><br/>
+      <h3><%= @experiencia_agroecologica.nome %></h3>
+
+      <br/>
+      <%= "<strong>Tema:</strong><br/>#{@experiencia_agroecologica.tema_experiencia_agroecologica.nome}&nbsp;".html_safe if @experiencia_agroecologica.tema_experiencia_agroecologica.nome?%>
+      <%= "<br/><br/><strong>Resumo:</strong><br/>#{@experiencia_agroecologica.resumo}&nbsp;".html_safe if @experiencia_agroecologica.resumo?%>
+      <%= "<br/><br/><strong>Local:</strong><br/>#{link_to @experiencia_agroecologica.local.nome, local_path(@experiencia_agroecologica.local)}&nbsp;".html_safe if @experiencia_agroecologica.local.nome?%>
+      <%= "<br/><br/><strong>Responsável pela Informação:</strong><br/>#{link_to @experiencia_agroecologica.usuario.nome, usuario_path(@experiencia_agroecologica.usuario)}&nbsp;".html_safe if @experiencia_agroecologica.usuario.nome?%>
+      <%= "<br/><br/><strong>Organização:</strong><br/>#{@experiencia_agroecologica.local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @experiencia_agroecologica.local.organizacoes.count > 0%>
+      <%= "<br/><br/><strong>Observação:</strong><br/>#{@experiencia_agroecologica.observacao}&nbsp;".html_safe if @experiencia_agroecologica.observacao?%>
+
+    </center>
+  </div>
+</div>
+
+<% if usuario_signed_in? %>
+<br/><br/>
+<div id="experiencia_agroecologica-footer">
+  <% if current_usuario.admin? or current_usuario.id == @experiencia_agroecologica.usuario.id %>        
+    <div class="form-actions">
+      <%= link_to t('.edit', :default => "Editar"), edit_experiencia_agroecologica_path(@experiencia_agroecologica), :class => 'btn btn-warning' %>
+      <%= link_to t(:destroy), experiencia_agroecologica_path(@experiencia_agroecologica), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>
+<% end %>

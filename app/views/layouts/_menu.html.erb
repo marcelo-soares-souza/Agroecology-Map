@@ -22,6 +22,10 @@
           </li>
 
           <li class="nav-item">
+            <%= link_to("Experiência em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link") %>
+          </li>
+
+          <li class="nav-item">
             <%= link_to("SAF", safs_path, :class => "nav-link") %>
           </li>
 
@@ -32,6 +36,7 @@
               <div class="dropdown-menu">
                 <%= link_to("Usuários", usuarios_path, :class => "nav-link") %>
                 <%= link_to("Tipo de Organizações", tipo_organizacoes_path, :class => "nav-link") %>
+                <%= link_to("Temas de Agroecologia", tema_experiencia_agroecologicas_path, :class => "nav-link") %>
               </div>
             </li>
             <% end %>

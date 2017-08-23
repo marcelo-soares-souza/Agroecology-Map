@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   protected
-
     def set_locale
       I18n.default_locale = "pt-BR"
       I18n.locale = params[:locale] || I18n.default_locale
@@ -14,14 +13,6 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:nome])
       devise_parameter_sanitizer.permit(:sign_in, keys: [:nome])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:nome])
-    end
-
-    def check_if_usuario_owner(id)
-      if signed_in?
-        if ! current_usuario.admin? && current_usuario.slug != (id)
-          redirect_to root_url, alert: "Permissão Negada"
-        end
-      end
     end
 
     def check_owner(usuario_id)
@@ -69,5 +60,13 @@ class ApplicationController < ActionController::Base
               "Sergipe" => "SE",
               "Tocantins" => "TO"
              }
+    end
+
+    def load_locais
+      if current_usuario.admin?
+        @locais = Local.all
+      else
+        @locais = Local.where(usuario_id: current_usuario.id)
+      end
     end
 end

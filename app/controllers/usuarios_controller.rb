@@ -2,7 +2,7 @@ class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, except: [:show]
   before_action :check_if_admin, only: [:index]
-  before_action only: [:edit, :update, :destroy] { check_if_usuario_owner params[:id] }
+  before_action only: [:edit, :update, :destroy] { check_owner Usuario.friendly.find(params[:id]).usuario_id }
 
   def index
     @usuarios = Usuario.all

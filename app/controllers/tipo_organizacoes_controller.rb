@@ -2,7 +2,7 @@ class TipoOrganizacoesController < ApplicationController
   before_action :set_tipo_organizacao, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, except: [:show]
   before_action :check_if_admin, only: [:index]
-  before_action only: [:edit, :update, :destroy] { check_if_usuario_owner params[:id] }
+  before_action only: [:edit, :update, :destroy] { check_owner TipoOrganizacao.friendly.find(params[:id]).usuario_id }
 
   # GET /tipo_organizacoes
   # GET /tipo_organizacoes.json

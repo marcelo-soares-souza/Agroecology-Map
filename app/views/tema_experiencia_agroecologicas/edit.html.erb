@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs">
+  <% if usuario_signed_in? %>
+    <% if current_usuario.admin %>
+      <li class="nav-item">
+        <%= link_to t(:all), tema_experiencia_agroecologicas_path, :class => "nav-link" %>
+      </li>
+    <% end %>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to "#{t(:edit)} #{@tema_experiencia_agroecologica.nome}", edit_tema_experiencia_agroecologica_path(@tema_experiencia_agroecologica), :class => "nav-link active" %>
+  </li>
+</ul>
+<br/>
+<%= render 'form', tema_experiencia_agroecologica: @tema_experiencia_agroecologica %>

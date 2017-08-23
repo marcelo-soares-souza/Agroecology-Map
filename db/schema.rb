@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823125336) do
+ActiveRecord::Schema.define(version: 20170823184038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "experiencia_agroecologicas", force: :cascade do |t|
+    t.string "nome"
+    t.string "slug"
+    t.bigint "usuario_id"
+    t.bigint "local_id"
+    t.bigint "tema_experiencia_agroecologica_id"
+    t.text "resumo"
+    t.text "observacao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["local_id"], name: "index_experiencia_agroecologicas_on_local_id"
+    t.index ["slug"], name: "index_experiencia_agroecologicas_on_slug", unique: true
+    t.index ["tema_experiencia_agroecologica_id"], name: "idx_exp_agroecologicas_on_tema_exp_agroecologica_id"
+    t.index ["usuario_id"], name: "index_experiencia_agroecologicas_on_usuario_id"
+  end
 
   create_table "locais", force: :cascade do |t|
     t.string "nome"
@@ -83,6 +99,16 @@ ActiveRecord::Schema.define(version: 20170823125336) do
     t.index ["usuario_id"], name: "index_safs_on_usuario_id"
   end
 
+  create_table "tema_experiencia_agroecologicas", force: :cascade do |t|
+    t.string "nome"
+    t.string "slug"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_tema_experiencia_agroecologicas_on_slug", unique: true
+    t.index ["usuario_id"], name: "index_tema_experiencia_agroecologicas_on_usuario_id"
+  end
+
   create_table "tipo_organizacoes", force: :cascade do |t|
     t.string "nome"
     t.string "slug"
@@ -118,6 +144,9 @@ ActiveRecord::Schema.define(version: 20170823125336) do
     t.index ["slug"], name: "index_usuarios_on_slug", unique: true
   end
 
+  add_foreign_key "experiencia_agroecologicas", "locais"
+  add_foreign_key "experiencia_agroecologicas", "tema_experiencia_agroecologicas"
+  add_foreign_key "experiencia_agroecologicas", "usuarios"
   add_foreign_key "locais", "usuarios"
   add_foreign_key "organizacao_locais", "locais"
   add_foreign_key "organizacao_locais", "organizacoes"
@@ -125,5 +154,6 @@ ActiveRecord::Schema.define(version: 20170823125336) do
   add_foreign_key "organizacoes", "usuarios"
   add_foreign_key "safs", "locais"
   add_foreign_key "safs", "usuarios"
+  add_foreign_key "tema_experiencia_agroecologicas", "usuarios"
   add_foreign_key "tipo_organizacoes", "usuarios"
 end
