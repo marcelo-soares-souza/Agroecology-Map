@@ -86,26 +86,6 @@ a:focus, a:hover {
   color: #000;
 }
 
-@media all and (max-width:768px){
-    table{
-        width:100%;
-    }
-
-    td{
-        display:block;
-        width:100%;
-    }
-
-    tr{
-        display:block;
-        margin-bottom:30px;
-    }
-
-    tr tr{
-        margin-bottom:0;
-    }
-}
-
 #show-imagem {
   float: left;
   max-width: 120px;

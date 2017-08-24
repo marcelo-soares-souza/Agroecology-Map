@@ -13,10 +13,11 @@
 
 <% if @tema_experiencia_agroecologicas.empty? %>
   <br/>
-  <h3>Nenhum Dado Encontrado</h3>
+  <h3>Nenhum tema de Experiência Agroecológica Registrada</h3>
 <% else %>
 
-    <br/>
+  <br/>
+  <div style="overflow-x:auto;">
     <table id="dataTable-agroecologia" class="table table-striped table-bordered" width="100%" cellspacing="0">
       <thead>
         <tr>
@@ -41,6 +42,7 @@
         <% end %>
       </tbody>
     </table>
+  </div>
 <% end %>
 
 <script>$(document).ready(function(){ dataTables(); });</script>
