@@ -6,7 +6,7 @@ class Usuario < ApplicationRecord
   has_many :organizacoes
   has_many :safs
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   extend FriendlyId
   friendly_id :nome, use: :slugged

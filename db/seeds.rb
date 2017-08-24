@@ -1,4 +1,6 @@
-Usuario.new(nome: "Administrador", email: "admin@agroecologia", password: "agroecologia", password_confirmation: "agroecologia", admin: "t").save(validate: false)
+usuario = Usuario.new(nome: "Administrador", email: "admin@agroecologia", password: "agroecologia", password_confirmation: "agroecologia", admin: "t")
+usuario.skip_confirmation!
+usuario.save!
 
 TipoOrganizacao.new(nome: "Organização Não Governamental").save(validate: false)
 TipoOrganizacao.new(nome: "Governamental").save(validate: false)
