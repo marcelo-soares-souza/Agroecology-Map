@@ -1,0 +1,13 @@
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 2px;
+  min-width: 1.5em;
+  padding: 0.0em 0em;
+  text-align: center;
+  text-decoration: none;
+}

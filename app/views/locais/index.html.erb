@@ -14,9 +14,8 @@
   <h3>Nenhum Local Cadastrado</h3>
 <% else %>
 
-<div class="tab-content">
-  <div class="tab-pane active"><br/>
-    <table class="table table-sm table-striped">
+    <br/>
+    <table id="dataTable-agroecologia" class="table table-striped" width="100%" cellspacing="0">
       <thead>
         <tr>
           <th></th>
@@ -44,6 +43,6 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-</div>
 <% end %>
+
+<script>$(document).ready(function(){ dataTables(); });</script>

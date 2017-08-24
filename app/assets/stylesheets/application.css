@@ -128,3 +128,7 @@ a:focus, a:hover {
   min-heigth: 128px;
   float: right;
 }
+
+.table-responsive {
+    display: table;
+}
