@@ -28,6 +28,8 @@
       <%= "<br/><br/><strong>Responsávelo pela Informação:</strong><br/>#{link_to @organizacao.usuario.nome, usuario_path(@organizacao.usuario)}&nbsp;".html_safe if @organizacao.usuario.nome?%>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao?%>
       <%= "<br/><br/><strong>Locais:</strong><br/>#{@organizacao.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.locais.count > 0%>
+      <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@organizacao.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.experiencia_agroecologicas.count > 0%>
+      <%= "<br/><br/><strong>SAFs:</strong><br/>#{@organizacao.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.safs.count > 0%>
 
       <% if @organizacao.latitude and @organizacao.longitude %>
         <br/><br/>

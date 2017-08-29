@@ -4,6 +4,9 @@ class Organizacao < ApplicationRecord
 
   has_many :organizacao_locais, dependent: :destroy
   has_many :locais, through: :organizacao_locais
+  has_many :safs, through: :locais
+  has_many :experiencia_agroecologicas, through: :locais
+
   accepts_nested_attributes_for :organizacao_locais, allow_destroy: true
 
   extend FriendlyId

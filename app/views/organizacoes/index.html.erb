@@ -24,6 +24,8 @@
           <th>UF</th>
           <th>Tipo</th>
           <th>Locais</th>
+          <th>Experiências</th>
+          <th>SAFs</th>
           <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
@@ -36,6 +38,9 @@
           <td><%= organizacao.uf %></td>
           <td><%= organizacao.tipo_organizacao.nome %></td>
           <td><%= organizacao.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe %>&nbsp;
+          <td><%= organizacao.experiencia_agroecologicas.count %></td>
+          <td><%= organizacao.safs.count %></td>
+
           <% if usuario_signed_in? %>
             <td>
             <% if current_usuario.admin? or organizacao.usuario.id == current_usuario.id %>

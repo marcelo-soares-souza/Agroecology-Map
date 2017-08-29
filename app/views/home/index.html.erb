@@ -47,7 +47,10 @@
 
         <% @locais.each do |local| %>
           <% if local.latitude and local.longitude %>
-            var popup = '<b><%= link_to local.nome, local_path(local) %></b>';
+            var popup = '<b><%= "#{link_to local.nome, local_path(local)}<br/> \
+                                 Experiências em Agroecologia: #{local.experiencia_agroecologicas.count}<br/> \
+                                 SAFs: #{local.safs.count}<br/> \
+                                ".html_safe  %></b>';
             var marker = L.marker(L.latLng([<%= local.latitude %>, <%= local.longitude %>]), {icon: Icon});
             marker.bindPopup(popup);
             markers.addLayer(marker);
