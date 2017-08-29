@@ -35,7 +35,7 @@
           <td><%= organizacao.cidade %></td>
           <td><%= organizacao.uf %></td>
           <td><%= organizacao.tipo_organizacao.nome %></td>
-          <td><%= organizacao.locais.count %></td>
+          <td><%= organizacao.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe %>&nbsp;
           <% if usuario_signed_in? %>
             <td>
             <% if current_usuario.admin? or organizacao.usuario.id == current_usuario.id %>
@@ -49,6 +49,7 @@
       </tbody>
     </table>
   </div>
+
+  <script>$(document).ready(function(){ dataTables(); });</script>
 <% end %>
 
-<script>$(document).ready(function(){ dataTables(); });</script>

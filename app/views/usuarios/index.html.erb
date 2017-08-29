@@ -1,8 +1,13 @@
 <ul class="nav nav-tabs">
-	  <li class="nav-item">
+  <li class="nav-item">
     <%= link_to t(:all), usuarios_path, :class => "nav-link active" %>
   </li>
 </ul>
+
+<% if @usuarios.empty? %>
+  <br/>
+  <h3>Nenhum Usuário Registrado</h3>
+<% else %>
 
   <br/>
   <div style="overflow-x:auto;">
@@ -12,7 +17,9 @@
           <th></th>
           <th>Nome</th>
           <th>E-Mail</th>
-          <th colspan="3"></th>
+          <th>Locais</th>
+          <th>Organizações</th>
+          <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
 
@@ -22,14 +29,25 @@
           <td scope="row"><%= link_to image_tag(usuario.imagem.url(:thumb), :height => "80"), usuario_path(usuario) %></td>
           <td><%= link_to usuario.nome, usuario_path(usuario) %></td>
           <td><%= usuario.email %></td>
-          <td>
-            <%= link_to t(:edit), edit_usuario_path(usuario), :class => 'btn btn-mini btn-success' %>
-            <%= link_to t(:destroy), usuario_path(usuario), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' if usuario.id != 1 %>
-          </td>
-        </tr>
+          <td><%= usuario.locais.empty? ? "-" : (usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe) %>&nbsp;
+          <td><%= usuario.organizacoes.empty? ? "-" : usuario.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp;
+          <% if usuario_signed_in? %>
+            <% if current_usuario.admin? or usuario.id == current_usuario.id %>
+              <td>
+                <%= link_to t(:edit), edit_usuario_path(usuario), :class => 'btn btn-mini btn-success' %>
+                <% if current_usuario.admin? %>
+                  <%= link_to t(:destroy), usuario_path(usuario), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' if usuario.id != 1 %>
+                <% end %>
+              </td>
+            <% else %>
+              <td></td>
+            <% end %>
+          <% end %>
+          </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 
   <script>$(document).ready(function(){ dataTables(); });</script>
+<% end %>

@@ -7,7 +7,7 @@ class ExperienciaAgroecologica < ApplicationRecord
   extend FriendlyId
   friendly_id :nome, use: :slugged
 
-  validates :nome, presence: true
+  validates :nome, presence: true, uniqueness: true
   validates :local, presence: true
   validates :tema_experiencia_agroecologica, presence: true
 

@@ -9,11 +9,11 @@ class Organizacao < ApplicationRecord
   extend FriendlyId
   friendly_id :nome, use: :slugged
 
-  validates :nome, presence: true
+  validates :nome, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   protected
     def should_generate_new_friendly_id?
       nome_changed?
     end
-
 end
