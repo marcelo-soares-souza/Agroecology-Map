@@ -21,6 +21,7 @@
         <tr>
           <th></th>
           <th>Nome</th>
+          <th>Tipo</th>
           <th>Organização</th>
           <% if usuario_signed_in? %><th></th><% end %>
         </tr>
@@ -31,6 +32,7 @@
         <tr>
           <td scope="row"><%= link_to image_tag(local.imagem.url(:thumb), :height => "80"), local_path(local) %></td>
           <td><%= link_to local.nome, local_path(local) %></td>
+          <td><%= local.tipo %></td>
           <td><%= local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp;
           <% if usuario_signed_in? %>
             <td>
