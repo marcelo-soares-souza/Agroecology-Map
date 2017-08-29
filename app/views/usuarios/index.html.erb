@@ -19,6 +19,8 @@
           <th>E-Mail</th>
           <th>Locais</th>
           <th>Organizações</th>
+          <th>Experiências</th>
+          <th>SAFs</th>
           <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
@@ -31,6 +33,8 @@
           <td><%= usuario.email %></td>
           <td><%= usuario.locais.empty? ? "-" : (usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe) %>&nbsp;
           <td><%= usuario.organizacoes.empty? ? "-" : usuario.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp;
+          <td><%= usuario.experiencia_agroecologicas.count %></td>
+          <td><%= usuario.safs.count %></td>
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? or usuario.id == current_usuario.id %>
               <td>

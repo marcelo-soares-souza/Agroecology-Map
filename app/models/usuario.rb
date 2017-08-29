@@ -5,6 +5,7 @@ class Usuario < ApplicationRecord
   has_many :locais
   has_many :organizacoes
   has_many :safs
+  has_many :experiencia_agroecologicas
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
