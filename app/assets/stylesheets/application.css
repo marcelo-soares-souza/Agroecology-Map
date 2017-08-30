@@ -112,3 +112,11 @@ a:focus, a:hover {
 .table-responsive {
     display: table;
 }
+
+#alerta {
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
+  border-radius: 0.25rem;
+  margin-bottom: 32px;
+}
