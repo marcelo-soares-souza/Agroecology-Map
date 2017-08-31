@@ -1,9 +1,7 @@
 <ul class="nav nav-tabs">
-  <% if usuario_signed_in? %>
-    <li class="nav-item">
-      <%= link_to t(:all), safs_path, :class => "nav-link" %>
-    </li>
-  <% end %>
+  <li class="nav-item">
+    <%= link_to t(:all), safs_path, :class => "nav-link" %>
+  </li>
   <li class="nav-item">
     <%= link_to @saf.nome, saf_path(@saf.id), :class => "nav-link active" %>
   </li>
