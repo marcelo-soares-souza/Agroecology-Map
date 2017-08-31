@@ -60,15 +60,13 @@
 </div>
 
 <% if usuario_signed_in? %>
-<br/><br/>
-<div id="organizacao-footer">
   <% if current_usuario.admin? or current_usuario.id == @organizacao.usuario.id %>        
-    <div class="form-actions">
-      <% if current_usuario.admin? or @organizacao.usuario.id == current_usuario.id %>
-        <%= link_to t('.edit', :default => "Editar"), edit_organizacao_path(@organizacao), :class => 'btn btn-warning' %>
-        <%= link_to t(:destroy), organizacao_path(@organizacao), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
-      <% end %>
+    <br/><br/>
+    <div id="organizacao-footer">
+        <div class="form-actions">
+          <%= link_to t('.edit', :default => "Editar"), edit_organizacao_path(@organizacao), :class => 'btn btn-warning' %>
+          <%= link_to t(:destroy), organizacao_path(@organizacao), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+        </div>
     </div>
   <% end %>
-</div>
 <% end %>

@@ -28,10 +28,10 @@
 </div>
 
 <% if usuario_signed_in? %>
-<br/><br/>
   <% if current_usuario.admin? or current_usuario.id == @usuario.id %>        
+    <br/><br/>
     <div class="form-actions">
-    <%= link_to t('.edit', :default => "Editar"), edit_usuario_path(@usuario), :class => 'btn btn-warning' %>
+      <%= link_to t('.edit', :default => "Editar"), edit_usuario_path(@usuario), :class => 'btn btn-warning' %>
       <% if current_usuario.admin? %>
         <%= link_to t(:destroy), usuario_path(@usuario), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' if @usuario.id != 1 %>
       <% end %>

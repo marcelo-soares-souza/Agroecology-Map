@@ -36,13 +36,13 @@
 </div>
 
 <% if usuario_signed_in? %>
-<br/><br/>
-<div id="saf-footer">
   <% if current_usuario.admin? or current_usuario.id == @saf.usuario.id %>        
-    <div class="form-actions">
-      <%= link_to t('.edit', :default => "Editar"), edit_saf_path(@saf), :class => 'btn btn-warning' %>
-      <%= link_to t(:destroy), saf_path(@saf), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+    <br/><br/>
+    <div id="saf-footer">
+      <div class="form-actions">
+        <%= link_to t('.edit', :default => "Editar"), edit_saf_path(@saf), :class => 'btn btn-warning' %>
+        <%= link_to t(:destroy), saf_path(@saf), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+      </div>
     </div>
   <% end %>
-</div>
 <% end %>

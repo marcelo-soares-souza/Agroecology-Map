@@ -2,6 +2,7 @@ class Saf < ApplicationRecord
   belongs_to :local
   belongs_to :usuario
   has_one :organizacao, through: :local
+  has_many :midias
 
   extend FriendlyId
   friendly_id :nome, use: :slugged

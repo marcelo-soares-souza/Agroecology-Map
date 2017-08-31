@@ -19,17 +19,19 @@
     <% if params[:saf_id] %>
       <%= link_to "Fotos", saf_midias_path, :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "Fotos", experiencia_agroecologica_midias_path, :class => "nav-link active" %>
+      <%= link_to "Fotos", experiencia_agroecologica_midias_path, :class => "nav-link" %>
     <% end %>
   </li>
 
-  <li class="nav-item">
-    <% if params[:saf_id] %>
-      <%= link_to t(:new), new_saf_midia_path, :class => "nav-link active" %>
-    <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to t(:new), new_experiencia_agroecologica_midia_path, :class => "nav-link active" %>
-    <% end %>
-  </li>
+  <% if usuario_signed_in? %>
+    <li class="nav-item">
+      <% if params[:saf_id] %>
+        <%= link_to t(:new), new_saf_midia_path, :class => "nav-link active" %>
+      <% elsif params[:experiencia_agroecologica_id] %>
+        <%= link_to t(:new), new_experiencia_agroecologica_midia_path, :class => "nav-link active" %>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
 
 <br/>
