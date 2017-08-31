@@ -25,9 +25,9 @@
   <% if usuario_signed_in? %>
     <li class="nav-item">
       <% if params[:saf_id] %>
-        <%= link_to t(:new), new_saf_midia_path, :class => "nav-link" %>
+        <%= link_to t(:new), new_saf_midia_path, :class => "nav-link" if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
       <% elsif params[:experiencia_agroecologica_id] %>
-        <%= link_to t(:new), new_experiencia_agroecologica_midia_path, :class => "nav-link" %>
+        <%= link_to t(:new), new_experiencia_agroecologica_midia_path, :class => "nav-link" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
       <% end %>
     <% end %>
   </li>
@@ -36,11 +36,15 @@
 <% if @midias.empty? %>
   <br/>
 
-  <% if params[:saf_id] %>
-      <h3>Nenhuma Foto Registrada. <%= link_to "Enviar uma Foto para esta SAF?", new_saf_midia_path(@saf) %></h3>
-  <% elsif params[:experiencia_agroecologica_id] %>
-      <h3>Nenhuma Foto Registrada. <%= link_to "Enviar uma Foto para esta Experiência em Agroecologia?", new_experiencia_agroecologica_midia_path(@experiencia_agroecologica) %></h3>
-  <% end %>
+  <h3>Nenhuma Foto Registrada.
+   <% if usuario_signed_in? %>
+      <% if params[:saf_id] %>
+        <%= link_to "Enviar uma Foto para esta SAF?", new_saf_midia_path(@saf) if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+      <% elsif params[:experiencia_agroecologica_id] %>
+        <%= link_to "Enviar uma Foto para esta Experiência em Agroecologia?", new_experiencia_agroecologica_midia_path(@experiencia_agroecologica) if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+      <% end %>
+    <% end %>
+  </h3>
 
 <% else %>
 

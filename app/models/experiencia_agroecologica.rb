@@ -3,7 +3,7 @@ class ExperienciaAgroecologica < ApplicationRecord
   belongs_to :local
   belongs_to :tema_experiencia_agroecologica
   has_one :organizacao, through: :local
-  has_many :midias
+  has_many :midias, :dependent => :delete_all
 
   extend FriendlyId
   friendly_id :nome, use: :slugged

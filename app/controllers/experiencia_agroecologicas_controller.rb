@@ -33,7 +33,7 @@ class ExperienciaAgroecologicasController < ApplicationController
 
     respond_to do |format|
       if @experiencia_agroecologica.save
-        format.html { redirect_to @experiencia_agroecologica, notice: 'Experiencia agroecologica was successfully created.' }
+        format.html { redirect_to @experiencia_agroecologica, notice: 'Experiência em Agroecologia foi cadastrada.' }
         format.json { render :show, status: :created, location: @experiencia_agroecologica }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class ExperienciaAgroecologicasController < ApplicationController
   def update
     respond_to do |format|
       if @experiencia_agroecologica.update(experiencia_agroecologica_params)
-        format.html { redirect_to @experiencia_agroecologica, notice: 'Experiencia agroecologica was successfully updated.' }
+        format.html { redirect_to @experiencia_agroecologica, notice: 'Experiência em Agroecologia foi atualizada.' }
         format.json { render :show, status: :ok, location: @experiencia_agroecologica }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class ExperienciaAgroecologicasController < ApplicationController
   def destroy
     @experiencia_agroecologica.destroy
     respond_to do |format|
-      format.html { redirect_to experiencia_agroecologicas_url, notice: 'Experiencia agroecologica was successfully destroyed.' }
+      format.html { redirect_to experiencia_agroecologicas_url, notice: 'Experiência em Agroecologia foi removida.' }
       format.json { head :no_content }
     end
   end
