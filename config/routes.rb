@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :animais
+  resources :plantas
   resources :experiencia_agroecologicas do
     resources :midias
   end
