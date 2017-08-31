@@ -1,0 +1,38 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to t(:all), plantas_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to @planta.nome, planta_path(@planta.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br/>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <center>
+      <%= image_tag(@planta.imagem.url(:medium), :width => "250") %>
+
+      <br/><br/>
+      <h3><%= @planta.nome %></h3>
+
+      <br/>
+      <%= "<strong>Nome Científico:</strong><br/>#{@planta.nome_cientifico}&nbsp;".html_safe if @planta.nome_cientifico?%>
+      <%= "<br/><br/><strong>Observação:</strong><br/>#{@planta.observacao}&nbsp;".html_safe if @planta.observacao?%>
+
+    </center>
+  </div>
+</div>
+
+<% if usuario_signed_in? %>
+  <% if current_usuario.admin? or current_usuario.id == @planta.usuario.id %>        
+    <br/><br/>
+    <div id="planta-footer">
+      <div class="form-actions">
+        <%= link_to t('.edit', :default => "Editar"), edit_planta_path(@planta), :class => 'btn btn-success' %>
+        <%= link_to t(:destroy), planta_path(@planta), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

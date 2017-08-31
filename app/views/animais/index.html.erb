@@ -1,0 +1,50 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to t(:all), animais_path, :class => "nav-link active" %>
+  </li>
+  <% if usuario_signed_in? %>
+    <li class="nav-item">
+      <%= link_to t(:new), new_animal_path, :class => "nav-link" %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @animais.empty? %>
+  <br/>
+  <h3>Nenhum Animal Registrado. Desejar <%= link_to "Cadastrar um Animal?", new_animal_path %></h3>
+<% else %>
+
+  <br/>
+  <div style="overflow-x:auto;">
+    <table id="dataTable-agroecologia" class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nome</th>
+          <th>Nome Científico</th>
+          <% if usuario_signed_in? %><th></th><% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @animais.each do |animal| %>
+        <tr>
+          <td scope="row"><%= link_to image_tag(animal.imagem.url(:thumb), :height => "80"), animal_path(animal) %></td>
+          <td><%= link_to animal.nome, animal_path(animal) %></td>
+          <td><%= animal.nome_cientifico %></td>
+          <% if usuario_signed_in? %>
+            <td>
+              <% if current_usuario.admin? or animal.usuario.id == current_usuario.id %>
+                <%= link_to t(:edit), edit_animal_path(animal), :class => 'btn btn-mini btn-success' %>
+                <%= link_to t(:destroy), animal_path(animal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>$(document).ready(function(){ dataTables(); });</script>
+<% end %>

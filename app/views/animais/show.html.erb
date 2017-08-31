@@ -1,0 +1,38 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to t(:all), animais_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to @animal.nome, animal_path(@animal.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br/>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <center>
+      <%= image_tag(@animal.imagem.url(:medium), :width => "250") %>
+
+      <br/><br/>
+      <h3><%= @animal.nome %></h3>
+
+      <br/>
+      <%= "<strong>Nome Científico:</strong><br/>#{@animal.nome_cientifico}&nbsp;".html_safe if @animal.nome_cientifico?%>
+      <%= "<br/><br/><strong>Observação:</strong><br/>#{@animal.observacao}&nbsp;".html_safe if @animal.observacao?%>
+
+    </center>
+  </div>
+</div>
+
+<% if usuario_signed_in? %>
+  <% if current_usuario.admin? or current_usuario.id == @animal.usuario.id %>        
+    <br/><br/>
+    <div id="animal-footer">
+      <div class="form-actions">
+        <%= link_to t('.edit', :default => "Editar"), edit_animal_path(@animal), :class => 'btn btn-success' %>
+        <%= link_to t(:destroy), animal_path(@animal), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
