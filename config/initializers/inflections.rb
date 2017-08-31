@@ -3,4 +3,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "organizacao", "organizacoes"
   inflect.irregular "local", "locais"
   inflect.irregular "planta", "plantas"
+  inflect.irregular "animal", "animais"
+  inflect.irregular "midia", "midias"
 end

@@ -1,0 +1,81 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <% if params[:saf_id] %>
+      <%= link_to "Todos", safs_path, :class => "nav-link" %>
+    <% elsif params[:experiencia_agroecologica_id] %>
+      <%= link_to "Todos", experiencia_agroecologicas_path, :class => "nav-link" %>
+    <% end %>
+   </li>
+
+  <li class="nav-item">
+    <% if params[:saf_id] %>
+      <%= link_to @saf.nome, saf_path(@saf), :class => "nav-link" %>
+    <% elsif params[:experiencia_agroecologica_id] %>
+      <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
+    <% end %>
+   </li>
+
+  <li class="nav-item">
+    <% if params[:saf_id] %>
+      <%= link_to "Fotos", saf_midias_path, :class => "nav-link active" %>
+    <% elsif params[:experiencia_agroecologica_id] %>
+      <%= link_to "Fotos", experiencia_agroecologica_midias_path, :class => "nav-link active" %>
+    <% end %>
+  </li>
+</ul>
+
+<% if @midias.empty? %>
+  <br/>
+
+  <% if params[:saf_id] %>
+      <h3>Nenhuma Foto Registrada. <%= link_to "Enviar uma Foto para esta SAF?", new_saf_midia_path(@saf) %></h3>
+  <% elsif params[:experiencia_agroecologica_id] %>
+      <h3>Nenhuma Foto Registrada. <%= link_to "Enviar uma Foto para esta Experiência em Agroecologia?", new_experiencia_agroecologica_midia_path(@experiencia_agroecologica) %></h3>
+  <% end %>
+
+<% else %>
+
+  <br/>
+  <div style="overflow-x:auto;">
+    <table id="dataTable-agroecologia" class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Descrição</th>
+          <% if usuario_signed_in? %><th></th><% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @midias.each do |midia| %>
+        <tr>
+          <% if params[:saf_id] %>
+            <td scope="row"><%= link_to image_tag(midia.imagem.url(:thumb), :height => "80"), saf_midia_path(@saf, midia) %></td>
+            <td><%= link_to midia.descricao, saf_midia_path(@saf, midia) %></td>
+          <% elsif params[:experiencia_agroecologica_id] %>
+            <td scope="row"><%= link_to image_tag(midia.imagem.url(:thumb), :height => "80"), experiencia_agroecologica_midia_path(@experiencia_agroecologica, midia) %></td>
+            <td><%= link_to midia.descricao, experiencia_agroecologica_midia_path(@experiencia_agroecologica, midia) %></td>
+          <% end %>
+
+          <% if usuario_signed_in? %>
+            <td>
+            <% if current_usuario.admin? or midia.usuario.id == current_usuario.id %>
+              <% if params[:saf_id] %>
+                <%= link_to t(:edit), edit_saf_midia_path(@saf, midia), :class => 'btn btn-mini btn-success' %>
+                <%= link_to t(:destroy), saf_midia_path(@saf, midia), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+              <% elsif params[:experiencia_agroecologica_id] %>
+                <%= link_to t(:edit), edit_experiencia_agroecologica_midia_path(@experiencia_agroecologica, midia), :class => 'btn btn-mini btn-success' %>
+                <%= link_to t(:destroy), experiencia_agroecologicamidia_path(@experiencia_agroecologica, midia), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+              <% end %>
+            <% end %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>$(document).ready(function(){ dataTables(); });</script>
+<% end %>
+

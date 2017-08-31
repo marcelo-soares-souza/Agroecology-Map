@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829141004) do
+ActiveRecord::Schema.define(version: 20170831141858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,24 @@ ActiveRecord::Schema.define(version: 20170829141004) do
     t.string "tipo"
     t.index ["slug"], name: "index_locais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_locais_on_usuario_id"
+  end
+
+  create_table "midias", force: :cascade do |t|
+    t.string "descricao"
+    t.string "slug"
+    t.bigint "saf_id"
+    t.bigint "experiencia_agroecologica_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "imagem_file_name"
+    t.string "imagem_content_type"
+    t.integer "imagem_file_size"
+    t.datetime "imagem_updated_at"
+    t.bigint "usuario_id"
+    t.index ["experiencia_agroecologica_id"], name: "index_midias_on_experiencia_agroecologica_id"
+    t.index ["saf_id"], name: "index_midias_on_saf_id"
+    t.index ["slug"], name: "index_midias_on_slug", unique: true
+    t.index ["usuario_id"], name: "index_midias_on_usuario_id"
   end
 
   create_table "organizacao_locais", force: :cascade do |t|
@@ -154,6 +172,9 @@ ActiveRecord::Schema.define(version: 20170829141004) do
   add_foreign_key "experiencia_agroecologicas", "tema_experiencia_agroecologicas"
   add_foreign_key "experiencia_agroecologicas", "usuarios"
   add_foreign_key "locais", "usuarios"
+  add_foreign_key "midias", "experiencia_agroecologicas"
+  add_foreign_key "midias", "safs"
+  add_foreign_key "midias", "usuarios"
   add_foreign_key "organizacao_locais", "locais"
   add_foreign_key "organizacao_locais", "organizacoes"
   add_foreign_key "organizacoes", "tipo_organizacoes"
