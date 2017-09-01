@@ -28,7 +28,7 @@
   <div class="form-group row">
     <%= f.label 'Tipo', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:tipo_organizacao_id, @tipo_organizacoes, :id, :nome,  {}, { class: "form-control" } ) %>
+      <%= f.collection_select(:tipo_organizacao_id, @tipo_organizacoes, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
     </div>
   </div>
 
@@ -70,7 +70,7 @@
   <div class="form-group row">
     <%= f.label 'UF', class: "col-sm-2 col-form-label col-form-label-lg text-uppercase" %>
     <div class="col-sm-2">
-      <!-- <%= f.collection_select(:uf, @ufs, :last, :first, {}, { class: "form-control" } ) %> -->
+      <!-- <%= f.collection_select(:uf, @ufs, :last, :first, {}, { class: "form-control selectpicker", "data-live-search": true } ) %> -->
       <%= f.text_field :uf, class: "form-control" %>
     </div>
   </div>
@@ -83,27 +83,29 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
-    <div class="col-sm-5">
-      <%= f.text_field :observacao, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
     <%= f.label 'Locais', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <% if ! @locais.empty? %>
-        <%= f.collection_select(:local_ids, @locais, :id, :nome,  { include_hidden: false }, { class: "form-control", multiple: true } ) %>
+        <%= f.collection_select(:local_ids, @locais, :id, :nome,  { include_hidden: false }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
       <% else %>
         <b>Não há Locais Registradas. Deseja <%= link_to "Cadastrar Agora?", new_local_path, :target => "blank"%></b>
       <% end %>
     </div>
   </div>
 
+  <div class="form-group row">
+    <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <div class="col-sm-5">
+      <%= f.text_field :observacao, class: "form-control" %>
+    </div>
+  </div>
+
+  <br/><br/>
   <div class="col-form-label-lg">Localização (Clique sobre o Local)</div>
   <div class="form-group row">
       <div id="map-sistema"></div>
   </div>
+
   <br/><br/>
 
   <%= f.hidden_field :latitude, id: "latitude" %>

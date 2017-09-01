@@ -6,7 +6,7 @@ class Local < ApplicationRecord
   accepts_nested_attributes_for :organizacao_locais, allow_destroy: true
 
   has_many :safs, dependent: :destroy
-  has_many :experiencia_agroecologicas
+  has_many :experiencia_agroecologicas, dependent: :destroy
 
   extend FriendlyId
   friendly_id :nome, use: :slugged
