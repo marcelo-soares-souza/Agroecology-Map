@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831231623) do
+ActiveRecord::Schema.define(version: 20170831234310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,24 @@ ActiveRecord::Schema.define(version: 20170831231623) do
     t.index ["usuario_id"], name: "index_plantas_on_usuario_id"
   end
 
+  create_table "saf_animais", force: :cascade do |t|
+    t.bigint "saf_id"
+    t.bigint "animal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_saf_animais_on_animal_id"
+    t.index ["saf_id"], name: "index_saf_animais_on_saf_id"
+  end
+
+  create_table "saf_plantas", force: :cascade do |t|
+    t.bigint "saf_id"
+    t.bigint "planta_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["planta_id"], name: "index_saf_plantas_on_planta_id"
+    t.index ["saf_id"], name: "index_saf_plantas_on_saf_id"
+  end
+
   create_table "safs", force: :cascade do |t|
     t.string "nome"
     t.string "slug"
@@ -213,6 +231,10 @@ ActiveRecord::Schema.define(version: 20170831231623) do
   add_foreign_key "organizacoes", "tipo_organizacoes"
   add_foreign_key "organizacoes", "usuarios"
   add_foreign_key "plantas", "usuarios"
+  add_foreign_key "saf_animais", "animais"
+  add_foreign_key "saf_animais", "safs"
+  add_foreign_key "saf_plantas", "plantas"
+  add_foreign_key "saf_plantas", "safs"
   add_foreign_key "safs", "locais"
   add_foreign_key "safs", "usuarios"
   add_foreign_key "tema_experiencia_agroecologicas", "usuarios"

@@ -27,6 +27,8 @@
       <%= "<br/><br/><strong>Área (ha):</strong><br/>#{@saf.area}&nbsp;".html_safe if @saf.area?%>
       <%= "<br/><br/><strong>Responsável pela Informação:</strong><br/>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome?%>
       <%= "<br/><br/><strong>Organização:</strong><br/>#{@saf.local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0%>
+      <%= "<br/><br/><strong>Plantas:</strong><br/>#{@saf.plantas.map {|planta| link_to planta.nome, planta_path(planta)}.join(", ").html_safe}&nbsp;".html_safe if @saf.plantas.count > 0%>
+      <%= "<br/><br/><strong>Animais:</strong><br/>#{@saf.animais.map {|animal| link_to animal.nome, animal_path(animal)}.join(", ").html_safe}&nbsp;".html_safe if @saf.animais.count > 0%>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@saf.observacao}&nbsp;".html_safe if @saf.observacao?%>
 
     </center>

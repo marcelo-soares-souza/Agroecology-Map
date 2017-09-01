@@ -3,6 +3,7 @@ class SafsController < ApplicationController
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
   before_action only: [:edit, :update, :destroy] { check_owner Saf.friendly.find(params[:id]).usuario_id }
   before_action :load_locais, except: [:index, :show]
+  before_action :load_plantas_animais, except: [:index]
 
   # GET /safs
   # GET /safs.json
@@ -18,10 +19,14 @@ class SafsController < ApplicationController
   # GET /safs/new
   def new
     @saf = Saf.new
+    @saf.saf_plantas.build
+    @saf.saf_animais.build
   end
 
   # GET /safs/1/edit
   def edit
+    @saf.saf_plantas.build
+    @saf.saf_animais.build
   end
 
   # POST /safs
@@ -73,6 +78,11 @@ class SafsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def saf_params
-      params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id, :usuario_id, :observacao)
+      params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id, :usuario_id, :observacao, planta_ids: [], animal_ids: [])
+    end
+
+    def load_plantas_animais
+      @plantas = Planta.all
+      @animais = Animal.all
     end
 end

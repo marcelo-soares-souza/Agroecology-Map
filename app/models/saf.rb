@@ -4,6 +4,14 @@ class Saf < ApplicationRecord
   has_one :organizacao, through: :local
   has_many :midias, :dependent => :delete_all
 
+  has_many :saf_plantas, dependent: :destroy
+  has_many :plantas, through: :saf_plantas
+  accepts_nested_attributes_for :saf_plantas, allow_destroy: true
+
+  has_many :saf_animais, dependent: :destroy
+  has_many :animais, through: :saf_animais
+  accepts_nested_attributes_for :saf_animais, allow_destroy: true
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 

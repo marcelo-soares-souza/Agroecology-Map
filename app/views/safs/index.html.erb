@@ -22,6 +22,8 @@
           <th>Nome</th>
           <th>Local</th>
           <th>Fotos</th>
+          <th>Plantas</th>
+          <th>Animais</th>
           <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
@@ -32,6 +34,8 @@
           <td><%= link_to saf.nome, saf_path(saf) %></td>
           <td><%= link_to saf.local.nome, local_path(saf.local) %></td>
           <td><%= link_to saf.midias.count, saf_midias_path(saf) %></td>
+          <td><%= saf.plantas.count %></td>
+          <td><%= saf.animais.count %></td>
           <% if usuario_signed_in? %>
             <td>
               <% if current_usuario.admin? or saf.usuario.id == current_usuario.id %>
