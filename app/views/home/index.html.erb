@@ -14,8 +14,8 @@
 
   <script>
     $( document ).ready(function() {
-      lat = <%= request.safe_location.latitude %>;
-      lon = <%= request.safe_location.longitude %>;
+      lat = <%= (defined? request.safe_location.latitude)  ? request.safe_location.latitude : 0.0 %>;
+      lon = <%= (defined? request.safe_location.longitude) ? request.safe_location.longitude : 0.0 %>;
 
       if (lat == 0.0 || lon == 0.0) {
         lat = -15.77835833463309;
