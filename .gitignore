@@ -26,3 +26,6 @@
 /config/database.yml
 /public/system
 /config/initializers/proxy.rb
+/public/assets/
+yarn.lock
+
