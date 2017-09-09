@@ -300,3 +300,7 @@ a:focus, a:hover {
   border-radius: 0.25rem;
   margin-bottom: 32px;
 }
+
+.midia-imagem {
+  max-width: 640px;
+}
