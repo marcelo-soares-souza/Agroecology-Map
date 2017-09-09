@@ -140,6 +140,9 @@
       L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'OpenStreetMap', maxZoom: 18,}).addTo(map);
       L.control.zoom({position:'topright'}).addTo(map);
 
+      var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Buscar Local'});
+      map.addControl(osmGeocoder);
+
       var Icon = L.icon({
                             iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
                             shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
