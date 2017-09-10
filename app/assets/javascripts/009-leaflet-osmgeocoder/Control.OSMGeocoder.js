@@ -41,14 +41,17 @@ L.Control.OSMGeocoder = L.Control.extend({
 		var form = this._form = L.DomUtil.create('form', className + '-form');
 
 		var input = this._input = document.createElement('input');
+                input.className = "form-control form-control-sm";
 		input.type = "text";
 		input.placeholder = this.options.placeholder || '';
 
 		var submit = document.createElement('input');
+                submit.className = "btn btn-primary btn-sm";
 		submit.type = "submit";
 		submit.value = this.options.text;
 
 		form.appendChild(input);
+//                form.appendChild(document.createElement("br"));
 		form.appendChild(submit);
 
 		L.DomEvent.addListener(form, 'submit', this._geocode, this);

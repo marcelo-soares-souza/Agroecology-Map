@@ -34,5 +34,11 @@
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
-	padding: 5px;
+	padding: 8px;
+        text-align: center;
+}
+
+.leaflet-control-geocoder-expanded .leaflet-control-geocoder-form input {
+  margin-top: 3px;
+  text-align: center;
 }
