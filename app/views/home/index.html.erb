@@ -1,3 +1,5 @@
+  <meta http-equiv="refresh" content="300">
+
   <style>
     footer .container {
        width: 80%;
@@ -22,7 +24,7 @@
         lon = -47.88219451904297;
       }
 
-      var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], 5);
+      var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], 4);
 
       $(window).on("resize", function () { $("#map").height($(window).height() - 60); map.invalidateSize(); }).trigger("resize");
 
