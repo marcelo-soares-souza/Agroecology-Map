@@ -1,12 +1,13 @@
+<%= link_to "Registrar Novo Local", new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
+<br/><br/><br/>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:all), locais_path, :class => "nav-link active" %>
+    <%= link_to "Listar Locais", locais_path, :class => "nav-link active" %>
   </li>
-  <% if usuario_signed_in? %>
-    <li class="nav-item">
-      <%= link_to t(:new), new_local_path, :class => "nav-link" %>
-    </li>
-  <% end %>
+  <li class="nav-item">
+    <%= link_to "Registrar Local", new_local_path, :class => "nav-link" %>
+  </li>
 </ul>
 
 <% if @locais.empty? %>

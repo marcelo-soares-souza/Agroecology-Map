@@ -21,7 +21,7 @@
   <div class="form-group row">
     <%= f.label 'Tipo', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:tipo, @tipos, :last, :first, {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <%= f.collection_select(:tipo, @tipos, :last, :first,  { :include_blank => 'Selecione um Tipo de Local' }, { class: "form-control selectpicker", "data-live-search": true } ) %>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
   <div class="form-group row">
     <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.text_field :observacao, class: "form-control" %>
+      <%= f.text_area :observacao, class: "form-control", :rows => "5"  %>
     </div>
   </div>
 

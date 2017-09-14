@@ -77,9 +77,11 @@ class LocaisController < ApplicationController
     end
 
     def load_tipos
-      @tipos = { "Propriedade Coletiva" => "Propriedade Coletiva",
+      @tipos = { "Assentamento" => "Assentamento",
+                 "Propriedade Coletiva" => "Propriedade Coletiva",
                  "Propriedade Pública (Governo)" => "Propriedade Pública (Governo)",
                  "Propriedade Privada" => "Propriedade Privada",
+                 "Familiar" => "Familiar",
                  "Outro" => "Outro"
                }
     end

@@ -1,6 +1,12 @@
+<%= link_to "Registrar Nova Experiência", new_experiencia_agroecologica_path, :class => "btn btn-primary", :style => "float:right;" %>
+<br/><br/><br/>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:all), experiencia_agroecologicas_path, :class => "nav-link" %>
+    <%= link_to "Listar Experiências", experiencia_agroecologicas_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Registrar Experiência", new_experiencia_agroecologica_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica.id), :class => "nav-link active" %>

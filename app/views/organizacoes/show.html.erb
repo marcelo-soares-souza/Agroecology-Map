@@ -31,6 +31,7 @@
       <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@organizacao.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.experiencia_agroecologicas.count > 0%>
       <%= "<br/><br/><strong>SAFs:</strong><br/>#{@organizacao.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.safs.count > 0%>
 
+      <!--
       <% if @organizacao.latitude and @organizacao.longitude %>
         <br/><br/>
         <strong>Localização</strong><br/>
@@ -55,6 +56,7 @@
         });
         </script>
       <% end %>
+      -->
       </center>
     </div>
 </div>
