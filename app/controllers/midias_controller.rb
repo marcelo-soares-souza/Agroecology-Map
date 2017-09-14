@@ -32,7 +32,10 @@ class MidiasController < ApplicationController
   # POST /midias.json
   def create
     @midia = Midia.new(midia_params)
-    @midia.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @midia.usuario_id = current_usuario.id
+    end
 
     if params[:saf_id]
       @midia.saf_id = @saf.id

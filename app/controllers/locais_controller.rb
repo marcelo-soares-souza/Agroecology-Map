@@ -28,7 +28,10 @@ class LocaisController < ApplicationController
   # POST /locais.json
   def create
     @local = Local.new(local_params)
-    @local.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @local.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @local.save

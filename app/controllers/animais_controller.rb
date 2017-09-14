@@ -27,7 +27,10 @@ class AnimaisController < ApplicationController
   # POST /animais.json
   def create
     @animal = Animal.new(animal_params)
-    @animal.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @animal.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @animal.save

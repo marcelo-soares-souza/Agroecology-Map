@@ -32,7 +32,10 @@ class OrganizacoesController < ApplicationController
   # POST /organizacoes.json
   def create
     @organizacao = Organizacao.new(organizacao_params)
-    @organizacao.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @organizacao.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @organizacao.save

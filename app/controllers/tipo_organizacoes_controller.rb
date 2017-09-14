@@ -28,7 +28,10 @@ class TipoOrganizacoesController < ApplicationController
   # POST /tipo_organizacoes.json
   def create
     @tipo_organizacao = TipoOrganizacao.new(tipo_organizacao_params)
-    @tipo_organizacao.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @tipo_organizacao.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @tipo_organizacao.save

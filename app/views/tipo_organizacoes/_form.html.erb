@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <% if current_usuario.admin? %>
+    <div class="form-group row">
+      <%= f.label 'Colaborador Responsável', class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="form-group row">
     <%= f.label 'Nome', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">

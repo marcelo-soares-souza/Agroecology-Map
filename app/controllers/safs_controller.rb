@@ -33,7 +33,10 @@ class SafsController < ApplicationController
   # POST /safs.json
   def create
     @saf = Saf.new(saf_params)
-    @saf.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @saf.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @saf.save

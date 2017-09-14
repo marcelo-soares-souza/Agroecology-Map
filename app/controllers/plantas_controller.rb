@@ -27,7 +27,10 @@ class PlantasController < ApplicationController
   # POST /plantas.json
   def create
     @planta = Planta.new(planta_params)
-    @planta.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @planta.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @planta.save

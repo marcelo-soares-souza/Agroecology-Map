@@ -29,7 +29,10 @@ class ExperienciaAgroecologicasController < ApplicationController
   # POST /experiencia_agroecologicas.json
   def create
     @experiencia_agroecologica = ExperienciaAgroecologica.new(experiencia_agroecologica_params)
-    @experiencia_agroecologica.usuario_id = current_usuario.id
+
+    if ! current_usuario.admin?
+      @experiencia_agroecologica.usuario_id = current_usuario.id
+    end
 
     respond_to do |format|
       if @experiencia_agroecologica.save
