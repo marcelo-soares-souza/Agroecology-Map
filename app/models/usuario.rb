@@ -9,7 +9,7 @@ class Usuario < ApplicationRecord
   has_many :plantas
   has_many :animais
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable #, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   extend FriendlyId
   friendly_id :nome, use: :slugged
