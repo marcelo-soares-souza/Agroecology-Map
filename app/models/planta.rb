@@ -1,6 +1,9 @@
 class Planta < ApplicationRecord
   belongs_to :usuario
 
+  has_many :saf_plantas, dependent: :destroy
+  has_many :safs, through: :saf_plantas
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 

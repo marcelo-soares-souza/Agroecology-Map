@@ -23,7 +23,7 @@
       <br/>
       <%= "<strong>Nome Científico:</strong><br/>#{@animal.nome_cientifico}&nbsp;".html_safe if @animal.nome_cientifico?%>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@animal.observacao}&nbsp;".html_safe if @animal.observacao?%>
-
+      <%= "<br/><br/><strong>SAFs que Utilizam este Animal:</strong><br/>#{@animal.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @animal.safs.count > 0%>
     </center>
   </div>
 </div>

@@ -1,6 +1,9 @@
 class Animal < ApplicationRecord
   belongs_to :usuario
 
+  has_many :saf_animais, dependent: :destroy
+  has_many :safs, through: :saf_animais
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 

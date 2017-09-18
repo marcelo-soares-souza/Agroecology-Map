@@ -20,6 +20,7 @@
           <th></th>
           <th>Nome</th>
           <th>Nome Científico</th>
+          <th>SAFs</th>
           <% if usuario_signed_in? %><th></th><% end %>
         </tr>
       </thead>
@@ -30,6 +31,7 @@
           <td scope="row"><%= link_to image_tag(animal.imagem.url(:thumb), :height => "80"), animal_path(animal) %></td>
           <td><%= link_to animal.nome, animal_path(animal) %></td>
           <td><%= animal.nome_cientifico %></td>
+          <td><%= animal.safs.count %></td>
           <% if usuario_signed_in? %>
             <td>
               <% if current_usuario.admin? or animal.usuario.id == current_usuario.id %>
