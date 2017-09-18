@@ -84,7 +84,11 @@
       $(window).on("resize", function () { $("#map-sistema").width($(window).width()); map.invalidateSize(); }).trigger("resize");
       $(window).on("resize", function () { $("#map-sistema").height($(window).height()); map.invalidateSize(); }).trigger("resize");
 
-      L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'OpenStreetMap', maxZoom: 18,}).addTo(map);
+      var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
+      var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Agroecologia | Google Maps', maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3'] });
+      var baseMaps = { "OpenStreetMap": osm, "Google Maps": googleHybrid };
+      L.control.layers(baseMaps).addTo(map);
+
       L.control.zoom({position:'topright'}).addTo(map);
 
       var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe o Local'});
