@@ -36,7 +36,12 @@
         <script>
         $( document ).ready(function() {
           var map = L.map('map').setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
-          L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
+
+          var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
+          var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Agroecologia | Google Maps', maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3'] });
+          var baseMaps = { "OpenStreetMap": osm, "Google Maps": googleHybrid };
+          L.control.layers(baseMaps).addTo(map);
+
           var Icon = L.icon({
                             iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
                             shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
