@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :tema_experiencia_agroecologicas
-  resources :locais
+
+  resources :locais do
+    resources :experiencia_agroecologicas
+    resources :safs 
+  end
+
   resources :organizacoes
   resources :tipo_organizacoes
 

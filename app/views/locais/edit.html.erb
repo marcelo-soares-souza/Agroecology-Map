@@ -3,9 +3,6 @@
     <%= link_to "Listar Locais", locais_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Registrar Local", new_local_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
     <%= link_to "#{t(:edit)} #{@local.nome}", edit_local_path(@local), :class => "nav-link active" %>
   </li>
 </ul>

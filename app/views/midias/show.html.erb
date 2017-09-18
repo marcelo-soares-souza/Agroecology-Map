@@ -1,3 +1,13 @@
+<% if usuario_signed_in? %>
+  <% if params[:saf_id] %>
+    <%= link_to "Enviar Foto para esta SAF", new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;"  if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+  <% elsif params[:experiencia_agroecologica_id] %>
+    <%= link_to "Enviar Foto para esta Experiência", new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+  <% end %>
+<% end %>
+
+<br/><br/><br/>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <% if params[:saf_id] %>

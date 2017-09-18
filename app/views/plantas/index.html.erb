@@ -1,12 +1,10 @@
+<%= link_to "Registrar Nova Planta", new_planta_path, :class => "btn btn-primary", :style => "float:right;" %>
+<br/><br/><br/>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to t(:all), plantas_path, :class => "nav-link active" %>
   </li>
-  <% if usuario_signed_in? %>
-    <li class="nav-item">
-      <%= link_to t(:new), new_planta_path, :class => "nav-link" %>
-    </li>
-  <% end %>
 </ul>
 
 <% if @plantas.empty? %>

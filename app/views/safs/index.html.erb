@@ -1,12 +1,10 @@
+<%= link_to "Registrar Novo SAF", new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
+<br/><br/><br/>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to t(:all), safs_path, :class => "nav-link active" %>
   </li>
-  <% if usuario_signed_in? %>
-    <li class="nav-item">
-      <%= link_to t(:new), new_saf_path, :class => "nav-link" %>
-    </li>
-  <% end %>
 </ul>
 
 <% if @safs.empty? %>

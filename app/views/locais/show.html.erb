@@ -6,9 +6,6 @@
     <%= link_to "Listar Locais", locais_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Registrar Local", new_local_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
     <%= link_to @local.nome, local_path(@local.id), :class => "nav-link active" %>
   </li>
 </ul>
@@ -65,6 +62,9 @@
     <br/><br/>
     <div class="form-actions">
       <%= link_to t('.edit', :default => "Editar"), edit_local_path(@local), :class => 'btn btn-success' %>
+      <%= link_to "Registrar Experiência neste Local", new_local_experiencia_agroecologica_path(@local), :class => "btn btn-info" %>
+      <%= link_to "Registrar SAF neste Local", new_local_saf_path(@local), :class => "btn btn-warning" %>
+
       <%= link_to t(:destroy), local_path(@local), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
     </div>
   <% end %>

@@ -3,10 +3,12 @@
     <%= link_to "Listar Experiências", experiencia_agroecologicas_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Registrar Experiência", new_experiencia_agroecologica_path, :class => "nav-link active" %>
+    <%= link_to t(:new), new_experiencia_agroecologica_path, :class => "nav-link active" %>
   </li>
 </ul>
+
 <br/>
+
 <% if ! @locais.empty? %>
   <%= render 'form', experiencia_agroecologica: @experiencia_agroecologica %>
 <% else %>

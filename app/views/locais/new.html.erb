@@ -3,9 +3,10 @@
     <%= link_to "Listar Locais", locais_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Registrar Local", new_local_path, :class => "nav-link active" %>
+    <%= link_to t(:new), new_local_path, :class => "nav-link active" %>
   </li>
 </ul>
+
 <br/>
 
 <%= render 'form', local: @local %>

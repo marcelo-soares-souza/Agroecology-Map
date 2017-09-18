@@ -1,14 +1,14 @@
+<% if usuario_signed_in? %>    
+  <% if current_usuario.admin? %>
+    <%= link_to "Registrar Novo Tema", new_tema_experiencia_agroecologica_path, :class => "btn btn-primary", :style => "float:right;" %>
+    <br/><br/><br/>
+    <% end %>
+  <% end %>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to t(:all), tema_experiencia_agroecologicas_path, :class => "nav-link active" %>
   </li>
-  <% if usuario_signed_in? %>
-    <% if current_usuario.admin? %>
-      <li class="nav-item">
-        <%= link_to t(:new), new_tema_experiencia_agroecologica_path, :class => "nav-link" %>
-      </li>
-    <% end %>
-  <% end %>
 </ul>
 
 <% if @tema_experiencia_agroecologicas.empty? %>

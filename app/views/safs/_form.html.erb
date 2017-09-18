@@ -23,7 +23,12 @@
   <div class="form-group row">
     <%= f.label 'Local', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:local_id, @locais, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <% if params[:local_id] %>
+        <%= f.hidden_field :local_id, id: "local_id", :value => Local.friendly.find(params[:local_id]).id %>
+        <%= params[:local_id] %>
+      <% else %>
+        <%= f.collection_select(:local_id, @locais, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <% end %>
     </div>
   </div>
 
