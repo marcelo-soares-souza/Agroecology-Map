@@ -14,7 +14,6 @@
  *= require_self
  */
 
-
 .dropdown-toggle.btn-default {
   color: #292b2c;
   background-color: #fff;
@@ -57,7 +56,6 @@
 }
 
 
-/* Make filled out selects be the same size as empty selects */
 .bootstrap-select.btn-group .dropdown-toggle .filter-option {
   display: inline !important;
 }
@@ -99,6 +97,7 @@ pre {
 }
 
 a {
+  font-size: 16px;
   color: #000;
 
   &:visited {
@@ -197,21 +196,14 @@ code {
 .search-box {
   float: right;
 }
-.img-grid {
-  /*
-    overflow: hidden;
-    max-height: 180px;
-  */
-}
 
 b a, b a:visited, b a:hover {
   font-size: 16px;
   color: #90AD34;
 }
 
-a,  a:visited {
-
-  color: #0078a8;
+a, a:visited {
+  color: #90AD34;
 }
 
 .starter-template {
