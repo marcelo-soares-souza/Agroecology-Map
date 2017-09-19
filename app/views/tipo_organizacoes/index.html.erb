@@ -22,7 +22,7 @@
       <thead>
         <tr>
           <th>Nome</th>
-          <% if usuario_signed_in? %><th></th><% end %>
+          <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
         </tr>
       </thead>
 
@@ -32,10 +32,8 @@
           <td><%= link_to tipo_organizacao.nome, tipo_organizacao_path(tipo_organizacao) %></td>
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? %>
-              <td>
-                <%= link_to t(:edit), edit_tipo_organizacao_path(tipo_organizacao), :class => 'btn btn-sm btn-success' %>
-                <%= link_to t(:destroy), tipo_organizacao_path(tipo_organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %>
-              </td>
+              <td><%= link_to t(:edit), edit_tipo_organizacao_path(tipo_organizacao), :class => 'btn btn-sm btn-success' %></td>
+              <td><%= link_to t(:destroy), tipo_organizacao_path(tipo_organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
             <% end %>
           <% end %>
         </tr>

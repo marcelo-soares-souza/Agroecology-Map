@@ -21,7 +21,7 @@
           <th>Nome</th>
           <th>Nome Científico</th>
           <th>SAFs</th>
-          <% if usuario_signed_in? %><th></th><% end %>
+          <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
         </tr>
       </thead>
 
@@ -33,12 +33,10 @@
           <td><%= planta.nome_cientifico %></td>
           <td><%= planta.safs.count %></td>
           <% if usuario_signed_in? %>
-            <td>
-              <% if current_usuario.admin? or planta.usuario.id == current_usuario.id %>
-                <%= link_to t(:edit), edit_planta_path(planta), :class => 'btn btn-sm btn-success' %>
-                <%= link_to t(:destroy), planta_path(planta), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %>
-              <% end %>
-            </td>
+            <% if current_usuario.admin? or planta.usuario.id == current_usuario.id %>
+              <td><%= link_to t(:edit), edit_planta_path(planta), :class => 'btn btn-sm btn-success' %></td>
+              <td><%= link_to t(:destroy), planta_path(planta), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
+            <% end %>
           <% end %>
         </tr>
         <% end %>

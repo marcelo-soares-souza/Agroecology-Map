@@ -18,32 +18,23 @@
           <th>Nome</th>
           <th>E-Mail</th>
           <th>Locais</th>
-          <!-- <th>Organizações</th> -->
-          <th>Experiências</th>
-          <th>SAFs</th>
-          <% if usuario_signed_in? %><th></th><% end %>
+          <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
         </tr>
       </thead>
 
       <tbody>
         <% @usuarios.each do |usuario| %>
         <tr>
-          <td scope="row"><%= link_to image_tag(usuario.imagem.url(:thumb), :width => "64", :height => "64"), usuario_path(usuario) %></td>
+          <td scope="row"><%= link_to image_tag(usuario.imagem.url(:thumb), :width => "100", :height => "100"), usuario_path(usuario) %></td>
           <td><%= link_to usuario.nome, usuario_path(usuario) %></td>
           <td><%= truncate(usuario.email, length: 64) %></td>
-          <!-- <td><%= usuario.locais.empty? ? "-" : (usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe) %>&nbsp; -->
-          <!-- <td><%= usuario.organizacoes.empty? ? "-" : usuario.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp; -->
           <td><%= usuario.locais.count %></td>
-          <td><%= usuario.experiencia_agroecologicas.count %></td>
-          <td><%= usuario.safs.count %></td>
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? or usuario.id == current_usuario.id %>
-              <td>
-                <%= link_to t(:edit), edit_usuario_path(usuario), :class => 'btn btn-sm btn-success' %>
+                <td><%= link_to t(:edit), edit_usuario_path(usuario), :class => 'btn btn-sm btn-success' %></td>
                 <% if current_usuario.admin? %>
-                  <%= link_to t(:destroy), usuario_path(usuario), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' if usuario.id != 1 %>
+                  <td><%= link_to t(:destroy), usuario_path(usuario), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' if usuario.id != 1 %></td>
                 <% end %>
-              </td>
             <% else %>
               <td></td>
             <% end %>

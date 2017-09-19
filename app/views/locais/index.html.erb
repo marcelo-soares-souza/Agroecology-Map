@@ -18,19 +18,19 @@
       <thead>
         <tr>
           <th></th>
-          <th>Nome</th>
+          <th>Nome do Local</th>
           <th>Tipo</th>
           <!-- <th>Organização</th> -->
           <th>Experiências</th>
           <th>SAFs</th>
-          <% if usuario_signed_in? %><th></th><% end %>
+          <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
         </tr>
       </thead>
 
       <tbody>
         <% @locais.each do |local| %>
         <tr>
-          <td scope="row"><%= link_to image_tag(local.imagem.url(:thumb), :height => "64"), local_path(local) %></td>
+          <td scope="row"><%= link_to image_tag(local.imagem.url(:thumb), :width => "120", :height => "120"), local_path(local) %></td>
           <td><%= link_to truncate(local.nome, length: 128), local_path(local) %></td>
           <td><%= local.tipo %></td>
           <!-- <td><%= local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp; -->
@@ -38,12 +38,10 @@
           <td><%= local.safs.count %></td>
 
           <% if usuario_signed_in? %>
-            <td>
             <% if current_usuario.admin? or local.usuario.id == current_usuario.id %>
-              <%= link_to t(:edit), edit_local_path(local), :class => 'btn btn-sm btn-success' %>
-              <%= link_to t(:destroy), local_path(local), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %>
+              <td><%= link_to t(:edit), edit_local_path(local), :class => 'btn btn-sm btn-success' %></td>
+              <td><%= link_to t(:destroy), local_path(local), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
             <% end %>
-            </td>
           <% end %>
         </tr>
         <% end %>

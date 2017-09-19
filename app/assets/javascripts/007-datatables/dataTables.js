@@ -1,5 +1,6 @@
 function dataTables() {
   var table = $('#dataTable-agroecologia').DataTable( {
+    pageLength: 25,
     lengthChange: false,
     "language":
     {

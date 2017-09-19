@@ -296,3 +296,7 @@ a:focus, a:hover {
 .midia-imagem {
   max-width: 640px;
 }
+
+.list-control {
+  display: none!important; 
+}
