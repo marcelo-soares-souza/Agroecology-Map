@@ -30,9 +30,10 @@
         <tr>
           <td scope="row"><%= link_to image_tag(usuario.imagem.url(:thumb), :width => "64", :height => "64"), usuario_path(usuario) %></td>
           <td><%= link_to usuario.nome, usuario_path(usuario) %></td>
-          <td><%= usuario.email %></td>
-          <td><%= usuario.locais.empty? ? "-" : (usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe) %>&nbsp;
+          <td><%= truncate(usuario.email, length: 64) %></td>
+          <!-- <td><%= usuario.locais.empty? ? "-" : (usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe) %>&nbsp; -->
           <!-- <td><%= usuario.organizacoes.empty? ? "-" : usuario.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp; -->
+          <td><%= usuario.locais.count %></td>
           <td><%= usuario.experiencia_agroecologicas.count %></td>
           <td><%= usuario.safs.count %></td>
           <% if usuario_signed_in? %>
