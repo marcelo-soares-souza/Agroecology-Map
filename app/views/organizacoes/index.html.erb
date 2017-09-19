@@ -42,8 +42,8 @@
           <% if usuario_signed_in? %>
             <td>
             <% if current_usuario.admin? or organizacao.usuario.id == current_usuario.id %>
-              <%= link_to t(:edit), edit_organizacao_path(organizacao), :class => 'btn btn-mini btn-success' %>
-              <%= link_to t(:destroy), organizacao_path(organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+              <%= link_to t(:edit), edit_organizacao_path(organizacao), :class => 'btn btn-sm btn-success' %>
+              <%= link_to t(:destroy), organizacao_path(organizacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %>
             <% end %>
             </td>
           <% end %>

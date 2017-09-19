@@ -28,15 +28,15 @@
       <tbody>
         <% @plantas.each do |planta| %>
         <tr>
-          <td scope="row"><%= link_to image_tag(planta.imagem.url(:thumb), :height => "80"), planta_path(planta) %></td>
+          <td scope="row"><%= link_to image_tag(planta.imagem.url(:thumb), :height => "64"), planta_path(planta) %></td>
           <td><%= link_to planta.nome, planta_path(planta) %></td>
           <td><%= planta.nome_cientifico %></td>
           <td><%= planta.safs.count %></td>
           <% if usuario_signed_in? %>
             <td>
               <% if current_usuario.admin? or planta.usuario.id == current_usuario.id %>
-                <%= link_to t(:edit), edit_planta_path(planta), :class => 'btn btn-mini btn-success' %>
-                <%= link_to t(:destroy), planta_path(planta), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-mini btn-danger' %>
+                <%= link_to t(:edit), edit_planta_path(planta), :class => 'btn btn-sm btn-success' %>
+                <%= link_to t(:destroy), planta_path(planta), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %>
               <% end %>
             </td>
           <% end %>
