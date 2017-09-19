@@ -223,7 +223,7 @@ table thead th {
   border-top: none;
   vertical-align: middle;
   text-align: center;
-
+  max-width: 256px;
 }
 
 .btn:visited {
