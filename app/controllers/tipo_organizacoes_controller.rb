@@ -7,7 +7,7 @@ class TipoOrganizacoesController < ApplicationController
   # GET /tipo_organizacoes
   # GET /tipo_organizacoes.json
   def index
-    @tipo_organizacoes = TipoOrganizacao.all
+    @tipo_organizacoes = TipoOrganizacao.all.sort_by(&:updated_at).reverse
   end
 
   # GET /tipo_organizacoes/1

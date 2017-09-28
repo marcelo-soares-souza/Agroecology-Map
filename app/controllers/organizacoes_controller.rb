@@ -9,7 +9,7 @@ class OrganizacoesController < ApplicationController
   # GET /organizacoes
   # GET /organizacoes.json
   def index
-    @organizacoes = Organizacao.all
+    @organizacoes = Organizacao.all.sort_by(&:updated_at).reverse
   end
 
   # GET /organizacoes/1

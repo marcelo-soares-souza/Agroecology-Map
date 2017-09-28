@@ -8,7 +8,7 @@ class SafsController < ApplicationController
   # GET /safs
   # GET /safs.json
   def index
-    @safs = Saf.all
+    @safs = Saf.all.sort_by(&:updated_at).reverse
   end
 
   # GET /safs/1

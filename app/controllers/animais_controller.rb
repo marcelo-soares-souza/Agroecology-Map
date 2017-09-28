@@ -6,7 +6,7 @@ class AnimaisController < ApplicationController
   # GET /animais
   # GET /animais.json
   def index
-    @animais = Animal.all
+    @animais = Animal.all.sort_by(&:updated_at).reverse
   end
 
   # GET /animais/1

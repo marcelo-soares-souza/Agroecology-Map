@@ -7,7 +7,7 @@ class LocaisController < ApplicationController
   # GET /locais
   # GET /locais.json
   def index
-    @locais = Local.all
+    @locais = Local.all.sort_by(&:updated_at).reverse
   end
 
   # GET /locais/1

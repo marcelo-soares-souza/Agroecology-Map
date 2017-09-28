@@ -7,7 +7,7 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   # GET /tema_experiencia_agroecologicas
   # GET /tema_experiencia_agroecologicas.json
   def index
-    @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
+    @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
   end
 
   # GET /tema_experiencia_agroecologicas/1

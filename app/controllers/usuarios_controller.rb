@@ -4,7 +4,7 @@ class UsuariosController < ApplicationController
   before_action only: [:edit, :update, :destroy] { check_owner Usuario.friendly.find(params[:id]).id }
 
   def index
-    @usuarios = Usuario.all
+    @usuarios = Usuario.all.sort_by(&:updated_at).reverse
   end
 
   def show
