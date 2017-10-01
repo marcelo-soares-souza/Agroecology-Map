@@ -1,10 +1,10 @@
 # Agroecologia - ITBio3
 
-1. Install Bundler
+1) Install Bundler
 
 - gem install bundler
 
-2. Set environment variables with database connection information (see the example below)
+2) Set environment variables with database connection information (see the example below)
 
 - export RAILS_ENV='development'
 - export USERNAME_DB='devel'
@@ -14,14 +14,14 @@
 
 Rename config/database.yml.example to config/database.yml
 
-3. Init environment
+3) Init environment
 
 - bundle install
 - bundle exec rails db:create
 - bundle exec rails db:migrate
 - bundle exec rails db:seed
 
-4. Start Rails Server
+4) Start Rails Server
 
 - bundle exec rails server
 
