@@ -2,7 +2,7 @@ pt-BR:
   activerecord:
     errors:
       messages:
-        record_invalid: 'A validação falhou: %{errors}'
+        record_invalid: "A validação falhou: %{errors}"
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
@@ -119,27 +119,27 @@ pt-BR:
       invalid: não é válido
       less_than: deve ser menor que %{count}
       less_than_or_equal_to: deve ser menor ou igual a %{count}
-      model_invalid: 'A validação falhou: %{errors}'
+      model_invalid: "A validação falhou: %{errors}"
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
       odd: deve ser ímpar
       required: deve existir
       taken: já está em uso
       too_long:
-        one: 'é muito longo (máximo: 1 caracter)'
-        other: 'é muito longo (máximo: %{count} caracteres)'
+        one: "é muito longo (máximo: 1 caracter)"
+        other: "é muito longo (máximo: %{count} caracteres)"
       too_short:
-        one: 'é muito curto (mínimo: 1 caracter)'
-        other: 'é muito curto (mínimo: %{count} caracteres)'
+        one: "é muito curto (mínimo: 1 caracter)"
+        other: "é muito curto (mínimo: %{count} caracteres)"
       wrong_length:
         one: não possui o tamanho esperado (1 caracter)
         other: não possui o tamanho esperado (%{count} caracteres)
       other_than: deve ser diferente de %{count}
     template:
-      body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
       header:
-        one: 'Não foi possível gravar %{model}: 1 erro'
-        other: 'Não foi possível gravar %{model}: %{count} erros'
+        one: "Não foi possível gravar %{model}: 1 erro"
+        other: "Não foi possível gravar %{model}: %{count} erros"
   helpers:
     links:
       confirm: Você tem Certeza
@@ -182,7 +182,7 @@ pt-BR:
           trillion:
             one: trilhão
             other: trilhões
-          unit: ''
+          unit: ""
       format:
         delimiter: "."
         precision: 2
@@ -211,25 +211,9 @@ pt-BR:
       two_words_connector: " e "
       words_connector: ", "
   time:
-    am: ''
+    am: ""
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
-    pm: ''
-  true_value: "Sim"
-  false_value: "Não"
-  users: "Usuários"
-  about: "Sobre"
-  login: "Entrar"
-  logout: "Sair"
-  images: "Imagens"
-  submit: "Enviar"
-  edit: "Editar"
-  destroy: "Apagar"
-  back: "Voltar"
-  new: "Novo"
-  all: "Todos"
-  file: "Arquivo"
-  title: "Título"
-  details: "Detalhes"
+    pm: ""

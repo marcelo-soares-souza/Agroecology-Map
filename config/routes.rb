@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  scope "(:locale)", :locale => /pt-BR|es|en/ do
+    root :to => 'home#index'
+    get "home/index"
+  end
+
   resources :animais
   resources :plantas
   resources :experiencia_agroecologicas do

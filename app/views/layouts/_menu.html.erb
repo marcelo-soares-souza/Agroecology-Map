@@ -1,3 +1,9 @@
+  <script>
+    $(document).ready(function() {
+      $("#locale").val("<%= locale %>");
+    });
+  </script>
+
   <nav class="navbar navbar-toggleable-md navbar-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         &#9776;
@@ -10,19 +16,19 @@
           </li>
 
           <li class="nav-item active">
-            <%= link_to("Início", root_path, :class => "nav-link") %>
+            <%= link_to(I18n.t(:home_page), root_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item">
-            <%= link_to("Locais", locais_path, :class => "nav-link") %>
+            <%= link_to(I18n.t(:locations), locais_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item">
-            <%= link_to("Experiências em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link") %>
+            <%= link_to(I18n.t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">SAF</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t(:agroforestry_systems) %></a>
             <div class="dropdown-menu">
               <%= link_to("Sistemas", safs_path, :class => "nav-link") %>
               <%= link_to("Plantas", plantas_path, :class => "nav-link") %>
@@ -31,15 +37,15 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to("Organizações", organizacoes_path, :class => "nav-link") %>
+            <%= link_to(I18n.t(:organizations), organizacoes_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item">
-            <%= link_to("Colaboradores", usuarios_path, :class => "nav-link") %>
+            <%= link_to(I18n.t(:contributors), usuarios_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item">
-            <a href="https://relatosagroecologia2017.itbio3.org/atividades/manual-do-mapa/" class="nav-link" target="_blank" alt="Manual">Manual</a>
+            <a href="https://relatosagroecologia2017.itbio3.org/atividades/manual-do-mapa/" class="nav-link" target="_blank" alt="Manual"><%= I18n.t(:manual) %></a>
           </li>
 
           <% if current_usuario %>
@@ -58,7 +64,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if current_usuario %>
             <li class="nav-item">
-              <%= link_to("#{t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
+              <%= link_to("#{I18n.t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
             </li>
 
             <li class="nav-item">
@@ -66,13 +72,23 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to(t(:login), new_usuario_session_path, :class => "nav-link") %>
+              <%= link_to(I18n.t(:login), new_usuario_session_path, :class => "nav-link") %>
             </li>
             <li>
-              <strong><%= link_to "Cadastrar-se", new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
+              <strong><%= link_to I18n.t(:register), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
             </li>
 
           <% end %>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <select id="locale" onchange="if (this.value) window.location.href='/?locale=' + this.value" class="form-control">
+                <option value="pt-BR">Português</option>
+                <option value="es">Español</option>
+                <option value="en">English</option>
+              </select>
+            </li>
+          </ul>
         </ul>
       </div>
     </nav>

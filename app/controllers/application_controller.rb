@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
     def set_locale
       I18n.default_locale = "pt-BR"
       I18n.locale = params[:locale] || I18n.default_locale
-    end
+      Rails.application.routes.default_url_options[:locale] = I18n.locale
+     end
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys: [:nome])
