@@ -3,6 +3,7 @@ class LocaisController < ApplicationController
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
   before_action only: [:edit, :update, :destroy] { check_owner Local.friendly.find(params[:id]).usuario_id }
   before_action :load_tipos, except: [:index, :show]
+  before_action :load_hospedagens, except: [:index, :show]
 
   # GET /locais
   # GET /locais.json
@@ -76,7 +77,7 @@ class LocaisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def local_params
-      params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo)
+      params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo, :hospedagem)
     end
 
     def load_tipos
@@ -87,5 +88,12 @@ class LocaisController < ApplicationController
                  "Familiar" => "Familiar",
                  "Outro" => "Outro"
                }
+    end
+
+    def load_hospedagens
+      @hospedagens = { "Mediante a Consulta" => "Mediante a Consulta",
+                       "Sim" => "Sim",
+                       "Não" => "Não"
+                     }
     end
 end
