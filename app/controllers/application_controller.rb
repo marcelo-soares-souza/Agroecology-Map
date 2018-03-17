@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
     def set_locale
       I18n.default_locale = "pt-BR"
       I18n.locale = params[:locale] || I18n.default_locale
-    end
+      Rails.application.routes.default_url_options[:locale] = I18n.locale
+     end
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys: [:nome])
@@ -29,37 +30,6 @@ class ApplicationController < ActionController::Base
           redirect_to root_url, alert: "Permissão Negada"
         end
       end
-    end
-
-    def load_ufs
-      @ufs = { "Acre" => "AC",
-               "Alagoas" => "AL",
-               "Amapá" => "AP",
-               "Amazonas" => "AM",
-               "Bahia" => "BA",
-               "Ceará" => "CE",
-               "Distrito Federal" => "DF",
-               "Espírito Santo" => "ES",
-               "Goiás" => "GO",
-               "Maranhão" => "MA",
-               "Mato Grosso" => "MT",
-               "Mato Grosso do Sul" => "MS",
-               "Minas Gerais" => "MG",
-               "Pará" => "PA",
-               "Paraíba" => "PB",
-               "Paraná" => "PR",
-               "Pernambuco" => "PE",
-               "Piauí" => "PI",
-               "Rio de Janeiro" => "RJ",
-               "Rio Grande do Norte" => "RN",
-               "Rio Grande do Sul" => "RS",
-               "Rondônia" => "RO",
-               "Roraima" => "RR",
-               "Santa Catarina" => "SC",
-               "São Paulo" => "SP",
-               "Sergipe" => "SE",
-               "Tocantins" => "TO"
-             }
     end
 
     def load_locais

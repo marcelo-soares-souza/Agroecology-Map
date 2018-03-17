@@ -3,7 +3,6 @@ class OrganizacoesController < ApplicationController
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
   before_action -> { check_owner Organizacao.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_tipo_organizacoes, except: [:index, :show]
-  before_action :load_ufs, except: [:index, :show]
   before_action :load_locais, except: [:index, :show]
 
   # GET /organizacoes
