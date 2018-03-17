@@ -1,7 +1,7 @@
 class AnimaisController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] { check_owner Animal.friendly.find(params[:id]).usuario_id }
+  before_action -> { check_owner Animal.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
 
   # GET /animais
   # GET /animais.json

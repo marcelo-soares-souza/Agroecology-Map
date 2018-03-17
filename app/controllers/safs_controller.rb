@@ -1,7 +1,7 @@
 class SafsController < ApplicationController
   before_action :set_saf, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] { check_owner Saf.friendly.find(params[:id]).usuario_id }
+  before_action -> { check_owner Saf.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_locais, except: [:index, :show]
   before_action :load_plantas_animais, except: [:index]
 

@@ -1,7 +1,7 @@
 class MidiasController < ApplicationController
   before_action :set_midia, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] { check_owner Midia.friendly.find(params[:id]).usuario_id }
+  before_action -> { check_owner Midia.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_dados
 
   # GET /midias

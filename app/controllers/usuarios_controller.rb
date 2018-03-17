@@ -1,7 +1,7 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, except: [:show, :index]
-  before_action only: [:edit, :update, :destroy] { check_owner Usuario.friendly.find(params[:id]).id }
+  before_action -> { check_owner Usuario.friendly.find(params[:id]).id }, only: [:edit, :update, :destroy] 
 
   def index
     @usuarios = Usuario.all.sort_by(&:updated_at).reverse

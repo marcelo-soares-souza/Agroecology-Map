@@ -1,7 +1,7 @@
 class ExperienciaAgroecologicasController < ApplicationController
   before_action :set_experiencia_agroecologica, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] { check_owner ExperienciaAgroecologica.friendly.find(params[:id]).usuario_id }
+  before_action -> { check_owner ExperienciaAgroecologica.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_locais, except: [:index, :show]
   before_action :load_tema_experiencia_agroecologicas, except: [:index, :show]
 

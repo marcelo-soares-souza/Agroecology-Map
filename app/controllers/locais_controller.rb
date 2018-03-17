@@ -1,7 +1,7 @@
 class LocaisController < ApplicationController
   before_action :set_local, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] { check_owner Local.friendly.find(params[:id]).usuario_id }
+  before_action -> { check_owner Local.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_tipos, except: [:index, :show]
 
   # GET /locais
