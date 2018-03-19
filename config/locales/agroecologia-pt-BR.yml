@@ -26,5 +26,8 @@ pt-BR:
   contributors: "Colaboradores"
   manual: "Manual"
   register: "Cadastrar-se"
+  password: "Senha"
+  agroecology_is_free_software: "Agroecologia é um Software Livre"
   location:
-    list: "Listar locais"
+    list: "Listar de Locais"
+    register_new_location: "Registrar Novo Local"

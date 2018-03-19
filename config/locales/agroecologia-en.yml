@@ -26,5 +26,8 @@ en:
   contributors: "Contributors"
   manual: "Manual"
   register: "Register"
+  password: "Password"
+  agroecology_is_free_software: "Agroecology is a Free Software"
   location:
-    list: "List locations"
+    list: "List of Locations"
+    register_new_location: "Register New Location"

@@ -1,4 +1,4 @@
-<%= link_to "Registrar Novo Local", new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
+<%= link_to I18n.t("location.register_new_location"), new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
@@ -20,7 +20,6 @@
           <th></th>
           <th>Nome do Local</th>
           <th>Tipo</th>
-          <!-- <th>Organização</th> -->
           <th>Experiências</th>
           <th>SAFs</th>
           <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
@@ -33,7 +32,6 @@
           <td scope="row"><%= link_to image_tag(local.imagem.url(:thumb), :width => "120", :height => "120"), local_path(local) %></td>
           <td><%= link_to truncate(local.nome, length: 128), local_path(local) %></td>
           <td><%= local.tipo %></td>
-          <!-- <td><%= local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe %>&nbsp; -->
           <td><%= local.experiencia_agroecologicas.count %></td>
           <td><%= local.safs.count %></td>
 

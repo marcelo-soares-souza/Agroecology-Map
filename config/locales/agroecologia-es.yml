@@ -3,7 +3,7 @@ es:
   false_value: "Não"
   users: "Usuários"
   about: "Sobre"
-  login: "Entrar"
+  login: "Iniciar sesión"
   logout: "Sair"
   images: "Imagens"
   submit: "Enviar"
@@ -23,9 +23,12 @@ es:
   agroforestry_systems: "Sistemas agroforestales"
   organization: "Organización"
   organizations: "Organizacións"
-  contributors: "Colaboradores"
+  contributors: "Participantes"
   manual: "Manual"
   register: "Suscribirse"
+  password: "Contraseña"
+  agroecology_is_free_software: "Agroecologia es un software libre"
   location:
-    list: "Lista de direcciones"
+    list: "Lista de Localizacións"
+    register_new_location: "Registrar nueva Localización"
 
