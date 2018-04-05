@@ -27,7 +27,8 @@ es:
   manual: "Manual"
   register: "Suscribirse"
   password: "Contraseña"
-  agroecology_is_free_software: "Agroecologia es un software libre"
+  agroecology_is_free_software: "Mapa da Agroecologia es un software libre"
+  submit_comment: "Enviar Comentário"
   location:
     list: "Lista de Localizacións"
     register_new_location: "Registrar nueva Localización"

@@ -28,6 +28,14 @@
       <%= "<br/><br/><strong>Responsável pela Informação:</strong><br/>#{link_to @experiencia_agroecologica.usuario.nome, usuario_path(@experiencia_agroecologica.usuario)}&nbsp;".html_safe if @experiencia_agroecologica.usuario.nome?%>
       <%= "<br/><br/><strong>Organização:</strong><br/>#{@experiencia_agroecologica.local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @experiencia_agroecologica.local.organizacoes.count > 0%>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@experiencia_agroecologica.observacao}&nbsp;".html_safe if @experiencia_agroecologica.observacao?%>
+
+      <% if @experiencia_agroecologica.comentarios.count > 0 %>
+        <br/><br/><strong>Comentários:</strong><br/>
+        <%= render 'comentarios', comentarios: @experiencia_agroecologica.comentarios %>
+      <% end %>
+
+      <br/></br>
+      <%= render 'comentar', comentar: @comentar if usuario_signed_in? %>
     </center>
   </div>
 </div>

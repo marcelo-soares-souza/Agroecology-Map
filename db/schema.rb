@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316134810) do
+ActiveRecord::Schema.define(version: 20180405190029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20180316134810) do
     t.datetime "imagem_updated_at"
     t.index ["slug"], name: "index_animais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_animais_on_usuario_id"
+  end
+
+  create_table "comentarios", force: :cascade do |t|
+    t.string "texto"
+    t.string "slug"
+    t.bigint "experiencia_agroecologica_id"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["experiencia_agroecologica_id"], name: "index_comentarios_on_experiencia_agroecologica_id"
+    t.index ["usuario_id"], name: "index_comentarios_on_usuario_id"
   end
 
   create_table "experiencia_agroecologicas", force: :cascade do |t|
@@ -220,6 +231,8 @@ ActiveRecord::Schema.define(version: 20180316134810) do
   end
 
   add_foreign_key "animais", "usuarios"
+  add_foreign_key "comentarios", "experiencia_agroecologicas"
+  add_foreign_key "comentarios", "usuarios"
   add_foreign_key "experiencia_agroecologicas", "locais"
   add_foreign_key "experiencia_agroecologicas", "tema_experiencia_agroecologicas"
   add_foreign_key "experiencia_agroecologicas", "usuarios"

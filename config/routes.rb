@@ -4,10 +4,13 @@ Rails.application.routes.draw do
     get "home/index"
   end
 
+  resources :comentarios
   resources :animais
   resources :plantas
+
   resources :experiencia_agroecologicas do
     resources :midias
+    resources :comentarios
   end
 
   resources :safs do
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :organizacoes
+
   resources :tipo_organizacoes
 
   devise_for :usuarios

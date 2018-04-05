@@ -38,6 +38,8 @@
             <% if current_usuario.admin? or saf.usuario.id == current_usuario.id %>
               <td><%= link_to t(:edit), edit_saf_path(saf), :class => 'btn btn-sm btn-success' %></td>
               <td><%= link_to t(:destroy), saf_path(saf), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
+            <% else %>
+              <td></td><td></td>
             <% end %>
           <% end %>
         </tr>

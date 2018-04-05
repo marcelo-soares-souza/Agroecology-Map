@@ -14,6 +14,7 @@ class ExperienciaAgroecologicasController < ApplicationController
   # GET /experiencia_agroecologicas/1
   # GET /experiencia_agroecologicas/1.json
   def show
+    @comentar = Comentario.new
   end
 
   # GET /experiencia_agroecologicas/new

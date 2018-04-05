@@ -1,0 +1,7 @@
+<%= form_for([ @experiencia_agroecologica, comentar ], html: { multipart: true }) do |f| %>
+  <div class="col-xs-4">
+    <%= f.text_area :texto, rows: 5, class: "form-control" %>
+    <br/>
+    <%= f.submit t(:submit_comment), class: "btn btn-primary" %>
+  </div>
+<% end %>

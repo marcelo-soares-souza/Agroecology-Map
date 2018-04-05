@@ -5,4 +5,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "planta", "plantas"
   inflect.irregular "animal", "animais"
   inflect.irregular "midia", "midias"
+  inflect.irregular "comentario", "comentarios"
 end
