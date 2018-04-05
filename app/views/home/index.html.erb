@@ -26,10 +26,19 @@
 
       $(window).on("resize", function () { $("#map").height($(window).height() - 60); map.invalidateSize(); }).trigger("resize");
 
-      var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
-      var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Agroecologia | Google Maps', maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3'] });
+      var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Mapa da Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
+      var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Mapa da Agroecologia | Google Maps', maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3'] });
       var baseMaps = { "OpenStreetMap": osm, "Google Maps": googleHybrid };
-      L.control.layers(baseMaps).addTo(map);
+
+      var ti = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_terra_indigena_a', format: 'image/png', transparent: true })
+      var ar = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_assentamento_rural_a', format: 'image/png', transparent: true })
+      var ucf = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',       { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 })
+      var quilombos = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 })
+      var biomas =  L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 })
+
+      var overlayMaps = { "Terras Indígenas": ti, "Assentamentos Rurais": ar, "Unidades de Conservação Federal": ucf, "Quilombos": quilombos, "Biomas": biomas }
+
+      L.control.layers(baseMaps, overlayMaps, { collapsed: false, position: 'bottomright'} ).addTo(map);
 
       L.control.zoom({position:'topright'}).addTo(map);
 
