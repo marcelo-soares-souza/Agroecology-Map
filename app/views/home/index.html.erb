@@ -43,7 +43,7 @@
       L.control.zoom({position:'topright'}).addTo(map);
 
       var logo = L.control({position: 'bottomleft'});
-      logo.onAdd = function(map) { var div = L.DomUtil.create('div', 'myclass'); div.innerHTML= "<img src='<%= image_url "itbio3-small.png" %>'/>"; return div;}
+      logo.onAdd = function(map) { var div = L.DomUtil.create('div', 'myclass'); div.innerHTML= "<img src='<%= image_url "itbio3-small.png" %>'/>"; return div;};
       logo.addTo(map);
 
       var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe o Local'});
