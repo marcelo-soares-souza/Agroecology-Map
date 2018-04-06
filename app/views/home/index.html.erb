@@ -32,11 +32,11 @@
 
       var ti = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_terra_indigena_a', format: 'image/png', transparent: true });
       var ar = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_assentamento_rural_a', format: 'image/png', transparent: true });
-      var ucf = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',       { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 });
+      var uc = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',       { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var quilombos = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var biomas =  L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
 
-      var overlayMaps = { "Terras Indígenas": ti, "Assentamentos Rurais": ar, "Unidades de Conservação Federal": ucf, "Quilombos": quilombos, "Biomas": biomas };
+      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "Biomas": biomas };
 
       L.control.layers(baseMaps, overlayMaps, { collapsed: false, position: 'bottomright'} ).addTo(map);
 
@@ -46,12 +46,14 @@
       logo.onAdd = function(map) { var div = L.DomUtil.create('div', 'myclass'); div.innerHTML= "<img src='<%= image_url "itbio3-small.png" %>'/>"; return div;};
       logo.addTo(map);
 
-      var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe o Local'});
+      var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe a Cidade/Estado/País'});
 
       map.addControl(osmGeocoder);
 
       <% if @locais %>
-      var markers = L.markerClusterGroup();
+        var markers = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
+        var controlSearch = new L.Control.Search({ layer: markers, initial: false, zoom: 12, position: 'topright', textPlaceholder: 'Buscar Iniciativa Agroecológica' });
+
         var Icon = L.icon({
                             iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
                             shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
@@ -68,12 +70,14 @@
                                  Experiências em Agroecologia: #{local.experiencia_agroecologicas.count}<br/> \
                                  SAFs: #{local.safs.count}<br/> \
                                 ".html_safe  %></b>';
-            var marker = L.marker(L.latLng([<%= local.latitude %>, <%= local.longitude %>]), {icon: Icon});
+
+            var marker = new L.marker(new L.latLng([<%= local.latitude %>, <%= local.longitude %>]), { icon: Icon, title: '<%= local.nome %>' });
             marker.bindPopup(popup);
             markers.addLayer(marker);
           <% end %>
         <% end %>
         map.addLayer(markers);
+        map.addControl(controlSearch);
       <% end %>
     });
   </script>
