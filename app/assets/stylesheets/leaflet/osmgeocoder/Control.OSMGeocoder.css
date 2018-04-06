@@ -14,17 +14,18 @@
 
 .leaflet-control-geocoder a {
 	background-image: url(geocoder.png);
-	width: 36px;
-	height: 36px;
+	width: 32px;
+	height: 32px;
 }
 
 .leaflet-touch .leaflet-control-geocoder a {
-	width: 44px;
-	height: 44px;
+	width: 34px;
+	height: 34px;
 }
 
 .leaflet-control-geocoder .leaflet-control-geocoder-form,
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-toggle {
+        width: 480px;
 	display: none;
 }
 

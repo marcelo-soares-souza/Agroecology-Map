@@ -46,7 +46,7 @@
       logo.onAdd = function(map) { var div = L.DomUtil.create('div', 'myclass'); div.innerHTML= "<img src='<%= image_url "itbio3-small.png" %>'/>"; return div;};
       logo.addTo(map);
 
-      var osmGeocoder = new L.Control.OSMGeocoder({ placeholder: 'Informe a Cidade/Estado/País' });
+      var osmGeocoder = new L.Control.OSMGeocoder({ placeholder: 'Buscar por Endereço (Logradouro, Cidade, Estado e/ou País)' });
 
       map.addControl(osmGeocoder);
 
