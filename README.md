@@ -1,4 +1,4 @@
-# Agroecologia - ITBio3
+# Mapa da Agroecologia - Saberes e Prática
 
 1) Install Bundler
 
@@ -25,6 +25,6 @@ Rename config/database.yml.example to config/database.yml
 
 - bundle exec rails server
 
-More info: https://agroecologia.itbio3.org
+More info: https://mapadaagroecologia.org/
 
-This project is licensed under the terms of the GPLv3
+This project is licensed under the terms of the GPLv3 (See LICENSE.md)
