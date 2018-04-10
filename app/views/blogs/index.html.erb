@@ -1,3 +1,5 @@
+<% title "Blog #{@local.nome}" %>
+
 <% if usuario_signed_in? %>
   <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;"  if current_usuario.admin? or @local.usuario_id == current_usuario.id %>
 <% end %>
