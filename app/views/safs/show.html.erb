@@ -9,7 +9,7 @@
     <%= link_to @saf.nome, saf_path(@saf.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Galeria de Fotos", saf_midias_path(@saf), :class => "nav-link" %>
+    <%= link_to "Fotos (#{@saf.midias.count})", saf_midias_path(@saf), :class => "nav-link" %>
   </li>
 </ul>
 
