@@ -32,3 +32,5 @@ TemaExperienciaAgroecologica.new(nome: "Manejo dos solos", usuario_id: 1).save!
 TemaExperienciaAgroecologica.new(nome: "Acesso a terra, reforma agrária e Agroecologia", usuario_id: 1).save!
 TemaExperienciaAgroecologica.new(nome: "Relação com os mercados", usuario_id: 1).save!
 TemaExperienciaAgroecologica.new(nome: "Outros", usuario_id: 1).save!
+
+Local.new(nome: "Mapa da Agroecologia", usuario_id: 1, tipo: "Outro").save! 
