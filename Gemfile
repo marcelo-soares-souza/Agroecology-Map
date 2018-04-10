@@ -28,4 +28,4 @@ gem 'friendly_id'
 gem 'paperclip'
 gem 'geocoder'
 gem 'ckeditor'
-
+gem 'acts-as-taggable-on'

@@ -30,9 +30,10 @@
   <div class="tab-pane active">
     <div style="text-align: left;">
       <h3><%= @blog.titulo %></h3>
-      <small><%= "Criado em #{@blog.created_at} e última atualização #{@blog.updated_at}" %></small>
+      <small><%= "Enviado por #{link_to @blog.usuario.nome, usuario_path(@blog.usuario)}. Criado em #{@blog.created_at} e última atualização #{@blog.updated_at}".html_safe %></small>
       <br/><br/>
       <%= @blog.texto.html_safe %>
+      <%= "<br/><b>Tags:</b> #{@blog.tag_list}<br/>".html_safe if ! @blog.tag_list.empty? %>
       <br/>
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>

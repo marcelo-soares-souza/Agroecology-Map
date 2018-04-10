@@ -36,9 +36,10 @@
   <% @blogs.each do |blog| %>
     <div style="text-align: left;">
       <h3><%= link_to blog.titulo, local_blog_url(@local, blog) %></h3>
-      <small><%= "Criado em #{blog.created_at} e última atualização #{blog.updated_at}" %></small>
+      <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)}. Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %></small>
       <br/><br/>
       <%= truncate(blog.texto, :length => 2048, :escape => false, :omission => "... #{link_to '(Leia o Texto Completo)',  local_blog_url(@local, blog)}") %>
+      <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if ! blog.tag_list.empty? %>
       <br/>
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or blog.usuario_id == current_usuario.id %>
