@@ -27,3 +27,5 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'friendly_id'
 gem 'paperclip'
 gem 'geocoder'
+gem 'ckeditor'
+

@@ -22,6 +22,7 @@
           <th>Tipo</th>
           <th>Experiências</th>
           <th>SAFs</th>
+          <th>Blog</th>
           <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
         </tr>
       </thead>
@@ -34,6 +35,7 @@
           <td><%= local.tipo %></td>
           <td><%= local.experiencia_agroecologicas.count %></td>
           <td><%= local.safs.count %></td>
+          <td><%= link_to local.blogs.count, local_blogs_path(local) %></td>
 
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? or local.usuario.id == current_usuario.id %>

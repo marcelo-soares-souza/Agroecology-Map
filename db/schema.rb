@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405190029) do
+ActiveRecord::Schema.define(version: 20180410025410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20180405190029) do
     t.datetime "imagem_updated_at"
     t.index ["slug"], name: "index_animais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_animais_on_usuario_id"
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "titulo"
+    t.string "slug"
+    t.text "texto"
+    t.bigint "usuario_id"
+    t.bigint "local_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["local_id"], name: "index_blogs_on_local_id"
+    t.index ["usuario_id"], name: "index_blogs_on_usuario_id"
   end
 
   create_table "comentarios", force: :cascade do |t|
@@ -231,6 +243,8 @@ ActiveRecord::Schema.define(version: 20180405190029) do
   end
 
   add_foreign_key "animais", "usuarios"
+  add_foreign_key "blogs", "locais"
+  add_foreign_key "blogs", "usuarios"
   add_foreign_key "comentarios", "experiencia_agroecologicas"
   add_foreign_key "comentarios", "usuarios"
   add_foreign_key "experiencia_agroecologicas", "locais"

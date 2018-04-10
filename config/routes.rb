@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope "(:locale)", :locale => /pt-BR|es|en/ do
-    root :to => 'home#index'
+    root :to => "home#index"
     get "home/index"
   end
 
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :locais do
     resources :experiencia_agroecologicas
     resources :safs 
+    resources :blogs, :path => "blog"
   end
 
   resources :organizacoes
@@ -30,8 +31,4 @@ Rails.application.routes.draw do
 
   devise_for :usuarios
   resources :usuarios
-
-  get 'home/index'
-
-  root to: "home#index"
 end

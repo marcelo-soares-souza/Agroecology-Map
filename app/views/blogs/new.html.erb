@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "Todos", locais_path, :class => "nav-link" %>
+   </li>
+
+  <li class="nav-item">
+    <%= link_to @local.nome, local_path(@local), :class => "nav-link" %>
+   </li>
+
+  <li class="nav-item">
+    <%= link_to "Blog (#{@local.blogs.count})", local_blogs_path, :class => "nav-link" %>
+  </li>
+
+  <% if usuario_signed_in? %>
+    <li class="nav-item">
+      <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "nav-link active" %>
+    </li>
+  <% end %>
+</ul>
+
+<br/>
+
+<%= render 'form', blog: @blog %>
+

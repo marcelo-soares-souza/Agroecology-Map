@@ -8,6 +8,10 @@
   <li class="nav-item">
     <%= link_to @local.nome, local_path(@local.id), :class => "nav-link active" %>
   </li>
+
+  <li class="nav-item">
+    <%= link_to "Blog (#{@local.blogs.count})", local_blogs_path(@local), :class => "nav-link" %>
+  </li>
 </ul>
 
 <br/>

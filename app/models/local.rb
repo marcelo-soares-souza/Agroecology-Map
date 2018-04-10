@@ -8,6 +8,8 @@ class Local < ApplicationRecord
   has_many :safs, dependent: :destroy
   has_many :experiencia_agroecologicas, dependent: :destroy
 
+  has_many :blogs, :dependent => :delete_all
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 

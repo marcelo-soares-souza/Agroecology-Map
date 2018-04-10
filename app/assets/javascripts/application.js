@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require ckeditor/init
 //= require_tree .
 
 $(document).ready(function() {
