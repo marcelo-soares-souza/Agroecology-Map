@@ -1,9 +1,11 @@
+<% title @saf.nome %>
+
 <%= link_to "Registrar Novo SAF", new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:all), safs_path, :class => "nav-link" %>
+    <%= link_to "SAFs", safs_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to @saf.nome, saf_path(@saf.id), :class => "nav-link active" %>

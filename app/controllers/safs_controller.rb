@@ -4,11 +4,16 @@ class SafsController < ApplicationController
   before_action -> { check_owner Saf.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_locais, except: [:index, :show]
   before_action :load_plantas_animais, except: [:index]
+  before_action :load_local
 
   # GET /safs
   # GET /safs.json
   def index
-    @safs = Saf.all.sort_by(&:updated_at).reverse
+    if params[:local_id]
+      @safs = Saf.where(:local_id => @local.id).sort_by(&:updated_at).reverse
+    else
+      @safs = Saf.all.sort_by(&:updated_at).reverse
+    end
   end
 
   # GET /safs/1
@@ -87,5 +92,11 @@ class SafsController < ApplicationController
     def load_plantas_animais
       @plantas = Planta.all
       @animais = Animal.all
+    end
+
+    def load_local
+      if params[:local_id]
+        @local = Local.friendly.find(params[:local_id])
+      end
     end
 end

@@ -5,7 +5,7 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to "Listar Experiências", experiencia_agroecologicas_path, :class => "nav-link active" %>
+    <%= link_to "Experiências em Agroecologia #{ @local.blank? ? '' : '(' + @local.nome + ')' }", "#", :class => "nav-link active" %>
   </li>
 </ul>
 

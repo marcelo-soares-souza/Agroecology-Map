@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: bcbea081879300b978894ff85eaa9e7c2ab85137
+  revision: 2cf18f99e040853db587a3acdaf6c91737a1fa1c
   specs:
     devise (4.4.3)
       bcrypt (~> 3.0)
@@ -73,7 +73,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     concurrent-ruby (1.0.5-java)
-    crass (1.0.3)
+    crass (1.0.4)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -200,7 +200,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (3.5.1)
+    web-console (3.6.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)

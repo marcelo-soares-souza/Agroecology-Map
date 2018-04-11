@@ -4,11 +4,16 @@ class ExperienciaAgroecologicasController < ApplicationController
   before_action -> { check_owner ExperienciaAgroecologica.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_locais, except: [:index, :show]
   before_action :load_tema_experiencia_agroecologicas, except: [:index, :show]
+  before_action :load_local
 
   # GET /experiencia_agroecologicas
   # GET /experiencia_agroecologicas.json
   def index
-    @experiencia_agroecologicas = ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
+    if params[:local_id]
+      @experiencia_agroecologicas = ExperienciaAgroecologica.where(:local_id => @local.id).sort_by(&:updated_at).reverse
+    else
+      @experiencia_agroecologicas = ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
+    end
   end
 
   # GET /experiencia_agroecologicas/1
@@ -83,5 +88,11 @@ class ExperienciaAgroecologicasController < ApplicationController
 
     def load_tema_experiencia_agroecologicas
       @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
+    end
+
+    def load_local
+      if params[:local_id]
+        @local = Local.friendly.find(params[:local_id])
+      end
     end
 end

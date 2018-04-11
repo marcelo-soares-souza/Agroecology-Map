@@ -1,9 +1,11 @@
+<% title 'Sistemas Agroflorestais' %>
+
 <%= link_to "Registrar Novo SAF", new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:all), safs_path, :class => "nav-link active" %>
+    <%= link_to "SAFs #{ @local.blank? ? '' : '(' + @local.nome + ')' }", "#", :class => "nav-link active" %>
   </li>
 </ul>
 
