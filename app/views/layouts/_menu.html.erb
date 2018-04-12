@@ -48,6 +48,10 @@
             <a href="https://relatosagroecologia2017.itbio3.org/atividades/manual-do-mapa/" class="nav-link" target="_blank" alt="Manual"><%= I18n.t(:manual) %></a>
           </li>
 
+          <li class="nav-item">
+            <strong><%= link_to "Contribua com o IV ENA 2018", "https://www.catarse.me/ivena", :target => "_blank", :class => "nav-link text-danger" %></strong>
+          </li>
+
           <% if current_usuario %>
             <% if current_usuario.admin? %>
             <li class="nav-item dropdown">
