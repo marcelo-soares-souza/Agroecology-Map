@@ -4,12 +4,17 @@ class LocaisController < ApplicationController
   before_action -> { check_owner Local.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_tipos, except: [:index, :show]
   before_action :load_hospedagens, except: [:index, :show]
+  before_action :load_usuario
   before_action :load_usuarios, except: [:index]
 
   # GET /locais
   # GET /locais.json
   def index
-    @locais = Local.all.sort_by(&:updated_at).reverse
+    if params[:usuario_id]
+      @locais = Local.where(:usuario_id => @usuario.id).sort_by(&:updated_at).reverse
+    else
+      @locais = Local.all.sort_by(&:updated_at).reverse
+    end
   end
 
   # GET /locais/1
@@ -102,5 +107,11 @@ class LocaisController < ApplicationController
 
     def load_usuarios
       @usuarios = Usuario.where.not(id: current_usuario.id)
+    end
+
+    def load_usuario
+      if params[:usuario_id]
+        @usuario = Usuario.friendly.find(params[:usuario_id])
+      end
     end
 end

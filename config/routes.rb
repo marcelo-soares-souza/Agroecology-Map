@@ -30,5 +30,8 @@ Rails.application.routes.draw do
   resources :tipo_organizacoes
 
   devise_for :usuarios
-  resources :usuarios
+
+  resources :usuarios do
+    resources :locais
+  end
 end
