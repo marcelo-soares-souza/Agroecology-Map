@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410123933) do
+ActiveRecord::Schema.define(version: 20180416222514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(version: 20180410123933) do
     t.string "hospedagem"
     t.index ["slug"], name: "index_locais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_locais_on_usuario_id"
+  end
+
+  create_table "local_usuarios", force: :cascade do |t|
+    t.bigint "local_id"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["local_id"], name: "index_local_usuarios_on_local_id"
+    t.index ["usuario_id"], name: "index_local_usuarios_on_usuario_id"
   end
 
   create_table "midias", force: :cascade do |t|
@@ -276,6 +285,8 @@ ActiveRecord::Schema.define(version: 20180410123933) do
   add_foreign_key "experiencia_agroecologicas", "tema_experiencia_agroecologicas"
   add_foreign_key "experiencia_agroecologicas", "usuarios"
   add_foreign_key "locais", "usuarios"
+  add_foreign_key "local_usuarios", "locais"
+  add_foreign_key "local_usuarios", "usuarios"
   add_foreign_key "midias", "experiencia_agroecologicas"
   add_foreign_key "midias", "safs"
   add_foreign_key "midias", "usuarios"

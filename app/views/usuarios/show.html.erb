@@ -19,7 +19,8 @@
 
       <br/>
       <%= "<strong>E-Mail:</strong><br/>#{@usuario.email}&nbsp;".html_safe if @usuario.email?%>
-      <%= "<br/><br/><strong>Locais:</strong><br/>#{@usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe}&nbsp;".html_safe if @usuario.locais.count > 0%>
+      <%= "<br/><br/><strong>Locais Cadastrados:</strong><br/>#{@usuario.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe}&nbsp;".html_safe if @usuario.locais.count > 0%>
+      <%= "<br/><br/><strong>Locais onde Colabora:</strong><br/>#{@usuario.colaboracoes.map {|colaboracao| link_to colaboracao.nome, local_path(colaboracao)}.join(", ").html_safe}&nbsp;".html_safe if @usuario.colaboracoes.count > 0%>
       <%= "<br/><br/><strong>Organizações:</strong><br/>#{@usuario.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @usuario.organizacoes.count > 0%>
       <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@usuario.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @usuario.experiencia_agroecologicas.count > 0%>
       <%= "<br/><br/><strong>SAFs:</strong><br/>#{@usuario.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @usuario.safs.count > 0%>

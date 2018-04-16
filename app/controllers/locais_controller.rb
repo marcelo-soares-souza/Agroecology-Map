@@ -4,6 +4,7 @@ class LocaisController < ApplicationController
   before_action -> { check_owner Local.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
   before_action :load_tipos, except: [:index, :show]
   before_action :load_hospedagens, except: [:index, :show]
+  before_action :load_usuarios, except: [:index]
 
   # GET /locais
   # GET /locais.json
@@ -19,10 +20,12 @@ class LocaisController < ApplicationController
   # GET /locais/new
   def new
     @local = Local.new
+    @local.local_usuarios.build
   end
 
   # GET /locais/1/edit
   def edit
+    @local.local_usuarios.build
   end
 
   # POST /locais
@@ -77,7 +80,7 @@ class LocaisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def local_params
-      params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo, :hospedagem)
+      params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo, :hospedagem, :usuario_ids => [])
     end
 
     def load_tipos
@@ -95,5 +98,9 @@ class LocaisController < ApplicationController
                        "Sim" => "Sim",
                        "Não" => "Não"
                      }
+    end
+
+    def load_usuarios
+      @usuarios = Usuario.where.not(id: current_usuario.id)
     end
 end

@@ -78,7 +78,7 @@
     <%= f.label 'Plantas Associadas', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <% if ! @plantas.empty? %>
-        <%= f.collection_select(:planta_ids, @plantas, :id, :nome,  { include_hidden: false }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
+        <%= f.collection_select(:planta_ids, @plantas, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
       <% else %>
         <b>Não há Plantas Registradas. Deseja <%= link_to "Cadastrar?", new_planta_path, :target => "blank"%></b>
       <% end %>
@@ -89,7 +89,7 @@
     <%= f.label 'Animais Associados', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <% if ! @animais.empty? %>
-        <%= f.collection_select(:animal_ids, @animais, :id, :nome,  { include_hidden: false }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
+        <%= f.collection_select(:animal_ids, @animais, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
       <% else %>
         <b>Não há Animais Registrados. Deseja <%= link_to "Cadastrar?", new_animal_path, :target => "blank"%></b>
       <% end %>

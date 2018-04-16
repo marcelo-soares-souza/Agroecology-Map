@@ -8,6 +8,8 @@ class Usuario < ApplicationRecord
   has_many :experiencia_agroecologicas
   has_many :plantas
   has_many :animais
+  has_many :local_usuarios, dependent: :destroy
+  has_many :colaboracoes, :through => :local_usuarios, :source => :local
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 

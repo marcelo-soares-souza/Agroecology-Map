@@ -10,6 +10,10 @@ class Local < ApplicationRecord
 
   has_many :blogs, :dependent => :delete_all
 
+  has_many :local_usuarios, dependent: :destroy
+  has_many :usuarios, through: :local_usuarios
+  accepts_nested_attributes_for :local_usuarios, allow_destroy: true
+
   extend FriendlyId
   friendly_id :nome, use: :slugged
 
