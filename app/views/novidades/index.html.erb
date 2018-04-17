@@ -1,0 +1,38 @@
+<% title "Novidades" %>
+
+<br/><br/><br/>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "Novidades", "#", :class => "nav-link active" %>
+   </li>
+</ul>
+
+<% if @blogs.empty? %>
+  <br/>
+
+  <h3>Nenhuma Novidades
+  <br/><br/>
+  </h3>
+
+<% else %>
+
+  <br/>
+  <% @blogs.each do |blog| %>
+    <div style="text-align: left;">
+      <h3><%= link_to blog.titulo, local_blog_url(blog.local, blog) %></h3>
+      <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)} (#{link_to blog.local.nome, local_blogs_path(blog.local)}). Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %>.</small>
+      <br/><br/>
+      <%= truncate(blog.texto, :length => 4096, :escape => false, :omission => "...<br/><br/><b>#{link_to '(Leia o Texto Completo)',  local_blog_url(blog.local, blog)}</b><br/>") %>
+      <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if ! blog.tag_list.empty? %>
+      <br/>
+      <% if usuario_signed_in? %>
+        <% if current_usuario.admin? or blog.usuario_id == current_usuario.id %>
+          <td><%= link_to t(:edit), edit_local_blog_path(blog.local, blog), :class => 'btn btn-sm btn-success' %></td>
+          <td><%= link_to t(:destroy), local_blog_path(blog.local, blog), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
+        <% end %>
+      <% end %>
+    </div>
+    <hr/>
+  <% end %>
+<% end %>

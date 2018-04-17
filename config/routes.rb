@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   resources :usuarios do
     resources :locais
   end
+
+  resources :novidades, :only => [:index]
 end
