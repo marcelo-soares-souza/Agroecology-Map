@@ -43,14 +43,14 @@
         layer.bindPopup('<b>' + popupText + '<br/>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável</a>');
       }
 
-      $.getJSON("http://dtygel.vps2.eita.org.br/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
+      $.getJSON("https://consumoresponsavel.mapadaagroecologia.org/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
 	$.each(data, function(category, items) {
             consumoresponsavel.addLayer(L.geoJson(items.features, { onEachFeature: onEachFeature }));
         });
       });
 
       var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
-      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Sustentável</a>": consumoresponsavel, "Biomas": biomas };
+      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Responsável</a>": consumoresponsavel, "Biomas": biomas };
 
       L.control.layers(baseMaps, overlayMaps, { collapsed: false, position: 'bottomright'} ).addTo(map);
 
