@@ -72,7 +72,7 @@
             popup += '<%= "<br/>SAFs <br/>".html_safe %>';
             popup += '<%= local.safs.count > 0 ? "#{local.safs.map {|saf| link_to truncate(saf.nome, length: 38), saf}.join("<br/>") }<br/>".html_safe : "Nenhuma Registrada</br>".html_safe %>';
             popup += '<%= "<br/>Últimas Postagem do Blog<br/>".html_safe %>';
-            popup += '<%= local.blogs.count > 0 ? "#{local.blogs.take(5).map {|blog| link_to truncate(blog.titulo, length: 38), local_blog_path(local, blog)}.join("<br/>") }<br/>".html_safe : "Nenhuma Registrada</br>".html_safe %>';
+            popup += '<%= local.blogs.count > 0 ? "#{local.blogs.order(updated_at: :desc).take(5).map {|blog| link_to truncate(blog.titulo, length: 32), local_blog_path(local, blog)}.join("<br/>") }<br/>".html_safe : "Nenhuma Registrada</br>".html_safe %>';
             popup += '</b>';
 
             var marker = new L.marker(new L.latLng([<%= local.latitude %>, <%= local.longitude %>]), { icon: Icon, title: '<%= local.nome %>' });
