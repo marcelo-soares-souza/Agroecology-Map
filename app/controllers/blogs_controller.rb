@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-      @blogs = Blog.where(:local_id => @local.id).sort_by(&:created_at).reverse
+      @blogs = Blog.where(:local_id => @local.id).sort_by(&:updated_at).reverse
   end
 
   # GET /blogs/1

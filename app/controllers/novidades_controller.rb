@@ -1,6 +1,6 @@
 class NovidadesController < ApplicationController
   def index
-    @blogs = Blog.all.sort_by(&:created_at).reverse
+    @blogs = Blog.all.sort_by(&:updated_at).reverse
   end
 
   def show
