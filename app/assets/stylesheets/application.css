@@ -300,3 +300,28 @@ a:focus, a:hover {
 .list-control {
   display: none!important; 
 }
+
+.blog-content {
+  min-height:64px;
+  margin-bottom: 4px;
+}
+
+.blog-tag {
+  min-height: 32px;
+  margin-top: 4px;
+}
+
+.lines{max-height: 96.0em;}
+
+.truncate {overflow: hidden; position:relative}
+
+.truncate:after{
+    content:""; 
+    height: 1em; 
+    display: block; 
+    width: 100%; 
+    position:absolute;
+    background-color:white; 
+    opacity: 0.8; 
+    bottom: -0.3em
+}
