@@ -106,7 +106,9 @@ class LocaisController < ApplicationController
     end
 
     def load_usuarios
-      @usuarios = Usuario.where.not(id: current_usuario.id)
+      if signed_in?
+        @usuarios = Usuario.where.not(id: current_usuario.id)
+      end
     end
 
     def load_usuario
