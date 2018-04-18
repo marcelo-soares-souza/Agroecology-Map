@@ -26,17 +26,31 @@
 
       $(window).on("resize", function () { $("#map").height($(window).height() - 60); map.invalidateSize(); }).trigger("resize");
 
+      // Base Maps
       var osm    = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Mapa da Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
       var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Mapa da Agroecologia | MapBox', maxZoom: 18,});
-      var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
 
+      // OverLay Maps
       var ti = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_terra_indigena_a', format: 'image/png', transparent: true });
       var ar = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_assentamento_rural_a', format: 'image/png', transparent: true });
       var uc = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var quilombos = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var biomas =  L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
+      var consumoresponsavel = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
 
-      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "Biomas": biomas };
+      function onEachFeature(feature, layer) {
+        var popupText = feature.properties.title;
+        layer.bindPopup('<b>' + popupText + '<br/>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável</a>');
+      }
+
+      $.getJSON("http://dtygel.vps2.eita.org.br/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
+	$.each(data, function(category, items) {
+            consumoresponsavel.addLayer(L.geoJson(items.features, { onEachFeature: onEachFeature }));
+        });
+      });
+
+      var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
+      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Sustentável</a>": consumoresponsavel, "Biomas": biomas };
 
       L.control.layers(baseMaps, overlayMaps, { collapsed: false, position: 'bottomright'} ).addTo(map);
 
