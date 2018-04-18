@@ -5,7 +5,7 @@ class LocaisController < ApplicationController
   before_action :load_tipos, except: [:index, :show]
   before_action :load_hospedagens, except: [:index, :show]
   before_action :load_usuario
-  before_action :load_usuarios, except: [:index]
+  before_action :load_colaboradores, only: [:new, :edit, :update]
 
   # GET /locais
   # GET /locais.json
@@ -105,10 +105,8 @@ class LocaisController < ApplicationController
                      }
     end
 
-    def load_usuarios
-      if signed_in?
-        @usuarios = Usuario.where.not(id: current_usuario.id)
-      end
+    def load_colaboradores
+      @usuarios = Usuario.all
     end
 
     def load_usuario

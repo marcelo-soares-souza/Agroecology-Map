@@ -1,14 +1,13 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Blog.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
-  before_action -> { check_owner Local.friendly.find(params[:local_id]).usuario_id }, only: [:new]
+  before_action -> { check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios) }, only: [:new, :edit, :update, :destroy]
   before_action :load_dados
 
   # GET /blogs
   # GET /blogs.json
   def index
-      @blogs = Blog.where(:local_id => @local.id).sort_by(&:updated_at).reverse
+    @blogs = Blog.where(:local_id => @local.id).sort_by(&:updated_at).reverse
   end
 
   # GET /blogs/1

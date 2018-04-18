@@ -25,6 +25,14 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def check_owner_or_collaborator(usuario_id, collaborators)
+      if signed_in?
+        if (!current_usuario.admin? && current_usuario.id != usuario_id && !collaborators.collect(&:usuario_id).include?(current_usuario.id) )
+          redirect_to root_url, alert: "Permissão Negada"
+        end
+      end
+    end
+
     def check_if_admin
       if signed_in?
         if ! current_usuario.admin?

@@ -35,11 +35,22 @@
   <br/>
   <% @blogs.each do |blog| %>
     <div style="text-align: left;">
-      <h3><%= link_to blog.titulo, local_blog_url(@local, blog) %></h3>
-      <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)}. Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %></small>
-      <br/><br/>
-      <%= truncate(blog.texto, :length => 4096, :escape => false, :omission => "...<br/><br/><b>#{link_to '(Leia o Texto Completo)',  local_blog_url(@local, blog)}</b><br/>") %>
-      <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if ! blog.tag_list.empty? %>
+
+      <div class="blog-content">
+        <h3><%= link_to blog.titulo, local_blog_url(@local, blog) %></h3>
+        <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)}. Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %></small>
+        <br/><br/>
+        <div class="truncate lines"><%= blog.texto.html_safe %></div>
+        <%= "<br/><br/><b>#{link_to '(Leia o Texto Completo)',  local_blog_url(blog.local, blog)}</b><br/>".html_safe if blog.texto.length > 4096 %>
+      </div>
+
+      <% if !blog.tag_list.empty? %>
+        <div class="blog-tag">
+          <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if ! blog.tag_list.empty? %>
+          <br/>
+        </div>
+      <% end %>
+
       <br/>
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or blog.usuario_id == current_usuario.id %>
