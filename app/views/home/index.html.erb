@@ -36,18 +36,7 @@
       var uc = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var quilombos = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var biomas =  L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
-      var consumoresponsavel = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
-
-      function onEachFeature(feature, layer) {
-        var popupText = '<b><a href="http://mapa.consumoresponsavel.org.br/?id=' + feature.properties.id + '" target="_blank">' + feature.properties.title + '</a><br/><br/>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável e Parceiros</a>'
-        layer.bindPopup(popupText);
-      }
-
-      $.getJSON("https://consumoresponsavel.mapadaagroecologia.org/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
-	$.each(data, function(category, items) {
-            consumoresponsavel.addLayer(L.geoJson(items.features, { onEachFeature: onEachFeature }));
-        });
-      });
+      consumoresponsavel = loadConsumoResponsavel();
 
       var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
       var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Responsável</a>": consumoresponsavel, "Biomas": biomas };
@@ -64,39 +53,6 @@
 
       map.addControl(osmGeocoder);
 
-      <% if @locais %>
-        var markers = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
-        var controlSearch = new L.Control.Search({ layer: markers, initial: false, zoom: 12, position: 'topleft', textPlaceholder: 'Buscar Iniciativa Agroecológica' });
-
-        var Icon = L.icon({
-                            iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
-                            shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-                            iconSize:     [38, 95],
-                            shadowSize:   [50, 64],
-                            iconAnchor:   [22, 94],
-                            shadowAnchor: [4, 62],
-                            popupAnchor:  [-3, -76]
-                          });
-
-        <% @locais.each do |local| %>
-          <% if local.latitude and local.longitude %>
-            var popup = '<b><%= "#{link_to local.nome, local_path(local)}".html_safe %><br/>';
-            popup += '<%= "<br/>Experiências em Agroecologia <br/>".html_safe %>';
-            popup += '<%= local.experiencia_agroecologicas.count > 0 ? "#{local.experiencia_agroecologicas.map {|experiencia| link_to truncate(experiencia.nome, length: 38), experiencia}.join("<br/>") }<br/>".html_safe : "Nenhuma Registrada</br>".html_safe %>';
-            popup += '<%= "<br/>SAFs <br/>".html_safe %>';
-            popup += '<%= local.safs.count > 0 ? "#{local.safs.map {|saf| link_to truncate(saf.nome, length: 38), saf}.join("<br/>") }<br/>".html_safe : "Nenhuma Registrada</br>".html_safe %>';
-            popup += '<%= "<br/>Últimas Postagem do Blog<br/>".html_safe %>';
-            popup += '<%= local.blogs.count > 0 ? "#{local.blogs.order(updated_at: :desc).take(5).map {|blog| link_to truncate(blog.titulo, length: 32), local_blog_path(local, blog)}.join("<br/>") }<br/>".html_safe : "Nenhuma Registrada</br>".html_safe %>';
-            popup += '</b>';
-
-            var marker = new L.marker(new L.latLng([<%= local.latitude %>, <%= local.longitude %>]), { icon: Icon, title: '<%= local.nome %>' });
-            marker.bindPopup(popup);
-            markers.addLayer(marker);
-          <% end %>
-        <% end %>
-
-        map.addLayer(markers);
-        map.addControl(controlSearch);
-      <% end %>
+      <%= render 'locais', locais: @locais %>
     });
   </script>
