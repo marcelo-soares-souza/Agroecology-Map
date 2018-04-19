@@ -39,8 +39,8 @@
       var consumoresponsavel = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
 
       function onEachFeature(feature, layer) {
-        var popupText = feature.properties.title;
-        layer.bindPopup('<b>' + popupText + '<br/>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável</a>');
+        var popupText = '<b><a href="http://mapa.consumoresponsavel.org.br/?id=' + feature.properties.id + '" target="_blank">' + feature.properties.title + '</a><br/><br/>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável e Parceiros</a>'
+        layer.bindPopup(popupText);
       }
 
       $.getJSON("https://consumoresponsavel.mapadaagroecologia.org/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {

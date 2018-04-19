@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: 2cf18f99e040853db587a3acdaf6c91737a1fa1c
+  revision: 45481df14a90edba5982860ec12fbd7e7f03755c
   specs:
     devise (4.4.3)
       bcrypt (~> 3.0)
@@ -200,7 +200,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (3.6.0)
+    web-console (3.6.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
