@@ -37,9 +37,10 @@
       var quilombos = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 });
       var biomas =  L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
       consumoresponsavel = loadConsumoResponsavel();
+      idec = loadIDEC();
 
       var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
-      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Responsável</a>": consumoresponsavel, "Biomas": biomas };
+      var overlayMaps = { "Terra Indígena": ti, "Assentamento Rural": ar, "Unidade de Conservação": uc, "Quilombos": quilombos, "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Responsável</a>": consumoresponsavel, "<a href='https://feirasorganicas.org.br' target='_blank'>Feiras Orgânicas (IDEC)</a>": idec, "Biomas": biomas };
 
       L.control.layers(baseMaps, overlayMaps, { collapsed: false, position: 'bottomright'} ).addTo(map);
 
