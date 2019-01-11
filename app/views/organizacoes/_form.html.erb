@@ -129,17 +129,12 @@
 
   <script>
     $( document ).ready(function() {
-      lat = <%= (defined? request.safe_location.latitude)  ? request.safe_location.latitude : 0.0 %>;
-      lon = <%= (defined? request.safe_location.longitude) ? request.safe_location.longitude : 0.0 %>;
+      lat = -15.77835833463309;
+      lon = -47.88219451904297;
 
-      <% if params[:action] == 'new' %>
-        if (lat == 0.0 || lon == 0.0) {
-          lat = -15.77835833463309;
-          lon = -47.88219451904297;
-        }
-      <% else %>
-          lat = <%= f.object.latitude %>;
-          lon = <%= f.object.longitude %>;
+      <% if params[:action] != 'new' %>
+        lat = <%= f.object.latitude %>;
+        lon = <%= f.object.longitude %>;
       <% end %>
 
       var map = L.map('map-sistema', {zoomControl: false}).setView([lat, lon], 10);

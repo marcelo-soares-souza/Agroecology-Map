@@ -13,13 +13,8 @@
   <div id="map"></div>
 
   <script>
-    lat = <%= (defined? request.safe_location.latitude)  ? request.safe_location.latitude : 0.0 %>;
-    lon = <%= (defined? request.safe_location.longitude) ? request.safe_location.longitude : 0.0 %>;
-
-    if (lat == 0.0 || lon == 0.0) {
-      lat = -15.77835833463309;
-      lon = -47.88219451904297;
-    }
+    lat = -15.77835833463309;
+    lon = -47.88219451904297;
 
     var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], 4);
 
