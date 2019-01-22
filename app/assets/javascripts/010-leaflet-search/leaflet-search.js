@@ -1,7 +1,7 @@
 /* 
- * Leaflet Control Search v2.4.0 - 2018-03-13 
+ * Leaflet Control Search v2.9.7 - 2019-01-14 
  * 
- * Copyright 2018 Stefano Cudini 
+ * Copyright 2019 Stefano Cudini 
  * stefano.cudini@gmail.com 
  * http://labs.easyblog.it/ 
  * 
@@ -14,4 +14,1019 @@
  * git@github.com:stefanocudini/leaflet-search.git 
  * 
  */
-!function(a){if("function"==typeof define&&define.amd)define(["leaflet"],a);else if("undefined"!=typeof module)module.exports=a(require("leaflet"));else{if("undefined"==typeof window.L)throw"Leaflet must be loaded first";a(window.L)}}(function(a){return a.Control.Search=a.Control.extend({includes:"1"===a.version[0]?a.Evented.prototype:a.Mixin.Events,options:{url:"",layer:null,sourceData:null,jsonpParam:null,propertyLoc:"loc",propertyName:"title",formatData:null,filterData:null,moveToLocation:null,buildTip:null,container:"",zoom:null,minLength:1,initial:!0,casesensitive:!1,autoType:!0,delayType:400,tooltipLimit:-1,tipAutoSubmit:!0,firstTipSubmit:!1,autoResize:!0,collapsed:!0,autoCollapse:!1,autoCollapseTime:1200,textErr:"Location not found",textCancel:"Cancel",textPlaceholder:"Search...",hideMarkerOnCollapse:!1,position:"topleft",marker:{icon:!1,animate:!0,circle:{radius:10,weight:3,color:"#e03",stroke:!0,fill:!1}}},_getPath:function(a,b){var c=b.split("."),d=c.pop(),e=c.length,f=c[0],g=1;if(e>0)for(;(a=a[f])&&e>g;)f=c[g++];return a?a[d]:void 0},_isObject:function(a){return"[object Object]"===Object.prototype.toString.call(a)},initialize:function(b){a.Util.setOptions(this,b||{}),this._inputMinSize=this.options.textPlaceholder?this.options.textPlaceholder.length:10,this._layer=this.options.layer||new a.LayerGroup,this._filterData=this.options.filterData||this._defaultFilterData,this._formatData=this.options.formatData||this._defaultFormatData,this._moveToLocation=this.options.moveToLocation||this._defaultMoveToLocation,this._autoTypeTmp=this.options.autoType,this._countertips=0,this._recordsCache={},this._curReq=null},onAdd:function(b){return this._map=b,this._container=a.DomUtil.create("div","leaflet-control-search"),this._input=this._createInput(this.options.textPlaceholder,"search-input"),this._tooltip=this._createTooltip("search-tooltip"),this._cancel=this._createCancel(this.options.textCancel,"search-cancel"),this._button=this._createButton(this.options.textPlaceholder,"search-button"),this._alert=this._createAlert("search-alert"),this.options.collapsed===!1&&this.expand(this.options.collapsed),this.options.marker&&(this.options.marker instanceof a.Marker||this.options.marker instanceof a.CircleMarker?this._markerSearch=this.options.marker:this._isObject(this.options.marker)&&(this._markerSearch=new a.Control.Search.Marker([0,0],this.options.marker)),this._markerSearch._isMarkerSearch=!0),this.setLayer(this._layer),b.on({resize:this._handleAutoresize},this),this._container},addTo:function(b){return this.options.container?(this._container=this.onAdd(b),this._wrapper=a.DomUtil.get(this.options.container),this._wrapper.style.position="relative",this._wrapper.appendChild(this._container)):a.Control.prototype.addTo.call(this,b),this},onRemove:function(a){this._recordsCache={}},setLayer:function(a){return this._layer=a,this._layer.addTo(this._map),this},showAlert:function(a){var b=this;return a=a||this.options.textErr,this._alert.style.display="block",this._alert.innerHTML=a,clearTimeout(this.timerAlert),this.timerAlert=setTimeout(function(){b.hideAlert()},this.options.autoCollapseTime),this},hideAlert:function(){return this._alert.style.display="none",this},cancel:function(){return this._input.value="",this._handleKeypress({keyCode:8}),this._input.size=this._inputMinSize,this._input.focus(),this._cancel.style.display="none",this._hideTooltip(),this.fire("search:cancel"),this},expand:function(b){return b="boolean"==typeof b?b:!0,this._input.style.display="block",a.DomUtil.addClass(this._container,"search-exp"),b!==!1&&(this._input.focus(),this._map.on("dragstart click",this.collapse,this)),this.fire("search:expanded"),this},collapse:function(){return this._hideTooltip(),this.cancel(),this._alert.style.display="none",this._input.blur(),this.options.collapsed&&(this._input.style.display="none",this._cancel.style.display="none",a.DomUtil.removeClass(this._container,"search-exp"),this.options.hideMarkerOnCollapse&&this._map.removeLayer(this._markerSearch),this._map.off("dragstart click",this.collapse,this)),this.fire("search:collapsed"),this},collapseDelayed:function(){var a=this;return this.options.autoCollapse?(clearTimeout(this.timerCollapse),this.timerCollapse=setTimeout(function(){a.collapse()},this.options.autoCollapseTime),this):this},collapseDelayedStop:function(){return clearTimeout(this.timerCollapse),this},_createAlert:function(b){var c=a.DomUtil.create("div",b,this._container);return c.style.display="none",a.DomEvent.on(c,"click",a.DomEvent.stop,this).on(c,"click",this.hideAlert,this),c},_createInput:function(b,c){var d=a.DomUtil.create("label",c,this._container),e=a.DomUtil.create("input",c,this._container);return e.type="text",e.size=this._inputMinSize,e.value="",e.autocomplete="off",e.autocorrect="off",e.autocapitalize="off",e.placeholder=b,e.style.display="none",e.role="search",e.id=e.role+e.type+e.size,d.htmlFor=e.id,d.style.display="none",d.value=b,a.DomEvent.disableClickPropagation(e).on(e,"keyup",this._handleKeypress,this).on(e,"blur",this.collapseDelayed,this).on(e,"focus",this.collapseDelayedStop,this),e},_createCancel:function(b,c){var d=a.DomUtil.create("a",c,this._container);return d.href="#",d.title=b,d.style.display="none",d.innerHTML="<span>&otimes;</span>",a.DomEvent.on(d,"click",a.DomEvent.stop,this).on(d,"click",this.cancel,this),d},_createButton:function(b,c){var d=a.DomUtil.create("a",c,this._container);return d.href="#",d.title=b,a.DomEvent.on(d,"click",a.DomEvent.stop,this).on(d,"click",this._handleSubmit,this).on(d,"focus",this.collapseDelayedStop,this).on(d,"blur",this.collapseDelayed,this),d},_createTooltip:function(b){var c=this,d=a.DomUtil.create("ul",b,this._container);return d.style.display="none",a.DomEvent.disableClickPropagation(d).on(d,"blur",this.collapseDelayed,this).on(d,"mousewheel",function(b){c.collapseDelayedStop(),a.DomEvent.stopPropagation(b)},this).on(d,"mouseover",function(a){c.collapseDelayedStop()},this),d},_createTip:function(b,c){var d;if(this.options.buildTip){if(d=this.options.buildTip.call(this,b,c),"string"==typeof d){var e=a.DomUtil.create("div");e.innerHTML=d,d=e.firstChild}}else d=a.DomUtil.create("li",""),d.innerHTML=b;return a.DomUtil.addClass(d,"search-tip"),d._text=b,this.options.tipAutoSubmit&&a.DomEvent.disableClickPropagation(d).on(d,"click",a.DomEvent.stop,this).on(d,"click",function(a){this._input.value=b,this._handleAutoresize(),this._input.focus(),this._hideTooltip(),this._handleSubmit()},this),d},_getUrl:function(a){return"function"==typeof this.options.url?this.options.url(a):this.options.url},_defaultFilterData:function(a,b){var c,d,e,f={};if(a=a.replace(/[.*+?^${}()|[\]\\]/g,""),""===a)return[];c=this.options.initial?"^":"",d=this.options.casesensitive?void 0:"i",e=new RegExp(c+a,d);for(var g in b)e.test(g)&&(f[g]=b[g]);return f},showTooltip:function(a){if(this._countertips=0,this._tooltip.innerHTML="",this._tooltip.currentSelection=-1,this.options.tooltipLimit)for(var b in a){if(this._countertips===this.options.tooltipLimit)break;this._countertips++,this._tooltip.appendChild(this._createTip(b,a[b]))}return this._countertips>0?(this._tooltip.style.display="block",this._autoTypeTmp&&this._autoType(),this._autoTypeTmp=this.options.autoType):this._hideTooltip(),this._tooltip.scrollTop=0,this._countertips},_hideTooltip:function(){return this._tooltip.style.display="none",this._tooltip.innerHTML="",0},_defaultFormatData:function(b){var c,d=this,e=this.options.propertyName,f=this.options.propertyLoc,g={};if(a.Util.isArray(f))for(c in b)g[d._getPath(b[c],e)]=a.latLng(b[c][f[0]],b[c][f[1]]);else for(c in b)g[d._getPath(b[c],e)]=a.latLng(d._getPath(b[c],f));return g},_recordsFromJsonp:function(b,c){a.Control.Search.callJsonp=c;var d=a.DomUtil.create("script","leaflet-search-jsonp",document.getElementsByTagName("body")[0]),e=a.Util.template(this._getUrl(b)+"&"+this.options.jsonpParam+"=L.Control.Search.callJsonp",{s:b});return d.type="text/javascript",d.src=e,{abort:function(){d.parentNode.removeChild(d)}}},_recordsFromAjax:function(b,c){void 0===window.XMLHttpRequest&&(window.XMLHttpRequest=function(){try{return new ActiveXObject("Microsoft.XMLHTTP.6.0")}catch(a){try{return new ActiveXObject("Microsoft.XMLHTTP.3.0")}catch(b){throw new Error("XMLHttpRequest is not supported")}}});var d=a.Browser.ie&&!window.atob&&document.querySelector,e=d?new XDomainRequest:new XMLHttpRequest,f=a.Util.template(this._getUrl(b),{s:b});return e.open("GET",f),e.onload=function(){c(JSON.parse(e.responseText))},e.onreadystatechange=function(){4===e.readyState&&200===e.status&&this.onload()},e.send(),e},_searchInLayer:function(b,c,d){var e,f=this;b instanceof a.Control.Search.Marker||((b instanceof a.Marker||b instanceof a.CircleMarker)&&(f._getPath(b.options,d)?(e=b.getLatLng(),e.layer=b,c[f._getPath(b.options,d)]=e):f._getPath(b.feature.properties,d)&&(e=b.getLatLng(),e.layer=b,c[f._getPath(b.feature.properties,d)]=e)),b instanceof a.Path||b instanceof a.Polyline||b instanceof a.Polygon?f._getPath(b.options,d)?(e=b.getBounds().getCenter(),e.layer=b,c[f._getPath(b.options,d)]=e):f._getPath(b.feature.properties,d)&&(e=b.getBounds().getCenter(),e.layer=b,c[f._getPath(b.feature.properties,d)]=e):b.hasOwnProperty("feature")?b.feature.properties.hasOwnProperty(d)&&(b.getLatLng&&"function"==typeof b.getLatLng?(e=b.getLatLng(),e.layer=b,c[b.feature.properties[d]]=e):b.getBounds&&"function"==typeof b.getBounds&&(e=b.getBounds().getCenter(),e.layer=b,c[b.feature.properties[d]]=e)):b instanceof a.LayerGroup&&b.eachLayer(function(a){f._searchInLayer(a,c,d)}))},_recordsFromLayer:function(){var a=this,b={},c=this.options.propertyName;return this._layer.eachLayer(function(d){a._searchInLayer(d,b,c)}),b},_autoType:function(){var a=this._input.value.length,b=this._tooltip.firstChild?this._tooltip.firstChild._text:"",c=b.length;if(0===b.indexOf(this._input.value))if(this._input.value=b,this._handleAutoresize(),this._input.createTextRange){var d=this._input.createTextRange();d.collapse(!0),d.moveStart("character",a),d.moveEnd("character",c),d.select()}else this._input.setSelectionRange?this._input.setSelectionRange(a,c):this._input.selectionStart&&(this._input.selectionStart=a,this._input.selectionEnd=c)},_hideAutoType:function(){var a;if((a=this._input.selection)&&a.empty)a.empty();else if(this._input.createTextRange){a=this._input.createTextRange(),a.collapse(!0);var b=this._input.value.length;a.moveStart("character",b),a.moveEnd("character",b),a.select()}else this._input.getSelection&&this._input.getSelection().removeAllRanges(),this._input.selectionStart=this._input.selectionEnd},_handleKeypress:function(a){var b=this;switch(a.keyCode){case 27:this.collapse();break;case 13:(1==this._countertips||this.options.firstTipSubmit&&this._countertips>0)&&-1==this._tooltip.currentSelection&&this._handleArrowSelect(1),this._handleSubmit();break;case 38:this._handleArrowSelect(-1);break;case 40:this._handleArrowSelect(1);break;case 8:case 45:case 46:this._autoTypeTmp=!1;break;case 37:case 39:case 16:case 17:case 35:case 36:break;default:this._input.value.length?this._cancel.style.display="block":this._cancel.style.display="none",this._input.value.length>=this.options.minLength?(clearTimeout(this.timerKeypress),this.timerKeypress=setTimeout(function(){b._fillRecordsCache()},this.options.delayType)):this._hideTooltip()}this._handleAutoresize()},searchText:function(b){var c=b.charCodeAt(b.length);this._input.value=b,this._input.style.display="block",a.DomUtil.addClass(this._container,"search-exp"),this._autoTypeTmp=!1,this._handleKeypress({keyCode:c})},_fillRecordsCache:function(){var b,c=this,d=this._input.value;this._curReq&&this._curReq.abort&&this._curReq.abort(),a.DomUtil.addClass(this._container,"search-load"),this.options.layer?(this._recordsCache=this._recordsFromLayer(),b=this._filterData(this._input.value,this._recordsCache),this.showTooltip(b),a.DomUtil.removeClass(this._container,"search-load")):(this.options.sourceData?this._retrieveData=this.options.sourceData:this.options.url&&(this._retrieveData=this.options.jsonpParam?this._recordsFromJsonp:this._recordsFromAjax),this._curReq=this._retrieveData.call(this,d,function(d){c._recordsCache=c._formatData.call(c,d),b=c.options.sourceData?c._filterData(c._input.value,c._recordsCache):c._recordsCache,c.showTooltip(b),a.DomUtil.removeClass(c._container,"search-load")}))},_handleAutoresize:function(){this._input.style.maxWidth!=this._map._container.offsetWidth&&(this._input.style.maxWidth=a.DomUtil.getStyle(this._map._container,"width")),this.options.autoResize&&this._container.offsetWidth+45<this._map._container.offsetWidth&&(this._input.size=this._input.value.length<this._inputMinSize?this._inputMinSize:this._input.value.length)},_handleArrowSelect:function(b){var c=this._tooltip.hasChildNodes()?this._tooltip.childNodes:[];for(i=0;i<c.length;i++)a.DomUtil.removeClass(c[i],"search-tip-select");if(1==b&&this._tooltip.currentSelection>=c.length-1)a.DomUtil.addClass(c[this._tooltip.currentSelection],"search-tip-select");else if(-1==b&&this._tooltip.currentSelection<=0)this._tooltip.currentSelection=-1;else if("none"!=this._tooltip.style.display){this._tooltip.currentSelection+=b,a.DomUtil.addClass(c[this._tooltip.currentSelection],"search-tip-select"),this._input.value=c[this._tooltip.currentSelection]._text;var d=c[this._tooltip.currentSelection].offsetTop;d+c[this._tooltip.currentSelection].clientHeight>=this._tooltip.scrollTop+this._tooltip.clientHeight?this._tooltip.scrollTop=d-this._tooltip.clientHeight+c[this._tooltip.currentSelection].clientHeight:d<=this._tooltip.scrollTop&&(this._tooltip.scrollTop=d)}},_handleSubmit:function(){if(this._hideAutoType(),this.hideAlert(),this._hideTooltip(),"none"==this._input.style.display)this.expand();else if(""===this._input.value)this.collapse();else{var a=this._getLocation(this._input.value);a===!1?this.showAlert():(this.showLocation(a,this._input.value),this.fire("search:locationfound",{latlng:a,text:this._input.value,layer:a.layer?a.layer:null}))}},_getLocation:function(a){return this._recordsCache.hasOwnProperty(a)?this._recordsCache[a]:!1},_defaultMoveToLocation:function(a,b,c){this.options.zoom?this._map.setView(a,this.options.zoom):this._map.panTo(a)},showLocation:function(a,b){var c=this;return c._map.once("moveend zoomend",function(b){c._markerSearch&&c._markerSearch.addTo(c._map).setLatLng(a)}),c._moveToLocation(a,b,c._map),c.options.autoCollapse&&c.collapse(),c}}),a.Control.Search.Marker=a.Marker.extend({includes:"1"===a.version[0]?a.Evented.prototype:a.Mixin.Events,options:{icon:new a.Icon.Default,animate:!0,circle:{radius:10,weight:3,color:"#e03",stroke:!0,fill:!1}},initialize:function(b,c){a.setOptions(this,c),c.icon===!0&&(c.icon=new a.Icon.Default),a.Marker.prototype.initialize.call(this,b,c),a.Control.Search.prototype._isObject(this.options.circle)&&(this._circleLoc=new a.CircleMarker(b,this.options.circle))},onAdd:function(b){a.Marker.prototype.onAdd.call(this,b),this._circleLoc&&(b.addLayer(this._circleLoc),this.options.animate&&this.animate())},onRemove:function(b){a.Marker.prototype.onRemove.call(this,b),this._circleLoc&&b.removeLayer(this._circleLoc)},setLatLng:function(b){return a.Marker.prototype.setLatLng.call(this,b),this._circleLoc&&this._circleLoc.setLatLng(b),this},_initIcon:function(){this.options.icon&&a.Marker.prototype._initIcon.call(this)},_removeIcon:function(){this.options.icon&&a.Marker.prototype._removeIcon.call(this)},animate:function(){if(this._circleLoc){var a=this._circleLoc,b=200,c=5,d=parseInt(a._radius/c),e=this.options.circle.radius,f=2*a._radius,g=0;a._timerAnimLoc=setInterval(function(){g+=.5,d+=g,f-=d,a.setRadius(f),e>f&&(clearInterval(a._timerAnimLoc),a.setRadius(e))},b)}return this}}),a.Map.addInitHook(function(){this.options.searchControl&&(this.searchControl=a.control.search(this.options.searchControl),this.addControl(this.searchControl))}),a.control.search=function(b){return new a.Control.Search(b)},a.Control.Search});
+/*
+	Name					Data passed			   Description
+
+	Managed Events:
+	 search:locationfound	{latlng, title, layer} fired after moved and show markerLocation
+	 search:expanded		{}					   fired after control was expanded
+	 search:collapsed		{}					   fired after control was collapsed
+ 	 search:cancel			{}					   fired after cancel button clicked
+
+	Public methods:
+	 setLayer()				L.LayerGroup()         set layer search at runtime
+	 showAlert()            'Text message'         show alert message
+	 searchText()			'Text searched'        search text by external code
+*/
+
+//TODO implement can do research on multiple sources layers and remote		
+//TODO history: false,		//show latest searches in tooltip		
+//FIXME option condition problem {autoCollapse: true, markerLocation: true} not show location
+//FIXME option condition problem {autoCollapse: false }
+//
+//TODO here insert function  search inputText FIRST in _recordsCache keys and if not find results.. 
+//  run one of callbacks search(sourceData,jsonpUrl or options.layer) and run this.showTooltip
+//
+//TODO change structure of _recordsCache
+//	like this: _recordsCache = {"text-key1": {loc:[lat,lng], ..other attributes.. }, {"text-key2": {loc:[lat,lng]}...}, ...}
+//	in this mode every record can have a free structure of attributes, only 'loc' is required
+//TODO important optimization!!! always append data in this._recordsCache
+//  now _recordsCache content is emptied and replaced with new data founded
+//  always appending data on _recordsCache give the possibility of caching ajax, jsonp and layersearch!
+//
+//TODO here insert function  search inputText FIRST in _recordsCache keys and if not find results.. 
+//  run one of callbacks search(sourceData,jsonpUrl or options.layer) and run this.showTooltip
+//
+//TODO change structure of _recordsCache
+//	like this: _recordsCache = {"text-key1": {loc:[lat,lng], ..other attributes.. }, {"text-key2": {loc:[lat,lng]}...}, ...}
+//	in this way every record can have a free structure of attributes, only 'loc' is required
+
+(function (factory) {
+    if(typeof define === 'function' && define.amd) {
+    //AMD
+        define(['leaflet'], factory);
+    } else if(typeof module !== 'undefined') {
+    // Node/CommonJS
+        module.exports = factory(require('leaflet'));
+    } else {
+    // Browser globals
+        if(typeof window.L === 'undefined')
+            throw 'Leaflet must be loaded first';
+        factory(window.L);
+    }
+})(function (L) {
+
+
+L.Control.Search = L.Control.extend({
+	
+	includes: L.version[0]==='1' ? L.Evented.prototype : L.Mixin.Events,
+
+	options: {
+		url: '',						//url for search by ajax request, ex: "search.php?q={s}". Can be function to returns string for dynamic parameter setting
+		layer: null,					//layer where search markers(is a L.LayerGroup)				
+		sourceData: null,				//function to fill _recordsCache, passed searching text by first param and callback in second				
+		//TODO implements uniq option 'sourceData' to recognizes source type: url,array,callback or layer				
+		jsonpParam: null,				//jsonp param name for search by jsonp service, ex: "callback"
+		propertyLoc: 'loc',				//field for remapping location, using array: ['latname','lonname'] for select double fields(ex. ['lat','lon'] ) support dotted format: 'prop.subprop.title'
+		propertyName: 'title',			//property in marker.options(or feature.properties for vector layer) trough filter elements in layer,
+		formatData: null,				//callback for reformat all data from source to indexed data object
+		filterData: null,				//callback for filtering data from text searched, params: textSearch, allRecords
+		moveToLocation: null,			//callback run on location found, params: latlng, title, map
+		buildTip: null,					//function to return row tip html node(or html string), receive text tooltip in first param
+		container: '',					//container id to insert Search Control		
+		zoom: null,						//default zoom level for move to location
+		minLength: 1,					//minimal text length for autocomplete
+		initial: true,					//search elements only by initial text
+		casesensitive: false,			//search elements in case sensitive text
+		autoType: true,					//complete input with first suggested result and select this filled-in text.
+		delayType: 400,					//delay while typing for show tooltip
+		tooltipLimit: -1,				//limit max results to show in tooltip. -1 for no limit, 0 for no results
+		tipAutoSubmit: true,			//auto map panTo when click on tooltip
+		firstTipSubmit: false,			//auto select first result con enter click
+		autoResize: true,				//autoresize on input change
+		collapsed: true,				//collapse search control at startup
+		autoCollapse: false,			//collapse search control after submit(on button or on tips if enabled tipAutoSubmit)
+		autoCollapseTime: 1200,			//delay for autoclosing alert and collapse after blur
+		textErr: 'Location not found',	//error message
+		textCancel: 'Cancel',		    //title in cancel button		
+		textPlaceholder: 'Search...',   //placeholder value			
+		hideMarkerOnCollapse: false,    //remove circle and marker on search control collapsed		
+		position: 'topleft',		
+		marker: {						//custom L.Marker or false for hide
+			icon: false,				//custom L.Icon for maker location or false for hide
+			animate: true,				//animate a circle over location found
+			circle: {					//draw a circle in location found
+				radius: 10,
+				weight: 3,
+				color: '#e03',
+				stroke: true,
+				fill: false
+			}
+		}
+	},
+
+	_getPath: function(obj, prop) {
+		var parts = prop.split('.'),
+			last = parts.pop(),
+			len = parts.length,
+			cur = parts[0],
+			i = 1;
+
+		if(len > 0)
+			while((obj = obj[cur]) && i < len)
+				cur = parts[i++];
+
+		if(obj)
+			return obj[last];
+	},
+
+	_isObject: function(obj) {
+		return Object.prototype.toString.call(obj) === "[object Object]";
+	},
+
+	initialize: function(options) {
+		L.Util.setOptions(this, options || {});
+		this._inputMinSize = this.options.textPlaceholder ? this.options.textPlaceholder.length : 10;
+		this._layer = this.options.layer || new L.LayerGroup();
+		this._filterData = this.options.filterData || this._defaultFilterData;
+		this._formatData = this.options.formatData || this._defaultFormatData;
+		this._moveToLocation = this.options.moveToLocation || this._defaultMoveToLocation;
+		this._autoTypeTmp = this.options.autoType;	//useful for disable autoType temporarily in delete/backspace keydown
+		this._countertips = 0;		//number of tips items
+		this._recordsCache = {};	//key,value table! to store locations! format: key,latlng
+		this._curReq = null;
+	},
+
+	onAdd: function (map) {
+		this._map = map;
+		this._container = L.DomUtil.create('div', 'leaflet-control-search');
+		this._input = this._createInput(this.options.textPlaceholder, 'search-input');
+		this._tooltip = this._createTooltip('search-tooltip');
+		this._cancel = this._createCancel(this.options.textCancel, 'search-cancel');
+		this._button = this._createButton(this.options.textPlaceholder, 'search-button');
+		this._alert = this._createAlert('search-alert');
+
+		if(this.options.collapsed===false)
+			this.expand(this.options.collapsed);
+
+		if(this.options.marker) {
+			
+			if(this.options.marker instanceof L.Marker || this.options.marker instanceof L.CircleMarker)
+				this._markerSearch = this.options.marker;
+
+			else if(this._isObject(this.options.marker))
+				this._markerSearch = new L.Control.Search.Marker([0,0], this.options.marker);
+
+			this._markerSearch._isMarkerSearch = true;
+		}
+
+		this.setLayer( this._layer );
+
+		map.on({
+			// 		'layeradd': this._onLayerAddRemove,
+			// 		'layerremove': this._onLayerAddRemove
+			'resize': this._handleAutoresize
+			}, this);
+		return this._container;
+	},
+	addTo: function (map) {
+
+		if(this.options.container) {
+			this._container = this.onAdd(map);
+			this._wrapper = L.DomUtil.get(this.options.container);
+			this._wrapper.style.position = 'relative';
+			this._wrapper.appendChild(this._container);
+		}
+		else
+			L.Control.prototype.addTo.call(this, map);
+
+		return this;
+	},
+
+	onRemove: function(map) {
+		this._recordsCache = {};
+		// map.off({
+		// 		'layeradd': this._onLayerAddRemove,
+		// 		'layerremove': this._onLayerAddRemove
+		// 	}, this);
+		map.off({
+			// 		'layeradd': this._onLayerAddRemove,
+			// 		'layerremove': this._onLayerAddRemove
+			'resize': this._handleAutoresize
+			}, this);
+	},
+
+	// _onLayerAddRemove: function(e) {
+	// 	//without this, run setLayer also for each Markers!! to optimize!
+	// 	if(e.layer instanceof L.LayerGroup)
+	// 		if( L.stamp(e.layer) != L.stamp(this._layer) )
+	// 			this.setLayer(e.layer);
+	// },
+
+	setLayer: function(layer) {	//set search layer at runtime
+		//this.options.layer = layer; //setting this, run only this._recordsFromLayer()
+		this._layer = layer;
+		this._layer.addTo(this._map);
+		return this;
+	},
+	
+	showAlert: function(text) {
+		var self = this;
+		text = text || this.options.textErr;
+		this._alert.style.display = 'block';
+		this._alert.innerHTML = text;
+		clearTimeout(this.timerAlert);
+		
+		this.timerAlert = setTimeout(function() {
+			self.hideAlert();
+		},this.options.autoCollapseTime);
+		return this;
+	},
+	
+	hideAlert: function() {
+		this._alert.style.display = 'none';
+		return this;
+	},
+		
+	cancel: function() {
+		this._input.value = '';
+		this._handleKeypress({ keyCode: 8 });//simulate backspace keypress
+		this._input.size = this._inputMinSize;
+		this._input.focus();
+		this._cancel.style.display = 'none';
+		this._hideTooltip();
+		this.fire('search:cancel');
+		return this;
+	},
+	
+	expand: function(toggle) {
+		toggle = typeof toggle === 'boolean' ? toggle : true;
+		this._input.style.display = 'block';
+		L.DomUtil.addClass(this._container, 'search-exp');
+		if ( toggle !== false ) {
+			this._input.focus();
+			this._map.on('dragstart click', this.collapse, this);
+		}
+		this.fire('search:expanded');
+		return this;	
+	},
+
+	collapse: function() {
+		this._hideTooltip();
+		this.cancel();
+		this._alert.style.display = 'none';
+		this._input.blur();
+		if(this.options.collapsed)
+		{
+			this._input.style.display = 'none';
+			this._cancel.style.display = 'none';			
+			L.DomUtil.removeClass(this._container, 'search-exp');		
+			if (this.options.hideMarkerOnCollapse) {
+				this._map.removeLayer(this._markerSearch);
+			}
+			this._map.off('dragstart click', this.collapse, this);
+		}
+		this.fire('search:collapsed');
+		return this;
+	},
+	
+	collapseDelayed: function() {	//collapse after delay, used on_input blur
+		var self = this;
+		if (!this.options.autoCollapse) return this;
+		clearTimeout(this.timerCollapse);
+		this.timerCollapse = setTimeout(function() {
+			self.collapse();
+		}, this.options.autoCollapseTime);
+		return this;		
+	},
+
+	collapseDelayedStop: function() {
+		clearTimeout(this.timerCollapse);
+		return this;		
+	},
+
+	////start DOM creations
+	_createAlert: function(className) {
+		var alert = L.DomUtil.create('div', className, this._container);
+		alert.style.display = 'none';
+
+		L.DomEvent
+			.on(alert, 'click', L.DomEvent.stop, this)
+			.on(alert, 'click', this.hideAlert, this);
+
+		return alert;
+	},
+
+	_createInput: function (text, className) {
+		var self = this;
+		var label = L.DomUtil.create('label', className, this._container);
+		var input = L.DomUtil.create('input', className, this._container);
+		input.type = 'text';
+		input.size = this._inputMinSize;
+		input.value = '';
+		input.autocomplete = 'off';
+		input.autocorrect = 'off';
+		input.autocapitalize = 'off';
+		input.placeholder = text;
+		input.style.display = 'none';
+		input.role = 'search';
+		input.id = input.role + input.type + input.size;
+		
+		label.htmlFor = input.id;
+		label.style.display = 'none';
+		label.value = text;
+
+		L.DomEvent
+			.disableClickPropagation(input)
+			.on(input, 'keyup', this._handleKeypress, this)
+			.on(input, 'paste', function(e) {
+				setTimeout(function(e) {
+					self._handleKeypress(e);
+				},10,e);
+			}, this)
+			.on(input, 'blur', this.collapseDelayed, this)
+			.on(input, 'focus', this.collapseDelayedStop, this);
+		
+		return input;
+	},
+
+	_createCancel: function (title, className) {
+		var cancel = L.DomUtil.create('a', className, this._container);
+		cancel.href = '#';
+		cancel.title = title;
+		cancel.style.display = 'none';
+		cancel.innerHTML = "<span>&otimes;</span>";//imageless(see css)
+
+		L.DomEvent
+			.on(cancel, 'click', L.DomEvent.stop, this)
+			.on(cancel, 'click', this.cancel, this);
+
+		return cancel;
+	},
+	
+	_createButton: function (title, className) {
+		var button = L.DomUtil.create('a', className, this._container);
+		button.href = '#';
+		button.title = title;
+
+		L.DomEvent
+			.on(button, 'click', L.DomEvent.stop, this)
+			.on(button, 'click', this._handleSubmit, this)			
+			.on(button, 'focus', this.collapseDelayedStop, this)
+			.on(button, 'blur', this.collapseDelayed, this);
+
+		return button;
+	},
+
+	_createTooltip: function(className) {
+		var self = this;		
+		var tool = L.DomUtil.create('ul', className, this._container);
+		tool.style.display = 'none';
+		L.DomEvent
+			.disableClickPropagation(tool)
+			.on(tool, 'blur', this.collapseDelayed, this)
+			.on(tool, 'mousewheel', function(e) {
+				self.collapseDelayedStop();
+				L.DomEvent.stopPropagation(e);//disable zoom map
+			}, this)
+			.on(tool, 'mouseover', function(e) {
+				self.collapseDelayedStop();
+			}, this);
+		return tool;
+	},
+
+	_createTip: function(text, val) {//val is object in recordCache, usually is Latlng
+		var tip;
+		
+		if(this.options.buildTip)
+		{
+			tip = this.options.buildTip.call(this, text, val); //custom tip node or html string
+			if(typeof tip === 'string')
+			{
+				var tmpNode = L.DomUtil.create('div');
+				tmpNode.innerHTML = tip;
+				tip = tmpNode.firstChild;
+			}
+		}
+		else
+		{
+			tip = L.DomUtil.create('li', '');
+			tip.innerHTML = text;
+		}
+		
+		L.DomUtil.addClass(tip, 'search-tip');
+		tip._text = text; //value replaced in this._input and used by _autoType
+
+		if(this.options.tipAutoSubmit)
+			L.DomEvent
+				.disableClickPropagation(tip)		
+				.on(tip, 'click', L.DomEvent.stop, this)
+				.on(tip, 'click', function(e) {
+					this._input.value = text;
+					this._handleAutoresize();
+					this._input.focus();
+					this._hideTooltip();	
+					this._handleSubmit();
+				}, this);
+
+		return tip;
+	},
+
+	//////end DOM creations
+
+	_getUrl: function(text) {
+		return (typeof this.options.url === 'function') ? this.options.url(text) : this.options.url;
+	},
+
+	_defaultFilterData: function(text, records) {
+	
+		var I, icase, regSearch, frecords = {};
+
+		text = text.replace(/[.*+?^${}()|[\]\\]/g, '');  //sanitize remove all special characters
+		if(text==='')
+			return [];
+
+		I = this.options.initial ? '^' : '';  //search only initial text
+		icase = !this.options.casesensitive ? 'i' : undefined;
+
+		regSearch = new RegExp(I + text, icase);
+
+		//TODO use .filter or .map
+		for(var key in records) {
+			if( regSearch.test(key) )
+				frecords[key]= records[key];
+		}
+		
+		return frecords;
+	},
+
+	showTooltip: function(records) {
+		
+
+		this._countertips = 0;
+		this._tooltip.innerHTML = '';
+		this._tooltip.currentSelection = -1;  //inizialized for _handleArrowSelect()
+
+		if(this.options.tooltipLimit)
+		{
+			for(var key in records)//fill tooltip
+			{
+				if(this._countertips === this.options.tooltipLimit)
+					break;
+				
+				this._countertips++;
+
+				this._tooltip.appendChild( this._createTip(key, records[key]) );
+			}
+		}
+		
+		if(this._countertips > 0)
+		{
+			this._tooltip.style.display = 'block';
+			
+			if(this._autoTypeTmp)
+				this._autoType();
+
+			this._autoTypeTmp = this.options.autoType;//reset default value
+		}
+		else
+			this._hideTooltip();
+
+		this._tooltip.scrollTop = 0;
+
+		return this._countertips;
+	},
+
+	_hideTooltip: function() {
+		this._tooltip.style.display = 'none';
+		this._tooltip.innerHTML = '';
+		return 0;
+	},
+
+	_defaultFormatData: function(json) {	//default callback for format data to indexed data
+		var self = this,
+			propName = this.options.propertyName,
+			propLoc = this.options.propertyLoc,
+			i, jsonret = {};
+
+		if( L.Util.isArray(propLoc) )
+			for(i in json)
+				jsonret[ self._getPath(json[i],propName) ]= L.latLng( json[i][ propLoc[0] ], json[i][ propLoc[1] ] );
+		else
+			for(i in json)
+				jsonret[ self._getPath(json[i],propName) ]= L.latLng( self._getPath(json[i],propLoc) );
+		//TODO throw new Error("propertyName '"+propName+"' not found in JSON data");
+		return jsonret;
+	},
+
+	_recordsFromJsonp: function(text, callAfter) {  //extract searched records from remote jsonp service
+		L.Control.Search.callJsonp = callAfter;
+		var script = L.DomUtil.create('script','leaflet-search-jsonp', document.getElementsByTagName('body')[0] ),			
+			url = L.Util.template(this._getUrl(text)+'&'+this.options.jsonpParam+'=L.Control.Search.callJsonp', {s: text}); //parsing url
+			//rnd = '&_='+Math.floor(Math.random()*10000);
+			//TODO add rnd param or randomize callback name! in recordsFromJsonp
+		script.type = 'text/javascript';
+		script.src = url;
+		return { abort: function() { script.parentNode.removeChild(script); } };
+	},
+
+	_recordsFromAjax: function(text, callAfter) {	//Ajax request
+		if (window.XMLHttpRequest === undefined) {
+			window.XMLHttpRequest = function() {
+				try { return new ActiveXObject("Microsoft.XMLHTTP.6.0"); }
+				catch  (e1) {
+					try { return new ActiveXObject("Microsoft.XMLHTTP.3.0"); }
+					catch (e2) { throw new Error("XMLHttpRequest is not supported"); }
+				}
+			};
+		}
+		var IE8or9 = ( L.Browser.ie && !window.atob && document.querySelector ),
+			request = IE8or9 ? new XDomainRequest() : new XMLHttpRequest(),
+			url = L.Util.template(this._getUrl(text), {s: text});
+
+		//rnd = '&_='+Math.floor(Math.random()*10000);
+		//TODO add rnd param or randomize callback name! in recordsFromAjax			
+		
+		request.open("GET", url);
+		
+
+		request.onload = function() {
+			callAfter( JSON.parse(request.responseText) );
+		};
+		request.onreadystatechange = function() {
+		    if(request.readyState === 4 && request.status === 200) {
+		    	this.onload();
+		    }
+		};
+
+		request.send();
+		return request;   
+	},
+
+  _searchInLayer: function(layer, retRecords, propName) {
+    var self = this, loc;
+
+    if(layer instanceof L.Control.Search.Marker) return;
+
+    if(layer instanceof L.Marker || layer instanceof L.CircleMarker)
+    {
+      if(self._getPath(layer.options,propName))
+      {
+        loc = layer.getLatLng();
+        loc.layer = layer;
+        retRecords[ self._getPath(layer.options,propName) ] = loc;
+      }
+      else if(self._getPath(layer.feature.properties,propName))
+      {
+        loc = layer.getLatLng();
+        loc.layer = layer;
+        retRecords[ self._getPath(layer.feature.properties,propName) ] = loc;
+      }
+      else {
+        //throw new Error("propertyName '"+propName+"' not found in marker"); 
+        console.warn("propertyName '"+propName+"' not found in marker"); 
+      }
+    }
+    else if(layer instanceof L.Path || layer instanceof L.Polyline || layer instanceof L.Polygon)
+    {
+      if(self._getPath(layer.options,propName))
+      {
+        loc = layer.getBounds().getCenter();
+        loc.layer = layer;
+        retRecords[ self._getPath(layer.options,propName) ] = loc;
+      }
+      else if(self._getPath(layer.feature.properties,propName))
+      {
+        loc = layer.getBounds().getCenter();
+        loc.layer = layer;
+        retRecords[ self._getPath(layer.feature.properties,propName) ] = loc;
+      }
+      else {
+        //throw new Error("propertyName '"+propName+"' not found in shape"); 
+        console.warn("propertyName '"+propName+"' not found in shape"); 
+      }
+    }
+    else if(layer.hasOwnProperty('feature'))//GeoJSON
+    {
+      if(layer.feature.properties.hasOwnProperty(propName))
+      {
+        if(layer.getLatLng && typeof layer.getLatLng === 'function') {
+          loc = layer.getLatLng();
+          loc.layer = layer;			
+          retRecords[ layer.feature.properties[propName] ] = loc;
+        } else if(layer.getBounds && typeof layer.getBounds === 'function') {
+          loc = layer.getBounds().getCenter();
+          loc.layer = layer;			
+          retRecords[ layer.feature.properties[propName] ] = loc;
+        } else {
+          console.warn("Unknown type of Layer");
+        }
+      }
+      else {
+        //throw new Error("propertyName '"+propName+"' not found in feature");
+        console.warn("propertyName '"+propName+"' not found in feature"); 
+      }
+    }
+    else if(layer instanceof L.LayerGroup)
+    {
+      layer.eachLayer(function (layer) {
+        self._searchInLayer(layer, retRecords, propName);
+      });
+    }
+  },
+	
+	_recordsFromLayer: function() {	//return table: key,value from layer
+		var self = this,
+			retRecords = {},
+			propName = this.options.propertyName;
+		
+		this._layer.eachLayer(function (layer) {
+			self._searchInLayer(layer, retRecords, propName);
+		});
+		
+		return retRecords;
+	},
+	
+	_autoType: function() {
+		
+		//TODO implements autype without selection(useful for mobile device)
+		
+		var start = this._input.value.length,
+			firstRecord = this._tooltip.firstChild ? this._tooltip.firstChild._text : '',
+			end = firstRecord.length;
+
+		if (firstRecord.indexOf(this._input.value) === 0) { // If prefix match
+			this._input.value = firstRecord;
+			this._handleAutoresize();
+
+			if (this._input.createTextRange) {
+				var selRange = this._input.createTextRange();
+				selRange.collapse(true);
+				selRange.moveStart('character', start);
+				selRange.moveEnd('character', end);
+				selRange.select();
+			}
+			else if(this._input.setSelectionRange) {
+				this._input.setSelectionRange(start, end);
+			}
+			else if(this._input.selectionStart) {
+				this._input.selectionStart = start;
+				this._input.selectionEnd = end;
+			}
+		}
+	},
+
+	_hideAutoType: function() {	// deselect text:
+
+		var sel;
+		if ((sel = this._input.selection) && sel.empty) {
+			sel.empty();
+		}
+		else if (this._input.createTextRange) {
+			sel = this._input.createTextRange();
+			sel.collapse(true);
+			var end = this._input.value.length;
+			sel.moveStart('character', end);
+			sel.moveEnd('character', end);
+			sel.select();
+		}
+		else {
+			if (this._input.getSelection) {
+				this._input.getSelection().removeAllRanges();
+			}
+			this._input.selectionStart = this._input.selectionEnd;
+		}
+	},
+	
+	_handleKeypress: function (e) {	//run _input keyup event
+		var self = this;
+
+		switch(e.keyCode)
+		{
+			case 27://Esc
+				this.collapse();
+			break;
+			case 13://Enter
+				if(this._countertips == 1 || (this.options.firstTipSubmit && this._countertips > 0)) {
+          			if(this._tooltip.currentSelection == -1) {
+						this._handleArrowSelect(1);
+          			}
+				}
+				this._handleSubmit();	//do search
+			break;
+			case 38://Up
+				this._handleArrowSelect(-1);
+			break;
+			case 40://Down
+				this._handleArrowSelect(1);
+			break;
+			case  8://Backspace
+			case 45://Insert
+			case 46://Delete
+				this._autoTypeTmp = false;//disable temporarily autoType
+			break;
+			case 37://Left
+			case 39://Right
+			case 16://Shift
+			case 17://Ctrl
+			case 35://End
+			case 36://Home
+			break;
+			default://All keys
+				if(this._input.value.length)
+					this._cancel.style.display = 'block';
+				else
+					this._cancel.style.display = 'none';
+
+				if(this._input.value.length >= this.options.minLength)
+				{
+					clearTimeout(this.timerKeypress);	//cancel last search request while type in				
+					this.timerKeypress = setTimeout(function() {	//delay before request, for limit jsonp/ajax request
+
+						self._fillRecordsCache();
+					
+					}, this.options.delayType);
+				}
+				else
+					this._hideTooltip();
+		}
+
+		this._handleAutoresize();
+	},
+
+	searchText: function(text) {
+		var code = text.charCodeAt(text.length);
+
+		this._input.value = text;
+
+		this._input.style.display = 'block';
+		L.DomUtil.addClass(this._container, 'search-exp');
+
+		this._autoTypeTmp = false;
+
+		this._handleKeypress({keyCode: code});
+	},
+	
+	_fillRecordsCache: function() {
+
+		var self = this,
+			inputText = this._input.value, records;
+
+		if(this._curReq && this._curReq.abort)
+			this._curReq.abort();
+		//abort previous requests
+
+		L.DomUtil.addClass(this._container, 'search-load');	
+
+		if(this.options.layer)
+		{
+			//TODO _recordsFromLayer must return array of objects, formatted from _formatData
+			this._recordsCache = this._recordsFromLayer();
+			
+			records = this._filterData( this._input.value, this._recordsCache );
+
+			this.showTooltip( records );
+
+			L.DomUtil.removeClass(this._container, 'search-load');
+		}
+		else
+		{
+			if(this.options.sourceData)
+				this._retrieveData = this.options.sourceData;
+
+			else if(this.options.url)	//jsonp or ajax
+				this._retrieveData = this.options.jsonpParam ? this._recordsFromJsonp : this._recordsFromAjax;
+
+			this._curReq = this._retrieveData.call(this, inputText, function(data) {
+				
+				self._recordsCache = self._formatData.call(self, data);
+
+				//TODO refact!
+				if(self.options.sourceData)
+					records = self._filterData( self._input.value, self._recordsCache );
+				else
+					records = self._recordsCache;
+
+				self.showTooltip( records );
+ 
+				L.DomUtil.removeClass(self._container, 'search-load');
+			});
+		}
+	},
+	
+	_handleAutoresize: function() {
+	    var maxWidth;
+
+		if (this._input.style.maxWidth !== this._map._container.offsetWidth) {
+			maxWidth = this._map._container.clientWidth;
+
+			// other side margin + padding + width border + width search-button + width search-cancel
+			maxWidth -= 10 + 20 + 1 + 30 + 22; 
+
+			this._input.style.maxWidth = maxWidth.toString() + 'px';
+		}
+
+		if (this.options.autoResize && (this._container.offsetWidth + 20 < this._map._container.offsetWidth)) {
+			this._input.size = this._input.value.length < this._inputMinSize ? this._inputMinSize : this._input.value.length;
+		}
+	},
+
+	_handleArrowSelect: function(velocity) {
+	
+		var searchTips = this._tooltip.hasChildNodes() ? this._tooltip.childNodes : [];
+			
+		for (i=0; i<searchTips.length; i++)
+			L.DomUtil.removeClass(searchTips[i], 'search-tip-select');
+		
+		if ((velocity == 1 ) && (this._tooltip.currentSelection >= (searchTips.length - 1))) {// If at end of list.
+			L.DomUtil.addClass(searchTips[this._tooltip.currentSelection], 'search-tip-select');
+		}
+		else if ((velocity == -1 ) && (this._tooltip.currentSelection <= 0)) { // Going back up to the search box.
+			this._tooltip.currentSelection = -1;
+		}
+		else if (this._tooltip.style.display != 'none') {
+			this._tooltip.currentSelection += velocity;
+			
+			L.DomUtil.addClass(searchTips[this._tooltip.currentSelection], 'search-tip-select');
+			
+			this._input.value = searchTips[this._tooltip.currentSelection]._text;
+
+			// scroll:
+			var tipOffsetTop = searchTips[this._tooltip.currentSelection].offsetTop;
+			
+			if (tipOffsetTop + searchTips[this._tooltip.currentSelection].clientHeight >= this._tooltip.scrollTop + this._tooltip.clientHeight) {
+				this._tooltip.scrollTop = tipOffsetTop - this._tooltip.clientHeight + searchTips[this._tooltip.currentSelection].clientHeight;
+			}
+			else if (tipOffsetTop <= this._tooltip.scrollTop) {
+				this._tooltip.scrollTop = tipOffsetTop;
+			}
+		}
+	},
+
+	_handleSubmit: function() {	//button and tooltip click and enter submit
+
+		this._hideAutoType();
+		
+		this.hideAlert();
+		this._hideTooltip();
+
+		if(this._input.style.display == 'none')	//on first click show _input only
+			this.expand();
+		else
+		{
+			if(this._input.value === '')	//hide _input only
+				this.collapse();
+			else
+			{
+				var loc = this._getLocation(this._input.value);
+				
+				if(loc===false)
+					this.showAlert();
+				else
+				{
+					this.showLocation(loc, this._input.value);
+					this.fire('search:locationfound', {
+							latlng: loc,
+							text: this._input.value,
+							layer: loc.layer ? loc.layer : null
+						});
+				}
+			}
+		}
+	},
+
+	_getLocation: function(key) {	//extract latlng from _recordsCache
+
+		if( this._recordsCache.hasOwnProperty(key) )
+			return this._recordsCache[key];//then after use .loc attribute
+		else
+			return false;
+	},
+
+	_defaultMoveToLocation: function(latlng, title, map) {
+		if(this.options.zoom)
+ 			this._map.setView(latlng, this.options.zoom);
+ 		else
+			this._map.panTo(latlng);
+	},
+
+	showLocation: function(latlng, title) {	//set location on map from _recordsCache
+		var self = this;
+
+		self._map.once('moveend zoomend', function(e) {
+
+			if(self._markerSearch) {
+				self._markerSearch.addTo(self._map).setLatLng(latlng);
+			}
+			
+		});
+
+		self._moveToLocation(latlng, title, self._map);
+		//FIXME autoCollapse option hide self._markerSearch before visualized!!
+		if(self.options.autoCollapse)
+			self.collapse();
+
+		return self;
+	}
+});
+
+L.Control.Search.Marker = L.Marker.extend({
+
+	includes: L.version[0]==='1' ? L.Evented.prototype : L.Mixin.Events,
+	
+	options: {
+		icon: new L.Icon.Default(),
+		animate: true,
+		circle: {
+			radius: 10,
+			weight: 3,
+			color: '#e03',
+			stroke: true,
+			fill: false
+		}
+	},
+	
+	initialize: function (latlng, options) {
+		L.setOptions(this, options);
+
+		if(options.icon === true)
+			options.icon = new L.Icon.Default();
+
+		L.Marker.prototype.initialize.call(this, latlng, options);
+		
+		if( L.Control.Search.prototype._isObject(this.options.circle) )
+			this._circleLoc = new L.CircleMarker(latlng, this.options.circle);
+	},
+
+	onAdd: function (map) {
+		L.Marker.prototype.onAdd.call(this, map);
+		if(this._circleLoc) {
+			map.addLayer(this._circleLoc);
+			if(this.options.animate)
+				this.animate();
+		}
+	},
+
+	onRemove: function (map) {
+		L.Marker.prototype.onRemove.call(this, map);
+		if(this._circleLoc)
+			map.removeLayer(this._circleLoc);
+	},
+	
+	setLatLng: function (latlng) {
+		L.Marker.prototype.setLatLng.call(this, latlng);
+		if(this._circleLoc)
+			this._circleLoc.setLatLng(latlng);
+		return this;
+	},
+	
+	_initIcon: function () {
+		if(this.options.icon)
+			L.Marker.prototype._initIcon.call(this);
+	},
+
+	_removeIcon: function () {
+		if(this.options.icon)
+			L.Marker.prototype._removeIcon.call(this);
+	},
+
+	animate: function() {
+	//TODO refact animate() more smooth! like this: http://goo.gl/DDlRs
+		if(this._circleLoc)
+		{
+			var circle = this._circleLoc,
+				tInt = 200,	//time interval
+				ss = 5,	//frames
+				mr = parseInt(circle._radius/ss),
+				oldrad = this.options.circle.radius,
+				newrad = circle._radius * 2,
+				acc = 0;
+
+			circle._timerAnimLoc = setInterval(function() {
+				acc += 0.5;
+				mr += acc;	//adding acceleration
+				newrad -= mr;
+				
+				circle.setRadius(newrad);
+
+				if(newrad<oldrad)
+				{
+					clearInterval(circle._timerAnimLoc);
+					circle.setRadius(oldrad);//reset radius
+					//if(typeof afterAnimCall == 'function')
+						//afterAnimCall();
+						//TODO use create event 'animateEnd' in L.Control.Search.Marker 
+				}
+			}, tInt);
+		}
+		
+		return this;
+	}
+});
+
+L.Map.addInitHook(function () {
+    if (this.options.searchControl) {
+        this.searchControl = L.control.search(this.options.searchControl);
+        this.addControl(this.searchControl);
+    }
+});
+
+L.control.search = function (options) {
+    return new L.Control.Search(options);
+};
+
+return L.Control.Search;
+
+});
+
+
