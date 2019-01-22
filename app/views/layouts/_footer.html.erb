@@ -3,7 +3,11 @@
       <div class="container">
         <span class="text-muted">
           <%= link_to I18n.t(:agroecology_is_free_software), "https://gitlab.com/ITBio3/agroecologia", :target => "_blank" %>
-          <span class="contact">contato@mapadaagroecologia.org</span>
+          <span class="contact"><b>Contatos: </b>
+            <%= link_to image_tag("mail.png"), "mailto:contato@mapadaagroecologia.org", :target => "_blank" %>
+            &nbsp;
+            <%= link_to image_tag("diaspora.png"), "https://diaspora.libertais.org/u/mapadaagroecologia", :target => "_blank" %>
+          </span>
         </span>
       </div>
     </footer>
