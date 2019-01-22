@@ -11,7 +11,8 @@ class Blog < ApplicationRecord
   acts_as_taggable
 
   protected
-    def should_generate_new_friendly_id?
-      titulo_changed?
-    end
+
+  def should_generate_new_friendly_id?
+    titulo_changed?
+  end
 end

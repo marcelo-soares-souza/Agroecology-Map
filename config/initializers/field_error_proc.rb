@@ -11,5 +11,3 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     html_tag.insert html_tag.index(">"), ' class="error"'
   end
 end
-
-

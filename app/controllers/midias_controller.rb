@@ -33,7 +33,7 @@ class MidiasController < ApplicationController
   def create
     @midia = Midia.new(midia_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @midia.usuario_id = current_usuario.id
     end
 
@@ -92,21 +92,22 @@ class MidiasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_midia
-      @midia = Midia.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def midia_params
-      params.require(:midia).permit(:descricao, :slug, :saf_id, :experiencia_agroecologica_id, :imagem, :usuario_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_midia
+    @midia = Midia.friendly.find(params[:id])
+  end
 
-    def load_dados
-      if params[:saf_id]
-        @saf = Saf.friendly.find(params[:saf_id])
-      elsif params[:experiencia_agroecologica_id]
-        @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
-      end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def midia_params
+    params.require(:midia).permit(:descricao, :slug, :saf_id, :experiencia_agroecologica_id, :imagem, :usuario_id)
+  end
+
+  def load_dados
+    if params[:saf_id]
+      @saf = Saf.friendly.find(params[:saf_id])
+    elsif params[:experiencia_agroecologica_id]
+      @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
     end
+  end
 end

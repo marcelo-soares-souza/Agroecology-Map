@@ -10,15 +10,15 @@ class ComentariosController < ApplicationController
     @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
     @comentario.experiencia_agroecologica_id = @experiencia_agroecologica.id
 
-    #if ! current_usuario.admin?
-      @comentario.usuario_id = current_usuario.id
-    #end
+    # if ! current_usuario.admin?
+    @comentario.usuario_id = current_usuario.id
+    # end
 
     respond_to do |format|
       if @comentario.save
         format.html { redirect_to @experiencia_agroecologica, notice: 'Comentário foi registrado.' }
       else
-        format.html { redirect_to  @experiencia_agroecologica, notice: 'Não foi possível registrar o comentário' }
+        format.html { redirect_to @experiencia_agroecologica, notice: 'Não foi possível registrar o comentário' }
       end
     end
   end
@@ -36,13 +36,14 @@ class ComentariosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comentario
-      @comentario = Comentario.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def comentario_params
-      params.require(:comentario).permit(:texto, :slug, :usuario_id, :experiencia_agroecologica_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comentario
+    @comentario = Comentario.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def comentario_params
+    params.require(:comentario).permit(:texto, :slug, :usuario_id, :experiencia_agroecologica_id)
+  end
 end

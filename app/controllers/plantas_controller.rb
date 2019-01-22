@@ -28,7 +28,7 @@ class PlantasController < ApplicationController
   def create
     @planta = Planta.new(planta_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @planta.usuario_id = current_usuario.id
     end
 
@@ -68,13 +68,14 @@ class PlantasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_planta
-      @planta = Planta.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def planta_params
-      params.require(:planta).permit(:nome, :slug, :nome_cientifico, :observacao, :usuario_id, :imagem)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_planta
+    @planta = Planta.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def planta_params
+    params.require(:planta).permit(:nome, :slug, :nome_cientifico, :observacao, :usuario_id, :imagem)
+  end
 end

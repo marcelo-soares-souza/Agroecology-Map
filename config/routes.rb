@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :locais do
     resources :experiencia_agroecologicas
-    resources :safs 
+    resources :safs
     resources :blogs, :path => "blog"
   end
 

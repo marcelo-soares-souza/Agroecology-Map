@@ -29,7 +29,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @blog.usuario_id = current_usuario.id
     end
 
@@ -72,17 +72,18 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(:titulo, :slug, :texto, :local_id, :usuario_id, :tag_list)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog = Blog.friendly.find(params[:id])
+  end
 
-    def load_dados
-      @local = Local.friendly.find(params[:local_id])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def blog_params
+    params.require(:blog).permit(:titulo, :slug, :texto, :local_id, :usuario_id, :tag_list)
+  end
+
+  def load_dados
+    @local = Local.friendly.find(params[:local_id])
+  end
 end

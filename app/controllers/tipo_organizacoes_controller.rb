@@ -29,7 +29,7 @@ class TipoOrganizacoesController < ApplicationController
   def create
     @tipo_organizacao = TipoOrganizacao.new(tipo_organizacao_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @tipo_organizacao.usuario_id = current_usuario.id
     end
 
@@ -69,13 +69,14 @@ class TipoOrganizacoesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tipo_organizacao
-      @tipo_organizacao = TipoOrganizacao.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tipo_organizacao_params
-      params.require(:tipo_organizacao).permit(:nome, :slug, :usuario_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tipo_organizacao
+    @tipo_organizacao = TipoOrganizacao.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tipo_organizacao_params
+    params.require(:tipo_organizacao).permit(:nome, :slug, :usuario_id)
+  end
 end

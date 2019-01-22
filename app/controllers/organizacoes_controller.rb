@@ -32,7 +32,7 @@ class OrganizacoesController < ApplicationController
   def create
     @organizacao = Organizacao.new(organizacao_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @organizacao.usuario_id = current_usuario.id
     end
 
@@ -72,17 +72,18 @@ class OrganizacoesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_organizacao
-      @organizacao = Organizacao.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def organizacao_params
-      params.require(:organizacao).permit(:nome, :slug, :sigla, :tipo_organizacao_id, :email, :telefone, :site, :descricao, :cidade, :uf, :pais, :latitude, :longitude, :observacao, :usuario_id, local_ids: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_organizacao
+    @organizacao = Organizacao.friendly.find(params[:id])
+  end
 
-    def load_tipo_organizacoes
-      @tipo_organizacoes = TipoOrganizacao.all
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def organizacao_params
+    params.require(:organizacao).permit(:nome, :slug, :sigla, :tipo_organizacao_id, :email, :telefone, :site, :descricao, :cidade, :uf, :pais, :latitude, :longitude, :observacao, :usuario_id, local_ids: [])
+  end
+
+  def load_tipo_organizacoes
+    @tipo_organizacoes = TipoOrganizacao.all
+  end
 end

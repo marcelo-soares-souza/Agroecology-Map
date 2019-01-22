@@ -36,7 +36,7 @@ class ExperienciaAgroecologicasController < ApplicationController
   def create
     @experiencia_agroecologica = ExperienciaAgroecologica.new(experiencia_agroecologica_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @experiencia_agroecologica.usuario_id = current_usuario.id
     end
 
@@ -76,23 +76,24 @@ class ExperienciaAgroecologicasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_experiencia_agroecologica
-      @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def experiencia_agroecologica_params
-      params.require(:experiencia_agroecologica).permit(:nome, :slug, :usuario_id, :local_id, :tema_experiencia_agroecologica_id, :resumo, :observacao)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_experiencia_agroecologica
+    @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:id])
+  end
 
-    def load_tema_experiencia_agroecologicas
-      @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def experiencia_agroecologica_params
+    params.require(:experiencia_agroecologica).permit(:nome, :slug, :usuario_id, :local_id, :tema_experiencia_agroecologica_id, :resumo, :observacao)
+  end
 
-    def load_local
-      if params[:local_id]
-        @local = Local.friendly.find(params[:local_id])
-      end
+  def load_tema_experiencia_agroecologicas
+    @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
+  end
+
+  def load_local
+    if params[:local_id]
+      @local = Local.friendly.find(params[:local_id])
     end
+  end
 end

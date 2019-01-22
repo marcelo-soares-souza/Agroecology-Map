@@ -13,15 +13,16 @@ class Planta < ApplicationRecord
   validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
 
   protected
-    def slug_candidates
-      [
-        :nome,
-        [:nome, :nome_cientifico],
-        [:nome, :nome_cientifico, :id]
-      ]
-    end
 
-    def should_generate_new_friendly_id?
-      nome_changed?
-    end
+  def slug_candidates
+    [
+      :nome,
+      [:nome, :nome_cientifico],
+      [:nome, :nome_cientifico, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    nome_changed?
+  end
 end

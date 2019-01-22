@@ -38,7 +38,7 @@ class LocaisController < ApplicationController
   def create
     @local = Local.new(local_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @local.usuario_id = current_usuario.id
     end
 
@@ -78,40 +78,39 @@ class LocaisController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_local
-      @local = Local.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def local_params
-      params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo, :hospedagem, :usuario_ids => [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_local
+    @local = Local.friendly.find(params[:id])
+  end
 
-    def load_tipos
-      @tipos = { "Assentamento" => "Assentamento",
-                 "Propriedade Coletiva" => "Propriedade Coletiva",
-                 "Propriedade Pública (Governo)" => "Propriedade Pública (Governo)",
-                 "Propriedade Privada" => "Propriedade Privada",
-                 "Familiar" => "Familiar",
-                 "Outro" => "Outro"
-               }
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def local_params
+    params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo, :hospedagem, :usuario_ids => [])
+  end
 
-    def load_hospedagens
-      @hospedagens = { "Mediante a Consulta" => "Mediante a Consulta",
-                       "Sim" => "Sim",
-                       "Não" => "Não"
-                     }
-    end
+  def load_tipos
+    @tipos = { "Assentamento" => "Assentamento",
+               "Propriedade Coletiva" => "Propriedade Coletiva",
+               "Propriedade Pública (Governo)" => "Propriedade Pública (Governo)",
+               "Propriedade Privada" => "Propriedade Privada",
+               "Familiar" => "Familiar",
+               "Outro" => "Outro" }
+  end
 
-    def load_colaboradores
-      @usuarios = Usuario.all
-    end
+  def load_hospedagens
+    @hospedagens = { "Mediante a Consulta" => "Mediante a Consulta",
+                     "Sim" => "Sim",
+                     "Não" => "Não" }
+  end
 
-    def load_usuario
-      if params[:usuario_id]
-        @usuario = Usuario.friendly.find(params[:usuario_id])
-      end
+  def load_colaboradores
+    @usuarios = Usuario.all
+  end
+
+  def load_usuario
+    if params[:usuario_id]
+      @usuario = Usuario.friendly.find(params[:usuario_id])
     end
+  end
 end

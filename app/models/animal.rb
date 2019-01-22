@@ -13,7 +13,8 @@ class Animal < ApplicationRecord
   validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
 
   protected
-    def should_generate_new_friendly_id?
-      nome_changed?
-    end
+
+  def should_generate_new_friendly_id?
+    nome_changed?
+  end
 end

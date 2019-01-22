@@ -39,7 +39,7 @@ class SafsController < ApplicationController
   def create
     @saf = Saf.new(saf_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @saf.usuario_id = current_usuario.id
     end
 
@@ -79,24 +79,25 @@ class SafsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_saf
-      @saf = Saf.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def saf_params
-      params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id, :usuario_id, :observacao, planta_ids: [], animal_ids: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_saf
+    @saf = Saf.friendly.find(params[:id])
+  end
 
-    def load_plantas_animais
-      @plantas = Planta.all
-      @animais = Animal.all
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def saf_params
+    params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id, :usuario_id, :observacao, planta_ids: [], animal_ids: [])
+  end
 
-    def load_local
-      if params[:local_id]
-        @local = Local.friendly.find(params[:local_id])
-      end
+  def load_plantas_animais
+    @plantas = Planta.all
+    @animais = Animal.all
+  end
+
+  def load_local
+    if params[:local_id]
+      @local = Local.friendly.find(params[:local_id])
     end
+  end
 end

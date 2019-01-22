@@ -1,7 +1,7 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, except: [:show, :index]
-  before_action -> { check_owner Usuario.friendly.find(params[:id]).id }, only: [:edit, :update, :destroy] 
+  before_action -> { check_owner Usuario.friendly.find(params[:id]).id }, only: [:edit, :update, :destroy]
 
   def index
     @usuarios = Usuario.all.sort_by(&:updated_at).reverse
@@ -34,11 +34,12 @@ class UsuariosController < ApplicationController
   end
 
   private
-    def set_usuario
-      @usuario = Usuario.friendly.find(params[:id])
-    end
 
-    def usuario_params
-      params.require(:usuario).permit(:id, :email, :nome, :slug, :imagem)
-    end
+  def set_usuario
+    @usuario = Usuario.friendly.find(params[:id])
+  end
+
+  def usuario_params
+    params.require(:usuario).permit(:id, :email, :nome, :slug, :imagem)
+  end
 end

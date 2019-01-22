@@ -28,7 +28,7 @@ class AnimaisController < ApplicationController
   def create
     @animal = Animal.new(animal_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @animal.usuario_id = current_usuario.id
     end
 
@@ -68,13 +68,14 @@ class AnimaisController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_animal
-      @animal = Animal.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def animal_params
-      params.require(:animal).permit(:nome, :slug, :nome_cientifico, :observacao, :usuario_id, :imagem)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_animal
+    @animal = Animal.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def animal_params
+    params.require(:animal).permit(:nome, :slug, :nome_cientifico, :observacao, :usuario_id, :imagem)
+  end
 end

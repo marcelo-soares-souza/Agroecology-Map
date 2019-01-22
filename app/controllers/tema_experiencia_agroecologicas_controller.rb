@@ -29,7 +29,7 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   def create
     @tema_experiencia_agroecologica = TemaExperienciaAgroecologica.new(tema_experiencia_agroecologica_params)
 
-    if ! current_usuario.admin?
+    if !current_usuario.admin?
       @tema_experiencia_agroecologica.usuario_id = current_usuario.id
     end
 
@@ -69,13 +69,14 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tema_experiencia_agroecologica
-      @tema_experiencia_agroecologica = TemaExperienciaAgroecologica.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tema_experiencia_agroecologica_params
-      params.require(:tema_experiencia_agroecologica).permit(:nome, :slug, :usuario_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tema_experiencia_agroecologica
+    @tema_experiencia_agroecologica = TemaExperienciaAgroecologica.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tema_experiencia_agroecologica_params
+    params.require(:tema_experiencia_agroecologica).permit(:nome, :slug, :usuario_id)
+  end
 end
