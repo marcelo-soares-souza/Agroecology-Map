@@ -16,7 +16,7 @@ pt-BR:
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
     mailer:
       confirmation_instructions:
-        subject: 'Instruções de confirmação Agroecologia ITBio3'
+        subject: 'Instruções de confirmação Mapa da Agroecologia'
       reset_password_instructions:
         subject: 'Instruções de troca de senha'
       unlock_instructions:
