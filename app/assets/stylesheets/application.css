@@ -325,3 +325,7 @@ a:focus, a:hover {
     opacity: 0.8; 
     bottom: -0.3em
 }
+
+.contact {
+  float: right;
+}
