@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: 40e8812d7598c5eeba72cdcebd17ac7e3d24a66b
+  revision: 369ba267efaa10d01c8dba59b09c3b94dd9e5551
   specs:
     devise (4.5.0)
       bcrypt (~> 3.0)
@@ -75,6 +75,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    dalli (2.7.9)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
@@ -83,7 +84,7 @@ GEM
     ffi (1.10.0-x86-mingw32)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    geocoder (1.5.0)
+    geocoder (1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.5.3)
@@ -227,6 +228,7 @@ DEPENDENCIES
   acts-as-taggable-on
   ckeditor
   coffee-rails (~> 4.2)
+  dalli
   devise!
   friendly_id
   geocoder
@@ -244,4 +246,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.3
+   1.17.3

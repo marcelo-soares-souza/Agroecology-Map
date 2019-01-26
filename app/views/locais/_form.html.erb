@@ -84,7 +84,10 @@
 
   <script>
     $( document ).ready(function() {
-      <% if params[:action] != 'new' %>
+      <% if params[:action] == 'new' %>
+        lat = -15.77835833463309;
+        lon = -47.88219451904297;
+      <% elsif params[:action] != 'new' %>
         <% if f.object.latitude? %>
           lat = <%= f.object.latitude %>;
         <% else %>
