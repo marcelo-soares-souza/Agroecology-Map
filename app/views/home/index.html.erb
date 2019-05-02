@@ -42,11 +42,11 @@
       var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
 
       // OverLay Maps
-      var ti = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_terra_indigena_a', format: 'image/png', transparent: true });
-      var ar = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_assentamento_rural_a', format: 'image/png', transparent: true });
-      var uc = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 });
-      var quilombos = L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 });
-      var biomas =  L.tileLayer.wms('http://cmr.funai.gov.br/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
+      var ti = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_terra_indigena_a', format: 'image/png', transparent: true });
+      var ar = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_assentamento_rural_a', format: 'image/png', transparent: true });
+      var uc = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?',        { layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a', format: 'image/png', transparent: true, opacity: 0.5 });
+      var quilombos = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', { layers: 'CMR-PUBLICO:lim_quilombolas_a', format: 'image/png', transparent: true, opacity: 0.5 });
+      var biomas =  L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
       consumoresponsavel = loadConsumoResponsavel();
       idec = loadIDEC();
 
