@@ -26,7 +26,7 @@ function loadConsumoResponsavel() {
   }
 
 
-  $.getJSON("https://consumoresponsavel.mapadaagroecologia.org/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
+  $.getJSON("https://dtygel.vps2.eita.org.br/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
     $.each(data, function(category, items) { consumoresponsavel.addLayer(L.geoJson(items.features, { pointToLayer: function (feature, latlng) { return L.marker (latlng, { icon: Icon }) } , 
                                                                                                    onEachFeature: onEachFeature }));});
   });

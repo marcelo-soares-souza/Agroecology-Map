@@ -14,6 +14,11 @@
  *= require_self
  */
 
+#locale {
+  font-size: 0.75rem;
+  height: 32px;
+}
+
 .dropdown-toggle.btn-default {
   color: #292b2c;
   background-color: #fff;
@@ -62,7 +67,7 @@
     
 html {
   position: relative;
-  min-height: 100%;
+  min-height: 90%;
 }
 
 body {
@@ -71,11 +76,12 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 14px;
   line-height: 18px;
-
-  margin-bottom: 60px;
+/*
+  margin-bottom: 50px;
   background: url(background.png) no-repeat;
   background-attachment: scroll;
   background-position: 99% bottom;
+*/
 }
 
 @media all and (max-width:768px){

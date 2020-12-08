@@ -1,5 +1,5 @@
       <% if @locais %>
-        var markers = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
+        var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15 });
         var controlSearch = new L.Control.Search({ layer: markers, initial: false, zoom: 12, position: 'topleft', textPlaceholder: 'Buscar Iniciativa Agroecológica' });
 
         var Icon = L.icon({

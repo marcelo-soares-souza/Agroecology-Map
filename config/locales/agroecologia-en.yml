@@ -30,7 +30,7 @@ en:
   manual: "Manual"
   register: "Register"
   password: "Password"
-  agroecology_is_free_software: "Agroecology Map is a Free Software"
+  agroecology_is_free_software: "Soure Code"
   submit_comment: "Submit Comment"
   location:
     list: "List of Locations"

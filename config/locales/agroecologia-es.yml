@@ -30,7 +30,7 @@ es:
   manual: "Manual"
   register: "Suscribirse"
   password: "Contraseña"
-  agroecology_is_free_software: "Mapa da Agroecologia es un software libre"
+  agroecology_is_free_software: "Código-Fonte"
   submit_comment: "Enviar Comentário"
   location:
     list: "Lista de Localizacións"

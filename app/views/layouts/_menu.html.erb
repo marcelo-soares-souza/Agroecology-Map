@@ -35,19 +35,20 @@
               <%= link_to("Animais", animais_path, :class => "nav-link") %>
             </div>
           </li>
-
+<!--
           <li class="nav-item">
             <%= link_to(I18n.t(:organizations), organizacoes_path, :class => "nav-link") %>
           </li>
+-->
 
           <li class="nav-item">
             <%= link_to(I18n.t(:contributors), usuarios_path, :class => "nav-link") %>
           </li>
-
+<!--
           <li class="nav-item">
             <a href="https://relatosagroecologia2017.itbio3.org/atividades/manual-do-mapa/" class="nav-link" target="_blank" alt="Manual"><%= I18n.t(:manual) %></a>
           </li>
-
+-->
           <% if current_usuario %>
             <% if current_usuario.admin? %>
             <li class="nav-item dropdown">
@@ -71,21 +72,22 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to(I18n.t(:login), new_usuario_session_path, :class => "nav-link") %>
+              <strong><%= link_to(I18n.t(:login), new_usuario_session_path, :class => "nav-link") %></strong>
             </li>
             <li>
               <strong><%= link_to I18n.t(:register), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
             </li>
           <% end %>
-          <!--
-            <li>
+            <li class="nav-item">
+<!--
+              <a href="https://www.catarse.me/mapa_da_agroecologia_saberes_e_praticas" target="_blank" class="nav-link" style="color: #FFA500; font-weight: bold;">Apoie-nos</a>
+-->
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="SQPPBZNLB5NJ6">
                 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!" style="margin-top: 6px; margin-right: 6px;">
               </form>
             </li>
-          -->
           <ul class="nav navbar-nav navbar-right">
             <li>
               <select id="locale" onchange="if (this.value) window.location.href='/?locale=' + this.value" class="form-control">
