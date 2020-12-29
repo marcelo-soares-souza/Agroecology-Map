@@ -24,10 +24,6 @@
 
       L.control.zoom({position:'topright'}).addTo(map);
 
-      // var logo = L.control({position: 'bottomleft'});
-      // logo.onAdd = function(map) { var div = L.DomUtil.create('div', 'myclass'); div.innerHTML= "<img src='<%= image_url "itbio3-small.png" %>'/>"; return div;};
-      // logo.addTo(map);
-
       var osmGeocoder = new L.Control.OSMGeocoder({ placeholder: 'Buscar por Endereço (Logradouro, Cidade, Estado e/ou País)' });
 
       map.addControl(osmGeocoder);
@@ -37,7 +33,7 @@
     $( window ).on('load', function() {
       // Base Maps
       var osm    = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://gitlab.com/MapaDaAgroecologia/agroecologia">Mapa da Agroecologia</a> | OpenStreetMap', maxZoom: 18,}).addTo(map);
-      var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: '<a href="https://itbio3.org">ITBio3</a> | Mapa da Agroecologia | MapBox', maxZoom: 18,});
+      var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: 'Mapa da Agroecologia | MapBox', maxZoom: 18,});
 
       var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
 
