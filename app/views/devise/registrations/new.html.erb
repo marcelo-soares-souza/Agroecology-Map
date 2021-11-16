@@ -1,6 +1,8 @@
 <h2>Cadastrar</h2>
 <br/>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= invisible_captcha %>
+
   <%= devise_error_messages! %>
 
   <div class="form-group row">
@@ -38,3 +40,4 @@
 <% end %>
 <br/>
 <%= render "devise/shared/links" %>
+

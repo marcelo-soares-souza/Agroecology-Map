@@ -1,4 +1,5 @@
 class UsuariosController < ApplicationController
+  invisible_captcha only: [:create, :update]
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_usuario!, except: [:show, :index]
   before_action -> { check_owner Usuario.friendly.find(params[:id]).id }, only: [:edit, :update, :destroy]

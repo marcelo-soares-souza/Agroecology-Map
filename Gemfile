@@ -30,3 +30,5 @@ gem 'geocoder'
 gem 'ckeditor'
 gem 'acts-as-taggable-on'
 gem 'dalli'
+gem 'invisible_captcha'
+
