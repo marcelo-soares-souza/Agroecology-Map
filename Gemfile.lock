@@ -57,7 +57,6 @@ GEM
       activerecord (>= 5.0, < 6.2)
     arel (9.0.0)
     bcrypt (3.1.16)
-    bcrypt (3.1.16-java)
     bindex (0.8.1)
     builder (3.2.4)
     ckeditor (5.1.1)
@@ -76,9 +75,6 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.4)
-    ffi (1.15.4-java)
-    ffi (1.15.4-x64-mingw32)
-    ffi (1.15.4-x86-mingw32)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     geocoder (1.7.0)
@@ -109,18 +105,9 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
     minitest (5.14.4)
     nio4r (2.5.8)
-    nio4r (2.5.8-java)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.5-java)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x64-mingw32)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86-mingw32)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     paperclip (6.1.0)
@@ -130,12 +117,9 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.2.3)
-    pg (1.2.3-x64-mingw32)
-    pg (1.2.3-x86-mingw32)
-    puma (3.12.6)
-    puma (3.12.6-java)
+    puma (4.3.10)
+      nio4r (~> 2.0)
     racc (1.6.0)
-    racc (1.6.0-java)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -197,12 +181,9 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     thread_safe (0.3.6)
-    thread_safe (0.3.6-java)
     tilt (2.0.10)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2021.5)
-      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.9)
@@ -214,17 +195,10 @@ GEM
       railties (>= 5.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
-    websocket-driver (0.7.5-java)
-      websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
 
 PLATFORMS
-  java
-  java-unknown
-  ruby
-  x64-mingw32
-  x86-mingw32
-  x86-mswin32
+  x86_64-linux
 
 DEPENDENCIES
   acts-as-taggable-on
@@ -237,10 +211,11 @@ DEPENDENCIES
   invisible_captcha
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  nokogiri (>= 1.12.5)
   paperclip
   pg (~> 1.2.3)
-  puma (~> 3.12)
-  rails (~> 5.2.4.4)
+  puma (~> 4.3.9)
+  rails (~> 5.2.4.6)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

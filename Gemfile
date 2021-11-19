@@ -5,11 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.2.4.4'
+gem 'rails', '~> 5.2.4.6'
 gem 'pg', '~> 1.2.3'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3.9'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 4.1.8'
+gem "nokogiri", ">= 1.12.5"
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
