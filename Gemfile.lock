@@ -214,7 +214,7 @@ DEPENDENCIES
   nokogiri (>= 1.12.5)
   paperclip
   pg (~> 1.2.3)
-  puma (~> 4.3.9)
+  puma (~> 4.3.10)
   rails (~> 5.2.4.6)
   sass-rails (~> 5.0)
   spring
