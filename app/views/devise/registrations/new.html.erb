@@ -1,10 +1,7 @@
 <h2>Cadastrar</h2>
 <br/>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= invisible_captcha %>
-
   <%= devise_error_messages! %>
-
   <div class="form-group row">
     <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
@@ -37,6 +34,7 @@
   <div class="actions">
     <%= f.submit "Cadastrar", class: "btn btn-primary" %>
   </div>
+  <%= invisible_captcha %>
 <% end %>
 <br/>
 <%= render "devise/shared/links" %>

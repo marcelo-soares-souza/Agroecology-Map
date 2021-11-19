@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  invisible_captcha only: [:create, :update]
   protect_from_forgery with: :exception
   before_action :store_user_location!, if: :storable_location?
   before_action :configure_permitted_parameters, if: :devise_controller?
