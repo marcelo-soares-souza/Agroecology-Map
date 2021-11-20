@@ -214,3 +214,6 @@ es:
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     pm: pm
+  name: "Nombre"
+  password: "Contraseña"
+  password_confirm: "Confirme a Contraseña"

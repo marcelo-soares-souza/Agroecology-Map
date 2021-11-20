@@ -19,7 +19,6 @@ pt-BR:
   home_page: "Ínicio"
   blog: "Blog"
   news: "Novidades"
-  location: "Local"
   locations: "Locais"
   experience_in_agroecology: "Experiência"
   experiences_in_agroecology: "Experiências"
@@ -33,5 +32,10 @@ pt-BR:
   agroecology_is_free_software: "Código-Fonte"
   submit_comment: "Enviar Comentário"
   location:
+    data: "Local"
     list: "Listar de Locais"
     register_new_location: "Registrar Novo Local"
+  experience: "Experiencia"
+  experiences: "Experiencias"
+  type: "Tipo"
+  types: "Tipos"

@@ -1,4 +1,4 @@
-<h2>Cadastrar</h2>
+<h2><%= I18n.t(:register) %></h2>
 <br/>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -10,21 +10,21 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label "Nome Completo", class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label I18n.t(:name), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.text_field :nome, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label "Senha", class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label I18n.t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label "Confirme a Senha", class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label I18n.t(:password_confirm), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
     </div>
@@ -32,7 +32,7 @@
 
   <br/>
   <div class="actions">
-    <%= f.submit "Cadastrar", class: "btn btn-primary" %>
+    <%= f.submit I18n.t(:register), class: "btn btn-primary" %>
   </div>
   <%= invisible_captcha %>
 <% end %>

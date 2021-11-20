@@ -19,7 +19,6 @@ en:
   home_page: "Home"
   blog: "Blog"
   news: "News"
-  location: "Location"
   locations: "Locations"
   experience_in_agroecology: "Experience in agroecology"
   experiences_in_agroecology: "Experiences in agroecology"
@@ -33,5 +32,10 @@ en:
   agroecology_is_free_software: "Soure Code"
   submit_comment: "Submit Comment"
   location:
+    data: "Location"
     list: "List of Locations"
     register_new_location: "Register New Location"
+  experience: "Experience"
+  experiences: "Experiences"
+  type: "Type"
+  types: "Types"

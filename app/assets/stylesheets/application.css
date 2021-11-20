@@ -187,6 +187,7 @@ label {
 
 body > .container {
   padding: 1px 0px 0;
+  padding-top: 16px;
 }
 
 .footer > .container {
@@ -338,7 +339,7 @@ a:focus, a:hover {
 
 .navbar {
   padding-left: 8px;
-  padding-bottom: 1.5px;
+  padding-bottom: 2.5px;
 }
 
 .navbar-light .navbar-nav .nav-link {
