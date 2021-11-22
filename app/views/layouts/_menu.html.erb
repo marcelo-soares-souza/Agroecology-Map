@@ -71,6 +71,13 @@
               <strong><%= link_to I18n.t(:register), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
             </li>
           <% end %>
+            <li style="margin-right: 6px;">
+              <select id="locale" onchange="if (this.value) window.location.href='/?locale=' + this.value" class="form-control">
+                <option value="pt-BR">Português</option>
+                <option value="es">Español</option>
+                <option value="en">English</option>
+              </select>
+            </li>
             <li class="nav-item">
               <a href="https://opencollective.com/agroecology-map/contribute" target="_blank">
                 <img style="margin-right: 8px" src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width="190" heigth="30"/>
@@ -79,14 +86,6 @@
           <ul class="nav navbar-nav navbar-right">
             <li style="margin-right: 8px;">
               <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
-            </li>
-
-            <li>
-              <select id="locale" onchange="if (this.value) window.location.href='/?locale=' + this.value" class="form-control">
-                <option value="pt-BR">Português</option>
-                <option value="es">Español</option>
-                <option value="en">English</option>
-              </select>
             </li>
           </ul>
         </ul>

@@ -1,4 +1,5 @@
 en:
+  site: "Agroecology Map"
   site_name: "Mapa da Agroecologia | Saberes e Práticas"
   true_value: "Yes"
   false_value: "No"
@@ -39,3 +40,9 @@ en:
   experiences: "Experiences"
   type: "Type"
   types: "Types"
+  central_theme: "Central Theme"
+  photo: "Photo"
+  photos: "Photos"
+  comment: "Comment"
+  comments: "Comments"
+  register_new_experience: "Register New Experience"

@@ -16,7 +16,8 @@
 
 #locale {
   font-size: 0.75rem;
-  height: 32px;
+  height: 34px;
+  font-weight: bold;
 }
 
 .dropdown-toggle.btn-default {
