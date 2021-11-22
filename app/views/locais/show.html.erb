@@ -1,11 +1,11 @@
 <% title @local.nome %>
 
-<%= link_to "Registrar Novo Local", new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
+<%= link_to I18n.t("location.register_new_location"), new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to "Locais", locais_path, :class => "nav-link" %>
+    <%= link_to I18n.t(:locations), locais_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to @local.nome, local_path(@local.id), :class => "nav-link active" %>
@@ -27,15 +27,15 @@
       <h3><%= @local.nome %></h3>
 
       <br/>
-      <%= "<strong>Tipo:</strong><br/>#{@local.tipo}&nbsp;".html_safe if @local.tipo? %>
-      <%= "<br/><br/><strong>Responsável pela Informação:</strong><br/>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome?%>
-      <%= "<br/><br/><strong>Colaboradores:</strong><br/>#{@local.usuarios.map {|usuario| link_to usuario.nome, usuario_path(usuario)}.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0%>
+      <%= "<strong>#{I18n.t(:type)}:</strong><br/>#{@local.tipo}&nbsp;".html_safe if @local.tipo? %>
+      <%= "<br/><br/><strong>#{I18n.t(:responsible_for_information)}:</strong><br/>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome?%>
+      <%= "<br/><br/><strong>#{I18n.t(:contributors)}:</strong><br/>#{@local.usuarios.map {|usuario| link_to usuario.nome, usuario_path(usuario)}.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0%>
       <%= "<br/><br/><strong>Aceita Hospedar Pessoa/Grupo:</strong><br/>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@local.observacao}&nbsp;".html_safe if @local.observacao?%>
       <%= "<br/><br/><strong>Organizações:</strong><br/>#{@local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @local.organizacoes.count > 0%>
-      <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@local.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @local.experiencia_agroecologicas.count > 0%>
+      <%= "<br/><br/><strong>#{I18n.t(:experiences_in_agroecology)}:</strong><br/>#{@local.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @local.experiencia_agroecologicas.count > 0%>
       <%= "<br/><br/><strong>SAFs:</strong><br/>#{@local.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @local.safs.count > 0%>
-      <%= "<br/><br/><strong>Últimas do Blog:</strong><br/>#{@local.blogs.order(updated_at: :desc).take(10).map {|blog| link_to blog.titulo, local_blog_url(@local, blog)}.join("<br/>").html_safe}&nbsp;".html_safe if @local.blogs.count > 0%>
+      <%= "<br/><br/><strong>Blog:</strong><br/>#{@local.blogs.order(updated_at: :desc).take(10).map {|blog| link_to blog.titulo, local_blog_url(@local, blog)}.join("<br/>").html_safe}&nbsp;".html_safe if @local.blogs.count > 0%>
 
       <% if @local.latitude and @local.longitude %>
         <br/><br/>
