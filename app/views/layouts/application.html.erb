@@ -9,7 +9,7 @@
     <meta name="description" content="Mapa da Agroecologia (Agroecology Map) Saberes e Práticas é uma Plataforma Livre para o Mapeamento de Iniciativas em Agroecologia e de Sistemas Agroflorestais (SAF). #agroecology #agroecologia #agroecologie #agroecologymap.">
     <meta name="author" content="Marcelo Soares Souza <marcelo@agroecologymap.org>">
     <link rel="icon" href="<%= image_url "favicon.ico" %>">
-    <title><%= content_for?(:title) ? I18n.t(:title) : I18n.t(:site_name) %></title>
+    <title><%= content_for?(:title) ? yield(:title) : I18n.t(:site_name) %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>

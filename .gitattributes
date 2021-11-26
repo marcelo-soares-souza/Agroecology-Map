@@ -1,1 +1,5 @@
-app/assets/* linguist-vendored
+app/assets/javascripts/* linguist-vendored
+
+app/* linguist-generated
+app/* linguist-vendored
+tmp/* linguist-vendored
