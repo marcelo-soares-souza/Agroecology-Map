@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def title(*parts)
-    content_for(:title) { (parts << t(:site_name)).join(' | ') } unless parts.empty?
+    content_for(:title) { (parts << I18n.t(:site_name)).join(' | ') } unless parts.empty?
   end
 end
