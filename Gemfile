@@ -7,7 +7,7 @@ end
 
 gem 'rails', '~> 5.2.6'
 gem 'pg', '~> 1.2.3'
-gem 'puma', '~> 4.3.10'
+gem 'puma', '~> 4.3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 4.1.8'
 gem "nokogiri", ">= 1.12.5"
