@@ -20,17 +20,19 @@
       <h3><%= @organizacao.nome %></h3>
 
       <br/>
-      <%= "<strong>Sigla:</strong><br/>#{@organizacao.nome}&nbsp;".html_safe if @organizacao.nome?%>
+      <%= "<strong style='color: red;'>Responsávelo pelo Cadastro da Informação:</strong><br/>#{link_to @organizacao.usuario.nome, usuario_path(@organizacao.usuario)}&nbsp;".html_safe if @organizacao.usuario.nome?%>
+      <%= "<br/><br/><strong>Sigla:</strong><br/>#{@organizacao.nome}&nbsp;".html_safe if @organizacao.nome?%>
       <%= "<br/><br/><strong>Tipo:</strong><br/>#{@organizacao.tipo_organizacao.nome}&nbsp;".html_safe if @organizacao.tipo_organizacao.nome?%>
+      <% if usuario_signed_in? %>
       <%= "<br/><br/><strong>E-Mail:</strong><br/>#{@organizacao.email}&nbsp;".html_safe if @organizacao.email?%>
       <%= "<br/><br/><strong>Telefone:</strong><br/>#{@organizacao.telefone}&nbsp;".html_safe if @organizacao.telefone?%>
+      <% end %>
       <%= "<br/><br/><strong>Site:</strong><br/>#{@organizacao.site}&nbsp;".html_safe if @organizacao.site?%>
       <%= "<br/><br/><strong>Descrição:</strong><br/>#{@organizacao.descricao}&nbsp;".html_safe if @organizacao.descricao?%>
       <%= "<br/><br/><strong>Cidade:</strong><br/>#{@organizacao.cidade}&nbsp;".html_safe if @organizacao.cidade?%>
       <%= "<br/><br/><strong>UF:</strong><br/>#{@organizacao.uf}&nbsp;".html_safe if @organizacao.uf?%>
       <%= "<br/><br/><strong>País:</strong><br/>#{@organizacao.pais}&nbsp;".html_safe if @organizacao.pais?%>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao?%>
-      <%= "<br/><br/><strong>Responsávelo pela Informação:</strong><br/>#{link_to @organizacao.usuario.nome, usuario_path(@organizacao.usuario)}&nbsp;".html_safe if @organizacao.usuario.nome?%>
       <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao?%>
       <%= "<br/><br/><strong>Locais:</strong><br/>#{@organizacao.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.locais.count > 0%>
       <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@organizacao.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.experiencia_agroecologicas.count > 0%>
