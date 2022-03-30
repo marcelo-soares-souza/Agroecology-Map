@@ -116,7 +116,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.2.3)
-    puma (4.3.10)
+    puma (4.3.12)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -213,7 +213,7 @@ DEPENDENCIES
   nokogiri (>= 1.12.5)
   paperclip
   pg (~> 1.2.3)
-  puma (~> 4.3.10)
+  puma (~> 4.3.12)
   rails (~> 5.2.6)
   sass-rails (~> 5.0)
   spring
