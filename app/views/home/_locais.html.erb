@@ -1,6 +1,6 @@
       <% if @locais %>
         var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15 });
-        var controlSearch = new L.Control.Search({ layer: markers, initial: false, zoom: 12, position: 'topleft', textPlaceholder: 'Buscar Iniciativa Agroecológica' });
+        // var controlSearch = new L.Control.Search({ layer: markers, initial: false, zoom: 12, position: 'topleft', textPlaceholder: 'Buscar Iniciativa Agroecológica' });
 
         var Icon = L.icon({
                             iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
@@ -31,5 +31,5 @@
         <% end %>
 
         map.addLayer(markers);
-        map.addControl(controlSearch);
+        // map.addControl(controlSearch);
       <% end %>

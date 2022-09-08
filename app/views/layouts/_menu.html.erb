@@ -15,10 +15,11 @@
             <%= link_to(image_tag("agroecologia-small.png", :width => "96"), root_path, :class => "nav-link", :id => "logo") %>
           </li>
 
+<!--
           <li class="nav-item">
             <%= link_to(I18n.t(:news), novidades_path, :class => "nav-link") %>
           </li>
-
+-->
           <li class="nav-item">
             <%= link_to(I18n.t(:locations), locais_path, :class => "nav-link") %>
           </li>
@@ -35,9 +36,11 @@
               <%= link_to("Animais", animais_path, :class => "nav-link") %>
             </div>
           </li>
+<!--
           <li class="nav-item">
             <%= link_to(I18n.t(:organizations), organizacoes_path, :class => "nav-link") %>
           </li>
+-->
           <li class="nav-item">
             <%= link_to(I18n.t(:contributors), usuarios_path, :class => "nav-link") %>
           </li>
@@ -71,7 +74,7 @@
               <strong><%= link_to I18n.t(:register), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
             </li>
           <% end %>
-            <li style="margin-right: 6px;">
+            <li style="margin-right: 8px; margin-left: 8px;">
               <select id="locale" onchange="if (this.value) window.location.href='/?locale=' + this.value" class="form-control">
                 <option value="pt-BR">Português</option>
                 <option value="es">Español</option>
@@ -80,7 +83,7 @@
             </li>
             <li class="nav-item">
               <a href="https://opencollective.com/agroecology-map/contribute" target="_blank">
-                <img style="margin-right: 8px" src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width="190" heigth="30"/>
+                <img style="margin-right: 10px;" src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width="192" heigth="31"/>
               </a>
             </li>
           <ul class="nav navbar-nav navbar-right">

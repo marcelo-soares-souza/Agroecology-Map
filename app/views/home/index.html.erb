@@ -16,6 +16,9 @@
     lat = -15.77835833463309;
     lon = -47.88219451904297;
 
+    // lat = -5.189952599271305;
+    // lon = -22.200997684206428;
+
     var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], 4);
 
     $( document ).ready(function() {
@@ -50,6 +53,7 @@
       argentina = loadArgentina();
       foei = loadFOEI();
 
+      ti.addTo(map);
       consumoresponsavel.addTo(map);
       idec.addTo(map);
       ppm.addTo(map);
