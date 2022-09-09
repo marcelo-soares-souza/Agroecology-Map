@@ -59,8 +59,6 @@ GEM
     bcrypt (3.1.18)
     bindex (0.8.1)
     builder (3.2.4)
-    ckeditor (5.1.1)
-      orm_adapter (~> 0.5.0)
     climate_control (0.2.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -202,7 +200,6 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  ckeditor
   coffee-rails (~> 4.2)
   dalli
   devise!

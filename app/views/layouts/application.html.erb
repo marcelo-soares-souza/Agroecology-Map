@@ -1,12 +1,10 @@
-<%= javascript_include_tag Ckeditor.cdn_url %>
-
 <!DOCTYPE html>
 <html lang="<%= CONFIG['lang'] %>">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Mapa da Agroecologia (Agroecology Map) Saberes e Práticas é uma Plataforma Livre para o Mapeamento de Iniciativas em Agroecologia e de Sistemas Agroflorestais (SAF). #agroecology #agroecologia #agroecologie #agroecologymap.">
+    <meta name="description" content="<%= I18n.t(:description) %>">
     <meta name="author" content="Marcelo Soares Souza <marcelo@agroecologymap.org>">
     <link rel="icon" href="<%= image_url "favicon.ico" %>">
     <title><%= content_for?(:title) ? yield(:title) : I18n.t(:site_name) %></title>
