@@ -31,6 +31,8 @@
 
       map.addControl(osmGeocoder);
 
+      L.control.polylineMeasure().addTo(map);
+
     });
 
     $( window ).on('load', function() {
