@@ -10,7 +10,7 @@ gem "pg", "~> 1.4.3"
 gem "puma", "~> 4.3.12"
 gem "sass-rails", "~> 5.0.8"
 gem "uglifier", ">= 4.1.20"
-gem "nokogiri", ">= 1.12.5"
+gem "nokogiri", ">= 1.13.8"
 
 gem "coffee-rails", "~> 4.2"
 gem "jbuilder", "~> 2.5"
