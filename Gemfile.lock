@@ -69,7 +69,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    dalli (3.2.0)
+    dalli (3.2.2)
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -103,12 +103,8 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.3)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
-      mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -200,7 +196,6 @@ GEM
     websocket-extensions (0.1.5)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -226,4 +221,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   2.3.21
+   2.3.22
