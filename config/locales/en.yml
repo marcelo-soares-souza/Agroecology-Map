@@ -215,3 +215,8 @@ en:
   name: "Name"
   password: "Password"
   password_confirm: "Confirm Password"
+  registered_locations: "Locations"
+  registered_experiences: "Experiences"
+  sign_in: "Sign In"
+  sign_up: "Sign Up"
+  confirmation_instruction: "Didn't receive confirmation instructions?"

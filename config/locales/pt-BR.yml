@@ -220,3 +220,8 @@ pt-BR:
   name: "Nome"
   password: "Senha"
   password_confirm: "Confirme a senha"
+  registered_locations: "Locais"
+  registered_experiences: "Experiências"
+  sign_in: "Entrar"
+  sign_up: "Cadastrar"
+  confirmation_instruction: "Não recebi as instruções de confirmação?"

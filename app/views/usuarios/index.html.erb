@@ -15,10 +15,10 @@
       <thead>
         <tr>
           <th></th>
-          <th>Nome</th>
+          <th><%= t(:name) %></th>
 <!--          <th>E-Mail</th> -->
-          <th>Locais Cadastrados</th>
-          <th>Experiências Registradas</th>
+          <th><%= t(:registered_locations) %></th>
+          <th><%= t(:registered_experiences) %></th>
           <% if usuario_signed_in? %><th class="list-control"></th> <% if current_usuario.admin? %> <th class="list-control"></th> <% end %> <% end %>
         </tr>
       </thead>

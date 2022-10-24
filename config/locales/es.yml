@@ -217,3 +217,8 @@ es:
   name: "Nombre"
   password: "Contraseña"
   password_confirm: "Confirme a Contraseña"
+  registered_locations: "Localizacións"
+  registered_experiences: "Experiencias"
+  sign_in: "Entrar"
+  sign_up: "Inscribirse"
+  confirmation_instruction: "¿No recibió las instrucciones de confirmación?"

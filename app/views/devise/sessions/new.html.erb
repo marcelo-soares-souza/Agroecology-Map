@@ -1,5 +1,5 @@
 <br/><br/>
-<h2>Logar</h2>
+<h2><%= t(:sign_in) %></h2>
 <br/>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -27,7 +27,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Entrar", class: "btn btn-primary" %>
+    <%= f.submit t(:sign_in), class: "btn btn-primary" %>
   </div>
   <%= invisible_captcha %>
 <% end %>

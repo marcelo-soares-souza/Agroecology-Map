@@ -212,6 +212,11 @@ fr:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  name: "Name"
-  password: "Password"
+  name: "Nom"
+  password: "Mot de passe"
   password_confirm: "Confirm Password"
+  registered_locations: "Emplacements"
+  registered_experiences: "Expériences"
+  sign_in: "S'identifier"
+  sign_up: "Enrol"
+  confirmation_instruction: "Vous n'avez pas reçu les instructions de confirmation ?"
