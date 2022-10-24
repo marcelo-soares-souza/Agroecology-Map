@@ -20,7 +20,14 @@ class Local < ApplicationRecord
   validates :nome, presence: true, uniqueness: true
   validates :tipo, presence: true
 
-  has_attached_file :imagem, styles: { medium: "360x360>", thumb: "180x180>" }, default_url: "/assets/missing.png"
+  def default_image_number
+    rand(0..5)
+  end
+
+  has_attached_file :imagem,
+                    styles: { medium: "360x360>",
+                    thumb: "180x180>" },
+                    :default_url => lambda { |a| "/assets/place_:style_#{a.instance.default_image_number}.png" }
   validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
 
   protected
