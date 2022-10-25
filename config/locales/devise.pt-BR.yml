@@ -56,3 +56,6 @@ pt-BR:
       not_saved:
         one: "Não foi possível salvar %{resource}: 1 erro"
         other: "Não foi possível salvar %{resource}: %{count} erros."
+  send_me_the_reset_instructions: "Envie-me as Instruções para Redefinir"
+  resend_confirmation_by_email: "Reenviar Confirmação por E-Mail"
+  resend: "Reenviar"

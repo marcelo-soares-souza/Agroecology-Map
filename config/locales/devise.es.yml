@@ -60,3 +60,6 @@ es:
       not_saved:
         one: "Ha ocurrido 1 error:"
         other: "Han ocurrido %{count} errores:"
+  send_me_the_reset_instructions: "Send me the Reset Instructions"
+  resend_confirmation_by_email: "Resend Confirmation by E-Mail"
+  resend: "Resend"

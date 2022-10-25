@@ -10,9 +10,11 @@
   </div>
   <br/>
   <div class="actions">
-    <%= f.submit "Envie-me as Instruções para Redefinir", class: "btn btn-primary"  %>
+    <%= f.submit I18n.t(:send_me_the_reset_instructions), class: "btn btn-primary"  %>
   </div>
+  <br/>
+  <%= render "devise/shared/links" %>
+  <br/>
   <%= invisible_captcha %>
 <% end %>
 <br/>
-<%= render "devise/shared/links" %>

@@ -143,3 +143,6 @@ fr:
       not_saved:
         one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e) :'
         other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être enregistré(e) :"
+  send_me_the_reset_instructions: "Send me the Reset Instructions"
+  resend_confirmation_by_email: "Resend Confirmation by E-Mail"
+  resend: "Resend"

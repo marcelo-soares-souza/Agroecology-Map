@@ -1,5 +1,6 @@
 <br/><br/>
-<h2>Reenviar Confirmação por E-Mail</h2>
+<h2><%= I18n.t(:resend_confirmation_by_email) %></h2>
+
 <br/>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
@@ -13,9 +14,11 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Reenviar", class: "btn btn-primary" %>
+    <%= f.submit I18n.t(:resend), class: "btn btn-primary" %>
   </div>
+  <br/>
+  <%= render "devise/shared/links" %>
+  <br/>
   <%= invisible_captcha %>
 <% end %>
-<br/>
-<%= render "devise/shared/links" %>
+

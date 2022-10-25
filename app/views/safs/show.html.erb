@@ -1,6 +1,6 @@
 <% title @saf.nome %>
 
-<%= link_to "Registrar Novo SAF", new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
+<%= link_to I18n.t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
@@ -24,17 +24,17 @@
       <h3><%= @saf.nome %></h3>
 
       <br/>
-      <%= "<strong>Local:</strong><br/>#{link_to @saf.local.nome, local_path(@saf.local)}&nbsp;".html_safe if @saf.local.nome?%>
-      <%= "<br/><br/><strong>Objetivo Principal:</strong><br/>#{@saf.objetivo}&nbsp;".html_safe if @saf.objetivo?%>
-      <%= "<br/><br/><strong>Produto Principal:</strong><br/>#{@saf.produto_principal}&nbsp;".html_safe if @saf.produto_principal?%>
+      <%= "<strong>#{I18n.t(:localization)}:</strong><br/>#{link_to @saf.local.nome, local_path(@saf.local)}&nbsp;".html_safe if @saf.local.nome?%>
+      <%= "<br/><br/><strong>#{I18n.t(:main_objective)}:</strong><br/>#{@saf.objetivo}&nbsp;".html_safe if @saf.objetivo?%>
+      <%= "<br/><br/><strong>#{I18n.t(:main_product)}:</strong><br/>#{@saf.produto_principal}&nbsp;".html_safe if @saf.produto_principal?%>
       <%= "<br/><br/><strong>Início:</strong><br/>#{@saf.inicio}&nbsp;".html_safe if @saf.inicio?%>
       <%= "<br/><br/><strong>Fim:</strong><br/>#{@saf.fim}&nbsp;".html_safe if @saf.fim?%>
       <%= "<br/><br/><strong>Área (ha):</strong><br/>#{@saf.area}&nbsp;".html_safe if @saf.area?%>
-      <%= "<br/><br/><strong>Responsável pela Informação:</strong><br/>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome?%>
+      <%= "<br/><br/><strong>#{I18n.t(:responsible_for_information)}:</strong><br/>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome?%>
       <%= "<br/><br/><strong>Organização:</strong><br/>#{@saf.local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0%>
       <%= "<br/><br/><strong>Plantas:</strong><br/>#{@saf.plantas.map {|planta| link_to planta.nome, planta_path(planta)}.join(", ").html_safe}&nbsp;".html_safe if @saf.plantas.count > 0%>
       <%= "<br/><br/><strong>Animais:</strong><br/>#{@saf.animais.map {|animal| link_to animal.nome, animal_path(animal)}.join(", ").html_safe}&nbsp;".html_safe if @saf.animais.count > 0%>
-      <%= "<br/><br/><strong>Observação:</strong><br/>#{@saf.observacao}&nbsp;".html_safe if @saf.observacao?%>
+      <%= "<br/><br/><strong>#{I18n.t(:observation)}:</strong><br/>#{@saf.observacao}&nbsp;".html_safe if @saf.observacao?%>
 
     </center>
   </div>
@@ -45,8 +45,8 @@
     <br/><br/>
     <div id="saf-footer">
       <div class="form-actions">
-        <%= link_to t('.edit', :default => "Editar"), edit_saf_path(@saf), :class => 'btn btn-success' %>
-        <%= link_to "Enviar Foto para esta SAF", new_saf_midia_path(@saf), :class => "btn btn-warning" %>
+        <%= link_to I18n.t(:edit), edit_saf_path(@saf), :class => 'btn btn-success' %>
+        <%= link_to I18n.t(:send_photo), new_saf_midia_path(@saf), :class => "btn btn-warning" %>
         <%= link_to t(:destroy), saf_path(@saf), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
       </div>
     </div>

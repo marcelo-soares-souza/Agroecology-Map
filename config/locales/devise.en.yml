@@ -58,3 +58,6 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  send_me_the_reset_instructions: "Send me the Reset Instructions"
+  resend_confirmation_by_email: "Resend Confirmation by E-Mail"
+  resend: "Resend"
