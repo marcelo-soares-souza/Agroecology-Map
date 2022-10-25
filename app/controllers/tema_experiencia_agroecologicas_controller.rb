@@ -1,8 +1,10 @@
 class TemaExperienciaAgroecologicasController < ApplicationController
-  before_action :set_tema_experiencia_agroecologica, only: [:show, :edit, :update, :destroy]
+  before_action :set_tema_experiencia_agroecologica, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, except: [:show]
   before_action :check_if_admin, only: [:index]
-  before_action -> { check_owner TemaExperienciaAgroecologica.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
+  before_action lambda {
+                  check_owner TemaExperienciaAgroecologica.friendly.find(params[:id]).usuario_id
+                }, only: %i[edit update destroy]
 
   # GET /tema_experiencia_agroecologicas
   # GET /tema_experiencia_agroecologicas.json
@@ -12,8 +14,7 @@ class TemaExperienciaAgroecologicasController < ApplicationController
 
   # GET /tema_experiencia_agroecologicas/1
   # GET /tema_experiencia_agroecologicas/1.json
-  def show
-  end
+  def show; end
 
   # GET /tema_experiencia_agroecologicas/new
   def new
@@ -21,21 +22,20 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   end
 
   # GET /tema_experiencia_agroecologicas/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /tema_experiencia_agroecologicas
   # POST /tema_experiencia_agroecologicas.json
   def create
     @tema_experiencia_agroecologica = TemaExperienciaAgroecologica.new(tema_experiencia_agroecologica_params)
 
-    if !current_usuario.admin?
-      @tema_experiencia_agroecologica.usuario_id = current_usuario.id
-    end
+    @tema_experiencia_agroecologica.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @tema_experiencia_agroecologica.save
-        format.html { redirect_to @tema_experiencia_agroecologica, notice: 'Tema da Experiência Agroecológica foi cadastrada.' }
+        format.html do
+          redirect_to @tema_experiencia_agroecologica, notice: 'Tema da Experiência Agroecológica foi cadastrada.'
+        end
         format.json { render :show, status: :created, location: @tema_experiencia_agroecologica }
       else
         format.html { render :new }
@@ -49,7 +49,9 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   def update
     respond_to do |format|
       if @tema_experiencia_agroecologica.update(tema_experiencia_agroecologica_params)
-        format.html { redirect_to @tema_experiencia_agroecologica, notice: 'Tema da Experiência Agroecológica foi atualizada.' }
+        format.html do
+          redirect_to @tema_experiencia_agroecologica, notice: 'Tema da Experiência Agroecológica foi atualizada.'
+        end
         format.json { render :show, status: :ok, location: @tema_experiencia_agroecologica }
       else
         format.html { render :edit }
@@ -63,7 +65,9 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   def destroy
     @tema_experiencia_agroecologica.destroy
     respond_to do |format|
-      format.html { redirect_to tema_experiencia_agroecologicas_url, notice: 'Tema da Experiência Agroecológica foi removida.' }
+      format.html do
+        redirect_to tema_experiencia_agroecologicas_url, notice: 'Tema da Experiência Agroecológica foi removida.'
+      end
       format.json { head :no_content }
     end
   end

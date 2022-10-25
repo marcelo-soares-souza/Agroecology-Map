@@ -1,9 +1,9 @@
 class OrganizacoesController < ApplicationController
-  before_action :set_organizacao, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Organizacao.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
-  before_action :load_tipo_organizacoes, except: [:index, :show]
-  before_action :load_locais, except: [:index, :show]
+  before_action :set_organizacao, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Organizacao.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
+  before_action :load_tipo_organizacoes, except: %i[index show]
+  before_action :load_locais, except: %i[index show]
 
   # GET /organizacoes
   # GET /organizacoes.json
@@ -13,8 +13,7 @@ class OrganizacoesController < ApplicationController
 
   # GET /organizacoes/1
   # GET /organizacoes/1.json
-  def show
-  end
+  def show; end
 
   # GET /organizacoes/new
   def new
@@ -32,9 +31,7 @@ class OrganizacoesController < ApplicationController
   def create
     @organizacao = Organizacao.new(organizacao_params)
 
-    if !current_usuario.admin?
-      @organizacao.usuario_id = current_usuario.id
-    end
+    @organizacao.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @organizacao.save
@@ -80,7 +77,8 @@ class OrganizacoesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organizacao_params
-    params.require(:organizacao).permit(:nome, :slug, :sigla, :tipo_organizacao_id, :email, :telefone, :site, :descricao, :cidade, :uf, :pais, :latitude, :longitude, :observacao, :usuario_id, local_ids: [])
+    params.require(:organizacao).permit(:nome, :slug, :sigla, :tipo_organizacao_id, :email, :telefone, :site,
+                                        :descricao, :cidade, :uf, :pais, :latitude, :longitude, :observacao, :usuario_id, local_ids: [])
   end
 
   def load_tipo_organizacoes

@@ -1,19 +1,21 @@
 class ExperienciaAgroecologicasController < ApplicationController
-  before_action :set_experiencia_agroecologica, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner ExperienciaAgroecologica.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
-  before_action :load_locais, except: [:index, :show]
-  before_action :load_tema_experiencia_agroecologicas, except: [:index, :show]
+  before_action :set_experiencia_agroecologica, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action lambda {
+                  check_owner ExperienciaAgroecologica.friendly.find(params[:id]).usuario_id
+                }, only: %i[edit update destroy]
+  before_action :load_locais, except: %i[index show]
+  before_action :load_tema_experiencia_agroecologicas, except: %i[index show]
   before_action :load_local
 
   # GET /experiencia_agroecologicas
   # GET /experiencia_agroecologicas.json
   def index
-    if params[:local_id]
-      @experiencia_agroecologicas = ExperienciaAgroecologica.where(:local_id => @local.id).sort_by(&:updated_at).reverse
-    else
-      @experiencia_agroecologicas = ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
-    end
+    @experiencia_agroecologicas = if params[:local_id]
+                                    ExperienciaAgroecologica.where(local_id: @local.id).sort_by(&:updated_at).reverse
+                                  else
+                                    ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
+                                  end
   end
 
   # GET /experiencia_agroecologicas/1
@@ -28,17 +30,14 @@ class ExperienciaAgroecologicasController < ApplicationController
   end
 
   # GET /experiencia_agroecologicas/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /experiencia_agroecologicas
   # POST /experiencia_agroecologicas.json
   def create
     @experiencia_agroecologica = ExperienciaAgroecologica.new(experiencia_agroecologica_params)
 
-    if !current_usuario.admin?
-      @experiencia_agroecologica.usuario_id = current_usuario.id
-    end
+    @experiencia_agroecologica.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @experiencia_agroecologica.save
@@ -84,7 +83,8 @@ class ExperienciaAgroecologicasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def experiencia_agroecologica_params
-    params.require(:experiencia_agroecologica).permit(:nome, :slug, :usuario_id, :local_id, :tema_experiencia_agroecologica_id, :resumo, :observacao)
+    params.require(:experiencia_agroecologica).permit(:nome, :slug, :usuario_id, :local_id,
+                                                      :tema_experiencia_agroecologica_id, :resumo, :observacao)
   end
 
   def load_tema_experiencia_agroecologicas
@@ -92,8 +92,6 @@ class ExperienciaAgroecologicasController < ApplicationController
   end
 
   def load_local
-    if params[:local_id]
-      @local = Local.friendly.find(params[:local_id])
-    end
+    @local = Local.friendly.find(params[:local_id]) if params[:local_id]
   end
 end

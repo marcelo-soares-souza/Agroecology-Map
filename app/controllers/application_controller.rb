@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  invisible_captcha only: [:create, :update]
+  invisible_captcha only: %i[create update]
   protect_from_forgery with: :exception
   before_action :store_user_location!, if: :storable_location?
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_locale
-    I18n.default_locale = "pt-BR"
+    I18n.default_locale = 'pt-BR'
     I18n.locale = params[:locale] || I18n.default_locale
     Rails.application.routes.default_url_options[:locale] = I18n.locale
   end
@@ -20,35 +20,27 @@ class ApplicationController < ActionController::Base
   end
 
   def check_owner(usuario_id)
-    if signed_in?
-      if !current_usuario.admin? && current_usuario.id != (usuario_id)
-        redirect_to root_url, alert: "Permissão Negada"
-      end
+    if signed_in? && (!current_usuario.admin? && current_usuario.id != (usuario_id))
+      redirect_to root_url, alert: 'Permissão Negada'
     end
   end
 
   def check_owner_or_collaborator(usuario_id, collaborators)
-    if signed_in?
-      if (!current_usuario.admin? && current_usuario.id != usuario_id && !collaborators.collect(&:usuario_id).include?(current_usuario.id))
-        redirect_to root_url, alert: "Permissão Negada"
-      end
+    if signed_in? && (!current_usuario.admin? && current_usuario.id != usuario_id && !collaborators.collect(&:usuario_id).include?(current_usuario.id))
+      redirect_to root_url, alert: 'Permissão Negada'
     end
   end
 
   def check_if_admin
-    if signed_in?
-      if !current_usuario.admin?
-        redirect_to root_url, alert: "Permissão Negada"
-      end
-    end
+    redirect_to root_url, alert: 'Permissão Negada' if signed_in? && !current_usuario.admin?
   end
 
   def load_locais
-    if current_usuario.admin?
-      @locais = Local.all
-    else
-      @locais = Local.where(usuario_id: current_usuario.id)
-    end
+    @locais = if current_usuario.admin?
+                Local.all
+              else
+                Local.where(usuario_id: current_usuario.id)
+              end
   end
 
   private

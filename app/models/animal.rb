@@ -9,8 +9,8 @@ class Animal < ApplicationRecord
 
   validates :nome, presence: true, uniqueness: true
 
-  has_attached_file :imagem, styles: { medium: "360x360>", thumb: "180x180>" }, default_url: "/assets/missing.png"
-  validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
+  has_attached_file :imagem, styles: { medium: '360x360>', thumb: '180x180>' }, default_url: '/assets/missing.png'
+  validates_attachment_content_type :imagem, content_type: %r{\Aimage/.*\z}
 
   protected
 

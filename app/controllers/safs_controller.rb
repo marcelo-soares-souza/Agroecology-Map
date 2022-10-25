@@ -1,25 +1,24 @@
 class SafsController < ApplicationController
-  before_action :set_saf, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Saf.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
-  before_action :load_locais, except: [:index, :show]
+  before_action :set_saf, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Saf.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
+  before_action :load_locais, except: %i[index show]
   before_action :load_plantas_animais, except: [:index]
   before_action :load_local
 
   # GET /safs
   # GET /safs.json
   def index
-    if params[:local_id]
-      @safs = Saf.where(:local_id => @local.id).sort_by(&:updated_at).reverse
-    else
-      @safs = Saf.all.sort_by(&:updated_at).reverse
-    end
+    @safs = if params[:local_id]
+              Saf.where(local_id: @local.id).sort_by(&:updated_at).reverse
+            else
+              Saf.all.sort_by(&:updated_at).reverse
+            end
   end
 
   # GET /safs/1
   # GET /safs/1.json
-  def show
-  end
+  def show; end
 
   # GET /safs/new
   def new
@@ -39,9 +38,7 @@ class SafsController < ApplicationController
   def create
     @saf = Saf.new(saf_params)
 
-    if !current_usuario.admin?
-      @saf.usuario_id = current_usuario.id
-    end
+    @saf.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @saf.save
@@ -87,7 +84,8 @@ class SafsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def saf_params
-    params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id, :usuario_id, :observacao, planta_ids: [], animal_ids: [])
+    params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id,
+                                :usuario_id, :observacao, planta_ids: [], animal_ids: [])
   end
 
   def load_plantas_animais
@@ -96,8 +94,6 @@ class SafsController < ApplicationController
   end
 
   def load_local
-    if params[:local_id]
-      @local = Local.friendly.find(params[:local_id])
-    end
+    @local = Local.friendly.find(params[:local_id]) if params[:local_id]
   end
 end

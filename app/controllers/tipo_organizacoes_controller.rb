@@ -1,8 +1,10 @@
 class TipoOrganizacoesController < ApplicationController
-  before_action :set_tipo_organizacao, only: [:show, :edit, :update, :destroy]
+  before_action :set_tipo_organizacao, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, except: [:show]
   before_action :check_if_admin, only: [:index]
-  before_action -> { check_owner TipoOrganizacao.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
+  before_action lambda {
+                  check_owner TipoOrganizacao.friendly.find(params[:id]).usuario_id
+                }, only: %i[edit update destroy]
 
   # GET /tipo_organizacoes
   # GET /tipo_organizacoes.json
@@ -12,8 +14,7 @@ class TipoOrganizacoesController < ApplicationController
 
   # GET /tipo_organizacoes/1
   # GET /tipo_organizacoes/1.json
-  def show
-  end
+  def show; end
 
   # GET /tipo_organizacoes/new
   def new
@@ -21,17 +22,14 @@ class TipoOrganizacoesController < ApplicationController
   end
 
   # GET /tipo_organizacoes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /tipo_organizacoes
   # POST /tipo_organizacoes.json
   def create
     @tipo_organizacao = TipoOrganizacao.new(tipo_organizacao_params)
 
-    if !current_usuario.admin?
-      @tipo_organizacao.usuario_id = current_usuario.id
-    end
+    @tipo_organizacao.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @tipo_organizacao.save

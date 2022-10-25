@@ -1,23 +1,22 @@
 class MidiasController < ApplicationController
-  before_action :set_midia, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Midia.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
+  before_action :set_midia, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Midia.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
   before_action :load_dados
 
   # GET /midias
   # GET /midias.json
   def index
     if params[:saf_id]
-      @midias = Midia.where(:saf_id => @saf.id)
+      @midias = Midia.where(saf_id: @saf.id)
     elsif params[:experiencia_agroecologica_id]
-      @midias = Midia.where(:experiencia_agroecologica_id => @experiencia_agroecologica.id)
+      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id)
     end
   end
 
   # GET /midias/1
   # GET /midias/1.json
-  def show
-  end
+  def show; end
 
   # GET /midias/new
   def new
@@ -25,17 +24,14 @@ class MidiasController < ApplicationController
   end
 
   # GET /midias/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /midias
   # POST /midias.json
   def create
     @midia = Midia.new(midia_params)
 
-    if !current_usuario.admin?
-      @midia.usuario_id = current_usuario.id
-    end
+    @midia.usuario_id = current_usuario.id unless current_usuario.admin?
 
     if params[:saf_id]
       @midia.saf_id = @saf.id
@@ -48,7 +44,10 @@ class MidiasController < ApplicationController
         if params[:saf_id]
           format.html { redirect_to saf_midia_path(@saf, @midia), notice: 'Midia foi cadastrada.' }
         elsif params[:experiencia_agroecologica_id]
-          format.html { redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia), notice: 'Midia foi cadastrada.' }
+          format.html do
+            redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia),
+                        notice: 'Midia foi cadastrada.'
+          end
         end
         format.json { render :show, status: :created, location: @midia }
       else
@@ -66,7 +65,10 @@ class MidiasController < ApplicationController
         if params[:saf_id]
           format.html { redirect_to saf_midia_path(@saf, @midia), notice: 'Midia foi atualizada.' }
         elsif params[:experiencia_agroecologica_id]
-          format.html { redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia), notice: 'Midia foi atualizada' }
+          format.html do
+            redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia),
+                        notice: 'Midia foi atualizada'
+          end
         end
         format.json { render :show, status: :ok, location: @midia }
       else
@@ -85,7 +87,9 @@ class MidiasController < ApplicationController
       if params[:saf_id]
         format.html { redirect_to saf_midias_path(@saf), notice: 'Midia foi removida.' }
       elsif params[:experiencia_agroecologica_id]
-        format.html { redirect_to experiencia_agroecologica_midias_path(@experiencia_agroecologica), notice: 'Midia foi removida.' }
+        format.html do
+          redirect_to experiencia_agroecologica_midias_path(@experiencia_agroecologica), notice: 'Midia foi removida.'
+        end
       end
       format.json { head :no_content }
     end

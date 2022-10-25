@@ -1,7 +1,7 @@
 class PlantasController < ApplicationController
-  before_action :set_planta, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Planta.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
+  before_action :set_planta, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Planta.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
 
   # GET /plantas
   # GET /plantas.json
@@ -11,8 +11,7 @@ class PlantasController < ApplicationController
 
   # GET /plantas/1
   # GET /plantas/1.json
-  def show
-  end
+  def show; end
 
   # GET /plantas/new
   def new
@@ -20,17 +19,14 @@ class PlantasController < ApplicationController
   end
 
   # GET /plantas/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /plantas
   # POST /plantas.json
   def create
     @planta = Planta.new(planta_params)
 
-    if !current_usuario.admin?
-      @planta.usuario_id = current_usuario.id
-    end
+    @planta.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @planta.save

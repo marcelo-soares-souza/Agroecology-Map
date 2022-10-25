@@ -17,7 +17,6 @@ end
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile =  ['*.js', '*.css']
-Rails.application.config.assets.precompile += %w(ckeditor/*)
+Rails.application.config.assets.precompile += %w[ckeditor/*]
 Rails.application.config.assets.precompile += %w[ckeditor/config.js]
 # Rails.application.config.assets.precompile += %w[ckeditor/config.js]
-

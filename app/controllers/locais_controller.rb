@@ -1,26 +1,25 @@
 class LocaisController < ApplicationController
-  before_action :set_local, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Local.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
-  before_action :load_tipos, except: [:index, :show]
-  before_action :load_hospedagens, except: [:index, :show]
+  before_action :set_local, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Local.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
+  before_action :load_tipos, except: %i[index show]
+  before_action :load_hospedagens, except: %i[index show]
   before_action :load_usuario
-  before_action :load_colaboradores, only: [:new, :edit, :update]
+  before_action :load_colaboradores, only: %i[new edit update]
 
   # GET /locais
   # GET /locais.json
   def index
-    if params[:usuario_id]
-      @locais = Local.where(:usuario_id => @usuario.id).sort_by(&:updated_at).reverse
-    else
-      @locais = Local.all.sort_by(&:updated_at).reverse
-    end
+    @locais = if params[:usuario_id]
+                Local.where(usuario_id: @usuario.id).sort_by(&:updated_at).reverse
+              else
+                Local.all.sort_by(&:updated_at).reverse
+              end
   end
 
   # GET /locais/1
   # GET /locais/1.json
-  def show
-  end
+  def show; end
 
   # GET /locais/new
   def new
@@ -38,9 +37,7 @@ class LocaisController < ApplicationController
   def create
     @local = Local.new(local_params)
 
-    if !current_usuario.admin?
-      @local.usuario_id = current_usuario.id
-    end
+    @local.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @local.save
@@ -86,22 +83,23 @@ class LocaisController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def local_params
-    params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo, :hospedagem, :usuario_ids => [])
+    params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo,
+                                  :hospedagem, usuario_ids: [])
   end
 
   def load_tipos
-    @tipos = { "Assentamento" => "Assentamento",
-               "Propriedade Coletiva" => "Propriedade Coletiva",
-               "Propriedade Pública (Governo)" => "Propriedade Pública (Governo)",
-               "Propriedade Privada" => "Propriedade Privada",
-               "Familiar" => "Familiar",
-               "Outro" => "Outro" }
+    @tipos = { 'Assentamento' => 'Assentamento',
+               'Propriedade Coletiva' => 'Propriedade Coletiva',
+               'Propriedade Pública (Governo)' => 'Propriedade Pública (Governo)',
+               'Propriedade Privada' => 'Propriedade Privada',
+               'Familiar' => 'Familiar',
+               'Outro' => 'Outro' }
   end
 
   def load_hospedagens
-    @hospedagens = { "Mediante a Consulta" => "Mediante a Consulta",
-                     "Sim" => "Sim",
-                     "Não" => "Não" }
+    @hospedagens = { 'Mediante a Consulta' => 'Mediante a Consulta',
+                     'Sim' => 'Sim',
+                     'Não' => 'Não' }
   end
 
   def load_colaboradores
@@ -109,8 +107,6 @@ class LocaisController < ApplicationController
   end
 
   def load_usuario
-    if params[:usuario_id]
-      @usuario = Usuario.friendly.find(params[:usuario_id])
-    end
+    @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
   end
 end

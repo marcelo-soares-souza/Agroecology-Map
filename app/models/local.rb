@@ -8,7 +8,7 @@ class Local < ApplicationRecord
   has_many :safs, dependent: :destroy
   has_many :experiencia_agroecologicas, dependent: :destroy
 
-  has_many :blogs, :dependent => :delete_all
+  has_many :blogs, dependent: :delete_all
 
   has_many :local_usuarios, dependent: :destroy
   has_many :usuarios, through: :local_usuarios
@@ -25,10 +25,10 @@ class Local < ApplicationRecord
   end
 
   has_attached_file :imagem,
-                    styles: { medium: "360x360>",
-                    thumb: "180x180>" },
-                    :default_url => lambda { |a| "/assets/place_:style_#{a.instance.default_image_number}.png" }
-  validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
+                    styles: { medium: '360x360>',
+                              thumb: '180x180>' },
+                    default_url: ->(a) { "/assets/place_:style_#{a.instance.default_image_number}.png" }
+  validates_attachment_content_type :imagem, content_type: %r{\Aimage/.*\z}
 
   protected
 

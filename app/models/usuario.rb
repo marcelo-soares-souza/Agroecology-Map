@@ -9,7 +9,7 @@ class Usuario < ApplicationRecord
   has_many :plantas
   has_many :animais
   has_many :local_usuarios, dependent: :destroy
-  has_many :colaboracoes, :through => :local_usuarios, :source => :local
+  has_many :colaboracoes, through: :local_usuarios, source: :local
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
@@ -24,10 +24,10 @@ class Usuario < ApplicationRecord
   end
 
   has_attached_file :imagem,
-                    styles: { medium: "360x360>",
-                    thumb: "180x180>" },
-                    :default_url => lambda { |a| "/assets/avatar_:style_#{a.instance.default_image_number}.png" }
-  validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
+                    styles: { medium: '360x360>',
+                              thumb: '180x180>' },
+                    default_url: ->(a) { "/assets/avatar_:style_#{a.instance.default_image_number}.png" }
+  validates_attachment_content_type :imagem, content_type: %r{\Aimage/.*\z}
 
   protected
 

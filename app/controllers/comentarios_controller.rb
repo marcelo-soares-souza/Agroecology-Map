@@ -1,7 +1,7 @@
 class ComentariosController < ApplicationController
-  before_action :set_comentario, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Comentario.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
+  before_action :set_comentario, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Comentario.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
 
   # POST /comentarios
   # POST /comentarios.json

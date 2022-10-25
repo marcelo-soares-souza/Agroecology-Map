@@ -2,7 +2,7 @@ class Saf < ApplicationRecord
   belongs_to :local
   belongs_to :usuario
   has_one :organizacao, through: :local
-  has_many :midias, :dependent => :delete_all
+  has_many :midias, dependent: :delete_all
 
   has_many :saf_plantas, dependent: :destroy
   has_many :plantas, through: :saf_plantas

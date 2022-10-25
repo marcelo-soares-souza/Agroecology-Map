@@ -1,7 +1,7 @@
 class AnimaisController < ApplicationController
-  before_action :set_animal, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner Animal.friendly.find(params[:id]).usuario_id }, only: [:edit, :update, :destroy]
+  before_action :set_animal, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action -> { check_owner Animal.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
 
   # GET /animais
   # GET /animais.json
@@ -11,8 +11,7 @@ class AnimaisController < ApplicationController
 
   # GET /animais/1
   # GET /animais/1.json
-  def show
-  end
+  def show; end
 
   # GET /animais/new
   def new
@@ -20,17 +19,14 @@ class AnimaisController < ApplicationController
   end
 
   # GET /animais/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /animais
   # POST /animais.json
   def create
     @animal = Animal.new(animal_params)
 
-    if !current_usuario.admin?
-      @animal.usuario_id = current_usuario.id
-    end
+    @animal.usuario_id = current_usuario.id unless current_usuario.admin?
 
     respond_to do |format|
       if @animal.save

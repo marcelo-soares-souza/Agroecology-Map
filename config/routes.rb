@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  scope "(:locale)", :locale => /pt-BR|es|en|fr/ do
-    root :to => "home#index"
-    get "home/index"
+  scope '(:locale)', locale: /pt-BR|es|en|fr/ do
+    root to: 'home#index'
+    get 'home/index'
   end
 
   resources :comentarios
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :locais do
     resources :experiencia_agroecologicas
     resources :safs
-    resources :blogs, :path => "blog"
+    resources :blogs, path: 'blog'
   end
 
   resources :organizacoes
@@ -35,5 +35,5 @@ Rails.application.routes.draw do
     resources :locais
   end
 
-  resources :novidades, :only => [:index]
+  resources :novidades, only: [:index]
 end

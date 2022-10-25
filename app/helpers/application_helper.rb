@@ -8,9 +8,7 @@ module ApplicationHelper
   end
 
   def form_for_blog(condition, &block)
-    if condition
-      form_for [@local, @blog], html: { multipart: true }, &block
-    end
+    form_for [@local, @blog], html: { multipart: true }, &block if condition
   end
 
   def title(*parts)

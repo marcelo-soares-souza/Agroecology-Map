@@ -3,6 +3,5 @@ class NovidadesController < ApplicationController
     @blogs = Blog.all.sort_by(&:updated_at).reverse
   end
 
-  def show
-  end
+  def show; end
 end

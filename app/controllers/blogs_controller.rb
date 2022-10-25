@@ -1,19 +1,20 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_usuario!, only: [:new, :edit, :update, :destroy]
-  before_action -> { check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios) }, only: [:new, :edit, :update, :destroy]
+  before_action :set_blog, only: %i[show edit update destroy]
+  before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  before_action lambda {
+                  check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios)
+                }, only: %i[new edit update destroy]
   before_action :load_dados
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.where(:local_id => @local.id).sort_by(&:updated_at).reverse
+    @blogs = Blog.where(local_id: @local.id).sort_by(&:updated_at).reverse
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
-  def show
-  end
+  def show; end
 
   # GET /blogs/new
   def new
@@ -21,17 +22,14 @@ class BlogsController < ApplicationController
   end
 
   # GET /blogs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /blogs
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
 
-    if !current_usuario.admin?
-      @blog.usuario_id = current_usuario.id
-    end
+    @blog.usuario_id = current_usuario.id unless current_usuario.admin?
 
     @blog.local_id = @local.id
 
