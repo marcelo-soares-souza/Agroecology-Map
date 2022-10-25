@@ -21,7 +21,7 @@
   <% end %>
 
   <div class="form-group row">
-    <%= f.label 'Colaboradores Parceiros', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:partner_collaborators), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <% if ! @usuarios.empty? %>
         <%= f.collection_select(:usuario_ids, @usuarios, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
@@ -32,14 +32,14 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Nome', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.text_field :nome, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Tipo', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:type), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.collection_select(:tipo, @tipos, :last, :first,  { :include_blank => 'Selecione um Tipo de Local' }, { class: "form-control selectpicker", "data-live-search": true } ) %>
     </div>
@@ -47,27 +47,27 @@
 
 
   <div class="form-group row">
-    <%= f.label "Imagem", class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-8">
       <%= f.file_field :imagem, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:description), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.text_area :observacao, class: "form-control", :rows => "5"  %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Hospedagem', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:accommodation), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.collection_select(:hospedagem, @hospedagens, :last, :first,  { :include_blank => 'Aceita Hospedar Pessoa/Grupo?' }, { class: "form-control selectpicker", "data-live-search": true } ) %>
     </div>
   </div>
 
-  <div class="col-form-label-lg">Localização (<span class="text-danger">Use a Lupa para Buscar o Local e Clique para Marcar</span>)</div>
+  <div class="col-form-label-lg"><%= t(:localization) %> <!-- (<span class="text-danger">Use a Lupa para Buscar o Local e Clique para Marcar</span>) --> </div>
   <div class="form-group row">
       <div id="map-sistema"></div>
   </div>
@@ -75,8 +75,6 @@
 
   <%= f.hidden_field :latitude, id: "latitude" %>
   <%= f.hidden_field :longitude, id: "longitude" %>
-
-  <br/>
 
   <div class="actions">
     <%= f.submit t(:submit), class: "btn btn-primary" %>
@@ -145,4 +143,5 @@
     });
   </script>
   <%= invisible_captcha %>
+  <br/>
 <% end %>

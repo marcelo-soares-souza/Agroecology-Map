@@ -21,7 +21,7 @@
   <% if devise_mapping.rememberable? -%>
     <div class="checkbox">
       <label>
-        <%= f.check_box :remember_me %> Lembrar de Mim?
+        <%= f.check_box :remember_me %> <%= t(:remember_me) %>
       </label>
     </div>
   <% end -%>
@@ -29,7 +29,8 @@
   <div class="actions">
     <%= f.submit t(:sign_in), class: "btn btn-primary" %>
   </div>
+  <br/>
+  <%= render "devise/shared/links" %>
+  <br/>
   <%= invisible_captcha %>
 <% end %>
-<br/>
-<%= render "devise/shared/links" %>

@@ -34,8 +34,9 @@
   <div class="actions">
     <%= f.submit I18n.t(:register), class: "btn btn-primary" %>
   </div>
+  <br/>
+  <%= render "devise/shared/links" %>
+  <br/>
   <%= invisible_captcha %>
 <% end %>
-<br/>
-<%= render "devise/shared/links" %>
 

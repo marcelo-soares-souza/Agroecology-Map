@@ -32,8 +32,8 @@
       <%= "<strong>#{I18n.t(:type)}:</strong><br/>#{@local.tipo}&nbsp;".html_safe if @local.tipo? %>
       <%= "<br/><br/><strong>#{I18n.t(:responsible_for_information)}:</strong><br/>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome?%>
       <%= "<br/><br/><strong>#{I18n.t(:contributors)}:</strong><br/>#{@local.usuarios.map {|usuario| link_to usuario.nome, usuario_path(usuario)}.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0%>
-      <%= "<br/><br/><strong>Aceita Hospedar Pessoa/Grupo:</strong><br/>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
-      <%= "<br/><br/><strong>Observação:</strong><br/>#{@local.observacao}&nbsp;".html_safe if @local.observacao?%>
+      <%= "<br/><br/><strong>#{I18n.t(:accommodation)}:</strong><br/>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
+      <%= "<br/><br/><strong>#{I18n.t(:description)}:</strong><br/>#{@local.observacao}&nbsp;".html_safe if @local.observacao?%>
       <%= "<br/><br/><strong>Organizações:</strong><br/>#{@local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @local.organizacoes.count > 0%>
       <%= "<br/><br/><strong>#{I18n.t(:experiences_in_agroecology)}:</strong><br/>#{@local.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @local.experiencia_agroecologicas.count > 0%>
       <%= "<br/><br/><strong>#{I18n.t(:safs)}:</strong><br/>#{@local.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @local.safs.count > 0%>
@@ -79,10 +79,11 @@
     <br/><br/>
     <div class="form-actions">
       <%= link_to t('.edit', :default => "Editar"), edit_local_path(@local), :class => 'btn btn-success' %>
-      <%= link_to "Registrar Experiência neste Local", new_local_experiencia_agroecologica_path(@local), :class => "btn btn-info" %>
+      <%= link_to I18n.t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-info" %>
       <%= link_to "Registrar SAF neste Local", new_local_saf_path(@local), :class => "btn btn-warning" %>
 
       <%= link_to t(:destroy), local_path(@local), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
     </div>
+    <br/><br/>
   <% end %>
 <% end %>
