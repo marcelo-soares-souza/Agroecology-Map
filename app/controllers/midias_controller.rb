@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MidiasController < ApplicationController
   before_action :set_midia, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
@@ -42,11 +44,11 @@ class MidiasController < ApplicationController
     respond_to do |format|
       if @midia.save
         if params[:saf_id]
-          format.html { redirect_to saf_midia_path(@saf, @midia), notice: 'Midia foi cadastrada.' }
+          format.html { redirect_to saf_midia_path(@saf, @midia), notice: "Midia foi cadastrada." }
         elsif params[:experiencia_agroecologica_id]
           format.html do
             redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia),
-                        notice: 'Midia foi cadastrada.'
+                        notice: "Midia foi cadastrada."
           end
         end
         format.json { render :show, status: :created, location: @midia }
@@ -63,11 +65,11 @@ class MidiasController < ApplicationController
     respond_to do |format|
       if @midia.update(midia_params)
         if params[:saf_id]
-          format.html { redirect_to saf_midia_path(@saf, @midia), notice: 'Midia foi atualizada.' }
+          format.html { redirect_to saf_midia_path(@saf, @midia), notice: "Midia foi atualizada." }
         elsif params[:experiencia_agroecologica_id]
           format.html do
             redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia),
-                        notice: 'Midia foi atualizada'
+                        notice: "Midia foi atualizada"
           end
         end
         format.json { render :show, status: :ok, location: @midia }
@@ -85,10 +87,10 @@ class MidiasController < ApplicationController
 
     respond_to do |format|
       if params[:saf_id]
-        format.html { redirect_to saf_midias_path(@saf), notice: 'Midia foi removida.' }
+        format.html { redirect_to saf_midias_path(@saf), notice: "Midia foi removida." }
       elsif params[:experiencia_agroecologica_id]
         format.html do
-          redirect_to experiencia_agroecologica_midias_path(@experiencia_agroecologica), notice: 'Midia foi removida.'
+          redirect_to experiencia_agroecologica_midias_path(@experiencia_agroecologica), notice: "Midia foi removida."
         end
       end
       format.json { head :no_content }
@@ -96,22 +98,21 @@ class MidiasController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_midia
-    @midia = Midia.friendly.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def midia_params
-    params.require(:midia).permit(:descricao, :slug, :saf_id, :experiencia_agroecologica_id, :imagem, :usuario_id)
-  end
-
-  def load_dados
-    if params[:saf_id]
-      @saf = Saf.friendly.find(params[:saf_id])
-    elsif params[:experiencia_agroecologica_id]
-      @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
+    # Use callbacks to share common setup or constraints between actions.
+    def set_midia
+      @midia = Midia.friendly.find(params[:id])
     end
-  end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def midia_params
+      params.require(:midia).permit(:descricao, :slug, :saf_id, :experiencia_agroecologica_id, :imagem, :usuario_id)
+    end
+
+    def load_dados
+      if params[:saf_id]
+        @saf = Saf.friendly.find(params[:saf_id])
+      elsif params[:experiencia_agroecologica_id]
+        @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
+      end
+    end
 end

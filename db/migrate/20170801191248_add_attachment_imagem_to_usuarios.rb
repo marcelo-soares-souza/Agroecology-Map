@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddAttachmentImagemToUsuarios < ActiveRecord::Migration[5.1]
   def self.up
     change_table :usuarios do |t|

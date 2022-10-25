@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Blog < ApplicationRecord
   belongs_to :local, required: false
   belongs_to :usuario
@@ -11,8 +13,7 @@ class Blog < ApplicationRecord
   acts_as_taggable
 
   protected
-
-  def should_generate_new_friendly_id?
-    titulo_changed?
-  end
+    def should_generate_new_friendly_id?
+      titulo_changed?
+    end
 end

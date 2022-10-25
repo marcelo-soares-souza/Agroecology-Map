@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExperienciaAgroecologicasController < ApplicationController
   before_action :set_experiencia_agroecologica, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
@@ -12,10 +14,10 @@ class ExperienciaAgroecologicasController < ApplicationController
   # GET /experiencia_agroecologicas.json
   def index
     @experiencia_agroecologicas = if params[:local_id]
-                                    ExperienciaAgroecologica.where(local_id: @local.id).sort_by(&:updated_at).reverse
-                                  else
-                                    ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
-                                  end
+      ExperienciaAgroecologica.where(local_id: @local.id).sort_by(&:updated_at).reverse
+    else
+      ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
+    end
   end
 
   # GET /experiencia_agroecologicas/1
@@ -41,7 +43,7 @@ class ExperienciaAgroecologicasController < ApplicationController
 
     respond_to do |format|
       if @experiencia_agroecologica.save
-        format.html { redirect_to @experiencia_agroecologica, notice: 'Experiência em Agroecologia foi cadastrada.' }
+        format.html { redirect_to @experiencia_agroecologica, notice: "Experiência em Agroecologia foi cadastrada." }
         format.json { render :show, status: :created, location: @experiencia_agroecologica }
       else
         format.html { render :new }
@@ -55,7 +57,7 @@ class ExperienciaAgroecologicasController < ApplicationController
   def update
     respond_to do |format|
       if @experiencia_agroecologica.update(experiencia_agroecologica_params)
-        format.html { redirect_to @experiencia_agroecologica, notice: 'Experiência em Agroecologia foi atualizada.' }
+        format.html { redirect_to @experiencia_agroecologica, notice: "Experiência em Agroecologia foi atualizada." }
         format.json { render :show, status: :ok, location: @experiencia_agroecologica }
       else
         format.html { render :edit }
@@ -69,29 +71,28 @@ class ExperienciaAgroecologicasController < ApplicationController
   def destroy
     @experiencia_agroecologica.destroy
     respond_to do |format|
-      format.html { redirect_to experiencia_agroecologicas_url, notice: 'Experiência em Agroecologia foi removida.' }
+      format.html { redirect_to experiencia_agroecologicas_url, notice: "Experiência em Agroecologia foi removida." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_experiencia_agroecologica
+      @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_experiencia_agroecologica
-    @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:id])
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def experiencia_agroecologica_params
+      params.require(:experiencia_agroecologica).permit(:nome, :slug, :usuario_id, :local_id,
+                                                        :tema_experiencia_agroecologica_id, :resumo, :observacao)
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def experiencia_agroecologica_params
-    params.require(:experiencia_agroecologica).permit(:nome, :slug, :usuario_id, :local_id,
-                                                      :tema_experiencia_agroecologica_id, :resumo, :observacao)
-  end
+    def load_tema_experiencia_agroecologicas
+      @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
+    end
 
-  def load_tema_experiencia_agroecologicas
-    @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
-  end
-
-  def load_local
-    @local = Local.friendly.find(params[:local_id]) if params[:local_id]
-  end
+    def load_local
+      @local = Local.friendly.find(params[:local_id]) if params[:local_id]
+    end
 end

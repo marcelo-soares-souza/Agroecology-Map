@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTipoOrganizacoes < ActiveRecord::Migration[5.1]
   def change
     create_table :tipo_organizacoes do |t|

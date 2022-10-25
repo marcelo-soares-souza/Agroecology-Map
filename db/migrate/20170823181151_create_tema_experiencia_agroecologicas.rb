@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTemaExperienciaAgroecologicas < ActiveRecord::Migration[5.1]
   def change
     create_table :tema_experiencia_agroecologicas do |t|

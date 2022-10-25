@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SafPlanta < ApplicationRecord
   belongs_to :saf
   belongs_to :planta

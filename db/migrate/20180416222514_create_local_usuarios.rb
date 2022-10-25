@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLocalUsuarios < ActiveRecord::Migration[5.1]
   def change
     create_table :local_usuarios do |t|

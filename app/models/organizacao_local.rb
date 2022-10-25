@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrganizacaoLocal < ApplicationRecord
   belongs_to :organizacao
   belongs_to :local

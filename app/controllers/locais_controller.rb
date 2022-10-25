@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocaisController < ApplicationController
   before_action :set_local, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
@@ -11,10 +13,10 @@ class LocaisController < ApplicationController
   # GET /locais.json
   def index
     @locais = if params[:usuario_id]
-                Local.where(usuario_id: @usuario.id).sort_by(&:updated_at).reverse
-              else
-                Local.all.sort_by(&:updated_at).reverse
-              end
+      Local.where(usuario_id: @usuario.id).sort_by(&:updated_at).reverse
+    else
+      Local.all.sort_by(&:updated_at).reverse
+    end
   end
 
   # GET /locais/1
@@ -41,7 +43,7 @@ class LocaisController < ApplicationController
 
     respond_to do |format|
       if @local.save
-        format.html { redirect_to @local, notice: 'Local foi cadastrado.' }
+        format.html { redirect_to @local, notice: "Local foi cadastrado." }
         format.json { render :show, status: :created, location: @local }
       else
         format.html { render :new }
@@ -55,7 +57,7 @@ class LocaisController < ApplicationController
   def update
     respond_to do |format|
       if @local.update(local_params)
-        format.html { redirect_to @local, notice: 'Local foi atualizado.' }
+        format.html { redirect_to @local, notice: "Local foi atualizado." }
         format.json { render :show, status: :ok, location: @local }
       else
         format.html { render :edit }
@@ -69,44 +71,43 @@ class LocaisController < ApplicationController
   def destroy
     @local.destroy
     respond_to do |format|
-      format.html { redirect_to locais_url, notice: 'Local foi removido.' }
+      format.html { redirect_to locais_url, notice: "Local foi removido." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_local
+      @local = Local.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_local
-    @local = Local.friendly.find(params[:id])
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def local_params
+      params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo,
+                                    :hospedagem, usuario_ids: [])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def local_params
-    params.require(:local).permit(:nome, :slug, :observacao, :latitude, :longitude, :usuario_id, :imagem, :tipo,
-                                  :hospedagem, usuario_ids: [])
-  end
+    def load_tipos
+      @tipos = { "Assentamento" => "Assentamento",
+                 "Propriedade Coletiva" => "Propriedade Coletiva",
+                 "Propriedade Pública (Governo)" => "Propriedade Pública (Governo)",
+                 "Propriedade Privada" => "Propriedade Privada",
+                 "Familiar" => "Familiar",
+                 "Outro" => "Outro" }
+    end
 
-  def load_tipos
-    @tipos = { 'Assentamento' => 'Assentamento',
-               'Propriedade Coletiva' => 'Propriedade Coletiva',
-               'Propriedade Pública (Governo)' => 'Propriedade Pública (Governo)',
-               'Propriedade Privada' => 'Propriedade Privada',
-               'Familiar' => 'Familiar',
-               'Outro' => 'Outro' }
-  end
+    def load_hospedagens
+      @hospedagens = { "Mediante a Consulta" => "Mediante a Consulta",
+                       "Sim" => "Sim",
+                       "Não" => "Não" }
+    end
 
-  def load_hospedagens
-    @hospedagens = { 'Mediante a Consulta' => 'Mediante a Consulta',
-                     'Sim' => 'Sim',
-                     'Não' => 'Não' }
-  end
+    def load_colaboradores
+      @usuarios = Usuario.all
+    end
 
-  def load_colaboradores
-    @usuarios = Usuario.all
-  end
-
-  def load_usuario
-    @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
-  end
+    def load_usuario
+      @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
+    end
 end

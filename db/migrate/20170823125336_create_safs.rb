@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSafs < ActiveRecord::Migration[5.1]
   def change
     create_table :safs do |t|

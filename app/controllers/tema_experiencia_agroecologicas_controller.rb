@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TemaExperienciaAgroecologicasController < ApplicationController
   before_action :set_tema_experiencia_agroecologica, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, except: [:show]
@@ -34,7 +36,7 @@ class TemaExperienciaAgroecologicasController < ApplicationController
     respond_to do |format|
       if @tema_experiencia_agroecologica.save
         format.html do
-          redirect_to @tema_experiencia_agroecologica, notice: 'Tema da Experiência Agroecológica foi cadastrada.'
+          redirect_to @tema_experiencia_agroecologica, notice: "Tema da Experiência Agroecológica foi cadastrada."
         end
         format.json { render :show, status: :created, location: @tema_experiencia_agroecologica }
       else
@@ -50,7 +52,7 @@ class TemaExperienciaAgroecologicasController < ApplicationController
     respond_to do |format|
       if @tema_experiencia_agroecologica.update(tema_experiencia_agroecologica_params)
         format.html do
-          redirect_to @tema_experiencia_agroecologica, notice: 'Tema da Experiência Agroecológica foi atualizada.'
+          redirect_to @tema_experiencia_agroecologica, notice: "Tema da Experiência Agroecológica foi atualizada."
         end
         format.json { render :show, status: :ok, location: @tema_experiencia_agroecologica }
       else
@@ -66,21 +68,20 @@ class TemaExperienciaAgroecologicasController < ApplicationController
     @tema_experiencia_agroecologica.destroy
     respond_to do |format|
       format.html do
-        redirect_to tema_experiencia_agroecologicas_url, notice: 'Tema da Experiência Agroecológica foi removida.'
+        redirect_to tema_experiencia_agroecologicas_url, notice: "Tema da Experiência Agroecológica foi removida."
       end
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_tema_experiencia_agroecologica
+      @tema_experiencia_agroecologica = TemaExperienciaAgroecologica.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_tema_experiencia_agroecologica
-    @tema_experiencia_agroecologica = TemaExperienciaAgroecologica.friendly.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def tema_experiencia_agroecologica_params
-    params.require(:tema_experiencia_agroecologica).permit(:nome, :slug, :usuario_id)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def tema_experiencia_agroecologica_params
+      params.require(:tema_experiencia_agroecologica).permit(:nome, :slug, :usuario_id)
+    end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, except: %i[show index]
@@ -14,7 +16,7 @@ class UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Usuário foi atualizado.' }
+        format.html { redirect_to @usuario, notice: "Usuário foi atualizado." }
         format.json { render :show, status: :ok, location: @usuario }
       else
         format.html { render :edit }
@@ -26,18 +28,17 @@ class UsuariosController < ApplicationController
   def destroy
     @usuario.destroy
     respond_to do |format|
-      format.html { redirect_to usuarios_url, notice: 'Usuário foi removido.' }
+      format.html { redirect_to usuarios_url, notice: "Usuário foi removido." }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_usuario
+      @usuario = Usuario.friendly.find(params[:id])
+    end
 
-  def set_usuario
-    @usuario = Usuario.friendly.find(params[:id])
-  end
-
-  def usuario_params
-    params.require(:usuario).permit(:id, :email, :nome, :slug, :imagem)
-  end
+    def usuario_params
+      params.require(:usuario).permit(:id, :email, :nome, :slug, :imagem)
+    end
 end

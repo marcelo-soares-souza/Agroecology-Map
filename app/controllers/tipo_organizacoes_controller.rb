@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TipoOrganizacoesController < ApplicationController
   before_action :set_tipo_organizacao, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, except: [:show]
@@ -33,7 +35,7 @@ class TipoOrganizacoesController < ApplicationController
 
     respond_to do |format|
       if @tipo_organizacao.save
-        format.html { redirect_to @tipo_organizacao, notice: 'Tipo de Organização foi cadastrada.' }
+        format.html { redirect_to @tipo_organizacao, notice: "Tipo de Organização foi cadastrada." }
         format.json { render :show, status: :created, location: @tipo_organizacao }
       else
         format.html { render :new }
@@ -47,7 +49,7 @@ class TipoOrganizacoesController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_organizacao.update(tipo_organizacao_params)
-        format.html { redirect_to @tipo_organizacao, notice: 'Tipo de Organização foi atualizada.' }
+        format.html { redirect_to @tipo_organizacao, notice: "Tipo de Organização foi atualizada." }
         format.json { render :show, status: :ok, location: @tipo_organizacao }
       else
         format.html { render :edit }
@@ -61,20 +63,19 @@ class TipoOrganizacoesController < ApplicationController
   def destroy
     @tipo_organizacao.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_organizacoes_url, notice: 'Tipo de Organização foi removida.' }
+      format.html { redirect_to tipo_organizacoes_url, notice: "Tipo de Organização foi removida." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_tipo_organizacao
+      @tipo_organizacao = TipoOrganizacao.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_tipo_organizacao
-    @tipo_organizacao = TipoOrganizacao.friendly.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def tipo_organizacao_params
-    params.require(:tipo_organizacao).permit(:nome, :slug, :usuario_id)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def tipo_organizacao_params
+      params.require(:tipo_organizacao).permit(:nome, :slug, :usuario_id)
+    end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Local < ApplicationRecord
   belongs_to :usuario
 
@@ -25,14 +27,13 @@ class Local < ApplicationRecord
   end
 
   has_attached_file :imagem,
-                    styles: { medium: '360x360>',
-                              thumb: '180x180>' },
+                    styles: { medium: "360x360>",
+                              thumb: "180x180>" },
                     default_url: ->(a) { "/assets/place_:style_#{a.instance.default_image_number}.png" }
   validates_attachment_content_type :imagem, content_type: %r{\Aimage/.*\z}
 
   protected
-
-  def should_generate_new_friendly_id?
-    nome_changed?
-  end
+    def should_generate_new_friendly_id?
+      nome_changed?
+    end
 end

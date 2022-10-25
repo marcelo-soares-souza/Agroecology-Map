@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comentario < ApplicationRecord
   belongs_to :experiencia_agroecologica
   belongs_to :usuario
@@ -12,8 +14,7 @@ class Comentario < ApplicationRecord
   end
 
   protected
-
-  def should_generate_new_friendly_id?
-    texto_changed?
-  end
+    def should_generate_new_friendly_id?
+      texto_changed?
+    end
 end

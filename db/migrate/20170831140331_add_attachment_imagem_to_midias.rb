@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddAttachmentImagemToMidias < ActiveRecord::Migration[5.1]
   def self.up
     change_table :midias do |t|

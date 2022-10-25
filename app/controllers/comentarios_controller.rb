@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ComentariosController < ApplicationController
   before_action :set_comentario, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
@@ -16,9 +18,9 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @experiencia_agroecologica, notice: 'Comentário foi registrado.' }
+        format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi registrado." }
       else
-        format.html { redirect_to @experiencia_agroecologica, notice: 'Não foi possível registrar o comentário' }
+        format.html { redirect_to @experiencia_agroecologica, notice: "Não foi possível registrar o comentário" }
       end
     end
   end
@@ -30,20 +32,19 @@ class ComentariosController < ApplicationController
 
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to @experiencia_agroecologica, notice: 'Comentário foi removido.' }
+      format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi removido." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_comentario
+      @comentario = Comentario.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_comentario
-    @comentario = Comentario.friendly.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def comentario_params
-    params.require(:comentario).permit(:texto, :slug, :usuario_id, :experiencia_agroecologica_id)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def comentario_params
+      params.require(:comentario).permit(:texto, :slug, :usuario_id, :experiencia_agroecologica_id)
+    end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnimaisController < ApplicationController
   before_action :set_animal, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
@@ -30,7 +32,7 @@ class AnimaisController < ApplicationController
 
     respond_to do |format|
       if @animal.save
-        format.html { redirect_to @animal, notice: 'Animal foi cadastrado.' }
+        format.html { redirect_to @animal, notice: "Animal foi cadastrado." }
         format.json { render :show, status: :created, location: @animal }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class AnimaisController < ApplicationController
   def update
     respond_to do |format|
       if @animal.update(animal_params)
-        format.html { redirect_to @animal, notice: 'Animal foi atualizado.' }
+        format.html { redirect_to @animal, notice: "Animal foi atualizado." }
         format.json { render :show, status: :ok, location: @animal }
       else
         format.html { render :edit }
@@ -58,20 +60,19 @@ class AnimaisController < ApplicationController
   def destroy
     @animal.destroy
     respond_to do |format|
-      format.html { redirect_to animais_url, notice: 'Animal foi removido.' }
+      format.html { redirect_to animais_url, notice: "Animal foi removido." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_animal
+      @animal = Animal.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_animal
-    @animal = Animal.friendly.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def animal_params
-    params.require(:animal).permit(:nome, :slug, :nome_cientifico, :observacao, :usuario_id, :imagem)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def animal_params
+      params.require(:animal).permit(:nome, :slug, :nome_cientifico, :observacao, :usuario_id, :imagem)
+    end
 end

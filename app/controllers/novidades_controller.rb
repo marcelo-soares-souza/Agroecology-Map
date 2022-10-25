@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NovidadesController < ApplicationController
   def index
     @blogs = Blog.all.sort_by(&:updated_at).reverse

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SafAnimal < ApplicationRecord
   belongs_to :saf
   belongs_to :animal

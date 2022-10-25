@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SafsController < ApplicationController
   before_action :set_saf, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
@@ -10,10 +12,10 @@ class SafsController < ApplicationController
   # GET /safs.json
   def index
     @safs = if params[:local_id]
-              Saf.where(local_id: @local.id).sort_by(&:updated_at).reverse
-            else
-              Saf.all.sort_by(&:updated_at).reverse
-            end
+      Saf.where(local_id: @local.id).sort_by(&:updated_at).reverse
+    else
+      Saf.all.sort_by(&:updated_at).reverse
+    end
   end
 
   # GET /safs/1
@@ -42,7 +44,7 @@ class SafsController < ApplicationController
 
     respond_to do |format|
       if @saf.save
-        format.html { redirect_to @saf, notice: 'SAF foi cadastrado.' }
+        format.html { redirect_to @saf, notice: "SAF foi cadastrado." }
         format.json { render :show, status: :created, location: @saf }
       else
         format.html { render :new }
@@ -56,7 +58,7 @@ class SafsController < ApplicationController
   def update
     respond_to do |format|
       if @saf.update(saf_params)
-        format.html { redirect_to @saf, notice: 'SAF foi atualizado.' }
+        format.html { redirect_to @saf, notice: "SAF foi atualizado." }
         format.json { render :show, status: :ok, location: @saf }
       else
         format.html { render :edit }
@@ -70,30 +72,29 @@ class SafsController < ApplicationController
   def destroy
     @saf.destroy
     respond_to do |format|
-      format.html { redirect_to safs_url, notice: 'SAF foi removido.' }
+      format.html { redirect_to safs_url, notice: "SAF foi removido." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_saf
+      @saf = Saf.friendly.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_saf
-    @saf = Saf.friendly.find(params[:id])
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def saf_params
+      params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id,
+                                  :usuario_id, :observacao, planta_ids: [], animal_ids: [])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def saf_params
-    params.require(:saf).permit(:nome, :slug, :objetivo, :produto_principal, :inicio, :fim, :area, :local_id,
-                                :usuario_id, :observacao, planta_ids: [], animal_ids: [])
-  end
+    def load_plantas_animais
+      @plantas = Planta.all
+      @animais = Animal.all
+    end
 
-  def load_plantas_animais
-    @plantas = Planta.all
-    @animais = Animal.all
-  end
-
-  def load_local
-    @local = Local.friendly.find(params[:local_id]) if params[:local_id]
-  end
+    def load_local
+      @local = Local.friendly.find(params[:local_id]) if params[:local_id]
+    end
 end
