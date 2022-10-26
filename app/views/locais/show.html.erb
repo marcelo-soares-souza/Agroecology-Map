@@ -29,7 +29,7 @@
       <h3><%= @local.nome %></h3>
 
       <br/>
-      <%= "<strong>#{t(:type)}:</strong><br/>#{@local.tipo}&nbsp;".html_safe if @local.tipo? %>
+      <%= "<strong>#{t(:type)}:</strong><br/>#{@tipos.key(@local.tipo)}&nbsp;".html_safe if @local.tipo? %>
       <%= "<br/><br/><strong>#{t(:responsible_for_information)}:</strong><br/>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome?%>
       <%= "<br/><br/><strong>#{t(:contributors)}:</strong><br/>#{@local.usuarios.map {|usuario| link_to usuario.nome, usuario_path(usuario)}.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0%>
       <%= "<br/><br/><strong>#{t(:accommodation)}:</strong><br/>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
@@ -41,7 +41,7 @@
 
       <% if @local.latitude and @local.longitude %>
         <br/><br/>
-        <strong>Localização:</strong><br/>
+        <strong><%= t(:localization) %></strong><br/>
         <div class="form-group row"><div id="map"></div></div>
 
         <script>

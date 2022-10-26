@@ -4,7 +4,7 @@ class LocaisController < ApplicationController
   before_action :set_local, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
   before_action -> { check_owner Local.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
-  before_action :load_tipos, except: %i[index show]
+  before_action :load_tipos # , except: %i[index show]
   before_action :load_hospedagens, except: %i[index show]
   before_action :load_usuario
   before_action :load_colaboradores, only: %i[new edit update]

@@ -1,8 +1,8 @@
-<% title "Editando #{@experiencia_agroecologica.nome}" %>
+<% title t(:register_new_experience) + " #{@experiencia_agroecologica.nome}" %>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to "Experiências em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link" %>
+    <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to "#{t(:edit)} #{@experiencia_agroecologica.nome}", edit_experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link active" %>

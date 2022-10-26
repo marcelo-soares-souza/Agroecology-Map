@@ -34,7 +34,7 @@
         <tr>
           <td scope="row"><%= link_to image_tag(local.imagem.url(:thumb), :width => "120", :height => "120"), local_path(local) %></td>
           <td><%= link_to truncate(local.nome, length: 128), local_path(local) %></td>
-          <td><%= local.tipo %></td>
+          <td><%= @tipos.key(local.tipo) %></td>
           <td><%= link_to local.experiencia_agroecologicas.count, local_experiencia_agroecologicas_path(local) %></td>
           <td><%= link_to local.safs.count, local_safs_path(local) %></td>
           <td><%= link_to local.blogs.count, local_blogs_path(local) %></td>
