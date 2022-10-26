@@ -17,32 +17,32 @@
 
 <!--
           <li class="nav-item">
-            <%= link_to(I18n.t(:news), novidades_path, :class => "nav-link") %>
+            <%= link_to(t(:news), novidades_path, :class => "nav-link") %>
           </li>
 -->
           <li class="nav-item">
-            <%= link_to(I18n.t(:locations), locais_path, :class => "nav-link") %>
+            <%= link_to(t(:locations), locais_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item">
-            <%= link_to(I18n.t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link") %>
+            <%= link_to(t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link") %>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t(:agroforestry_systems) %></a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:agroforestry_systems) %></a>
             <div class="dropdown-menu">
-              <%= link_to(I18n.t(:systems), safs_path, :class => "nav-link") %>
-              <%= link_to(I18n.t(:plants), plantas_path, :class => "nav-link") %>
-              <%= link_to(I18n.t(:animals), animais_path, :class => "nav-link") %>
+              <%= link_to(t(:systems), safs_path, :class => "nav-link") %>
+              <%= link_to(t(:plants), plantas_path, :class => "nav-link") %>
+              <%= link_to(t(:animals), animais_path, :class => "nav-link") %>
             </div>
           </li>
 <!--
           <li class="nav-item">
-            <%= link_to(I18n.t(:organizations), organizacoes_path, :class => "nav-link") %>
+            <%= link_to(t(:organizations), organizacoes_path, :class => "nav-link") %>
           </li>
 -->
           <li class="nav-item">
-            <%= link_to(I18n.t(:contributors), usuarios_path, :class => "nav-link") %>
+            <%= link_to(t(:contributors), usuarios_path, :class => "nav-link") %>
           </li>
 
           <% if current_usuario %>
@@ -60,7 +60,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if current_usuario %>
             <li class="nav-item">
-              <%= link_to("#{I18n.t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
+              <%= link_to("#{t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
             </li>
 
             <li class="nav-item">
@@ -68,10 +68,10 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <strong><%= link_to(I18n.t(:login), new_usuario_session_path, :class => "nav-link") %></strong>
+              <strong><%= link_to(t(:login), new_usuario_session_path, :class => "nav-link") %></strong>
             </li>
             <li>
-              <strong><%= link_to I18n.t(:sign_up), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
+              <strong><%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
             </li>
           <% end %>
             <li style="margin-right: 8px; margin-left: 8px;">

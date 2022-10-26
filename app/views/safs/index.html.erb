@@ -1,11 +1,11 @@
-<% title I18n.t(:safs) %>
+<% title t(:safs) %>
 
-<%= link_to I18n.t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
+<%= link_to t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to I18n.t(:safs) + " #{ @local.blank? ? '' : '(' + @local.nome + ')' }", "#", :class => "nav-link active" %>
+    <%= link_to t(:safs) + " #{ @local.blank? ? '' : '(' + @local.nome + ')' }", "#", :class => "nav-link active" %>
   </li>
 </ul>
 

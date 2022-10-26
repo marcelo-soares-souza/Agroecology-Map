@@ -1,11 +1,11 @@
-<% title I18n.t(:locations) %>
+<% title t(:locations) %>
 
-<%= link_to I18n.t("location.register_new_location"), new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
+<%= link_to t("location.register_new_location"), new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
 <br/><br/><br/>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to I18n.t(:locations) + " #{ @usuario.blank? ? '' : '(' + @usuario.nome + ')' }", "#", :class => "nav-link active" %>
+    <%= link_to t(:locations) + " #{ @usuario.blank? ? '' : '(' + @usuario.nome + ')' }", "#", :class => "nav-link active" %>
   </li>
 </ul>
 
@@ -20,9 +20,9 @@
       <thead>
         <tr>
           <th></th>
-          <th><%= I18n.t("location.data") %></th>
-          <th><%= I18n.t("type") %></th>
-          <th><%= I18n.t("experiences") %></th>
+          <th><%= t("location.data") %></th>
+          <th><%= t("type") %></th>
+          <th><%= t("experiences") %></th>
           <th><%= t(:safs) %></th>
           <th>Blog</th>
           <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
