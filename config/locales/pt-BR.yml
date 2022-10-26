@@ -235,4 +235,4 @@ pt-BR:
   add_location: "Adicionar Local"
   invisible_captcha:
     sentence_for_humans: "Se você é humano, ignore este campo"
-    timestamp_error_message: "Desculpe, foi muito rápido! Por favor, reenvie."
+    timestamp_error_message: "Desculpe, foi muito rápido! Por favor, reenvie em 5 segundos."

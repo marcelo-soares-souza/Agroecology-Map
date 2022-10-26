@@ -11,7 +11,9 @@
         <% end %>
 
         <% flash.each do |type, msg| %>
-          <div class="alert alert-danger fade in" style="font-weight: bold;">
-            <%= msg %>
-          </div>
+          <% if type == "error" %>
+            <div class="alert alert-danger fade in" style="font-weight: bold;">
+              <%= msg %>
+            </div>
+          <% end %>
         <% end %>
