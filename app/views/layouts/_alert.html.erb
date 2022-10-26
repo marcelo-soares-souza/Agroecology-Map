@@ -1,11 +1,17 @@
         <% if notice %>
-          <div class="alert alert-info fade in" role="alert">
+          <div class="alert alert-info fade in" role="alert" style="font-weight: bold;">
             <%= notice %>
           </div>
         <% end %>
 
         <% if alert %>
-          <div class="alert alert-danger fade in" role="alert">
+          <div class="alert alert-danger fade in" role="alert" style="font-weight: bold;">
             <%= alert %>
+          </div>
+        <% end %>
+
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-danger fade in" style="font-weight: bold;">
+            <%= msg %>
           </div>
         <% end %>

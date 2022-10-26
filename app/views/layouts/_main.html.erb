@@ -1,15 +1,6 @@
 <div class="container">
   <div class="starter-template">
-    <% if notice or alert %>
-      <%= render 'layouts/alert' %>
-    <% end %>
-
-    <% flash.each do |type, msg| %>
-      <div class="alert alert-danger fade in">
-        <%= msg %>
-      </div>
-    <% end %>
-
+    <%= render 'layouts/alert' %>
     <%= yield %>
   </div>
 </div>
