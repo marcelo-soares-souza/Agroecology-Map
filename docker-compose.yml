@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_PASSWORD: agroecologymap
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+  website:
+    depends_on:
+      - 'postgres'
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/app'
+    environment:
+      USERNAME_DB: postgres
+      PASSWORD_DB: agroecologymap
+      HOST_DB: postgres
+      PORT_DB: 5432
+volumes:
+  postgres:
