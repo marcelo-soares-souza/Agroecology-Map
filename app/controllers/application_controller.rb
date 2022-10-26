@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
 
   protected
     def set_locale
-      I18n.default_locale = "pt-BR"
+      default_locale = "pt-BR"
+
+      if request.host == "agroecologymap.org"
+        default_locale = "en"
+      end
+
+      I18n.default_locale = default_locale
       I18n.locale = params[:locale] || I18n.default_locale
       Rails.application.routes.default_url_options[:locale] = I18n.locale
     end
