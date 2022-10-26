@@ -112,7 +112,22 @@ class ExperienciaAgroecologicasController < ApplicationController
         t(:soil_management) => 19,
         t(:access_to_land_agrarian_reform_and_agroecology) => 20,
         t(:relationship_with_the_markets) => 21,
-        t(:others) => 22
+        t(:others) => 22,
+        t(:women_and_agroecology) => 23,
+        t(:fruit_growing) => 24,
+        t(:extractivism) => 25,
+        t(:craftsmanship) => 26,
+        t(:periurban_agriculture) => 27,
+        t(:sovereignty_and_food_security) => 28,
+        t(:biodiversity) => 29,
+        t(:financing) => 30,
+        t(:construction_of_agroecological_knowledge) => 31,
+        t(:public_policies_with_an_agroecological_approach) => 32,
+        t(:reforestation) => 33,
+        t(:compost) => 34,
+        t(:eco_tourism) => 35,
+        t(:rural_tourism) => 36,
+        t(:indigenous_agriculture) => 37
       }
     end
 
