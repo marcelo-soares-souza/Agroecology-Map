@@ -32,7 +32,7 @@
         <% @experiencia_agroecologicas.each do |experiencia_agroecologica| %>
         <tr>
           <td><%= link_to truncate(experiencia_agroecologica.nome, length: 128), experiencia_agroecologica_path(experiencia_agroecologica) %></td>
-          <td><%= experiencia_agroecologica.tema_experiencia_agroecologica.nome %></td>
+          <td><%= @tema_experiencia_agroecologicas.key(experiencia_agroecologica.tema_experiencia_agroecologica.id) %></td>
           <td><%= link_to truncate(experiencia_agroecologica.local.nome, length: 128), local_path(experiencia_agroecologica.local) %></td>
           <td><%= link_to experiencia_agroecologica.midias.count, experiencia_agroecologica_midias_path(experiencia_agroecologica) %></td>
           <td><%= experiencia_agroecologica.comentarios.count %></td>

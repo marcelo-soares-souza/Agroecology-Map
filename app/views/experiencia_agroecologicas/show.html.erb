@@ -24,7 +24,7 @@
       <h3><%= @experiencia_agroecologica.nome %></h3>
 
       <br/>
-      <%= "<strong>#{t(:central_theme)}:</strong><br/>#{@experiencia_agroecologica.tema_experiencia_agroecologica.nome}&nbsp;".html_safe if @experiencia_agroecologica.tema_experiencia_agroecologica.nome?%>
+      <%= "<strong>#{t(:central_theme)}:</strong><br/>#{@tema_experiencia_agroecologicas.key(@experiencia_agroecologica.tema_experiencia_agroecologica.id)}&nbsp;".html_safe if @experiencia_agroecologica.tema_experiencia_agroecologica.nome?%>
       <%= "<br/><br/><strong>Resumo:</strong><br/>#{@experiencia_agroecologica.resumo}&nbsp;".html_safe if @experiencia_agroecologica.resumo?%>
       <%= "<br/><br/><strong>#{t('location.data')}:</strong><br/>#{link_to @experiencia_agroecologica.local.nome, local_path(@experiencia_agroecologica.local)}&nbsp;".html_safe if @experiencia_agroecologica.local.nome?%>
       <%= "<br/><br/><strong>#{t(:responsible_for_information)}:</strong><br/>#{link_to @experiencia_agroecologica.usuario.nome, usuario_path(@experiencia_agroecologica.usuario)}&nbsp;".html_safe if @experiencia_agroecologica.usuario.nome?%>

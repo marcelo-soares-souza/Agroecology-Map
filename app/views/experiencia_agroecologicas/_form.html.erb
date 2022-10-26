@@ -35,7 +35,7 @@
   <div class="form-group row">
     <%= f.label t(:central_theme), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:tema_experiencia_agroecologica_id, @tema_experiencia_agroecologicas, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <%= f.collection_select(:tema_experiencia_agroecologica_id, @tema_experiencia_agroecologicas, :last, :first,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
     </div>
   </div>
 
