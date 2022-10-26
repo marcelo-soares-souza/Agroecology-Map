@@ -89,18 +89,20 @@ class LocaisController < ApplicationController
     end
 
     def load_tipos
-      @tipos = { "Assentamento" => "Assentamento",
-                 "Propriedade Coletiva" => "Propriedade Coletiva",
-                 "Propriedade Pública (Governo)" => "Propriedade Pública (Governo)",
-                 "Propriedade Privada" => "Propriedade Privada",
-                 "Familiar" => "Familiar",
-                 "Outro" => "Outro" }
+      @tipos = {
+        t(:settlement) => "Assentamento",
+        t(:collective_property) => "Propriedade Coletiva",
+        t(:public_property) => "Propriedade Pública (Governo)",
+        t(:private_property) => "Propriedade Privada",
+        t(:familiar) => "Familiar",
+        t(:other) => "Outro"
+      }
     end
 
     def load_hospedagens
-      @hospedagens = { "Mediante a Consulta" => "Mediante a Consulta",
-                       "Sim" => "Sim",
-                       "Não" => "Não" }
+      @hospedagens = { t(:upon_consultation) => "Mediante a Consulta",
+                       t(:yes_query) => "Sim",
+                       t(:no_query) => "Não" }
     end
 
     def load_colaboradores
