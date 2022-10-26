@@ -233,3 +233,6 @@ pt-BR:
   localization: "Localização"
   partner_collaborators: "Colaboradores parceiros?"
   add_location: "Adicionar Local"
+  invisible_captcha:
+    sentence_for_humans: "Se você é humano, ignore este campo"
+    timestamp_error_message: "Desculpe, foi muito rápido! Por favor, reenvie."

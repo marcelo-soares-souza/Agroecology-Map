@@ -228,3 +228,6 @@ fr:
   localization: "Emplacement"
   partner_collaborators: "Collaborateurs partenaires?"
   add_location: "Ajouter un emplacement"
+  invisible_captcha:
+    sentence_for_humans: "If you are human, ignore this field"
+    timestamp_error_message: "Sorry, that was too quick! Please resubmit."

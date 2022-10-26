@@ -230,3 +230,6 @@ es:
   localization: "Ubicación"
   partner_collaborators: "Socios colaboradores?"
   add_location: "Añade una ubicación"
+  invisible_captcha:
+    sentence_for_humans: "Se você é humano, ignore este campo"
+    timestamp_error_message: "Desculpe, foi muito rápido! Por favor, reenvie."
