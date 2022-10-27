@@ -24,7 +24,7 @@
 
       L.control.zoom({position:'topright'}).addTo(map);
 
-      var osmGeocoder = new L.Control.OSMGeocoder({ placeholder: 'Buscar por Endereço (Logradouro, Cidade, Estado e/ou País)' });
+      var osmGeocoder = new L.Control.OSMGeocoder({ placeholder: '<%= t(:search_by_address) %>', text: '<%= t(:locate) %>' });
 
       map.addControl(osmGeocoder);
 
@@ -35,7 +35,7 @@
 
     $( window ).on('load', function() {
       // Base Maps
-      var osm     = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>', maxZoom: 18,}).addTo(map);
+      var osm     = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | <a href="https://opencollective.com/agroecology-map" target="_blank">Open Collective</a>', maxZoom: 18,}).addTo(map);
       var osmHot  = L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { attribution: '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.hotosm.org/" target="_blank">HOT OpenStreetMap</a>', maxZoom: 18,});
       var osmCycl = L.tileLayer('https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', { attribution: '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://cyclosm.org/" target="_blank">CyclOSM OpenStreetMap</a>', maxZoom: 18,});
       var mapbox  = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: 'Mapa da Agroecologia | MapBox', maxZoom: 18,});

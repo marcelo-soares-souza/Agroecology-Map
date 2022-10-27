@@ -9,12 +9,15 @@ class ExperienciaAgroecologicasController < ApplicationController
   before_action :load_locais, except: %i[index show]
   before_action :load_tema_experiencia_agroecologicas # , except: %i[index show]
   before_action :load_local
+  before_action :load_usuario
 
   # GET /experiencia_agroecologicas
   # GET /experiencia_agroecologicas.json
   def index
     @experiencia_agroecologicas = if params[:local_id]
       ExperienciaAgroecologica.where(local_id: @local.id).sort_by(&:updated_at).reverse
+    elsif params[:usuario_id]
+      ExperienciaAgroecologica.where(usuario_id: @usuario.id).sort_by(&:updated_at).reverse
     else
       ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
     end
@@ -133,5 +136,9 @@ class ExperienciaAgroecologicasController < ApplicationController
 
     def load_local
       @local = Local.friendly.find(params[:local_id]) if params[:local_id]
+    end
+
+    def load_usuario
+      @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
     end
 end

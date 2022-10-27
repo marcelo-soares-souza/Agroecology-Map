@@ -236,3 +236,4 @@ pt-BR:
   invisible_captcha:
     sentence_for_humans: "Se você é humano, ignore este campo"
     timestamp_error_message: "Desculpe, foi muito rápido! Por favor, reenvie em 5 segundos."
+  search: "Pesquisar"

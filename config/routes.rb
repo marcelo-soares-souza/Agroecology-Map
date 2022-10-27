@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :usuarios do
     resources :locais
+    resources :experiencia_agroecologicas
   end
 
   resources :novidades, only: [:index]

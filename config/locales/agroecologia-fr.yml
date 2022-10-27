@@ -108,3 +108,6 @@ fr:
   eco_tourism: "Eco Tourism" 
   rural_tourism: "Rural Tourism" 
   indigenous_agriculture: "Indigenous Agriculture"
+  map: "Carte"
+  search_by_address: "Rechercher par Adresse"
+  locate: "Localiser"

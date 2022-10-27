@@ -11,11 +11,17 @@
 
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<!--
           <li class="nav-item">
             <%= link_to(image_tag("agroecologia-small.png", :width => "96"), root_path, :class => "nav-link", :id => "logo") %>
           </li>
+-->
 
-<!--
+          <li class="nav-item">
+            <%= link_to(t(:map), root_path, :class => "nav-link") %>
+          </li>
+
+          <!--
           <li class="nav-item">
             <%= link_to(t(:news), novidades_path, :class => "nav-link") %>
           </li>
@@ -74,7 +80,7 @@
               <strong><%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
             </li>
           <% end %>
-            <li style="margin-right: 8px; margin-left: 8px;">
+            <li>
               <select id="locale" onchange="if (this.value) window.location.href='/?locale=' + this.value" class="form-control">
                 <option value="pt-BR">Português</option>
                 <option value="es">Español</option>
@@ -82,9 +88,10 @@
                 <option value="fr">Français</option>
               </select>
             </li>
-            <li class="nav-item">
+          <!--
+            <li class="nav-item" style="margin-right: 10px;" >
               <a href="https://opencollective.com/agroecology-map/contribute" target="_blank">
-                <img style="margin-right: 10px;" src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width="192" heigth="31"/>
+                <img src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width="192" heigth="31" alt="OpenCollective Donate Button"/>
               </a>
             </li>
           <ul class="nav navbar-nav navbar-right">
@@ -92,6 +99,7 @@
               <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
             </li>
           </ul>
+          -->
         </ul>
       </div>
     </nav>
