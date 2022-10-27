@@ -54,28 +54,28 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Data de Início', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:start), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-5">
       <%= f.date_field :inicio, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Data de Fim (Opcional)', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:end), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-5">
       <%= f.date_field :fim, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Área (ha)', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:area) + ' (ha)', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-2">
       <%= f.text_field :area, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Plantas Associadas', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:plants), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <% if ! @plantas.empty? %>
         <%= f.collection_select(:planta_ids, @plantas, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
@@ -86,7 +86,7 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Animais Associados', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:animals), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <% if ! @animais.empty? %>
         <%= f.collection_select(:animal_ids, @animais, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
@@ -97,7 +97,7 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
+    <%= f.label t(:observation), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.text_area :observacao, class: "form-control", :rows => "5"  %>
     </div>

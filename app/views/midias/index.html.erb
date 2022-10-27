@@ -1,14 +1,16 @@
+<%= render 'layouts/dataTable' %>
+
 <% if params[:saf_id] %>
-  <% title "Fotos #{@saf.nome}" %>
+  <% title t(:photo) + " #{@saf.nome}" %>
 <% elsif params[:experiencia_agroecologica_id] %>
-  <% title "Fotos #{@experiencia_agroecologica.nome}" %>
+  <% title t(:photo) + " #{@experiencia_agroecologica.nome}" %>
 <% end %>
 
 <% if usuario_signed_in? %>
   <% if params[:saf_id] %>
-    <%= link_to "Enviar Foto para esta SAF", new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;"  if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+    <%= link_to t(:send_picture), new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;"  if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
   <% elsif params[:experiencia_agroecologica_id] %>
-    <%= link_to "Enviar Foto para esta Experiência", new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+    <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
   <% end %>
 <% end %>
 
@@ -19,7 +21,7 @@
     <% if params[:saf_id] %>
       <%= link_to t(:safs), safs_path, :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "Experiências em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link" %>
+      <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
     <% end %>
    </li>
 
@@ -35,7 +37,7 @@
     <% if params[:saf_id] %>
       <%= link_to t(:photo) + " (#{@saf.midias.count})", saf_midias_path, :class => "nav-link active" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "Fotos (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link active" %>
+      <%= link_to t(:photo) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link active" %>
     <% end %>
   </li>
 </ul>
@@ -46,9 +48,9 @@
   <h3>Nenhuma Foto Registrada.
    <% if usuario_signed_in? %>
       <% if params[:saf_id] %>
-        <%= link_to "Enviar uma Foto para esta SAF?", new_saf_midia_path(@saf) if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+        <%= link_to t(:send_picture), new_saf_midia_path(@saf) if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
       <% elsif params[:experiencia_agroecologica_id] %>
-        <%= link_to "Enviar uma Foto para esta Experiência?", new_experiencia_agroecologica_midia_path(@experiencia_agroecologica) if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+        <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path(@experiencia_agroecologica) if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
       <% end %>
     <% end %>
   </h3>
@@ -56,12 +58,12 @@
 <% else %>
 
   <br/>
-  <div style="overflow-x:auto;">
+  <div>
     <table id="dataTable-agroecologia" class="table table-striped table-bordered" width="100%" cellspacing="0">
       <thead>
         <tr>
           <th></th>
-          <th>Descrição</th>
+          <th><%= t(:description) %></th>
           <% if usuario_signed_in? %>
             <th class="list-control"></th>
             <th class="list-control"></th>

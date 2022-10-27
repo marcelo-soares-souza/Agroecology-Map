@@ -111,3 +111,7 @@ es:
   map: "Mapa"
   search_by_address: "Buscar por Dirección"
   locate: "Localizar"
+  start: "Start"
+  end: "End"
+  area: "Area"
+  send_picture: "Enviar Foto"
