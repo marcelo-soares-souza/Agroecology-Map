@@ -54,19 +54,15 @@
       var biomas =  L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?',   { layers: 'CMR-PUBLICO:veg_biomas_a', format: 'image/png', transparent: true, opacity: 0.3 }).addTo(map);
       var consumoresponsavel = loadConsumoResponsavel();
       var idec = loadIDEC();
-      var ppm = loadPPM();
       var ofb = loadOFB();
-      // var argentina = loadArgentina();
       var foei = loadFOEI();
 
       ti.addTo(map);
       consumoresponsavel.addTo(map);
       idec.addTo(map);
-      ppm.addTo(map);
       ofb.addTo(map);
-      // argentina.addTo(map);
       foei.addTo(map);
-        foei.setZIndex(101);
+      foei.setZIndex(101);
 
       var overlayMaps = { "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomas</a>": biomas,
                           "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Terra Indígena</a>": ti,
@@ -77,9 +73,7 @@
                           "<a href='https://www.foei.org/agroecology-map' target='_blank'>Friends of the Earth</a>": foei,
                           "<a href='http://mapa.consumoresponsavel.org.br/' target='_blank'>Consumo Responsável</a>": consumoresponsavel,
                           "<a href='https://feirasorganicas.org.br' target='_blank'>Feiras Orgânicas (IDEC)</a>": idec,
-                          "<a href='https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/' target='_blank'>Politicas Públicas Municipais</a>": ppm,
-                          "<a href='https://openfoodbrasil.com.br/' target='_blank'>Open Food Brasil</a>": ofb,
-                          // "<a href='https://www.google.com/maps/d/u/0/viewer?mid=1qcPTG-9x_g-zsua71YfQKafC659dPTcn&ll=-39.16374453710612%2C-61.01804353560858&z=4' target='_blank'>Arte. y Prod. de Alim. Argentinos</a>": argentina
+                          "<a href='https://openfoodbrasil.com.br/' target='_blank'>Open Food Brasil</a>": ofb
                         };
 
       L.control.layers(baseMaps, overlayMaps, { collapsed: true, position: 'bottomright'} ).addTo(map);
