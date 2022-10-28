@@ -22,7 +22,8 @@ class Usuario < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   def default_image_number
-    rand(1..9)
+    # rand(1..9)
+    id.to_s.last
   end
 
   has_attached_file :imagem,
