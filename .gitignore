@@ -36,3 +36,4 @@ yarn.lock
 /config/credentials.yml.enc
 
 .idea
+.env

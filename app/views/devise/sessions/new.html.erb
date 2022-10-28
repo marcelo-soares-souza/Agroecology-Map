@@ -14,7 +14,7 @@
   <div class="form-group row">
     <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control"  %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>
   </div>
 
@@ -27,10 +27,17 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit t(:sign_in), class: "btn btn-primary" %>
+    <%= f.submit t(:sign_in), class: "btn btn-primary", id: 'submit' %>
   </div>
   <br/>
   <%= render "devise/shared/links" %>
   <br/>
   <%= invisible_captcha %>
 <% end %>
+
+<script>
+    document.getElementById("submit").setAttribute("disabled", "disabled");
+    setTimeout(function () {
+        document.getElementById("submit").removeAttribute("disabled");
+    }, 2000);
+</script>

@@ -25,10 +25,9 @@ function loadConsumoResponsavel() {
     layer.bindPopup(popupText);
   }
 
-
-  $.getJSON("https://dtygel.vps2.eita.org.br/responsa_datamining/ajax_get_all_initiatives_geojson.php", function (data) {
-    $.each(data, function(category, items) { consumoresponsavel.addLayer(L.geoJson(items.features, { pointToLayer: function (feature, latlng) { return L.marker (latlng, { icon: Icon }) } , 
-                                                                                                   onEachFeature: onEachFeature }));});
+  // https://dtygel.vps2.eita.org.br/responsa_datamining/ajax_get_all_initiatives_geojson.php
+  $.getJSON("https://agroecologymap.org/system/consumoresponsavel.json", function (data) {
+    $.each(data, function(category, items) { consumoresponsavel.addLayer(L.geoJson(items.features, { pointToLayer: function (feature, latlng) { return L.marker (latlng, { icon: Icon }) } , onEachFeature: onEachFeature }));});
   });
 
   return consumoresponsavel;

@@ -32,7 +32,7 @@
 
   <br/>
   <div class="actions">
-    <%= f.submit t(:register), class: "btn btn-primary" %>
+    <%= f.submit t(:register), class: "btn btn-primary", id: 'submit', onclick: 'block()' %>
   </div>
   <br/>
   <%= render "devise/shared/links" %>
@@ -40,3 +40,9 @@
   <%= invisible_captcha %>
 <% end %>
 
+<script>
+    document.getElementById("submit").setAttribute("disabled", "disabled");
+    setTimeout(function () {
+        document.getElementById("submit").removeAttribute("disabled");
+    }, 2000);
+</script>
