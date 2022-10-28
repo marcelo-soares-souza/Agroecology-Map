@@ -15,139 +15,148 @@
  */
 
 #locale {
-  font-size: 0.75rem;
-  height: 34px;
-  font-weight: bold;
+    font-size: 0.75rem;
+    height: 34px;
+    font-weight: bold;
 }
 
 .dropdown-toggle.btn-default {
-  color: #292b2c;
-  background-color: #fff;
-  border-color: #ccc;
+    color: #292b2c;
+    background-color: #fff;
+    border-color: #ccc;
 }
 
-.bootstrap-select.show>.dropdown-menu>.dropdown-menu {
-  display: block;
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu {
+    display: block;
 }
 
-.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden{
-  display:none;
+.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden {
+    display: none;
 }
 
-.bootstrap-select > .dropdown-menu > .dropdown-menu li a{
-  display: block;
-  width: 100%;
-  padding: 3px 1.5rem;
-  clear: both;
-  font-weight: 400;
-  color: #292b2c;
-  text-align: inherit;
-  white-space: nowrap;
-  background: 0 0;
-  border: 0;
+.bootstrap-select > .dropdown-menu > .dropdown-menu li a {
+    display: block;
+    width: 100%;
+    padding: 3px 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #292b2c;
+    text-align: inherit;
+    white-space: nowrap;
+    background: 0 0;
+    border: 0;
 }
 
 .dropdown-menu > li.active > a {
-  color: #fff !important;
-  background-color: #337ab7 !important;
+    color: #fff !important;
+    background-color: #337ab7 !important;
 }
 
 .bootstrap-select .check-mark::after {
-  content: "✓";
+    content: "✓";
 }
 
 .bootstrap-select button {
-  overflow: hidden;
-  text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
 .bootstrap-select.btn-group .dropdown-toggle .filter-option {
-  display: inline !important;
+    display: inline !important;
 }
-    
+
 html {
-  position: relative;
-  min-height: 90%;
+    position: relative;
+    min-height: 90%;
 }
 
 body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 18px;
-/*
-  margin-bottom: 50px;
-  background: url(background.png) no-repeat;
-  background-attachment: scroll;
-  background-position: 99% bottom;
-*/
+    background-color: #fff;
+    color: #333;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    /*
+      margin-bottom: 50px;
+      background: url(background.png) no-repeat;
+      background-attachment: scroll;
+      background-position: 99% bottom;
+    */
 }
 
-@media all and (max-width:768px){
-  body {
-    background: none;
-  }
+@media all and (max-width: 768px) {
+    body {
+        background: none;
+    }
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 18px;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 18px;
 }
 
 pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
 }
 
 a {
-  color: #000;
+    color: #000;
 
-  &:visited {
+&
+:visited {
     color: #666;
-  }
+}
 
-  &:hover {
+&
+:hover {
     color: #fff;
     background-color: #000;
-  }
+}
+
 }
 
 th {
-  padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 td {
-  padding: 0 5px 7px;
+    padding: 0 5px 7px;
 }
 
 div {
-  &.field, &.actions {
+
+&
+.field,
+
+&
+.actions {
     margin-bottom: 10px;
-  }
+}
+
 }
 
 #notice {
-  color: green;
+    color: green;
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+    padding: 2px;
+    background-color: red;
+    display: table;
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px 7px 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 
-  h2 {
+h2 {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
@@ -155,139 +164,140 @@ div {
     margin: -7px -7px 0;
     background-color: #c00;
     color: #fff;
-  }
+}
 
-  ul li {
+ul li {
     font-size: 12px;
     list-style: square;
-  }
+}
+
 }
 
 label {
-  display: block;
+    display: block;
 }
 
 .container {
-  max-width: 100%;
-  width: 85%;
+    max-width: 100%;
+    width: 85%;
 }
 
 .dropdown-menu {
-  width: 150px !important;
-  text-align: center;
+    width: 150px !important;
+    text-align: center;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  background-color: #f5f5f5;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
 }
 
 
 body > .container {
-  padding: 1px 0px 0;
-  padding-top: 8px;
+    padding: 1px 0px 0;
+    padding-top: 8px;
 }
 
 .footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 code {
-  font-size: 80%;
+    font-size: 80%;
 }
 
 .search-box {
-  float: right;
+    float: right;
 }
 
 b a, b a:visited, b a:hover {
-  font-size: 16px;
-  color: #90AD34;
+    font-size: 16px;
+    color: #90AD34;
 }
 
 a, a:visited {
-  color: #0078a8;
+    color: #0078a8;
 }
 
 .starter-template {
-  text-align: center;
+    text-align: center;
 }
 
 .error {
-  border-color: red;
+    border-color: red;
 }
 
 table thead th {
-  text-align: center;
-  margin-top: auto;
-  margin-bottom: auto;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .table th, .table td {
-  border-top: none;
-  vertical-align: middle;
-  text-align: center;
-  max-width: 256px;
-  word-wrap: break-word;
+    border-top: none;
+    vertical-align: middle;
+    text-align: center;
+    max-width: 256px;
+    word-wrap: break-word;
 }
 
 .btn:visited {
-  color: #fff;
+    color: #fff;
 
 }
 
 #error_explanation {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p {
-  text-align: justify;
+    text-align: justify;
 }
 
 .list:hover img {
-    -webkit-transform:scale(1.05);
-    -moz-transform:scale(1.05);
-    -ms-transform:scale(1.05);
-    -o-transform:scale(1.05);
-     transform:scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: #e1f7e8;
+    background-color: #e1f7e8;
 }
 
 a:focus, a:hover {
-  background-color: transparent;
-  color: #000;
+    background-color: transparent;
+    color: #000;
 }
 
 #show-imagem {
-  float: left;
-  max-width: 120px;
-  max-height: 120px;
-  padding: 4px 4px 4px 4px;
+    float: left;
+    max-width: 120px;
+    max-height: 120px;
+    padding: 4px 4px 4px 4px;
 }
 
 #show-info {
-  float: right;
-  max-width: 90%;
-  min-height: 150px;
-  text-align: left;
-  padding: 4px 4px 4px 4px;
+    float: right;
+    max-width: 90%;
+    min-height: 150px;
+    text-align: left;
+    padding: 4px 4px 4px 4px;
 
 }
 
 #usuario-footer {
-  margin: 16px 16px 16px 16px;
-  min-width: 360px;
-  min-heigth: 128px;
-  float: right;
+    margin: 16px 16px 16px 16px;
+    min-width: 360px;
+    min-heigth: 128px;
+    float: right;
 }
 
 .table-responsive {
@@ -295,61 +305,70 @@ a:focus, a:hover {
 }
 
 #alerta {
-  background-color: #f2dede;
-  border-color: #ebcccc;
-  color: #a94442;
-  border-radius: 0.25rem;
-  margin-bottom: 32px;
+    background-color: #f2dede;
+    border-color: #ebcccc;
+    color: #a94442;
+    border-radius: 0.25rem;
+    margin-bottom: 32px;
 }
 
 .midia-imagem {
-  max-width: 640px;
+    max-width: 640px;
 }
 
 .list-control {
-  display: none!important; 
+    display: none !important;
 }
 
 .blog-content {
-  min-height:64px;
-  margin-bottom: 4px;
+    min-height: 64px;
+    margin-bottom: 4px;
 }
 
 .blog-tag {
-  min-height: 32px;
-  margin-top: 4px;
+    min-height: 32px;
+    margin-top: 4px;
 }
 
-.lines{max-height: 96.0em;}
+.lines {
+    max-height: 96.0em;
+}
 
-.truncate {overflow: hidden; position:relative}
+.truncate {
+    overflow: hidden;
+    position: relative
+}
 
-.truncate:after{
-    content:""; 
-    height: 1em; 
-    display: block; 
-    width: 100%; 
-    position:absolute;
-    background-color:white; 
-    opacity: 0.8; 
+.truncate:after {
+    content: "";
+    height: 1em;
+    display: block;
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    opacity: 0.8;
     bottom: -0.3em
 }
 
 .contact {
-  float: right;
+    float: right;
 }
 
 .navbar {
-  padding-left: 8px;
-  padding-bottom: 2.5px;
+    padding-left: 8px;
+    padding-bottom: 2.5px;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgb(221, 122, 0);
-  font-weight: 600;
-  font-size: 16px;
+    color: rgb(221, 122, 0);
+    font-weight: 600;
+    font-size: 16px;
 }
 
 #logo {
-  padding-top: 10px;
+    padding-top: 10px;
+}
+
+.nav {
+    flex-wrap: nowrap;
 }
