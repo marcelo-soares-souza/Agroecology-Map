@@ -372,3 +372,7 @@ a:focus, a:hover {
 .nav {
     flex-wrap: nowrap;
 }
+
+.nav-link {
+    padding: 0.4rem 0.5rem;
+}
