@@ -20,6 +20,10 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <center>
+      <% if @saf.midias[0] %>
+        <%= image_tag(@saf.midias[0].imagem.url(:medium), :width => "250") %>
+      <% end %>
+
       <br/><br/>
       <h3><%= @saf.nome %></h3>
 
