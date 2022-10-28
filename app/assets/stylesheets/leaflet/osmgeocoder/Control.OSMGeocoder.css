@@ -1,45 +1,45 @@
 .leaflet-control-geocoder a {
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	display: block;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: block;
 }
 
 .leaflet-control-geocoder {
-	box-shadow: 0 1px 7px #999;
-	background: #f8f8f9;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
+    box-shadow: 0 1px 7px #999;
+    background: #f8f8f9;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
 }
 
 .leaflet-control-geocoder a {
-	background-image: url(geocoder.png);
-	width: 32px;
-	height: 32px;
+    background-image: url(geocoder.png);
+    width: 32px;
+    height: 32px;
 }
 
 .leaflet-touch .leaflet-control-geocoder a {
-	width: 34px;
-	height: 34px;
+    width: 34px;
+    height: 34px;
 }
 
 .leaflet-control-geocoder .leaflet-control-geocoder-form,
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-toggle {
-        width: 480px;
-	display: none;
+    width: 480px;
+    display: none;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
-	display: block;
-	position: relative;
+    display: block;
+    position: relative;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
-	padding: 8px;
-        text-align: center;
+    padding: 8px;
+    text-align: center;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form input {
-  margin-top: 3px;
-  text-align: center;
+    margin-top: 3px;
+    text-align: center;
 }

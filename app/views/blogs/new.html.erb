@@ -3,11 +3,11 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to "Todos", locais_path, :class => "nav-link" %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <%= link_to @local.nome, local_path(@local), :class => "nav-link" %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <%= link_to "Blog (#{@local.blogs.count})", local_blogs_path, :class => "nav-link" %>
@@ -20,7 +20,6 @@
   <% end %>
 </ul>
 
-<br/>
+<br>
 
 <%= render 'form', blog: @blog %>
-

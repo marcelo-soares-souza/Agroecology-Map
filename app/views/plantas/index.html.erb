@@ -1,7 +1,7 @@
 <% title 'Plantas | Sistemas Agroflorestais' %>
 
 <%= link_to "Registrar Nova Planta", new_planta_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -10,25 +10,28 @@
 </ul>
 
 <% if @plantas.empty? %>
-  <br/>
+  <br>
   <h3>Nenhuma Planta Registrada</h3>
 <% else %>
 
-  <br/>
+  <br>
   <div>
     <table id="dataTable-agroecologia" class="table table-striped table-bordered" width="100%" cellspacing="0">
       <thead>
-        <tr>
-          <th></th>
-          <th><%= t(:name) %></th>
-          <th>Nome Científico</th>
-          <th><%= t(:safs) %></th>
-          <% if usuario_signed_in? %><th class="list-control"></th><th class="list-control"></th><% end %>
-        </tr>
+      <tr>
+        <th></th>
+        <th><%= t(:name) %></th>
+        <th>Nome Científico</th>
+        <th><%= t(:safs) %></th>
+        <% if usuario_signed_in? %>
+          <th class="list-control"></th>
+          <th class="list-control"></th>
+        <% end %>
+      </tr>
       </thead>
 
       <tbody>
-        <% @plantas.each do |planta| %>
+      <% @plantas.each do |planta| %>
         <tr>
           <td scope="row"><%= link_to image_tag(planta.imagem.url(:thumb), :height => "64"), planta_path(planta) %></td>
           <td><%= link_to planta.nome, planta_path(planta) %></td>
@@ -39,14 +42,17 @@
               <td><%= link_to t(:edit), edit_planta_path(planta), :class => 'btn btn-sm btn-success' %></td>
               <td><%= link_to t(:destroy), planta_path(planta), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
             <% else %>
-              <td></td><td></td>
+              <td></td>
+              <td></td>
             <% end %>
           <% end %>
         </tr>
-        <% end %>
+      <% end %>
       </tbody>
     </table>
   </div>
 
-  <script>$(document).ready(function(){ dataTables(); });</script>
+  <script>$(document).ready(function () {
+      dataTables();
+  });</script>
 <% end %>

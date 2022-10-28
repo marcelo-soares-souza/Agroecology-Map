@@ -1,7 +1,7 @@
 <% title @saf.nome %>
 
 <%= link_to t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -15,38 +15,35 @@
   </li>
 </ul>
 
-<br/>
+<br>
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <center>
-      <% if @saf.midias[0] %>
-        <%= image_tag(@saf.midias[0].imagem.url(:medium), :width => "250") %>
-      <% end %>
+    <% if @saf.midias[0] %>
+      <%= image_tag(@saf.midias[0].imagem.url(:medium), :width => "250") %>
+    <% end %>
 
-      <br/><br/>
-      <h3><%= @saf.nome %></h3>
+    <br><br>
+    <h3><%= @saf.nome %></h3>
 
-      <br/>
-      <%= "<strong>#{t(:localization)}:</strong><br/>#{link_to @saf.local.nome, local_path(@saf.local)}&nbsp;".html_safe if @saf.local.nome?%>
-      <%= "<br/><br/><strong>#{t(:main_objective)}:</strong><br/>#{@saf.objetivo}&nbsp;".html_safe if @saf.objetivo?%>
-      <%= "<br/><br/><strong>#{t(:main_product)}:</strong><br/>#{@saf.produto_principal}&nbsp;".html_safe if @saf.produto_principal?%>
-      <%= "<br/><br/><strong>#{t(:start)}:</strong><br/>#{@saf.inicio}&nbsp;".html_safe if @saf.inicio?%>
-      <%= "<br/><br/><strong>#{t(:end)}:</strong><br/>#{@saf.fim}&nbsp;".html_safe if @saf.fim?%>
-      <%= "<br/><br/><strong>#{t(:area)} (ha):</strong><br/>#{@saf.area}&nbsp;".html_safe if @saf.area?%>
-      <%= "<br/><br/><strong>#{t(:responsible_for_information)}:</strong><br/>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome?%>
-      <!-- <%= "<br/><br/><strong>Organização:</strong><br/>#{@saf.local.organizacoes.map {|organizacao| link_to organizacao.nome, organizacao_path(organizacao)}.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0%> -->
-      <%= "<br/><br/><strong>#{t(:plants)}:</strong><br/>#{@saf.plantas.map {|planta| link_to planta.nome, planta_path(planta)}.join(", ").html_safe}&nbsp;".html_safe if @saf.plantas.count > 0%>
-      <%= "<br/><br/><strong>#{t(:animals)}:</strong><br/>#{@saf.animais.map {|animal| link_to animal.nome, animal_path(animal)}.join(", ").html_safe}&nbsp;".html_safe if @saf.animais.count > 0%>
-      <%= "<br/><br/><strong>#{t(:observation)}:</strong><br/>#{@saf.observacao}&nbsp;".html_safe if @saf.observacao?%>
-
-    </center>
+    <br>
+    <%= "<strong>#{t(:localization)}:</strong><br/>#{link_to @saf.local.nome, local_path(@saf.local)}&nbsp;".html_safe if @saf.local.nome? %>
+    <%= "<br/><br/><strong>#{t(:main_objective)}:</strong><br/>#{@saf.objetivo}&nbsp;".html_safe if @saf.objetivo? %>
+    <%= "<br/><br/><strong>#{t(:main_product)}:</strong><br/>#{@saf.produto_principal}&nbsp;".html_safe if @saf.produto_principal? %>
+    <%= "<br/><br/><strong>#{t(:start)}:</strong><br/>#{@saf.inicio}&nbsp;".html_safe if @saf.inicio? %>
+    <%= "<br/><br/><strong>#{t(:end)}:</strong><br/>#{@saf.fim}&nbsp;".html_safe if @saf.fim? %>
+    <%= "<br/><br/><strong>#{t(:area)} (ha):</strong><br/>#{@saf.area}&nbsp;".html_safe if @saf.area? %>
+    <%= "<br/><br/><strong>#{t(:responsible_for_information)}:</strong><br/>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome? %>
+    <!-- <%= "<br/><br/><strong>Organização:</strong><br/>#{@saf.local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0 %> -->
+    <%= "<br/><br/><strong>#{t(:plants)}:</strong><br/>#{@saf.plantas.map { |planta| link_to planta.nome, planta_path(planta) }.join(", ").html_safe}&nbsp;".html_safe if @saf.plantas.count > 0 %>
+    <%= "<br/><br/><strong>#{t(:animals)}:</strong><br/>#{@saf.animais.map { |animal| link_to animal.nome, animal_path(animal) }.join(", ").html_safe}&nbsp;".html_safe if @saf.animais.count > 0 %>
+    <%= "<br/><br/><strong>#{t(:observation)}:</strong><br/>#{@saf.observacao}&nbsp;".html_safe if @saf.observacao? %>
   </div>
 </div>
 
 <% if usuario_signed_in? %>
-  <% if current_usuario.admin? or current_usuario.id == @saf.usuario.id %>        
-    <br/><br/>
+  <% if current_usuario.admin? or current_usuario.id == @saf.usuario.id %>
+    <br><br>
     <div id="saf-footer">
       <div class="form-actions">
         <%= link_to t(:edit), edit_saf_path(@saf), :class => 'btn btn-success' %>

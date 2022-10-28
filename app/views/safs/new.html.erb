@@ -8,10 +8,10 @@
     <%= link_to t(:new), new_saf_path, :class => "nav-link active" %>
   </li>
 </ul>
-<br/>
-<% if ! @locais.empty? %>
+<br>
+<% if !@locais.empty? %>
   <%= render 'form', saf: @saf %>
 <% else %>
-  <br/>
+  <br>
   <h3>Nenhum Local Cadastrado. Deseja <%= link_to "Cadastrar um Local Agora?", new_local_url %></h3>
 <% end %>

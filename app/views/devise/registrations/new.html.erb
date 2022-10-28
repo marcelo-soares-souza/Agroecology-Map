@@ -1,5 +1,5 @@
 <h2><%= t(:sign_up) %></h2>
-<br/>
+<br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   <div class="form-group row">
@@ -36,9 +36,9 @@
       <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
     <% end %>
   </div>
-  <br/>
+  <br>
   <%= render "devise/shared/links" %>
-  <br/>
+  <br>
   <%= invisible_captcha %>
 <% end %>
 

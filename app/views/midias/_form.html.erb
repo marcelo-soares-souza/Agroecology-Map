@@ -4,9 +4,9 @@
       <h2><%= pluralize(midia.errors.count, "error") %> encontrado(s):</h2>
 
       <ul>
-      <% midia.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% midia.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <div class="form-group row">
       <%= f.label t(:responsible_for_information), class: "col-sm-2 col-form-label col-form-label-lg" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
       </div>
     </div>
   <% end %>
@@ -34,11 +34,11 @@
     </div>
   </div>
 
-  <br/>
+  <br>
 
   <div class="actions">
     <%= f.submit t(:submit), class: "btn btn-primary" %>
   </div>
-  <br/>
+  <br>
   <%= invisible_captcha %>
 <% end %>

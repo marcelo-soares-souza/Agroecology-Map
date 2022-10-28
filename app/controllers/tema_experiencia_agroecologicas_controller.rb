@@ -5,8 +5,8 @@ class TemaExperienciaAgroecologicasController < ApplicationController
   before_action :authenticate_usuario!, except: [:show]
   before_action :check_if_admin, only: [:index]
   before_action lambda {
-                  check_owner TemaExperienciaAgroecologica.friendly.find(params[:id]).usuario_id
-                }, only: %i[edit update destroy]
+    check_owner TemaExperienciaAgroecologica.friendly.find(params[:id]).usuario_id
+  }, only: %i[edit update destroy]
 
   # GET /tema_experiencia_agroecologicas
   # GET /tema_experiencia_agroecologicas.json

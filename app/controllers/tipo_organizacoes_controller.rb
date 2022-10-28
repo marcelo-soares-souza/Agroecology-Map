@@ -5,8 +5,8 @@ class TipoOrganizacoesController < ApplicationController
   before_action :authenticate_usuario!, except: [:show]
   before_action :check_if_admin, only: [:index]
   before_action lambda {
-                  check_owner TipoOrganizacao.friendly.find(params[:id]).usuario_id
-                }, only: %i[edit update destroy]
+    check_owner TipoOrganizacao.friendly.find(params[:id]).usuario_id
+  }, only: %i[edit update destroy]
 
   # GET /tipo_organizacoes
   # GET /tipo_organizacoes.json

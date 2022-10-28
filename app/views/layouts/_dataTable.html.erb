@@ -1,41 +1,40 @@
 <script>
-function dataTables() {
-  var table = $('#dataTable-agroecologia').DataTable( {
-    bSort: true,
-    aaSorting: [],
-    pageLength: 25,
-    lengthChange: false,
-    "language":
-    {
-      "sEmptyTable": "Nenhum registro encontrado",
-      "sInfo": "<%= t(:showing) %> _START_ até _END_ de _TOTAL_ <%= t(:records) %>",
-      "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-      "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-      "sInfoPostFix": "",
-      "sInfoThousands": ".",
-      "sLengthMenu": "_MENU_ resultados por página",
-      "sLoadingRecords": "Carregando...",
-      "sProcessing": "Processando...",
-      "sZeroRecords": "Nenhum registro encontrado",
-      "sSearch": "<b><%= t(:search) %></b>",
-      "oPaginate":
-      {
-        "sNext": "<%= t(:next) %>",
-        "sPrevious": "<%= t(:previous) %>",
-        "sFirst": "<%= t(:first) %>",
-        "sLast": "<%= t(:last) %>"
-      },
-      "oAria":
-      {
-        "sSortAscending": ": Ordenar colunas de forma ascendente",
-        "sSortDescending": ": Ordenar colunas de forma descendente"
-      }
-    },
-    drawCallback: function(settings) {
-      var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
-      pagination.toggle(this.api().page.info().pages > 1);
+    function dataTables() {
+        var table = $('#dataTable-agroecologia').DataTable({
+            bSort: true,
+            aaSorting: [],
+            pageLength: 25,
+            lengthChange: false,
+            "language":
+                {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "<%= t(:showing) %> _START_ até _END_ de _TOTAL_ <%= t(:records) %>",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "<b><%= t(:search) %></b>",
+                    "oPaginate":
+                        {
+                            "sNext": "<%= t(:next) %>",
+                            "sPrevious": "<%= t(:previous) %>",
+                            "sFirst": "<%= t(:first) %>",
+                            "sLast": "<%= t(:last) %>"
+                        },
+                    "oAria":
+                        {
+                            "sSortAscending": ": Ordenar colunas de forma ascendente",
+                            "sSortDescending": ": Ordenar colunas de forma descendente"
+                        }
+                },
+            drawCallback: function (settings) {
+                var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
+                pagination.toggle(this.api().page.info().pages > 1);
+            }
+        });
     }
-  });
-}
 </script>
-

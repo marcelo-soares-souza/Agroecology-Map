@@ -1,7 +1,7 @@
 <% title @animal.nome %>
 
 <%= link_to "Registrar Novo Animal", new_animal_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -12,27 +12,24 @@
   </li>
 </ul>
 
-<br/>
+<br>
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <center>
-      <%= image_tag(@animal.imagem.url(:medium), :width => "250") %>
+    <%= image_tag(@animal.imagem.url(:medium), :width => "250") %>
+    <br><br>
+    <h3><%= @animal.nome %></h3>
 
-      <br/><br/>
-      <h3><%= @animal.nome %></h3>
-
-      <br/>
-      <%= "<strong>Nome Científico:</strong><br/>#{@animal.nome_cientifico}&nbsp;".html_safe if @animal.nome_cientifico?%>
-      <%= "<br/><br/><strong>Observação:</strong><br/>#{@animal.observacao}&nbsp;".html_safe if @animal.observacao?%>
-      <%= "<br/><br/><strong>SAFs que Utilizam este Animal:</strong><br/>#{@animal.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @animal.safs.count > 0%>
-    </center>
+    <br>
+    <%= "<strong>Nome Científico:</strong><br/>#{@animal.nome_cientifico}&nbsp;".html_safe if @animal.nome_cientifico? %>
+    <%= "<br/><br/><strong>Observação:</strong><br/>#{@animal.observacao}&nbsp;".html_safe if @animal.observacao? %>
+    <%= "<br/><br/><strong>SAFs que Utilizam este Animal:</strong><br/>#{@animal.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @animal.safs.count > 0 %>
   </div>
 </div>
 
 <% if usuario_signed_in? %>
-  <% if current_usuario.admin? or current_usuario.id == @animal.usuario.id %>        
-    <br/><br/>
+  <% if current_usuario.admin? or current_usuario.id == @animal.usuario.id %>
+    <br><br>
     <div id="animal-footer">
       <div class="form-actions">
         <%= link_to t('.edit', :default => "Editar"), edit_animal_path(@animal), :class => 'btn btn-success' %>

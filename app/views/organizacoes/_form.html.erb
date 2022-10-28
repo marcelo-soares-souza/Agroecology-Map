@@ -4,9 +4,9 @@
       <h2><%= pluralize(organizacao.errors.count, "error") %> encontrado(s):</h2>
 
       <ul>
-      <% organizacao.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% organizacao.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <div class="form-group row">
       <%= f.label 'Colaborador Responsável', class: "col-sm-2 col-form-label col-form-label-lg" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
       </div>
     </div>
   <% end %>
@@ -37,7 +37,7 @@
   <div class="form-group row">
     <%= f.label 'Tipo', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:tipo_organizacao_id, @tipo_organizacoes, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <%= f.collection_select(:tipo_organizacao_id, @tipo_organizacoes, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
     </div>
   </div>
 
@@ -93,10 +93,10 @@
   <div class="form-group row">
     <%= f.label 'Locais', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <% if ! @locais.empty? %>
-        <%= f.collection_select(:local_ids, @locais, :id, :nome,  { include_hidden: false }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
+      <% if !@locais.empty? %>
+        <%= f.collection_select(:local_ids, @locais, :id, :nome, { include_hidden: false }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true }) %>
       <% else %>
-        <b>Não há Locais Registradas. Deseja <%= link_to "Cadastrar Agora?", new_local_path, :target => "blank"%></b>
+        <b>Não há Locais Registradas. Deseja <%= link_to "Cadastrar Agora?", new_local_path, :target => "blank" %></b>
       <% end %>
     </div>
   </div>
@@ -104,7 +104,7 @@
   <div class="form-group row">
     <%= f.label 'Observação', class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.text_area :observacao, class: "form-control", :rows => "5"  %>
+      <%= f.text_area :observacao, class: "form-control", :rows => "5" %>
     </div>
   </div>
 
@@ -116,64 +116,73 @@
     </div>
   -->
 
-  <br/><br/>
+  <br><br>
 
   <%= f.hidden_field :latitude, id: "latitude" %>
   <%= f.hidden_field :longitude, id: "longitude" %>
 
-  <br/>
+  <br>
 
   <div class="actions">
     <%= f.submit t(:submit), class: "btn btn-primary" %>
   </div>
 
   <script>
-    $( document ).ready(function() {
-      lat = -15.77835833463309;
-      lon = -47.88219451904297;
+      $(document).ready(function () {
+          lat = -15.77835833463309;
+          lon = -47.88219451904297;
 
-      <% if params[:action] != 'new' %>
-        lat = <%= f.object.latitude %>;
-        lon = <%= f.object.longitude %>;
-      <% end %>
+          <% if params[:action] != 'new' %>
+          lat = <%= f.object.latitude %>;
+          lon = <%= f.object.longitude %>;
+          <% end %>
 
-      var map = L.map('map-sistema', {zoomControl: false}).setView([lat, lon], 10);
+          var map = L.map('map-sistema', {zoomControl: false}).setView([lat, lon], 10);
 
-      $(window).on("resize", function () { $("#map-sistema").width($(window).width()); map.invalidateSize(); }).trigger("resize");
-      $(window).on("resize", function () { $("#map-sistema").height($(window).height()); map.invalidateSize(); }).trigger("resize");
+          $(window).on("resize", function () {
+              $("#map-sistema").width($(window).width());
+              map.invalidateSize();
+          }).trigger("resize");
+          $(window).on("resize", function () {
+              $("#map-sistema").height($(window).height());
+              map.invalidateSize();
+          }).trigger("resize");
 
-      L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'OpenStreetMap', maxZoom: 18,}).addTo(map);
-      L.control.zoom({position:'topright'}).addTo(map);
+          L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: 'OpenStreetMap',
+              maxZoom: 18,
+          }).addTo(map);
+          L.control.zoom({position: 'topright'}).addTo(map);
 
-      var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe a Cidade/Estado/País'});
-      map.addControl(osmGeocoder);
+          var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe a Cidade/Estado/País'});
+          map.addControl(osmGeocoder);
 
-      var Icon = L.icon({
-                            iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
-                            shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-                            iconSize:     [38, 95],
-                            shadowSize:   [50, 64],
-                            iconAnchor:   [22, 94],
-                            shadowAnchor: [4, 62],
-                            popupAnchor:  [-3, -76]
-                        });
+          var Icon = L.icon({
+              iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
+              shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+              iconSize: [38, 95],
+              shadowSize: [50, 64],
+              iconAnchor: [22, 94],
+              shadowAnchor: [4, 62],
+              popupAnchor: [-3, -76]
+          });
 
-      var marker = L.marker(new L.LatLng(lat, lon), { draggable: true, icon: Icon }).addTo(map);
+          var marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
 
-      $('#latitude').val(lat);
-      $('#longitude').val(lon);
+          $('#latitude').val(lat);
+          $('#longitude').val(lon);
 
-      map.on('click', function (e) {
-        marker.setLatLng(e.latlng);
-        $('#latitude').val(marker.getLatLng().lat);
-        $('#longitude').val(marker.getLatLng().lng);
+          map.on('click', function (e) {
+              marker.setLatLng(e.latlng);
+              $('#latitude').val(marker.getLatLng().lat);
+              $('#longitude').val(marker.getLatLng().lng);
+          });
+
+          marker.on('dragend', function (e) {
+              $('#latitude').val(marker.getLatLng().lat);
+              $('#longitude').val(marker.getLatLng().lng);
+          });
       });
-
-      marker.on('dragend', function (e) {
-        $('#latitude').val(marker.getLatLng().lat);
-        $('#longitude').val(marker.getLatLng().lng);
-      });
-    });
   </script>
   <%= invisible_captcha %>
 <% end %>

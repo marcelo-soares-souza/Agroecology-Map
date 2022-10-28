@@ -1,19 +1,19 @@
 <% title "#{@blog.titulo}" %>
 
 <% if usuario_signed_in? %>
-  <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;"  if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
+  <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
 <% end %>
 
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to "Todos", locais_path, :class => "nav-link" %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <%= link_to @local.nome, local_path(@local), :class => "nav-link" %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <%= link_to "Blog (#{@local.blogs.count})", local_blogs_path, :class => "nav-link" %>
@@ -24,17 +24,17 @@
   </li>
 </ul>
 
-<br/>
+<br>
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <div style="text-align: left;">
       <h3><%= @blog.titulo %></h3>
       <small><%= "Enviado por #{link_to @blog.usuario.nome, usuario_path(@blog.usuario)}. Criado em #{@blog.created_at} e última atualização #{@blog.updated_at}".html_safe %></small>
-      <br/><br/>
+      <br><br>
       <%= @blog.texto.html_safe %>
-      <%= "<br/><b>Tags:</b> #{@blog.tag_list}<br/>".html_safe if ! @blog.tag_list.empty? %>
-      <br/>
+      <%= "<br/><b>Tags:</b> #{@blog.tag_list}<br/>".html_safe if !@blog.tag_list.empty? %>
+      <br>
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
           <td><%= link_to t(:edit), edit_local_blog_path(@local, @blog), :class => 'btn btn-sm btn-success' %></td>

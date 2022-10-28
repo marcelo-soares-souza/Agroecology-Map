@@ -4,9 +4,9 @@
       <h2><%= pluralize(usuario.errors.count, "error") %> encontrado(s):</h2>
 
       <ul>
-      <% usuario.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% usuario.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <br/>
+  <br>
   <div class="actions">
     <%= f.submit t(:submit), class: "btn btn-primary" %>
   </div>

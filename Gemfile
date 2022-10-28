@@ -7,8 +7,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "nokogiri", ">= 1.13.8"
-gem "pg", "~> 1.4.3"
+gem "nokogiri", ">= 1.13.9"
+gem "pg", "~> 1.4.4"
 gem "puma", "~> 6.0.0"
 gem "rails", "~> 5.2.8.1"
 gem "sass-rails", "~> 5.0.8"
@@ -25,7 +25,7 @@ group :development do
 end
 
 group :rubocop do
-  gem "rubocop", ">= 1.25.1", require: false
+  gem "rubocop", ">= 1.37.1", require: false
   gem "rubocop-minitest", require: false
   gem "rubocop-packaging", require: false
   gem "rubocop-performance", require: false
@@ -44,3 +44,4 @@ gem "dalli"
 gem "invisible_captcha"
 gem "i18n-js"
 gem "redis", "~> 5.0.5"
+gem "erb_lint", require: false

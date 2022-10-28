@@ -7,7 +7,7 @@
     <% elsif params[:experiencia_agroecologica_id] %>
       <%= link_to "Experiências em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link" %>
     <% end %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <% if params[:saf_id] %>
@@ -15,7 +15,7 @@
     <% elsif params[:experiencia_agroecologica_id] %>
       <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
     <% end %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <% if params[:saf_id] %>
@@ -34,6 +34,6 @@
   </li>
 </ul>
 
-<br/>
+<br>
 
 <%= render 'form', midia: @midia %>

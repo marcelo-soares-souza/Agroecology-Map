@@ -1,7 +1,7 @@
 <% title @planta.nome %>
 
 <%= link_to "Registrar Nova Planta", new_planta_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -12,27 +12,25 @@
   </li>
 </ul>
 
-<br/>
+<br>
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <center>
-      <%= image_tag(@planta.imagem.url(:medium), :width => "250") %>
+    <%= image_tag(@planta.imagem.url(:medium), :width => "250") %>
 
-      <br/><br/>
-      <h3><%= @planta.nome %></h3>
+    <br><br>
+    <h3><%= @planta.nome %></h3>
 
-      <br/>
-      <%= "<strong>Nome Científico:</strong><br/>#{@planta.nome_cientifico}&nbsp;".html_safe if @planta.nome_cientifico?%>
-      <%= "<br/><br/><strong>Observação:</strong><br/>#{@planta.observacao}&nbsp;".html_safe if @planta.observacao?%>
-      <%= "<br/><br/><strong>#{t(:safs)}:</strong><br/>#{@planta.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @planta.safs.count > 0%>
-    </center>
+    <br>
+    <%= "<strong>Nome Científico:</strong><br/>#{@planta.nome_cientifico}&nbsp;".html_safe if @planta.nome_cientifico? %>
+    <%= "<br/><br/><strong>Observação:</strong><br/>#{@planta.observacao}&nbsp;".html_safe if @planta.observacao? %>
+    <%= "<br/><br/><strong>#{t(:safs)}:</strong><br/>#{@planta.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @planta.safs.count > 0 %>
   </div>
 </div>
 
 <% if usuario_signed_in? %>
-  <% if current_usuario.admin? or current_usuario.id == @planta.usuario.id %>        
-    <br/><br/>
+  <% if current_usuario.admin? or current_usuario.id == @planta.usuario.id %>
+    <br><br>
     <div id="planta-footer">
       <div class="form-actions">
         <%= link_to t('.edit', :default => "Editar"), edit_planta_path(@planta), :class => 'btn btn-success' %>

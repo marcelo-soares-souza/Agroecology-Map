@@ -1,7 +1,7 @@
 <% title @organizacao.nome %>
 
 <%= link_to "Registrar Nova Organização", new_organizacao_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -12,33 +12,33 @@
   </li>
 </ul>
 
-<br/>
+<br>
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <center>
-      <h3><%= @organizacao.nome %></h3>
 
-      <br/>
-      <%= "<strong style='color: red;'>Responsávelo pelo Cadastro da Informação:</strong><br/>#{link_to @organizacao.usuario.nome, usuario_path(@organizacao.usuario)}&nbsp;".html_safe if @organizacao.usuario.nome?%>
-      <%= "<br/><br/><strong>Sigla:</strong><br/>#{@organizacao.nome}&nbsp;".html_safe if @organizacao.nome?%>
-      <%= "<br/><br/><strong>Tipo:</strong><br/>#{@organizacao.tipo_organizacao.nome}&nbsp;".html_safe if @organizacao.tipo_organizacao.nome?%>
-      <% if usuario_signed_in? %>
-      <%= "<br/><br/><strong>E-Mail:</strong><br/>#{@organizacao.email}&nbsp;".html_safe if @organizacao.email?%>
-      <%= "<br/><br/><strong>Telefone:</strong><br/>#{@organizacao.telefone}&nbsp;".html_safe if @organizacao.telefone?%>
-      <% end %>
-      <%= "<br/><br/><strong>Site:</strong><br/>#{@organizacao.site}&nbsp;".html_safe if @organizacao.site?%>
-      <%= "<br/><br/><strong>Descrição:</strong><br/>#{@organizacao.descricao}&nbsp;".html_safe if @organizacao.descricao?%>
-      <%= "<br/><br/><strong>Cidade:</strong><br/>#{@organizacao.cidade}&nbsp;".html_safe if @organizacao.cidade?%>
-      <%= "<br/><br/><strong>UF:</strong><br/>#{@organizacao.uf}&nbsp;".html_safe if @organizacao.uf?%>
-      <%= "<br/><br/><strong>País:</strong><br/>#{@organizacao.pais}&nbsp;".html_safe if @organizacao.pais?%>
-      <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao?%>
-      <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao?%>
-      <%= "<br/><br/><strong>Locais:</strong><br/>#{@organizacao.locais.map {|local| link_to local.nome, local_path(local)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.locais.count > 0%>
-      <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@organizacao.experiencia_agroecologicas.map {|experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.experiencia_agroecologicas.count > 0%>
-      <%= "<br/><br/><strong>SAFs:</strong><br/>#{@organizacao.safs.map {|saf| link_to saf.nome, saf_path(saf)}.join(", ").html_safe}&nbsp;".html_safe if @organizacao.safs.count > 0%>
+    <h3><%= @organizacao.nome %></h3>
 
-      <!--
+    <br>
+    <%= "<strong style='color: red;'>Responsávelo pelo Cadastro da Informação:</strong><br/>#{link_to @organizacao.usuario.nome, usuario_path(@organizacao.usuario)}&nbsp;".html_safe if @organizacao.usuario.nome? %>
+    <%= "<br/><br/><strong>Sigla:</strong><br/>#{@organizacao.nome}&nbsp;".html_safe if @organizacao.nome? %>
+    <%= "<br/><br/><strong>Tipo:</strong><br/>#{@organizacao.tipo_organizacao.nome}&nbsp;".html_safe if @organizacao.tipo_organizacao.nome? %>
+    <% if usuario_signed_in? %>
+      <%= "<br/><br/><strong>E-Mail:</strong><br/>#{@organizacao.email}&nbsp;".html_safe if @organizacao.email? %>
+      <%= "<br/><br/><strong>Telefone:</strong><br/>#{@organizacao.telefone}&nbsp;".html_safe if @organizacao.telefone? %>
+    <% end %>
+    <%= "<br/><br/><strong>Site:</strong><br/>#{@organizacao.site}&nbsp;".html_safe if @organizacao.site? %>
+    <%= "<br/><br/><strong>Descrição:</strong><br/>#{@organizacao.descricao}&nbsp;".html_safe if @organizacao.descricao? %>
+    <%= "<br/><br/><strong>Cidade:</strong><br/>#{@organizacao.cidade}&nbsp;".html_safe if @organizacao.cidade? %>
+    <%= "<br/><br/><strong>UF:</strong><br/>#{@organizacao.uf}&nbsp;".html_safe if @organizacao.uf? %>
+    <%= "<br/><br/><strong>País:</strong><br/>#{@organizacao.pais}&nbsp;".html_safe if @organizacao.pais? %>
+    <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao? %>
+    <%= "<br/><br/><strong>Observação:</strong><br/>#{@organizacao.observacao}&nbsp;".html_safe if @organizacao.observacao? %>
+    <%= "<br/><br/><strong>Locais:</strong><br/>#{@organizacao.locais.map { |local| link_to local.nome, local_path(local) }.join(", ").html_safe}&nbsp;".html_safe if @organizacao.locais.count > 0 %>
+    <%= "<br/><br/><strong>Experiências em Agroecologia:</strong><br/>#{@organizacao.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica) }.join(", ").html_safe}&nbsp;".html_safe if @organizacao.experiencia_agroecologicas.count > 0 %>
+    <%= "<br/><br/><strong>SAFs:</strong><br/>#{@organizacao.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @organizacao.safs.count > 0 %>
+
+    <!--
       <% if @organizacao.latitude and @organizacao.longitude %>
         <br/><br/>
         <strong>Localização</strong><br/>
@@ -64,18 +64,17 @@
         </script>
       <% end %>
       -->
-      </center>
-    </div>
+  </div>
 </div>
 
 <% if usuario_signed_in? %>
-  <% if current_usuario.admin? or current_usuario.id == @organizacao.usuario.id %>        
-    <br/><br/>
+  <% if current_usuario.admin? or current_usuario.id == @organizacao.usuario.id %>
+    <br><br>
     <div id="organizacao-footer">
-        <div class="form-actions">
-          <%= link_to t('.edit', :default => "Editar"), edit_organizacao_path(@organizacao), :class => 'btn btn-success' %>
-          <%= link_to t(:destroy), organizacao_path(@organizacao), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
-        </div>
+      <div class="form-actions">
+        <%= link_to t('.edit', :default => "Editar"), edit_organizacao_path(@organizacao), :class => 'btn btn-success' %>
+        <%= link_to t(:destroy), organizacao_path(@organizacao), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
+      </div>
     </div>
   <% end %>
 <% end %>

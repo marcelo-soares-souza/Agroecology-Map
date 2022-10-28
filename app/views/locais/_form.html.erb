@@ -4,9 +4,9 @@
       <h2><%= pluralize(local.errors.count, "error") %> encontrado(s):</h2>
 
       <ul>
-      <% local.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% local.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <div class="form-group row">
       <%= f.label 'Responsável', class: "col-sm-2 col-form-label col-form-label-lg" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
       </div>
     </div>
   <% end %>
@@ -23,10 +23,11 @@
   <div class="form-group row">
     <%= f.label t(:partner_collaborators), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <% if ! @usuarios.empty? %>
-        <%= f.collection_select(:usuario_ids, @usuarios, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
+      <% if !@usuarios.empty? %>
+        <%= f.collection_select(:usuario_ids, @usuarios, :id, :nome, { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true }) %>
       <% else %>
-        <b>Não há Colaboradores Registrados. Deseja <%= link_to "Cadastrar?", new_usuario_path, :target => "blank"%></b>
+        <b>Não há Colaboradores Registrados.
+          Deseja <%= link_to "Cadastrar?", new_usuario_path, :target => "blank" %></b>
       <% end %>
     </div>
   </div>
@@ -41,10 +42,9 @@
   <div class="form-group row">
     <%= f.label t(:type), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:tipo, @tipos, :last, :first,  { :include_blank => t(:select_location_type) }, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <%= f.collection_select(:tipo, @tipos, :last, :first, { :include_blank => t(:select_location_type) }, { class: "form-control selectpicker", "data-live-search": true }) %>
     </div>
   </div>
-
 
   <div class="form-group row">
     <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
@@ -56,22 +56,22 @@
   <div class="form-group row">
     <%= f.label t(:description), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.text_area :observacao, class: "form-control", :rows => "5"  %>
+      <%= f.text_area :observacao, class: "form-control", :rows => "5" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= f.label t(:accommodation), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:hospedagem, @hospedagens, :last, :first,  { :include_blank => t(:accept_hosting) }, { class: "form-control selectpicker", "data-live-search": true } ) %>
+      <%= f.collection_select(:hospedagem, @hospedagens, :last, :first, { :include_blank => t(:accept_hosting) }, { class: "form-control selectpicker", "data-live-search": true }) %>
     </div>
   </div>
 
   <div class="col-form-label-lg"><%= t(:localization) %> <!-- (<span class="text-danger">Use a Lupa para Buscar o Local e Clique para Marcar</span>) --> </div>
   <div class="form-group row">
-      <div id="map-sistema"></div>
+    <div id="map-sistema"></div>
   </div>
-  <br/><br/>
+  <br><br>
 
   <%= f.hidden_field :latitude, id: "latitude" %>
   <%= f.hidden_field :longitude, id: "longitude" %>
@@ -81,67 +81,79 @@
   </div>
 
   <script>
-    $( document ).ready(function() {
-      <% if params[:action] == 'new' %>
-        lat = -15.77835833463309;
-        lon = -47.88219451904297;
-      <% elsif params[:action] != 'new' %>
-        <% if f.object.latitude? %>
-          lat = <%= f.object.latitude %>;
-        <% else %>
+      $(document).ready(function () {
+          <% if params[:action] == 'new' %>
           lat = -15.77835833463309;
-        <% end %>
-
-        <% if f.object.longitude? %>
-          lon = <%= f.object.longitude %>;
-        <% else %>
           lon = -47.88219451904297;
-        <% end %>
-      <% end %>
+          <% elsif params[:action] != 'new' %>
+          <% if f.object.latitude? %>
+          lat = <%= f.object.latitude %>;
+          <% else %>
+          lat = -15.77835833463309;
+          <% end %>
 
-      var map = L.map('map-sistema', {zoomControl: false}).setView([lat, lon], 10);
+          <% if f.object.longitude? %>
+          lon = <%= f.object.longitude %>;
+          <% else %>
+          lon = -47.88219451904297;
+          <% end %>
+          <% end %>
 
-      $(window).on("resize", function () { $("#map-sistema").width($(window).width()); map.invalidateSize(); }).trigger("resize");
-      $(window).on("resize", function () { $("#map-sistema").height($(window).height()); map.invalidateSize(); }).trigger("resize");
+          var map = L.map('map-sistema', {zoomControl: false}).setView([lat, lon], 10);
 
-      var osm    = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Mapa da Agroecologia | OpenStreetMap', maxZoom: 18,}).addTo(map);
-      var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: 'Mapa da Agroecologia | MapBox', maxZoom: 18,});
-      var baseMaps = { "OpenStreetMap": osm, "Satélite (MapBox)": mapbox };
+          $(window).on("resize", function () {
+              $("#map-sistema").width($(window).width());
+              map.invalidateSize();
+          }).trigger("resize");
+          $(window).on("resize", function () {
+              $("#map-sistema").height($(window).height());
+              map.invalidateSize();
+          }).trigger("resize");
 
-      L.control.layers(baseMaps).addTo(map);
+          var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: 'Mapa da Agroecologia | OpenStreetMap',
+              maxZoom: 18,
+          }).addTo(map);
+          var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
+              attribution: 'Mapa da Agroecologia | MapBox',
+              maxZoom: 18,
+          });
+          var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};
 
-      L.control.zoom({position:'topright'}).addTo(map);
+          L.control.layers(baseMaps).addTo(map);
 
-      var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe a Cidade/Estado/País'});
-      map.addControl(osmGeocoder);
+          L.control.zoom({position: 'topright'}).addTo(map);
 
-      var Icon = L.icon({
-                            iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
-                            shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-                            iconSize:     [38, 95],
-                            shadowSize:   [50, 64],
-                            iconAnchor:   [22, 94],
-                            shadowAnchor: [4, 62],
-                            popupAnchor:  [-3, -76]
-                        });
+          var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Informe a Cidade/Estado/País'});
+          map.addControl(osmGeocoder);
 
-      var marker = L.marker(new L.LatLng(lat, lon), { draggable: true, icon: Icon }).addTo(map);
+          var Icon = L.icon({
+              iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
+              shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+              iconSize: [38, 95],
+              shadowSize: [50, 64],
+              iconAnchor: [22, 94],
+              shadowAnchor: [4, 62],
+              popupAnchor: [-3, -76]
+          });
 
-      $('#latitude').val(lat);
-      $('#longitude').val(lon);
+          var marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
 
-      map.on('click', function (e) {
-        marker.setLatLng(e.latlng);
-        $('#latitude').val(marker.getLatLng().lat);
-        $('#longitude').val(marker.getLatLng().lng);
+          $('#latitude').val(lat);
+          $('#longitude').val(lon);
+
+          map.on('click', function (e) {
+              marker.setLatLng(e.latlng);
+              $('#latitude').val(marker.getLatLng().lat);
+              $('#longitude').val(marker.getLatLng().lng);
+          });
+
+          marker.on('dragend', function (e) {
+              $('#latitude').val(marker.getLatLng().lat);
+              $('#longitude').val(marker.getLatLng().lng);
+          });
       });
-
-      marker.on('dragend', function (e) {
-        $('#latitude').val(marker.getLatLng().lat);
-        $('#longitude').val(marker.getLatLng().lng);
-      });
-    });
   </script>
   <%= invisible_captcha %>
-  <br/>
+  <br>
 <% end %>

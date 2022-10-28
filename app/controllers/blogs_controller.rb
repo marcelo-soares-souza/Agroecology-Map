@@ -4,8 +4,8 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
   before_action lambda {
-                  check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios)
-                }, only: %i[new edit update destroy]
+    check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios)
+  }, only: %i[new edit update destroy]
   before_action :load_dados
 
   # GET /blogs

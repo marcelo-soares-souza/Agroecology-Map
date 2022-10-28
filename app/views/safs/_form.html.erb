@@ -4,9 +4,9 @@
       <h2><%= pluralize(saf.errors.count, "error") %> encontrado(s):</h2>
 
       <ul>
-      <% saf.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% saf.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <div class="form-group row">
       <%= f.label t(:responsible_for_information), class: "col-sm-2 col-form-label col-form-label-lg" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome,  {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+        <%= f.collection_select(:usuario_id, Usuario.all, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
       </div>
     </div>
   <% end %>
@@ -27,7 +27,7 @@
         <%= f.hidden_field :local_id, id: "local_id", :value => Local.friendly.find(params[:local_id]).id %>
         <%= params[:local_id] %>
       <% else %>
-        <%= f.collection_select(:local_id, @locais, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true } ) %>
+        <%= f.collection_select(:local_id, @locais, :id, :nome, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
       <% end %>
     </div>
   </div>
@@ -77,10 +77,10 @@
   <div class="form-group row">
     <%= f.label t(:plants), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <% if ! @plantas.empty? %>
-        <%= f.collection_select(:planta_ids, @plantas, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
+      <% if !@plantas.empty? %>
+        <%= f.collection_select(:planta_ids, @plantas, :id, :nome, { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true }) %>
       <% else %>
-        <b>Não há Plantas Registradas. Deseja <%= link_to "Cadastrar?", new_planta_path, :target => "blank"%></b>
+        <b>Não há Plantas Registradas. Deseja <%= link_to "Cadastrar?", new_planta_path, :target => "blank" %></b>
       <% end %>
     </div>
   </div>
@@ -88,10 +88,10 @@
   <div class="form-group row">
     <%= f.label t(:animals), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <% if ! @animais.empty? %>
-        <%= f.collection_select(:animal_ids, @animais, :id, :nome,  { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true } ) %>
+      <% if !@animais.empty? %>
+        <%= f.collection_select(:animal_ids, @animais, :id, :nome, { include_hidden: true }, { class: "form-control selectpicker show-tick", multiple: true, "data-live-search": true }) %>
       <% else %>
-        <b>Não há Animais Registrados. Deseja <%= link_to "Cadastrar?", new_animal_path, :target => "blank"%></b>
+        <b>Não há Animais Registrados. Deseja <%= link_to "Cadastrar?", new_animal_path, :target => "blank" %></b>
       <% end %>
     </div>
   </div>
@@ -99,14 +99,14 @@
   <div class="form-group row">
     <%= f.label t(:observation), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.text_area :observacao, class: "form-control", :rows => "5"  %>
+      <%= f.text_area :observacao, class: "form-control", :rows => "5" %>
     </div>
   </div>
 
-  <br/>
+  <br>
   <div class="actions">
     <%= f.submit t(:submit), class: "btn btn-primary" %>
   </div>
-  <br/>
+  <br>
   <%= invisible_captcha %>
 <% end %>

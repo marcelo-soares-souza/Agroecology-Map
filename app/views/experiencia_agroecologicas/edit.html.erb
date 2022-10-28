@@ -8,11 +8,11 @@
     <%= link_to "#{t(:edit)} #{@experiencia_agroecologica.nome}", edit_experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link active" %>
   </li>
 </ul>
-<br/>
+<br>
 
-<% if ! @locais.empty? %>
+<% if !@locais.empty? %>
   <%= render 'form', experiencia_agroecologica: @experiencia_agroecologica %>
 <% else %>
-  <br/>
+  <br>
   <h3>Nenhum Local Cadastrado. Deseja <%= link_to "Cadastrar um Local Agora?", new_local_url %></h3>
 <% end %>

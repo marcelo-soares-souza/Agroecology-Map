@@ -1,19 +1,19 @@
 <% title "Blog #{@local.nome}" %>
 
 <% if usuario_signed_in? %>
-  <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;"  if current_usuario.admin? or @local.usuario_id == current_usuario.id %>
+  <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @local.usuario_id == current_usuario.id %>
 <% end %>
 
-<br/><br/><br/>
+<br><br><br>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to "Todos", locais_path, :class => "nav-link" %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <%= link_to @local.nome, local_path(@local), :class => "nav-link" %>
-   </li>
+  </li>
 
   <li class="nav-item">
     <%= link_to "Blog (#{@local.blogs.count})", local_blogs_path, :class => "nav-link active" %>
@@ -21,37 +21,37 @@
 </ul>
 
 <% if @blogs.empty? %>
-  <br/>
+  <br>
 
   <h3>Nenhuma Postagem no Blog de <%= @local.nome %>.
-  <br/><br/>
-   <% if usuario_signed_in? %>
+    <br><br>
+    <% if usuario_signed_in? %>
       <%= link_to "Enviar um Texto para o Blog?", new_local_blog_path(@local) if current_usuario.admin? or @local.usuario_id == current_usuario.id %>
     <% end %>
   </h3>
 
 <% else %>
 
-  <br/>
+  <br>
   <% @blogs.each do |blog| %>
     <div style="text-align: left;">
 
       <div class="blog-content">
         <h3><%= link_to blog.titulo, local_blog_url(@local, blog) %></h3>
         <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)}. Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %></small>
-        <br/><br/>
+        <br><br>
         <div class="truncate lines"><%= blog.texto.html_safe %></div>
-        <%= "<br/><br/><b>#{link_to '(Leia o Texto Completo)',  local_blog_url(blog.local, blog)}</b><br/>".html_safe if blog.texto.length > 4096 %>
+        <%= "<br/><br/><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br/>".html_safe if blog.texto.length > 4096 %>
       </div>
 
       <% if !blog.tag_list.empty? %>
         <div class="blog-tag">
-          <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if ! blog.tag_list.empty? %>
-          <br/>
+          <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if !blog.tag_list.empty? %>
+          <br>
         </div>
       <% end %>
 
-      <br/>
+      <br>
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or blog.usuario_id == current_usuario.id %>
           <td><%= link_to t(:edit), edit_local_blog_path(@local, blog), :class => 'btn btn-sm btn-success' %></td>
@@ -59,6 +59,6 @@
         <% end %>
       <% end %>
     </div>
-    <hr/>
+    <hr>
   <% end %>
 <% end %>
