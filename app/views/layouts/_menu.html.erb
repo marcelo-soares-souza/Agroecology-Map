@@ -4,28 +4,16 @@
     });
   </script>
 
-  <nav class="navbar navbar-toggleable-md navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         &#9776;
       </button>
 
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-<!--
-          <li class="nav-item">
-            <%= link_to(image_tag("agroecologia-small.png", :width => "96"), root_path, :class => "nav-link", :id => "logo") %>
-          </li>
--->
-
           <li class="nav-item">
             <%= link_to(t(:map), '/', :class => "nav-link") %>
           </li>
-
-          <!--
-          <li class="nav-item">
-            <%= link_to(t(:news), novidades_path, :class => "nav-link") %>
-          </li>
--->
           <li class="nav-item">
             <%= link_to(t(:locations), locais_path, :class => "nav-link") %>
           </li>
@@ -42,15 +30,9 @@
               <%= link_to(t(:animals), animais_path, :class => "nav-link") %>
             </div>
           </li>
-<!--
-          <li class="nav-item">
-            <%= link_to(t(:organizations), organizacoes_path, :class => "nav-link") %>
-          </li>
--->
           <li class="nav-item">
             <%= link_to(t(:contributors), usuarios_path, :class => "nav-link") %>
           </li>
-
           <% if current_usuario %>
             <% if current_usuario.admin? %>
             <li class="nav-item dropdown">
@@ -88,18 +70,6 @@
                 <option value="fr">Français</option>
               </select>
             </li>
-          <!--
-            <li class="nav-item" style="margin-right: 10px;" >
-              <a href="https://opencollective.com/agroecology-map/contribute" target="_blank">
-                <img src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width="192" heigth="31" alt="OpenCollective Donate Button"/>
-              </a>
-            </li>
-          <ul class="nav navbar-nav navbar-right">
-            <li style="margin-right: 8px;">
-              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
-            </li>
-          </ul>
-          -->
         </ul>
       </div>
     </nav>

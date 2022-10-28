@@ -168,7 +168,8 @@ label {
 }
 
 .container {
-  width: 80%;
+  max-width: 100%;
+  width: 85%;
 }
 
 .dropdown-menu {

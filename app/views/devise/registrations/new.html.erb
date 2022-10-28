@@ -30,9 +30,11 @@
     </div>
   </div>
 
-  <br/>
   <div class="actions">
-    <%= f.submit t(:register), class: "btn btn-primary", id: 'submit', onclick: 'block()' %>
+    <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit', onclick: 'submit') do %>
+      <span id="button_name"><%= t(:sign_in) %></span>
+      <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
+    <% end %>
   </div>
   <br/>
   <%= render "devise/shared/links" %>
@@ -44,5 +46,6 @@
     document.getElementById("submit").setAttribute("disabled", "disabled");
     setTimeout(function () {
         document.getElementById("submit").removeAttribute("disabled");
+        document.getElementById("spinner").remove();
     }, 2000);
 </script>
