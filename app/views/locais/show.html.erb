@@ -27,7 +27,6 @@
     <br><br>
     <h3><%= @local.nome %></h3>
 
-    <br>
     <%= "<strong>#{t(:type)}:</strong><br/>#{@tipos.key(@local.tipo)}&nbsp;".html_safe if @local.tipo? %>
     <%= "<br/><br/><strong>#{t(:responsible_for_information)}:</strong><br/>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome? %>
     <%= "<br/><br/><strong>#{t(:contributors)}:</strong><br/>#{@local.usuarios.map { |usuario| link_to usuario.nome, usuario_path(usuario) }.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0 %>
@@ -40,14 +39,13 @@
 
     <% if @local.latitude and @local.longitude %>
       <br><br>
-      <strong><%= t(:localization) %></strong><br>
       <div class="form-group row">
-        <div id="map"></div>
+        <div id="map-show"></div>
       </div>
 
       <script>
           $(document).ready(function () {
-              var map = L.map('map').setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
+              var map = L.map('map-show').setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
               var attributions = '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
               var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                   attribution: attributions,
@@ -71,11 +69,11 @@
                   popupAnchor: [-3, -76]
               });
               $(window).on("resize", function () {
-                  $("#map").width($(window).width() - 30);
+                  $("#map-show").width($(window).width() - 30);
                   map.invalidateSize();
               }).trigger("resize");
               $(window).on("resize", function () {
-                  $("#map").height($(window).height());
+                  $("#map-show").height($(window).height());
                   map.invalidateSize();
               }).trigger("resize");
 

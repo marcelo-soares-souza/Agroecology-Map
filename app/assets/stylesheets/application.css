@@ -24,9 +24,17 @@
     margin-left: 8px;
     top:7px;
 }
+
 #map-sistema {
     max-width: 95%;
     max-height: 350px;
+}
+
+#map-show {
+    max-width: 60%;
+    max-height: 320px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #locale {
