@@ -34,7 +34,7 @@
     <!-- <%= "<br><br><strong>Organização:</strong><br>#{@saf.local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0 %> -->
     <%= "<br><br><strong>#{t(:plants)}:</strong><br>#{@saf.plantas.map { |planta| link_to planta.nome, planta_path(planta) }.join(", ").html_safe}&nbsp;".html_safe if @saf.plantas.count > 0 %>
     <%= "<br><br><strong>#{t(:animals)}:</strong><br>#{@saf.animais.map { |animal| link_to animal.nome, animal_path(animal) }.join(", ").html_safe}&nbsp;".html_safe if @saf.animais.count > 0 %>
-    <%= "<br><br><strong>#{t(:observation)}:</strong><br><div class='text-box'>#{@saf.observacao}&nbsp;</div>".html_safe if @saf.observacao? %>
+    <%= "<br><br><strong>#{t(:observation)}:</strong><br><div class='#{@saf.observacao.length() > 85 ? 'text-box' : ''}'>#{@saf.observacao}&nbsp;</div>".html_safe if @saf.observacao? %>
   </div>
 </div>
 

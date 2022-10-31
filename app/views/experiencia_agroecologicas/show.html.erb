@@ -25,11 +25,11 @@
     <br><br>
     <h3><%= @experiencia_agroecologica.nome %></h3>
     <%= "<strong>#{t(:central_theme)}:</strong><br>#{@tema_experiencia_agroecologicas.key(@experiencia_agroecologica.tema_experiencia_agroecologica.id)}&nbsp;".html_safe if @experiencia_agroecologica.tema_experiencia_agroecologica.nome? %>
-    <%= "<br><br><strong>#{t(:resume)}:</strong><br><div class='text-box'>#{@experiencia_agroecologica.resumo}&nbsp;</div>".html_safe if @experiencia_agroecologica.resumo? %>
+    <%= "<br><br><strong>#{t(:resume)}:</strong><br><div class='#{@experiencia_agroecologica.resumo.length() > 85 ? 'text-box' : ''}'>#{@experiencia_agroecologica.resumo}&nbsp;</div>".html_safe if @experiencia_agroecologica.resumo? %>
     <%= "<br><br><strong>#{t('location.data')}:</strong><br>#{link_to @experiencia_agroecologica.local.nome, local_path(@experiencia_agroecologica.local)}&nbsp;".html_safe if @experiencia_agroecologica.local.nome? %>
     <%= "<br><br><strong>#{t(:responsible_for_information)}:</strong><br>#{link_to @experiencia_agroecologica.usuario.nome, usuario_path(@experiencia_agroecologica.usuario)}&nbsp;".html_safe if @experiencia_agroecologica.usuario.nome? %>
     <%= "<br><br><strong>#{t(:organization)}:</strong><br>#{@experiencia_agroecologica.local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @experiencia_agroecologica.local.organizacoes.count > 0 %>
-    <%= "<br><br><strong>#{t(:observation)}:</strong><br><div class='text-box'>#{@experiencia_agroecologica.observacao}&nbsp;</div>".html_safe if @experiencia_agroecologica.observacao? %>
+    <%= "<br><br><strong>#{t(:observation)}:</strong><br><div class='#{@experiencia_agroecologica.observacao.length() > 85 ? 'text-box' : ''}'>#{@experiencia_agroecologica.observacao}&nbsp;</div>".html_safe if @experiencia_agroecologica.observacao? %>
 
     <br><br><strong><%= t(:comments) %>:</strong>
     <% if @experiencia_agroecologica.comentarios.count > 0 %>
