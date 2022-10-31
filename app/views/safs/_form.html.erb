@@ -1,13 +1,13 @@
 <%= form_for(saf, html: { multipart: true }) do |f| %>
   <% if saf.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(saf.errors.count, "Error") %></h2>
-
-        <% saf.errors.full_messages.each do |message| %>
-          <%= message %><br>
-        <% end %>
-      <br>
+      <b><%= saf.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% saf.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
     </div>
+
   <% end %>
 
   <% if current_usuario.admin? %>

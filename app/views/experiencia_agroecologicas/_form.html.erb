@@ -1,13 +1,13 @@
 <%= form_for(experiencia_agroecologica, html: { multipart: true }) do |f| %>
   <% if experiencia_agroecologica.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(experiencia_agroecologica.errors.count, "Error") %></h2>
-
-        <% experiencia_agroecologica.errors.full_messages.each do |message| %>
-          <%= message %><br>
-        <% end %>
-      <br>
+      <b><%= experiencia_agroecologica.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% experiencia_agroecologica.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
     </div>
+
   <% end %>
 
   <% if current_usuario.admin? %>
