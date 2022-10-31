@@ -23,19 +23,17 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <%= image_tag(@local.imagem.url(:medium), :width => "250") %>
-
     <br><br>
     <h3><%= @local.nome %></h3>
-
-    <%= "<strong>#{t(:type)}:</strong><br/>#{@tipos.key(@local.tipo)}&nbsp;".html_safe if @local.tipo? %>
-    <%= "<br/><br/><strong>#{t(:responsible_for_information)}:</strong><br/>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome? %>
-    <%= "<br/><br/><strong>#{t(:contributors)}:</strong><br/>#{@local.usuarios.map { |usuario| link_to usuario.nome, usuario_path(usuario) }.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0 %>
-    <%= "<br/><br/><strong>#{t(:accommodation)}:</strong><br/>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
-    <%= "<br/><br/><strong>#{t(:description)}:</strong><br/>#{@local.observacao}&nbsp;".html_safe if @local.observacao? %>
-    <%= "<br/><br/><strong>Organizações:</strong><br/>#{@local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @local.organizacoes.count > 0 %>
-    <%= "<br/><br/><strong>#{t(:experiences_in_agroecology)}:</strong><br/>#{@local.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica) }.join(", ").html_safe}&nbsp;".html_safe if @local.experiencia_agroecologicas.count > 0 %>
-    <%= "<br/><br/><strong>#{t(:safs)}:</strong><br/>#{@local.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @local.safs.count > 0 %>
-    <!-- <%= "<br/><br/><strong>Blog:</strong><br/>#{@local.blogs.order(updated_at: :desc).take(10).map { |blog| link_to blog.titulo, local_blog_url(@local, blog) }.join("<br/>").html_safe}&nbsp;".html_safe if @local.blogs.count > 0 %> -->
+    <%= "<strong>#{t(:type)}:</strong><br>#{@tipos.key(@local.tipo)}&nbsp;".html_safe if @local.tipo? %>
+    <%= "<br><br><strong>#{t(:responsible_for_information)}:</strong><br>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome? %>
+    <%= "<br><br><strong>#{t(:contributors)}:</strong><br>#{@local.usuarios.map { |usuario| link_to usuario.nome, usuario_path(usuario) }.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0 %>
+    <%= "<br><br><strong>#{t(:accommodation)}:</strong><br>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
+    <%= "<br><br><strong>#{t(:description)}:</strong><br><div class='text-box'>#{@local.observacao}&nbsp;</div>".html_safe if @local.observacao? %>
+    <%= "<br><br><strong>Organizações:</strong><br>#{@local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @local.organizacoes.count > 0 %>
+    <%= "<br><br><strong>#{t(:experiences_in_agroecology)}:</strong><br>#{@local.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica) }.join(", ").html_safe}&nbsp;".html_safe if @local.experiencia_agroecologicas.count > 0 %>
+    <%= "<br><br><strong>#{t(:safs)}:</strong><br>#{@local.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @local.safs.count > 0 %>
+    <!-- <%= "<br><br><strong>Blog:</strong><br>#{@local.blogs.order(updated_at: :desc).take(10).map { |blog| link_to blog.titulo, local_blog_url(@local, blog) }.join("<br>").html_safe}&nbsp;".html_safe if @local.blogs.count > 0 %> -->
 
     <% if @local.latitude and @local.longitude %>
       <br><br>
@@ -46,7 +44,7 @@
       <script>
           $(document).ready(function () {
               var map = L.map('map-show').setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
-              var attributions = '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
+              var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
               var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                   attribution: attributions,
                   maxZoom: 18,
