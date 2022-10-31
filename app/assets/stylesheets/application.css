@@ -14,6 +14,21 @@
  *= require_self
  */
 
+.form-group {
+    margin-bottom: 0.5rem;
+}
+.form-group.required .control-label:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:7px;
+}
+#map-sistema {
+    max-width: 95%;
+    max-height: 350px;
+}
+
 #locale {
     font-size: 0.75rem;
     height: 34px;

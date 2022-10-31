@@ -1,13 +1,12 @@
 <%= form_for(saf, html: { multipart: true }) do |f| %>
   <% if saf.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(saf.errors.count, "error") %> encontrado(s):</h2>
+      <h2><%= pluralize(saf.errors.count, "Error") %></h2>
 
-      <ul>
         <% saf.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <%= message %><br>
         <% end %>
-      </ul>
+      <br>
     </div>
   <% end %>
 
@@ -32,8 +31,8 @@
     </div>
   </div>
 
-  <div class="form-group row">
-    <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg" %>
+  <div class="form-group row required">
+    <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
     <div class="col-sm-5">
       <%= f.text_field :nome, class: "form-control" %>
     </div>

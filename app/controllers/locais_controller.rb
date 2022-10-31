@@ -7,7 +7,7 @@ class LocaisController < ApplicationController
   before_action :load_tipos # , except: %i[index show]
   before_action :load_hospedagens, except: %i[index show]
   before_action :load_usuario
-  before_action :load_colaboradores, only: %i[new edit update]
+  before_action :load_colaboradores, except: %i[index show]
 
   # GET /locais
   # GET /locais.json
