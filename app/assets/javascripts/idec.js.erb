@@ -3715,7 +3715,7 @@ function loadIDEC() {
     });
 
     for (i = 0; i < data.length; i++) {
-        var popup = '<b><a href="' + data[i].link + '" target="_blank">' + data[i].title + '</a><br/><br/>Fonte: </b><a href="https://feirasorganicas.org.br/" target="_blank">Mapa de Feiras Orgânicas - IDEC</a>';
+        var popup = '<b><a href="' + data[i].link + '" target="_blank">' + data[i].title + '</a><br><br>Fonte: </b><a href="https://feirasorganicas.org.br/" target="_blank">Mapa de Feiras Orgânicas - IDEC</a>';
         var marker = new L.marker(new L.latLng([data[i].lat, data[i].lng]), {icon: Icon});
         marker.bindPopup(popup);
         idec.addLayer(marker);

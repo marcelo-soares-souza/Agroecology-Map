@@ -23,7 +23,7 @@ function loadConsumoResponsavel() {
     });
 
     function onEachFeature(feature, layer) {
-        var popupText = '<b><a href="http://mapa.consumoresponsavel.org.br/?id=' + feature.properties.id + '" target="_blank">' + feature.properties.title + '</a><br/>' + categories[feature.properties.category] + '<br/><br/>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável e Parceiros</a>'
+        var popupText = '<b><a href="http://mapa.consumoresponsavel.org.br/?id=' + feature.properties.id + '" target="_blank">' + feature.properties.title + '</a><br>' + categories[feature.properties.category] + '<br><br>Fonte:</b> <a href="http://mapa.consumoresponsavel.org.br/" target="_blank">Portal do Consumo Responsável e Parceiros</a>'
         layer.bindPopup(popupText);
     }
 

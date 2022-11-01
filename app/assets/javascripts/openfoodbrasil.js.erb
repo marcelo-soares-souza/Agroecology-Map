@@ -1523,7 +1523,7 @@ function loadOFB() {
         if (typeof data[i].latitude === "undefined" || data[i].latitude === null) {
 
         } else {
-            var popup = '<b><a href="https://openfoodbrasil.com.br' + data[i].path + '" target="_blank">' + data[i].name + '</a><br/><br/>Fonte: </b><a href="https://openfoodbrasil.com.br/" target="_blank">Open Food Brasil</a>';
+            var popup = '<b><a href="https://openfoodbrasil.com.br' + data[i].path + '" target="_blank">' + data[i].name + '</a><br><br>Fonte: </b><a href="https://openfoodbrasil.com.br/" target="_blank">Open Food Brasil</a>';
             var marker = new L.marker(new L.latLng([data[i].latitude, data[i].longitude]), {icon: Icon});
             marker.bindPopup(popup);
             ofb.addLayer(marker);

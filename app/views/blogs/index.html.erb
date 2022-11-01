@@ -41,12 +41,12 @@
         <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)}. Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %></small>
         <br><br>
         <div class="truncate lines"><%= blog.texto.html_safe %></div>
-        <%= "<br/><br/><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br/>".html_safe if blog.texto.length > 4096 %>
+        <%= "<br><br><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br>".html_safe if blog.texto.length > 4096 %>
       </div>
 
       <% if !blog.tag_list.empty? %>
         <div class="blog-tag">
-          <%= "<br/><b>Tags:</b> #{blog.tag_list}<br/>".html_safe if !blog.tag_list.empty? %>
+          <%= "<br><b>Tags:</b> #{blog.tag_list}<br>".html_safe if !blog.tag_list.empty? %>
           <br>
         </div>
       <% end %>
