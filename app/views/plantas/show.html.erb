@@ -16,7 +16,9 @@
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <%= image_tag(@planta.imagem.url(:medium), :width => "250") %>
+    <div  class="thumbnail-mini">
+      <%= image_tag(@planta.imagem.url(:medium)) %>
+    </div>
 
     <br><br>
     <h3><%= @planta.nome %></h3>
@@ -24,7 +26,7 @@
     <br>
     <%= "<strong>Nome Científico:</strong><br/>#{@planta.nome_cientifico}&nbsp;".html_safe if @planta.nome_cientifico? %>
     <%= "<br/><br/><strong>Observação:</strong><br/>#{@planta.observacao}&nbsp;".html_safe if @planta.observacao? %>
-    <%= "<br/><br/><strong>#{t(:safs)}:</strong><br/>#{@planta.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @planta.safs.count > 0 %>
+    <%= "<br/><br/><strong>#{t(:safs)}:</strong><br/>#{@planta.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join("<br/>").html_safe}&nbsp;".html_safe if @planta.safs.count > 0 %>
   </div>
 </div>
 

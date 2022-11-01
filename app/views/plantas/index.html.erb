@@ -33,7 +33,7 @@
       <tbody>
       <% @plantas.each do |planta| %>
         <tr>
-          <td scope="row"><%= link_to image_tag(planta.imagem.url(:thumb), :height => "64"), planta_path(planta) %></td>
+          <td scope="row"><div class="thumbnail-mini"><%= link_to image_tag(planta.imagem.url(:thumb), :title => planta.nome, :alt => planta.nome), planta_path(planta) %></div></td>
           <td><%= link_to planta.nome, planta_path(planta) %></td>
           <td><%= planta.nome_cientifico %></td>
           <td><%= planta.safs.count %></td>

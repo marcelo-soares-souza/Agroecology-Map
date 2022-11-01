@@ -20,7 +20,9 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <% if @experiencia_agroecologica.midias[0] %>
-      <%= image_tag(@experiencia_agroecologica.midias[0].imagem.url(:medium), :width => "250") %>
+      <div  class="thumbnail">
+        <%= image_tag(@experiencia_agroecologica.midias[0].imagem.url(:medium)) %>
+      </div>
     <% end %>
     <br><br>
     <h3><%= @experiencia_agroecologica.nome %></h3>

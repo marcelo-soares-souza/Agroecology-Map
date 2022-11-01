@@ -38,11 +38,13 @@
       <% @safs.each do |saf| %>
         <tr>
           <td>
-            <% if saf.midias[0] %>
-              <%= link_to image_tag(saf.midias[0].imagem.url(:thumb), :width => "120", :height => "120"), saf_path(saf) %>
-            <% else %>
-              <%= link_to image_tag(saf.local.imagem.url(:thumb), :width => "120", :height => "120"), saf_path(saf) %>
-            <% end %>
+            <div  class="thumbnail-mini">
+              <% if saf.midias[0] %>
+                <%= link_to image_tag(saf.midias[0].imagem.url(:thumb)), saf_path(saf) %>
+              <% else %>
+                <%= link_to image_tag(saf.local.imagem.url(:thumb)), saf_path(saf) %>
+              <% end %>
+            </div>
           </td>
           <td><%= link_to saf.nome, saf_path(saf) %></td>
           <td><%= link_to saf.local.nome, local_path(saf.local) %></td>

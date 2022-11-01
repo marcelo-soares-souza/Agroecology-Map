@@ -22,7 +22,9 @@
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <%= image_tag(@local.imagem.url(:medium), :width => "250") %>
+    <div class="thumbnail">
+      <%= image_tag(@local.imagem.url(:medium)) %>
+    </div>
     <br><br>
     <h3><%= @local.nome %></h3>
     <%= "<strong>#{t(:type)}:</strong><br>#{@tipos.key(@local.tipo)}&nbsp;".html_safe if @local.tipo? %>

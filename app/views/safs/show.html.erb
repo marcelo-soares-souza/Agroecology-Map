@@ -20,7 +20,9 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <% if @saf.midias[0] %>
-      <%= image_tag(@saf.midias[0].imagem.url(:medium), :width => "250") %>
+      <div class="thumbnail">
+        <%= image_tag(@saf.midias[0].imagem.url(:medium)) %>
+      </div>
     <% end %>
     <br><br>
     <h3><%= @saf.nome %></h3>
@@ -32,8 +34,8 @@
     <%= "<br><br><strong>#{t(:area)} (ha):</strong><br>#{@saf.area}&nbsp;".html_safe if @saf.area? %>
     <%= "<br><br><strong>#{t(:responsible_for_information)}:</strong><br>#{link_to @saf.usuario.nome, usuario_path(@saf.usuario)}&nbsp;".html_safe if @saf.usuario.nome? %>
     <!-- <%= "<br><br><strong>Organização:</strong><br>#{@saf.local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @saf.local.organizacoes.count > 0 %> -->
-    <%= "<br><br><strong>#{t(:plants)}:</strong><br>#{@saf.plantas.map { |planta| link_to planta.nome, planta_path(planta) }.join(", ").html_safe}&nbsp;".html_safe if @saf.plantas.count > 0 %>
-    <%= "<br><br><strong>#{t(:animals)}:</strong><br>#{@saf.animais.map { |animal| link_to animal.nome, animal_path(animal) }.join(", ").html_safe}&nbsp;".html_safe if @saf.animais.count > 0 %>
+    <%= "<br><br><strong>#{t(:plants)}:</strong><br><div class='text-box'>#{@saf.plantas.map { |planta| link_to image_tag(planta.imagem.url(:medium), :width => "100", :height => "100", :title  => planta.nome, :alt => planta.nome, :style => "margin: 2px 8px 2px 8px;"), planta_path(planta) }.join("&nbsp;").html_safe}</div>".html_safe if @saf.plantas.count > 0 %>
+    <%= "<br><br><strong>#{t(:animals)}:</strong><br><div class='text-box'>#{@saf.animais.map { |animal| link_to image_tag(animal.imagem.url(:medium), :width => "100", :height => "100", :title  => animal.nome, :alt => animal.nome, :style => "margin: 2px 8px 2px 8px;"), animal_path(animal) }.join("&nbsp;").html_safe}</div>".html_safe if @saf.animais.count > 0 %>
     <%= "<br><br><strong>#{t(:observation)}:</strong><br><div class='#{@saf.observacao.length() > 85 ? 'text-box' : ''}'>#{@saf.observacao}&nbsp;</div>".html_safe if @saf.observacao? %>
   </div>
 </div>

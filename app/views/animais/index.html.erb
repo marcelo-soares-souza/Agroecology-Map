@@ -20,7 +20,7 @@
       <thead>
       <tr>
         <th></th>
-        <th>Nome</th>
+        <th><%= t(:name) %></th>
         <th>Nome Científico</th>
         <th><%= t(:safs) %></th>
         <% if usuario_signed_in? %>
@@ -33,7 +33,7 @@
       <tbody>
       <% @animais.each do |animal| %>
         <tr>
-          <td scope="row"><%= link_to image_tag(animal.imagem.url(:thumb), :height => "64"), animal_path(animal) %></td>
+          <td scope="row"><div class="thumbnail-mini"><%= link_to image_tag(animal.imagem.url(:thumb), :title => animal.nome, :alt => animal.nome), animal_path(animal) %></div></td>
           <td><%= link_to animal.nome, animal_path(animal) %></td>
           <td><%= animal.nome_cientifico %></td>
           <td><%= animal.safs.count %></td>

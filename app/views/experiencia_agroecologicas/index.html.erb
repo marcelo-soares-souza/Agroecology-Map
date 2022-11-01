@@ -38,11 +38,13 @@
       <% @experiencia_agroecologicas.each do |experiencia_agroecologica| %>
         <tr>
           <td>
-            <% if experiencia_agroecologica.midias[0] %>
-              <%= link_to image_tag(experiencia_agroecologica.midias[0].imagem.url(:thumb), :width => "120", :height => "120"), experiencia_agroecologica_path(experiencia_agroecologica) %>
-            <% else %>
-              <%= link_to image_tag(experiencia_agroecologica.local.imagem.url(:thumb), :width => "120", :height => "120"), experiencia_agroecologica_path(experiencia_agroecologica) %>
-            <% end %>
+            <div  class="thumbnail-mini">
+              <% if experiencia_agroecologica.midias[0] %>
+                <%= link_to image_tag(experiencia_agroecologica.midias[0].imagem.url(:thumb)), experiencia_agroecologica_path(experiencia_agroecologica) %>
+              <% else %>
+                <%= link_to image_tag(experiencia_agroecologica.local.imagem.url(:thumb)), experiencia_agroecologica_path(experiencia_agroecologica) %>
+              <% end %>
+            </div>
           </td>
           <td><%= link_to truncate(experiencia_agroecologica.nome, length: 128), experiencia_agroecologica_path(experiencia_agroecologica) %></td>
           <td><%= @tema_experiencia_agroecologicas.key(experiencia_agroecologica.tema_experiencia_agroecologica.id) %></td>
