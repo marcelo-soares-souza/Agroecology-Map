@@ -66,36 +66,37 @@
         };
 
         // OverLay Maps
-        var geoserver = 'https://geoserver.agroecologymap.org/geoserver/ows?';
+        var geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
+        var workspace = 'CMR-PUBLICO'
         var ti = L.tileLayer.wms(geoserver, {
-            layers: 'agroecologymap:lim_terra_indigena_a',
+            layers: workspace + ':' + 'lim_terra_indigena_a',
             format: 'image/png',
             transparent: true
         });
         var ai = L.tileLayer.wms(geoserver, {
-            layers: 'agroecologymap:loc_aldeia_indigena_p',
+            layers: workspace + ':' + 'loc_aldeia_indigena_p',
             format: 'image/png',
             transparent: true
         });
         var ar = L.tileLayer.wms(geoserver, {
-            layers: 'agroecologymap:lim_assentamento_rural_a',
+            layers: workspace + ':' + 'lim_assentamento_rural_a',
             format: 'image/png',
             transparent: true
         });
         var uc = L.tileLayer.wms(geoserver, {
-            layers: 'agroecologymap:lim_unidade_conservacao_federal_a',
+            layers: workspace + ':' + 'lim_unidade_conservacao_federal_a',
             format: 'image/png',
             transparent: true,
             opacity: 0.5
         });
         var quilombos = L.tileLayer.wms(geoserver, {
-            layers: 'agroecologymap:lim_quilombolas_a',
+            layers: workspace + ':' + 'lim_quilombolas_a',
             format: 'image/png',
             transparent: true,
             opacity: 0.5
         });
         var biomas = L.tileLayer.wms(geoserver, {
-            layers: 'agroecologymap:veg_biomas_a',
+            layers: workspace + ':' + 'veg_biomas_a',
             format: 'image/png',
             transparent: true,
             opacity: 0.3
