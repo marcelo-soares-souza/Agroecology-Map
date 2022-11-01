@@ -5,7 +5,7 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:all), animais_path, :class => "nav-link" %>
+    <%= link_to t(:animals), animais_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to @animal.nome, animal_path(@animal.id), :class => "nav-link active" %>
@@ -24,9 +24,9 @@
     <h3><%= @animal.nome %></h3>
 
     <br>
-    <%= "<strong>Nome Científico:</strong><br>#{@animal.nome_cientifico}&nbsp;".html_safe if @animal.nome_cientifico? %>
-    <%= "<br><br><strong>Observação:</strong><br>#{@animal.observacao}&nbsp;".html_safe if @animal.observacao? %>
-    <%= "<br><br><strong>SAFs que Utilizam este Animal:</strong><br>#{@animal.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join("<br>").html_safe}&nbsp;".html_safe if @animal.safs.count > 0 %>
+    <%= "<strong>#{t(:scientific_name)}</strong><br>#{@animal.nome_cientifico}&nbsp;".html_safe if @animal.nome_cientifico? %>
+    <%= "<br><br><strong>#{t(:observation)}</strong><br><div class='#{@animal.observacao.length() > 85 ? 'text-box' : ''}'>#{@animal.observacao}&nbsp;</div>".html_safe if @animal.observacao? %>
+    <%= "<br><br><strong>#{t(:safs)}</strong><br>#{@animal.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join("<br>").html_safe}&nbsp;".html_safe if @animal.safs.count > 0 %>
   </div>
 </div>
 

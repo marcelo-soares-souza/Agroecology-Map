@@ -5,7 +5,7 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:all), animais_path, :class => "nav-link active" %>
+    <%= link_to t(:animals), animais_path, :class => "nav-link active" %>
   </li>
 </ul>
 
@@ -21,7 +21,7 @@
       <tr>
         <th></th>
         <th><%= t(:name) %></th>
-        <th>Nome Científico</th>
+        <th><%= t(:scientific_name) %></th>
         <th><%= t(:safs) %></th>
         <% if usuario_signed_in? %>
           <th class="list-control"></th>

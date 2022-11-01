@@ -8,7 +8,7 @@
     <%= link_to link_to t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to @experiencia_agroecologica.nome.truncate(49), experiencia_agroecologica_path(@experiencia_agroecologica.id), :class => "nav-link active" %>
+    <%= link_to @experiencia_agroecologica.nome.truncate(45), experiencia_agroecologica_path(@experiencia_agroecologica.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
     <%= link_to "#{t(:photos)} (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path(@experiencia_agroecologica), :class => "nav-link" %>

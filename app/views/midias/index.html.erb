@@ -27,9 +27,9 @@
 
   <li class="nav-item">
     <% if params[:saf_id] %>
-      <%= link_to @saf.nome, saf_path(@saf), :class => "nav-link" %>
+      <%= link_to truncate(@saf.nome, length: 40), saf_path(@saf), :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
+      <%= link_to truncate(@experiencia_agroecologica.nome, length: 40), experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
     <% end %>
   </li>
 

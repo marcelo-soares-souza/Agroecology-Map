@@ -8,7 +8,7 @@
     <%= link_to t(:locations), locais_path, :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to @local.nome, local_path(@local.id), :class => "nav-link active" %>
+    <%= link_to truncate(@local.nome, length: 45), local_path(@local.id), :class => "nav-link active" %>
   </li>
 
   <!--
