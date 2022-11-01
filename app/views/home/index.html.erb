@@ -66,35 +66,36 @@
         };
 
         // OverLay Maps
-        var ti = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', {
-            layers: 'CMR-PUBLICO:lim_terra_indigena_a',
+        var geoserver = 'https://geoserver.agroecologymap.org/geoserver/ows?';
+        var ti = L.tileLayer.wms(geoserver, {
+            layers: 'agroecologymap:lim_terra_indigena_a',
             format: 'image/png',
             transparent: true
         });
-        var ai = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', {
-            layers: 'CMR-PUBLICO:loc_aldeia_indigena_p',
+        var ai = L.tileLayer.wms(geoserver, {
+            layers: 'agroecologymap:loc_aldeia_indigena_p',
             format: 'image/png',
             transparent: true
         });
-        var ar = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', {
-            layers: 'CMR-PUBLICO:lim_assentamento_rural_a',
+        var ar = L.tileLayer.wms(geoserver, {
+            layers: 'agroecologymap:lim_assentamento_rural_a',
             format: 'image/png',
             transparent: true
         });
-        var uc = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', {
-            layers: 'CMR-PUBLICO:lim_unidade_conservacao_federal_a',
+        var uc = L.tileLayer.wms(geoserver, {
+            layers: 'agroecologymap:lim_unidade_conservacao_federal_a',
             format: 'image/png',
             transparent: true,
             opacity: 0.5
         });
-        var quilombos = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', {
-            layers: 'CMR-PUBLICO:lim_quilombolas_a',
+        var quilombos = L.tileLayer.wms(geoserver, {
+            layers: 'agroecologymap:lim_quilombolas_a',
             format: 'image/png',
             transparent: true,
             opacity: 0.5
         });
-        var biomas = L.tileLayer.wms('https://funai.mapadaagroecologia.org/geoserver/ows?', {
-            layers: 'CMR-PUBLICO:veg_biomas_a',
+        var biomas = L.tileLayer.wms(geoserver, {
+            layers: 'agroecologymap:veg_biomas_a',
             format: 'image/png',
             transparent: true,
             opacity: 0.3
@@ -107,7 +108,7 @@
         // var argentina = loadArgentina();
         var foei = loadFOEI();
 
-        ti.addTo(map);
+        // ti.addTo(map);
         consumoresponsavel.addTo(map);
         idec.addTo(map);
         ppm.addTo(map);
