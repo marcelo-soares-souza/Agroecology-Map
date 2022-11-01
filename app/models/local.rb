@@ -27,8 +27,7 @@ class Local < ApplicationRecord
   end
 
   has_attached_file :imagem,
-                    styles: { medium: "360x360>",
-                              thumb: "180x180>" },
+                    styles: { original: "1920x>", medium: "360x360>", thumb: "180x180>" },
                     default_url: ->(a) { "/assets/place_:style_#{a.instance.default_image_number}.png" }
   validates_attachment_content_type :imagem, content_type: %r{\Aimage/.*\z}
 

@@ -58,57 +58,34 @@ GEM
     arel (9.0.0)
     ast (2.4.2)
     bcrypt (3.1.18)
-    better_html (1.0.16)
-      actionview (>= 4.0)
-      activesupport (>= 4.0)
-      ast (~> 2.0)
-      erubi (~> 1.4)
-      html_tokenizer (~> 0.0.6)
-      parser (>= 2.4)
-      smart_properties
     bindex (0.8.1)
     builder (3.2.4)
     climate_control (0.2.0)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crass (1.0.6)
     dalli (3.2.3)
-    erb_lint (0.1.3)
-      activesupport
-      better_html (~> 1.0.7)
-      html_tokenizer
-      parser (>= 2.7.1.4)
-      rainbow
-      rubocop
-      smart_properties
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
-    geocoder (1.8.1)
-    glob (0.3.1)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    html_tokenizer (0.0.7)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    i18n-js (4.0.1)
-      glob
-      i18n
     invisible_captcha (2.0.0)
       rails (>= 5.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.2)
+    kt-paperclip (6.4.2)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -132,12 +109,6 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    paperclip (6.1.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
@@ -179,7 +150,7 @@ GEM
       ffi (~> 1.0)
     redis (5.0.5)
       redis-client (>= 0.9.0)
-    redis-client (0.10.0)
+    redis-client (0.11.0)
       connection_pool
     regexp_parser (2.6.0)
     responders (3.0.1)
@@ -216,13 +187,12 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.8)
+    sass-rails (5.1.0)
       railties (>= 5.2.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    smart_properties (1.17.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -260,18 +230,14 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  coffee-rails (~> 4.2)
   dalli
   devise!
-  erb_lint
   friendly_id
-  geocoder
-  i18n-js
   invisible_captcha
   jbuilder (~> 2.5)
+  kt-paperclip (~> 6.4.2)
   listen (>= 3.0.5, < 3.2)
   nokogiri (>= 1.13.9)
-  paperclip
   pg (~> 1.4.4)
   puma (~> 6.0.0)
   rails (~> 5.2.8.1)
@@ -281,11 +247,11 @@ DEPENDENCIES
   rubocop-packaging
   rubocop-performance
   rubocop-rails
-  sass-rails (~> 5.0.8)
+  sass-rails (~> 5.1.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
-  uglifier (>= 4.1.20)
+  uglifier (>= 4.2.0)
   web-console (>= 3.3.0)
 
 BUNDLED WITH

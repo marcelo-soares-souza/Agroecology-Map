@@ -11,10 +11,9 @@ gem "nokogiri", ">= 1.13.9"
 gem "pg", "~> 1.4.4"
 gem "puma", "~> 6.0.0"
 gem "rails", "~> 5.2.8.1"
-gem "sass-rails", "~> 5.0.8"
-gem "uglifier", ">= 4.1.20"
+gem "sass-rails", "~> 5.1.0"
+gem "uglifier", ">= 4.2.0"
 
-gem "coffee-rails", "~> 4.2"
 gem "jbuilder", "~> 2.5"
 
 group :development do
@@ -36,12 +35,8 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "devise", github: "plataformatec/devise"
 gem "friendly_id"
-gem "geocoder"
-gem "paperclip"
-# gem "ckeditor"
 gem "acts-as-taggable-on"
-gem "dalli"
 gem "invisible_captcha"
-gem "i18n-js"
+gem "dalli"
 gem "redis", "~> 5.0.5"
-gem "erb_lint", require: false
+gem "kt-paperclip", "~> 6.4.2"
