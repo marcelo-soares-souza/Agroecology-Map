@@ -35,7 +35,7 @@
   <br>
   <%= render "devise/shared/links" %>
   <br>
-  <%= invisible_captcha %>
+  
 <% end %>
 
 <script>
@@ -43,5 +43,5 @@
     setTimeout(function () {
         document.getElementById("submit").removeAttribute("disabled");
         document.getElementById("spinner").remove();
-    }, 2000);
+    }, 3000);
 </script>

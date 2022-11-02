@@ -1,6 +1,7 @@
 <h2><%= t(:sign_up) %></h2>
 <br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= invisible_captcha %>
   <%= devise_error_messages! %>
   <div class="form-group row">
     <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %>
@@ -39,7 +40,7 @@
   <br>
   <%= render "devise/shared/links" %>
   <br>
-  <%= invisible_captcha %>
+  
 <% end %>
 
 <script>
@@ -47,5 +48,5 @@
     setTimeout(function () {
         document.getElementById("submit").removeAttribute("disabled");
         document.getElementById("spinner").remove();
-    }, 2000);
+    }, 3000);
 </script>
