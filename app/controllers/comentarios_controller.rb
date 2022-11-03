@@ -18,6 +18,12 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
+        subject = "You have received a new comment on #{@comentario.experiencia_agroecologica.nome}"
+        ActionMailer::Base.mail(from: "contact@agroecologymap.org",
+                                to: @comentario.usuario.email,
+                                subject: subject,
+                                body: @comentario.texto).deliver
+
         format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi registrado." }
       else
         format.html { redirect_to @experiencia_agroecologica, notice: "Não foi possível registrar o comentário" }

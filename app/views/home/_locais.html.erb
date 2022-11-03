@@ -28,5 +28,10 @@
   <% end %>
 
   map.addLayer(markers);
-  map.addControl( new L.Control.Search({layer: markers, zoom: 15, textPlaceholder: "<%= t(:search_using_location_name) %>" }) );
+  map.addControl(new L.Control.Search({layer: markers, zoom: 15, textPlaceholder: "<%= t(:search_using_location_name) %>", autoCollapse: true }) );
+  map.addControl(new L.Control.OSMGeocoder({ placeholder: '<%= t(:search_by_address) %>', text: '<%= t(:locate) %>', collapsed: true}));
+  map.addControl(new L.control.polylineMeasure());
+  map.addControl(new L.control.zoom({position: 'topright'}));
+  L.control.locate().addTo(map);
+
 <% end %>
