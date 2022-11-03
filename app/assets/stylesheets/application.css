@@ -78,6 +78,12 @@
     text-align: justify;
 }
 
+.comment-footer {
+    font-size: 11px;
+    font-style: italic;
+    max-width: 70%;
+}
+
 
 .form-group {
     margin-bottom: 0.5rem;
