@@ -14,7 +14,7 @@ module Agroecologia
     logger.formatter = config.log_formatter
     config.log_tags  = [:subdomain, :uuid]
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
-#    config.generators.javascript_engine = :js
+    #    config.generators.javascript_engine = :js
 
     config.generators do |g|
       g.template_engine nil

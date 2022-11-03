@@ -116,3 +116,4 @@ es:
   area: "Area"
   send_picture: "Enviar Foto"
   scientific_name: "Nombre científico"
+  no_photo_submitted: "No se envió ninguna foto"

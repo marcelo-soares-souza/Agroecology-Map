@@ -21,7 +21,7 @@
     <% if params[:saf_id] %>
       <%= link_to t(:safs), safs_path, :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
+      <%= link_to t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
     <% end %>
   </li>
 
@@ -45,7 +45,7 @@
 <% if @midias.empty? %>
   <br>
 
-  <h3>Nenhuma Foto Registrada.
+  <h3><%= t(:no_photo_submitted) %>
     <% if usuario_signed_in? %>
       <% if params[:saf_id] %>
         <%= link_to t(:send_picture), new_saf_midia_path(@saf) if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
