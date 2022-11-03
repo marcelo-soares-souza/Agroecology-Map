@@ -117,3 +117,4 @@ es:
   send_picture: "Enviar Foto"
   scientific_name: "Nombre científico"
   no_photo_submitted: "No se envió ninguna foto"
+  search_using_location_name: "Buscar usando el nombre de la ubicación"

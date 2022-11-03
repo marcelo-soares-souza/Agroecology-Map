@@ -1,5 +1,7 @@
 <% if @locais %>
   var markers = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 50 });
+  map.addControl( new L.Control.Search({layer: markers, zoom: 15, textPlaceholder: "<%= t(:search_using_location_name) %>" }) );
+
 
   var Icon = L.icon({
     iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
