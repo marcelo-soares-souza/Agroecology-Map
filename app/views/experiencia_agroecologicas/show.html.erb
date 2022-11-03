@@ -25,7 +25,8 @@
       </div>
     <% end %>
     <br><br>
-    <h3><%= @experiencia_agroecologica.nome %></h3>
+    <div class='<%= (@experiencia_agroecologica.nome.length() > 90 ? 'text-box' : '') %>'><h3><%= @experiencia_agroecologica.nome %></h3></div>
+
     <%= "<strong>#{t(:central_theme)}:</strong><br>#{@tema_experiencia_agroecologicas.key(@experiencia_agroecologica.tema_experiencia_agroecologica.id)}&nbsp;".html_safe if @experiencia_agroecologica.tema_experiencia_agroecologica.nome? %>
     <%= "<br><br><strong>#{t(:resume)}:</strong><br><div class='#{@experiencia_agroecologica.resumo.length() > 85 ? 'text-box' : ''}'>#{@experiencia_agroecologica.resumo}&nbsp;</div>".html_safe if @experiencia_agroecologica.resumo? %>
     <%= "<br><br><strong>#{t('location.data')}:</strong><br>#{link_to @experiencia_agroecologica.local.nome, local_path(@experiencia_agroecologica.local)}&nbsp;".html_safe if @experiencia_agroecologica.local.nome? %>
@@ -35,7 +36,7 @@
 
     <br><br><strong><%= t(:comments) %>:</strong>
     <% if @experiencia_agroecologica.comentarios.count > 0 %>
-      <%= render 'comentarios', comentarios: @experiencia_agroecologica.comentarios %>
+      <%= render 'comentarios', comentarios: @experiencia_agroecologica.comentarios.order(:updated_at).reverse_order %>
     <% end %>
 
     <%= "<b>#{link_to t(:log_into_the_system_to_make_comments), new_usuario_session_path, :class => 'text-danger'}</b>".html_safe if !usuario_signed_in? %>

@@ -70,6 +70,15 @@
     max-width: 600px;
     text-align: justify;
 }
+
+.comment-box {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 900px;
+    text-align: justify;
+}
+
+
 .form-group {
     margin-bottom: 0.5rem;
 }
