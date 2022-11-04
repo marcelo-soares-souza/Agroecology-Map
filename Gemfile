@@ -14,7 +14,7 @@ gem "rails", "~> 5.2.8.1"
 gem "sass-rails", "~> 5.1.0"
 gem "uglifier", ">= 4.2.0"
 
-gem "jbuilder", "~> 2.5"
+gem "jbuilder", "~> 2.11.5"
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
@@ -24,7 +24,7 @@ group :development do
 end
 
 group :rubocop do
-  gem "rubocop", ">= 1.37.1", require: false
+  gem "rubocop", ">= 1.38.0", require: false
   gem "rubocop-minitest", require: false
   gem "rubocop-packaging", require: false
   gem "rubocop-performance", require: false
@@ -39,4 +39,4 @@ gem "acts-as-taggable-on"
 gem "invisible_captcha"
 gem "dalli"
 gem "redis", "~> 5.0.5"
-gem "kt-paperclip", "~> 6.4.2"
+gem "kt-paperclip", "~> 7.1.1"

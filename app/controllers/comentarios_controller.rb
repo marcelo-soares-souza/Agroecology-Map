@@ -18,11 +18,12 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        subject = "You have received a new comment on #{@comentario.experiencia_agroecologica.nome}"
-        ActionMailer::Base.mail(from: "contact@agroecologymap.org",
-                                to: @comentario.usuario.email,
+        subject = "[Agroecology Map] You have received a new comment on #{@comentario.experiencia_agroecologica.nome}"
+        body = "Comment: #{@comentario.texto}"
+        ActionMailer::Base.mail(from: "Agroecology Map <contact@agroecologymap.org>",
+                                to: @experiencia_agroecologica.usuario.email,
                                 subject: subject,
-                                body: @comentario.texto).deliver
+                                body: body).deliver
 
         format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi registrado." }
       else
