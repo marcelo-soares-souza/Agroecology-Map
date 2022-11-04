@@ -2,7 +2,7 @@ function dataTables() {
     var table = $('#dataTable-agroecologia').DataTable({
         bSort: true,
         aaSorting: [],
-        pageLength: 25,
+        pageLength: 10,
         lengthChange: false,
         "language":
             {

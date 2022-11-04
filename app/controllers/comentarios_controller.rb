@@ -20,10 +20,13 @@ class ComentariosController < ApplicationController
       if @comentario.save
         subject = "[Agroecology Map] You have received a new comment on #{@comentario.experiencia_agroecologica.nome}"
         body = "Comment: #{@comentario.texto}"
-        ActionMailer::Base.mail(from: "Agroecology Map <contact@agroecologymap.org>",
-                                to: @experiencia_agroecologica.usuario.email,
-                                subject: subject,
-                                body: body).deliver
+
+        if @experiencia_agroecologica.usuario.id != current_usuario.id
+          ActionMailer::Base.mail(from: "Agroecology Map <contact@agroecologymap.org>",
+                                  to: @experiencia_agroecologica.usuario.email,
+                                  subject: subject,
+                                  body: body).deliver
+        end
 
         format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi registrado." }
       else

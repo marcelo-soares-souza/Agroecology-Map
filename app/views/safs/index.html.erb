@@ -40,9 +40,9 @@
           <td>
             <div  class="thumbnail-mini">
               <% if saf.midias[0] %>
-                <%= link_to image_tag(saf.midias[0].imagem.url(:thumb)), saf_path(saf) %>
+                <%= link_to image_tag(saf.midias[0].imagem.url(:medium)), saf_path(saf) %>
               <% else %>
-                <%= link_to image_tag(saf.local.imagem.url(:thumb)), saf_path(saf) %>
+                <%= link_to image_tag(saf.local.imagem.url(:medium)), saf_path(saf) %>
               <% end %>
             </div>
           </td>
