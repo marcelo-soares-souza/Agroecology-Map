@@ -15,19 +15,19 @@
 <br><br><br>
 
 <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <% if params[:saf_id] %>
-      <%= link_to t(:safs), safs_path, :class => "nav-link" %>
-    <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
-    <% end %>
-  </li>
+<!--  <li class="nav-item">-->
+    <%# if params[:saf_id] %>
+      <%#= link_to t(:safs), safs_path, :class => "nav-link" %>
+    <%# elsif params[:experiencia_agroecologica_id] %>
+      <%#= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
+    <%# end %>
+<!--  </li>-->
 
   <li class="nav-item">
     <% if params[:saf_id] %>
-      <%= link_to truncate(@saf.nome, length: 40), saf_path(@saf), :class => "nav-link" %>
+      <%= link_to truncate(@saf.nome, length: 22), saf_path(@saf), :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to truncate(@experiencia_agroecologica.nome, length: 40), experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
+      <%= link_to truncate(@experiencia_agroecologica.nome, length: 22), experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
     <% end %>
   </li>
 
@@ -41,9 +41,9 @@
 
   <li class="nav-item">
     <% if params[:saf_id] %>
-      <%= link_to @midia.descricao, saf_midia_path(@saf, @midia.id), :class => "nav-link active" %>
+      <%= link_to truncate(@midia.descricao, length: 32), saf_midia_path(@saf, @midia.id), :class => "nav-link active" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to @midia.descricao, experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia.id), :class => "nav-link active" %>
+      <%= link_to truncate(@midia.descricao, length: 32), experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia.id), :class => "nav-link active" %>
     <% end %>
   </li>
 </ul>
