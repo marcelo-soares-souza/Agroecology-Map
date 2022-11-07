@@ -63,6 +63,10 @@
         </li>
       <% end %>
       <li>
+        <strong><%= link_to t(:donate), "https://opencollective.com/agroecology-map", :target => "blank", :class => "nav-link text-danger", :style => "color: #e24d6f !important;"%></strong>
+      </li>
+
+      <li>
         <select id="locale" onchange="if (this.value) window.location.href='<%= request.path %>?locale=' + this.value" class="form-control">
           <option value="pt-BR">Português</option>
           <option value="es">Español</option>
