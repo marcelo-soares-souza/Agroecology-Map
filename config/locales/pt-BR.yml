@@ -219,7 +219,7 @@ pt-BR:
     pm: ""
   name: "Nome"
   password: "Senha"
-  password_confirm: "Confirme a senha"
+  password_confirm: "Confirme a Senha"
   registered_locations: "Locais"
   registered_experiences: "Experiências"
   sign_in: "Entrar"

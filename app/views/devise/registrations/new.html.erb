@@ -1,3 +1,4 @@
+<div class="sign_in_up">
 <h2><%= t(:sign_up) %></h2>
 <br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -40,7 +41,7 @@
   <br>
   <div><%= invisible_captcha %></div>
 <% end %>
-
+</div>
 <script>
     document.getElementById("submit").setAttribute("disabled", "disabled");
     setTimeout(function () {

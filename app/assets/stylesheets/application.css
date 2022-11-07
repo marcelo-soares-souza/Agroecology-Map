@@ -14,6 +14,18 @@
  *= require_self
  */
 
+.sign_in_up {
+   margin-right: auto;
+   margin-left: auto;
+   max-width: 610px;
+}
+
+.sign_in_up .form-group {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 610px;
+}
+
 .friends {
     margin-left: auto;
     margin-right: auto;
