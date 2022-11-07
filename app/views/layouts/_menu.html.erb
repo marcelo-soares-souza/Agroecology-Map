@@ -33,6 +33,9 @@
       <li class="nav-item">
         <%= link_to(t(:contributors), usuarios_path, :class => "nav-link") %>
       </li>
+      <li class="nav-item">
+        <%= link_to(t(:friends), friends_path, :class => "nav-link") %>
+      </li>
       <% if current_usuario %>
         <% if current_usuario.admin? %>
           <li class="nav-item dropdown">

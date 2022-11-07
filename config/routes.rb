@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "home/index"
   end
 
+  resources :friends
   resources :comentarios
   resources :animais
   resources :plantas

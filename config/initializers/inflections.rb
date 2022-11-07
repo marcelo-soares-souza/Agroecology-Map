@@ -8,4 +8,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "animal", "animais"
   inflect.irregular "midia", "midias"
   inflect.irregular "comentario", "comentarios"
+  inflect.irregular "friend", "friends"
 end
