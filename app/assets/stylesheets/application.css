@@ -34,9 +34,14 @@
 .friends .logo {
     width: 250px;
     margin-top: 16px;
-    margin-bottom: 16   px;
+    margin-bottom: 16px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.friends a {
+    font-size: 22px;
+    color: rgb(221, 122, 0) !important;
 }
 
 b, strong {
