@@ -1,4 +1,6 @@
-# Mapa da Agroecologia - Saberes e Prática
+# Agroecology Map
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I0G99V3)
 
 1) Install Bundler
 
