@@ -48,7 +48,7 @@
           </td>
           <td><%= link_to saf.nome, saf_path(saf) %></td>
           <td><%= link_to saf.local.nome, local_path(saf.local) %></td>
-          <td><%= link_to saf.midias.count, saf_midias_path(saf) %></td>
+          <td><%= link_to saf.midias.count, saf_gallery_path(saf) %></td>
           <td><%= saf.plantas.count %></td>
           <td><%= saf.animais.count %></td>
           <% if usuario_signed_in? %>

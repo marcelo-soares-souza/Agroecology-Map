@@ -11,6 +11,9 @@
     <%= link_to truncate(@saf.nome, length: 45), saf_path(@saf.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
+    <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path(@saf), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
     <%= link_to t(:photos) + " (#{@saf.midias.count})", saf_midias_path(@saf), :class => "nav-link" %>
   </li>
 </ul>

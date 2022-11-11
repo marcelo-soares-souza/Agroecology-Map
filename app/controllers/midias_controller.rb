@@ -16,6 +16,16 @@ class MidiasController < ApplicationController
     end
   end
 
+  # GET /gallery
+  # GET /gallery.json
+  def gallery
+    if params[:saf_id]
+      @midias = Midia.where(saf_id: @saf.id)
+    elsif params[:experiencia_agroecologica_id]
+      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id)
+    end
+  end
+
   # GET /midias/1
   # GET /midias/1.json
   def show; end

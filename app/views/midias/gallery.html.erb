@@ -1,0 +1,80 @@
+<%= render 'layouts/dataTable' %>
+
+<% if params[:saf_id] %>
+  <% title t(:gallery) + " #{@saf.nome}" %>
+<% elsif params[:experiencia_agroecologica_id] %>
+  <% title t(:gallery) + " #{@experiencia_agroecologica.nome}" %>
+<% end %>
+
+<% if usuario_signed_in? %>
+  <% if params[:saf_id] %>
+    <%= link_to t(:send_picture), new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+  <% elsif params[:experiencia_agroecologica_id] %>
+    <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+  <% end %>
+<% end %>
+
+<br><br><br>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <% if params[:saf_id] %>
+      <%= link_to truncate(@saf.nome, length: 40), saf_path(@saf), :class => "nav-link" %>
+    <% elsif params[:experiencia_agroecologica_id] %>
+      <%= link_to truncate(@experiencia_agroecologica.nome, length: 40), experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <% if params[:saf_id] %>
+      <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path, :class => "nav-link active" %>
+    <% elsif params[:experiencia_agroecologica_id] %>
+      <%= link_to t(:gallery) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path, :class => "nav-link active" %>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <% if params[:saf_id] %>
+      <%= link_to t(:photos) + " (#{@saf.midias.count})", saf_midias_path, :class => "nav-link" %>
+    <% elsif params[:experiencia_agroecologica_id] %>
+      <%= link_to t(:photos) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link" %>
+    <% end %>
+  </li>
+</ul>
+
+<% if @midias.empty? %>
+  <br>
+
+  <h3><%= t(:no_photo_submitted) %>
+    <% if usuario_signed_in? %>
+      <% if params[:saf_id] %>
+        <%= link_to t(:send_picture), new_saf_midia_path(@saf) if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+      <% elsif params[:experiencia_agroecologica_id] %>
+        <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path(@experiencia_agroecologica) if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+      <% end %>
+    <% end %>
+  </h3>
+
+<% else %>
+
+  <br>
+
+  <div class="row justify-content-left">
+    <div class="col-md-8">
+      <div class="row">
+        <% @midias.each do |midia| %>
+          <a href="<%= midia.imagem.url(:original) %>>" data-toggle="lightbox" data-gallery="midia-gallery" class="col-sm-4 gallery-image" data-max-width="900">
+            <img src="<%= midia.imagem.url(:medium) %>>" class="img-fluid">
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+          event.preventDefault();
+          $(this).ekkoLightbox();
+      });
+  </script>
+<% end %>

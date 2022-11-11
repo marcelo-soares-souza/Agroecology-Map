@@ -13,6 +13,25 @@
  *= require_tree .
  *= require_self
  */
+.gallery-legend {
+    min-height: 140px;
+    max-height: 140px;
+    min-width: 250px;
+    max-width: 250px;
+
+}
+.gallery-image {
+    max-width: 250px !important;
+    max-height: 140px !important;
+    min-width: 250px !important;
+    min-height: 140px !important;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    overflow: hidden;
+    margin-bottom: auto;
+    margin-top: auto;
+    position: relative;
+}
 
 .sign_in_up {
    margin-right: auto;
@@ -441,10 +460,6 @@ a:focus, a:hover {
     color: #a94442;
     border-radius: 0.25rem;
     margin-bottom: 32px;
-}
-
-.midia-imagem {
-    max-width: 640px;
 }
 
 .list-control {

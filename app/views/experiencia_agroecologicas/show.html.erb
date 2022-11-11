@@ -11,6 +11,9 @@
     <%= link_to @experiencia_agroecologica.nome.truncate(45), experiencia_agroecologica_path(@experiencia_agroecologica.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
+    <%= link_to "#{t(:gallery)} (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path(@experiencia_agroecologica), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
     <%= link_to "#{t(:photos)} (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path(@experiencia_agroecologica), :class => "nav-link" %>
   </li>
 </ul>

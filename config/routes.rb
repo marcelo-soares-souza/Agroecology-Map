@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   resources :plantas
 
   resources :experiencia_agroecologicas do
+    get "/gallery" => "midias#gallery"
     resources :midias
     resources :comentarios
   end
 
   resources :safs do
+    get "/gallery" => "midias#gallery"
     resources :midias
   end
 
