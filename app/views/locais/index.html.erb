@@ -24,9 +24,9 @@
         <th></th>
         <th><%= t("location.data") %></th>
         <th><%= t("type") %></th>
+        <th><%= t(:gallery) %></th>
         <th><%= t("experiences") %></th>
         <th><%= t(:safs) %></th>
-        <th>Blog</th>
         <% if usuario_signed_in? %>
           <th class="list-control"></th>
           <th class="list-control"></th>
@@ -40,9 +40,9 @@
           <td scope="row"><div  class="thumbnail-mini"><%= link_to image_tag(local.imagem.url(:medium)), local_path(local) %></div></td>
           <td><%= link_to truncate(local.nome, length: 100), local_path(local) %></td>
           <td><%= @tipos.key(local.tipo) %></td>
+          <td><%= link_to local.midias.count, local_gallery_path(local.id) %></td>
           <td><%= link_to local.experiencia_agroecologicas.count, local_experiencia_agroecologicas_path(local) %></td>
           <td><%= link_to local.safs.count, local_safs_path(local) %></td>
-          <td><%= link_to local.blogs.count, local_blogs_path(local) %></td>
 
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? or local.usuario.id == current_usuario.id %>
