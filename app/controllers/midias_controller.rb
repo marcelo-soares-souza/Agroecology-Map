@@ -25,6 +25,7 @@ class MidiasController < ApplicationController
       @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id)
     elsif params[:local_id]
       experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: params[:local_id])
+      @local = Local.where(id: params[:local_id])
       @midias = Midia.where(experiencia_agroecologica: experiencia_agroecologica)
     end
   end

@@ -14,11 +14,10 @@
     <% if local.latitude and local.longitude %>
       var popup = '<b><%= "#{link_to local.nome, local_path(local)}".html_safe %><br>';
           popup += '<%= "<br>#{t(:experiences_in_agroecology)}<br>".html_safe %>';
-          popup += '<%= local.experiencia_agroecologicas.count > 0 ? "#{local.experiencia_agroecologicas.map {|experiencia| link_to truncate(experiencia.nome, length: 38), experiencia}.join("<br>") }<br>".html_safe : "#{t(:none_registered)}</br>".html_safe %>';
+          popup += '<%= local.experiencia_agroecologicas.count > 0 ? "#{local.experiencia_agroecologicas.map {|experiencia| link_to truncate(experiencia.nome, length: 38), experiencia}.join("<br>") }<br>".html_safe : "#{t(:none_registered)}<br>".html_safe %>';
           popup += '<%= "<br>#{t(:agroforestry_systems)}<br>".html_safe %>';
-          popup += '<%= local.safs.count > 0 ? "#{local.safs.map {|saf| link_to truncate(saf.nome, length: 38), saf}.join("<br>") }<br>".html_safe : "#{t(:none_registered)}</br>".html_safe %>';
-          popup += '<%= "<br>#{t(:latest_blog_post)}<br>".html_safe %>';
-          popup += '<%= local.blogs.count > 0 ? "#{local.blogs.order(updated_at: :desc).take(5).map {|blog| link_to truncate(blog.titulo, length: 32), local_blog_path(local, blog)}.join("<br>") }<br>".html_safe : "#{t(:none_registered)}</br>".html_safe %>';
+          popup += '<%= local.safs.count > 0 ? "#{local.safs.map {|saf| link_to truncate(saf.nome, length: 38), saf}.join("<br>") }<br>".html_safe : "#{t(:none_registered)}<br>".html_safe %>';
+          popup += '<%= local.midias.count > 0 ? "<br>#{ link_to (t(:gallery) + " (" + local.midias.count.to_s + ")"), local_gallery_path(local.id)}".html_safe : "".html_safe %>';
           popup += '</b>';
 
       var marker = new L.marker(new L.latLng([<%= local.latitude %>, <%= local.longitude %>]), { icon: Icon, title: '<%= local.nome %>' });
