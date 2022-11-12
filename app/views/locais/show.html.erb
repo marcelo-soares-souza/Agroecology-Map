@@ -12,7 +12,8 @@
   </li>
 
   <li class="nav-item">
-    <%= link_to t(:gallery) + " (#{@local.midias.count})", local_gallery_path(@local.id), :class => "nav-link" %>
+    <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count%>
+    <%= link_to t(:gallery) + " (#{total_midia})", local_gallery_path(@local.id), :class => "nav-link" %>
   </li>
 
   <!--
