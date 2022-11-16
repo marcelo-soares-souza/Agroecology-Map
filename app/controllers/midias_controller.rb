@@ -135,7 +135,7 @@ class MidiasController < ApplicationController
     end
 
     def selected_id
-      if current_usuario and current_usuario.admin?
+      if current_usuario && current_usuario.admin?
         @selected_id = current_usuario.id
         if @experiencia_agroecologica
           @selected_id = @experiencia_agroecologica.usuario.id
@@ -146,7 +146,7 @@ class MidiasController < ApplicationController
     end
 
     def default_media_name
-      if current_usuario and current_usuario.admin?
+      if current_usuario && current_usuario.admin?
         @default_media_name = ""
         if @experiencia_agroecologica
           @default_media_name = @experiencia_agroecologica.nome + " "
