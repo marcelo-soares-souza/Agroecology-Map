@@ -13,10 +13,17 @@
 <div id="map"></div>
 
 <script>
-    lat = -13.00; // lat = -15.77835833463309;
-    lon = -45.00; // lon = -47.88219451904297;
+    lat = -8.00; // lat = -15.77835833463309;
+    lon = -32.00; // lon = -47.88219451904297;
+    zoom = 3.5;
 
-    var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], 4);
+    if (window.devicePixelRatio > 3) {
+        zoom = 2;
+        lat = -1.00;
+        lon = -32.00;
+    }
+
+    var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], zoom);
 
     $(document).ready(function () {
         $(window).on("resize", function () {
