@@ -13,11 +13,12 @@
 <div id="map"></div>
 
 <script>
+  console.log(window.innerWidth)
     lat = -8.00; // lat = -15.77835833463309;
     lon = -32.00; // lon = -47.88219451904297;
     zoom = 3.5;
 
-    if (window.devicePixelRatio > 3) {
+    if (window.devicePixelRatio > 2) {
         zoom = 2;
         lat = -1.00;
         lon = -32.00;
