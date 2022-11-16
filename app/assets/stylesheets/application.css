@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.ekko-lightbox-nav-overlay a:last-child span {
+    background: transparent;
+    color: #ffffff;
+}
+
+.ekko-lightbox-nav-overlay a span {
+    background: transparent;
+    color: #ffffff;
+}
+
 .gallery-legend {
     min-height: 140px;
     max-height: 140px;

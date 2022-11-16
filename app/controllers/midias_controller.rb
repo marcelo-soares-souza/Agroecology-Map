@@ -5,6 +5,7 @@ class MidiasController < ApplicationController
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
   before_action -> { check_owner Midia.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
   before_action :load_dados
+  before_action :selected_id
 
   # GET /midias
   # GET /midias.json
@@ -129,6 +130,17 @@ class MidiasController < ApplicationController
         @saf = Saf.friendly.find(params[:saf_id])
       elsif params[:experiencia_agroecologica_id]
         @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
+      end
+    end
+
+    def selected_id
+      if current_usuario.admin?
+        @selected_id = current_usuario.id
+        if @experiencia_agroecologica
+          @selected_id = @experiencia_agroecologica.usuario.id
+        elsif @saf
+          @selected_id = @saf.usuario.id
+        end
       end
     end
 end
