@@ -6,6 +6,7 @@ class MidiasController < ApplicationController
   before_action -> { check_owner Midia.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
   before_action :load_dados
   before_action :selected_id
+  before_action :default_media_name
 
   # GET /midias
   # GET /midias.json
@@ -134,12 +135,23 @@ class MidiasController < ApplicationController
     end
 
     def selected_id
-      if current_usuario.admin?
+      if current_usuario and current_usuario.admin?
         @selected_id = current_usuario.id
         if @experiencia_agroecologica
           @selected_id = @experiencia_agroecologica.usuario.id
         elsif @saf
           @selected_id = @saf.usuario.id
+        end
+      end
+    end
+
+    def default_media_name
+      if current_usuario and current_usuario.admin?
+        @default_media_name = ""
+        if @experiencia_agroecologica
+          @default_media_name = @experiencia_agroecologica.nome + " "
+        elsif @saf
+          @default_media_name = @saf.nome + " "
         end
       end
     end
