@@ -75,10 +75,10 @@
       <% @midias.each do |midia| %>
         <tr>
           <% if params[:saf_id] %>
-            <td scope="row"><%= link_to image_tag(midia.imagem.url(:thumb), :height => "80"), saf_midia_path(@saf, midia) %></td>
+            <td scope="row"><div class="thumbnail-mini"><%= link_to image_tag(midia.imagem.url(:medium)), saf_midia_path(@saf, midia) %></div></td>
             <td><%= link_to midia.descricao, saf_midia_path(@saf, midia) %></td>
           <% elsif params[:experiencia_agroecologica_id] %>
-            <td scope="row"><%= link_to image_tag(midia.imagem.url(:thumb), :height => "80"), experiencia_agroecologica_midia_path(@experiencia_agroecologica, midia) %></td>
+            <td scope="row"><div class="thumbnail-mini"><%= link_to image_tag(midia.imagem.url(:medium)), experiencia_agroecologica_midia_path(@experiencia_agroecologica, midia) %></div></td>
             <td><%= link_to midia.descricao, experiencia_agroecologica_midia_path(@experiencia_agroecologica, midia) %></td>
           <% end %>
 

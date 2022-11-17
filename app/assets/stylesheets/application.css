@@ -67,11 +67,17 @@
     margin-bottom: 16px;
     margin-left: auto;
     margin-right: auto;
+    background-color: transparent;
 }
 
 .friends a {
     font-size: 22px;
     color: rgb(221, 122, 0) !important;
+    background-color: transparent;
+}
+
+.friends img {
+    background-color: transparent;
 }
 
 b, strong {
@@ -93,6 +99,13 @@ b, strong {
     overflow: hidden;
     margin-right: auto;
     margin-left: auto;
+
+    object-fit: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .thumbnail img {
@@ -104,6 +117,7 @@ b, strong {
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+    background-color: transparent;
 }
 
 .thumbnail img.portrait {
@@ -118,6 +132,13 @@ b, strong {
     overflow: hidden;
     margin-right: auto;
     margin-left: auto;
+
+    object-fit: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .thumbnail-mini img {
@@ -129,6 +150,8 @@ b, strong {
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+    background-color: transparent;
+
 }
 
 .thumbnail-mini img.portrait {

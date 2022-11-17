@@ -25,7 +25,7 @@
         <th><%= t(:name) %></th>
         <th><%= t(:central_theme) %></th>
         <th><%= t('location.data') %></th>
-        <th><%= t(:photos) %></th>
+        <th><%= t(:gallery) %></th>
         <th><%= t(:comments) %></th>
         <% if usuario_signed_in? %>
           <th class="list-control"></th>
@@ -38,7 +38,7 @@
       <% @experiencia_agroecologicas.each do |experiencia_agroecologica| %>
         <tr>
           <td>
-            <div  class="thumbnail-mini">
+            <div class="thumbnail-mini">
               <% if experiencia_agroecologica.midias[0] %>
                 <%= link_to image_tag(experiencia_agroecologica.midias[0].imagem.url(:medium)), experiencia_agroecologica_path(experiencia_agroecologica) %>
               <% else %>

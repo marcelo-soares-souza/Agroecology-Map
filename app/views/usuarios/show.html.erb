@@ -12,7 +12,9 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
 
-    <%= image_tag(@usuario.imagem.url(:medium), :width => "150") %>
+    <div class="thumbnail">
+      <%= image_tag(@usuario.imagem.url(:medium), :width => "150") %>
+    </div>
 
     <br><br>
     <h3><%= @usuario.nome %></h3>
