@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: "contact@agroecologymap.org"
+  default from: "marcelo@agroecologymap.org"
   layout "mailer"
 end

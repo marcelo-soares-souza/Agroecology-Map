@@ -22,7 +22,7 @@ class ComentariosController < ApplicationController
         body = "Comment: #{@comentario.texto}"
 
         if @experiencia_agroecologica.usuario.id != current_usuario.id
-          ActionMailer::Base.mail(from: "Agroecology Map <contact@agroecologymap.org>",
+          ActionMailer::Base.mail(from: "Agroecology Map <marcelo@agroecologymap.org>",
                                   to: @experiencia_agroecologica.usuario.email,
                                   subject: subject,
                                   body: body).deliver
