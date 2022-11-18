@@ -551,6 +551,7 @@ a:focus, a:hover {
 
 .nav {
     flex-wrap: nowrap;
+    font-size: 21px;
 }
 
 .nav-link {

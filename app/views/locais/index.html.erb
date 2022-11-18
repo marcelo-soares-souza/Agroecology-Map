@@ -7,7 +7,7 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:locations) + " #{ @usuario.blank? ? '' : '(' + @usuario.nome.truncate(28) + ')' }", "#", :class => "nav-link active" %>
+    <%= link_to t(:locations) + " #{ @usuario.blank? ? '' : '(' + @usuario.nome.truncate(16) + ')' }", "#", :class => "nav-link active" %>
   </li>
 </ul>
 

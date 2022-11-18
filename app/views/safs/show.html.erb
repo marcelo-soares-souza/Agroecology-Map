@@ -5,13 +5,10 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to t(:safs), safs_path, :class => "nav-link" %>
+    <%= link_to truncate(@saf.nome, length: 16), saf_path(@saf.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
-    <%= link_to truncate(@saf.nome, length: 45), saf_path(@saf.id), :class => "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path(@saf), :class => "nav-link" %>
+    <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path(@saf), :class => "nav-link", :style => "color: red !important" %>
   </li>
   <li class="nav-item">
     <%= link_to t(:photos) + " (#{@saf.midias.count})", saf_midias_path(@saf), :class => "nav-link" %>
