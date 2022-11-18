@@ -27,6 +27,6 @@ Rename config/database.yml.example to config/database.yml
 
 - bundle exec rails server
 
-More info: https://mapadaagroecologia.org/
+More info: https://agroecologymap.org/
 
 This project is licensed under the terms of the GPLv3 (See LICENSE.md)

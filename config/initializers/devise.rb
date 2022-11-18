@@ -15,6 +15,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = "marcelo@agroecologymap.org"
+  config.mailer_sender = '"Agroecology Map" <marcelo@agroecologymap.org>'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
