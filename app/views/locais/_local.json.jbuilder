@@ -1,4 +1,11 @@
 # frozen_string_literal: true
 
-json.extract! local, :id, :nome, :observacao, :latitude, :longitude, :tipo, :hospedagem, :created_at, :updated_at
-json.url local_url(local, format: :json)
+json.id local.id
+json.name local.nome
+json.description local.observacao
+json.latitude local.latitude
+json.longitude local.longitude
+json.type @tipos.key(local.tipo)
+json.url local_url(local)
+json.created_at local.created_at
+json.updated_at local.updated_at
