@@ -46,4 +46,8 @@ Rails.application.routes.draw do
   end
 
   resources :novidades, only: [:index]
+
+  scope(locais: {}) do
+    resources :locais, path: "locations"
+  end
 end
