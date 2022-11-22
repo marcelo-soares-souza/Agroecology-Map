@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+json.id experiencia_agroecologicas.id
+json.name experiencia_agroecologicas.nome
+json.location experiencia_agroecologicas.local.nome
+json.central_theme @tema_experiencia_agroecologicas.key(experiencia_agroecologicas.tema_experiencia_agroecologica.id)
+json.resume experiencia_agroecologicas.resumo
+json.responsible_for_information experiencia_agroecologicas.usuario.nome
+json.url experiencia_agroecologica_url(experiencia_agroecologicas)
+json.created_at experiencia_agroecologicas.created_at
+json.updated_at experiencia_agroecologicas.updated_at
