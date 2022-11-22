@@ -8,13 +8,31 @@ Rails.application.routes.draw do
 
   resources :friends
   resources :comentarios
+
+  scope(animais: {}) do
+    resources :animais, path: "animals"
+  end
+
   resources :animais
+
+  scope(plantas: {}) do
+    resources :plantas, path: "plants"
+  end
+
   resources :plantas
+
+  scope(experiencia_agroecologicas: {}) do
+    resources :experiencia_agroecologicas, path: "agroecological-experiences"
+  end
 
   resources :experiencia_agroecologicas do
     get "/gallery" => "midias#gallery"
     resources :midias
     resources :comentarios
+  end
+
+  scope(safs: {}) do
+    resources :safs, path: "agroforestry"
   end
 
   resources :safs do
@@ -23,6 +41,10 @@ Rails.application.routes.draw do
   end
 
   resources :tema_experiencia_agroecologicas
+
+  scope(locais: {}) do
+    resources :locais, path: "locations"
+  end
 
   resources :locais do
     get "/gallery" => "midias#gallery"
@@ -35,6 +57,10 @@ Rails.application.routes.draw do
 
   resources :tipo_organizacoes
 
+  scope(usuarios: {}) do
+    resources :usuarios, path: "contributors"
+  end
+
   #  devise_for :usuarios
   devise_for :usuarios, controllers: {
     registrations: "usuarios/registrations"
@@ -46,8 +72,4 @@ Rails.application.routes.draw do
   end
 
   resources :novidades, only: [:index]
-
-  scope(locais: {}) do
-    resources :locais, path: "locations"
-  end
 end
