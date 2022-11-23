@@ -10,6 +10,7 @@ class ExperienciaAgroecologicasController < ApplicationController
   before_action :load_tema_experiencia_agroecologicas # , except: %i[index show]
   before_action :load_local
   before_action :load_usuario
+  before_action :load_likes_info, only: %i[show]
 
   # GET /experiencia_agroecologicas
   # GET /experiencia_agroecologicas.json
@@ -147,4 +148,8 @@ class ExperienciaAgroecologicasController < ApplicationController
     def load_usuario
       @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
     end
+  def load_likes_info
+    likes = @experiencia_agroecologica.likes.map { |like| like.usuario.nome }.join(", ")
+    @likes_info = likes.empty? ? 'Like Button' : likes
+  end
 end

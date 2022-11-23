@@ -298,6 +298,8 @@ pre {
 
 a {
     color: #000;
+    background-color: transparent;
+
 
 &
 :visited {
@@ -307,7 +309,7 @@ a {
 &
 :hover {
     color: #fff;
-    background-color: #000;
+    background-color: transparent;
 }
 
 }
@@ -467,7 +469,6 @@ p {
 
 a:focus, a:hover {
     background-color: transparent;
-    color: #000;
 }
 
 #show-imagem {
