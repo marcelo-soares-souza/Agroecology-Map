@@ -18,6 +18,21 @@
 <br>
 
 <div class="tab-content" style="min-height: 64px;">
+
+  <div class="like">
+    <% if  usuario_signed_in? %>
+      <%= link_to like_path(@experiencia_agroecologica), method: "put", class: "btn text-white",  style: "background-color: #fff;", disabled: true do %>
+        <img src="/like.png" alt="Like Button" title="Like Button">
+        <span class="badge bg-danger ms-2" style="font-size: 14px"><%= @experiencia_agroecologica.likes.count.to_s %></span>
+      <% end %>
+    <% else %>
+      <%= link_to "#", method: "put", class: "btn text-white",  style: "background-color: #fff;", disabled: true do %>
+        <img src="/like.png" alt="Like Button" title="Like Button">
+        <span class="badge bg-danger ms-2" style="font-size: 14px"><%= @experiencia_agroecologica.likes.count.to_s %></span>
+      <% end %>
+  <% end %>
+  </div>
+
   <div class="tab-pane active">
     <% if @experiencia_agroecologica.midias[0] %>
       <div  class="thumbnail">

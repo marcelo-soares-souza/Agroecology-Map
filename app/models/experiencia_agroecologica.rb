@@ -7,6 +7,7 @@ class ExperienciaAgroecologica < ApplicationRecord
   has_one :organizacao, through: :local
   has_many :midias, dependent: :delete_all
   has_many :comentarios
+  has_many :likes
 
   extend FriendlyId
   friendly_id :nome, use: :slugged

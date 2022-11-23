@@ -79,6 +79,12 @@ class ExperienciaAgroecologicasController < ApplicationController
     end
   end
 
+  def like
+    @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:id])
+    Like.create(usuario_id: current_usuario.id, experiencia_agroecologica_id: @experiencia_agroecologica.id)
+    redirect_to experiencia_agroecologica_path(@experiencia_agroecologica)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_experiencia_agroecologica
