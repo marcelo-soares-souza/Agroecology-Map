@@ -148,8 +148,8 @@ class ExperienciaAgroecologicasController < ApplicationController
     def load_usuario
       @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
     end
-  def load_likes_info
-    likes = @experiencia_agroecologica.likes.map { |like| like.usuario.nome }.join(", ")
-    @likes_info = likes.empty? ? 'Like Button' : likes
-  end
+    def load_likes_info
+      likes = @experiencia_agroecologica.likes.map { |like| like.usuario.nome }.join(", ")
+      @likes_info = likes.empty? ? "Like Button" : likes
+    end
 end
