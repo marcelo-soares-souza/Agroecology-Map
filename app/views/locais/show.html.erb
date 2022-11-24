@@ -32,18 +32,19 @@
     </div>
     <br><br>
     <div class='<%= (@local.nome.length() > 100 ? 'text-box' : '') %>'><h3><%= @local.nome %></h3></div>
-    <%= "<strong>#{t(:type)}:</strong><br>#{@tipos.key(@local.tipo)}&nbsp;".html_safe if @local.tipo? %>
-    <%= "<br><br><strong>#{t(:responsible_for_information)}:</strong><br>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;".html_safe if @local.usuario.nome? %>
-    <%= "<br><br><strong>#{t(:contributors)}:</strong><br>#{@local.usuarios.map { |usuario| link_to usuario.nome, usuario_path(usuario) }.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0 %>
-    <%= "<br><br><strong>#{t(:accommodation)}:</strong><br>#{@local.hospedagem}&nbsp;".html_safe if @local.hospedagem? %>
-    <%= "<br><br><strong>#{t(:description)}:</strong><br><div class='text-box'>#{simple_format (h @local.observacao).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe if @local.observacao? %>
-    <%= "<br><br><strong>Organizações:</strong><br>#{@local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @local.organizacoes.count > 0 %>
-    <%= "<br><br><strong>#{t(:experiences_in_agroecology)}:</strong><br><div class='#{@local.experiencia_agroecologicas.count() > 2 ? 'text-box' : ''}'>#{@local.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica) }.join(", ").html_safe}&nbsp;</div>".html_safe if @local.experiencia_agroecologicas.count > 0 %>
-    <%= "<br><br><strong>#{t(:safs)}:</strong><br>#{@local.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @local.safs.count > 0 %>
+    <%= "<strong>#{t(:type)}:</strong><br>#{@tipos.key(@local.tipo)}&nbsp;<br>".html_safe if @local.tipo? %>
+    <%= "<br><strong>#{t(:experiences_in_agroecology)}:</strong><br><div>#{@local.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome.truncate(50), experiencia_agroecologica_path(experiencia_agroecologica), style: "font-size:21px !important;" }.join("<br>").html_safe}&nbsp;</div>".html_safe if @local.experiencia_agroecologicas.count > 0 %>
+    <%= "<br><strong>#{t(:safs)}:</strong><br>#{@local.safs.map { |saf| link_to saf.nome, saf_path(saf), style: "font-size:21px !important;" }.join("<br>").html_safe}&nbsp;<br>".html_safe if @local.safs.count > 0 %>
+    <%= "<br><strong>#{t(:description)}:</strong><br><div class='text-box'>#{simple_format (h @local.observacao).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe if @local.observacao? %>
+    <%= "<br><strong>#{t(:accommodation)}:</strong><br>#{@local.hospedagem}&nbsp;<br>".html_safe if @local.hospedagem? %>
+    <%= "<br><strong>#{t(:responsible_for_information)}:</strong><br>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;<br>".html_safe if @local.usuario.nome? %>
+
+    <!-- <%= "<br><strong>Organizações:</strong><br>#{@local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;<br>".html_safe if @local.organizacoes.count > 0 %> -->
+    <!-- <%= "<br><br><strong>#{t(:contributors)}:</strong><br>#{@local.usuarios.map { |usuario| link_to usuario.nome, usuario_path(usuario) }.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0 %> -->
     <!-- <%= "<br><br><strong>Blog:</strong><br>#{@local.blogs.order(updated_at: :desc).take(10).map { |blog| link_to blog.titulo, local_blog_url(@local, blog) }.join("<br>").html_safe}&nbsp;".html_safe if @local.blogs.count > 0 %> -->
 
     <% if @local.latitude and @local.longitude %>
-      <br><br>
+      <br>
       <div class="form-group row">
         <div id="map-show"></div>
       </div>
