@@ -1,24 +1,44 @@
 version: '2'
 
 services:
+  redis:
+    image: 'redis:latest'
+    restart: always
+    expose:
+      - '6379'
   postgres:
-    image: 'postgres:latest'
+    image: 'postgres:15.1'
+    restart: always
     environment:
-      POSTGRES_PASSWORD: agroecologymap
+      POSTGRES_PASSWORD: ${PASSWORD_DB}
     volumes:
       - 'postgres:/var/lib/postgresql/data'
+    env_file: .env
   website:
+    build: .
+    restart: always
     depends_on:
       - 'postgres'
-    build: .
-    ports:
-      - '3000:3000'
+    expose:
+      - '3000'
     volumes:
-      - '.:/app'
-    environment:
-      USERNAME_DB: postgres
-      PASSWORD_DB: agroecologymap
-      HOST_DB: postgres
-      PORT_DB: 5432
+      - '/opt/agroecologymap:/app/public/system'
+      - '/opt/dockers/logs:/app/log'
+    env_file: .env
+#  nginx:
+#    image: 'nginx:latest'
+#    restart: always
+#    depends_on:
+#      - 'website'
+#    expose:
+#      - '80:80'
+#      - '443:443'
+#    volumes:
+#      - '/opt/agroecologymap:/app/public/system'
+#      - '/opt/dockers/nginx/conf.d:/etc/nginx/conf.d'
+#      - '/etc/letsencrypt/:/etc/letsencrypt'
+#      - '/opt/dockers/nginx/bots.d:/etc/nginx/bots.d'
+
+
 volumes:
   postgres:

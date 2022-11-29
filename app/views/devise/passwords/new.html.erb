@@ -1,3 +1,4 @@
+<div class="sign_in_up">
 <h2><%= t(:forgot_password) %></h2>
 <br>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -15,6 +16,7 @@
   <br>
   <%= render "devise/shared/links" %>
   <br>
-  
+
 <% end %>
 <br>
+</div>

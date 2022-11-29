@@ -4,15 +4,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_23_171104) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_172736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "nome_cientifico"
     t.text "observacao"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at"
+    t.bigint "imagem_file_size"
+    t.datetime "imagem_updated_at", precision: nil
     t.index ["slug"], name: "index_animais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_animais_on_usuario_id"
   end
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.text "texto"
     t.bigint "usuario_id"
     t.bigint "local_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["local_id"], name: "index_blogs_on_local_id"
     t.index ["usuario_id"], name: "index_blogs_on_usuario_id"
   end
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "slug"
     t.bigint "experiencia_agroecologica_id"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["experiencia_agroecologica_id"], name: "index_comentarios_on_experiencia_agroecologica_id"
     t.index ["usuario_id"], name: "index_comentarios_on_usuario_id"
   end
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.bigint "tema_experiencia_agroecologica_id"
     t.text "resumo"
     t.text "observacao"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["local_id"], name: "index_experiencia_agroecologicas_on_local_id"
     t.index ["slug"], name: "index_experiencia_agroecologicas_on_slug", unique: true
     t.index ["tema_experiencia_agroecologica_id"], name: "idx_exp_agroecologicas_on_tema_exp_agroecologica_id"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
   create_table "likes", force: :cascade do |t|
     t.bigint "usuario_id"
     t.bigint "experiencia_agroecologica_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["experiencia_agroecologica_id"], name: "index_likes_on_experiencia_agroecologica_id"
     t.index ["usuario_id"], name: "index_likes_on_usuario_id"
   end
@@ -87,12 +87,12 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at"
+    t.bigint "imagem_file_size"
+    t.datetime "imagem_updated_at", precision: nil
     t.string "tipo"
     t.string "hospedagem"
     t.index ["slug"], name: "index_locais_on_slug", unique: true
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
   create_table "local_usuarios", force: :cascade do |t|
     t.bigint "local_id"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["local_id"], name: "index_local_usuarios_on_local_id"
     t.index ["usuario_id"], name: "index_local_usuarios_on_usuario_id"
   end
@@ -113,12 +113,12 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "slug"
     t.bigint "saf_id"
     t.bigint "experiencia_agroecologica_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at"
+    t.bigint "imagem_file_size"
+    t.datetime "imagem_updated_at", precision: nil
     t.bigint "usuario_id"
     t.index ["experiencia_agroecologica_id"], name: "index_midias_on_experiencia_agroecologica_id"
     t.index ["saf_id"], name: "index_midias_on_saf_id"
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
   create_table "organizacao_locais", force: :cascade do |t|
     t.bigint "organizacao_id"
     t.bigint "local_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["local_id"], name: "index_organizacao_locais_on_local_id"
     t.index ["organizacao_id"], name: "index_organizacao_locais_on_organizacao_id"
   end
@@ -151,8 +151,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.float "longitude"
     t.string "observacao"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["email"], name: "index_organizacoes_on_email", unique: true
     t.index ["slug"], name: "index_organizacoes_on_slug", unique: true
     t.index ["tipo_organizacao_id"], name: "index_organizacoes_on_tipo_organizacao_id"
@@ -165,12 +165,12 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "nome_cientifico"
     t.text "observacao"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at"
+    t.bigint "imagem_file_size"
+    t.datetime "imagem_updated_at", precision: nil
     t.index ["slug"], name: "index_plantas_on_slug", unique: true
     t.index ["usuario_id"], name: "index_plantas_on_usuario_id"
   end
@@ -178,8 +178,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
   create_table "saf_animais", force: :cascade do |t|
     t.bigint "saf_id"
     t.bigint "animal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["animal_id"], name: "index_saf_animais_on_animal_id"
     t.index ["saf_id"], name: "index_saf_animais_on_saf_id"
   end
@@ -187,8 +187,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
   create_table "saf_plantas", force: :cascade do |t|
     t.bigint "saf_id"
     t.bigint "planta_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["planta_id"], name: "index_saf_plantas_on_planta_id"
     t.index ["saf_id"], name: "index_saf_plantas_on_saf_id"
   end
@@ -204,8 +204,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.bigint "local_id"
     t.bigint "usuario_id"
     t.text "observacao"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["local_id"], name: "index_safs_on_local_id"
     t.index ["slug"], name: "index_safs_on_slug", unique: true
     t.index ["usuario_id"], name: "index_safs_on_usuario_id"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "tagger_type"
     t.integer "tagger_id"
     t.string "context", limit: 128
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -240,8 +240,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "nome"
     t.string "slug"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["slug"], name: "index_tema_experiencia_agroecologicas_on_slug", unique: true
     t.index ["usuario_id"], name: "index_tema_experiencia_agroecologicas_on_usuario_id"
   end
@@ -250,8 +250,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "nome"
     t.string "slug"
     t.bigint "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["slug"], name: "index_tipo_organizacoes_on_slug", unique: true
     t.index ["usuario_id"], name: "index_tipo_organizacoes_on_usuario_id"
   end
@@ -260,26 +260,26 @@ ActiveRecord::Schema.define(version: 2022_11_23_171104) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "admin", default: false
     t.string "nome"
     t.string "slug"
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at"
+    t.bigint "imagem_file_size"
+    t.datetime "imagem_updated_at", precision: nil
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
