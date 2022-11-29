@@ -8,9 +8,9 @@ git_source(:github) do |repo_name|
 end
 
 gem "nokogiri", ">= 1.13.9"
-gem "pg", "~> 1.4.4"
+gem "pg", "~> 1.4.5"
 gem "puma", "~> 6.0.0"
-gem "rails", "~> 6.1.7"
+gem "rails", "~> 7.0.4"
 gem "sass-rails", "~> 5.1.0"
 gem "uglifier", ">= 4.2.0"
 
@@ -18,13 +18,11 @@ gem "jbuilder", "~> 2.11.5"
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
 end
 
 group :rubocop do
-  gem "rubocop", ">= 1.38.0", require: false
+  gem "rubocop", ">= 1.39.0", require: false
   gem "rubocop-minitest", require: false
   gem "rubocop-packaging", require: false
   gem "rubocop-performance", require: false
@@ -40,3 +38,4 @@ gem "invisible_captcha"
 gem "dalli"
 gem "redis", "~> 5.0.5"
 gem "kt-paperclip", "~> 7.1.1"
+gem "sprockets-rails"

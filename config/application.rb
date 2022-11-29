@@ -8,7 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Agroecologia
   class Application < Rails::Application
-    config.load_defaults 5.1
+    # config.load_defaults 5.1
+    config.load_defaults 7.0
+    config.active_record.legacy_connection_handling = false
 
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
