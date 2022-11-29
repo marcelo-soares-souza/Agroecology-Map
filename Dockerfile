@@ -1,7 +1,7 @@
 FROM ruby:3.1.3-bullseye
 
 LABEL maintainer="Marcelo Soares Souza <marcelo@agroecologymap.org>"
-RUN apk update && apk add build-base nodejs postgresql-dev git imagemagick tzdata
+RUN apt-get update && apt-get install build-essential nodejs libpq-dev git imagemagick tzdata -y
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
