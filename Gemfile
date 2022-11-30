@@ -15,8 +15,6 @@ gem "puma", ">= 6.0.0"
 gem "uglifier", ">= 4.2.0"
 gem "jbuilder", ">= 2.11.5"
 
-gem "sass-rails", "~> 5.1.0"
-
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"
@@ -39,4 +37,8 @@ gem "invisible_captcha"
 gem "dalli"
 gem "redis", ">= 5.0.5"
 gem "kt-paperclip", ">= 7.1.1"
-gem "sprockets-rails"
+
+gem "sass-rails", ">= 6.0.0"
+gem "sprockets", ">= 4.1.1"
+gem "sprockets-rails", ">= 3.4.2"
+gem "babel-transpiler"
