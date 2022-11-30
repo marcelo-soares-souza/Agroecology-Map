@@ -16,11 +16,11 @@ class ExperienciaAgroecologicasController < ApplicationController
   # GET /experiencia_agroecologicas.json
   def index
     @experiencia_agroecologicas = if params[:local_id]
-      ExperienciaAgroecologica.where(local_id: @local.id).sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.where(local_id: @local.id).load_async.sort_by(&:updated_at).reverse
     elsif params[:usuario_id]
-      ExperienciaAgroecologica.where(usuario_id: @usuario.id).sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.where(usuario_id: @usuario.id).load_async.sort_by(&:updated_at).reverse
     else
-      ExperienciaAgroecologica.all.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.all.load_async.sort_by(&:updated_at).reverse
     end
   end
 
@@ -99,7 +99,7 @@ class ExperienciaAgroecologicasController < ApplicationController
     end
 
     def load_tema_experiencia_agroecologicas
-      # @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
+      # @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all.load_async
       @tema_experiencia_agroecologicas = {
         t(:urban_agriculture) => 1,
         t(:food) => 2,

@@ -13,9 +13,9 @@ class LocaisController < ApplicationController
   # GET /locais.json
   def index
     @locais = if params[:usuario_id]
-      Local.where(usuario_id: @usuario.id).sort_by(&:updated_at).reverse
+      Local.where(usuario_id: @usuario.id).load_async.sort_by(&:updated_at).reverse
     else
-      Local.all.sort_by(&:updated_at).reverse
+      Local.all.load_async.sort_by(&:updated_at).reverse
     end
   end
 
@@ -106,7 +106,7 @@ class LocaisController < ApplicationController
     end
 
     def load_colaboradores
-      @usuarios = Usuario.all
+      @usuarios = Usuario.all.load_async
     end
 
     def load_usuario

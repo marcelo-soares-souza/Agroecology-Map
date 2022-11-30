@@ -12,9 +12,9 @@ class SafsController < ApplicationController
   # GET /safs.json
   def index
     @safs = if params[:local_id]
-      Saf.where(local_id: @local.id).sort_by(&:updated_at).reverse
+      Saf.where(local_id: @local.id).load_async.sort_by(&:updated_at).reverse
     else
-      Saf.all.sort_by(&:updated_at).reverse
+      Saf.all.load_async.sort_by(&:updated_at).reverse
     end
   end
 
@@ -90,8 +90,8 @@ class SafsController < ApplicationController
     end
 
     def load_plantas_animais
-      @plantas = Planta.all
-      @animais = Animal.all
+      @plantas = Planta.all.load_async
+      @animais = Animal.all.load_async
     end
 
     def load_local

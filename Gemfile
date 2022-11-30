@@ -7,14 +7,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "nokogiri", ">= 1.13.9"
-gem "pg", "~> 1.4.5"
-gem "puma", "~> 6.0.0"
 gem "rails", "~> 7.0.4"
-gem "sass-rails", "~> 5.1.0"
-gem "uglifier", ">= 4.2.0"
 
-gem "jbuilder", "~> 2.11.5"
+gem "nokogiri", ">= 1.13.9"
+gem "pg", ">= 1.4.5"
+gem "puma", ">= 6.0.0"
+gem "uglifier", ">= 4.2.0"
+gem "jbuilder", ">= 2.11.5"
+
+gem "sass-rails", "~> 5.1.0"
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
@@ -36,6 +37,6 @@ gem "friendly_id"
 gem "acts-as-taggable-on"
 gem "invisible_captcha"
 gem "dalli"
-gem "redis", "~> 5.0.5"
-gem "kt-paperclip", "~> 7.1.1"
+gem "redis", ">= 5.0.5"
+gem "kt-paperclip", ">= 7.1.1"
 gem "sprockets-rails"

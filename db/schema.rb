@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_172736) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.bigint "imagem_file_size"
+    t.integer "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.index ["slug"], name: "index_animais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_animais_on_usuario_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_172736) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.bigint "imagem_file_size"
+    t.integer "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.string "tipo"
     t.string "hospedagem"
@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_172736) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.bigint "imagem_file_size"
+    t.integer "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.bigint "usuario_id"
     t.index ["experiencia_agroecologica_id"], name: "index_midias_on_experiencia_agroecologica_id"
@@ -169,7 +169,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_172736) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.bigint "imagem_file_size"
+    t.integer "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.index ["slug"], name: "index_plantas_on_slug", unique: true
     t.index ["usuario_id"], name: "index_plantas_on_usuario_id"
@@ -278,7 +278,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_172736) do
     t.string "slug"
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.bigint "imagem_file_size"
+    t.integer "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true

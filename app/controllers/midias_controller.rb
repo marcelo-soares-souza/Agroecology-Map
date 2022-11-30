@@ -12,9 +12,9 @@ class MidiasController < ApplicationController
   # GET /midias.json
   def index
     if params[:saf_id]
-      @midias = Midia.where(saf_id: @saf.id)
+      @midias = Midia.where(saf_id: @saf.id).load_async
     elsif params[:experiencia_agroecologica_id]
-      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id)
+      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id).load_async
     end
   end
 
@@ -22,15 +22,15 @@ class MidiasController < ApplicationController
   # GET /gallery.json
   def gallery
     if params[:saf_id]
-      @midias = Midia.where(saf_id: @saf.id)
+      @midias = Midia.where(saf_id: @saf.id).load_async
     elsif params[:experiencia_agroecologica_id]
-      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id)
+      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id).load_async
     elsif params[:local_id]
-      @local = Local.where(id: params[:local_id])
-      experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: params[:local_id])
-      saf = Saf.where(local_id: params[:local_id])
-      @midias = Midia.where(experiencia_agroecologica: experiencia_agroecologica)
-      @midias += Midia.where(saf: saf)
+      @local = Local.where(id: params[:local_id]).load_async
+      experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: params[:local_id]).load_async
+      saf = Saf.where(local_id: params[:local_id]).load_async
+      @midias = Midia.where(experiencia_agroecologica: experiencia_agroecologica).load_async
+      @midias += Midia.where(saf: saf).load_async
     end
   end
 
