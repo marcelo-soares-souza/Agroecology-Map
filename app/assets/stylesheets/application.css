@@ -114,7 +114,7 @@ b, strong {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 .thumbnail img {
@@ -127,6 +127,7 @@ b, strong {
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     background-color: transparent;
+    border-radius: 100%;
 }
 
 .thumbnail img.portrait {
@@ -147,7 +148,7 @@ b, strong {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 .thumbnail-mini img {
@@ -160,7 +161,7 @@ b, strong {
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     background-color: transparent;
-
+    border-radius: 100%;
 }
 
 .thumbnail-mini img.portrait {
