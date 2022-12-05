@@ -15,8 +15,12 @@
  */
 
 .btn {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
+}
+
+.btn-warning {
+    color: #ffffff;
 }
 
 .like {
