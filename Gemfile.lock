@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: 6d32d2447cc0f3739d9732246b5a5bde98d9e032
+  revision: 032c4476aeaf8eacd96331e37ba758cbae0f6248
   specs:
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -88,7 +88,7 @@ GEM
     bindex (0.8.1)
     builder (3.2.4)
     climate_control (0.2.0)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     connection_pool (2.3.0)
     crass (1.0.6)
     dalli (3.2.3)
@@ -172,7 +172,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.4)
+    rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4.1)
       actionpack (= 7.0.4.1)
@@ -190,12 +190,12 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.12.1)
       connection_pool
-    regexp_parser (2.6.1)
+    regexp_parser (2.6.2)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rubocop (1.43.0)
+    rubocop (1.44.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)

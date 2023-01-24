@@ -1,4 +1,224 @@
+-- Portuguese (Brasil)
 pt-BR:
+  site_description: "Mapa da Agroecologia (Agroecology Map) Saberes e Práticas é uma Plataforma Livre para o Mapeamento de Iniciativas em Agroecologia, Permacultura e de Sistemas Agroflorestais (SAF)"
+  site: "Mapa da Agroecologia"
+  site_name: "Mapa da Agroecologia"
+  true_value: "Sim"
+  false_value: "Não"
+  users: "Usuários"
+  about: "Sobre"
+  login: "Entrar"
+  logout: "Sair"
+  images: "Imagens"
+  submit: "Enviar"
+  edit: "Editar"
+  destroy: "Apagar"
+  back: "Voltar"
+  new: "Novo"
+  all: "Todos"
+  file: "Arquivo"
+  title: "Título"
+  details: "Detalhes"
+  home_page: "Ínicio"
+  blog: "Blog"
+  news: "Novidades"
+  locations: "Locais"
+  experience_in_agroecology: "Experiência em Agroecologia"
+  experiences_in_agroecology: "Experiências em Agroecologia"
+  agroforestry_systems: "Sistemas Agroflorestais"
+  organization: "Organização"
+  organizations: "Organizações"
+  contributors: "Colaboradores"
+  manual: "Manual"
+  register: "Cadastrar-se"
+  password: "Senha"
+  agroecology_is_free_software: "Código-Fonte"
+  submit_comment: "Enviar Comentário"
+  location:
+    data: "Local"
+    list: "Listar de Locais"
+    register_new_location: "Registrar Novo Local"
+  experience: "Experiencia"
+  experiences: "Experiencias"
+  type: "Tipo"
+  types: "Tipos"
+  central_theme: "Tema Central"
+  photo: "Foto"
+  photos: "Fotos"
+  comment: "Comentário"
+  comments: "Comentários"
+  register_new_experience: "Registrar Experiência"
+  latest_blog_post: "Últimas Postagem do Blog"
+  none_registered: "Nenhuma Registrada"
+  responsible_for_information: "Responsável pela Informação"
+  log_into_the_system_to_make_comments: "Logue no sistema para fazer comentários"
+  systems: "Sistemas"
+  plants: "Plantas"
+  animals: "Animais"
+  safs: "Sistemas Agroflorestas"
+  register_new_agroforestry: "Registrar Agrofloresta"
+  send_photo: "Enviar Foto"
+  main_objective: "Objetivo Principal"
+  main_product: "Produto Principal"
+  settlement: "Assentamento"
+  collective_property: "Propriedade Coletiva"
+  public_property: "Propriedade Pública (Governo)"
+  private_property: "Propriedade Privada"
+  familiar: "Familiar"
+  other: "Outro"
+  yes_query: "Sim"
+  no_query: "Não"
+  upon_consultation: "Mediante a Consulta"
+  accept_hosting: "Aceitar Hospedar Pessoa/Grupo?"
+  select_location_type: "Selecione um Tipo de Local"
+  urban_agriculture: "Agricultura Urbana"
+  food: "Alimentação"
+  health_and_medicinal_plants: "Saúde e plantas medicinais"
+  rural_development: "Desenvolvimento Rural"
+  local_development: "Desenvolvimento Local"
+  education: "Educação"
+  agricultural_research_and_rural_extension: "Pesquisa Agrícola e Extensão Rural"
+  management_of_water_resources: "Manejo de Recursos Hídricos"
+  certification: "Certificação"
+  marketing: "Comercialização"
+  processing_and_processing_of_production: "Processamento e beneficiamento da produção"
+  seeds: "Sementes"
+  management_of_native_vegetation_and_agro_extractivism: "Manejo da vegetação nativa e agroextrativismo"
+  animal_husbandry_systems: "Sistemas de criação animal"
+  agricultural_production_system: "Sistema de Produção Agrícola"
+  alternative_agriculture_currents: "Correntes de Agricultura Alternativa"
+  management_of_pests__diseases_and_weeds: "Manejo de pragas, doenças e plantas espontâneas"
+  soil_management: "Manejo dos solos"
+  access_to_land_agrarian_reform_and_agroecology: "Acesso a terra, reforma agrária e Agroecologia"
+  relationship_with_the_markets: "Relação com os mercados"
+  others: "Outros"
+  women_and_agroecology: "Mulheres e agroecologia"
+  fruit_growing: "Fruticultura"
+  extractivism: "Extrativismo"
+  craftsmanship: "Artesanato"
+  periurban_agriculture: "Agricultura Periurbana"
+  sovereignty_and_food_security: "Soberania e Segurança Alimentar"
+  biodiversity: "Biodiversidade"
+  financing: "Financiamento"
+  construction_of_agroecological_knowledge: "Construção do Conhecimento Agroecológico"
+  public_policies_with_an_agroecological_approach: "Políticas Públicas com enfoque agroecológico"
+  reforestation: "Reflorestamento"
+  compost: "Compostagem"
+  eco_tourism: "Eco Turismo"
+  rural_tourism: "Turismo Rural"
+  indigenous_agriculture: "Agricultura Indigena"
+  map: "Mapa"
+  search_by_address: "Buscar por Endereço"
+  locate: "Localizar"
+  start: "Início"
+  end: "Fim"
+  area: "Área"
+  send_picture: "Enviar Foto"
+  scientific_name: "Nome Científico"
+  no_photo_submitted: "Nenhuma Foto Enviada"
+  search_using_location_name: "Pesquisar usando o nome do local"
+  sign_in_to_comment: "Faça login para comentar"
+  friend: "Amigo"
+  friends: "Amigos"
+  special_thanks: "Agradecimentos Especiais"
+  donors: "Doadores (Tempo, Dinheiro ou Amor)"
+  donate: "Doar"
+  gallery: "Galeria"
+  devise:
+    confirmations:
+      confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
+      send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a confirmação da sua conta.'
+      send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá uma mensagem com instruções para confirmação da sua conta.'
+    failure:
+      already_authenticated: 'Você já está logado.'
+      inactive: 'Sua conta ainda não foi ativada.'
+      invalid: 'E-mail ou senha inválidos.'
+      invalid_token: 'O token de autenticação não é válido.'
+      locked: 'Sua conta está bloqueada.'
+      not_found_in_database: 'E-mail ou senha inválidos.'
+      timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
+      unauthenticated: 'Para continuar, efetue login ou registre-se.'
+      unconfirmed: 'Antes de continuar, confirme a sua conta.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instruções de confirmação Mapa da Agroecologia'
+      reset_password_instructions:
+        subject: 'Instruções de troca de senha'
+      unlock_instructions:
+        subject: 'Instruções de desbloqueio'
+    omniauth_callbacks:
+      failure: 'Não foi possível autenticá-lo como %{kind} porque "%{reason}".'
+      success: 'Autenticado com sucesso com uma conta de %{kind}.'
+    passwords:
+      no_token: "Você só pode acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se a URL fornecida está completa."
+      send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha.'
+      send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá um link de recuperação da senha via e-mail.'
+      updated: 'Sua senha foi alterada com sucesso. Você está logado.'
+      updated_not_active: 'Sua senha foi alterada com sucesso.'
+    registrations:
+      destroyed: 'Tchau! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
+      signed_up: 'Login efetuado com sucesso. Se não foi autorizado, a confirmação será enviada por e-mail.'
+      signed_up_but_inactive: 'Você foi cadastrado com sucesso. No entanto, não foi possível efetuar login, pois sua conta não foi ativada.'
+      signed_up_but_locked: 'Você foi cadastrado com sucesso. No entanto, não foi possível efetuar login, pois sua conta está bloqueada.'
+      signed_up_but_unconfirmed: 'Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.'
+      update_needs_confirmation: 'Você atualizou a sua conta com sucesso, mas o seu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos.'
+      updated: 'Sua conta foi atualizada com sucesso.'
+    sessions:
+      signed_in: 'Login efetuado com sucesso!'
+      signed_out: 'Saiu com sucesso.'
+    unlocks:
+      send_instructions: 'Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta.'
+      send_paranoid_instructions: 'Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos.'
+      unlocked: 'Sua conta foi desbloqueada com sucesso. Efetue login para continuar.'
+  errors:
+    messages:
+      already_confirmed: "já foi confirmado"
+      confirmation_period_expired: "precisa ser confirmada em até %{period}, por favor, solicite uma nova"
+      expired: "expirou, por favor, solicite uma nova"
+      not_found: "não encontrado"
+      not_locked: "não foi bloqueado"
+      not_saved:
+        one: "Não foi possível salvar %{resource}: 1 erro"
+        other: "Não foi possível salvar %{resource}: %{count} erros."
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      present: deve ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: "A validação falhou: %{errors}"
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      required: deve existir
+      taken: já está em uso
+      too_long:
+        one: "é muito longo (máximo: 1 caracter)"
+        other: "é muito longo (máximo: %{count} caracteres)"
+      too_short:
+        one: "é muito curto (mínimo: 1 caracter)"
+        other: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length:
+        one: não possui o tamanho esperado (1 caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+      other_than: deve ser diferente de %{count}
+    format: "%{attribute} %{message}"
+    template:
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+      header:
+        one: "Não foi possível gravar %{model}: 1 erro"
+        other: "Não foi possível gravar %{model}: %{count} erros"
+  send_me_the_reset_instructions: "Envie-me as Instruções para Redefinir"
+  resend_confirmation_by_email: "Reenviar Confirmação por E-Mail"
+  resend: "Reenviar"
   activerecord:
     errors:
       messages:
@@ -8,57 +228,57 @@ pt-BR:
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
   date:
     abbr_day_names:
-    - Dom
-    - Seg
-    - Ter
-    - Qua
-    - Qui
-    - Sex
-    - Sáb
+      - Dom
+      - Seg
+      - Ter
+      - Qua
+      - Qui
+      - Sex
+      - Sáb
     abbr_month_names:
-    -
-    - Jan
-    - Fev
-    - Mar
-    - Abr
-    - Mai
-    - Jun
-    - Jul
-    - Ago
-    - Set
-    - Out
-    - Nov
-    - Dez
+      -
+      - Jan
+      - Fev
+      - Mar
+      - Abr
+      - Mai
+      - Jun
+      - Jul
+      - Ago
+      - Set
+      - Out
+      - Nov
+      - Dez
     day_names:
-    - Domingo
-    - Segunda-feira
-    - Terça-feira
-    - Quarta-feira
-    - Quinta-feira
-    - Sexta-feira
-    - Sábado
+      - Domingo
+      - Segunda-feira
+      - Terça-feira
+      - Quarta-feira
+      - Quinta-feira
+      - Sexta-feira
+      - Sábado
     formats:
       default: "%d/%m/%Y"
       long: "%d de %B de %Y"
       short: "%d de %B"
     month_names:
-    -
-    - Janeiro
-    - Fevereiro
-    - Março
-    - Abril
-    - Maio
-    - Junho
-    - Julho
-    - Agosto
-    - Setembro
-    - Outubro
-    - Novembro
-    - Dezembro
+      -
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -102,44 +322,6 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      accepted: deve ser aceito
-      blank: não pode ficar em branco
-      present: deve ficar em branco
-      confirmation: não é igual a %{attribute}
-      empty: não pode ficar vazio
-      equal_to: deve ser igual a %{count}
-      even: deve ser par
-      exclusion: não está disponível
-      greater_than: deve ser maior que %{count}
-      greater_than_or_equal_to: deve ser maior ou igual a %{count}
-      inclusion: não está incluído na lista
-      invalid: não é válido
-      less_than: deve ser menor que %{count}
-      less_than_or_equal_to: deve ser menor ou igual a %{count}
-      model_invalid: "A validação falhou: %{errors}"
-      not_a_number: não é um número
-      not_an_integer: não é um número inteiro
-      odd: deve ser ímpar
-      required: deve existir
-      taken: já está em uso
-      too_long:
-        one: "é muito longo (máximo: 1 caracter)"
-        other: "é muito longo (máximo: %{count} caracteres)"
-      too_short:
-        one: "é muito curto (mínimo: 1 caracter)"
-        other: "é muito curto (mínimo: %{count} caracteres)"
-      wrong_length:
-        one: não possui o tamanho esperado (1 caracter)
-        other: não possui o tamanho esperado (%{count} caracteres)
-      other_than: deve ser diferente de %{count}
-    template:
-      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
-      header:
-        one: "Não foi possível gravar %{model}: 1 erro"
-        other: "Não foi possível gravar %{model}: %{count} erros"
   helpers:
     links:
       confirm: Você tem Certeza
@@ -218,7 +400,6 @@ pt-BR:
       short: "%d de %B, %H:%M"
     pm: ""
   name: "Nome"
-  password: "Senha"
   password_confirm: "Confirme a Senha"
   registered_locations: "Locais"
   registered_experiences: "Experiências"

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /pt-BR|es|en|fr/ do
+  scope "(:locale)", locale: /pt-BR|es|en|fr|gl/ do
     root to: "home#index"
     get "home/index"
   end

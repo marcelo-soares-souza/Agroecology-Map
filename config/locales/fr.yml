@@ -1,64 +1,371 @@
+-- French
 fr:
+  site_description: "Agroecology Map est une plateforme Gratuite (Ouverte) pour cartographier les initiatives en Agroécologie, Permaculture et Agroforesterie"
+  site: "Agroecology Map"
+  site_name: "Agroecology Map"
+  true_value: "Yes"
+  false_value: "No"
+  users: "Users"
+  about: "About"
+  login: "Login"
+  logout: "Logout"
+  images: "Images"
+  submit: "Submit"
+  edit: "Edit"
+  destroy: "Effacer"
+  back: "Back"
+  new: "New"
+  all: "All"
+  file: "File"
+  title: "Title"
+  details: "Details"
+  home_page: "Home"
+  blog: "Blog"
+  news: "News"
+  locations: "Emplacements"
+  experience_in_agroecology: "Expérience en Agroécologie"
+  experiences_in_agroecology: "Expériences en Agroécologie"
+  agroforestry_systems: "Agroforestry Systems"
+  organization: "Organization"
+  organizations: "Organizations"
+  contributors: "Contributeurs"
+  manual: "Manual"
+  register: "Register"
+  password: "Mot de passe"
+  agroecology_is_free_software: "Source Code"
+  submit_comment: "Submit Comment"
+  location:
+    data: "Emplacement"
+    list: "Liste des Emplacements"
+    register_new_location: "Register New Location"
+  experience: "Experience"
+  experiences: "Experiences"
+  type: "Type"
+  types: "Types"
+  central_theme: "Central Theme"
+  photo: "Photo"
+  photos: "Photos"
+  comment: "Comment"
+  comments: "Comments"
+  register_new_experience: "Register Experience"
+  latest_blog_post: "Latest Blog Post"
+  none_registered: "None Registered"
+  responsible_for_information: "Responsible for Information"
+  log_into_the_system_to_make_comments: "Log into the system to make comments"
+  systems: "Systèmes"
+  plants: "Végétaux"
+  animals: "Animaux"
+  safs: "Systèmes Agroforestiers"
+  register_new_agroforestry: "Register Agroforestiers"
+  send_photo: "Send Photo"
+  main_objective: "Objetivo Principal"
+  main_product: "Produto Principal"
+  settlement: "Settlement"
+  collective_property: "Collective Property"
+  public_property: "Public Property"
+  private_property: "Private Property"
+  familiar: "Familiar"
+  other: "Other"
+  yes_query: "Yes"
+  no_query: "No"
+  upon_consultation: "Upon Consultation"
+  accept_hosting: "Accept Hosting Person/Group?"
+  select_location_type: "Select a Location Type"
+  urban_agriculture: "Urban Agriculture"
+  food: "Food"
+  health_and_medicinal_plants: "Health and Medicinal Plants"
+  rural_development: "Rural Development"
+  local_development: "Local Development"
+  education: "Education"
+  agricultural_research_and_rural_extension: "Agricultural Research and Rural Extension"
+  management_of_water_resources: "Management of Water Resources"
+  certification: "Certification"
+  marketing: "Commercialization"
+  processing_and_processing_of_production: "Processing and Processing of Production"
+  seeds: "Seeds"
+  management_of_native_vegetation_and_agro_extractivism: "Management of native vegetation and agro extractivism"
+  animal_husbandry_systems: "Animal Husbandry Systems"
+  agricultural_production_system: "Agricultural Production System"
+  alternative_agriculture_currents: "Alternative Agriculture Currents"
+  management_of_pests__diseases_and_weeds: "Management of pests diseases and weeds"
+  soil_management: "Soil Management"
+  access_to_land_agrarian_reform_and_agroecology: "Access to land agrarian reform and agroecology"
+  relationship_with_the_markets: "Relationship with the markets"
+  others: "Others"
+  women_and_agroecology: "Women And Agroecology"
+  fruit_growing: "Fruit Growing"
+  extractivism: "Extractivism"
+  craftsmanship: "Craftsmanship"
+  periurban_agriculture: "Periurban Agriculture"
+  sovereignty_and_food_security: "Sovereignty and food security"
+  biodiversity: "Biodiversity"
+  financing: "Financing"
+  construction_of_agroecological_knowledge: "Construction of agroecological knowledge"
+  public_policies_with_an_agroecological_approach: "Public policies with an agroecological approach"
+  reforestation: "Reforestation"
+  compost: "Compost"
+  eco_tourism: "Eco Tourism"
+  rural_tourism: "Rural Tourism"
+  indigenous_agriculture: "Indigenous Agriculture"
+  map: "Carte"
+  search_by_address: "Rechercher par Adresse"
+  locate: "Localiser"
+  start: "Start"
+  end: "End"
+  area: "Area"
+  send_picture: "Send Picture"
+  scientific_name: "Nom scientifique"
+  no_photo_submitted: "Aucune photo soumise"
+  search_using_location_name: "Rechercher en utilisant le nom de l'emplacement"
+  sign_in_to_comment: "Connectez-vous pour commenter"
+  friend: "Amie"
+  friends: "Amies"
+  special_thanks: "Remerciement Spécial"
+  donors: "Donateurs (Temps, d'argent et/ou d'amour)"
+  donate: "Donner"
+  gallery: "Gallery"
   activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: Date d'envoi de la confirmation
+        confirmation_token: Clé de confirmation du mot de passe
+        confirmed_at: Date de confirmation
+        created_at: Date d'enregistrement
+        current_password: Mot de passe actuel
+        current_sign_in_at: Date de la connexion actuelle
+        current_sign_in_ip: IP de la connexion actuelle
+        email: Email
+        encrypted_password: Mot de passe chiffré
+        failed_attempts: Tentatives échouées
+        last_sign_in_at: Date de la dernière connexion
+        last_sign_in_ip: IP de la dernière connexion
+        locked_at: Verrouillé à
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        remember_created_at: Mémorisé à
+        remember_me: Se souvenir de moi ?
+        reset_password_sent_at: Clé de réinitialisation créée à
+        reset_password_token: Clé de réinitialisation du mot de passe
+        sign_in_count: Nombre des connexions
+        unconfirmed_email: Email non confirmé
+        unlock_token: Clé de déverrouillage
+        updated_at: Date de mise à jour
+    models:
+      user: Utilisateur
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+  devise:
+    confirmations:
+      confirmed: Votre compte a bien été confirmé.
+      new:
+        resend_confirmation_instructions: Renvoyer les instructions de confirmation
+      send_instructions: Vous allez recevoir sous quelques minutes un email comportant des instructions pour confirmer votre compte.
+      send_paranoid_instructions: Si votre email existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
+    failure:
+      already_authenticated: Vous êtes déjà connecté(e).
+      inactive: Votre compte n’est pas encore activé.
+      invalid: "%{authentication_keys} ou mot de passe incorrect."
+      last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
+      locked: Votre compte est verrouillé.
+      not_found_in_database: "%{authentication_keys} ou mot de passe incorrect."
+      timeout: Votre session est expirée, veuillez vous reconnecter pour continuer.
+      unauthenticated: Vous devez vous connecter ou vous enregistrer pour continuer.
+      unconfirmed: Vous devez confirmer votre compte par email.
+    mailer:
+      confirmation_instructions:
+        action: Confirmer mon email
+        greeting: Bienvenue %{recipient} !
+        instruction: 'Vous pouvez confirmer votre email grâce au lien ci-dessous :'
+        subject: Instructions de confirmation
+      email_changed:
+        greeting: Bonjour %{recipient} !
+        message: Nous vous contactons pour vous informer que votre email a été changé en %{email}.
+        message_unconfirmed: Nous vous contactons pour vous informer que votre email est en train d'être changé par %{email}.
+        subject: Email modifié
+      password_change:
+        greeting: Bonjour %{recipient} !
+        message: Nous vous contactons pour vous notifier que votre mot de passe a été modifié.
+        subject: Mot de passe modifié
+      reset_password_instructions:
+        action: Changer mon mot de passe
+        greeting: Bonjour %{recipient} !
+        instruction: 'Quelqu''un a demandé un lien pour changer votre mot de passe, le voici :'
+        instruction_2: Si vous n'avez pas émis cette demande, merci d'ignorer cet email.
+        instruction_3: Votre mot de passe ne changera pas tant que vous n'aurez pas cliqué sur ce lien et renseigné un nouveau mot de passe.
+        subject: Instructions pour changer le mot de passe
+      unlock_instructions:
+        action: Débloquer mon compte
+        greeting: Bonjour %{recipient} !
+        instruction: 'Suivez ce lien pour débloquer votre compte :'
+        message: Votre compte a été bloqué suite à un nombre d'essais de connexions manquées trop important.
+        subject: Instructions pour déverrouiller le compte
+    omniauth_callbacks:
+      failure: 'Nous ne pouvons pas vous authentifier depuis %{kind} pour la raison suivante : ''%{reason}''.'
+      success: Autorisé par votre compte %{kind}.
+    passwords:
+      edit:
+        change_my_password: Changer mon mot de passe
+        change_your_password: Changer votre mot de passe
+        confirm_new_password: Confirmez votre nouveau mot de passe
+        new_password: Nouveau mot de passe
+      new:
+        forgot_your_password: Mot de passe oublié ?
+        send_me_reset_password_instructions: Envoyez-moi des instructions pour réinitialiser mon mot de passe
+      no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis un email de réinitialisation de mot de passe. Si vous venez en effet d’un tel email, vérifiez que vous avez copié l’adresse URL en entier.
+      send_instructions: Vous allez recevoir sous quelques minutes un email vous indiquant comment réinitialiser votre mot de passe.
+      send_paranoid_instructions: Si votre email existe dans notre base de données, vous recevrez un lien vous permettant de récupérer votre mot de passe.
+      updated: Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e).
+      updated_not_active: Votre mot de passe a bien été modifié.
+    registrations:
+      destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
+      edit:
+        are_you_sure: Êtes-vous sûr ?
+        cancel_my_account: Supprimer mon compte
+        currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
+        leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé
+        title: Éditer %{resource}
+        unhappy: Pas content ?
+        update: Modifier
+        we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
+      new:
+        sign_up: Inscription
+      signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).
+      signed_up_but_inactive: Vous vous êtes bien enregistré(e). Cependant, nous n’avons pas pu vous connecter car votre compte n’a pas encore été activé.
+      signed_up_but_locked: Vous vous êtes bien enregistré(e). Cependant, nous n’avons pas pu vous connecter car votre compte est verrouillé.
+      signed_up_but_unconfirmed: Un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
+      update_needs_confirmation: Vous avez bien modifié votre compte, mais nous devons vérifier votre nouvelle adresse email. Veuillez consulter vos emails et cliquer sur le lien de confirmation pour confirmer votre nouvelle adresse.
+      updated: Votre compte a bien été modifié.
+      updated_but_not_signed_in: Votre compte a été mis à jour avec succès. Vous devez vous reconnecter car votre mot de passe a été modifié.
+    sessions:
+      already_signed_out: Déconnecté(e).
+      new:
+        sign_in: Connexion
+      signed_in: Connecté(e).
+      signed_out: Déconnecté(e).
+    shared:
+      links:
+        back: Retour
+        didn_t_receive_confirmation_instructions: Vous n'avez pas reçu l'email de confirmation ?
+        didn_t_receive_unlock_instructions: Vous n'avez pas reçu l'email de déblocage ?
+        forgot_your_password: Mot de passe oublié ?
+        sign_in: Connexion
+        sign_in_with_provider: Connexion avec %{provider}
+        sign_up: Inscription
+      minimum_password_length:
+        one: "(%{count} caractère au moins)"
+        other: "(%{count} caractères au moins)"
+    unlocks:
+      new:
+        resend_unlock_instructions: Renvoyer les instructions de déblocage
+      send_instructions: Vous allez recevoir sous quelques minutes un email comportant des instructions pour déverrouiller votre compte.
+      send_paranoid_instructions: Si votre email existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour déverrouiller votre compte.
+      unlocked: Votre compte a bien été déverrouillé. Veuillez vous connecter.
+  errors:
+    messages:
+      already_confirmed: a déjà été confirmé(e)
+      confirmation_period_expired: doit être confirmé(e) en %{period}, veuillez en demander un(e) autre
+      expired: est expiré, veuillez en demander un autre
+      not_found: n’a pas été trouvé(e)
+      not_locked: n’était pas verrouillé(e)
+      not_saved:
+        one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e) :'
+        other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être enregistré(e) :"
+      accepted: must be accepted
+      blank: can't be blank
+      present: must be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      model_invalid: "Validation failed: %{errors}"
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      required: must exist
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: must be other than %{count}
+    format: "%{attribute} %{message}"
+    template:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
+  send_me_the_reset_instructions: "Send me the Reset Instructions"
+  resend_confirmation_by_email: "Resend Confirmation by E-Mail"
+  resend: "Resend"
   date:
     abbr_day_names:
-    - Sun
-    - Mon
-    - Tue
-    - Wed
-    - Thu
-    - Fri
-    - Sat
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
-    -
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - May
-    - Jun
-    - Jul
-    - Aug
-    - Sep
-    - Oct
-    - Nov
-    - Dec
+      -
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-    - Sunday
-    - Monday
-    - Tuesday
-    - Wednesday
-    - Thursday
-    - Friday
-    - Saturday
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
       short: "%b %d"
     month_names:
-    -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - July
-    - August
-    - September
-    - October
-    - November
-    - December
+      -
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-    - :year
-    - :month
-    - :day
+      - :year
+      - :month
+      - :day
   datetime:
     distance_in_words:
       about_x_hours:
@@ -94,7 +401,7 @@ fr:
         other: "%{count} months"
       x_years:
         one: 1 year
-        other: "%{count} years"  
+        other: "%{count} years"
       x_seconds:
         one: 1 second
         other: "%{count} seconds"
@@ -105,44 +412,6 @@ fr:
       month: Month
       second: Seconds
       year: Year
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      accepted: must be accepted
-      blank: can't be blank
-      present: must be blank
-      confirmation: doesn't match %{attribute}
-      empty: can't be empty
-      equal_to: must be equal to %{count}
-      even: must be even
-      exclusion: is reserved
-      greater_than: must be greater than %{count}
-      greater_than_or_equal_to: must be greater than or equal to %{count}
-      inclusion: is not included in the list
-      invalid: is invalid
-      less_than: must be less than %{count}
-      less_than_or_equal_to: must be less than or equal to %{count}
-      model_invalid: "Validation failed: %{errors}"
-      not_a_number: is not a number
-      not_an_integer: must be an integer
-      odd: must be odd
-      required: must exist
-      taken: has already been taken
-      too_long:
-        one: is too long (maximum is 1 character)
-        other: is too long (maximum is %{count} characters)
-      too_short:
-        one: is too short (minimum is 1 character)
-        other: is too short (minimum is %{count} characters)
-      wrong_length:
-        one: is the wrong length (should be 1 character)
-        other: is the wrong length (should be %{count} characters)
-      other_than: must be other than %{count}
-    template:
-      body: 'There were problems with the following fields:'
-      header:
-        one: 1 error prohibited this %{model} from being saved
-        other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
     links:
       confirm: Você tem Certeza
@@ -213,7 +482,6 @@ fr:
       short: "%d %b %H:%M"
     pm: pm
   name: "Nom"
-  password: "Mot de passe"
   password_confirm: "Confirm Password"
   registered_locations: "Emplacements"
   registered_experiences: "Expériences"

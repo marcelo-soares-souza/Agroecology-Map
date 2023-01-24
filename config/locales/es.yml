@@ -1,4 +1,229 @@
+-- Spanish (Castellano)
 es:
+  site_description: "Mapa da Agroecología es una plataforma gratuita (abierta) para mapear iniciativas en agroecología, permacultura y sistemas agroforestales (SAF)"
+  site: "Mapa da Agroecología"
+  site_name: "Mapa de Agroecología"
+  true_value: "Sim"
+  false_value: "Não"
+  users: "Usuários"
+  about: "Sobre"
+  login: "Iniciar sesión"
+  logout: "Sair"
+  images: "Imagens"
+  submit: "Enviar"
+  edit: "Editar"
+  destroy: "Borrar"
+  back: "Voltar"
+  new: "Novo"
+  all: "Todos"
+  file: "Arquivo"
+  title: "Título"
+  details: "Detalhes"
+  home_page: "Casa"
+  blog: "Blog"
+  news: "Novidades"
+  locations: "Localizacións"
+  experience_in_agroecology: "Experiencia en Agroecología"
+  experiences_in_agroecology: "Experiencias en Agroecología"
+  agroforestry_systems: "Sistemas Agroflorestais"
+  organization: "Organización"
+  organizations: "Organizacións"
+  contributors: "Participantes"
+  manual: "Manual"
+  register: "Suscribirse"
+  password: "Contraseña"
+  agroecology_is_free_software: "Código-Fonte"
+  submit_comment: "Enviar Comentário"
+  location:
+    data: "Localización"
+    list: "Lista de Localizacións"
+    register_new_location: "Registrar nueva Localización"
+  experience: "Experiencia"
+  experiences: "Experiencias"
+  type: "Tipo"
+  types: "Tipos"
+  central_theme: "Tema Central"
+  photo: "Fotografía"
+  photos: "Fotografías"
+  comment: "Comentario"
+  comments: "Comentarios"
+  register_new_experience: "Registrar Experiencia"
+  latest_blog_post: "Última publicación de blog"
+  none_registered: "Ninguno registrado"
+  responsible_for_information: "Responsable de información"
+  log_into_the_system_to_make_comments: "Inicie sesión en el sistema para hacer comentarios"
+  systems: "Sistemas"
+  plants: "Plantas"
+  animals: "Animales"
+  safs: "Sistemas Agroforestales"
+  register_new_agroforestry: "Registrar Agroforestales"
+  send_photo: "Enviar Foto"
+  main_objective: "Objetivo Principal"
+  main_product: "Produto Principal"
+  settlement: "Assentamento"
+  collective_property: "Propriedade Coletiva"
+  public_property: "Propriedade Pública (Governo)"
+  private_property: "Propriedade Privada"
+  familiar: "Familiar"
+  other: "Outro"
+  yes_query: "Sim"
+  no_query: "Não"
+  upon_consultation: "Mediante a Consulta"
+  accept_hosting: "Aceitar Hospedar Pessoa/Grupo?"
+  select_location_type: "Selecione um Tipo de Local"
+  urban_agriculture: "Agricultura Urbana"
+  food: "Alimentação"
+  health_and_medicinal_plants: "Saúde e plantas medicinais"
+  rural_development: "Desenvolvimento Rural"
+  local_development: "Desenvolvimento Local"
+  education: "Educação"
+  agricultural_research_and_rural_extension: "Pesquisa Agrícola e Extensão Rural"
+  management_of_water_resources: "Manejo de Recursos Hídricos"
+  certification: "Certificação"
+  marketing: "Comercialização"
+  processing_and_processing_of_production: "Processamento e beneficiamento da produção"
+  seeds: "Sementes"
+  management_of_native_vegetation_and_agro_extractivism: "Manejo da vegetação nativa e agroextrativismo"
+  animal_husbandry_systems: "Sistemas de criação animal"
+  agricultural_production_system: "Sistema de Produção Agrícola"
+  alternative_agriculture_currents: "Correntes de Agricultura Alternativa"
+  management_of_pests__diseases_and_weeds: "Manejo de pragas, doenças e plantas espontâneas"
+  soil_management: "Manejo dos solos"
+  access_to_land_agrarian_reform_and_agroecology: "Acesso a terra, reforma agrária e Agroecologia"
+  relationship_with_the_markets: "Relação com os mercados"
+  others: "Outros"
+  women_and_agroecology: "Mulheres e agroecologia"
+  fruit_growing: "Fruticultura"
+  extractivism: "Extrativismo"
+  craftsmanship: "Artesanato"
+  periurban_agriculture: "Agricultura Periurbana"
+  sovereignty_and_food_security: "Soberania e Segurança Alimentar"
+  biodiversity: "Biodiversidade"
+  financing: "Financiamento"
+  construction_of_agroecological_knowledge: "Construção do Conhecimento Agroecológico"
+  public_policies_with_an_agroecological_approach: "Políticas Públicas com enfoque agroecológico"
+  reforestation: "Reflorestamento"
+  compost: "Compostagem"
+  eco_tourism: "Eco Turismo"
+  rural_tourism: "Turismo Rural"
+  indigenous_agriculture: "Agricultura Indigena"
+  map: "Mapa"
+  search_by_address: "Buscar por Dirección"
+  locate: "Localizar"
+  start: "Start"
+  end: "End"
+  area: "Area"
+  send_picture: "Enviar Foto"
+  scientific_name: "Nombre científico"
+  no_photo_submitted: "No se envió ninguna foto"
+  search_using_location_name: "Buscar usando el nombre de la ubicación"
+  sign_in_to_comment: "Inicia sesión para comentar"
+  friend: "Amigo"
+  friends: "Amigos"
+  special_thanks: "Gracias Especiales"
+  donors: "Donantes (Tiempo, Dinero y/o Amor)"
+  donate: "Donar"
+  gallery: "Galeria"
+  devise:
+    confirmations:
+      confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
+      send_instructions: "Recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
+    failure:
+      already_authenticated: "Ya iniciaste sesión."
+      inactive: "Tu cuenta aún no ha sido activada."
+      invalid: "Email y/o contraseña inválidos."
+      locked: "Tu cuenta está bloqueada."
+      last_attempt: "Tienes un intento más antes que tu cuenta sea bloqueada."
+      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      timeout: "Tu sesión ha expirado. Inicia sesión nuevamente."
+      unauthenticated: "Tienes que registrarte o iniciar sesión antes de continuar."
+      unconfirmed: "Tienes que confirmar tu cuenta antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones de confirmación"
+      reset_password_instructions:
+        subject: "Instrucciones de cambio de contraseña"
+      unlock_instructions:
+        subject: "Instrucciones de desbloqueo"
+      email_changed:
+        subject: "Email modificado"
+      password_change:
+        subject: "Contraseña modificada"
+    omniauth_callbacks:
+      failure: "No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: \"%{reason}\"."
+      success: "Te autentificaste correctamente con tu cuenta de %{kind}."
+    passwords:
+      no_token: "No puedes acceder a esta página sin venir desde el email de reinicio de contraseña. Si vienes desde ahí, por favor asegúrate de usar la url completa que aparece."
+      send_instructions: "Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
+      updated: "Tu contraseña fue modificada correctamente. Has iniciado sesión."
+      updated_not_active: "Tu contraseña fue modificada correctamente."
+    registrations:
+      destroyed: "Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!"
+      signed_up: "Bienvenido! Te has registrado correctamente."
+      signed_up_but_inactive: "Te has registrado correctamente, pero tu cuenta aun no ha sido activada."
+      signed_up_but_locked: "Te has registrado correctamente, pero tu cuenta está bloqueada."
+      signed_up_but_unconfirmed: "Te hemos enviado un email con instrucciones para que confirmes tu cuenta."
+      update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
+      updated: "Actualizaste tu cuenta correctamente."
+    sessions:
+      signed_in: "Iniciaste sesión correctamente."
+      signed_out: "Cerraste sesión correctamente."
+      already_signed_out: "Se cerró sesión correctamente."
+    unlocks:
+      send_instructions: "Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
+      send_paranoid_instructions: "Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
+      unlocked: "Tu cuenta ha sido desbloqueada. Inicia sesión para continuar."
+  errors:
+    messages:
+      already_confirmed: "ya fue confirmada. Intenta ingresar."
+      confirmation_period_expired: "necesita ser confirmada dentro de %{period}, por favor pide una nueva"
+      expired: "ha expirado, por favor pide una nueva"
+      not_found: "no encontrado"
+      not_locked: "no ha sido bloqueada"
+      not_saved:
+        one: "Ha ocurrido 1 error:"
+        other: "Han ocurrido %{count} errores:"
+      accepted: debe ser aceptado
+      blank: no puede estar en blanco
+      present: debe estar en blanco
+      confirmation: no coincide
+      empty: no puede estar vacío
+      equal_to: debe ser igual a %{count}
+      even: debe ser par
+      exclusion: está reservado
+      greater_than: debe ser mayor que %{count}
+      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+      inclusion: no está incluido en la lista
+      invalid: no es válido
+      less_than: debe ser menor que %{count}
+      less_than_or_equal_to: debe ser menor que o igual a %{count}
+      model_invalid: "La validación falló: %{errors}"
+      not_a_number: no es un número
+      not_an_integer: debe ser un entero
+      odd: debe ser impar
+      required: debe existir
+      taken: ya está en uso
+      too_long:
+        one: "es demasiado largo (1 carácter máximo)"
+        other: "es demasiado largo (%{count} caracteres máximo)"
+      too_short:
+        one: "es demasiado corto (1 carácter mínimo)"
+        other: "es demasiado corto (%{count} caracteres mínimo)"
+      wrong_length:
+        one: "no tiene la longitud correcta (1 carácter exactos)"
+        other: "no tiene la longitud correcta (%{count} caracteres exactos)"
+      other_than: debe ser distinto de %{count}
+    format: "%{attribute} %{message}"
+    template:
+      body: 'Se encontraron problemas con los siguientes campos:'
+      header:
+        one: No se pudo guardar este/a %{model} porque se encontró 1 error
+        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+  send_me_the_reset_instructions: "Send me the Reset Instructions"
+  resend_confirmation_by_email: "Resend Confirmation by E-Mail"
+  resend: "Resend"
   activerecord:
     errors:
       messages:
@@ -8,57 +233,57 @@ es:
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
   date:
     abbr_day_names:
-    - dom
-    - lun
-    - mar
-    - mié
-    - jue
-    - vie
-    - sáb
+      - dom
+      - lun
+      - mar
+      - mié
+      - jue
+      - vie
+      - sáb
     abbr_month_names:
-    -
-    - ene
-    - feb
-    - mar
-    - abr
-    - may
-    - jun
-    - jul
-    - ago
-    - sep
-    - oct
-    - nov
-    - dic
+      -
+      - ene
+      - feb
+      - mar
+      - abr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
     day_names:
-    - domingo
-    - lunes
-    - martes
-    - miércoles
-    - jueves
-    - viernes
-    - sábado
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
     formats:
       default: "%-d/%-m/%Y"
       long: "%-d de %B de %Y"
       short: "%-d de %b"
     month_names:
-    -
-    - enero
-    - febrero
-    - marzo
-    - abril
-    - mayo
-    - junio
-    - julio
-    - agosto
-    - septiembre
-    - octubre
-    - noviembre
-    - diciembre
+      -
+      - enero
+      - febrero
+      - marzo
+      - abril
+      - mayo
+      - junio
+      - julio
+      - agosto
+      - septiembre
+      - octubre
+      - noviembre
+      - diciembre
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -105,44 +330,6 @@ es:
       month: Mes
       second: Segundos
       year: Año
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      accepted: debe ser aceptado
-      blank: no puede estar en blanco
-      present: debe estar en blanco
-      confirmation: no coincide
-      empty: no puede estar vacío
-      equal_to: debe ser igual a %{count}
-      even: debe ser par
-      exclusion: está reservado
-      greater_than: debe ser mayor que %{count}
-      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
-      inclusion: no está incluido en la lista
-      invalid: no es válido
-      less_than: debe ser menor que %{count}
-      less_than_or_equal_to: debe ser menor que o igual a %{count}
-      model_invalid: "La validación falló: %{errors}"
-      not_a_number: no es un número
-      not_an_integer: debe ser un entero
-      odd: debe ser impar
-      required: debe existir
-      taken: ya está en uso
-      too_long:
-        one: "es demasiado largo (1 carácter máximo)"
-        other: "es demasiado largo (%{count} caracteres máximo)"
-      too_short:
-        one: "es demasiado corto (1 carácter mínimo)"
-        other: "es demasiado corto (%{count} caracteres mínimo)"
-      wrong_length:
-        one: "no tiene la longitud correcta (1 carácter exactos)"
-        other: "no tiene la longitud correcta (%{count} caracteres exactos)"
-      other_than: debe ser distinto de %{count}
-    template:
-      body: 'Se encontraron problemas con los siguientes campos:'
-      header:
-        one: No se pudo guardar este/a %{model} porque se encontró 1 error
-        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
   helpers:
     select:
       prompt: Por favor seleccione
@@ -215,7 +402,6 @@ es:
       short: "%-d de %b %H:%M"
     pm: pm
   name: "Nombre"
-  password: "Contraseña"
   password_confirm: "Confirme a Contraseña"
   registered_locations: "Localizacións"
   registered_experiences: "Experiencias"
