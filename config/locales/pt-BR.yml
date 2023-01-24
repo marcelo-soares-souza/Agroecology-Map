@@ -1,4 +1,5 @@
--- Portuguese (Brasil)
+# yamllint disable rule:line-length
+---
 pt-BR:
   site_description: "Mapa da Agroecologia (Agroecology Map) Saberes e Práticas é uma Plataforma Livre para o Mapeamento de Iniciativas em Agroecologia, Permacultura e de Sistemas Agroflorestais (SAF)"
   site: "Mapa da Agroecologia"

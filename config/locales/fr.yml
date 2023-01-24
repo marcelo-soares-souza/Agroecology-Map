@@ -1,4 +1,5 @@
--- French
+# yamllint disable rule:line-length
+---
 fr:
   site_description: "Agroecology Map est une plateforme Gratuite (Ouverte) pour cartographier les initiatives en Agroécologie, Permaculture et Agroforesterie"
   site: "Agroecology Map"

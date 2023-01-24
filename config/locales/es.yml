@@ -1,4 +1,5 @@
--- Spanish (Castellano)
+# yamllint disable rule:line-length
+---
 es:
   site_description: "Mapa da Agroecología es una plataforma gratuita (abierta) para mapear iniciativas en agroecología, permacultura y sistemas agroforestales (SAF)"
   site: "Mapa da Agroecología"

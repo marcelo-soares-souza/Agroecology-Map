@@ -1,3 +1,5 @@
+# yamllint disable rule:line-length
+---
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
