@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: 032c4476aeaf8eacd96331e37ba758cbae0f6248
+  revision: cddba289459d922d40eabf6c8475008995a78783
   specs:
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -90,6 +90,8 @@ GEM
     climate_control (0.2.0)
     concurrent-ruby (1.2.0)
     connection_pool (2.3.0)
+    cookies_eu (1.7.8)
+      js_cookie_rails (~> 2.2.0)
     crass (1.0.6)
     dalli (3.2.3)
     date (3.3.3)
@@ -98,7 +100,7 @@ GEM
     ffi (1.15.5)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
-    globalid (1.0.1)
+    globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -107,6 +109,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    js_cookie_rails (2.2.0)
+      railties (>= 3.1)
     json (2.6.3)
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -195,7 +199,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rubocop (1.44.0)
+    rubocop (1.44.1)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
@@ -207,7 +211,7 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.24.1)
       parser (>= 3.1.1.0)
-    rubocop-minitest (0.26.1)
+    rubocop-minitest (0.27.0)
       rubocop (>= 0.90, < 2.0)
     rubocop-packaging (0.5.2)
       rubocop (>= 1.33, < 2.0)
@@ -241,7 +245,7 @@ GEM
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.1)
-    tzinfo (2.0.5)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -264,6 +268,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   babel-transpiler
+  cookies_eu (>= 1.7.8)
   dalli
   devise!
   friendly_id

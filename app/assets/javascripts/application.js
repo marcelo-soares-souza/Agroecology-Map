@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require_tree .
+//= require cookies_eu
 
 $(document).ready(function () {
     $(".alert").fadeTo(2000, 500).slideUp(500, function () {
@@ -19,3 +20,4 @@ $(document).ready(function () {
     });
     $.fn.datepicker.defaults.format = "dd/mm/yyyy";
 });
+

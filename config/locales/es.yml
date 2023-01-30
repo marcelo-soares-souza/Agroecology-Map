@@ -427,3 +427,7 @@ es:
   previous: "Anterior"
   first: "Primeiro"
   last: "Último"
+  cookies_eu:
+    cookies_text: "Las cookies nos ayudan a ofrecer nuestros servicios. Al utilizar nuestros servicios, aceptas el uso de cookies."
+    learn_more: "Más información"
+    ok: "OK"
