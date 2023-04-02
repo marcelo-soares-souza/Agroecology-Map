@@ -30,7 +30,7 @@ end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
-gem "devise", github: "plataformatec/devise"
+gem "devise", "~> 4.9.0"
 gem "friendly_id"
 gem "acts-as-taggable-on"
 gem "invisible_captcha"
