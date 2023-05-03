@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get "home/index"
   end
 
+  get "/map", to: "home#index"
+
   resources :friends
   resources :comentarios
 

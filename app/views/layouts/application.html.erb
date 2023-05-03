@@ -20,8 +20,12 @@
 </head>
 
 <body>
+<% if request.path == '/map'%>
+  <%= render 'layouts/main' %>
+<% else %>
   <%= render 'layouts/menu' %>
   <%= render 'layouts/main' %>
   <%= render 'cookies_eu/consent_banner' %>
+<%end %>
 </body>
 </html>
