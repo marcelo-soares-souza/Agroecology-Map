@@ -578,3 +578,23 @@ a:focus, a:hover {
 .nav-link {
     padding: 0.4rem 0.5rem;
 }
+
+.manual {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manual .logo {
+    border: 1px solid;
+
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:90vh;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+    padding-left: 10px;
+}

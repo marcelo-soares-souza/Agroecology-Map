@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/map", to: "home#index"
 
   resources :friends
+  resources :manual
   resources :comentarios
 
   scope(animais: {}) do

@@ -65,6 +65,10 @@
           <strong><%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
         </li>
       <% end %>
+      <li class="nav-item">
+        <%= link_to("Manual", manual_index_path, :class => "nav-link") %>
+      </li>
+
       <li>
         <strong><%= link_to t(:donate), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger", :style => "color: #e24d6f !important;"%></strong>
       </li>
