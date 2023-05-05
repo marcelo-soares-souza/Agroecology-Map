@@ -8,6 +8,18 @@
         padding-left: 0px;
         padding-right: 0px;
     }
+
+    <% if request.path == '/map'%>
+    html {
+        position: inherit !important;
+        min-height: 90%;
+    }
+    #map {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    <% end %>
 </style>
 
 <div id="map"></div>
@@ -129,5 +141,5 @@
 </script>
 
 <!--<div class="logo">-->
-  <%#= image_tag('/logo.png', :alt=>'logo', :title => 'logo', :style => 'display: none;') %>
+<%#= image_tag('/logo.png', :alt=>'logo', :title => 'logo', :style => 'display: none;') %>
 <!--</div>-->
