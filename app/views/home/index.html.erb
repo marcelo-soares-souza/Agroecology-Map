@@ -9,7 +9,7 @@
         padding-right: 0px;
     }
 
-    <% if request.path == '/map'%>
+    <% if request.path == '/map' %>
     html {
         position: inherit !important;
         min-height: 90%;
@@ -18,6 +18,18 @@
         position: absolute !important;
         width: 100% !important;
         height: 100% !important;
+    }
+    <% end %>
+
+    <% if request.env['HTTP_USER_AGENT'] == 'Agroecology Map Webview' %>
+    html {
+        position: inherit !important;
+        min-height: 90%;
+    }
+    #map {
+        position: absolute !important;
+        width: 100% !important;
+        height: 94% !important;
     }
     <% end %>
 </style>
@@ -49,7 +61,7 @@
     $(window).on('load', function () {
         // Base Maps
         var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '<a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a>',
+            attribution: '<span style="font-size: 11px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank"><%= t('site') %></a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a></span>',
             maxZoom: 18,
         }).addTo(map);
         var osmHot = L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
