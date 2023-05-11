@@ -184,6 +184,11 @@ b, strong {
     margin-left: auto;
     max-width: 600px;
     text-align: justify;
+    text-align-last: center;
+}
+
+.text-box p {
+    padding-top: 4px;
 }
 
 .comment-box {
