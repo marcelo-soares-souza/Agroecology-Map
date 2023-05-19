@@ -38,8 +38,8 @@
             </div>
           </td>
           <td><%= link_to usuario.nome, usuario_path(usuario) %></td>
-          <td><%= link_to usuario.locais.count, usuario_locais_path(usuario) %></td>
-          <td><%= link_to usuario.experiencia_agroecologicas.count, usuario_experiencia_agroecologicas_path(usuario) %></td>
+          <td><%= link_to usuario.locais.blank? ? t(:no_query) : t(:yes_query), usuario_locais_path(usuario) %></td>
+          <td><%= link_to usuario.experiencia_agroecologicas.blank? ? t(:no_query) : t(:yes_query), usuario_experiencia_agroecologicas_path(usuario) %></td>
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? or usuario.id == current_usuario.id %>
               <td><%= link_to t(:edit), edit_usuario_path(usuario), :class => 'btn btn-sm btn-success' %></td>

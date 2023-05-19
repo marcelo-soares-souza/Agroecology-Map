@@ -50,9 +50,7 @@
           <td><%= link_to truncate(experiencia_agroecologica.nome, length: 100), experiencia_agroecologica_path(experiencia_agroecologica) %></td>
           <td><%= @tema_experiencia_agroecologicas.key(experiencia_agroecologica.tema_experiencia_agroecologica.id) %></td>
           <td><%= link_to truncate(experiencia_agroecologica.local.nome, length: 110), local_path(experiencia_agroecologica.local) %></td>
-          <td><%= link_to experiencia_agroecologica.midias.count, experiencia_agroecologica_gallery_path(experiencia_agroecologica) %></td>
-<!--          <td><%#= experiencia_agroecologica.comentarios.count.to_s %></td>-->
-<!--          <td><%#= experiencia_agroecologica.likes.count.to_s %></td>-->
+          <td><%= link_to experiencia_agroecologica.midias.blank? ? t(:no_query) : t(:yes_query), experiencia_agroecologica_gallery_path(experiencia_agroecologica) %></td>
 
           <% if usuario_signed_in? %>
             <% if current_usuario.admin? or experiencia_agroecologica.usuario.id == current_usuario.id %>
