@@ -16,11 +16,11 @@ class ExperienciaAgroecologicasController < ApplicationController
   # GET /experiencia_agroecologicas.json
   def index
     @experiencia_agroecologicas = if params[:local_id]
-      ExperienciaAgroecologica.where(local_id: @local.id).includes(:local, :midias, :likes, :comentarios).load_async.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.where(local_id: @local.id).includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).load_async.sort_by(&:updated_at).reverse
     elsif params[:usuario_id]
-      ExperienciaAgroecologica.where(usuario_id: @usuario.id).includes(:local, :midias, :likes, :comentarios).load_async.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.where(usuario_id: @usuario.id).includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).load_async.sort_by(&:updated_at).reverse
     else
-      ExperienciaAgroecologica.all.includes(:local, :midias, :likes, :comentarios).load_async.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.all.includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).load_async.sort_by(&:updated_at).reverse
     end
   end
 
