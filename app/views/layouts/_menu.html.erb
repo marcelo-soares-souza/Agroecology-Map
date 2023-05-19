@@ -22,6 +22,7 @@
         <%= link_to(t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link") %>
       </li>
 
+      <!--
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:agroforestry_systems) %></a>
         <div class="dropdown-menu">
@@ -30,14 +31,9 @@
           <%= link_to(t(:animals), animais_path, :class => "nav-link") %>
         </div>
       </li>
-      <li class="nav-item">
-        <%= link_to(t(:contributors), usuarios_path, :class => "nav-link") %>
-      </li>
+      -->
       <li class="nav-item">
         <%= link_to("Manual", manual_index_path, :class => "nav-link") %>
-      </li>
-      <li class="nav-item">
-        <%= link_to(t(:friends), friends_path, :class => "nav-link") %>
       </li>
       <% if current_usuario %>
         <% if current_usuario.admin? %>
@@ -52,6 +48,9 @@
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <%= link_to(t(:contributors), usuarios_path, :class => "nav-link") %>
+      </li>
       <% if current_usuario %>
         <li class="nav-item">
           <%= link_to("#{t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
@@ -71,7 +70,9 @@
       <li>
         <strong><%= link_to t(:donate), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger", :style => "color: #e24d6f !important;"%></strong>
       </li>
-
+      <li class="nav-item">
+        <%= link_to(t(:friends), friends_path, :class => "nav-link") %>
+      </li>
       <li>
         <select id="locale" onchange="if (this.value) window.location.href='<%= request.path %>?locale=' + this.value" class="form-control">
           <option value="pt-BR">Português</option>

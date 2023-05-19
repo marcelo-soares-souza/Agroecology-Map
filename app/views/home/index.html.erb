@@ -69,7 +69,7 @@
             maxZoom: 18,
         });
         var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
-            attribution: 'Mapa da Agroecologia | MapBox',
+            attribution: 'Agroecology Map | MapBox',
             maxZoom: 18,
         });
 
@@ -80,64 +80,64 @@
         };
 
         // OverLay Maps
-        var geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
-        var workspace = 'CMR-PUBLICO'
-        var ti = L.tileLayer.wms(geoserver, {
-            layers: workspace + ':' + 'lim_terra_indigena_a',
-            format: 'image/png',
-            transparent: true
-        });
-        var ai = L.tileLayer.wms(geoserver, {
-            layers: workspace + ':' + 'loc_aldeia_indigena_p',
-            format: 'image/png',
-            transparent: true
-        });
-        var ar = L.tileLayer.wms(geoserver, {
-            layers: workspace + ':' + 'lim_assentamento_rural_a',
-            format: 'image/png',
-            transparent: true
-        });
-        var uc = L.tileLayer.wms(geoserver, {
-            layers: workspace + ':' + 'lim_unidade_conservacao_federal_a',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.5
-        });
-        var quilombos = L.tileLayer.wms(geoserver, {
-            layers: workspace + ':' + 'lim_quilombolas_a',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.5
-        });
-        var biomas = L.tileLayer.wms(geoserver, {
-            layers: workspace + ':' + 'veg_biomas_a',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.3
-        }); // .addTo(map);
+        // var geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
+        // var workspace = 'CMR-PUBLICO'
+        // var ti = L.tileLayer.wms(geoserver, {
+        //     layers: workspace + ':' + 'lim_terra_indigena_a',
+        //     format: 'image/png',
+        //     transparent: true
+        // });
+        // var ai = L.tileLayer.wms(geoserver, {
+        //     layers: workspace + ':' + 'loc_aldeia_indigena_p',
+        //     format: 'image/png',
+        //     transparent: true
+        // });
+        // var ar = L.tileLayer.wms(geoserver, {
+        //     layers: workspace + ':' + 'lim_assentamento_rural_a',
+        //     format: 'image/png',
+        //     transparent: true
+        // });
+        // var uc = L.tileLayer.wms(geoserver, {
+        //     layers: workspace + ':' + 'lim_unidade_conservacao_federal_a',
+        //     format: 'image/png',
+        //     transparent: true,
+        //     opacity: 0.5
+        // });
+        // var quilombos = L.tileLayer.wms(geoserver, {
+        //     layers: workspace + ':' + 'lim_quilombolas_a',
+        //     format: 'image/png',
+        //     transparent: true,
+        //     opacity: 0.5
+        // });
+        // var biomas = L.tileLayer.wms(geoserver, {
+        //     layers: workspace + ':' + 'veg_biomas_a',
+        //     format: 'image/png',
+        //     transparent: true,
+        //     opacity: 0.3
+        // }); // .addTo(map);
 
-        var idec = loadIDEC();
-        var ppm = loadPPM();
-        var ofb = loadOFB();
-        var foei = loadFOEI();
-
-        idec.addTo(map);
-        ppm.addTo(map);
-        ofb.addTo(map);
-        foei.addTo(map);
-        foei.setZIndex(101);
+        // var idec = loadIDEC();
+        // var ppm = loadPPM();
+        // var ofb = loadOFB();
+        // var foei = loadFOEI();
+        //
+        // idec.addTo(map);
+        // ppm.addTo(map);
+        // ofb.addTo(map);
+        // foei.addTo(map);
+        // foei.setZIndex(101);
 
         var overlayMaps = {
-            "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomas</a>": biomas,
-            "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Terra Indígena</a>": ti,
-            "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Aldeias Indígenas</a>": ai,
-            "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Assentamento Rural</a>": ar,
-            "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Unidade de Conservação</a>": uc,
-            "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Quilombos</a>": quilombos,
-            "<a href='https://www.foei.org/agroecology-map' target='_blank'>Friends of the Earth</a>": foei,
-            "<a href='https://feirasorganicas.org.br' target='_blank'>Feiras Orgânicas (IDEC)</a>": idec,
-            "<a href='https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/' target='_blank'>Politicas Públicas Municipais</a>": ppm,
-            "<a href='https://openfoodbrasil.com.br/' target='_blank'>Open Food Brasil</a>": ofb
+            // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomas</a>": biomas,
+            // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Terra Indígena</a>": ti,
+            // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Aldeias Indígenas</a>": ai,
+            // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Assentamento Rural</a>": ar,
+            // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Unidade de Conservação</a>": uc,
+            // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Quilombos</a>": quilombos,
+            // "<a href='https://www.foei.org/agroecology-map' target='_blank'>Friends of the Earth</a>": foei,
+            // "<a href='https://feirasorganicas.org.br' target='_blank'>Feiras Orgânicas (IDEC)</a>": idec,
+            // "<a href='https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/' target='_blank'>Politicas Públicas Municipais</a>": ppm,
+            // "<a href='https://openfoodbrasil.com.br/' target='_blank'>Open Food Brasil</a>": ofb
         };
 
         L.control.layers(baseMaps, overlayMaps, {collapsed: true, position: 'bottomright'}).addTo(map);
@@ -146,7 +146,3 @@
 
     });
 </script>
-
-<!--<div class="logo">-->
-<%#= image_tag('/logo.png', :alt=>'logo', :title => 'logo', :style => 'display: none;') %>
-<!--</div>-->
