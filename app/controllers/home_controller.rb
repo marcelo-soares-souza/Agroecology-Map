@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @locais = Local.all.load_async
+    @locais = Local.all.includes(:experiencia_agroecologicas).load_async
   end
 end
