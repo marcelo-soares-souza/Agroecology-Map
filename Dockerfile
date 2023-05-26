@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-bullseye
+FROM ruby:3.1.4-bullseye
 
 LABEL maintainer="Marcelo Soares Souza <marcelo@agroecologymap.org>"
 RUN apt-get update && apt-get install build-essential nodejs libpq-dev git imagemagick tzdata -y
