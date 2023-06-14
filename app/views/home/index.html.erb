@@ -49,7 +49,7 @@
         lon = -32.00;
     }
 
-    var map = L.map('map', {fullscreenControl: true, zoomControl: false}).setView([lat, lon], zoom);
+    var map = L.map('map', {fullscreenControl: true, zoomControl: false, worldCopyJump: true}).setView([lat, lon], zoom);
 
     $(document).ready(function () {
         $(window).on("resize", function () {

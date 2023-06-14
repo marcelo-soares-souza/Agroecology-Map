@@ -52,7 +52,7 @@
 
       <script>
           $(document).ready(function () {
-              var map = L.map('map-show').setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
+              var map = L.map('map-show', { zoomControl: false, worldCopyJump: true }).setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
               var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
               var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                   attribution: attributions,

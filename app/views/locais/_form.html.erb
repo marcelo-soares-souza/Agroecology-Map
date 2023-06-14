@@ -101,7 +101,7 @@
           <% end %>
           <% end %>
 
-          var map = L.map('map-sistema', {zoomControl: false}).setView([lat, lon], 10);
+          var map = L.map('map-sistema', { zoomControl: false, worldCopyJump: true }).setView([lat, lon], 10);
 
           $(window).on("resize", function () {
               $("#map-sistema").width($(window).width());
