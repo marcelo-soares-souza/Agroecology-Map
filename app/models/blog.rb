@@ -10,8 +10,6 @@ class Blog < ApplicationRecord
   validates :titulo, presence: true, uniqueness: true
   validates :texto, presence: true
 
-  acts_as_taggable
-
   protected
     def should_generate_new_friendly_id?
       titulo_changed?

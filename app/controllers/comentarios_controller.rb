@@ -24,8 +24,8 @@ class ComentariosController < ApplicationController
         if @experiencia_agroecologica.usuario.id != current_usuario.id
           ActionMailer::Base.mail(from: "Agroecology Map <marcelo@agroecologymap.org>",
                                   to: @experiencia_agroecologica.usuario.email,
-                                  subject: subject,
-                                  body: body).deliver
+                                  subject:,
+                                  body:).deliver
         end
 
         format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi registrado." }

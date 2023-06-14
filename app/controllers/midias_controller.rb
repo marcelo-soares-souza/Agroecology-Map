@@ -29,8 +29,8 @@ class MidiasController < ApplicationController
       @local = Local.where(id: params[:local_id]).load_async
       experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: params[:local_id]).load_async
       saf = Saf.where(local_id: params[:local_id]).load_async
-      @midias = Midia.where(experiencia_agroecologica: experiencia_agroecologica).load_async
-      @midias += Midia.where(saf: saf).load_async
+      @midias = Midia.where(experiencia_agroecologica:).load_async
+      @midias += Midia.where(saf:).load_async
     end
   end
 

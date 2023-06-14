@@ -9,36 +9,34 @@ end
 
 gem "rails", "~> 7.0"
 
-gem "nokogiri", ">= 1.15.1"
+gem "nokogiri", ">= 1.15.2"
 gem "pg", ">= 1.5.3"
-gem "puma", ">= 6.2.2"
+gem "puma", ">= 6.3.0"
 gem "uglifier", ">= 4.2.0"
 gem "jbuilder", ">= 2.11.5"
+gem "sass-rails", ">= 6.0.0"
 
 group :development do
-  gem "listen", ">= 3.0.5", "< 3.2"
-  gem "web-console", ">= 3.3.0"
+  gem "listen", ">= 3.0.8", "< 3.2"
+  gem "web-console", ">= 4.2.0"
 end
 
 group :rubocop do
-  gem "rubocop", ">= 1.51.0", require: false
+  gem "rubocop", ">= 1.52.0", require: false
   gem "rubocop-minitest", require: false
   gem "rubocop-packaging", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop-md", require: false
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "devise", "~> 4.9.2"
-gem "friendly_id"
-gem "acts-as-taggable-on"
-gem "invisible_captcha"
-gem "dalli"
-gem "redis", ">= 5.0.5"
-gem "kt-paperclip", ">= 7.1.1"
+gem "friendly_id", ">= 5.5.0"
 
-gem "sass-rails", ">= 6.0.0"
+gem "invisible_captcha"
+gem "kt-paperclip", ">= 7.2.0"
 gem "sprockets", ">= 4.1.1"
 gem "sprockets-rails", ">= 3.4.2"
 gem "cookies_eu", ">= 1.7.8"

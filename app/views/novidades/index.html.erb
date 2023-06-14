@@ -30,13 +30,6 @@
         <%= "<br><br><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br>".html_safe if blog.texto.length > 4096 %>
       </div>
 
-      <% if !blog.tag_list.empty? %>
-        <div class="blog-tag">
-          <%= "<br><b>Tags:</b> #{blog.tag_list}<br>".html_safe if !blog.tag_list.empty? %>
-          <br>
-        </div>
-      <% end %>
-
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or blog.usuario_id == current_usuario.id %>
           <td><%= link_to t(:edit), edit_local_blog_path(blog.local, blog), :class => 'btn btn-sm btn-success' %></td>
