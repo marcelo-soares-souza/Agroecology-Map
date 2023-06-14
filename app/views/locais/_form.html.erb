@@ -125,7 +125,6 @@
           L.control.layers(baseMaps).addTo(map);
 
           map.addControl(new L.control.zoom({position: 'topright'}));
-          map.addControl(new L.Control.OSMGeocoder({ placeholder: '<%= t(:search_by_address) %>', text: '<%= t(:locate) %>', collapsed: true}));
           L.control.locate().addTo(map);
 
           var Icon = L.icon({
