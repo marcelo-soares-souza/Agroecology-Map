@@ -35,6 +35,9 @@
       <li class="nav-item">
         <%= link_to("Manual", manual_index_path, :class => "nav-link") %>
       </li>
+      <li class="nav-item">
+        <%= link_to("One Million Voices", "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :class => "nav-link") %>
+      </li>
       <% if current_usuario %>
         <% if current_usuario.admin? %>
           <li class="nav-item dropdown">

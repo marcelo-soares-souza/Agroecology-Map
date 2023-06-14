@@ -82,7 +82,7 @@ GEM
     cookies_eu (1.7.8)
       js_cookie_rails (~> 2.2.0)
     crass (1.0.6)
-    dalli (3.2.4)
+    dalli (3.2.5)
     date (3.3.3)
     devise (4.9.2)
       bcrypt (~> 3.0)
@@ -131,7 +131,7 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
     minitest (5.18.0)
-    net-imap (0.3.5)
+    net-imap (0.3.6)
       date
       net-protocol
     net-pop (0.1.2)
@@ -151,7 +151,7 @@ GEM
     pg (1.5.3)
     puma (6.3.0)
       nio4r (~> 2.0)
-    racc (1.7.0)
+    racc (1.7.1)
     rack (2.2.7)
     rack-test (2.1.0)
       rack (>= 1.3)
