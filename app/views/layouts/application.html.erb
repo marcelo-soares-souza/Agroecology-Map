@@ -20,6 +20,7 @@
 </head>
 
 <body>
+  <a rel="me" href="https://mas.to/@AgroecologyMap"></a>
   <%= render 'layouts/menu' unless request.path == '/map' %>
   <%= render 'layouts/main' %>
   <%= render 'cookies_eu/consent_banner' unless request.env['HTTP_USER_AGENT'] == 'Agroecology Map Webview' or request.path == '/map'%>
