@@ -17,7 +17,7 @@ gem "jbuilder", ">= 2.11.5"
 gem "sass-rails", ">= 6.0.0"
 
 group :development do
-  gem "listen", ">= 3.0.8", "< 3.2"
+  gem "listen", ">= 3.8.0"
   gem "web-console", ">= 4.2.0"
 end
 
