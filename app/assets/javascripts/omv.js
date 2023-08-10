@@ -1,4 +1,5 @@
 async function loadOMV() {
+    // var omv = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
     var omv = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
 
     var Icon = L.icon({
@@ -20,10 +21,12 @@ async function loadOMV() {
         const latitude = location['latitude'];
         const longitude = location['longitude'];
 
-        var popup = '<h4>One Million Voices</h4></h3><b><a href=" '+url+'" target="_blank">' + name.substring(0, 256) + "..." + '</a></b>';
-        var marker = new L.marker(new L.latLng(latitude, longitude), {icon: Icon});
-        marker.bindPopup(popup);
-        omv.addLayer(marker);
+        if (latitude && longitude) {
+          var popup = '<h4>One Million Voices</h4></h3><b><a href=" '+url+'" target="_blank">' + name.substring(0, 256) + "..." + '</a></b>';
+          var marker = new L.marker(new L.latLng(latitude, longitude), {icon: Icon});
+          marker.bindPopup(popup);
+          omv.addLayer(marker);
+        }
     }
 
     return omv;

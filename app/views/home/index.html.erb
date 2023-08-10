@@ -120,7 +120,7 @@
         // var ppm = loadPPM();
         // var ofb = loadOFB();
         // var foei = loadFOEI();
-        loadOMV().then(omv => omv.addTo(map));
+        loadOMV().then(omv => omv.addTo(map)).catch(e => console.log('Error:', e));
 
         // idec.addTo(map);
         // ppm.addTo(map);
