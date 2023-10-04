@@ -1,11 +1,9 @@
 <%= render 'layouts/dataTable' %>
-
 <% if params[:saf_id] %>
   <% title t(:gallery) + " #{@saf.nome}" %>
 <% elsif params[:experiencia_agroecologica_id] %>
   <% title t(:gallery) + " #{@experiencia_agroecologica.nome}" %>
 <% end %>
-
 <% if usuario_signed_in? %>
   <% if params[:saf_id] %>
     <%= link_to t(:send_picture), new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
@@ -13,9 +11,9 @@
     <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
   <% end %>
 <% end %>
-
-<br><br><br>
-
+<br>
+<br>
+<br>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <% if params[:saf_id] %>
@@ -26,7 +24,6 @@
       <%= link_to truncate(@local[0].nome, length: 16), local_path(@local[0]), :class => "nav-link active" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path, :class => "nav-link active" %>
@@ -34,19 +31,9 @@
       <%= link_to t(:gallery) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path, :class => "nav-link active" %>
     <% end %>
   </li>
-
-  <li class="nav-item">
-    <% if params[:saf_id] %>
-      <%= link_to t(:photos) + " (#{@saf.midias.count})", saf_midias_path, :class => "nav-link" %>
-    <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to t(:photos) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link" %>
-    <% end %>
-  </li>
 </ul>
-
 <% if @midias.empty? %>
   <br>
-
   <h3><%= t(:no_photo_submitted) %>
     <% if usuario_signed_in? %>
       <% if params[:saf_id] %>
@@ -56,27 +43,43 @@
       <% end %>
     <% end %>
   </h3>
-
 <% else %>
-
   <br>
-
-  <div class="row justify-content-left" style="margin-left: 32px;">
-    <div class="col-md-8">
-      <div class="row">
-        <% @midias.each do |midia| %>
-          <a href="<%= midia.imagem.url(:original) %>>" data-toggle="lightbox" data-gallery="midia-gallery" class="col-sm-4 gallery-image" data-max-width="900">
-            <img src="<%= midia.imagem.url(:medium) %>" alt="Photo <%= midia.descricao %>" title="Photo <%= midia.descricao %>" class="img-fluid">
-          </a>
-        <% end %>
+  <br>
+  <div class="row">
+    <% @midias.each do |media| %>
+      <div class="col-sm-6" style="cursor: pointer;" >
+        <div class="card" style="max-height: <%= usuario_signed_in? ? '340px' : '280px'%>;">
+          <br>
+          <div class="card-img-top thumbnail" >
+            <a href="<%= url_for(media.imagem(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
+              <img src="<%= url_for(media.imagem(:medium)) %>" alt="Photo <%= media.descricao %>" title="Photo <%= media.descricao %>" class="img-fluid">
+            </a>
+          </div>
+          <div class="card-body"  style="min-height: 180px;">
+            <p class="card-text text-box"><%= media.descricao.truncate(100) unless media.descricao.blank? %></p>
+            <% if usuario_signed_in? %>
+              <% if current_usuario.admin? or media.account.id == current_usuario.id %>
+                <% if params[:experiencia_agroecologica_id] %>
+                  <td><%= link_to t(:edit), edit_experiencia_agroecologica_midia_path(media.experiencia_agroecologica, media), :class => 'btn btn-sm btn-success' %></td>
+                  <td><%= link_to t(:destroy), experiencia_agroecologica_midia_path(media.experiencia_agroecologica, media), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
+                <% end %>
+              <% else %>
+                <br>
+                <br>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <br>
       </div>
-    </div>
+    <% end %>
   </div>
-  <br><br>
+  <br>
   <script>
-      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-          event.preventDefault();
-          $(this).ekkoLightbox();
-      });
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
   </script>
 <% end %>

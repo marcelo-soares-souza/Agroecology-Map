@@ -1,5 +1,4 @@
 <% title "Editando Foto #{@midia.descricao}" %>
-
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <% if params[:saf_id] %>
@@ -8,7 +7,6 @@
       <%= link_to "Experiências em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to @saf.nome, saf_path(@saf), :class => "nav-link" %>
@@ -16,24 +14,25 @@
       <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
-      <%= link_to "Fotos (#{@saf.midias.count})", saf_midias_path, :class => "nav-link" %>
+      <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path, :class => "nav-link active" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "Fotos (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link" %>
+      <%= link_to t(:gallery) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path, :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
-      <%= link_to "#{t(:edit)} #{@midia.descricao}", edit_saf_midia_path, :class => "nav-link active" %>
+      <%= link_to "#{t(:edit)} #{@midia.descricao.truncate(24)}", edit_saf_midia_path, :class => "nav-link active" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "#{t(:edit)} #{@midia.descricao}", edit_experiencia_agroecologica_midia_path, :class => "nav-link active" %>
+      <%= link_to "#{t(:edit)} #{@midia.descricao.truncate(24)}", edit_experiencia_agroecologica_midia_path, :class => "nav-link active" %>
     <% end %>
   </li>
 </ul>
-
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <%= render 'form', midia: @midia %>

@@ -65,7 +65,7 @@ class MidiasController < ApplicationController
           format.html { redirect_to saf_midia_path(@saf, @midia), notice: "Midia foi cadastrada." }
         elsif params[:experiencia_agroecologica_id]
           format.html do
-            redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia),
+            redirect_to experiencia_agroecologica_gallery_path(@experiencia_agroecologica, @midia),
                         notice: "Midia foi cadastrada."
           end
         end
@@ -86,7 +86,7 @@ class MidiasController < ApplicationController
           format.html { redirect_to saf_midia_path(@saf, @midia), notice: "Midia foi atualizada." }
         elsif params[:experiencia_agroecologica_id]
           format.html do
-            redirect_to experiencia_agroecologica_midia_path(@experiencia_agroecologica, @midia),
+            redirect_to experiencia_agroecologica_gallery_path(@experiencia_agroecologica, @midia),
                         notice: "Midia foi atualizada"
           end
         end
@@ -108,7 +108,7 @@ class MidiasController < ApplicationController
         format.html { redirect_to saf_midias_path(@saf), notice: "Midia foi removida." }
       elsif params[:experiencia_agroecologica_id]
         format.html do
-          redirect_to experiencia_agroecologica_midias_path(@experiencia_agroecologica), notice: "Midia foi removida."
+          redirect_to experiencia_agroecologica_gallery_path(@experiencia_agroecologica), notice: "Midia foi removida."
         end
       end
       format.json { head :no_content }
