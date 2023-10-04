@@ -1,5 +1,7 @@
 # Agroecology Map
 
+[![liberapay](https://img.shields.io/liberapay/gives/AgroecologyMap.svg?logo=liberapay)](https://liberapay.com/AgroecologyMap/donate)
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I0G99V3)
 
 1) Install Bundler
