@@ -78,41 +78,41 @@
       };
 
       // OverLay Maps
-      // var geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
-      // var workspace = 'CMR-PUBLICO'
-      // var ti = L.tileLayer.wms(geoserver, {
-      //     layers: workspace + ':' + 'lim_terra_indigena_a',
-      //     format: 'image/png',
-      //     transparent: true
-      // });
-      // var ai = L.tileLayer.wms(geoserver, {
-      //     layers: workspace + ':' + 'loc_aldeia_indigena_p',
-      //     format: 'image/png',
-      //     transparent: true
-      // });
-      // var ar = L.tileLayer.wms(geoserver, {
-      //     layers: workspace + ':' + 'lim_assentamento_rural_a',
-      //     format: 'image/png',
-      //     transparent: true
-      // });
-      // var uc = L.tileLayer.wms(geoserver, {
-      //     layers: workspace + ':' + 'lim_unidade_conservacao_federal_a',
-      //     format: 'image/png',
-      //     transparent: true,
-      //     opacity: 0.5
-      // });
-      // var quilombos = L.tileLayer.wms(geoserver, {
-      //     layers: workspace + ':' + 'lim_quilombolas_a',
-      //     format: 'image/png',
-      //     transparent: true,
-      //     opacity: 0.5
-      // });
-      // var biomas = L.tileLayer.wms(geoserver, {
-      //     layers: workspace + ':' + 'veg_biomas_a',
-      //     format: 'image/png',
-      //     transparent: true,
-      //     opacity: 0.3
-      // }); // .addTo(map);
+      var geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
+      var workspace = 'CMR-PUBLICO'
+      var ti = L.tileLayer.wms(geoserver, {
+          layers: workspace + ':' + 'lim_terra_indigena_a',
+          format: 'image/png',
+          transparent: true
+      });
+      var ai = L.tileLayer.wms(geoserver, {
+          layers: workspace + ':' + 'loc_aldeia_indigena_p',
+          format: 'image/png',
+          transparent: true
+      });
+      var ar = L.tileLayer.wms(geoserver, {
+          layers: workspace + ':' + 'lim_assentamento_rural_a',
+          format: 'image/png',
+          transparent: true
+      });
+      var uc = L.tileLayer.wms(geoserver, {
+          layers: workspace + ':' + 'lim_unidade_conservacao_federal_a',
+          format: 'image/png',
+          transparent: true,
+          opacity: 0.5
+      });
+      var quilombos = L.tileLayer.wms(geoserver, {
+          layers: workspace + ':' + 'lim_quilombolas_a',
+          format: 'image/png',
+          transparent: true,
+          opacity: 0.5
+      });
+      var biomas = L.tileLayer.wms(geoserver, {
+          layers: workspace + ':' + 'veg_biomas_a',
+          format: 'image/png',
+          transparent: true,
+          opacity: 0.3
+      }).addTo(map);
 
       var idec = loadIDEC();
       var ppm = loadPPM();
@@ -127,12 +127,12 @@
       // foei.setZIndex(101);
 
       var overlayMaps = {
-          // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomas</a>": biomas,
-          // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Terra Indígena</a>": ti,
-          // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Aldeias Indígenas</a>": ai,
-          // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Assentamento Rural</a>": ar,
-          // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Unidade de Conservação</a>": uc,
-          // "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Quilombos</a>": quilombos,
+          "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomas</a>": biomas,
+          "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Terra Indígena</a>": ti,
+          "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Aldeias Indígenas</a>": ai,
+          "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Assentamento Rural</a>": ar,
+          "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Unidade de Conservação</a>": uc,
+          "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Quilombos</a>": quilombos,
           // "<a href='https://www.foei.org/agroecology-map' target='_blank'>Friends of the Earth</a>": foei,
           "<a href='https://feirasorganicas.org.br' target='_blank'>Feiras Orgânicas (IDEC)</a>": idec,
           "<a href='https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/' target='_blank'>Politicas Públicas Municipais</a>": ppm,

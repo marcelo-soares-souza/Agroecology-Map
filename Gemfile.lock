@@ -301,24 +301,24 @@ DEPENDENCIES
   friendly_id (>= 5.5.0)
   invisible_captcha
   jbuilder (>= 2.11.5)
-  kt-paperclip (>= 7.2.0)
+  kt-paperclip (>= 7.2.1)
   listen (>= 3.8.0)
-  nokogiri (>= 1.15.2)
-  pg (>= 1.5.3)
-  puma (>= 6.3.0)
-  rails (~> 7.0)
-  rubocop (>= 1.52.0)
+  nokogiri (>= 1.15.4)
+  pg (>= 1.5.4)
+  puma (>= 6.4.0)
+  rails (~> 7.1)
+  rubocop (>= 1.54.4)
   rubocop-md
   rubocop-minitest
   rubocop-packaging
   rubocop-performance
   rubocop-rails
   sass-rails (>= 6.0.0)
-  sprockets (>= 4.1.1)
+  sprockets (>= 4.2.1)
   sprockets-rails (>= 3.4.2)
   tzinfo-data
   uglifier (>= 4.2.0)
-  web-console (>= 4.2.0)
+  web-console (>= 4.2.1)
 
 BUNDLED WITH
    2.4.15
