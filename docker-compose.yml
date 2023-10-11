@@ -2,13 +2,13 @@
 version: '2'
 
 services:
-  redis:
-    image: 'redis:latest'
-    restart: always
-    expose:
-      - '6379'
+#  redis:
+#    image: 'redis:latest'
+#    restart: always
+#    expose:
+#      - '6379'
   postgres:
-    image: 'postgres:15.1'
+    image: 'postgres:latest'
     restart: always
     environment:
       POSTGRES_PASSWORD: ${PASSWORD_DB}
