@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install build-essential nodejs libpq-dev git image
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler:2.4.20
+RUN gem install bundler:2.4.21
 RUN bundle install
 COPY . .
 RUN bundle exec rails assets:precompile

@@ -1,8 +1,8 @@
 <% title @saf.nome %>
-
 <%= link_to t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br><br><br>
-
+<br>
+<br>
+<br>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to truncate(@saf.nome, length: 16), saf_path(@saf.id), :class => "nav-link active" %>
@@ -10,13 +10,8 @@
   <li class="nav-item">
     <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path(@saf), :class => "nav-link", :style => "color: red !important" %>
   </li>
-  <li class="nav-item">
-    <%= link_to t(:photos) + " (#{@saf.midias.count})", saf_midias_path(@saf), :class => "nav-link" %>
-  </li>
 </ul>
-
 <br>
-
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <% if @saf.midias[0] %>
@@ -24,7 +19,8 @@
         <%= image_tag(@saf.midias[0].imagem.url(:medium)) %>
       </div>
     <% end %>
-    <br><br>
+    <br>
+    <br>
     <h3><%= @saf.nome %></h3>
     <%= "<strong>#{t(:localization)}:</strong><br>#{link_to @saf.local.nome, local_path(@saf.local)}&nbsp;".html_safe if @saf.local.nome? %>
     <%= "<br><br><strong>#{t(:main_objective)}:</strong><br>#{@saf.objetivo}&nbsp;".html_safe if @saf.objetivo? %>
@@ -39,10 +35,10 @@
     <%= "<br><br><strong>#{t(:observation)}:</strong><br><div class='#{@saf.observacao.length() > 85 ? 'text-box' : ''}'>#{@saf.observacao}&nbsp;</div>".html_safe if @saf.observacao? %>
   </div>
 </div>
-
 <% if usuario_signed_in? %>
   <% if current_usuario.admin? or current_usuario.id == @saf.usuario.id %>
-    <br><br>
+    <br>
+    <br>
     <div id="saf-footer">
       <div class="form-actions">
         <%= link_to t(:edit), edit_saf_path(@saf), :class => 'btn btn-success' %>
