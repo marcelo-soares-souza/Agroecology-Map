@@ -1,51 +1,58 @@
 <div class="sign_in_up">
-<h2><%= t(:sign_up) %></h2>
-<br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="form-group row">
-    <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %>
-    <div class="col-sm-10">
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg" %>
-    <div class="col-sm-10">
-      <%= f.text_field :nome, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
-    <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label t(:password_confirm), class: "col-sm-2 col-form-label col-form-label-lg" %>
-    <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-    </div>
-  </div>
-  <div class="actions">
-    <%= button_tag(name: t(:sign_up), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
-      <span id="button_name"><%= t(:sign_up) %></span>
-      <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
-    <% end %>
-  </div>
+  <h2><%= t(:sign_up) %></h2>
   <br>
-  <%= render "devise/shared/links" %>
-  <br>
-  <div><%= invisible_captcha %></div>
-<% end %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="form-group row">
+      <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_field :nome, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label t(:password_confirm), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= button_tag(name: t(:sign_up), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
+        <span id="button_name"><%= t(:sign_up) %></span>
+        <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
+      <% end %>
+    </div>
+    <div class="checkbox">
+      <label>
+        <strong><%= t(:i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40) %> <%= link_to "Creative Commons license CC BY-NC-SA 4.0", "https://creativecommons.org/licenses/by-nc-sa/4.0/", target: "_blank" %>.</strong>
+      </label>
+    </div>
+    <%= render "devise/shared/links" %>
+    <br>
+    <div>
+      <strong><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
+      <br>
+      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
+    </div>
+    <br>
+    <div><%= invisible_captcha %></div>
+  <% end %>
 </div>
 <script>
-    document.getElementById("submit").setAttribute("disabled", "disabled");
-    setTimeout(function () {
-        document.getElementById("submit").removeAttribute("disabled");
-        document.getElementById("spinner").remove();
-    }, 3600);
+  document.getElementById("submit").setAttribute("disabled", "disabled");
+  setTimeout(function () {
+      document.getElementById("submit").removeAttribute("disabled");
+      document.getElementById("spinner").remove();
+  }, 3600);
 </script>

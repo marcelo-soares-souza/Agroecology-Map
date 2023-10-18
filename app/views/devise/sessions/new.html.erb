@@ -1,47 +1,46 @@
 <div class="sign_in_up">
-<h2><%= t(:sign_in) %></h2>
-<br>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="form-group row">
-    <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %><br>
-    <div class="col-sm-10">
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
-    <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :remember_me %> <%= t(:remember_me) %>
-      </label>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
-      <span id="button_name"><%= t(:sign_in) %></span>
-      <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
-    <% end %>
-  </div>
+  <h2><%= t(:sign_in) %></h2>
   <br>
-  <%= render "devise/shared/links" %>
-  <br>
-  
-<% end %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group row">
+      <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %><br>
+      <div class="col-sm-10">
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+    </div>
+    <% if devise_mapping.rememberable? -%>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :remember_me %> <%= t(:remember_me) %>
+        </label>
+      </div>
+    <% end -%>
+    <div class="actions">
+      <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
+        <span id="button_name"><%= t(:sign_in) %></span>
+        <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
+      <% end %>
+    </div>
+    <br>
+    <%= render "devise/shared/links" %>
+    <br>
+    <div>
+      <strong><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
+      <br>
+      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
+    </div>
+  <% end %>
 </div>
 <script>
-    document.getElementById("submit").setAttribute("disabled", "disabled");
-    setTimeout(function () {
-        document.getElementById("submit").removeAttribute("disabled");
-        document.getElementById("spinner").remove();
-    }, 3600);
+  document.getElementById("submit").setAttribute("disabled", "disabled");
+  setTimeout(function () {
+      document.getElementById("submit").removeAttribute("disabled");
+      document.getElementById("spinner").remove();
+  }, 3600);
 </script>

@@ -9,6 +9,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarToggler">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:about) %></a>
+        <div class="dropdown-menu">
+          <div class="nav-item"><%= link_to("Manual", manual_index_path, :class => "nav-link") %></div>
+          <div class="nav-item"><%= link_to(t(:friends), friends_path, :class => "nav-link") %></div>
+        </div>
+      </li>
       <li class="nav-item">
         <%= link_to(t(:map), '/', :class => "nav-link") %>
       </li>
@@ -21,24 +28,18 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:agroforestry_systems) %></a>
         <div class="dropdown-menu">
-          <%= link_to(t(:systems), safs_path, :class => "nav-link") %>
-          <%= link_to(t(:plants), plantas_path, :class => "nav-link") %>
-          <%= link_to(t(:animals), animais_path, :class => "nav-link") %>
+          <div class="nav-item"><%= link_to(t(:systems), safs_path, :class => "nav-link") %></div>
+          <div class="nav-item"><%= link_to(t(:plants), plantas_path, :class => "nav-link") %></div>
+          <div class="nav-item"><%= link_to(t(:animals), animais_path, :class => "nav-link") %></div>
         </div>
-      </li>
-      <li class="nav-item">
-        <%= link_to("Manual", manual_index_path, :class => "nav-link") %>
-      </li>
-      <li class="nav-item">
-        <%= link_to("One Million Voices", "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :class => "nav-link") %>
       </li>
       <% if current_usuario %>
         <% if current_usuario.admin? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Adminstrar</a>
             <div class="dropdown-menu">
-              <%= link_to("Tipo de Organizações", tipo_organizacoes_path, :class => "nav-link") %>
-              <%= link_to("Temas de Agroecologia", tema_experiencia_agroecologicas_path, :class => "nav-link") %>
+              <div class="nav-item"><%= link_to("Tipo de Organizações", tipo_organizacoes_path, :class => "nav-link") %></div>
+              <div class="nav-item"><%= link_to("Temas de Agroecologia", tema_experiencia_agroecologicas_path, :class => "nav-link") %></div>
             </div>
           </li>
         <% end %>
@@ -64,10 +65,7 @@
         </li>
       <% end %>
       <li>
-        <strong><%= link_to t(:donate), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger", :style => "color: #e24d6f !important;"%></strong>
-      </li>
-      <li class="nav-item">
-        <%= link_to(t(:friends), friends_path, :class => "nav-link") %>
+        <strong><%= link_to t(:helpus), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger", :style => "color: #e24d6f !important;"%></strong>
       </li>
       <li>
         <select id="locale" onchange="if (this.value) window.location.href='<%= request.path %>?locale=' + this.value" class="form-control">
