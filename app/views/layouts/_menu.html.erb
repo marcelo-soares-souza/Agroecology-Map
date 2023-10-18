@@ -25,14 +25,20 @@
       <li class="nav-item">
         <%= link_to(t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link") %>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:agroforestry_systems) %></a>
-        <div class="dropdown-menu">
-          <div class="nav-item"><%= link_to(t(:systems), safs_path, :class => "nav-link") %></div>
-          <div class="nav-item"><%= link_to(t(:plants), plantas_path, :class => "nav-link") %></div>
-          <div class="nav-item"><%= link_to(t(:animals), animais_path, :class => "nav-link") %></div>
-        </div>
-      </li>
+      <% if current_usuario %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:agroforestry_systems) %></a>
+          <div class="dropdown-menu">
+            <div class="nav-item"><%= link_to(t(:systems), safs_path, :class => "nav-link") %></div>
+            <div class="nav-item"><%= link_to(t(:plants), plantas_path, :class => "nav-link") %></div>
+            <div class="nav-item"><%= link_to(t(:animals), animais_path, :class => "nav-link") %></div>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to(t(:agroforestry_systems), safs_path, :class => "nav-link") %>
+        </li>
+      <% end %>
       <% if current_usuario %>
         <% if current_usuario.admin? %>
           <li class="nav-item dropdown">
@@ -51,21 +57,21 @@
       </li>
       <% if current_usuario %>
         <li class="nav-item">
-          <%= link_to("#{t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
+          <%= link_to "#{current_usuario.email}", usuario_path(current_usuario), :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "(#{current_usuario.email})", usuario_path(current_usuario), :class => "nav-link text-danger" %>
+          <%= link_to("#{t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
         </li>
       <% else %>
         <li class="nav-item">
           <strong><%= link_to(t(:login), new_usuario_session_path, :class => "nav-link") %></strong>
         </li>
         <li>
-          <strong><%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link text-danger" %></strong>
+          <strong><%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link" %></strong>
         </li>
       <% end %>
       <li>
-        <strong><%= link_to t(:helpus), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger", :style => "color: #e24d6f !important;"%></strong>
+        <strong><%= link_to t(:helpus), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger" %></strong>
       </li>
       <li>
         <select id="locale" onchange="if (this.value) window.location.href='<%= request.path %>?locale=' + this.value" class="form-control">
