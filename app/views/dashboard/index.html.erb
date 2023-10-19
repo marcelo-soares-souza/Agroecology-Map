@@ -27,7 +27,7 @@
   countries = []
   countries.push(['Country', 'Locations'])
 
-  <% @countries.each do |country| %>
+  <% @location_by_country.each do |country| %>
       countries.push(['<%= country[0] %>', <%= country[1] %>])
   <% end %>
 

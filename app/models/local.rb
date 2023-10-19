@@ -33,7 +33,7 @@ class Local < ApplicationRecord
                     default_url: ->(a) { "/assets/place_:style_#{a.instance.default_image_number}.png" }
   validates_attachment_content_type :imagem, content_type: %r{\Aimage/.*\z}
 
-  def country
+  def get_country
     if not latitude.blank?
       Geocoder.search([latitude, longitude]).first.country
     end

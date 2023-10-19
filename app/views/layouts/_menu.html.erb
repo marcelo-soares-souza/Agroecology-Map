@@ -13,6 +13,7 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:about) %></a>
         <div class="dropdown-menu">
           <div class="nav-item"><%= link_to("Manual", manual_index_path, :class => "nav-link") %></div>
+          <div class="nav-item"><%= link_to(t(:data_summary), dashboard_path, :class => "nav-link") %></div>
           <div class="nav-item"><%= link_to(t(:friends), friends_path, :class => "nav-link") %></div>
         </div>
       </li>
