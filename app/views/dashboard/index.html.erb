@@ -1,15 +1,15 @@
 <style>
   .practices-box {
       border: 1px solid #dedee0;
-      max-width: 1024px;
+      max-width: 900px;
       padding: 18px 8px;
       margin: 8px auto 20px;
   }
 
   canvas {
     width: 100%;
-    max-width: 90% !important;
-    max-height:600px !important;
+    max-width: 95% !important;
+    max-height: 900px !important;
     margin-left: auto;
     margin-right: auto;
   }
@@ -101,7 +101,7 @@
   data_experience_by_theme = []
   labels_experience_by_theme = []
   <% @experience_by_theme.each do |experience| %>
-    labels_experience_by_theme.push('<%= @tema_experiencia_agroecologicas.key(experience[0].id) %> (<%= experience[1] %>)')
+    labels_experience_by_theme.push('<%= @tema_experiencia_agroecologicas.key(experience[0].id).truncate(35) %> (<%= experience[1] %>)')
     data_experience_by_theme.push('<%= experience[1] %>')
   <% end %>
 
@@ -114,17 +114,20 @@
       'rgba(100, 162, 235, 0.5)',
       'rgba(253, 102, 255, 0.5)',
       'rgba(250, 200, 207, 0.5)',
-    ],
+      'rgba(255, 200, 207, 0.5)',
+      ],
     }]
   const optionsByTheme ={
-    responsive: true,
-    maintainAspectRatio: true,
 
-    plugins: {
-    legend: {
-      display: false
-    }
-  }
+
+    scaleShowValues: true,
+  scales: {
+    xAxes: [{
+      ticks: {
+        autoSkip: false
+      }
+    }]
+  },
   }
 
   var chart_by_theme = new Chart(ctxByTheme, {
