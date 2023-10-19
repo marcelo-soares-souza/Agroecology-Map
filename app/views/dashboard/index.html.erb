@@ -1,17 +1,37 @@
 <style>
   .practices-box {
       border: 1px solid #dedee0;
-      max-width: 900px;
+      max-width: 1024px;
       padding: 18px 8px;
       margin: 8px auto 20px;
+  }
+
+  canvas {
+    width: 100%;
+    max-width: 90% !important;
+    max-height:600px !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <br>
     <div class="practices-box">
-      <h4>Locations per country</h4>
+      <h4>Agroecology locations per country</h4>
       <div id="regions_div"></div>
+    </div>
+  </div>
+  <div class="practices-box">
+    <h4>Locations by Type</h4>
+    <div>
+      <canvas id="location-by-type"></canvas>
+    </div>
+  </div>
+  <div class="practices-box">
+    <h4>Agroecology experiences by main theme</h4>
+    <div>
+      <canvas id="experience-by-theme"></canvas>
     </div>
   </div>
 </div>
@@ -39,4 +59,80 @@
     chart.draw(data, options);
   }
   window.onresize = drawRegionsMap;
+</script>
+<script>
+  const ctxByType = document.getElementById('location-by-type');
+
+  data_by_type = []
+  labels_by_type = []
+  <% @location_by_type.each do |by_type| %>
+    labels_by_type.push('<%= @tipos.key(by_type[0]) %> (<%= by_type[1] %>)')
+    data_by_type.push('<%= by_type[1] %>')
+  <% end %>
+
+  const datasetByType = [{
+      label: '',
+      data: data_by_type,
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(45, 192, 192, 0.5)',
+      'rgba(100, 162, 235, 0.5)',
+      'rgba(253, 102, 255, 0.5)',
+      'rgba(250, 200, 207, 0.5)',
+    ],
+    }]
+  const optionsByType ={
+    responsive: true,
+    maintainAspectRatio: true,
+  }
+
+  var chart_by_type = new Chart(ctxByType, {
+    type: 'doughnut',
+    data: {
+      labels: labels_by_type,
+      datasets: datasetByType,
+    },
+    options: optionsByType,
+  });
+</script>
+<script>
+  const ctxByTheme = document.getElementById('experience-by-theme');
+
+  data_experience_by_theme = []
+  labels_experience_by_theme = []
+  <% @experience_by_theme.each do |experience| %>
+    labels_experience_by_theme.push('<%= @tema_experiencia_agroecologicas.key(experience[0].id) %> (<%= experience[1] %>)')
+    data_experience_by_theme.push('<%= experience[1] %>')
+  <% end %>
+
+  const datasetByTheme = [{
+      label: '',
+      data: data_experience_by_theme,
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(45, 192, 192, 0.5)',
+      'rgba(100, 162, 235, 0.5)',
+      'rgba(253, 102, 255, 0.5)',
+      'rgba(250, 200, 207, 0.5)',
+    ],
+    }]
+  const optionsByTheme ={
+    responsive: true,
+    maintainAspectRatio: true,
+
+    plugins: {
+    legend: {
+      display: false
+    }
+  }
+  }
+
+  var chart_by_theme = new Chart(ctxByTheme, {
+    type: 'bar',
+    data: {
+      labels: labels_experience_by_theme,
+      datasets: datasetByTheme,
+    },
+    options: optionsByTheme,
+  });
 </script>
