@@ -5,6 +5,10 @@ class DashboardController < ApplicationController
   before_action :load_tipos
 
   def index
+    @locations_count = Local.count
+    @experiences_in_agroecology_count = ExperienciaAgroecologica.count
+    @saf_count = Saf.count
+    @contributors_count = Usuario.count
     @location_by_country = Local.group(:country).count
     @location_by_type = Local.group(:tipo).order("count_all desc").count
     @experience_by_theme = ExperienciaAgroecologica.group(:tema_experiencia_agroecologica).order("count_all desc").count
