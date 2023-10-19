@@ -10,39 +10,38 @@
     width: 100%;
     max-width: 98% !important;
     max-height: 1000px !important;
-    margin-left: auto;
-    margin-right: auto;
   }
 </style>
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <br>
     <div class="practices-box">
-      <b>Total Location: </b> <%= @locations_count %>
-      <br>
-      <b>Total Experiences in Agroecology: </b> <%= @experiences_in_agroecology_count %>
-      <br>
-      <b>Total Agroforestry Systems: </b> <%= @saf_count %>
-      <br>
-      <b>Total Contributors: </b> <%= @contributors_count %>
+      <div style="text-align: left;">
+        <b>Total Location: </b><%= @locations_count %>
+        <br>
+        <b>Total Experiences in Agroecology: </b> <%= @experiences_in_agroecology_count %>
+        <br>
+        <b>Total Agroforestry Systems: </b> <%= @saf_count %>
+        <br>
+        <b>Total Contributors: </b> <%= @contributors_count %>
+      </div>
     </div>
   </div>
   <div class="tab-pane active">
-    <br>
     <div class="practices-box">
       <h4>Agroecology locations per country</h4>
       <div id="regions_div"></div>
     </div>
   </div>
   <div class="practices-box">
-    <h4>Locations by Type</h4>
-    <div>
+    <h4>Locations by type</h4>
+    <div style="margin-left: auto; margin-right: auto;">
       <canvas id="location-by-type"></canvas>
     </div>
   </div>
   <div class="practices-box">
     <h4>Agroecology experiences by main theme</h4>
-    <div>
+    <div style="margin-left: auto; margin-right: auto;">
       <canvas id="experience-by-theme"></canvas>
     </div>
   </div>
@@ -109,7 +108,8 @@
     options: optionsByType,
   });
 
-
+  chart_by_type.canvas.parentNode.style.height = '500px';
+  chart_by_type.canvas.parentNode.style.width = '500px';
   chart_by_type.update();
 </script>
 <script>
@@ -145,6 +145,7 @@
       ],
     }]
   const optionsByTheme ={
+    responsive: true,
     scaleShowValues: true,
     plugins: {
       legend: {
@@ -168,4 +169,6 @@
     },
     options: optionsByTheme,
   });
+
+  chart_by_theme.update();
 </script>
