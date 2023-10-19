@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   get "/map", to: "home#index"
+  get "dashboard", to: "dashboard#index"
 
   resources :friends
   resources :manual

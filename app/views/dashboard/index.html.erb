@@ -1,0 +1,42 @@
+<style>
+  .practices-box {
+      border: 1px solid #dedee0;
+      max-width: 900px;
+      padding: 18px 8px;
+      margin: 8px auto 20px;
+  }
+</style>
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <br>
+    <div class="practices-box">
+      <h4>Locations per country</h4>
+      <div id="regions_div"></div>
+    </div>
+  </div>
+</div>
+<!-- Scripts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {
+    'packages':['geochart'],
+  });
+
+  google.charts.setOnLoadCallback(drawRegionsMap);
+
+  countries = []
+  countries.push(['Country', 'Locations'])
+
+  <% @countries.each do |country| %>
+      countries.push(['<%= country[0] %>', <%= country[1] %>])
+  <% end %>
+
+  function drawRegionsMap() {
+    var data = google.visualization.arrayToDataTable(countries);
+    var options = {};
+    options['legend'] = 'none';
+    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+    chart.draw(data, options);
+  }
+  window.onresize = drawRegionsMap;
+</script>
