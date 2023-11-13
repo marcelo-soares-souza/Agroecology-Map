@@ -1,9 +1,8 @@
 <% title @local.nome %>
-
-
 <%= link_to t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-warning", :style => "float:right;" %>
-<br><br><br>
-
+<br>
+<br>
+<br>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to t(:locations), locais_path, :class => "nav-link" %>
@@ -11,95 +10,90 @@
   <li class="nav-item">
     <%= link_to truncate(@local.nome, length: 16), local_path(@local.id), :class => "nav-link active" %>
   </li>
-
   <li class="nav-item">
     <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count%>
     <%= link_to t(:gallery) + " (#{total_midia})", local_gallery_path(@local.id), :class => "nav-link", :style => "color: red !important" %>
   </li>
-
-  <!--
   <li class="nav-item">
     <%= link_to "Blog (#{@local.blogs.count})", local_blogs_path(@local), :class => "nav-link" %>
   </li>
-  -->
 </ul>
-
 <br>
-
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <div class="thumbnail">
       <%= image_tag(@local.imagem.url(:medium)) %>
     </div>
-    <br><br>
-    <div class='<%= (@local.nome.length() > 100 ? 'text-box' : '') %>'><h3><%= @local.nome %></h3></div>
+    <br>
+    <br>
+    <div class='<%= (@local.nome.length() > 100 ? 'text-box' : '') %>'>
+      <h3><%= @local.nome %></h3>
+    </div>
     <%= "<strong>#{t(:type)}:</strong><br>#{@tipos.key(@local.tipo)}&nbsp;<br>".html_safe if @local.tipo? %>
     <%= "<br><strong>#{t(:experiences_in_agroecology)}:</strong><br><div>#{@local.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome.truncate(50), experiencia_agroecologica_path(experiencia_agroecologica), style: "font-size:21px !important;" }.join("<br>").html_safe}&nbsp;</div>".html_safe if @local.experiencia_agroecologicas.count > 0 %>
     <%= "<br><strong>#{t(:safs)}:</strong><br>#{@local.safs.map { |saf| link_to saf.nome, saf_path(saf), style: "font-size:21px !important;" }.join("<br>").html_safe}&nbsp;<br>".html_safe if @local.safs.count > 0 %>
     <%= "<br><strong>#{t(:description)}:</strong><br><div class='text-box'>#{simple_format (h @local.observacao).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe if @local.observacao? %>
     <%= "<br><strong>#{t(:accommodation)}:</strong><br>#{@hospedagens.key(@local.hospedagem)}&nbsp;<br>".html_safe if @local.hospedagem? %>
     <%= "<br><strong>#{t(:responsible_for_information)}:</strong><br>#{link_to @local.usuario.nome, usuario_path(@local.usuario)}&nbsp;<br>".html_safe if @local.usuario.nome? %>
-
     <!-- <%= "<br><strong>Organizações:</strong><br>#{@local.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;<br>".html_safe if @local.organizacoes.count > 0 %> -->
     <!-- <%= "<br><br><strong>#{t(:contributors)}:</strong><br>#{@local.usuarios.map { |usuario| link_to usuario.nome, usuario_path(usuario) }.join(", ").html_safe}&nbsp;".html_safe if @local.usuarios.count > 0 %> -->
     <!-- <%= "<br><br><strong>Blog:</strong><br>#{@local.blogs.order(updated_at: :desc).take(10).map { |blog| link_to blog.titulo, local_blog_url(@local, blog) }.join("<br>").html_safe}&nbsp;".html_safe if @local.blogs.count > 0 %> -->
-
     <% if @local.latitude and @local.longitude %>
       <br>
       <div class="form-group row">
         <div id="map-show"></div>
       </div>
-
       <script>
-          $(document).ready(function () {
-              var map = L.map('map-show', { zoomControl: false, worldCopyJump: true }).setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
-              var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
-              var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                  attribution: attributions,
-                  maxZoom: 18,
-              }).addTo(map);
-              var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
-                  attribution: 'Mapa da Agroecologia | MapBox',
-                  maxZoom: 18,
-              });
-              var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};
+        $(document).ready(function () {
+            var map = L.map('map-show', { zoomControl: false, worldCopyJump: true }).setView([<%= @local.latitude %>, <%= @local.longitude %>], 10);
+            var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
+            var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: attributions,
+                maxZoom: 18,
+            }).addTo(map);
+            var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
+                attribution: 'Mapa da Agroecologia | MapBox',
+                maxZoom: 18,
+            });
+            var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};
 
-              L.control.layers(baseMaps).addTo(map);
+            L.control.layers(baseMaps).addTo(map);
 
-              var Icon = L.icon({
-                  iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
-                  shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-                  iconSize: [38, 95],
-                  shadowSize: [50, 64],
-                  iconAnchor: [22, 94],
-                  shadowAnchor: [4, 62],
-                  popupAnchor: [-3, -76]
-              });
-              $(window).on("resize", function () {
-                  $("#map-show").width($(window).width() - 30);
-                  map.invalidateSize();
-              }).trigger("resize");
-              $(window).on("resize", function () {
-                  $("#map-show").height($(window).height());
-                  map.invalidateSize();
-              }).trigger("resize");
+            var Icon = L.icon({
+                iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
+                shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+                iconSize: [38, 95],
+                shadowSize: [50, 64],
+                iconAnchor: [22, 94],
+                shadowAnchor: [4, 62],
+                popupAnchor: [-3, -76]
+            });
+            $(window).on("resize", function () {
+                $("#map-show").width($(window).width() - 30);
+                map.invalidateSize();
+            }).trigger("resize");
+            $(window).on("resize", function () {
+                $("#map-show").height($(window).height());
+                map.invalidateSize();
+            }).trigger("resize");
 
-              L.marker([<%= @local.latitude %>, <%= @local.longitude %>], {icon: Icon}).addTo(map);
-          });
+            L.marker([<%= @local.latitude %>, <%= @local.longitude %>], {icon: Icon}).addTo(map);
+        });
       </script>
     <% end %>
   </div>
 </div>
-
 <% if usuario_signed_in? %>
   <% if current_usuario.admin? or current_usuario.id == @local.usuario.id %>
-    <br><br>
+    <br>
+    <br>
     <div class="form-actions">
       <%= link_to t(:edit), edit_local_path(@local), :class => 'btn btn-success' %>
       <%= link_to t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-info" %>
       <%= link_to t(:register_new_agroforestry), new_local_saf_path(@local), :class => "btn btn-warning" %>
       <%= link_to t(:destroy), local_path(@local), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
     </div>
-    <br><br>
+    <br>
+    <br>
   <% end %>
 <% end %>
