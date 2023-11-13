@@ -37,3 +37,4 @@ yarn.lock
 
 .idea
 .env
+storage
