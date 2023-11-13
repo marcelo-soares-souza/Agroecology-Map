@@ -1,72 +1,69 @@
 <%= render 'layouts/dataTable' %>
-
 <% title t(:safs) %>
-
 <%= link_to t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br><br><br>
-
+<br>
+<br>
+<br>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to t(:safs) + " #{ @local.blank? ? '' : '(' + truncate(@local.nome, length: 16) + ')' }", "#", :class => "nav-link active" %>
   </li>
 </ul>
-
 <% if @safs.empty? %>
   <br>
   <h3>Nenhum SAF Registrado</h3>
 <% else %>
-
   <br>
   <div>
     <table id="dataTable-agroecologia" class="table table-striped table-bordered" width="100%" cellspacing="0">
       <thead>
-      <tr>
-        <th></th>
-        <th><%= t(:name) %></th>
-        <th><%= t('location.data') %></th>
-        <th><%= t(:gallery) %></th>
-        <th><%= t(:plants) %></th>
-        <th><%= t(:animals) %></th>
-        <% if usuario_signed_in? %>
-          <th class="list-control"></th>
-          <th class="list-control"></th>
-        <% end %>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @safs.each do |saf| %>
         <tr>
-          <td>
-            <div  class="thumbnail-mini">
-              <% if saf.midias[0] %>
-                <%= link_to image_tag(saf.midias[0].imagem.url(:medium)), saf_path(saf) %>
-              <% else %>
-                <%= link_to image_tag(saf.local.imagem.url(:medium)), saf_path(saf) %>
-              <% end %>
-            </div>
-          </td>
-          <td><%= link_to saf.nome, saf_path(saf) %></td>
-          <td><%= link_to saf.local.nome, local_path(saf.local) %></td>
-          <td><%= link_to saf.midias.count, saf_gallery_path(saf) %></td>
-          <td><%= saf.plantas.count %></td>
-          <td><%= saf.animais.count %></td>
+          <th></th>
+          <th><%= t(:name) %></th>
+          <th><%= t('location.data') %></th>
+          <!-- <th><%= t(:gallery) %></th> -->
+          <!-- <th><%= t(:plants) %></th> -->
+          <!-- <th><%= t(:animals) %></th> -->
           <% if usuario_signed_in? %>
-            <% if current_usuario.admin? or saf.usuario.id == current_usuario.id %>
-              <td><%= link_to t(:edit), edit_saf_path(saf), :class => 'btn btn-sm btn-success' %></td>
-              <td><%= link_to t(:destroy), saf_path(saf), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
-            <% else %>
-              <td></td>
-              <td></td>
-            <% end %>
+            <th class="list-control"></th>
+            <th class="list-control"></th>
           <% end %>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @safs.each do |saf| %>
+          <tr>
+            <td>
+              <div  class="thumbnail-mini">
+                <% if saf.midias[0] %>
+                  <%= link_to image_tag(saf.midias[0].imagem.url(:medium)), saf_path(saf) %>
+                <% else %>
+                  <%= link_to image_tag(saf.local.imagem.url(:medium)), saf_path(saf) %>
+                <% end %>
+              </div>
+            </td>
+            <td><%= link_to saf.nome, saf_path(saf) %></td>
+            <td><%= link_to saf.local.nome, local_path(saf.local) %></td>
+            <!-- <td><%#= link_to saf.midias.count, saf_gallery_path(saf) %></td> -->
+            <!-- <td><%#= saf.plantas.count %></td> -->
+            <!-- <td><%#= saf.animais.count %></td> -->
+            <% if usuario_signed_in? %>
+              <% if current_usuario.admin? or saf.usuario.id == current_usuario.id %>
+                <td><%= link_to t(:edit), edit_saf_path(saf), :class => 'btn btn-sm btn-success' %></td>
+                <td><%= link_to t(:destroy), saf_path(saf), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
+              <% else %>
+                <td></td>
+                <td></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-
-  <script>$(document).ready(function () {
-      dataTables();
-  });</script>
+  <script>
+    $(document).ready(function () {
+          dataTables();
+      });
+  </script>
 <% end %>

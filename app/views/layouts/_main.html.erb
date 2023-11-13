@@ -2,7 +2,7 @@
   <%= yield %>
 <% else %>
   <div class="container">
-    <div class="starter-template">
+    <div class="<%= request.path == '/' ?  'starter-template-map' : 'starter-template' %>">
       <%= render 'layouts/alert' %>
       <%= yield %>
     </div>

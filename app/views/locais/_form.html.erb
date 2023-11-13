@@ -1,14 +1,14 @@
 <%= form_for(local, html: { multipart: true }) do |f| %>
   <% if local.errors.any? %>
     <div id="error_explanation">
-        <b><%= local.errors.count.to_s + " Error(s)" %></b>
-        <br><br>
-        <% local.errors.full_messages.each do |message| %>
-          <%= message %><br>
-        <% end %><br>
+      <b><%= local.errors.count.to_s + " Error(s)" %></b>
+      <br>
+      <br>
+      <% local.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
     </div>
   <% end %>
-
   <% if current_usuario.admin? %>
     <div class="form-group row">
       <%= f.label 'Responsável', class: "col-sm-2 col-form-label col-form-label-lg" %>
@@ -17,43 +17,37 @@
       </div>
     </div>
   <% end %>
-
   <div class="form-group row required">
     <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :nome, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group required row ">
     <%= f.label t(:type), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
     <div class="col-sm-10">
       <%= f.collection_select(:tipo, @tipos, :last, :first, { :include_blank => t(:select_location_type) }, { class: "form-control selectpicker", "data-live-search": true }) %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-8">
       <%= f.file_field :imagem, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= f.label t(:description), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-      <%= f.text_area :observacao, class: "form-control", :rows => "5" %>
+      <%= f.text_area :observacao, class: "form-control", :rows => "8" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= f.label t(:accommodation), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
       <%= f.collection_select(:hospedagem, @hospedagens, :last, :first, { :include_blank => t(:accept_hosting) }, { class: "form-control selectpicker", "data-live-search": true }) %>
     </div>
   </div>
-
-<!--
+  <!--
   <div class="form-group row">
     <%= f.label t(:partner_collaborators), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
@@ -69,90 +63,85 @@
   <div class="form-group row">
     <%= f.label t(:localization), class: "col-sm-2 col-form-label col-form-label-lg" %>
     <div class="col-sm-10">
-    <div id="map-sistema"></div>
+      <div id="map-sistema"></div>
+    </div>
   </div>
-  </div>
-
   <br>
-
   <%= f.hidden_field :latitude, id: "latitude" %>
   <%= f.hidden_field :longitude, id: "longitude" %>
-
   <div class="actions">
     <%= f.submit t(:submit), class: "btn btn-primary" %>
   </div>
-
   <script>
-      $(document).ready(function () {
-          <% if params[:action] == 'new' %>
-          lat = -15.77835833463309;
-          lon = -47.88219451904297;
-          <% elsif params[:action] != 'new' %>
-          <% if f.object.latitude? %>
-          lat = <%= f.object.latitude %>;
-          <% else %>
-          lat = -15.77835833463309;
-          <% end %>
+    $(document).ready(function () {
+        <% if params[:action] == 'new' %>
+        lat = -15.77835833463309;
+        lon = -47.88219451904297;
+        <% elsif params[:action] != 'new' %>
+        <% if f.object.latitude? %>
+        lat = <%= f.object.latitude %>;
+        <% else %>
+        lat = -15.77835833463309;
+        <% end %>
 
-          <% if f.object.longitude? %>
-          lon = <%= f.object.longitude %>;
-          <% else %>
-          lon = -47.88219451904297;
-          <% end %>
-          <% end %>
+        <% if f.object.longitude? %>
+        lon = <%= f.object.longitude %>;
+        <% else %>
+        lon = -47.88219451904297;
+        <% end %>
+        <% end %>
 
-          var map = L.map('map-sistema', { zoomControl: false, worldCopyJump: true }).setView([lat, lon], 10);
+        var map = L.map('map-sistema', { zoomControl: false, worldCopyJump: true }).setView([lat, lon], 10);
 
-          $(window).on("resize", function () {
-              $("#map-sistema").width($(window).width());
-              map.invalidateSize();
-          }).trigger("resize");
-          $(window).on("resize", function () {
-              $("#map-sistema").height($(window).height());
-              map.invalidateSize();
-          }).trigger("resize");
+        $(window).on("resize", function () {
+            $("#map-sistema").width($(window).width());
+            map.invalidateSize();
+        }).trigger("resize");
+        $(window).on("resize", function () {
+            $("#map-sistema").height($(window).height());
+            map.invalidateSize();
+        }).trigger("resize");
 
-          var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: 'Agroecology Map | OpenStreetMap',
-              maxZoom: 18,
-          }).addTo(map);
-          var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
-              attribution: 'Agroecology Map | MapBox',
-              maxZoom: 18,
-          });
-          var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};
+        var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Agroecology Map | OpenStreetMap',
+            maxZoom: 18,
+        }).addTo(map);
+        var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
+            attribution: 'Agroecology Map | MapBox',
+            maxZoom: 18,
+        });
+        var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};
 
-          L.control.layers(baseMaps).addTo(map);
+        L.control.layers(baseMaps).addTo(map);
 
-          map.addControl(new L.control.zoom({position: 'topright'}));
-          L.control.locate().addTo(map);
+        map.addControl(new L.control.zoom({position: 'topright'}));
+        L.control.locate().addTo(map);
 
-          var Icon = L.icon({
-              iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
-              shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-              iconSize: [38, 95],
-              shadowSize: [50, 64],
-              iconAnchor: [22, 94],
-              shadowAnchor: [4, 62],
-              popupAnchor: [-3, -76]
-          });
+        var Icon = L.icon({
+            iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>',
+            shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+            iconSize: [38, 95],
+            shadowSize: [50, 64],
+            iconAnchor: [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor: [-3, -76]
+        });
 
-          var marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
+        var marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
 
-          $('#latitude').val(lat);
-          $('#longitude').val(lon);
+        $('#latitude').val(lat);
+        $('#longitude').val(lon);
 
-          map.on('click', function (e) {
-              marker.setLatLng(e.latlng);
-              $('#latitude').val(marker.getLatLng().lat);
-              $('#longitude').val(marker.getLatLng().lng);
-          });
+        map.on('click', function (e) {
+            marker.setLatLng(e.latlng);
+            $('#latitude').val(marker.getLatLng().lat);
+            $('#longitude').val(marker.getLatLng().lng);
+        });
 
-          marker.on('dragend', function (e) {
-              $('#latitude').val(marker.getLatLng().lat);
-              $('#longitude').val(marker.getLatLng().lng);
-          });
-      });
+        marker.on('dragend', function (e) {
+            $('#latitude').val(marker.getLatLng().lat);
+            $('#longitude').val(marker.getLatLng().lng);
+        });
+    });
   </script>
-  
 <% end %>
