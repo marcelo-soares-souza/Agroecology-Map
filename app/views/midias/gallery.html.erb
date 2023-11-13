@@ -14,14 +14,20 @@
 <br>
 <br>
 <br>
+
 <ul class="nav nav-tabs">
+  <% if params[:local_id] %>
+    <li class="nav-item">
+      <%= link_to t(:locations), locais_path, :class => "nav-link" %>
+    </li>
+  <% end %>
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to truncate(@saf.nome, length: 16), saf_path(@saf), :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
       <%= link_to truncate(@experiencia_agroecologica.nome, length: 16), experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
     <% elsif params[:local_id] %>
-      <%= link_to truncate(@local[0].nome, length: 16), local_path(@local[0]), :class => "nav-link active" %>
+      <%= link_to truncate(@local[0].nome, length: 16), local_path(@local[0]), :class => "nav-link" %>
     <% end %>
   </li>
   <li class="nav-item">
@@ -29,8 +35,16 @@
       <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path, :class => "nav-link active" %>
     <% elsif params[:experiencia_agroecologica_id] %>
       <%= link_to t(:gallery) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path, :class => "nav-link active" %>
+    <% elsif params[:local_id] %>
+      <% total_midia = Midia.where(experiencia_agroecologica: @local[0].experiencia_agroecologicas).count + Midia.where(saf: @local[0].safs).count%>
+      <%= link_to t(:gallery) + " (#{total_midia})", local_gallery_path(@local[0].id), :class => "nav-link active" %>
     <% end %>
   </li>
+  <% if params[:local_id] %>
+  <li class="nav-item">
+    <%= link_to "Blog (#{@local[0].blogs.count})", local_blogs_path, :class => "nav-link" %>
+  </li>
+  <% end %>
 </ul>
 <% if @midias.empty? %>
   <br>
