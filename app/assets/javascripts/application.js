@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require_tree .
 //= require cookies_eu
+//= require trix
 
 $(document).ready(function () {
     $(".alert").fadeTo(2000, 500).slideUp(500, function () {
@@ -21,3 +22,4 @@ $(document).ready(function () {
     $.fn.datepicker.defaults.format = "dd/mm/yyyy";
 });
 
+Trix.config.textAttributes.textAlignJustify = { tagName: 'div-text-align-justify' };

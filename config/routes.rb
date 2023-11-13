@@ -65,6 +65,10 @@ Rails.application.routes.draw do
     resources :usuarios, path: "contributors"
   end
 
+  scope(usuarios: {}) do
+    resources :novidades, path: "news"
+  end
+
   #  devise_for :usuarios
   devise_for :usuarios, controllers: {
     registrations: "usuarios/registrations"

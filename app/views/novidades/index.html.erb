@@ -1,35 +1,31 @@
 <% title t(:news) %>
-
-<br><br><br>
-
+<br>
+<br>
+<br>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to t(:news), "#", :class => "nav-link active" %>
   </li>
 </ul>
-
 <% if @blogs.empty? %>
   <br>
-
   <h3>Nenhuma Novidades
-    <br><br>
+    <br>
+    <br>
   </h3>
-
 <% else %>
-
   <br>
   <% @blogs.each do |blog| %>
     <div style="text-align: left;">
-
       <div class="blog-content">
         <h3><%= link_to blog.titulo, local_blog_url(blog.local, blog) %></h3>
-        <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)} (#{link_to blog.local.nome, local_blogs_path(blog.local)}). Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %>
+        <small><%= "By #{link_to blog.usuario.nome, usuario_path(blog.usuario)} (#{link_to blog.local.nome, local_blogs_path(blog.local)}). Updated at #{blog.updated_at}".html_safe %>
           .</small>
-        <br><br>
-        <div class="truncate lines"><%= blog.texto.html_safe %></div>
+        <br>
+        <br>
+        <div class="content truncate lines"><%= blog.texto.html_safe %></div>
         <%= "<br><br><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br>".html_safe if blog.texto.length > 4096 %>
       </div>
-
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or blog.usuario_id == current_usuario.id %>
           <td><%= link_to t(:edit), edit_local_blog_path(blog.local, blog), :class => 'btn btn-sm btn-success' %></td>

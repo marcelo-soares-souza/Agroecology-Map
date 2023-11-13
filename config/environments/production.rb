@@ -109,4 +109,6 @@ Rails.application.configure do
 
   config.active_record.async_query_executor = :global_thread_pool
   config.active_record.global_executor_concurrency = 2
+
+  config.active_storage.service = :local
 end

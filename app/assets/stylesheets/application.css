@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require cookies_eu
+ *= require trix
 */
 
 .btn {
@@ -602,4 +603,20 @@ a:focus, a:hover {
     margin-right: auto;
     background-color: transparent;
     padding-left: 10px;
+}
+
+.content {
+    width: 100%;
+    text-align: justify;
+}
+
+.content img {
+    padding: 10px;
+    margin: auto;
+    display: block;
+}
+
+.content a:hover {
+    color: #fff;
+    background-color: #007bff;
 }

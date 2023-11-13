@@ -1,5 +1,8 @@
 {
   "name": "agroecologia",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/actiontext": "^7.1.2",
+    "trix": "^2.0.7"
+  }
 }
