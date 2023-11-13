@@ -611,12 +611,29 @@ a:focus, a:hover {
 }
 
 .content img {
+    display: block;
+    max-width: 1024px;
+    max-height: 700px;
+    width: auto;
+    height: auto;
     padding: 10px;
     margin: auto;
+}
+
+trix-editor img {
     display: block;
+    max-width: 900px;
+    max-height: 700px;
+    width: auto;
+    height: auto;
+    margin: auto;
 }
 
 .content a:hover {
     color: #fff;
     background-color: #007bff;
+}
+
+.trix-content img {
+  height: 450px;
 }
