@@ -1,3 +1,10 @@
+<style>
+@media screen and (max-width: 400px) {
+  td:nth-child(3), th:nth-child(3), td:nth-child(4), th:nth-child(4) {
+    display: none
+  }
+}
+</style>
 <%= render 'layouts/dataTable' %>
 <% title t(:experiences_in_agroecology) %>
 <%= link_to t(:register_new_experience), new_experiencia_agroecologica_path, :class => "btn btn-primary", :style => "float:right;" %>

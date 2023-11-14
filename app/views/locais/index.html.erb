@@ -1,3 +1,10 @@
+<style>
+@media screen and (max-width: 400px) {
+  td:nth-child(3), th:nth-child(3) {
+    display: none
+  }
+}
+</style>
 <%= render 'layouts/dataTable' %>
 <% title t(:locations) %>
 <%= link_to t("location.register_new_location"), new_local_path, :class => "btn btn-primary", :style => "float:right;" %>
