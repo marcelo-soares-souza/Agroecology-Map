@@ -1,6 +1,6 @@
 <% title "Editando #{@planta.nome} | Sistemas Agroflorestais" %>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <% if usuario_signed_in? %>
     <li class="nav-item">
       <%= link_to t(:all), plantas_path, :class => "nav-link" %>

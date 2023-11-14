@@ -1,6 +1,6 @@
 <% title "Editando #{@saf.nome}" %>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <% if usuario_signed_in? %>
     <li class="nav-item">
       <%= link_to t(:safs), safs_path, :class => "nav-link" %>

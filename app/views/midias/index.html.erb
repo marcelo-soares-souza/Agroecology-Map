@@ -16,7 +16,7 @@
 
 <br><br><br>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to truncate(@saf.nome, length: 16), saf_path(@saf), :class => "nav-link" %>
