@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
     <%= link_to t(:contributors), usuarios_path, :class => "nav-link" %>
   </li>
@@ -6,41 +6,37 @@
     <%= link_to @usuario.nome, usuario_path(@usuario.id), :class => "nav-link active" %>
   </li>
 </ul>
-
 <br>
-
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-
     <div class="thumbnail">
       <%= image_tag(@usuario.imagem.url(:medium), :width => "150") %>
       <% if usuario_signed_in? %>
         <% if current_usuario.admin? or current_usuario.id == @usuario.id %>
           <%= link_to image_tag(@usuario.imagem.url(:medium), :width => "150"), edit_usuario_path(@usuario) %>
         <% end %>
-     <% end %>
+      <% end %>
     </div>
-
-    <br><br>
+    <br>
+    <br>
     <h3><%= @usuario.nome %></h3>
-
     <br>
     <% if usuario_signed_in? %>
       <%= "<strong>E-Mail:</strong><br>#{@usuario.email}&nbsp;".html_safe if @usuario.email? %>
-      <br><br>
+      <br>
+      <br>
     <% end %>
     <%= "<strong>#{t(:registered_locations)}:</strong><br>#{@usuario.locais.map { |local| link_to local.nome, local_path(local) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.locais.count > 0 %>
     <!-- <%= "<br><br><strong>#{t(:registered_locations)}:</strong><br>#{@usuario.colaboracoes.map { |colaboracao| link_to colaboracao.nome, local_path(colaboracao) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.colaboracoes.count > 0 %> -->
     <!-- <%= "<br><br><strong>Organizações:</strong><br>#{@usuario.organizacoes.map { |organizacao| link_to organizacao.nome, organizacao_path(organizacao) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.organizacoes.count > 0 %> -->
     <%= "<br><br><strong>#{t(:registered_experiences)}:</strong><br>#{@usuario.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.experiencia_agroecologicas.count > 0 %>
     <%= "<br><br><strong>#{t(:safs)}:</strong><br>#{@usuario.safs.map { |saf| link_to saf.nome, saf_path(saf) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.safs.count > 0 %>
-
   </div>
 </div>
-
 <% if usuario_signed_in? %>
   <% if current_usuario.admin? or current_usuario.id == @usuario.id %>
-    <br><br>
+    <br>
+    <br>
     <div class="form-actions">
       <%= link_to t("location.register_new_location"), new_local_path, :class => "btn btn-primary" %>
       <%= link_to t('.edit', :default => "Editar"), edit_usuario_path(@usuario), :class => 'btn btn-success' %>

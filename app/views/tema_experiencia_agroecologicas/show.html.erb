@@ -1,7 +1,8 @@
 <%= link_to "Registrar Novo Tema", new_tema_experiencia_agroecologica_path, :class => "btn btn-primary", :style => "float:right;" %>
-<br><br><br>
-
-<ul class="nav nav-tabs">
+<br>
+<br>
+<br>
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
     <%= link_to t(:all), tema_experiencia_agroecologicas_path, :class => "nav-link" %>
   </li>
@@ -9,19 +10,18 @@
     <%= link_to @tema_experiencia_agroecologica.nome, tema_experiencia_agroecologica_path(@tema_experiencia_agroecologica.id), :class => "nav-link active" %>
   </li>
 </ul>
-
 <br>
-
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
-    <br><br>
+    <br>
+    <br>
     <h3><%= @tema_experiencia_agroecologica.nome %></h3>
   </div>
 </div>
-
 <% if usuario_signed_in? %>
   <% if current_usuario.admin? %>
-    <br><br>
+    <br>
+    <br>
     <div id="tema_experiencia_agroecologica-footer">
       <div class="form-actions">
         <%= link_to t('.edit', :default => "Editar"), edit_tema_experiencia_agroecologica_path(@tema_experiencia_agroecologica), :class => 'btn btn-success' %>

@@ -3,7 +3,6 @@
 <% elsif params[:experiencia_agroecologica_id] %>
   <% title "#{@midia.descricao} | #{@experiencia_agroecologica.nome}" %>
 <% end %>
-
 <% if usuario_signed_in? %>
   <% if params[:saf_id] %>
     <%= link_to t(:send_picture), new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
@@ -11,18 +10,17 @@
     <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
   <% end %>
 <% end %>
-
-<br><br><br>
-
-<ul class="nav nav-tabs">
-<!--  <li class="nav-item">-->
-    <%# if params[:saf_id] %>
-      <%#= link_to t(:safs), safs_path, :class => "nav-link" %>
-    <%# elsif params[:experiencia_agroecologica_id] %>
-      <%#= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
-    <%# end %>
-<!--  </li>-->
-
+<br>
+<br>
+<br>
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <!--  <li class="nav-item">-->
+  <%# if params[:saf_id] %>
+  <%#= link_to t(:safs), safs_path, :class => "nav-link" %>
+  <%# elsif params[:experiencia_agroecologica_id] %>
+  <%#= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
+  <%# end %>
+  <!--  </li>-->
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to truncate(@saf.nome, length: 16), saf_path(@saf), :class => "nav-link" %>
@@ -30,7 +28,6 @@
       <%= link_to truncate(@experiencia_agroecologica.nome, length: 16), experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to t(:photo) + " (#{@saf.midias.count})", saf_midias_path, :class => "nav-link" %>
@@ -38,7 +35,6 @@
       <%= link_to t(:photo) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to truncate(@midia.descricao, length: 18), saf_midia_path(@saf, @midia.id), :class => "nav-link active" %>
@@ -47,21 +43,19 @@
     <% end %>
   </li>
 </ul>
-
 <br>
-
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <%= image_tag(@midia.imagem.url, :class => "midia-imagem") %>
-
-    <br><br>
+    <br>
+    <br>
     <h3><%= @midia.descricao %></h3>
   </div>
 </div>
-
 <% if usuario_signed_in? %>
   <% if current_usuario.admin? or current_usuario.id == @midia.usuario_id %>
-    <br><br>
+    <br>
+    <br>
     <div class="form-actions">
       <% if params[:saf_id] %>
         <%= link_to t(:edit), edit_saf_midia_path(@saf, @midia), :class => 'btn btn-mini btn-success' %>

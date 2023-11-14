@@ -14,8 +14,7 @@
 <br>
 <br>
 <br>
-
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <% if params[:local_id] %>
     <li class="nav-item">
       <%= link_to t(:locations), locais_path, :class => "nav-link" %>
@@ -41,9 +40,9 @@
     <% end %>
   </li>
   <% if params[:local_id] %>
-  <li class="nav-item">
-    <%= link_to "Blog (#{@local[0].blogs.count})", local_blogs_path, :class => "nav-link" %>
-  </li>
+    <li class="nav-item">
+      <%= link_to "Blog (#{@local[0].blogs.count})", local_blogs_path, :class => "nav-link" %>
+    </li>
   <% end %>
 </ul>
 <% if @midias.empty? %>

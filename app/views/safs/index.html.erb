@@ -1,9 +1,9 @@
 <style>
-@media screen and (max-width: 400px) {
-  td:nth-child(3), th:nth-child(3), td:nth-child(4), th:nth-child(4) {
-    display: none
+  @media screen and (max-width: 400px) {
+    td:nth-child(3), th:nth-child(3), td:nth-child(4), th:nth-child(4) {
+      display: none
+    }
   }
-}
 </style>
 <%= render 'layouts/dataTable' %>
 <% title t(:safs) %>
@@ -11,7 +11,7 @@
 <br>
 <br>
 <br>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
     <%= link_to t(:safs) + " #{ @local.blank? ? '' : '(' + truncate(@local.nome, length: 16) + ')' }", "#", :class => "nav-link active" %>
   </li>
