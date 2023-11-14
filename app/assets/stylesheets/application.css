@@ -632,6 +632,22 @@ a:focus, a:hover {
     margin: auto;
 }
 
+@media screen and (max-width: 700px) {
+    .content img {
+        max-width: 800px;
+        max-height: 500px;
+    }
+   
+}
+
+@media screen and (max-width: 500px) {
+    .content img {
+        max-width: 500px;
+        max-height: 300px;
+    }
+   
+}
+
 trix-editor img {
     display: block;
     max-width: 900px;
