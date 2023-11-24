@@ -41,13 +41,18 @@
   lon = 1.0;
   zoom = 3.25;
 
+  var collapsed = false;
+  if (window.innerWidth < 1024) {
+      collapsed = true;
+  }
+
   if (window.devicePixelRatio > 2) {
       zoom = 2;
       lat = -1.00;
       lon = -32.00;
   }
 
-  var map = L.map('map', {fullscreenControl: true, zoomControl: false, worldCopyJump: true}).setView([lat, lon], zoom);
+  var map = L.map('map', {fullscreenControl: true, zoomControl: false, worldCopyJump: true, zoomSnap: 0.25}).setView([lat, lon], zoom);
 
   $(document).ready(function () {
       $(window).on("resize", function () {
@@ -124,9 +129,8 @@
       ppm.addTo(map);
       ofb.addTo(map);
 
-      var kmz = L.kmzLayer();
-      kmz.on('load', function(e) { control.addOverlay(e.layer, e.name); });
-      kmz.load('/philippines.kmz');
+      var philippines = L.kmzLayer();
+      philippines.load('/philippines.kmz');
 
       // permaculture.addTo(map);
       // foei.addTo(map);
@@ -139,7 +143,7 @@
           "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Assentamento Rural</a>": ar,
           "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Unidade de Conservação</a>": uc,
           "<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Quilombos</a>": quilombos,
-          "<a href='https://www.google.com/maps/d/u/0/edit?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&usp=sharing' target='_blank'>Permaculture Map of the Philippines</a>": kmz,
+          "<a href='https://www.google.com/maps/d/u/0/edit?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&usp=sharing' target='_blank'>Permaculture Map of the Philippines</a>": philippines,
           "<a href='https://feirasorganicas.org.br' target='_blank'>Feiras Orgânicas (IDEC)</a>": idec,
           "<a href='https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/' target='_blank'>Politicas Públicas Municipais</a>": ppm,
           "<a href='https://openfoodbrasil.com.br/' target='_blank'>Open Food Brasil</a>": ofb,
@@ -150,7 +154,7 @@
       loadOMV().then(omv => {
         omv.addTo(map);
         Object.assign(overlayMaps, {"<a href='https://onemillionvoices.agroecologymap.org/' target='_blank'>One Million Voices</a>": omv});
-        L.control.layers(baseMaps, overlayMaps, {collapsed: true, position: 'bottomright'}).addTo(map);
+        L.control.layers(baseMaps, overlayMaps, {collapsed: collapsed, position: 'bottomright'}).addTo(map);
       }).catch(e => console.log('Error:', e));
 
       <%= render 'locais', locais: @locais %>
