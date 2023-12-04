@@ -29,6 +29,14 @@
       <br>
       <div class="content">
         <%= @blog.texto.html_safe %>
+        <% youtube_id = parse_video_url(strip_tags(@blog.texto)) %>
+        <% if youtube_id.present? %>
+          <div style="text-align: center; margin-top: 24px;">
+              <% youtube_id =  youtube_id[:id] %>
+              <% url_embed = "youtu.be/#{youtube_id}" %>
+              <%= youtube_embed(url_embed).html_safe %>
+           </div>
+        <% end %>
       </div>
       <br>
       <% if usuario_signed_in? %>

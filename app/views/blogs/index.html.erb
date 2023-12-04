@@ -35,10 +35,18 @@
     <div style="text-align: left;">
       <div class="blog-content">
         <h3><%= link_to blog.titulo, local_blog_url(@local, blog) %></h3>
-        <small><%= "Enviado por #{link_to blog.usuario.nome, usuario_path(blog.usuario)}. Criado em #{blog.created_at} e última atualização #{blog.updated_at}".html_safe %></small>
+        <small><%= "By #{link_to blog.usuario.nome, usuario_path(blog.usuario)} (#{link_to blog.local.nome, local_blogs_path(blog.local)}). Updated at #{blog.updated_at}".html_safe %>.</small>
         <br>
         <br>
         <div class="content truncate lines"><%= blog.texto.html_safe %></div>
+        <% youtube_id = parse_video_url(strip_tags(blog.texto)) %>
+        <% if youtube_id.present? %>
+          <div style="text-align: center; margin-top: 24px;">
+              <% youtube_id =  youtube_id[:id] %>
+              <% url_embed = "youtu.be/#{youtube_id}" %>
+              <%= youtube_embed(url_embed).html_safe %>
+           </div>
+        <% end %>
         <%= "<br><br><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br>".html_safe if blog.texto.length > 4096 %>
       </div>
       <br>
