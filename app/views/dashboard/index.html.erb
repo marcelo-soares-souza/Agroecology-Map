@@ -96,11 +96,23 @@
     }]
   const optionsByType ={
     responsive: true,
-    maintainAspectRatio: true,
+    scaleShowValues: true,
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      xAxes: [{
+        ticks: {
+          autoSkip: false
+        }
+      }]
+   },
   }
 
   var chart_by_type = new Chart(ctxByType, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
       labels: labels_by_type,
       datasets: datasetByType,
@@ -108,8 +120,7 @@
     options: optionsByType,
   });
 
-  chart_by_type.canvas.parentNode.style.height = '500px';
-  chart_by_type.canvas.parentNode.style.width = '500px';
+
   chart_by_type.update();
 </script>
 <script>
@@ -144,7 +155,7 @@
       'rgba(251, 223, 207, 0.5)'
       ],
     }]
-  const optionsByTheme ={
+  const optionsByTheme = {
     responsive: true,
     scaleShowValues: true,
     plugins: {
@@ -158,7 +169,7 @@
           autoSkip: false
         }
       }]
-  },
+   },
   }
 
   var chart_by_theme = new Chart(ctxByTheme, {

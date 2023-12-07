@@ -1,10 +1,10 @@
-<% title t(:news) %>
+<% title t(:news_in_agroecology) %>
 <br>
 <br>
 <br>
 <ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
-    <%= link_to t(:news), "#", :class => "nav-link active" %>
+    <%= link_to t(:news_in_agroecology), "#", :class => "nav-link active" %>
   </li>
 </ul>
 <% if @blogs.empty? %>
@@ -26,10 +26,10 @@
         <% youtube_id = parse_video_url(strip_tags(blog.texto)) %>
         <% if youtube_id.present? %>
           <div style="text-align: center; margin-top: 24px;">
-              <% youtube_id =  youtube_id[:id] %>
-              <% url_embed = "youtu.be/#{youtube_id}" %>
-              <%= youtube_embed(url_embed).html_safe %>
-           </div>
+            <% youtube_id =  youtube_id[:id] %>
+            <% url_embed = "youtu.be/#{youtube_id}" %>
+            <%= youtube_embed(url_embed).html_safe %>
+          </div>
         <% end %>
         <%= "<br><br><b>#{link_to '(Leia o Texto Completo)', local_blog_url(blog.local, blog)}</b><br>".html_safe if blog.texto.length > 4096 %>
       </div>
