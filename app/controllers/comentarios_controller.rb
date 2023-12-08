@@ -9,8 +9,20 @@ class ComentariosController < ApplicationController
   # POST /comentarios.json
   def create
     @comentario = Comentario.new(comentario_params)
-    @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
-    @comentario.experiencia_agroecologica_id = @experiencia_agroecologica.id
+
+    if params[:experiencia_agroecologica_id]
+      @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id])
+      @comentario.experiencia_agroecologica_id = @experiencia_agroecologica.id
+      @name = @experiencia_agroecologica.nome
+      @email = @experiencia_agroecologica.usuario.email
+      @redirect = @experiencia_agroecologica
+    elsif params[:local_id]
+      @local = Local.friendly.find(params[:local_id])
+      @comentario.local_id = @local.id
+      @name = @local.nome
+      @email = @local.usuario.email
+      @redirect = @local
+    end
 
     # if ! current_usuario.admin?
     @comentario.usuario_id = current_usuario.id
@@ -18,19 +30,19 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        subject = "[Agroecology Map] You have received a new comment on #{@comentario.experiencia_agroecologica.nome}"
+        subject = "[Agroecology Map] You have received a new comment on #{@name}"
         body = "Comment: #{@comentario.texto}"
 
-        if @experiencia_agroecologica.usuario.id != current_usuario.id
+        if @redirect.usuario.id != current_usuario.id
           ActionMailer::Base.mail(from: "Agroecology Map <marcelo@agroecologymap.org>",
-                                  to: @experiencia_agroecologica.usuario.email,
+                                  to: @email,
                                   subject:,
                                   body:).deliver
         end
 
-        format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi registrado." }
+        format.html { redirect_to @redirect, notice: "Comentário foi registrado." }
       else
-        format.html { redirect_to @experiencia_agroecologica, notice: "Não foi possível registrar o comentário" }
+        format.html { redirect_to @redirect, notice: "Não foi possível registrar o comentário" }
       end
     end
   end

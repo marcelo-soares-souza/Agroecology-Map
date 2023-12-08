@@ -21,7 +21,9 @@ class LocaisController < ApplicationController
 
   # GET /locais/1
   # GET /locais/1.json
-  def show; end
+  def show
+    @comentar = Comentario.new
+  end
 
   # GET /locais/new
   def new

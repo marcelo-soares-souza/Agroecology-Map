@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_08_145521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
+    t.bigint "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.index ["slug"], name: "index_animais_on_slug", unique: true
     t.index ["usuario_id"], name: "index_animais_on_usuario_id"
@@ -89,7 +89,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.bigint "usuario_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "local_id"
     t.index ["experiencia_agroecologica_id"], name: "index_comentarios_on_experiencia_agroecologica_id"
+    t.index ["local_id"], name: "index_comentarios_on_local_id"
     t.index ["usuario_id"], name: "index_comentarios_on_usuario_id"
   end
 
@@ -129,7 +131,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
+    t.bigint "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.string "tipo"
     t.string "hospedagem"
@@ -156,7 +158,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
+    t.bigint "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.bigint "usuario_id"
     t.index ["experiencia_agroecologica_id"], name: "index_midias_on_experiencia_agroecologica_id"
@@ -208,7 +210,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
+    t.bigint "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.index ["slug"], name: "index_plantas_on_slug", unique: true
     t.index ["usuario_id"], name: "index_plantas_on_usuario_id"
@@ -248,31 +250,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.index ["local_id"], name: "index_safs_on_local_id"
     t.index ["slug"], name: "index_safs_on_slug", unique: true
     t.index ["usuario_id"], name: "index_safs_on_usuario_id"
-  end
-
-  create_table "taggings", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at", precision: nil
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "tema_experiencia_agroecologicas", force: :cascade do |t|
@@ -317,7 +294,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
     t.string "slug"
     t.string "imagem_file_name"
     t.string "imagem_content_type"
-    t.integer "imagem_file_size"
+    t.bigint "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
@@ -331,6 +308,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_140341) do
   add_foreign_key "blogs", "locais"
   add_foreign_key "blogs", "usuarios"
   add_foreign_key "comentarios", "experiencia_agroecologicas"
+  add_foreign_key "comentarios", "locais"
   add_foreign_key "comentarios", "usuarios"
   add_foreign_key "experiencia_agroecologicas", "locais"
   add_foreign_key "experiencia_agroecologicas", "tema_experiencia_agroecologicas"

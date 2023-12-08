@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     resources :experiencia_agroecologicas
     resources :safs
     resources :blogs, path: "blog"
+    resources :comentarios
   end
 
   resources :organizacoes

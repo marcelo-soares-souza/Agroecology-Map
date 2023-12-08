@@ -94,6 +94,17 @@
       <%= link_to t(:destroy), local_path(@local), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-danger' %>
     </div>
     <br>
+    <strong><%= @local.comentarios.count.to_s + " " + t(:comment) + "(s)" %>:</strong>
+    <% if  usuario_signed_in? %>
+      <div class='text-box'>
+        <%= render 'comentar', comentar: @comentar %>
+      </div>
+    <% end %><br>
+    <%= "<b>#{link_to t(:sign_in_to_comment), new_usuario_session_path, :class => 'text-danger'}</b>".html_safe if !usuario_signed_in? %>
+    <% if @local.comentarios.count > 0 %>
+      <%= render 'comentarios', comentarios: @local.comentarios.order(:updated_at).reverse_order %>
+    <% end %>
+    <br>
     <br>
   <% end %>
 <% end %>
