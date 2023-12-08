@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Blog < ApplicationRecord
+  paginates_per 10
+
   belongs_to :local, required: false
   belongs_to :usuario
 

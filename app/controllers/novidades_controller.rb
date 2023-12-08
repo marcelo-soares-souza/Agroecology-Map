@@ -2,7 +2,7 @@
 
 class NovidadesController < ApplicationController
   def index
-    @blogs = Blog.all.load_async.sort_by(&:updated_at).reverse
+    @blogs = Blog.order("updated_at DESC").page(params[:page])
   end
 
   def show; end
