@@ -1,6 +1,6 @@
 <% title "#{@blog.titulo}" %>
 <% if usuario_signed_in? %>
-  <%= link_to "Add news about your location", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
+  <%= link_to t(:add_news), new_local_blog_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
 <% end %>
 <br>
 <br>

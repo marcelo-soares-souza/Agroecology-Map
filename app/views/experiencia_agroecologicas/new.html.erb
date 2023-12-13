@@ -1,5 +1,9 @@
 <% title t(:register_new_experience) %>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
     <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
@@ -8,9 +12,7 @@
     <%= link_to t(:new), new_experiencia_agroecologica_path, :class => "nav-link active" %>
   </li>
 </ul>
-
 <br>
-
 <% if !@locais.empty? %>
   <%= render 'form', experiencia_agroecologica: @experiencia_agroecologica %>
 <% else %>
