@@ -8,11 +8,11 @@
 <% end %>
 <% if usuario_signed_in? %>
   <% if params[:saf_id] %>
-    <%= link_to t(:send_picture), new_saf_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
+    <%= link_to t(:send_picture), new_saf_midia_path, :class => "btn btn-success", :style => "float:right;" if current_usuario.admin? or @saf.usuario_id == current_usuario.id %>
   <% elsif params[:experiencia_agroecologica_id] %>
-    <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
-  <% elsif params[:local] %>
-    <%= link_to t(:send_picture), new_local_midia_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @local.usuario_id == current_usuario.id %>
+    <%= link_to t(:send_picture), new_experiencia_agroecologica_midia_path, :class => "btn btn-success", :style => "float:right;" if current_usuario.admin? or @experiencia_agroecologica.usuario_id == current_usuario.id %>
+  <% elsif params[:local_id] %>
+    <%= link_to t(:send_picture), new_local_midia_path, :class => "btn btn-success", :style => "float:right;" if current_usuario.admin? or @local.usuario_id == current_usuario.id %>
   <% end %>
 <% end %>
 <br>
@@ -87,6 +87,8 @@
           </div>
           <div class="card-body"  style="min-height: 180px;">
             <p class="card-text text-box"><%= media.descricao.truncate(100) unless media.descricao.blank? %></p>
+            <%= "<p class='card-text text-box'><b>Agroforestry</b> #{link_to media.saf.nome, saf_path(media.saf)}</p>".html_safe if media.saf and params[:local_id] %>
+            <%= "<p class='card-text text-box'><b>Experience</b> #{link_to media.experiencia_agroecologica.nome, experiencia_agroecologica_path(media.experiencia_agroecologica)}</p>".html_safe if media.experiencia_agroecologica and params[:local_id] %>
             <% if usuario_signed_in? %>
               <% if params[:experiencia_agroecologica_id] %>
                 <% if media.experiencia_agroecologica %>

@@ -8,10 +8,12 @@ class ApplicationController < ActionController::Base
 
   protected
     def set_locale
-      default_locale = "pt-BR"
+      default_locale = "en"
 
       if request.host == "agroecologymap.org"
         default_locale = "en"
+      elsif request.host == "mapadaagroecologia.org"
+        default_locale = "pt-BR"
       end
 
       I18n.default_locale = default_locale
