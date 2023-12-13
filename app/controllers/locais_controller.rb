@@ -8,6 +8,7 @@ class LocaisController < ApplicationController
   before_action :load_hospedagens
   before_action :load_usuario
   before_action :load_colaboradores, except: %i[index show]
+  before_action :load_likes_info, only: %i[show]
 
   # GET /locais
   # GET /locais.json
@@ -78,6 +79,12 @@ class LocaisController < ApplicationController
     end
   end
 
+  def like
+    @local = Local.friendly.find(params[:id])
+    Like.create(usuario_id: current_usuario.id, local_id: @local.id)
+    redirect_to local_path(@local)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_local
@@ -113,5 +120,10 @@ class LocaisController < ApplicationController
 
     def load_usuario
       @usuario = Usuario.friendly.find(params[:usuario_id]) if params[:usuario_id]
+    end
+
+    def load_likes_info
+      likes = @local.likes.map { |like| like.usuario.nome }.join(", ")
+      @likes_info = likes.empty? ? "Like Button" : likes
     end
 end

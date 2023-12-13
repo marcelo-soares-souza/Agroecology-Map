@@ -83,4 +83,5 @@ Rails.application.routes.draw do
   resources :novidades, only: [:index]
 
   put "/agroecological-experiences/:id/like", to: "experiencia_agroecologicas#like", as: "like"
+  put "/locais/:id/like", to: "locais#like", as: "like_location"
 end

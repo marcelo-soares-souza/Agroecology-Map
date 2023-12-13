@@ -13,6 +13,7 @@ class Usuario < ApplicationRecord
   has_many :local_usuarios, dependent: :destroy
   has_many :colaboracoes, through: :local_usuarios, source: :local
   has_many :likes
+  has_many :comentarios
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
