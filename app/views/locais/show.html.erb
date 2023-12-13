@@ -1,8 +1,9 @@
 <% title @local.nome %>
-<div class="top-options">
-  <%= link_to t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-warning", :style => "float:right; margin-left: 4px;" %>
-  <%= link_to t(:send_photo), new_local_midia_path(@local), :class => "btn btn-success", :style => "float:right;" %>
-</div>
+<%= link_to t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-info", :style => "float:right; margin-left: 4px;" %>
+<%= link_to t(:send_photo), new_local_midia_path(@local), :class => "btn btn-success", :style => "float:right;" %>
+<br>
+<br>
+<br>
 <br>
 <br>
 <ul class="nav nav-tabs flex-column flex-xl-row">
@@ -13,7 +14,7 @@
     <%= link_to truncate(@local.nome, length: 16), local_path(@local.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
-    <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count%>
+    <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count + @local.midias.count %>
     <%= link_to t(:gallery) + " (#{total_midia})", local_gallery_path(@local.id), :class => "nav-link" %>
   </li>
   <li class="nav-item">

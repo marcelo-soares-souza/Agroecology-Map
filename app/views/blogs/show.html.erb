@@ -1,7 +1,9 @@
 <% title "#{@blog.titulo}" %>
 <% if usuario_signed_in? %>
-  <%= link_to "Novo Texto do Blog", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
+  <%= link_to "Add news about your location", new_local_blog_path, :class => "btn btn-warning", :style => "float:right;" if current_usuario.admin? or @blog.usuario_id == current_usuario.id %>
 <% end %>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -13,7 +15,7 @@
     <%= link_to truncate(@local.nome, length: 16), local_path(@local), :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count%>
+    <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count + @local.midias.count %>
     <%= link_to t(:gallery) + " (#{total_midia})", local_gallery_path(@local.id), :class => "nav-link" %>
   </li>
   <li class="nav-item">
@@ -36,10 +38,10 @@
         <% youtube_id = parse_video_url(strip_tags(@blog.texto)) %>
         <% if youtube_id.present? %>
           <div style="text-align: center; margin-top: 24px;">
-              <% youtube_id =  youtube_id[:id] %>
-              <% url_embed = "youtu.be/#{youtube_id}" %>
-              <%= youtube_embed(url_embed).html_safe %>
-           </div>
+            <% youtube_id =  youtube_id[:id] %>
+            <% url_embed = "youtu.be/#{youtube_id}" %>
+            <%= youtube_embed(url_embed).html_safe %>
+          </div>
         <% end %>
       </div>
       <br>

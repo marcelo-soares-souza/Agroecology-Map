@@ -1,9 +1,14 @@
 <% title @saf.nome %>
-<%= link_to t(:register_new_agroforestry), new_saf_path, :class => "btn btn-primary", :style => "float:right;" %>
+<%= link_to t(:send_photo), new_saf_midia_path(@saf), :class => "btn btn-success", :style => "float:right;" %>
+<br>
+<br>
 <br>
 <br>
 <br>
 <ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to truncate(@saf.local.nome, length: 16), local_path(@saf.local), :class => "nav-link" %>
+  </li>
   <li class="nav-item">
     <%= link_to truncate(@saf.nome, length: 16), saf_path(@saf.id), :class => "nav-link active" %>
   </li>

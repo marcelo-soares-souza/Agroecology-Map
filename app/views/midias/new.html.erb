@@ -1,3 +1,9 @@
+<% title "Add Photo" %>
+<br>
+<br>
+<br>
+<br>
+<br>
 <% if params[:saf_id] %>
   <% title "Add new Photo to #{@saf.nome}" %>
 <% elsif params[:experiencia_agroecologica_id] %>
@@ -10,7 +16,7 @@
     <% if params[:saf_id] %>
       <%= link_to t(:safs), safs_path, :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
+      <%= link_to t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
     <% elsif params[:local_id] %>
       <%= link_to t(:locations), locais_path, :class => "nav-link" %>
     <% end %>

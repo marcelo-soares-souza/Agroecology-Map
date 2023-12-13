@@ -1,9 +1,14 @@
 <% title @experiencia_agroecologica.nome %>
-<%= link_to t(:send_photo), new_experiencia_agroecologica_midia_path(@experiencia_agroecologica), :class => "btn btn-warning", :style => "float:right;" %>
+<%= link_to t(:send_photo), new_experiencia_agroecologica_midia_path(@experiencia_agroecologica), :class => "btn btn-success", :style => "float:right;" %>
+<br>
+<br>
 <br>
 <br>
 <br>
 <ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to @experiencia_agroecologica.local.nome.truncate(16), local_path(@experiencia_agroecologica.local), :class => "nav-link" %>
+  </li>
   <li class="nav-item">
     <%= link_to @experiencia_agroecologica.nome.truncate(16), experiencia_agroecologica_path(@experiencia_agroecologica.id), :class => "nav-link active" %>
   </li>
