@@ -31,9 +31,9 @@ class MidiasController < ApplicationController
       local = Local.friendly.find(params[:local_id])
       experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
       saf = Saf.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
-      @midias = Midia.where(experiencia_agroecologica:).load_async.sort_by(&:updated_at).reverse
+      @midias = Midia.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
+      @midias += Midia.where(experiencia_agroecologica:).load_async.sort_by(&:updated_at).reverse
       @midias += Midia.where(saf:).load_async.sort_by(&:updated_at).reverse
-      @midias += Midia.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
     end
   end
 
