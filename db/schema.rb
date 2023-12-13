@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_13_123805) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_13_162117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -325,6 +323,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_123805) do
     t.string "imagem_content_type"
     t.integer "imagem_file_size"
     t.datetime "imagem_updated_at", precision: nil
+    t.string "about"
+    t.string "website"
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true

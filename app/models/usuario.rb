@@ -23,6 +23,18 @@ class Usuario < ApplicationRecord
   validates :nome, presence: true
   validates :email, presence: true, uniqueness: true
 
+  validates_length_of :about, minimum: 4, allow_blank: true
+  validates_length_of :about, maximum: 4096
+  validates :website, format: URI::DEFAULT_PARSER.make_regexp(%w[http https]), allow_blank: true
+
+  before_save do
+    self.nome = nome.strip.titleize
+    self.email = email.strip.downcase
+    self.about = about.strip unless !self.about
+    self.website = website.strip.downcase unless !self.website
+  end
+
+
   def default_image_number
     # rand(1..9)
     id.to_s.last

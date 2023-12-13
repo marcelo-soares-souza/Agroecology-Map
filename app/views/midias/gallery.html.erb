@@ -87,9 +87,9 @@
           </div>
           <div class="card-body"  style="min-height: 180px;">
             <p class="card-text text-box">
-              <%= media.descricao.truncate(30) unless media.descricao.blank? %>
-              <%= "<br><span style='font-weight: bold; font-size: 12px'>From Agroforestry: #{link_to media.saf.nome.truncate(30), saf_path(media.saf)}</span>".html_safe if media.saf and params[:local_id] %>
-              <%= "<br><span style='font-weight: bold; font-size: 12px'>From Experience: #{link_to media.experiencia_agroecologica.nome.truncate(30), experiencia_agroecologica_path(media.experiencia_agroecologica)}</span>".html_safe if media.experiencia_agroecologica and params[:local_id] %>
+              <%= media.descricao.truncate(25) unless media.descricao.blank? %>
+              <%= "<br><span style='font-weight: bold; font-size: 12px'>From Agroforestry: #{link_to media.saf.nome.truncate(25), saf_path(media.saf)}</span>".html_safe if media.saf and params[:local_id] %>
+              <%= "<br><span style='font-weight: bold; font-size: 12px'>From Experience: #{link_to media.experiencia_agroecologica.nome.truncate(25), experiencia_agroecologica_path(media.experiencia_agroecologica)}</span>".html_safe if media.experiencia_agroecologica and params[:local_id] %>
             </p>
             <% if usuario_signed_in? %>
               <% if params[:experiencia_agroecologica_id] %>
