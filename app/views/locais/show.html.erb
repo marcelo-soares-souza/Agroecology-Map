@@ -1,6 +1,8 @@
 <% title @local.nome %>
-<%= link_to t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-warning", :style => "float:right;" %>
-<br>
+<div class="top-options">
+  <%= link_to t(:register_new_experience), new_local_experiencia_agroecologica_path(@local), :class => "btn btn-warning", :style => "float:right; margin-left: 4px;" %>
+  <%= link_to t(:send_photo), new_local_midia_path(@local), :class => "btn btn-success", :style => "float:right;" %>
+</div>
 <br>
 <br>
 <ul class="nav nav-tabs flex-column flex-xl-row">

@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
   resources :locais do
     get "/gallery" => "midias#gallery"
+    resources :midias
     resources :experiencia_agroecologicas
     resources :safs
     resources :blogs, path: "blog"

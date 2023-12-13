@@ -6,8 +6,8 @@ class ExperienciaAgroecologica < ApplicationRecord
   belongs_to :tema_experiencia_agroecologica
   has_one :organizacao, through: :local
   has_many :midias, dependent: :delete_all
-  has_many :comentarios
-  has_many :likes
+  has_many :comentarios, dependent: :delete_all
+  has_many :likes, dependent: :delete_all
 
   extend FriendlyId
   friendly_id :nome, use: :slugged

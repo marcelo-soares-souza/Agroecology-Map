@@ -672,3 +672,8 @@ trix-editor img {
   margin-left: auto;
   margin-right: auto;
 }
+
+.top-options {
+    min-height: 50px;
+    margin-bottom: 8px;
+}

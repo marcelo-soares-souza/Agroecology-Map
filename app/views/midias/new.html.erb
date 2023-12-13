@@ -1,45 +1,49 @@
 <% if params[:saf_id] %>
-  <% title "Adicionar Foto em #{@saf.nome}" %>
+  <% title "Add new Photo to #{@saf.nome}" %>
 <% elsif params[:experiencia_agroecologica_id] %>
-  <% title "Adicionar Foto em #{@experiencia_agroecologica.nome}" %>
+  <% title "Add new Photo to #{@experiencia_agroecologica.nome}" %>
+<% elsif params[:local_id] %>
+  <% title "Add new Photo to #{@local.nome}" %>
 <% end %>
-
 <ul class="nav nav-tabs flex-column flex-xl-row">
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to t(:safs), safs_path, :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "Experiências em Agroecologia", experiencia_agroecologicas_path, :class => "nav-link" %>
+      <%= link_to t(:experience_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link" %>
+    <% elsif params[:local_id] %>
+      <%= link_to t(:locations), locais_path, :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
       <%= link_to @saf.nome, saf_path(@saf), :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
       <%= link_to @experiencia_agroecologica.nome, experiencia_agroecologica_path(@experiencia_agroecologica), :class => "nav-link" %>
+    <% elsif params[:local_id] %>
+      <%= link_to @local.nome, local_path(@local), :class => "nav-link" %>
     <% end %>
   </li>
-
   <li class="nav-item">
     <% if params[:saf_id] %>
-      <%= link_to "Fotos (#{@saf.midias.count})", saf_midias_path, :class => "nav-link" %>
+      <%= link_to t(:gallery) + " (#{@saf.midias.count})", saf_gallery_path, :class => "nav-link" %>
     <% elsif params[:experiencia_agroecologica_id] %>
-      <%= link_to "Fotos (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_midias_path, :class => "nav-link" %>
+      <%= link_to t(:gallery) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path, :class => "nav-link" %>
+    <% elsif params[:local_id] %>
+      <%= link_to t(:gallery) + " (#{@local.midias.count})", local_gallery_path, :class => "nav-link" %>
     <% end %>
   </li>
-
   <% if usuario_signed_in? %>
     <li class="nav-item">
       <% if params[:saf_id] %>
-        <%= link_to "Enviar Foto para esta SAF", new_saf_midia_path, :class => "nav-link active" %>
+        <%= link_to t(:send_photo), new_saf_midia_path, :class => "nav-link active" %>
       <% elsif params[:experiencia_agroecologica_id] %>
-        <%= link_to "Enviar Foto para esta Experiência", new_experiencia_agroecologica_midia_path, :class => "nav-link active" %>
+        <%= link_to t(:send_photo), new_experiencia_agroecologica_midia_path, :class => "nav-link active" %>
+      <% elsif params[:local_id] %>
+        <%= link_to t(:send_photo), new_local_midia_path, :class => "nav-link active" %>
       <% end %>
     </li>
   <% end %>
 </ul>
-
 <br>
-
 <%= render 'form', midia: @midia %>
