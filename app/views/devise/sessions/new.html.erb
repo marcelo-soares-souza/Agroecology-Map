@@ -1,3 +1,19 @@
+<% title t(:sign_in) %>
+<br>
+<br>
+<br>
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:sign_in), new_usuario_session_path, :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:forgot_password), new_password_path(resource_name), :class => "nav-link" %>
+  </li>
+</ul>
+<br>
 <div class="sign_in_up">
   <h2><%= t(:sign_in) %></h2>
   <br>

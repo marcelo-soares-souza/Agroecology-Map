@@ -1,19 +1,66 @@
+<style>
+  .others a {
+    font-size: 17px;
+  }
+  .thank_you_notes {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+  }
+
+  .logo {
+      width: 220px;
+      margin: auto;
+      background-color: transparent;
+  }
+
+  .thank_you_notes .card {
+      border: 0;
+  }
+
+  .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .card {
+      margin-bottom: 32px;
+
+  }
+</style>
+<% title t(:manual) %>
+<br>
+<br>
+<br>
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:manual), manual_index_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:data_summary), dashboard_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:friends), friends_path, :class => "nav-link active" %>
+  </li>
+</ul>
 <div class="friends">
   <div class="logo">
     <%= link_to image_tag("logo.png", width: "200px", alt: "Agroecology Map Logo", title: "Agroecology Map Logo"), "/", :alt => "Agroecology Map Logo", :title => "Agroecology Map Logo" %>
   </div>
   <strong><%= t(:donors) %></strong>
   <br>
-  <a href="https://www.researchgate.net/profile/Marcelo-Souza-27" target="_blank">Marcelo Soares Souza</a><br>
-  <a href="https://www.linkedin.com/in/eduformi/" target="_blank">Eduardo Fernandes Formighieri</a><br>
-  <a href="https://github.com/cpt-westphalen" target="_blank">Rodrigo Westphalen</a><br>
-  <a href="https://www.linkedin.com/in/murilo-gelain-gon%C3%A7alves/" target="_blank">Murilo Gelain Gonçalves</a><br>
-  <a href="https://www.linkedin.com/in/vitoria-pimentel/" target="_blank">Vitória Pimentel</a><br>
-  <a href="http://lattes.cnpq.br/7368487382576901" target="_blank">Mariana Crepaldi de Paula</a><br>
-  <a href="https://www.researchgate.net/profile/Andrei-Steindorff" target="_blank">Andrei Stecca Steindorff</a><br>
-  <a href="https://www.linkedin.com/in/jabezjoshuaflores/" target="_blank">Jabez Joshua F.</a>
-
-  <br><br>
+  <a href="https://www.linkedin.com/in/marcelo-soares-souza/" target="_blank">Marcelo Soares Souza</a> <span style="font-size:10px; font-weight: bold;"> (Maintainer) </span><br>
+  <div class="others">
+    <a href="https://www.linkedin.com/in/eduformi/" target="_blank">Eduardo Fernandes Formighieri</a><br>
+    <a href="https://github.com/cpt-westphalen" target="_blank">Rodrigo Westphalen</a><br>
+    <a href="https://www.linkedin.com/in/murilo-gelain-gon%C3%A7alves/" target="_blank">Murilo Gelain Gonçalves</a><br>
+    <a href="https://www.linkedin.com/in/vitoria-pimentel/" target="_blank">Vitória Pimentel</a><br>
+    <a href="http://lattes.cnpq.br/7368487382576901" target="_blank">Mariana Crepaldi de Paula</a><br>
+    <!-- <a href="https://www.researchgate.net/profile/Andrei-Steindorff" target="_blank">Andrei Stecca Steindorff</a><br> -->
+  </div>
+  <br>
+  <hr>
   <strong>Thank you for the <a href="https://ko-fi.com/agroecologymap" target="_blank">Ko-Fi</a></strong>
   <br>
   Mike Brunt<br>
@@ -21,18 +68,49 @@
   Ivan Mir<br>
   Pablo Azua<br>
   INGALA Earth LLP
-
-
-  <br><br>
-  <strong><%= t(:friends) %></strong>
   <br>
-  <div class="logo"><%= link_to image_tag("omv.png", width: "300px", alt: "One Million Voices", title: "One Million Voices"), "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :alt => "One Million Voices", :title => "One Million Voices" %></div>
-  <div class="logo"><%= link_to image_tag("agroecologyworks.png", width: "300px", alt: "Agroecology works!", title: "Agroecology works!"), "https://agroecologyworks.ch/de", :target => "_blank", :alt => "Agroecology works!", :title => "Agroecology works!" %></div>
-  <div class="logo"><%= link_to image_tag("palmoildetectives.png", width: "180px", alt: "Palm Oil Detectives", title: "Palm Oil Detectives"), "https://palmoildetectives.com/", :target => "_blank", :alt => "Palm Oil Detectives", :title => "Palm Oil Detectives"%></div>
-  <strong><%= t(:special_thanks) %></strong>
-  <br>
-  <div class="logo"><%= link_to image_tag("leaflet.png", width: "180px", alt: "Leaflet", title: "Leaflet"), "https://leafletjs.com/", :target => "_blank", :alt => "Leaflet", :title => "Leaflet" %></div>
-  <div class="logo"><%= link_to image_tag("rails.png", width: "190px", alt: "Ruby on Rails", title: "Ruby on Rails"), "https://rubyonrails.org/", :target => "_blank", :alt => "Ruby on Rails", :title => "Ruby on Rails" %></div>
-  <div class="logo"><%= link_to image_tag("openstreetmap.png", width: "140px", alt: "Open Street Map", title: "Open Street Map"), "https://www.openstreetmap.org/", :target => "_blank", :alt => "Open Street Map", :title => "Open Street Map" %></div>
-  <div class="logo"><%= link_to image_tag("codeberg.png", width: "140px", alt: "CodeBerg", title: "CodeBerg"), "https://codeberg.org/marcelo-soares-souza/agroecology-map", :target => "_blank", :alt => "CodeBerg", :title => "CodeBerg" %></div>
-</div>
+  <hr>
+  <div class="thank_you_notes">
+    <strong><%= t(:friends) %></strong>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="logo"><%= link_to image_tag("omv.png", width: "200px", alt: "One Million Voices", title: "One Million Voices"), "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :alt => "One Million Voices", :title => "One Million Voices" %></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="logo"><%= link_to image_tag("agroecologyworks.png", width: "200px", alt: "Agroecology works!", title: "Agroecology works!"), "https://agroecologyworks.ch/de", :target => "_blank", :alt => "Agroecology works!", :title => "Agroecology works!" %></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="logo"><%= link_to image_tag("prph.png", width: "200px", alt: "Permaculture Research PH", title: "Agroecology works!"), "http://permacultureresearchph.blogspot.com/", :target => "_blank", :alt => "Permaculture Research PH", :title => "Permaculture Research PH" %></div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <strong><%= t(:technologies) %></strong>
+    <div class="row">
+      <div class="col-sm-4" >
+        <div class="card" style="min-height: 200px">
+          <div class="logo"><%= link_to image_tag("rails.png", width: "180px", alt: "Ruby on Rails", title: "Ruby on Rails"), "https://rubyonrails.org/", :target => "_blank", :alt => "Ruby on Rails", :title => "Ruby on Rails" %></div>
+        </div>
+      </div>
+      <div class="col-sm-4" >
+        <div class="card" style="min-height: 200px">
+          <div class="logo"><%= link_to image_tag("openstreetmap.png", width: "120px", alt: "Open Street Map", title: "Open Street Map"), "https://www.openstreetmap.org/", :target => "_blank", :alt => "Open Street Map", :title => "Open Street Map" %></div>
+        </div>
+      </div>
+      <div class="col-sm-4" >
+        <div class="card" style="min-height: 200px">
+          <div class="logo"><%= link_to image_tag("leaflet.png", width: "180px", alt: "Leaflet", title: "Leaflet"), "https://leafletjs.com/", :target => "_blank", :alt => "Leaflet", :title => "Leaflet" %></div>
+        </div>
+      </div>
+      <div class="col-sm-4" >
+        <div class="card" style="min-height: 200px">
+          <div class="logo"><%= link_to image_tag("codeberg.png", width: "120px", alt: "CodeBerg", title: "CodeBerg"), "https://codeberg.org/marcelo-soares-souza/OneMillionVoices", :target => "_blank", :alt => "CodeBerg", :title => "CodeBerg" %></div>
+        </div>
+      </div>
+    </div>
+  </div>

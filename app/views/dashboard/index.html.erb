@@ -12,6 +12,21 @@
     max-height: 1000px !important;
   }
 </style>
+<% title t(:manual) %>
+<br>
+<br>
+<br>
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:manual), manual_index_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:data_summary), dashboard_path, :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:friends), friends_path, :class => "nav-link" %>
+  </li>
+</ul>
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <br>
