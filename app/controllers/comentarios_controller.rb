@@ -50,11 +50,15 @@ class ComentariosController < ApplicationController
   # DELETE /comentarios/1
   # DELETE /comentarios/1.json
   def destroy
-    @experiencia_agroecologica = ExperienciaAgroecologica.friendly.find(@comentario.experiencia_agroecologica_id)
+    if @comentario.experiencia_agroecologica_id
+      @type = ExperienciaAgroecologica.find(@comentario.experiencia_agroecologica_id)
+    elsif @comentario.local_id
+      @type = Local.find(@comentario.local_id)
+    end
 
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to @experiencia_agroecologica, notice: "Comentário foi removido." }
+      format.html { redirect_to @type, notice: "Comentário foi removido." }
       format.json { head :no_content }
     end
   end

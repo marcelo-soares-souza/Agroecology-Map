@@ -5,6 +5,8 @@ class Comentario < ApplicationRecord
   belongs_to :local, required: false
   belongs_to :usuario
 
+  validates :texto, presence: true
+
   extend FriendlyId
   friendly_id :texto, use: :slugged
 
