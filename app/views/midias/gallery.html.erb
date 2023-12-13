@@ -78,7 +78,7 @@
   <div class="row">
     <% @midias.each do |media| %>
       <div class="col-sm-6" style="cursor: pointer;" >
-        <div class="card" style="max-height: <%= usuario_signed_in? ? '340px' : '280px'%>;">
+        <div class="card" style="max-height: <%= usuario_signed_in? ? '340px' : '295px'%>;">
           <br>
           <div class="card-img-top thumbnail" >
             <a href="<%= url_for(media.imagem(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
@@ -86,9 +86,11 @@
             </a>
           </div>
           <div class="card-body"  style="min-height: 180px;">
-            <p class="card-text text-box"><%= media.descricao.truncate(100) unless media.descricao.blank? %></p>
-            <%= "<p class='card-text text-box'><b>Agroforestry</b> #{link_to media.saf.nome, saf_path(media.saf)}</p>".html_safe if media.saf and params[:local_id] %>
-            <%= "<p class='card-text text-box'><b>Experience</b> #{link_to media.experiencia_agroecologica.nome, experiencia_agroecologica_path(media.experiencia_agroecologica)}</p>".html_safe if media.experiencia_agroecologica and params[:local_id] %>
+            <p class="card-text text-box">
+              <%= media.descricao.truncate(100) unless media.descricao.blank? %>
+              <%= "<br><span style='font-weight: bold; font-size: 12px'>From Agroforestry: #{link_to media.saf.nome, saf_path(media.saf)}</span>".html_safe if media.saf and params[:local_id] %>
+              <%= "<br><span style='font-weight: bold; font-size: 12px'>From Experience: #{link_to media.experiencia_agroecologica.nome, experiencia_agroecologica_path(media.experiencia_agroecologica)}</span>".html_safe if media.experiencia_agroecologica and params[:local_id] %>
+            </p>
             <% if usuario_signed_in? %>
               <% if params[:experiencia_agroecologica_id] %>
                 <% if media.experiencia_agroecologica %>
