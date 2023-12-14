@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Midia < ApplicationRecord
+  paginates_per 20
   # before_save :concatenate_details
   belongs_to :saf, required: false
   belongs_to :experiencia_agroecologica, required: false

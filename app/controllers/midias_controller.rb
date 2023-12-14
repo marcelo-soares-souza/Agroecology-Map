@@ -35,16 +35,17 @@ class MidiasController < ApplicationController
   # GET /gallery.json
   def gallery
     if params[:saf_id]
-      @midias = Midia.where(saf_id: @saf.id).load_async.sort_by(&:updated_at).reverse
+      @midias = Midia.where(saf_id: @saf.id).order("updated_at DESC").load_async.page(params[:page])
     elsif params[:experiencia_agroecologica_id]
-      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id).load_async.sort_by(&:updated_at).reverse
+      @midias = Midia.where(experiencia_agroecologica_id: @experiencia_agroecologica.id).order("updated_at DESC").load_async.page(params[:page])
     elsif params[:local_id]
-      local = Local.friendly.find(params[:local_id])
-      experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
-      saf = Saf.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
-      @midias = Midia.where(local_id: local.id).load_async.sort_by(&:updated_at).reverse
-      @midias += Midia.where(experiencia_agroecologica:).load_async.sort_by(&:updated_at).reverse
-      @midias += Midia.where(saf:).load_async.sort_by(&:updated_at).reverse
+      experiencia_agroecologica = ExperienciaAgroecologica.where(local_id: params[:local_id])
+      saf = Saf.where(local_id: params[:local_id])
+
+      @midias = Midia.where(local_id: params[:local_id])
+                .or(Midia.where(experiencia_agroecologica:))
+                .or(Midia.where(saf:))
+                .order("updated_at DESC").load_async.page(params[:page])
     end
   end
 
