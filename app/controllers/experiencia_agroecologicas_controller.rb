@@ -3,13 +3,12 @@
 class ExperienciaAgroecologicasController < ApplicationController
   before_action :set_experiencia_agroecologica, only: %i[show edit update destroy]
   before_action :authenticate_usuario!, only: %i[new edit update destroy]
+  
   before_action lambda {
     check_owner ExperienciaAgroecologica.friendly.find(params[:id]).usuario_id
   }, only: %i[edit update destroy]
 
-  before_action lambda {
-    check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios)
-  }, only: %i[new]
+  before_action lambda { check_owner Local.friendly.find(params[:local_id]).usuario_id }, only: %i[new]
 
   before_action :load_locais, except: %i[index show]
   before_action :load_tema_experiencia_agroecologicas # , except: %i[index show]

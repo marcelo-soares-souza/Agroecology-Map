@@ -6,7 +6,13 @@ class MidiasController < ApplicationController
   before_action -> { check_owner Midia.friendly.find(params[:id]).usuario_id }, only: %i[edit update destroy]
 
   before_action lambda {
-    check_owner_or_collaborator(Local.friendly.find(params[:local_id]).usuario_id, Local.friendly.find(params[:local_id]).local_usuarios)
+    if params[:local_id]
+      check_owner Local.friendly.find(params[:local_id]).usuario_id
+    elsif params[:experiencia_agroecologica_id]
+      check_owner ExperienciaAgroecologica.friendly.find(params[:experiencia_agroecologica_id]).usuario_id
+    elsif params[:saf_id]
+      check_owner Saf.friendly.find(params[:saf_id]).usuario_id
+    end
   }, only: %i[new]
 
   before_action :load_dados
