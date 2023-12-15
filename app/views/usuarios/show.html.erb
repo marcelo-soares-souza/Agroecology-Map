@@ -24,7 +24,9 @@
     <br>
     <br>
     <h3><%= @usuario.nome %></h3>
-    <br>
+    <%# @likes.each do |like| %>
+    <%#= like.experiencia_agroecologica.nome%>
+    <%# end %>
     <% if usuario_signed_in? %>
       <%= "<strong>E-Mail:</strong><br>#{@usuario.email}&nbsp;".html_safe if @usuario.email? %>
       <br>
@@ -34,7 +36,7 @@
       <%= "<strong>#{t(:about_me)}</strong><div class='text-box'>#{simple_format (h @usuario.about).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @usuario.about.blank? %>
     <% end %>
     <% if @usuario.website %>
-      <%= "<strong>Website</strong><div class='text-box'><a href='#{@usuario.website}' target='_blank'>#{@usuario.website.truncate(32)}</a></div><br>".html_safe unless @usuario.website.blank? %>
+      <%= "<strong>Website</strong><div class='text-box'><a href='#{@usuario.website}' target='_blank'>#{@usuario.website.truncate(40)}</a></div><br>".html_safe unless @usuario.website.blank? %>
     <% end %>
     <%= "<strong>#{t(:registered_locations)}:</strong><br>#{@usuario.locais.map { |local| link_to local.nome, local_path(local) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.locais.count > 0 %>
     <%= "<br><br><strong>#{t(:registered_experiences)}:</strong><br>#{@usuario.experiencia_agroecologicas.map { |experiencia_agroecologica| link_to experiencia_agroecologica.nome, experiencia_agroecologica_path(experiencia_agroecologica) }.join(", ").html_safe}&nbsp;".html_safe if @usuario.experiencia_agroecologicas.count > 0 %>
@@ -44,6 +46,7 @@
       <br>
       <%= "<strong>Member Since</strong><div class='text-box'>#{@usuario.created_at.strftime("%Y-%m-%d")} (#{(@usuario.created_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe %>
       <%= "<strong>Last login at</strong><div class='text-box'>#{@usuario.last_sign_in_at.strftime("%Y-%m-%d")} (#{(@usuario.last_sign_in_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe %>
+      <%= "<strong>Total Likes given</strong><div class='text-box'>#{@usuario.likes.count}</div><br>".html_safe %>
     <% end %>
   </div>
 </div>
