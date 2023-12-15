@@ -44,8 +44,8 @@
     <% if usuario_signed_in? %>
       <br>
       <br>
-      <%= "<strong>Member Since</strong><div class='text-box'>#{@usuario.created_at.strftime("%Y-%m-%d")} (#{(@usuario.created_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe %>
-      <%= "<strong>Last login at</strong><div class='text-box'>#{@usuario.last_sign_in_at.strftime("%Y-%m-%d")} (#{(@usuario.last_sign_in_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe %>
+      <%= "<strong>Member Since</strong><div class='text-box'>#{@usuario.created_at.strftime("%Y-%m-%d")} (#{(@usuario.created_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe if @usuario.created_at%>
+      <%= "<strong>Last login at</strong><div class='text-box'>#{@usuario.last_sign_in_at.strftime("%Y-%m-%d")} (#{(@usuario.last_sign_in_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe if @usuario.last_sign_in_at%>
       <%= "<strong>Total Likes given</strong><div class='text-box'>#{@usuario.likes.count}</div><br>".html_safe %>
     <% end %>
   </div>
