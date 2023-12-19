@@ -19,6 +19,8 @@ gem "sass-rails", ">= 6.0.0"
 group :development do
   gem "listen", ">= 3.8.0"
   gem "web-console", ">= 4.2.1"
+  gem "rspec-rails", ">= 4.0.2"
+  gem "factory_bot_rails"
 end
 
 group :rubocop do

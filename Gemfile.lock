@@ -101,10 +101,16 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
     execjs (2.9.1)
+    factory_bot (6.4.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.2)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     ffi (1.16.3)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
@@ -236,6 +242,23 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.1.0)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     rubocop (1.59.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -317,6 +340,7 @@ DEPENDENCIES
   countries (>= 5.7.0)
   dalli
   devise (~> 4.9.2)
+  factory_bot_rails
   friendly_id (>= 5.5.0)
   geocoder (>= 1.8.2)
   invisible_captcha
@@ -328,6 +352,7 @@ DEPENDENCIES
   pg (>= 1.5.4)
   puma (>= 6.4.0)
   rails (~> 7.1)
+  rspec-rails (>= 4.0.2)
   rubocop (>= 1.57.0)
   rubocop-md
   rubocop-minitest
