@@ -36,7 +36,8 @@
     <% elsif params[:experiencia_agroecologica_id] %>
       <%= link_to t(:gallery) + " (#{@experiencia_agroecologica.midias.count})", experiencia_agroecologica_gallery_path, :class => "nav-link" %>
     <% elsif params[:local_id] %>
-      <%= link_to t(:gallery) + " (#{@local.midias.count})", local_gallery_path, :class => "nav-link" %>
+      <% total_midia = Midia.where(experiencia_agroecologica: @local.experiencia_agroecologicas).count + Midia.where(saf: @local.safs).count + @local.midias.count %>
+      <%= link_to t(:gallery) + " (#{total_midia})", local_gallery_path, :class => "nav-link" %>
     <% end %>
   </li>
   <% if usuario_signed_in? %>

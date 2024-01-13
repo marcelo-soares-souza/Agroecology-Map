@@ -2,11 +2,6 @@
 version: '2'
 
 services:
-#  redis:
-#    image: 'redis:latest'
-#    restart: always
-#    expose:
-#      - '6379'
   postgres:
     image: 'postgres:latest'
     restart: always
@@ -26,20 +21,6 @@ services:
       - '/opt/agroecologymap:/app/public/system'
       - '/opt/dockers/logs:/app/log'
     env_file: .env
-#  nginx:
-#    image: 'nginx:latest'
-#    restart: always
-#    depends_on:
-#      - 'website'
-#    expose:
-#      - '80:80'
-#      - '443:443'
-#    volumes:
-#      - '/opt/agroecologymap:/app/public/system'
-#      - '/opt/dockers/nginx/conf.d:/etc/nginx/conf.d'
-#      - '/etc/letsencrypt/:/etc/letsencrypt'
-#      - '/opt/dockers/nginx/bots.d:/etc/nginx/bots.d'
-
 
 volumes:
   postgres:

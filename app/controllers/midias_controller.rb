@@ -83,7 +83,7 @@ class MidiasController < ApplicationController
         elsif params[:experiencia_agroecologica_id]
           format.html { redirect_to experiencia_agroecologica_gallery_path(@experiencia_agroecologica, @midia), notice: "Photo was Added." }
         elsif params[:local_id]
-          format.html { redirect_to local_gallery_path(@local, @midia), notice: "Photo was Added." }
+          format.html { redirect_to local_gallery_path(@local.id), notice: "Photo was Added." }
         end
         format.json { render :show, status: :created, location: @midia }
       else
