@@ -1,0 +1,560 @@
+function loadURGENCI() {
+    var urgenci = L.markerClusterGroup({
+        disableClusteringAtZoom: 16
+    });
+
+    data = [{
+        title: 'AYE! event in Prague',
+        link: 'https://urgenci.net/aye-event-in-prague/',
+        lat: '50.08747',
+        lng: '14.42125',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Report of the 8th International Conference of La Via Campesina',
+        link: 'https://urgenci.net/report-of-the-8th-international-conference-of-la-via-campesina/',
+        lat: '4.65295',
+        lng: '-74.08356',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Reconstructing, Re-inventing: the Brazilian Congress of Agroecology',
+        link: 'https://urgenci.net/reconstructing-re-inventing-the-brazilian-congress-of-agroecology/',
+        lat: '-22.91377',
+        lng: '-43.18011',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Episode 18, The Mediterranean Caravan Podcast!',
+        link: 'https://urgenci.net/episode-18-the-mediterranean-caravan-podcast/',
+        lat: '33.84643',
+        lng: '9.40022',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Episode ten, The Mediterranean Caravan Podcast!',
+        link: 'https://urgenci.net/episode-ten-the-mediterranean-caravan-podcast/',
+        lat: '44.15552',
+        lng: '20.55032',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Episode nine, The Mediterranean Caravan Podcast!',
+        link: 'https://urgenci.net/episode-nine-the-mediterranean-caravan-podcast/',
+        lat: '44.52941',
+        lng: '10.06915',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Episode Eight, The Mediterranean Caravan Podcast!',
+        link: 'https://urgenci.net/episode-eight-the-mediterranean-caravan-podcast/',
+        lat: '45.36584',
+        lng: '15.65752',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Episode Seven, The Mediterranean Caravan Podcast!',
+        link: 'https://urgenci.net/episode-seven-the-mediterranean-caravan-podcast/',
+        lat: '44.81781',
+        lng: '20.4569',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Episode Six, The Mediterranean Caravan Podcast!',
+        link: 'https://urgenci.net/episode-six-the-mediterranean-caravan-podcast/',
+        lat: '44.15341',
+        lng: '20.55144',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Renewal of contracts in Ile-de-France AMAPs: understanding an unprecedented situation, a reflection of a society in health crisis',
+        link: 'https://urgenci.net/renewal-of-contracts-in-ile-de-france-amaps-understanding-an-unprecedented-situation-a-reflection-of-a-society-in-health-crisis/',
+        lat: '48.68371',
+        lng: '2.39496',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Community Supported fisheries Around Europe: Netherlands',
+        link: 'https://urgenci.net/community-supported-fisheries-around-europe-netherlands/',
+        lat: '52.24765',
+        lng: '5.54125',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries Around Europe: United Kingdom',
+        link: 'https://urgenci.net/community-supported-fisheries-around-europe-united-kingdom/',
+        lat: '54.70235',
+        lng: '-3.27658',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries Around Europe: Switzerland',
+        link: 'https://urgenci.net/community-supported-fisheries-around-europe-switzerland/',
+        lat: '46.79856',
+        lng: '8.23197',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries Around Europe: Belgium',
+        link: 'https://urgenci.net/community-supported-fisheries-around-europe-belgium/',
+        lat: '50.64028',
+        lng: '4.66671',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries Around Europe: Ireland',
+        link: 'https://urgenci.net/community-supported-fisheries-around-the-world-ireland/',
+        lat: '53.4295',
+        lng: '-8.12275',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries Around Europe: Spain',
+        link: 'https://urgenci.net/some-information-on-european-fishing-and-community-supported-fisheries-spain/',
+        lat: '39.32607',
+        lng: '-4.83798',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries around Europe: Turkey',
+        link: 'https://urgenci.net/some-information-on-european-fishing-and-community-supported-fisheries-turkey/',
+        lat: '38.95976',
+        lng: '34.92497',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Community Supported Fisheries Around Europe: Italy',
+        link: 'https://urgenci.net/some-information-on-european-fishing-and-community-supported-fisheries-italy/',
+        lat: '42.63843',
+        lng: '12.6743',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'What are we going to eat tomorrow around the Mediterranean sea ?',
+        link: 'https://urgenci.net/what-are-we-going-to-eat-tomorrow-around-the-mediterranean-sea-agroecology-as-a-solution-to-multiple-food-agriculture-and-climate-crises/',
+        lat: '44.82254',
+        lng: '20.46644',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Food Citizens: Report from the Test Training Events in the Czech Republic',
+        link: 'https://urgenci.net/food-citizens-report-from-the-test-training-events-in-the-czech-republic/',
+        lat: '48.74726',
+        lng: '14.09017',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Oma Maa Agriculture Camp in Finland 19-30 April 2022',
+        link: 'https://urgenci.net/oma-maa-agriculture-camp-in-finland-19-30-april-2022/',
+        lat: '60.43295',
+        lng: '25.02664',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Make CSA not war!',
+        link: 'https://urgenci.net/make-csa-not-war/',
+        lat: '50.07829',
+        lng: '14.42496',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Central and Eastern European Meeting of Community -Supported Agriculture, 12-14 November 2021',
+        link: 'https://urgenci.net/central-and-eastern-european-meeting-of-community-supported-agriculture-12-14-november-2021/',
+        lat: '50.99212',
+        lng: '16.04456',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Mediterranean Caravan of Agroecology: Stories from the Field collected during the Kick Off Meeting in Portugal',
+        link: 'https://urgenci.net/mediterranean-caravan-of-agroecology-kick-off-meeting-in-portugal/',
+        lat: '39.1973',
+        lng: '-9.23597',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: ' The first Central and Eastern European meeting of Community-Supported Agriculture just kicked off in Wroclaw, Poland!',
+        link: 'https://urgenci.net/the-first-central-and-eastern-european-meeting-of-community-supported-agriculture-just-kicked-off-in-wroclaw-poland/',
+        lat: '51.12228',
+        lng: '17.034',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Shortening the Distance, Building the Food Community: The organic market Bazar Ekologiczny Krótka Droga, Wrocław',
+        link: 'https://urgenci.net/shortening-the-distance-building-the-food-community-the-organic-market-bazar-ekologiczny-krotka-droga-wroclaw/',
+        lat: '51.08605',
+        lng: '17.01788',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'MedCaravan: agroecology as a connection between agricultural and socio-cultural ecosystems',
+        link: 'https://urgenci.net/medcaravan-agroecology-as-a-connection-between-agricultural-and-socio-cultural-ecosystems/',
+        lat: '38.70616',
+        lng: '-9.20078',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Decolonize your Plate, Amazonize the World!',
+        link: 'https://urgenci.net/decolonize-your-plate-amazonize-the-world/',
+        lat: '-3.1041',
+        lng: '-59.98089',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Seed Saving is a Struggle',
+        link: 'https://urgenci.net/seed-saving-is-a-struggle/',
+        lat: '39.92471',
+        lng: '32.82698',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Let&#8217;s put the right seeds on our plate!',
+        link: 'https://urgenci.net/lets-put-the-right-seeds-on-our-plate/',
+        lat: '60.43435',
+        lng: '25.02377',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Launching CSA in Ukraine and designing high-performance crop polycultures for CSA with vegetables and leafy greens',
+        link: 'https://urgenci.net/launching-csa-in-ukraine-and-designing-high-performance-crop-polycultures-for-csa-with-vegetables-and-leafy-greens/',
+        lat: '50.51397',
+        lng: '30.46354',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'CSA is Growing Big in the Netherlands!',
+        link: 'https://urgenci.net/csa-is-growing-big-in-the-netherlands/',
+        lat: '52.24902',
+        lng: '6.17655',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Localising the Sustainable Development Goals',
+        link: 'https://urgenci.net/sustainable-development-goals-stakeholder-meeting-in-dublin/',
+        lat: '53.34399',
+        lng: '-6.2574',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'National CSA Meeting in Norway',
+        link: 'https://urgenci.net/7580-2/',
+        lat: '59.93013',
+        lng: '10.67672',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Closing « Voices for CSA » does not mean shutting up !',
+        link: 'https://urgenci.net/closing-voices-for-csa-does-not-mean-shutting-up/',
+        lat: '49.11797',
+        lng: '1.71335',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'SolidBase Hackathon on the radio in Germany and Portugal',
+        link: 'https://urgenci.net/solidbase-hackathon-on-the-radio-in-germany-and-portugal/',
+        lat: '47.99265',
+        lng: '7.84098',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/cttm_markers-orange.png'
+    }, {
+        title: 'Deck to Dish: Increasing the Visibility and the Resilience of the Community Supported Fisheries Movement',
+        link: 'https://urgenci.net/deck-to-dish-increasing-the-visibility-and-the-resilience-of-the-community-supported-fisheries-movement/',
+        lat: '52.36218',
+        lng: '4.89441',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'SolidBase Hackathon in Freiburg 15-17 November',
+        link: 'https://urgenci.net/solidbase-hackathon-in-freiburg-15-17-november/',
+        lat: '47.99374',
+        lng: '7.84081',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'News from &#8220;How to financially plan your CSA&#8221; in Czech Republic',
+        link: 'https://urgenci.net/news-from-how-to-financially-plan-your-csa-in-czech-republic/',
+        lat: '49.83347',
+        lng: '18.28606',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'A snapshot of Community Supported Agriculture in Australia and Aotearoa New Zealand 2018',
+        link: 'https://urgenci.net/a-snapshot-of-community-supported-agriculture-in-australia-and-aotearoa-new-zealand-2018/',
+        lat: '-41.50039',
+        lng: '172.83468',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Drepturile Țăranilor ! The European movement for Peasants Rights Rallied in Bucharest',
+        link: 'https://urgenci.net/drepturile-taranilor-the-european-movement-for-peasants-rights-rallied-in-bucharest/',
+        lat: '44.42695',
+        lng: '26.08755',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'The European Community Supported Agriculture Movement Supports the Common Agriculture and Food Policy for Radical Ecological Change',
+        link: 'https://urgenci.net/the-european-community-supported-agriculture-movement-supports-the-common-agriculture-and-food-policy-for-radical-ecological-change/',
+        lat: '50.84616',
+        lng: '4.35144',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'The MedNet Show: A Short Movie about the Learning Journey in Turkey is Available',
+        link: 'https://urgenci.net/the-mednet-show-a-short-movie-about-the-learning-journey-in-turkey-is-available/',
+        lat: '39.9203',
+        lng: '32.85496',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'First Workshop on the Financial Sustainability of CSA in Germany',
+        link: 'https://urgenci.net/first-workshop-on-the-financial-sustainability-of-csa-in-germany/',
+        lat: '51.34274',
+        lng: '9.22405',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'CSA Beyond Borders Conference Launched in Thessaloniki',
+        link: 'https://urgenci.net/csa-beyond-borders-launched-in-thessaloniki/',
+        lat: '40.63991',
+        lng: '22.93619',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: '#CSABeyondBorders: Cultivating CSA in Palestine',
+        link: 'https://urgenci.net/7215-2/',
+        lat: '31.94637',
+        lng: '35.27452',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'The Mediterranean Network: Agroecology and Solidarity from Rabat to Beyrouth',
+        link: 'https://urgenci.net/the-mediterranean-network-agroecology-and-solidarity-from-rabat-to-beyrouth/',
+        lat: '34.02926',
+        lng: '-6.83531',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: '#CSABeyondBorders: Standing on Common Ground',
+        link: 'https://urgenci.net/csabeyondborders-standing-on-common-ground/',
+        lat: '42.65344',
+        lng: '-73.2613',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Urgenci Voices for CSA advocacy project launched in Rome this week',
+        link: 'https://urgenci.net/urgenci-voices-for-csa-advocacy-project-launched-in-rome-this-week/',
+        lat: '41.88238',
+        lng: '12.48957',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: '#CSABeyondBorders: Being a Core Member of the Jardins de Cocagne',
+        link: 'https://urgenci.net/csabeyondborders-being-a-core-member-of-the-jardins-de-cocagne/',
+        lat: '46.14488',
+        lng: '6.0006',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: '#CSABeyondBorders: Training Young Interns in a Japanese Teikei',
+        link: 'https://urgenci.net/csabeyondborders-training-young-interns-in-a-japanese-teikei/',
+        lat: '35.20735',
+        lng: '135.13081',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/3-e1634899098718.png'
+    }, {
+        title: 'Rebuilding the Broken Link: Local Solidarity Partnerships in West Africa',
+        link: 'https://urgenci.net/rebuilding-the-broken-relationship-between-producers-and-consumers-mapping-and-recommendations-of-local-solidarity-partnerships-in-west-africa/',
+        lat: '12.64872',
+        lng: '-7.99976',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'DUTCH CSA CONFERENCE 2018 (13 &#8211; 14 January 2018, De Eemlandhoeve, Bunschoten-Spakenburg)',
+        link: 'https://urgenci.net/dutch-csa-conference-2018-13-14-january-2018-de-eemlandhoeve-bunschoten-spakenburg/',
+        lat: '52.24499',
+        lng: '5.37317',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Full report from the &#8220;EAThink meets CSA&#8221; -Seminar in Normandy',
+        link: 'https://urgenci.net/full-report-from-the-eathink-meets-csa-seminar-in-normandy/',
+        lat: '49.15999',
+        lng: '-0.41302',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'The first West African meeting of local and solidarity-based agro-ecological partnerships between producers and consumers held in Kpalimé (Togo)',
+        link: 'https://urgenci.net/the-first-west-african-meeting-of-local-and-solidarity-based-agro-ecological-partnerships-between-producers-and-consumers-held-in-kpalime-togo/',
+        lat: '6.91134',
+        lng: '0.6324',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: '8th National CSA Conference of China, December 2016, Lishui',
+        link: 'https://urgenci.net/8th-national-csa-conference-of-china-december-2016-lishui/',
+        lat: '28.47021',
+        lng: '119.91869',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'CSA in China: An Introduction, by Caroline Merrifield and Shi Yan',
+        link: 'https://urgenci.net/csa-in-china-an-introduction-by-caroline-merrifield-and-shi-yan/',
+        lat: '39.90591',
+        lng: '116.39208',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Turkey',
+        link: 'https://urgenci.net/turkey/',
+        lat: '41.00956',
+        lng: '28.96563',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Tunisia',
+        link: 'https://urgenci.net/tunisia/',
+        lat: '36.86588',
+        lng: '10.20149',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Morocco',
+        link: 'https://urgenci.net/morocco/',
+        lat: '34.02164',
+        lng: '-6.83401',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Former Yugoslav Republic of Macedonia -FYROM',
+        link: 'https://urgenci.net/former-yugoslav-republic-of-macedonia-fyrom/',
+        lat: '41.99586',
+        lng: '21.43209',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Lebanon',
+        link: 'https://urgenci.net/lebanon/',
+        lat: '33.89531',
+        lng: '35.47897',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Greece',
+        link: 'https://urgenci.net/greece/',
+        lat: '40.63974',
+        lng: '22.93585',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Egypt',
+        link: 'https://urgenci.net/egypt/',
+        lat: '30.04867',
+        lng: '31.24409',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Croatia',
+        link: 'https://urgenci.net/croatia/',
+        lat: '44.87071',
+        lng: '13.84569',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Algeria',
+        link: 'https://urgenci.net/algeria/',
+        lat: '36.73581',
+        lng: '2.9512',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'CSA in Norway',
+        link: 'https://urgenci.net/csa-in-norway/',
+        lat: '59.91292',
+        lng: '10.73948',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Rural Regeneration: The Urgenci International CSA Conference in China',
+        link: 'https://urgenci.net/rural-regeneration-the-urgenci-international-csa-conference-in-china/',
+        lat: '40.15524',
+        lng: '116.72218',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Spain',
+        link: 'https://urgenci.net/spain/',
+        lat: '37.3527',
+        lng: '-5.94206',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Austria',
+        link: 'https://urgenci.net/austria/',
+        lat: '48.30942',
+        lng: '16.69906',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Italy',
+        link: 'https://urgenci.net/italy/',
+        lat: '45.4537',
+        lng: '9.11213',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Switzerland',
+        link: 'https://urgenci.net/switzerland/',
+        lat: '46.94817',
+        lng: '7.45216',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Belgium',
+        link: 'https://urgenci.net/belgium/',
+        lat: '50.84313',
+        lng: '4.36792',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Hungary',
+        link: 'https://urgenci.net/hungary-2/',
+        lat: '47.48155',
+        lng: '19.14694',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'Romania',
+        link: 'https://urgenci.net/romania/',
+        lat: '45.77281',
+        lng: '21.24018',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Germany',
+        link: 'https://urgenci.net/germany/',
+        lat: '51.34',
+        lng: '9.85937',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'France',
+        link: 'https://urgenci.net/france/',
+        lat: '45.74711',
+        lng: '4.83604',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'United Kingdom',
+        link: 'https://urgenci.net/united-kingdom/',
+        lat: '51.45182',
+        lng: '-2.58848',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'REKO – a winning concept in Finland!',
+        link: 'https://urgenci.net/reko-a-winning-concept-in-finland/',
+        lat: '63.66545',
+        lng: '22.7017',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Bénin',
+        link: 'https://urgenci.net/benin/',
+        lat: '6.36852',
+        lng: '2.42558',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'CSA and Consumers&#8217; Cooperatives in India',
+        link: 'https://urgenci.net/csa-and-consumers-cooperatives-in-india/',
+        lat: '28.65061',
+        lng: '77.22256',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Aubagne 2008',
+        link: 'https://urgenci.net/aubagne-2008/',
+        lat: '43.2862',
+        lng: '5.60474',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'Japan, cradle of CSA',
+        link: 'https://urgenci.net/japan-cradle-of-csa/',
+        lat: '35.68211',
+        lng: '139.76',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Study Visit to Helsinki region',
+        link: 'https://urgenci.net/logistics-of-short-supply-chains/study-visit-to-helsinki-region/',
+        lat: '60.43427',
+        lng: '25.02428',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'CSA Demetria in Brazil',
+        link: 'https://urgenci.net/csa-demetria-in-brazil/',
+        lat: '-22.87349',
+        lng: '-48.47786',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'North America',
+        link: 'https://urgenci.net/csa-map/north-america/',
+        lat: '45.49703',
+        lng: '-73.61063',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }, {
+        title: 'Cordoba Symposium &#8211; 2010',
+        link: 'https://urgenci.net/cordoba-symposium/',
+        lat: '37.93799',
+        lng: '-4.83398',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/1-e1634899135825.png'
+    }, {
+        title: 'CSA in Czech Republic',
+        link: 'https://urgenci.net/csa-in-czech-republic/',
+        lat: '50.08699',
+        lng: '14.42162',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/2-e1634899120352.png'
+    }, {
+        title: 'The CSA in Taiwan (Province of China)',
+        link: 'https://urgenci.net/the-csa-in-taiwan/',
+        lat: '25.03086',
+        lng: '121.55273',
+        icon: 'https://urgenci.net/wp-content/uploads/2019/11/4-e1634899056572.png'
+    }]
+
+    var Icon = L.icon({
+        iconUrl: '<%= image_url "leaflet/images/leaf-orange.png" %>',
+        shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+        iconSize: [38, 95],
+        shadowSize: [50, 64],
+        iconAnchor: [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
+    });
+
+    for (i = 0; i < data.length; i++) {
+        var popup = '<h4><a href="' + data[i].link + '" target="_blank">' + data[i].title + '</a></h4><b>Source: <a href="https://urgenci.net" target="_blank">Urgenci</a>';
+        var marker = new L.marker(new L.latLng([data[i].lat, data[i].lng]), {icon: Icon});
+        marker.bindPopup(popup);
+        urgenci.addLayer(marker);
+    }
+
+    return urgenci;
+}

@@ -3909,7 +3909,7 @@ function loadPPM() {
     });
 
     for (i = 0; i < data.length; i++) {
-        var popup = '<b>' + data[i].c.substring(0, 512) + "..." + '<br>Fonte: </b><a href="https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/" target="_blank">Politicas Públicas Municipais</a>';
+        var popup = '<h4>' + data[i].c.substring(0, 512) + "..." + '</h4><b>Source: <a href="https://agroecologia.org.br/mapa-das-politicas-publicas-em-agroecologia/" target="_blank">Politicas Públicas Municipais</a></b>';
         var marker = new L.marker(new L.latLng([data[i].lat, data[i].lon]), {icon: Icon});
         marker.bindPopup(popup);
         ppm.addLayer(marker);

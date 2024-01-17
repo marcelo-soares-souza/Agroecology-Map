@@ -3,8 +3,8 @@ async function loadOMV() {
     var omv = L.markerClusterGroup({ disableClusteringAtZoom: 16 });
 
     var Icon = L.icon({
-        iconUrl: '/assets/leaflet/images/leaf-orange-9952665bb19627cda54191649edd543ea50b9636665423e7bdb66d2031dbb99a.png',
-        shadowUrl: '/assets/leaflet/images/leaf-shadow-91cad1be1dc701db088233f2fbbf77a1ac844fae42ba9f2699032ee41a70a26a.png',
+        iconUrl: '<%= image_url "leaflet/images/leaf-red.png" %>',
+        shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
         iconSize: [38, 95],
         shadowSize: [50, 64],
         iconAnchor: [22, 94],
@@ -22,7 +22,7 @@ async function loadOMV() {
         const longitude = location['longitude'];
 
         if (latitude && longitude) {
-          var popup = '<h4>One Million Voices</h4></h3><b><a href=" '+url+'" target="_blank">' + name.substring(0, 256) + "..." + '</a></b>';
+          var popup = '<h4><a href=" '+url+'" target="_blank">' + name.substring(0, 256) + "..." + '</a></h4><b>Source: <a href="https://onemillionvoices.agroecologymap.org" target="_blank">One Million Voices</a></b>';
           var marker = new L.marker(new L.latLng(latitude, longitude), {icon: Icon});
           marker.bindPopup(popup);
           omv.addLayer(marker);

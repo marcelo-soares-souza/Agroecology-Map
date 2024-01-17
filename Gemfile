@@ -11,7 +11,7 @@ gem "rails", "~> 7.1"
 
 gem "nokogiri", ">= 1.15.4"
 gem "pg", ">= 1.5.4"
-gem "puma", ">= 6.4.1"
+gem "puma", ">= 6.4.2"
 gem "uglifier", ">= 4.2.0"
 gem "jbuilder", ">= 2.11.5"
 gem "sass-rails", ">= 6.0.0"
