@@ -11,7 +11,7 @@
   <meta property="og:title" content="<%= t(:site_name) %>" />
   <meta property="og:description" content="<%= t(:site_description) %>" />
   <meta property="og:image" content="https://agroecologymap.org/logo.png" />
-  <link rel="canonical" href="https://agroecologymap.org/" />
+  <link rel="canonical" href="<%= url_for(:only_path => false, :protocol => 'https') %>" />
   <link rel="icon" href="<%= image_url "favicon.ico" %>">
   <title><%= content_for?(:title) ? yield(:title) : t(:site_name) %></title>
   <%= csrf_meta_tags %>
