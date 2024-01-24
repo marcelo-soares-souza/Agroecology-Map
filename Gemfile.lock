@@ -299,6 +299,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    schema_dot_org (2.2.3)
+      validated_object (~> 2.3)
+    sorbet-runtime (0.5.11218)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -318,6 +321,9 @@ GEM
       execjs (>= 0.3.0, < 3)
     unaccent (0.4.0)
     unicode-display_width (2.5.0)
+    validated_object (2.3.0)
+      activemodel (>= 3.2.21)
+      sorbet-runtime (>= 0.5.5890)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -360,6 +366,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   sass-rails (>= 6.0.0)
+  schema_dot_org
   sprockets (>= 4.2.1)
   sprockets-rails (>= 3.4.2)
   tzinfo-data
