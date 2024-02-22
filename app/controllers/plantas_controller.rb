@@ -8,7 +8,7 @@ class PlantasController < ApplicationController
   # GET /plantas
   # GET /plantas.json
   def index
-    @plantas = Planta.all.load_async.sort_by(&:updated_at).reverse
+    @plantas = Planta.all.sort_by(&:updated_at).reverse
   end
 
   # GET /plantas/1

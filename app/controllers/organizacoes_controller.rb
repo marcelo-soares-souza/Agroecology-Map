@@ -10,7 +10,7 @@ class OrganizacoesController < ApplicationController
   # GET /organizacoes
   # GET /organizacoes.json
   def index
-    @organizacoes = Organizacao.all.load_async.sort_by(&:updated_at).reverse
+    @organizacoes = Organizacao.all.sort_by(&:updated_at).reverse
   end
 
   # GET /organizacoes/1
@@ -83,6 +83,6 @@ class OrganizacoesController < ApplicationController
     end
 
     def load_tipo_organizacoes
-      @tipo_organizacoes = TipoOrganizacao.all.load_async
+      @tipo_organizacoes = TipoOrganizacao.all
     end
 end

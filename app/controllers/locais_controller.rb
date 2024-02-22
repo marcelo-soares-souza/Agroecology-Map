@@ -14,9 +14,9 @@ class LocaisController < ApplicationController
   # GET /locais.json
   def index
     @locais = if params[:usuario_id]
-      Local.includes(:experiencia_agroecologicas, :usuario).where(usuario_id: @usuario.id).includes(:experiencia_agroecologicas).load_async.sort_by(&:updated_at).reverse
+      Local.includes(:experiencia_agroecologicas, :usuario).where(usuario_id: @usuario.id).includes(:experiencia_agroecologicas).sort_by(&:updated_at).reverse
     else
-      Local.all.includes(:experiencia_agroecologicas, :usuario).load_async.sort_by(&:updated_at).reverse
+      Local.all.includes(:experiencia_agroecologicas, :usuario).sort_by(&:updated_at).reverse
     end
   end
 
@@ -115,7 +115,7 @@ class LocaisController < ApplicationController
     end
 
     def load_colaboradores
-      @usuarios = Usuario.all.load_async
+      @usuarios = Usuario.all
     end
 
     def load_usuario

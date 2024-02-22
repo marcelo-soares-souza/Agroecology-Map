@@ -20,11 +20,11 @@ class ExperienciaAgroecologicasController < ApplicationController
   # GET /experiencia_agroecologicas.json
   def index
     @experiencia_agroecologicas = if params[:local_id]
-      ExperienciaAgroecologica.where(local_id: @local.id).includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).load_async.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.where(local_id: @local.id).includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).sort_by(&:updated_at).reverse
     elsif params[:usuario_id]
-      ExperienciaAgroecologica.where(usuario_id: @usuario.id).includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).load_async.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.where(usuario_id: @usuario.id).includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).sort_by(&:updated_at).reverse
     else
-      ExperienciaAgroecologica.all.includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).load_async.sort_by(&:updated_at).reverse
+      ExperienciaAgroecologica.all.includes(:local, :midias, :likes, :comentarios, :tema_experiencia_agroecologica).sort_by(&:updated_at).reverse
     end
   end
 
@@ -103,7 +103,7 @@ class ExperienciaAgroecologicasController < ApplicationController
     end
 
     def load_tema_experiencia_agroecologicas
-      # @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all.load_async
+      # @tema_experiencia_agroecologicas = TemaExperienciaAgroecologica.all
       @tema_experiencia_agroecologicas = {
         t(:urban_agriculture) => 1,
         t(:food) => 2,

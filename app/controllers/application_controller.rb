@@ -59,9 +59,9 @@ class ApplicationController < ActionController::Base
 
     def load_locais
       @locais = if current_usuario.admin?
-        Local.all.load_async
+        Local.all
       else
-        Local.where(usuario_id: current_usuario.id).load_async
+        Local.where(usuario_id: current_usuario.id)
       end
     end
 
