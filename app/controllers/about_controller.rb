@@ -20,4 +20,7 @@ class AboutController < ApplicationController
 
   def privacy_policy
   end
+
+  def friends
+  end
 end

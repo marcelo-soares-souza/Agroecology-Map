@@ -59,7 +59,7 @@
         <label>
           <%= f.check_box :i_agree_with_terms_and_conditions, {required: true}, true, false  %>
           <strong><%= t(:i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40) %> <%= link_to "Creative Commons license CC BY-NC-SA 4.0", "https://creativecommons.org/licenses/by-nc-sa/4.0/", target: "_blank" %>
-          and the <%= link_to('Privacy Policy', privacy_policy_path, :class => "nav-link") %></strong>
+          and my personal data under the <%= link_to('Privacy Policy', privacy_policy_path) %></strong>
         </label>
       </div>
 

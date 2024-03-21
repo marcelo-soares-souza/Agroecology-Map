@@ -232,7 +232,7 @@ fr:
   sign_in_to_comment: Connectez-vous pour commenter cette pratique agroécologique
   sign_up_and_share_your_agroecological_practices: Inscrivez-vous et partagez vos pratiques agroécologiques
   sign_up: S'inscrire
-  site_description: "Discover and share valuable resources and knowledge, find agroecological practices near you and connect with a like-minded community. Create a profile, explore, be found."
+  site_description: "Agroecology Map Knowledge and Practices is a Free (Open) Platform for Mapping Initiatives in Agroecology, Permaculture and Agroforestry Systems."
   site_name: "Agroecology Map"
   social_values_and_diets: Valeurs sociales et régimes alimentaires
   soil_health: Santé des sols
@@ -250,7 +250,7 @@ fr:
   synergy: Synergie
   takes_rather_long_to_work: Il faut un certain temps avant que la pratique ne fonctionne
   takes_very_long_to_work: Il faut beaucoup de temps avant que la pratique ne fonctionne
-  technologies_and_arts_used_from: Technologies et arts utilisés à partir de
+  technologies_and_arts_used_from: Technologies utilisés à partir de
   tell_us_a_bit_about_your_place_what_you_do_in_the_place_you_register_and_what_your_experiences_have_been: Parlez-nous un peu de votre localisation, de ce que vous y faites et de vos expériences.
   thank_you_notes: Note de remerciement
   thank_you_note_text: La plate-forme Agroecology Map est entièrement gratuite et open source.Nous tenons à remercier tous les projets, artistes et partenaires qui contribuent à la plateforme Agroecology Map.
@@ -298,3 +298,5 @@ fr:
   fish: "Poisson"
   of: "sur"
   dashboard: "Dashboard"
+  partners: "Partners"
+  friends: "Friends"

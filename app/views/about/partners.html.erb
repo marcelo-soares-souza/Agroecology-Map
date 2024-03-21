@@ -1,0 +1,55 @@
+<% title t(:thank_you_notes) %>
+<style>
+    .thank_you_notes {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 900px;
+        margin-top: 40px;
+    }
+
+    .logo {
+        width: 220px;
+        margin: auto;
+        background-color: transparent;
+    }
+
+    .thank_you_notes .card {
+        border: 0;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        margin-bottom: 32px;
+
+    }
+</style>
+
+<div class="thank_you_notes">
+  <br>
+  <h1><%= t(:friends) %>/<%= t(:partners) %></h1>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("partners/idn.png", width: "180px", alt: "International Degrowth Network Logo", title: "International Degrowth Network Logo"), "https://degrowth.net/", :target => "_blank", :alt => "International Degrowth Network Logo", :title => "International Degrowth Network Logo" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("partners/omv.png", width: "200px", alt: "One Million Voices of Agroecology Logo", title: "Agroecology Map Logo"), "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :alt => "One Million Voices of Agroecology Logo", :title => "One Million Voices of Agroecology Logo" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("partners/agroecologyworks.png", width: "250px", alt: "Agroecology Works! Logo", title: "Agroecology Works! Logo"), "https://agroecologyworks.ch/de", :target => "_blank", :alt => "Agroecology Works! Logo", :title => "Agroecology Works! Logo" %></div>
+      </div>
+    </div>
+  </div>
+</div>

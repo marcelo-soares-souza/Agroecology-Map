@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     root to: "home#index"
     get "home/index"
 
-    get "map", to: "home#map"
+    get "map", to: "home#index"
     get "landing", to: "about#landing"
     get "about", to: "about#index"
     get "who_we_are", to: "about#who_we_are"
+    get "partners", to: "about#partners"
+    get "friends", to: "about#partners"
     get "manual", to: "about#manual"
     get "license", to: "about#license"
     get "thank_you_notes", to: "about#thank_you_notes"
@@ -66,5 +68,23 @@ Rails.application.routes.draw do
     match "/404", to: "errors#not_found", via: :all
     match "/500", to: "errors#internal_server_error", via: :all
     match "/422", to: "errors#unprocessable_entity", via: :all
+
+    scope(accounts: {}) do
+      resources :accounts, path: "usuarios"
+      resources :accounts, path: "contributors"
+    end
+
+    scope(locations: {}) do
+      resources :locations, path: "locais"
+    end
+
+    scope(practices: {}) do
+      resources :practices, path: "agroecological-experiences"
+      resources :practices, path: "experiencia_agroecologicas"
+      resources :practices, path: "agroforestry"
+      resources :practices, path: "experiences"
+      resources :practices, path: "safs"
+      resources :practices, path: "news"
+    end
   end
 end

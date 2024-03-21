@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Accounts::SessionsController < Devise::SessionsController
-  # prepend_before_action :check_captcha, only: %i[create]
+  prepend_before_action :check_captcha, only: %i[create]
 
   private
     def check_captcha
