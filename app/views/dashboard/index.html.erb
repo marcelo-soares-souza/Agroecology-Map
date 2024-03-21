@@ -1,156 +1,127 @@
-<style>
-  .practices-box {
-      border: 1px solid #dedee0;
-      max-width: 1000px;
-      padding: 18px 8px;
-      margin: 8px auto 20px;
-  }
-
-  canvas {
-    width: 100%;
-    max-width: 98% !important;
-    max-height: 1000px !important;
-  }
-</style>
-<% title t(:data_summary) %>
-<br>
-<br>
-<br>
-<ul class="nav nav-tabs flex-column flex-xl-row">
-  <li class="nav-item">
-    <%= link_to t(:data_summary), dashboard_path, :class => "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:manual), manual_index_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:friends), friends_path, :class => "nav-link" %>
-  </li>
-</ul>
+<% title t(:dashboard) %>
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <br>
     <div class="practices-box">
-      <div style="text-align: left;">
-        <b>Total Location: </b><%= @locations_count %>
-        <br>
-        <b>Total Experiences in Agroecology: </b> <%= @experiences_in_agroecology_count %>
-        <br>
-        <b>Total Agroforestry Systems: </b> <%= @saf_count %>
-        <br>
-        <b>Total Contributors: </b> <%= @contributors_count %>
-      </div>
+      <h4>Number of locations registered</h4>
+      Locations: <%= @locations_count %>
     </div>
-  </div>
-  <div class="tab-pane active">
     <div class="practices-box">
-      <h4>Agroecology locations per country</h4>
+      <h4>Number of practices registered</h4>
+      Practices: <%= @practices_count %>
+    </div>
+    <div class="practices-box">
+      <h4>Number of Accounts registered</h4>
+      Locations: <%= @accounts_count %>
+    </div>
+    <div class="practices-box">
+      <h4>Locations per country</h4>
       <div id="regions_div"></div>
     </div>
-  </div>
-  <div class="practices-box">
-    <h4>Locations by type</h4>
-    <div style="margin-left: auto; margin-right: auto;">
-      <canvas id="location-by-type"></canvas>
+
+    <div class="practices-box">
+      <h4>Locations per continent</h4>
+      <div id="continents_div"></div>
     </div>
-  </div>
-  <div class="practices-box">
-    <h4>Agroecology experiences by main theme</h4>
-    <div style="margin-left: auto; margin-right: auto;">
-      <canvas id="experience-by-theme"></canvas>
+
+    <div class="practices-box bg-light">
+      <h4>Number of locations registered per continent</h4>
+      <div>
+        <canvas id="per-continent-chart"></canvas>
+      </div>
     </div>
+    <!--
+    <div class="practices-box">
+      <h4>Where it is realized?</h4>
+      <div>
+        <canvas id="where-it-is-realized-chart"></canvas>
+      </div>
+    </div>
+    <div class="practices-box bg-light">
+      <h4>Number of practices addressing specific agroecology principles</h4>
+      <div>
+        <canvas id="principles-chart"></canvas>
+      </div>
+    </div>
+    <div class="practices-box">
+      <h4>Number of practices addressing specific system components</h4>
+      <div>
+        <canvas id="components-chart"></canvas>
+      </div>
+    </div>
+    <div class="practices-box">
+      <h4>Knowledge source</h4>
+      <div>
+        <canvas id="knowledge-and-skills-required-for-practice-chart"></canvas>
+      </div>
+    </div>
+    <div class="practices-box">
+      <h4>Farm and farming system</h4>
+      <div>
+        <canvas id="farm-and-farming-system-chart"></canvas>
+      </div>
+    </div>
+    -->
   </div>
 </div>
-<!-- Scripts -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load('current', {
-    'packages':['geochart'],
-  });
-
-  google.charts.setOnLoadCallback(drawRegionsMap);
-
-  countries = []
-  countries.push(['Country', 'Locations'])
-
-  <% @location_by_country.each do |country| %>
-      countries.push(['<%= country[0] %>', <%= country[1] %>])
-  <% end %>
-
-  function drawRegionsMap() {
-    var data = google.visualization.arrayToDataTable(countries);
-    var options = {};
-    options['legend'] = 'none';
-    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-    chart.draw(data, options);
+<!-- Script for ChartJS -->
+<style>
+  canvas {
+    width: 100%;
+    max-width: 90% !important;
+    max-height:600px !important;
+    margin-left: auto;
+    margin-right: auto;
   }
-  window.onresize = drawRegionsMap;
-</script>
+</style>
 <script>
-  const ctxByType = document.getElementById('location-by-type');
-
-  data_by_type = []
-  labels_by_type = []
-  <% @location_by_type.each do |by_type| %>
-    labels_by_type.push('<%= @tipos.key(by_type[0]) %> (<%= by_type[1] %>)')
-    data_by_type.push('<%= by_type[1] %>')
-  <% end %>
-
-  const datasetByType = [{
-      label: '',
-      data: data_by_type,
-      backgroundColor: [
-      'rgba(255, 99, 132, 0.5)',
-      'rgba(45, 192, 192, 0.5)',
-      'rgba(100, 162, 235, 0.5)',
-      'rgba(253, 102, 255, 0.5)',
-      'rgba(250, 200, 207, 0.5)',
-      'rgba(255, 250, 207, 0.5)',
-
+  const ctx = document.getElementById('components-chart');
+  const opt = {
+                plugins: {
+                  patterns: {
+                    backgroundColor: ['#ff0000', '#00ff00', '#0000ff'], 
+                    pattern: ['dot', 'line', 'circle']
+                }
+              }
+  }
+  const data = {
+    labels: [
+      'Soil (<%= @practices_soil_count %>)',
+      'Water (<%= @practices_water_count %>)',
+      'Crops (<%= @practices_crops_count %>)',
+      'Livestock (<%= @practices_livestock_count %>)',
+      'Fish (<%= @practices_fish_count %>)',
+      'Trees (<%= @practices_trees_count %>)',
+      'Pests (<%= @practices_pests_count %>)',
+      'Energy (<%= @practices_energy_count %>)',
+      'Household (<%= @practices_household_count %>)',
+      'Workers (<%= @practices_workers_count %>)',
+      'Community (<%= @practices_community_count %>)',
+      'Value chain (<%= @practices_value_chain_count %>)',
+      'Policy (<%= @practices_policy_count %>)',
+      'Whole food system (<%= @practices_whole_food_system_count %>)',
+      'Other (<%= @practices_other_count %>)',
+      'I am not sure (<%= @practices_i_am_not_sure_count %>)'
     ],
-    }]
-  const optionsByType ={
-    responsive: true,
-    scaleShowValues: true,
-    plugins: {
-      legend: {
-        display: false
-      }
-    },
-    scales: {
-      xAxes: [{
-        ticks: {
-          autoSkip: false
-        }
-      }]
-   },
-  }
-
-  var chart_by_type = new Chart(ctxByType, {
-    type: 'bar',
-    data: {
-      labels: labels_by_type,
-      datasets: datasetByType,
-    },
-    options: optionsByType,
-  });
-
-
-  chart_by_type.update();
-</script>
-<script>
-  const ctxByTheme = document.getElementById('experience-by-theme');
-
-  data_experience_by_theme = []
-  labels_experience_by_theme = []
-  <% @experience_by_theme.each do |experience| %>
-    labels_experience_by_theme.push('<%= @tema_experiencia_agroecologicas.key(experience[0].id).truncate(35) %> (<%= experience[1] %>)')
-    data_experience_by_theme.push('<%= experience[1] %>')
-  <% end %>
-
-  const datasetByTheme = [{
-      label: '',
-      data: data_experience_by_theme,
+    datasets: [{
+      data: [
+      <%= @practices_soil_count %>,
+      <%= @practices_water_count %>,
+      <%= @practices_crops_count %>,
+      <%= @practices_livestock_count %>,
+      <%= @practices_fish_count %>,
+      <%= @practices_trees_count %>,
+      <%= @practices_pests_count %>,
+      <%= @practices_energy_count %>,
+      <%= @practices_household_count %>,
+      <%= @practices_workers_count %>,
+      <%= @practices_community_count %>,
+      <%= @practices_value_chain_count %>,
+      <%= @practices_policy_count %>,
+      <%= @practices_whole_food_system_count %>,
+      <%= @practices_other_count %>,
+      <%= @practices_i_am_not_sure_count %>
+      ],
       backgroundColor: [
       'rgba(255, 99, 0.5, 0.5)',
       'rgba(75, 192, 0.5, 0.5)',
@@ -168,33 +139,285 @@
       'rgba(54, 162, 235, 0.5)',
       'rgba(153, 102, 255, 0.5)',
       'rgba(251, 223, 207, 0.5)'
-      ],
+    ]
+  }]
+  };
+
+  var chart = new Chart(ctx, {
+    type: 'polarArea',
+    data: data,
+    options: opt
+  });
+
+  chart.options.plugins.legend.position = 'left';
+  chart.update();
+</script>
+<script>
+  const ctxComponents = document.getElementById('principles-chart');
+  const optComponents= {}
+  const dataComponents = {
+  labels: [
+      'Recycling (<%= @practices_recycling_count %>)',
+      'Input reduction (<%= @practices_input_reduction_count %>)',
+      'Soil health (<%= @practices_soil_health_count %>)',
+      'Animal health (<%= @practices_animal_health_count %>)',
+      'Biodiversity (<%= @practices_biodiversity_count %>)',
+      'Synergy (<%= @practices_synergy_count %>)',
+      'Economic diversification (<%= @practices_economic_diversification_count %>)',
+      'Co-creation of knowledge (<%= @practices_co_creation_of_knowledge_count %>)',
+      'Social values and diets (<%= @practices_social_values_and_diets_count %>)',
+      'Fairness (<%= @practices_fairness_count %>)',
+      'Connectivity (<%= @practices_connectivity_count %>)',
+      'Land and natural resource governance (<%= @practices_land_and_natural_resource_governance_count %>)',
+      'Participation (<%= @practices_participation_count %>)'
+  ],
+  datasets: [{
+    data: [
+    <%= @practices_recycling_count %>,
+    <%= @practices_input_reduction_count %>,
+    <%= @practices_soil_health_count %>,
+    <%= @practices_animal_health_count %>,
+    <%= @practices_biodiversity_count %>,
+    <%= @practices_synergy_count %>,
+    <%= @practices_economic_diversification_count %>,
+    <%= @practices_co_creation_of_knowledge_count %>,
+    <%= @practices_social_values_and_diets_count %>,
+    <%= @practices_fairness_count %>,
+    <%= @practices_connectivity_count %>,
+    <%= @practices_land_and_natural_resource_governance_count %>,
+    <%= @practices_participation_count %>
+    ],
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(75, 192, 192, 0.5)',
+      'rgba(255, 205, 86, 0.5)',
+      'rgba(201, 203, 207, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+      'rgba(54, 112, 135, 0.5)',
+      'rgba(154, 102, 105, 0.5)',
+      'rgba(74, 90, 132, 0.5)',
+      'rgba(74, 40, 32, 0.5)',
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(255, 159, 64, 0.5)',
+      'rgba(255, 255, 86, 0.5)',
+      'rgba(75, 102, 192, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+      'rgba(153, 102, 255, 0.5)',
+      'rgba(251, 223, 207, 0.5)'
+    ]
+  }]
+  };
+
+  var chartComponents = new Chart(ctxComponents, {
+    type: 'polarArea',
+    data: dataComponents,
+    options: optComponents
+  });
+
+  chartComponents.options.plugins.legend.position = 'left';
+  chartComponents.update();
+</script>
+<script>
+  const ctxPerContinent = document.getElementById('per-continent-chart');
+  const labels = []
+  const values = []
+
+  <% @locations.group(:continent).count.each do |location| %>
+        labels.push('<%= location[0] %> (<%= location[1] %>)');
+        values.push(<%= location[1] %>)
+  <% end %>
+
+  const dataset = [{
+      label: '',
+      data: values,
+      pattern: ['dot', 'line', 'circle'],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(255, 159, 64, 0.5)',
+      'rgba(255, 205, 86, 0.5)',
+      'rgba(75, 192, 192, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+      'rgba(153, 102, 255, 0.5)',
+      'rgba(201, 203, 207, 0.5)'
+    ],
     }]
-  const optionsByTheme = {
+
+  const options = {
     responsive: true,
-    scaleShowValues: true,
+    maintainAspectRatio: true,
+    scales: { y: { beginAtZero: true } },
     plugins: {
       legend: {
         display: false
       }
-    },
-    scales: {
-      xAxes: [{
-        ticks: {
-          autoSkip: false
-        }
-      }]
-   },
+    }
   }
 
-  var chart_by_theme = new Chart(ctxByTheme, {
+  var chart_per_continent = new Chart(ctxPerContinent, {
     type: 'bar',
     data: {
-      labels: labels_experience_by_theme,
-      datasets: datasetByTheme,
+      labels: labels,
+      datasets: dataset,
     },
-    options: optionsByTheme,
+    options: options,
   });
+</script>
+<script>
+  const ctxWhereItIsRealized = document.getElementById('where-it-is-realized-chart');
 
-  chart_by_theme.update();
+  const datasetWhereItIsRealized = [{
+      label: '',
+      data: [<%= @practices_on_count %>, <%= @practices_off_count %>, <%= @practices_other_count %>],
+      pattern: ['dot', 'line', 'circle'],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(75, 192, 192, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+      'rgba(153, 102, 255, 0.5)',
+      'rgba(201, 203, 207, 0.5)'
+    ],
+
+    }]
+  const optionsWhereItIsRealized = {
+    responsive: true,
+    maintainAspectRatio: true,
+  }
+
+  var chart_where_it_is_realized = new Chart(ctxWhereItIsRealized, {
+    type: 'doughnut',
+    data: {
+      labels: ['On-farm (<%= @practices_on_count %>)', 'Off-farm (<%= @practices_off_count %>)', 'Other (<%= @practices_other_count %>)'],
+      datasets: datasetWhereItIsRealized,
+    },
+    options: optionsWhereItIsRealized,
+  });
+</script>
+<script>
+  const ctxKnowledgeAndSkillsRequiredForPractice = document.getElementById('knowledge-and-skills-required-for-practice-chart');
+
+  const datasetKnowledgeAndSkillsRequiredForPractice = [{
+      label: '',
+      data: [<%= @practices_formal_knowledge_count %>, <%= @practices_indigenous_knowledge_count %>, <%= @practices_local_knowledge_count %>, <%= @practices_personal_experimentation_count %>, <%= @practices_knowledge_other_count %>, <%= @practices_knowledge_i_am_not_sure_count %>],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(75, 192, 192, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+      'rgba(153, 102, 255, 0.5)',
+      'rgba(251, 213, 207, 0.5)',
+      'rgba(255, 255, 86, 0.5)',
+    ],
+    }]
+  const optionsKnowledgeAndSkillsRequiredForPractice = {
+    responsive: true,
+    maintainAspectRatio: true,
+  }
+
+  var chart_knowledge_and_skills_required_for_practice = new Chart(ctxKnowledgeAndSkillsRequiredForPractice, {
+    type: 'doughnut',
+    data: {
+      labels: ['Formal knowledge (<%= @practices_formal_knowledge_count %>)', 'Indigenous knowledge (<%= @practices_indigenous_knowledge_count %>)','Local knowledge (<%= @practices_local_knowledge_count %>)',  'Personal experimentation (<%= @practices_personal_experimentation_count %>)', 'Other (<%= @practices_knowledge_other_count %>)', 'I am not sure (<%= @practices_knowledge_i_am_not_sure_count %>)'],
+      datasets: datasetKnowledgeAndSkillsRequiredForPractice,
+    },
+    options: optionsKnowledgeAndSkillsRequiredForPractice,
+  });
+</script>
+<!-- farm_and_farming_system -->
+<script>
+  const ctxFarmAndFarmingSystem = document.getElementById('farm-and-farming-system-chart');
+
+  const datasetFarmAndFarmingSystem = [{
+      label: '',
+      data: [<%= @practices_farm_system_crops_count %>, <%= @practices_farm_system_animals_count %>, <%= @practices_farm_system_trees_count %>, <%= @practices_farm_system_fish_count %>, <%= @practices_farm_system_other_count %>],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(45, 192, 192, 0.5)',
+      'rgba(100, 162, 235, 0.5)',
+      'rgba(253, 102, 255, 0.5)',
+      'rgba(250, 200, 207, 0.5)',
+    ],
+    }]
+  const optionsFarmAndFarmingSystem ={
+    responsive: true,
+    maintainAspectRatio: true,
+    
+    plugins: {
+    legend: {
+      display: false
+    }
+  }
+  }
+
+  var chart_farm_and_farming_system = new Chart(ctxFarmAndFarmingSystem, {
+    type: 'bar',
+    data: {
+      labels: ['Crops (<%= @practices_farm_system_crops_count %>)', 'Animals (<%= @practices_farm_system_animals_count %>)', 'Trees (<%= @practices_farm_system_trees_count %>)', 'Fish (<%= @practices_farm_system_fish_count %>)', 'Other (<%= @practices_farm_system_other_count %>)'],
+      datasets: datasetFarmAndFarmingSystem,
+    },
+    options: optionsFarmAndFarmingSystem,
+  });
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+      });
+
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      countries = []
+      countries.push(['Country', 'Locations'])
+
+      <% @location_by_country.each do |country| %>
+        countries.push(['<%= ::ISO3166::Country[country[0]].iso_short_name %>', <%= country[1] %>])
+      <% end %>
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable(countries);
+        var options = {};
+        options['legend'] = 'none';
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        chart.draw(data, options);
+      }
+      window.onresize = drawRegionsMap;
+</script>
+
+<script type="text/javascript">
+      google.charts.load('current', { 'packages':['geochart'], });
+
+      google.charts.setOnLoadCallback(drawContinentsMap);
+
+      asia = europe = americas = oceania = africa = 0;
+
+      <% @locations.group(:continent).count.each do |continent| %>
+        <% if continent[0] == 'South America'%>
+          americas += <%= continent[1] %>
+        <% elsif continent[0] == 'Africa'%>
+          africa = <%= continent[1] %>
+        <% elsif continent[0] == 'Asia'%>
+          asia += <%= continent[1] %>
+        <% elsif continent[0] == 'North America'%>
+          americas += <%= continent[1] %>
+        <% elsif continent[0] == 'Europe'%>
+          europe = <%= continent[1] %>
+        <% end %>
+      <% end %>
+
+      var continents = [
+              ['Region Code', 'Continent', 'Locations'],
+              ['142', 'Asia', asia],
+              ['150', 'Europe', europe],
+              ['019', 'Americas', americas],
+              ['009', 'Oceania', oceania],
+              ['002', 'Africa', africa]
+          ];
+
+      function drawContinentsMap() {
+        var data = google.visualization.arrayToDataTable(continents);
+        var options = {resolution: 'continents', colorAxis: {colors: ['#ededed', '#e7711c']}};
+        options['legend'] = 'none';
+        var chart = new google.visualization.GeoChart(document.getElementById('continents_div'));
+        chart.draw(data, options);
+      }
+      window.onresize = drawContinentsMap;
 </script>

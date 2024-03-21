@@ -1,0 +1,33 @@
+<% title t(:what_you_do) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:practices), practices_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:practice), practices_path, :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:what_you_do), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:characterise), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:evaluate), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:acknowledge), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+</ul>
+
+<br>
+<% if params[:location_id] or params[:action] == "create" %>
+  <%= render 'form', practice: @practice %>
+<% end %>
+
+<% if params[:location_id].blank? and params[:action] == "new" %>
+  <%= render 'locations' %>
+<% end %>

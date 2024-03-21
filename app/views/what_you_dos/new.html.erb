@@ -1,0 +1,29 @@
+<% title t(:what_you_do) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:practices), practices_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:what_you_do), "#", :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:characterise), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:evaluate), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:acknowledge), "#", :class => "nav-link", :style => "color: #979797 !important" %>
+  </li>
+</ul>
+
+<br>
+
+<div class="tip"><%= t(:if_you_dont_want_to_fill_in_everything_now_dont_worry_you_can_fill_in_all_the_questions_later_by_editing_each_section) %></div>
+
+<br>
+
+<%= render 'form', what_you_do: @what_you_do %>

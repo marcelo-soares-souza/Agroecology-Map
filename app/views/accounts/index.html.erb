@@ -1,0 +1,42 @@
+<% title t(:contributors) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:contributors) + " (#{@accounts.count} #{t(:of)} #{@total})", accounts_path, :class => "nav-link active" %>
+  </li>
+</ul>
+
+<% if @accounts.empty? %>
+  <br>
+  <h3>Nenhum Usuário Registrado</h3>
+<% else %>
+  <br><br>
+  <div class="row">
+    <% @accounts.each do |account| %>
+      <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= account_path(account) %>';">
+        <div class="card">
+          <br>
+          <div  class="card-img-top thumbnail"><%= link_to photo_thumb(account, account.name), account_path(account), alt: account.name, title: account.name %></div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to account.name, account_path(account) %></h5>
+            <% if account_signed_in? %>
+              <% if current_account.admin? or account.id == current_account.id %>
+                <td><%= link_to t(:edit), edit_account_path(account), :class => 'btn btn-sm btn-success' %></td>
+              <% else %>
+                <br><br>
+              <% end %>
+            <% end %>
+          </div>
+        </div><br>
+      </div>
+    <% end %>
+  </div>
+
+  <% if not params[:account_id] %>
+    <div>
+      <%= paginate @accounts %>
+    </div>
+  <% end %>
+<% end %>

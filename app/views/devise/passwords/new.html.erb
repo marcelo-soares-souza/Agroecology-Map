@@ -1,37 +1,28 @@
 <% title t(:forgot_password) %>
-<br>
-<br>
-<br>
-<ul class="nav nav-tabs flex-column flex-xl-row">
-  <li class="nav-item">
-    <%= link_to t(:sign_in), new_usuario_session_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:forgot_password), new_password_path(resource_name), :class => "nav-link active" %>
-  </li>
-</ul>
-<br>
+
 <div class="sign_in_up">
-  <h2><%= t(:forgot_password) %></h2>
+  <br><br>
+  <strong><%= t(:forgot_password) %></strong>
+  <div class="tip" style="text-align: center">Forgot your password? Enter your registered e-mail address.</div>
   <br>
+
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="form-group row">
-      <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="forms" style="padding-bottom: 10px">
+      <div class="form-group col-xs-2 col-md-4 required bg-light">
+        <%= f.label "E-Mail",  class: "col-form-label-lg control-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control", :required => true %>
+        </div>
       </div>
     </div>
-    <br>
+
     <div class="actions">
       <%= f.submit t(:send_me_the_reset_instructions), class: "btn btn-primary" %>
     </div>
     <br>
     <%= render "devise/shared/links" %>
     <br>
+
   <% end %>
   <br>
 </div>

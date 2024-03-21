@@ -1,62 +1,58 @@
+<style>
+    .text-center {
+        text-align: center;
+    }
+
+    .g-recaptcha {
+        display: inline-block;
+    }
+</style>
+
 <% title t(:sign_in) %>
-<br>
-<br>
-<br>
-<ul class="nav nav-tabs flex-column flex-xl-row">
-  <li class="nav-item">
-    <%= link_to t(:sign_in), new_usuario_session_path, :class => "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:forgot_password), new_password_path(resource_name), :class => "nav-link" %>
-  </li>
-</ul>
-<br>
+
 <div class="sign_in_up">
-  <h2><%= t(:sign_in) %></h2>
+  <br><br>
+  <strong><%= t(:sign_in) %></strong>
+  <div class="tip" style="text-align: center"><%= t(:log_in_to_continue_registering_your_location_and_practices) %></div>
   <br>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-group row">
-      <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %><br>
-      <div class="col-sm-10">
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), style: "form-floating") do |f| %>
+    <div class="forms">
+      <div class="form-group col-xs-2 col-md-4 required bg-light">
+        <%= f.label "E-Mail", class: "col-form-label-lg control-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control", :required => true, :autocomplete => "email" %>
+      </div>
+
+      <div class="form-group col-xs-2 col-md-4 required">
+        <%= f.label t(:password), class: "col-form-label-lg control-label" %>
+        <%= f.password_field :password, class: "form-control", :required => true, :autocomplete => "current-password"  %>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :remember_me %> <%= t(:remember_me) %>
+          </label>
+        </div>
+      <% end -%>
+
+      <div><%= recaptcha_tags %></div>
+
+      <div class="actions">
+        <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
+          <span id="button_name"><%= t(:sign_in) %></span>
+        <% end %>
       </div>
     </div>
-    <div class="form-group row">
-      <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-      </div>
-    </div>
-    <% if devise_mapping.rememberable? -%>
-      <div class="checkbox">
-        <label>
-          <%= f.check_box :remember_me %> <%= t(:remember_me) %>
-        </label>
-      </div>
-    <% end -%>
-    <div class="actions">
-      <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
-        <span id="button_name"><%= t(:sign_in) %></span>
-        <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
-      <% end %>
-    </div>
-    <br>
+
     <%= render "devise/shared/links" %>
     <br>
     <div>
       <strong><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
       <br>
       <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
+      <br>
+      <strong><%= link_to('Read our Privacy Policy', privacy_policy_path, :class => "nav-link") %></strong>
     </div>
+    <br>
   <% end %>
 </div>
-<script>
-  document.getElementById("submit").setAttribute("disabled", "disabled");
-  setTimeout(function () {
-      document.getElementById("submit").removeAttribute("disabled");
-      document.getElementById("spinner").remove();
-  }, 3600);
-</script>

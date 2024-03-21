@@ -1,9 +1,7 @@
 <script>
-  $(document).ready(function () {
-      $("#locale").val("<%= locale %>");
-  });
+  $(document).ready(function () { $("#locale").val("<%= locale %>"); });
 </script>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" >
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
   </button>
@@ -11,79 +9,50 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:about) %></a>
-        <div class="dropdown-menu">
-          <div class="nav-item"><%= link_to(t(:data_summary), dashboard_path, :class => "nav-link") %></div>
-          <div class="nav-item"><%= link_to("Manual", manual_index_path, :class => "nav-link") %></div>
-          <div class="nav-item"><%= link_to(t(:friends), friends_path, :class => "nav-link") %></div>
+        <div class="dropdown-menu" style="text-align: left; padding-left: 6px">
+          <%#= link_to(t(:one_million_voices), about_path, :class => "nav-link") %>
+          <%= link_to(t(:who_we_are), who_we_are_path, :class => "nav-link") %>
+          <%#= link_to(t(:manual), manual_path, :class => "nav-link") %>
+          <%= link_to(t(:data_summary), dashboard_path, :class => "nav-link") %>
+          <%= link_to(t(:thank_you_notes), thank_you_notes_path, :class => "nav-link") %>
+          <%= link_to('Privacy Policy', privacy_policy_path, :class => "nav-link") %>
         </div>
       </li>
       <li class="nav-item">
-        <%= link_to(t(:news), '/news', :class => "nav-link") %>
+        <%= link_to(t(:home), home_index_path, :class => "nav-link") %>
       </li>
       <li class="nav-item">
-        <%= link_to(t(:map), '/', :class => "nav-link") %>
+        <%= link_to(t(:locations), locations_path, :class => "nav-link") %>
       </li>
       <li class="nav-item">
-        <%= link_to(t(:locations), locais_path, :class => "nav-link") %>
+        <%= link_to(t(:practices), practices_path, :class => "nav-link") %>
       </li>
-      <li class="nav-item">
-        <%= link_to(t(:experiences_in_agroecology), experiencia_agroecologicas_path, :class => "nav-link") %>
-      </li>
-      <% if current_usuario %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:agroforestry_systems) %></a>
-          <div class="dropdown-menu">
-            <div class="nav-item"><%= link_to(t(:systems), safs_path, :class => "nav-link") %></div>
-            <div class="nav-item"><%= link_to(t(:plants), plantas_path, :class => "nav-link") %></div>
-            <div class="nav-item"><%= link_to(t(:animals), animais_path, :class => "nav-link") %></div>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to(t(:agroforestry_systems), safs_path, :class => "nav-link") %>
-        </li>
-      <% end %>
-      <% if current_usuario %>
-        <% if current_usuario.admin? %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Adminstrar</a>
-            <div class="dropdown-menu">
-              <div class="nav-item"><%= link_to("Tipo de Organizações", tipo_organizacoes_path, :class => "nav-link") %></div>
-              <div class="nav-item"><%= link_to("Temas de Agroecologia", tema_experiencia_agroecologicas_path, :class => "nav-link") %></div>
-            </div>
-          </li>
-        <% end %>
-      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <%= link_to(t(:contributors), usuarios_path, :class => "nav-link") %>
+        <%= link_to(t(:accounts), accounts_path, :class => "nav-link") %>
       </li>
-      <% if current_usuario %>
+      <% if current_account %>
         <li class="nav-item">
-          <%= link_to "#{current_usuario.email}", usuario_path(current_usuario), :class => "nav-link" %>
+          <%= link_to "#{current_account.email}", account_path(current_account), :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to("#{t(:logout)}", destroy_usuario_session_path, :method => :delete, :class => "nav-link") %>
+          <%= link_to("#{t(:logout)}", destroy_account_session_path, :method => :delete, :class => "nav-link") %>
         </li>
       <% else %>
         <li class="nav-item">
-          <strong><%= link_to(t(:login), new_usuario_session_path, :class => "nav-link") %></strong>
+          <strong><%= link_to(t(:login), new_account_session_path, :class => "nav-link") %></strong>
         </li>
         <li>
-          <strong><%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link" %></strong>
+          <strong><%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link" %></strong>
         </li>
       <% end %>
       <li>
-        <strong><%= link_to t(:donate), "https://ko-fi.com/agroecologymap ", :target => "blank", :class => "nav-link text-danger" %></strong>
-      </li>
-      <li>
-        <select id="locale" onchange="if (this.value) window.location.href='<%= request.path %>?locale=' + this.value" class="form-control">
+        <select id="locale" onchange="if (this.value) window.location.href='/' + this.value" class="form-control">
+          <option value="en">English</option>
           <option value="pt-BR">Português</option>
           <option value="es">Español</option>
-          <option value="en">English</option>
           <option value="fr">Français</option>
-          <!-- <option value="gl">Gallego</option> -->
         </select>
       </li>
     </ul>

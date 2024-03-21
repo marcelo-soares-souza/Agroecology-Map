@@ -1,0 +1,99 @@
+<%= form_for(what_you_do, html: { multipart: true }) do |f| %>
+  <% button_name = params["action"] == 'edit' ? t(:save) :  t(:next ) %>
+  <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
+
+  <br><br>
+
+  <% if what_you_do.errors.any? %>
+    <div id="error_explanation">
+      <b><%= what_you_do.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% what_you_do.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
+    </div>
+
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <% if params[:practice_id] %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => Practice.friendly.find(params[:practice_id]).id %>
+      <% else %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => @what_you_do.practice.id %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="forms">
+    <div class="form-group row bg-light required">
+      <%= f.label t(:summary_description_of_agroecological_practice), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:where_it_is_realized, @where_it_is_realized_options, :last, :first, { :include_blank => false }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :summary_description_of_agroecological_practice, class: "form-control", :rows => "6", :required => true %>
+        <div class="tip">
+          <%= t(:in_short_what_is_the_practice_that_you_want_to_map) %>
+          <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:type_of_agroecological_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :type_of_agroecological_practice, class: "form-control", :rows => "6" %>
+        <div class="tip">
+          <%= t(:type_of_agroecological_practice_tip) %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row bg-light">
+      <%= f.label t(:practical_implementation_of_the_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :practical_implementation_of_the_practice, class: "form-control", :rows => "6" %>
+        <div class="tip">
+          <%= t(:how_do_you_do_prepare_and_or_implement_the_practice) %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:land_size), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:unit_of_measure, @unit_of_measure_options, :last, :first, { :include_blank => t(:unit_of_measurement) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.number_field :land_size, class: "form-control", step: 0.1 %>
+        <div class="tip">
+          <%= t(:on_how_much_land_do_you_implement_the_practice) %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row bg-light">
+      <%= f.label t(:substitution_of_less_ecological_alternative), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:substitution_of_less_ecological_alternative, @yes_no_i_am_not_sure_not_applicable_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :substitution_of_less_ecological_alternative_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_substitute_and_or_reduce_a_less_ecological_alternative_ie_use_of_synthetic_inputs) %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row ">
+      <%= f.label t(:why_you_use_and_what_you_expect_from_this_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :why_you_use_and_what_you_expect_from_this_practice, class: "form-control", :rows => "6" %>
+        <div class="tip">
+          <%= t(:which_effect_do_you_expect_the_practice_to_have) %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit button_name, class: "btn btn-warning btn-lg" %>
+  </div>
+<% end %>

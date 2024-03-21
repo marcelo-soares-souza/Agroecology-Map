@@ -1,52 +1,106 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def form_for_midia(condition, &block)
-    form_for [@type, @midia], html: { multipart: true }, &block
+  def default_image_number
+    rand(0..5)
+  end
+  def photo_thumb_url(entity, description = "")
+    description || ""
+    if entity.photo.attached?
+      file_url = url_for(entity.photo.variant(:thumb))
+    else
+      name = "place"
+      number = default_image_number
+
+      if entity.class.to_s == "Account"
+        name = "avatar"
+        number = rand(0..9)
+      end
+      name = "#{name}_thumb_#{number}.png"
+      file_url = asset_url(name)
+    end
+
+    asset_url file_url
   end
 
-  def form_for_blog(condition, &block)
-    form_for [@local, @blog], html: { multipart: true }, &block if condition
+  def photo_thumb(entity, description = "", use_gallery_photos = false)
+    description || ""
+    if entity.photo.attached?
+      image_tag entity.photo.variant(:thumb), title: description, alt: description, class: "img-fluid"
+    else
+      name = "place"
+      number = default_image_number
+
+      if entity.class.to_s == "Account"
+        name = "avatar"
+        number = rand(0..9)
+      end
+
+      image_url = "/assets/#{name}_thumb_#{number}.png"
+
+      if use_gallery_photos && entity.medias && entity.medias.count > 0
+        if entity.medias[0].photo.attached?
+          image_url = entity.medias[0].photo.variant(:thumb)
+        end
+      end
+      image_tag image_url, title: description, alt: description
+    end
   end
 
+  def photo_medium(entity, description = "")
+    description || ""
+    if entity.photo.attached?
+      image_tag entity.photo.variant(:medium), title: description, alt: description, class: "img-fluid"
+    else
+      image_tag "/assets/place_medium_#{default_image_number}.png", title: description, alt: description
+    end
+  end
+
+  def photo_original(entity, description = "")
+    description || ""
+    if entity.photo.attached?
+      image_tag entity.photo.variant(:original), title: description, alt: description, class: "img-fluid"
+    else
+      image_tag "/assets/place_medium_#{default_image_number}.png", title: description, alt: description
+    end
+  end
+
+
+  def photo_original_url(entity, description = "")
+    description || ""
+    if entity.photo.attached?
+      file_url = url_for(entity.photo.variant(:original))
+    else
+      name = "place"
+      number = default_image_number
+
+      if entity.class.to_s == "Account"
+        name = "avatar"
+        number = rand(0..9)
+      end
+      name = "#{name}_thumb_#{number}.png"
+      file_url = asset_url(name)
+    end
+
+    asset_url file_url
+  end
+
+  def form_for_media(condition, &block)
+    if condition["practice_id"]
+      form_for [@practice, @media], html: { multipart: true }, &block
+    elsif condition["location_id"]
+      form_for [@location, @media], html: { multipart: true }, &block
+    end
+  end
+
+  def form_for_document(condition, &block)
+    if condition["practice_id"]
+      form_for [@practice, @document], html: { multipart: true }, &block
+    elsif condition["location_id"]
+      form_for [@location, @document], html: { multipart: true }, &block
+    end
+  end
   def title(*parts)
     content_for(:title) { (parts << t(:site_name)).join(" | ") } unless parts.empty?
-  end
-  def parse_video_url(url)
-    @url = url
-
-    youtube_formats = [
-        %r(https?://youtu\.be/(.+)),
-        %r(https?://www\.youtube\.com/watch\?v=(.*?)(&|#|$)),
-        %r(https?://www\.youtube\.com/embed/(.*?)(\?|$)),
-        %r(https?://www\.youtube\.com/v/(.*?)(#|\?|$)),
-        %r(https?://www\.youtube\.com/user/.*?#\w/\w/\w/\w/(.+)\b)
-      ]
-
-    vimeo_formats = [%r(https?://vimeo.com/(\d+)), %r(https?://(www\.)?vimeo.com/(\d+))]
-
-    @url.strip!
-
-    if @url.include? "youtu"
-      youtube_formats.find { |format| @url =~ format } and $1
-      @results = { provider: "youtube", id: $1 }
-      @results
-    elsif @url.include? "vimeo"
-      vimeo_formats.find { |format| @url =~ format } and $1
-      @results = { provider: "vimeo", id: $1 }
-      @results
-    else
-      nil # There should probably be some error message here
-    end
-  end
-
-  def youtube_embed(youtube_url)
-    if youtube_url[/youtu\.be\/([^?]*)/]
-      youtube_id = $1
-    else
-      youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^&?]*).*/]
-      youtube_id = $5
-    end
-    %Q{<iframe title="YouTube video player" width="640" height="390" src="https://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 end

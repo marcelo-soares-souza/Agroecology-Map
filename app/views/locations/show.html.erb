@@ -1,0 +1,97 @@
+<% title @location.name %>
+
+<div class="link-action">
+<% if account_signed_in? %>
+  <% if current_account.admin? or current_account.id == @location.account.id %>
+      <%= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_location_media_path(@location), :class => "btn btn-warning" %>
+      <%= link_to (bootstrap_icon "pencil") + " " + t(:new_practice), new_location_practice_path(@location), :class => "btn btn-info" %>
+  <% end %>
+<% end %>
+</div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to truncate(@location.name, length: 25), location_path(@location.id), :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:practices) + " (#{@location.practices.count})", location_practices_path(@location), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:gallery) + " (#{@total_media})", location_gallery_path(@location), :class => "nav-link" %>
+  </li>
+</ul>
+
+<br>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <div class="thumbnail">
+      <%= photo_thumb(@location, @location.name, true) %>
+    </div>
+
+    <br>
+    <h1><%= @location.name.truncate(72) %></h1>
+    <br>
+
+    <%= "<h4>#{t(:short_description)}</h4><div class='text-box'>#{simple_format (h @location.description).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.description.blank? %>
+    <%= "<h4>#{t(:country)}</h4><div class='text-box'>#{ISO3166::Country[@location.country]}</div><br>".html_safe unless @location.country.blank? %>
+    <%= "<h4>#{t(:farm_and_farming_system)}</h4>".html_safe unless @location.farm_and_farming_system.blank? && @location.farm_and_farming_system_complement.blank? %>
+    <%= "<div class='text-box'>#{@farm_and_farming_system_options.key(@location.farm_and_farming_system)}&nbsp;<br></div>".html_safe unless @location.farm_and_farming_system.blank? %>
+    <%
+      unless @location.farm_and_farming_system_complement.blank?
+        farm_and_farming_system_complement = @location.farm_and_farming_system_complement.split(',').map { | item | t(item.strip.downcase.to_sym) }
+        farm_and_farming_system_complement = farm_and_farming_system_complement.join(", ")
+      end
+    %>
+    <%= "<div class='text-box'>#{farm_and_farming_system_complement}</div><br>".html_safe unless farm_and_farming_system_complement.blank? %>
+    <%= "<h4>#{t(:farm_and_farming_system_details)}</h4><div class='text-box'>#{simple_format (h @location.farm_and_farming_system_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.farm_and_farming_system_details.blank? %>
+    <%= "<h4>#{t(:what_is_your_dream_for_the_future_of_your_farm_and_or_your_location_in_general)}</h4><div class='text-box'>#{simple_format (h @location.what_is_your_dream).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.what_is_your_dream.blank? %>
+
+    <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @location.account.name, account_path(@location.account)}&nbsp;".html_safe if @location.account.name? %></div>
+
+    <% if @location.hide_my_location == false %>
+      <% if @location.latitude and @location.longitude %>
+        <div id="map-show" style="z-index: 1;"></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% if account_signed_in? %>
+  <% if current_account.admin? or current_account.id == @location.account.id %>
+    <hr>
+    <div class="form-actions">
+      <%= link_to t(:edit), edit_location_path(@location), :class => 'btn btn-success' %>
+      <%= link_to t(:destroy), location_path(@location), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t(:are_you_sure))) }, :class => 'btn btn-danger' %>
+      <%= link_to t(:send_photo), new_location_media_path(@location), :class => "btn btn-warning" %>
+      <%= link_to t(:register_new_practice), new_location_practice_path(@location), :class => "btn btn-info" %>
+    </div>
+    <br>
+  <% end %>
+<% end %>
+<br>
+<% if @location.latitude and @location.longitude %>
+  <script>
+      $(document).ready(function () {
+          var map = L.map('map-show', { zoomControl: false, worldCopyJump: true }).setView([<%= @location.latitude %>, <%= @location.longitude %>], 10);
+          var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
+          var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: attributions, maxZoom: 18, }).addTo(map);
+          var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: 'Mapa da Agroecologia | MapBox', maxZoom: 18, });
+          var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};
+          L.control.layers(baseMaps).addTo(map);
+
+          $(window).on("resize", function () {
+              $("#map-show").width($(window).width() - 30);
+              $("#map-show").height($(window).height());
+              map.invalidateSize();
+          }).trigger("resize");
+
+          var Icon = L.icon({
+              iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>', shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+              iconSize: [38, 95], shadowSize: [50, 64], iconAnchor: [22, 94], shadowAnchor: [4, 62], popupAnchor: [-3, -76]
+          });
+
+          L.marker([<%= @location.latitude %>, <%= @location.longitude %>], {icon: Icon}).addTo(map);
+      });
+  </script>
+<% end %>

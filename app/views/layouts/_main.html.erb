@@ -2,7 +2,7 @@
   <%= yield %>
 <% else %>
   <div class="container">
-    <div class="<%= controller.controller_name == 'home' ?  'starter-template-map' : 'starter-template' %>">
+    <div class="starter-template">
       <%= render 'layouts/alert' %>
       <%= yield %>
     </div>

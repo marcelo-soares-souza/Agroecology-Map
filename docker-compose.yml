@@ -18,7 +18,7 @@ services:
     expose:
       - '3000'
     volumes:
-      - '/opt/agroecologymap:/app/public/system'
+      - '/opt/agroecologymap:/app/storage'
       - '/opt/dockers/logs:/app/log'
     env_file: .env
 

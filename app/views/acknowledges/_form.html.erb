@@ -1,0 +1,77 @@
+<%= form_for(acknowledge, html: { multipart: true }) do |f| %>
+  <%= link_to t(:back), "javascript:history.back()", class: "btn btn-danger btn-lg", style: "float: left; margin-bottom: 16px;" unless params["action"] == 'edit' %>
+  <% button_name = t(:save) %>
+  <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
+  <br>
+  <br>
+  <% if acknowledge.errors.any? %>
+    <div id="error_explanation">
+      <b><%= acknowledge.errors.count.to_s + " Error(s)" %></b>
+      <br>
+      <br>
+      <% acknowledge.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
+    </div>
+  <% end %>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <% if params[:practice_id] %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => Practice.friendly.find(params[:practice_id]).id %>
+      <% else %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => @acknowledge.practice.id %>
+      <% end %>
+    </div>
+  </div>
+  <div class="forms">
+    <div class="form-group row bg-light">
+      <%= f.label t(:knowledge_source), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <% i = 0 %>
+        <div style="text-align: left;">
+          <% @knowledge_source_options.each do |option| %>
+            <%= check_box_tag 'acknowledge[knowledge_source][]', option[1], checked_knowledge_source(option[1]), id: 'knowledge_source' %> <%= i = i + 1%> - <%= option[0] %>
+            <br>
+          <% end %>
+          <br>
+          <%= f.text_area :knowledge_source_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        </div>
+        <div class="tip">
+          <%= t(:how_did_you_learn_about_the_practice_you_can_choose_more_than_one_option) %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:knowledge_timing), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:knowledge_timing, @knowledge_timing_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :knowledge_timing_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:how_long_ago_did_you_learn_about_the_practice) %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row bg-light">
+      <%= f.label t(:uptake_motivation), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :uptake_motivation, class: "form-control", :rows => "6" %>
+        <div class="tip">
+          <%= t(:what_motivated_you_to_adopt_the_practice) %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:knowledge_products), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :knowledge_products, class: "form-control", :rows => "6" %>
+        <div class="tip">
+          <%= t(:knowledge_products_tip) %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit button_name, class: "btn btn-warning btn-lg" %>
+  </div>
+<% end %>

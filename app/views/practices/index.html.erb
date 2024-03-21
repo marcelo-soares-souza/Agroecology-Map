@@ -1,0 +1,136 @@
+<% title t(:practices) %>
+
+<div class="link-action">
+  <%= link_to (bootstrap_icon "clipboard-check") + " " + t(:register_new_practice), new_practice_path, :class => "btn btn-info" %>
+</div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <% if params[:location_id] %>
+    <li class="nav-item">
+      <%= link_to @location.name.truncate(25), location_path(@location), title: @location.name, :class => "nav-link" %>
+    </li>
+  <% end %>
+
+  <li class="nav-item">
+    <% if params[:location_id] %>
+      <%= link_to t(:practices) + " (#{@practices.count})", "#", :class => "nav-link active" %>
+    <% else %>
+      <%= link_to t(:practices) + " (#{@practices.count} #{t(:of)} #{@total})", "#", :class => "nav-link active" %>
+    <% end %>
+  </li>
+
+
+  <% if params[:location_id] %>
+    <li class="nav-item">
+      <%= link_to t(:gallery) + " (#{@location.medias.count})", location_gallery_path(@location.id), :class => "nav-link" %>
+    </li>
+  <% end %>
+</ul>
+
+<div style="margin-top: 8px; margin-bottom: 8px; text-align: left">
+  <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
+  <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
+  <br>
+  <span style="font-size: 14px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
+  <div id="more-filter">
+    <%= select_tag "system_functions", options_from_collection_for_select(@system_functions_options, :last, :first, params[:system_functions] ? params[:system_functions] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_functions) %>
+    <%= select_tag "system_components", options_from_collection_for_select(@system_components_options, :last, :first, params[:system_components] ? params[:system_components] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_components) %>
+    <%= select_tag "components", options_from_collection_for_select(@food_system_components_addressed_options, :last, :first, params[:components] ? params[:components] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_system_component)  %>
+    <%= select_tag "principles", options_from_collection_for_select(@agroecology_principles_addressed_options, :last, :first, params[:principles] ? params[:principles] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_agroecology_principle) %>
+    <%= country_select("country", "country", { selected: params[:country] ? params[:country] : '', :include_blank => t(:Filter_by_country) }, { class: "selectpicker", "data-live-search": true}) %>
+    <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
+    <div style="padding-top: 10px; padding-bottom: 10px; align-content: center; text-align: center; font-size: 21px">
+      <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
+      <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
+    </div>
+  </div>
+</div>
+
+<% if @practices.empty? %>
+  <br>
+  <h2>
+    <%= t(:no_data_has_been_registered_so_far) %>
+    <% if params[:location_id] %>
+      <% if account_signed_in? %>
+        <% if current_account.admin? or current_account.id == @location.account.id %>
+          <%= link_to t(:add_a_practice), new_location_practice_path(@location) unless @location.blank? %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </h2>
+<% else %>
+  <div class="row">
+    <% @practices.each do |practice| %>
+      <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
+        <div class="card" style="min-height: 340px;">
+          <br>
+          <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to practice.name.truncate(40), location_practice_path(practice.location, practice) %></h4>
+            <p class="card-text text-box"><b><%= t(:location) %></b><br> <%= link_to practice.location.name.truncate(40), location_path(practice.location) %></p>
+          </div>
+        </div>
+        <br>
+      </div>
+    <% end %>
+  </div>
+
+  <% if not params[:account_id] and not params[:location_id] %>
+    <div>
+      <%= paginate @practices %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+    const controller = 'practices';
+
+    $(document).ready(function () {
+        <% if params[:filter].blank? or params[:name] %>
+        $("#more-filter").hide();
+        $("#searchButton").show();
+        <% else %>
+        $("#searchButton").hide();
+        <% end %>
+    });
+
+    $("#search").on('keyup', function (event) {
+        if (event.keyCode === 13) {
+            filter("search");
+        }
+    });
+
+    function filter() {
+        var name = $("#search").val();
+        var system_functions = $("#system_functions :selected").val();
+        var system_components = $("#system_components :selected").val();
+        var components = $("#components :selected").val();
+        var principles = $("#principles :selected").val();
+        var country = $("#country_country :selected").val();
+        var continent = $("#continent :selected").val();
+
+        var filter = "?filter=true"
+        filter += name ? "&name=" + name : "";
+        filter += system_functions ? "&system_functions=" + system_functions : "";
+        filter += system_components ? "&system_components=" + system_components : "";
+        filter += components ? "&components=" + components : "";
+        filter += principles ? "&principles=" + principles : "";
+        filter += country ? "&country=" + country : "";
+        filter += continent ? "&continent=" + continent : "";
+        var url = "/" + controller + "/" + filter;
+
+        var lang = '<%= params[:locale] ? params[:locale] : 'en' %>'
+
+        if (url != '/' + controller + '/?filter=true') {
+            window.location.href =  '/' + lang + url;
+        }
+        else {
+            window.location.href = '/' + lang + '/' + controller;
+        }
+    }
+
+    function showAdvancedFilters() {
+        $("#more-filter").is(":visible") ? $("#more-filter").hide() : $("#more-filter").show();
+        $("#more-filter").is(":visible") ? $("#searchButton").hide() : $("#searchButton").show();
+    }
+</script>

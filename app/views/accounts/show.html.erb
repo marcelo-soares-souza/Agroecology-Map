@@ -1,0 +1,59 @@
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:contributors), accounts_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to @account.name, account_path(@account.id), :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+
+    <div class="thumbnail">
+      <%= photo_thumb(@account, @account.name) %>
+    </div>
+    <br>
+    <h1><%= @account.name.truncate(64) %></h1>
+    <br>
+    <% if account_signed_in? %>
+      <%= "<h4>E-Mail</h4>#{@account.email}&nbsp;".html_safe if @account.email? %>
+      <br><br>
+    <% end %>
+
+    <% if @account.about %>
+      <%= "<h4>#{t(:about_me)}</h4><div class='text-box'>#{simple_format (h @account.about).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @account.about.blank? %>
+    <% end %>
+
+    <% if @account.website %>
+      <%= "<h4>Website</h4><div class='text-box'><a href='#{@account.website}' target='_blank'>#{@account.website.truncate(32)}</a></div><br>".html_safe unless @account.website.blank? %>
+    <% end %>
+
+    <% if @account.locations.count > 0 %>
+      <%= "<h4>#{t(:registered_locations)}</h4>#{@account.locations.map { |location| link_to location.name.truncate(40), location_path(location) }.join("<br>").html_safe}&nbsp;".html_safe if @account.locations.count > 0 %>
+      <br><br>
+    <% end %>
+
+    <% if account_signed_in? %>
+      <%= "<h4>Member Since</h4><div class='text-box'>#{@account.created_at.strftime("%Y-%m-%d")} (#{(@account.created_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe %>
+      <%= "<h4>Last login at</h4><div class='text-box'>#{@account.last_sign_in_at.strftime("%Y-%m-%d")} (#{(@account.last_sign_in_at.to_datetime..DateTime.now).count - 1} days)</div><br>".html_safe if @account.last_sign_in_at%>
+    <% end %>
+  </div>
+</div>
+
+<% if account_signed_in? %>
+  <% if current_account.admin? or current_account.id == @account.id %>
+    <hr>
+    <div class="form-actions">
+      <%= link_to t(:register_new_location), new_location_path, :class => "btn btn-primary" %>
+      <%= link_to t(:edit_your_profile), edit_account_path(@account), :class => 'btn btn-success' %>
+      <br><br>
+      <%= link_to t(:destroy), account_path(@account), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger', :style => 'width: 250px;' if @account.id != 1 %>
+      <br><br>
+    </div>
+  <% end %>
+<% end %>
