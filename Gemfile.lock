@@ -309,31 +309,31 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
-  bootstrap-icons-helper (>= 1.0.13)
-  countries (>= 5.7.0)
-  country_select (>= 8.0.3)
-  devise (~> 4.9.2)
-  friendly_id (>= 5.5.0)
+  bcrypt (~> 3.1.20)
+  bootstrap-icons-helper (>= 2.0.2)
+  countries (>= 6.0.0)
+  country_select (>= 9.0.0)
+  devise (~> 4.9.3)
+  friendly_id (>= 5.5.1)
   geocoder (>= 1.8.2)
-  image_processing (>= 1.2)
+  image_processing (>= 1.12.2)
   jbuilder (>= 2.11.5)
-  jwt (~> 2.7)
+  jwt (~> 2.8.1)
   kaminari (>= 1.2.2)
-  listen (>= 3.8.0)
-  nokogiri (>= 1.16.0)
+  listen (>= 3.9.0)
+  nokogiri (>= 1.16.3)
   pg (>= 1.5.6)
   puma (>= 6.4.2)
   rails (>= 7.1)
-  recaptcha (>= 5.15.0)
-  rubocop (>= 1.56.4)
+  recaptcha (>= 5.16.0)
+  rubocop (>= 1.62.1)
   rubocop-md
   rubocop-minitest
   rubocop-packaging
   rubocop-performance
   rubocop-rails
   sass-rails (>= 6.0.0)
-  schema_dot_org
+  schema_dot_org (~> 2.2.3)
   tzinfo-data
   uglifier (>= 4.2.0)
   web-console (>= 4.2.1)

@@ -10,10 +10,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:about) %></a>
         <div class="dropdown-menu" style="text-align: left; padding-left: 6px">
-          <%#= link_to(t(:one_million_voices), about_path, :class => "nav-link") %>
           <%= link_to(t(:who_we_are), who_we_are_path, :class => "nav-link") %>
           <%= link_to(t(:partners), partners_path, :class => "nav-link") %>
-          <%#= link_to(t(:manual), manual_path, :class => "nav-link") %>
           <%= link_to(t(:data_summary), dashboard_path, :class => "nav-link") %>
           <%= link_to(t(:thank_you_notes), thank_you_notes_path, :class => "nav-link") %>
           <%= link_to('Privacy Policy', privacy_policy_path, :class => "nav-link") %>
