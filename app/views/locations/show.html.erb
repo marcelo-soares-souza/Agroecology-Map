@@ -62,9 +62,10 @@
     <hr>
     <div class="form-actions">
       <%= link_to t(:edit), edit_location_path(@location), :class => 'btn btn-success' %>
-      <%= link_to t(:destroy), location_path(@location), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t(:are_you_sure))) }, :class => 'btn btn-danger' %>
       <%= link_to t(:send_photo), new_location_media_path(@location), :class => "btn btn-warning" %>
       <%= link_to t(:register_new_practice), new_location_practice_path(@location), :class => "btn btn-info" %>
+      <br><br>
+      <%= link_to t(:destroy), location_path(@location), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t(:are_you_sure))) }, :style => 'width: 250px;', :class => 'btn btn-danger' %>
     </div>
     <br>
   <% end %>

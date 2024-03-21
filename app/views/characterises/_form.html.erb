@@ -17,7 +17,7 @@
 
 <%= form_for(characterise, html: { multipart: true }) do |f| %>
   <%= link_to t(:back), "javascript:history.back()", class: "btn btn-danger btn-lg", style: "float: left; margin-bottom: 16px;" unless params["action"] == 'edit' %>
-  <% button_name = params["action"] == 'edit' ? t(:save) :  t(:next ) %>
+  <% button_name = params["action"] == 'edit' ? t(:save) :  t(:save) %>
   <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
 
   <br><br>

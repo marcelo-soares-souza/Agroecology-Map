@@ -28,12 +28,6 @@
       <%= link_to t(:characterise), practice_characterise_path(@practice, @practice.characterise), :class => "nav-link" if @practice.characterise %>
     </li>
     <li class="nav-item">
-      <%= link_to t(:evaluate), practice_evaluate_path(@practice, @practice.evaluate), :class => "nav-link" if @practice.evaluate %>
-    </li>
-    <li class="nav-item">
-      <%= link_to t(:acknowledge), practice_acknowledge_path(@practice, @practice.acknowledge), :class => "nav-link" if @practice.acknowledge %>
-    </li>
-    <li class="nav-item">
       <%= link_to "#{t(:gallery)} (#{@practice.medias.count})", practice_gallery_path(@practice), :class => "nav-link" %>
     </li>
     <li class="nav-item">

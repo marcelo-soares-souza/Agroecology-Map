@@ -20,14 +20,8 @@
     <%= link_to t(:what_you_do), practice_what_you_do_path(@what_you_do.practice, @what_you_do.practice.what_you_do), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
-    <%= link_to t(:characterise), practice_characterise_path(@what_you_do.practice, @what_you_do.practice.characterise), :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:evaluate), practice_evaluate_path(@what_you_do.practice, @what_you_do.practice.evaluate), :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:acknowledge), practice_acknowledge_path(@what_you_do.practice, @what_you_do.practice.acknowledge), :class => "nav-link" %>
-  </li>
+    <%= link_to t(:characterise), practice_characterise_path(@what_you_do.practice, @what_you_do.practice.characterise), :class => "nav-link" if @what_you_do.practice.characterise %>
+  </li>  
   <li class="nav-item">
     <%= link_to "#{t(:gallery)} (#{@what_you_do.practice.medias.count})", practice_gallery_path(@what_you_do.practice), :class => "nav-link" %>
   </li>

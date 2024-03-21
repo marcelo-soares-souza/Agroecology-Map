@@ -37,12 +37,12 @@ class CharacterisesController < ApplicationController
     respond_to do |format|
       if @characterise
         @characterise.update(characterise_params)
-        format.html { redirect_to new_practice_evaluate_path(@characterise.practice), notice: "Characterise was successfully Updated." }
+        format.html { redirect_to practice_path(@characterise.practice), notice: "Characterise was successfully Updated." }
         format.json { render json: { message: "created" }, status: :created }
       else
         @characterise = Characterise.new(characterise_params)
         if @characterise.save
-          format.html { redirect_to new_practice_evaluate_path(@characterise.practice), notice: "Characterise was successfully created." }
+          format.html { redirect_to practice_path(@characterise.practice), notice: "Characterise was successfully created." }
           format.json { render :show, status: :created, location: @characterise }
         end
         format.html { render :new, status: :unprocessable_entity }
