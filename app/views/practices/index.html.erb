@@ -27,6 +27,12 @@
   <% end %>
 </ul>
 
+<% hide_search = false %>
+<% if params[:location_id] %>
+  <% hide_search = true %>
+<% end %>
+
+<% if hide_search == false %>
 <div style="margin-top: 8px; margin-bottom: 8px; text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
@@ -45,9 +51,11 @@
     </div>
   </div>
 </div>
+<% else %>
+<br><br>
+<% end %>
 
 <% if @practices.empty? %>
-  <br>
   <h2>
     <%= t(:no_data_has_been_registered_so_far) %>
     <% if params[:location_id] %>

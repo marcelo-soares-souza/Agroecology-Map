@@ -16,7 +16,7 @@
   <div class="tip" style="text-align: center"><%= t(:log_in_to_continue_registering_your_location_and_practices) %></div>
   <br>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), style: "form-floating") do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), style: "form-floating", html: { data: { turbo: false } }) do |f| %>
     <div class="forms">
       <div class="form-group col-xs-2 col-md-4 required bg-light">
         <%= f.label "E-Mail", class: "col-form-label-lg control-label" %>
