@@ -12,10 +12,10 @@
   <% end %>
 
   <li class="nav-item">
-    <% if params[:location_id] %>
-      <%= link_to t(:practices) + " (#{@practices.count})", "#", :class => "nav-link active" %>
-    <% else %>
+    <% if @account.blank? %>
       <%= link_to t(:practices) + " (#{@practices.count} #{t(:of)} #{@total})", "#", :class => "nav-link active" %>
+    <% else %>
+      <%= link_to t(:practices) + " #{ @account.blank? ? '' : 'of ' + @account.name.truncate(16) + '' }", "#", :class => "nav-link active" %>
     <% end %>
   </li>
 
