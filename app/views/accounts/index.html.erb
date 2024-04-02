@@ -21,6 +21,7 @@
           <div  class="card-img-top thumbnail"><%= link_to photo_thumb(account, account.name), account_path(account), alt: account.name, title: account.name %></div>
           <div class="card-body">
             <h5 class="card-title"><%= link_to account.name, account_path(account) %></h5>
+            <p class="card-text" style="text-align: center;"><%= link_to t(:see_all_locations), account_locations_path(account) if account.locations.size > 0 %></p>
             <% if account_signed_in? %>
               <% if current_account.admin? or account.id == current_account.id %>
                 <td><%= link_to t(:edit), edit_account_path(account), :class => 'btn btn-sm btn-success' %></td>

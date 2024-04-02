@@ -8,10 +8,10 @@
     <%= link_to @account.name, account_path(@account.id), :class => "nav-link active" %>
   </li>
   <li class="nav-item">
-    <%= link_to t(:locations), account_locations_path(@account), :class => "nav-link" %>
+    <%= link_to t(:locations) + " (#{@account.locations.size})", account_locations_path(@account), :class => "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to t(:practices), account_practices_path(@account), :class => "nav-link" %>
+    <%= link_to t(:practices) + " (#{@account.practices.size})", account_practices_path(@account), :class => "nav-link" %>
   </li>
 </ul>
 
