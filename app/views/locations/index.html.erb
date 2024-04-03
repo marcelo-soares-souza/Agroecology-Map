@@ -35,6 +35,9 @@
   <br>
   <h2><%= t(:no_data_has_been_registered_so_far) %></h2>
 <% else %>
+  <% if @account.blank? %>
+    <span style="font-size: 14px; float: right;"><a href="/locations.geojson"><%= t(:export_as_geojson) %></a></span><br>
+  <% end %>
   <div class="row">
     <% @locations.each do |location| %>
       <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= location_url(location) %>';">

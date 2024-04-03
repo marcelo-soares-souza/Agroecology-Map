@@ -7,8 +7,6 @@ json.country_code location.country || ""
 json.farm_and_farming_system location.farm_and_farming_system || ""
 json.farm_and_farming_system_complement location.farm_and_farming_system_complement || ""
 json.description location.description || ""
-# json.latitude  location.hide_my_location ? 0.0 : location.latitude
-# json.longitude location.hide_my_location ? 0.0 : location.longitude
 json.latitude  location.latitude
 json.longitude location.longitude
 json.responsible_for_information location.account.name

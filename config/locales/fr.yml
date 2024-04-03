@@ -300,3 +300,4 @@ fr:
   dashboard: "Dashboard"
   partners: "Partners"
   friends: "Friends"
+  export_as_geojson: "Export as GeoJSON"

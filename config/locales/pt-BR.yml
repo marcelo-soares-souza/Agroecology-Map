@@ -300,3 +300,4 @@ pt-BR:
   dashboard: "Dashboard"
   partners: "Parceiros"
   friends: "Amigos"
+  export_as_geojson: "Exportar como GeoJSON"
