@@ -53,4 +53,15 @@ class Location < ApplicationRecord
         errors.add(:photo, "must be a JPEG, PNG, GIF or WebP")
       end
     end
+
+    require "csv"
+    def self.to_csv
+      all
+      CSV.generate do |csv|
+        csv << column_names
+        Location.all.order(:id).each do |location|
+          csv << location.attributes.values_at(*column_names)
+        end
+      end
+    end
 end

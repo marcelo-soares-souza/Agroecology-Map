@@ -35,6 +35,10 @@ class LocationsController < ApplicationController
         respond_to do |format|
           format.geojson { render json: generate_geojson, status: :ok  }
         end
+      elsif request.format == :csv
+        respond_to do |format|
+          format.csv { send_data Location.to_csv, filename: "locations-#{DateTime.now.strftime("%Y-%m-%d")}.csv" }
+        end
       else
         Location.all.includes(:account, :practices).order("updated_at DESC").with_attached_photo
       end
