@@ -23,6 +23,10 @@ class PracticesController < ApplicationController
     else
       if request.format == :html
         all
+      elsif request.format == :csv
+        respond_to do |format|
+          format.csv { send_data Practice.to_csv, filename: "practices-#{DateTime.now.strftime("%Y-%m-%d")}.csv" }
+        end
       else
         Practice.all.includes(:account, :location).order("updated_at DESC").with_attached_photo
       end

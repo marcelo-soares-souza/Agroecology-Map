@@ -56,11 +56,30 @@ class Location < ApplicationRecord
 
     require "csv"
     def self.to_csv
-      all
+      cols = column_names.map(&:clone)
+
+      cols.delete("slug")
+      cols.delete("account_id")
+      cols.delete("created_at")
+      cols.delete("updated_at")
+
+      cols.push("responsible_for_information")
+      cols.push("created_at")
+      cols.push("updated_at")
+
       CSV.generate do |csv|
-        csv << column_names
-        Location.all.order(:id).each do |location|
-          csv << location.attributes.values_at(*column_names)
+        csv << cols
+
+        cols.delete("responsible_for_information")
+        cols.delete("created_at")
+        cols.delete("updated_at")
+
+        Location.all.joins(:account).order(:id).each do |location|
+          vals = location.attributes.values_at(*cols).map(&:clone)
+          vals.push(location.account.attributes["name"])
+          vals.push(location.attributes["created_at"])
+          vals.push(location.attributes["updated_at"])
+          csv << vals
         end
       end
     end

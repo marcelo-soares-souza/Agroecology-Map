@@ -64,4 +64,44 @@ class Practice < ApplicationRecord
         errors.add(:photo, "must be a JPEG, PNG, GIF or WebP")
       end
     end
+
+    require "csv"
+    def self.to_csv
+      cols = column_names.map(&:clone)
+
+      cols.delete("slug")
+      cols.delete("account_id")
+      cols.delete("location_id")
+      cols.delete("created_at")
+      cols.delete("updated_at")
+
+      cols.push("description")
+      cols.push("agroecology_principles_addressed")
+      cols.push("food_system_components_addressed")
+      cols.push("location_name")
+      cols.push("created_at")
+      cols.push("updated_at")
+
+      CSV.generate do |csv|
+        csv << cols
+
+        cols.delete("description")
+        cols.delete("agroecology_principles_addressed")
+        cols.delete("food_system_components_addressed")
+        cols.delete("location_name")
+        cols.delete("created_at")
+        cols.delete("updated_at")
+
+        Practice.all.joins(:location, :what_you_do, :characterise).order(:id).each do |practice|
+          vals = practice.attributes.values_at(*cols).map(&:clone)
+          vals.push(practice.what_you_do.attributes["summary_description_of_agroecological_practice"])
+          vals.push(practice.characterise.attributes["agroecology_principles_addressed"])
+          vals.push(practice.characterise.attributes["food_system_components_addressed"])
+          vals.push(practice.location.attributes["name"])
+          vals.push(practice.attributes["created_at"])
+          vals.push(practice.attributes["updated_at"])
+          csv << vals
+        end
+      end
+    end
 end

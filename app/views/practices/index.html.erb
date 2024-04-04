@@ -71,6 +71,11 @@
     <% end %>
   </h2>
 <% else %>
+  <% if @account.blank? %>
+      <span style="font-size: 14px; float: right;">
+        <a href="/practices.csv">Export as CSV</a>
+      </span><br>
+  <% end %>
   <div class="row">
     <% @practices.each do |practice| %>
       <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
