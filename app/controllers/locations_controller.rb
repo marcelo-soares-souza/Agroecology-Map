@@ -40,7 +40,11 @@ class LocationsController < ApplicationController
           format.csv { send_data Location.to_csv, filename: "locations-#{DateTime.now.strftime("%Y-%m-%d")}.csv" }
         end
       else
-        Location.all.includes(:account, :practices).order("updated_at DESC").with_attached_photo
+        if params[:page]
+          Location.all.includes(:account, :practices).order("updated_at DESC").with_attached_photo.page(params[:page])
+        else
+          Location.all.includes(:account, :practices).order("updated_at DESC").with_attached_photo
+        end
       end
     end
   end

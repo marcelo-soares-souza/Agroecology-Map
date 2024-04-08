@@ -28,7 +28,11 @@ class PracticesController < ApplicationController
           format.csv { send_data Practice.to_csv, filename: "practices-#{DateTime.now.strftime("%Y-%m-%d")}.csv" }
         end
       else
-        Practice.all.includes(:account, :location).order("updated_at DESC").with_attached_photo
+        if params[:page]
+          Practice.all.includes(:account, :location).order("updated_at DESC").with_attached_photo.page(params[:page])
+        else
+          Practice.all.includes(:account, :location).order("updated_at DESC").with_attached_photo
+        end
       end
     end
   end
