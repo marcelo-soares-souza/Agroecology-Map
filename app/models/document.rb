@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Document < ApplicationRecord
-  paginates_per 25
+  paginates_per 15
 
   belongs_to :location, required: false
   belongs_to :practice, required: false

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Location < ApplicationRecord
-  paginates_per 25
+  paginates_per 15
 
   scope :by_name, -> (name) { where("locations.name ILIKE ?", "%#{name}%") }
   scope :by_farm_and_farming_system, -> (farm_and_farming_system) { where("locations.farm_and_farming_system ILIKE ?", "%#{farm_and_farming_system}%") }
