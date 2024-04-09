@@ -15,6 +15,7 @@ module Agroecologia
     logger.formatter = config.log_formatter
     config.log_tags  = [:subdomain, :uuid]
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    # config.middleware.use HtmlCompressor::Rack
 
     config.generators do |g|
       g.template_engine nil
