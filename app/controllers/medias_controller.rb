@@ -138,9 +138,7 @@ class MediasController < ApplicationController
     end
 
     def selected_id
-      if request.format.json?
-        puts "[debug] Testing"
-      else
+      if !request.format.json?
         if current_account && current_account.admin?
           @selected_id = current_account.id
           if @practice
