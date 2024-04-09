@@ -196,7 +196,7 @@ class LocationsController < ApplicationController
     def generate_geojson
       locations = []
 
-      Location.all.order(:id).each do |location|
+      Location.where(hide_my_location: false).order(:id).each do |location|
         locations << GeojsonModel::Feature.new(
           properties: {
             id: location.id,
@@ -208,10 +208,9 @@ class LocationsController < ApplicationController
             description: location.description || "",
             latitude:  location.latitude,
             longitude: location.longitude,
-            responsible_for_information: location.account.name,
             url: location_url(location),
-            hide_my_location: location.hide_my_location,
-            account_id: location.account_id,
+            total_of_practices: location.practices.count,
+            responsible_for_information: location.account.name,
             created_at: location.created_at,
             updated_at: location.updated_at
           },

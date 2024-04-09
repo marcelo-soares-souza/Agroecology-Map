@@ -3,20 +3,20 @@
 
   var Icon = L.icon({
     iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>', shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-    iconSize:     [38, 95], shadowSize:   [50, 64], iconAnchor:   [22, 94], shadowAnchor: [4, 62], popupAnchor:  [-3, -76]
+    iconSize: [38, 95], shadowSize: [50, 64], iconAnchor: [22, 94], shadowAnchor: [4, 62], popupAnchor: [-3, -76]
   });
 
   <% @locations.each do |location| %>
     <% if location.latitude and location.longitude %>
       var popup = '';
       popup += '<div class="thumbnail-mini"><%= link_to photo_thumb(location), location_path(location) %></div><br>'
-      popup += '<h4><%= "#{link_to location.name, location_path(location)}".html_safe %></h4>';
+      popup += '<h4><%= "#{link_to location.name.truncate(64), location_path(location)}".html_safe %></h4>';
       popup += '<b>';
       popup += '<div><%= link_to t(:see_all_practices), location_practices_path(location) if ! location.practices.blank? %></div>';
       popup += '<div class="popup-gallery"><%= location.medias.blank? ? "".html_safe : "#{ link_to (t(:gallery)), location_gallery_path(location.id)}".html_safe %></div>';
       popup += '</b>';
 
-      var marker = new L.marker(new L.latLng([<%= location.latitude %>, <%= location.longitude %>]), { icon: Icon, title: '<%= location.name %>' });
+      var marker = new L.marker(new L.latLng([<%= location.latitude.round(5) %>, <%= location.longitude.round(5) %>]), { icon: Icon, title: '<%= location.name.truncate(64) %>' });
       marker.bindPopup(popup);
       markers.addLayer(marker);
     <% end %>

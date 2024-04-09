@@ -189,6 +189,6 @@ $('.leaflet-container').css('cursor','crosshair');
             L.control.layers(baseMaps, overlayMaps, {collapsed: collapsed, position: 'bottomright'}).addTo(map);
         });
 
-        <%= render 'locations', locations: @locations %>
+        <%= raw Uglifier.new.compile(render "locations", locations: @locations) %>
     });
 </script>

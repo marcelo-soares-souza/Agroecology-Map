@@ -236,7 +236,7 @@ GEM
       psych (>= 4.0.0)
     recaptcha (5.16.0)
     regexp_parser (2.9.0)
-    reline (0.5.0)
+    reline (0.5.1)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -285,7 +285,7 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
-    sorbet-runtime (0.5.11332)
+    sorbet-runtime (0.5.11336)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
