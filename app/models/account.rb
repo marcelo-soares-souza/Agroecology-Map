@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  paginates_per 15
+  paginates_per 10
 
   has_many :documents, dependent: :destroy
   has_many :medias, dependent: :destroy
