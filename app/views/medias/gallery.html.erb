@@ -1,6 +1,6 @@
-<% if params[:location_id] %>
-  <% title t(:gallery) + " #{@location.name}" %>
-<% end %>
+<% title t(:gallery) + " #{@location.name}" if params[:location_id] %>
+<% title t(:gallery) + " #{@practice.name}" if params[:practice_id] %>
+<% title t(:gallery) + " #{@account.name}" if params[:account_id] %>
 
 <div class="link-action">
 <% if account_signed_in? %>
@@ -54,7 +54,10 @@
       <%= link_to "#{t(:documents)} (#{@practice.documents.count})", practice_documents_path(@practice), :class => "nav-link" %>
     </li>
   <% end %>
-  </li>
+
+  <% if params[:account_id] %>
+      <%= link_to t(:gallery) + " #{ @account.blank? ? '' : ' (' + @account.name.truncate(16) + ')' }", account_path(@account), :class => "nav-link active" %>
+  <% end %>
 </ul>
 
 <% if @medias.empty? %>

@@ -13,6 +13,9 @@
   <li class="nav-item">
     <%= link_to t(:practices) + " (#{@account.practices.size})", account_practices_path(@account), :class => "nav-link" %>
   </li>
+  <li class="nav-item">
+    <%= link_to t(:gallery) + " (#{@account.medias.size})", account_gallery_path(@account), :class => "nav-link" %>
+  </li>
 </ul>
 
 <br>

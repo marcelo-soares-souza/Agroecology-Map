@@ -9,7 +9,7 @@ class AccountsController < ApplicationController
   before_action :load_total
 
   def index
-    @accounts = Account.order("updated_at DESC").with_attached_photo.page(params[:page])
+    @accounts = Account.order("updated_at DESC").includes(:medias, :practices, :locations).with_attached_photo.page(params[:page])
   end
 
   def show; end

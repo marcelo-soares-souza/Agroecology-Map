@@ -59,6 +59,8 @@ Rails.application.routes.draw do
     resources :accounts do
       resources :locations
       resources :practices
+      resources :medias
+      get "/gallery" => "medias#gallery"
     end
 
     post "login", to: "authentication#login"
