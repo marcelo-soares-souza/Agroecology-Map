@@ -102,12 +102,12 @@ class PracticesController < ApplicationController
     respond_to do |format|
       if @practice.save
 
-        summary_description = params[:summaryDescription] ? params[:summaryDescription] : ''
-        where_it_is_realized = params[:whereItIsRealized] ? params[:whereItIsRealized] : ''
-          
+        summary_description = params[:summaryDescription] || ""
+        where_it_is_realized = params[:whereItIsRealized] || ""
+
         @what_you_do = WhatYouDo.new(practice_id: @practice.id,
                                      summary_description_of_agroecological_practice: summary_description,
-                                     where_it_is_realized: where_it_is_realized).save!
+                                     where_it_is_realized:).save!
         @characterise = Characterise.new(practice_id: @practice.id).save!
         @evaluate = Evaluate.new(practice_id: @practice.id).save!
         @acknowledge = Acknowledge.new(practice_id: @practice.id).save!

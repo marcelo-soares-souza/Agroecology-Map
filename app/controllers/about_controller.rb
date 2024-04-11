@@ -23,4 +23,7 @@ class AboutController < ApplicationController
 
   def friends
   end
+
+  def contact
+  end
 end

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get "manual", to: "about#manual"
     get "license", to: "about#license"
     get "thank_you_notes", to: "about#thank_you_notes"
-    get "connect", to: "connect#index"
+    get "contact", to: "about#contact"
     get "dashboard", to: "dashboard#index"
     get "privacy_policy", to: "about#privacy_policy"
 
