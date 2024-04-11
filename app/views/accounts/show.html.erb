@@ -30,8 +30,10 @@
     <h1><%= @account.name.truncate(64) %></h1>
     <br>
     <% if account_signed_in? %>
-      <%= "<h4>E-Mail</h4>#{@account.email}&nbsp;".html_safe if @account.email? %>
-      <br><br>
+      <% if current_account.admin? %>
+        <%= "<h4>E-Mail</h4>#{@account.email}&nbsp;".html_safe if @account.email? %>
+        <br><br>
+      <% end %>
     <% end %>
 
     <% if @account.about %>

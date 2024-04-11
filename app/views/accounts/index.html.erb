@@ -8,6 +8,13 @@
   </li>
 </ul>
 
+
+<div style="margin-top: 8px; margin-bottom: 8px; text-align: left">
+  <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
+  <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
+</div>
+
+
 <% if @accounts.empty? %>
   <br>
   <h3>Nenhum Usuário Registrado</h3>
@@ -45,3 +52,38 @@
     </div>
   <% end %>
 <% end %>
+
+<script>
+  const controller = 'accounts';
+
+  $(document).ready(function () {
+      <% if params[:filter].blank? or params[:name] %>
+        $("#more-filter").hide();
+        $("#searchButton").show();
+      <% else %>
+        $("#searchButton").hide();
+      <% end %>
+  });
+
+  $("#search").on('keyup', function (event) {
+      if (event.keyCode === 13) {
+          filter("search");
+      }
+  });
+
+  function filter() {
+      var name = $("#search").val();
+      var filter = "?filter=true"
+
+      filter += name ? "&name=" + name : "";
+      var url = "/" + controller + "/" + filter;
+      var lang = '<%= params[:locale] ? params[:locale] : 'en' %>'
+
+      if (url != '/' + controller + '/?filter=true') {
+          window.location.href =  '/' + lang + url;
+      }
+      else {
+          window.location.href = '/' + lang + '/' + controller;
+      }
+  }
+</script>

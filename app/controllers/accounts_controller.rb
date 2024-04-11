@@ -9,7 +9,23 @@ class AccountsController < ApplicationController
   before_action :load_total
 
   def index
+    @accounts = if params[:filter]
+      filter
+    else
+      all
+    end
+  end
+
+  def all
     @accounts = Account.order("updated_at DESC").includes(:medias, :practices, :locations).with_attached_photo.page(params[:page])
+  end
+
+  def filter
+    @accounts = Account.unscoped
+    @accounts = @accounts.by_name(params[:name]) unless params[:name].blank?
+    @accounts = @accounts.with_attached_photo
+    @total = @accounts.count
+    @accounts = @accounts.order("accounts.updated_at DESC").page(params[:page])
   end
 
   def show; end
