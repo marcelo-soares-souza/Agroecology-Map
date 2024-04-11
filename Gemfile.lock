@@ -177,7 +177,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.1)
-    nokogiri (1.16.3-x86_64-linux)
+    nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.24.0)
@@ -285,7 +285,7 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
-    sorbet-runtime (0.5.11338)
+    sorbet-runtime (0.5.11340)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
