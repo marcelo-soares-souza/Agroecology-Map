@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Media < ApplicationRecord
-  paginates_per 15
+  paginates_per 18
 
   belongs_to :location, required: false
   belongs_to :practice, required: false

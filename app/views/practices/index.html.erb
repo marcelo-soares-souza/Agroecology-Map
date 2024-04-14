@@ -78,7 +78,7 @@
   <% end %>
   <div class="row">
     <% @practices.each do |practice| %>
-      <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
+      <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
         <div class="card" style="min-height: 340px;">
           <br>
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>

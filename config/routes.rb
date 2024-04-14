@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
     get "coordinates", to: "locations#coordinates"
     get "countries", to: "locations#countries"
+    get "/gallery", to: "medias#gallery"
     put "/practices/:id/like", to: "practices#like", as: "like"
+
 
     resources :practices
     resources :acknowledges

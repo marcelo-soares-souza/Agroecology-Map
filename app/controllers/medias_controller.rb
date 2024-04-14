@@ -153,12 +153,16 @@ class MediasController < ApplicationController
     end
 
     def load_medias
+      @full_gallery = false
       if params[:practice_id]
         @medias = Media.where(practice_id: @practice.id).order("updated_at DESC").page(params[:page])
       elsif params[:location_id]
         @medias = Media.where(location_id: @location.id).order("updated_at DESC").page(params[:page])
       elsif params[:account_id]
         @medias = Media.where(account_id: @account.id).order("updated_at DESC").page(params[:page])
+      else
+        @full_gallery = true
+        @medias = Media.all.order("updated_at DESC").page(params[:page])
       end
     end
 end
