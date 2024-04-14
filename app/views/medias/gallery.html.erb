@@ -61,7 +61,7 @@
   <% end %>
 
   <% if @full_gallery %>
-  <%= link_to t(:gallery), "#", :class => "nav-link active" %>
+  <%= link_to "#{t(:gallery)} (#{@medias.count} of #{@total_media})", "#", :class => "nav-link active" %>
   <% end %>
 </ul>
 

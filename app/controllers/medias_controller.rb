@@ -162,6 +162,7 @@ class MediasController < ApplicationController
         @medias = Media.where(account_id: @account.id).order("updated_at DESC").page(params[:page])
       else
         @full_gallery = true
+        @total_media = Media.all.count
         @medias = Media.all.order("updated_at DESC").page(params[:page])
       end
     end

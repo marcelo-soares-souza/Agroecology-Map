@@ -83,7 +83,7 @@
           <br>
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
           <div class="card-body">
-            <h4 class="card-title"><%= link_to practice.name.truncate(40), location_practice_path(practice.location, practice) %></h4>
+            <h4 class="card-title"><%= link_to practice.name.truncate(36), location_practice_path(practice.location, practice) %></h4>
             <p class="card-text text-box"><b><%= t(:location) %></b><br> <%= link_to practice.location.name.truncate(40), location_path(practice.location) %></p>
           </div>
         </div>
