@@ -8,6 +8,6 @@
 <div id="map" style="z-index: 1;"></div>
 
 <script>
-  <%= raw Uglifier.new(:harmony => true).compile(render "load_maps", locations: @locations) %>
-  <%= raw Uglifier.new.compile(render "locations", locations: @locations) %>
+  <%= raw Terser.new.compile(render "load_maps", locations: @locations) %>
+  <%= raw Terser.new.compile(render "locations", locations: @locations) %>
 </script>
