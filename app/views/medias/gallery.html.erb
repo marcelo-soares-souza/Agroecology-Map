@@ -1,7 +1,7 @@
 <% title t(:gallery) + " #{@location.name}" if params[:location_id] %>
 <% title t(:gallery) + " #{@practice.name}" if params[:practice_id] %>
 <% title t(:gallery) + " #{@account.name}" if params[:account_id] %>
-<% title t(:gallery) + " all biodiversity is beautiful " if @full_gallery %>
+<% title t(:gallery) if @full_gallery %>
 
 <div class="link-action">
 <% if account_signed_in? %>
@@ -91,7 +91,7 @@
           <div class="card-body"  style="min-height: 180px;">
             <p class="card-text text-box" style="font-size: 16px !important; word-break: break-all;"><%= media.description.squish!.strip.truncate(55) unless media.description.blank? %></p>
             <p class="card-text" style="text-align: center; font-size: 12px;">
-              Photo sent by <%= link_to media.account.name.truncate(18), location_path(media.location) if media.location %>
+              Photo sent by <%= link_to media.account.name.truncate(18), account_path(media.account) if media.location %>
               at 
               <%= link_to media.location.name.truncate(21), location_path(media.location) if media.location %>
             </p>
