@@ -77,11 +77,11 @@
   </h3>
 
 <% else %>
-  <br><br>
+  <br>
   <div class="row">
     <% @medias.each do |media| %>
-      <div class="col-sm-2" style="cursor: pointer;" >
-        <div class="card" style="max-height: <%= account_signed_in? ? '400px' : '340px'%>;">
+      <div class="col-sm-3" style="cursor: pointer;" >
+        <div class="card" style="max-height: <%= account_signed_in? ? '400px' : '320px'%>;">
           <br>
           <div class="card-img-top thumbnail" >
             <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
@@ -89,12 +89,11 @@
             </a>
           </div>
           <div class="card-body"  style="min-height: 180px;">
-            <p class="card-text text-box" style="font-size: 16px !important;"><%= media.description.squish!.truncate(64) unless media.description.blank? %></p>
-              
-            <p class="card-text" style="text-align: center; font-size: 13px;">
-              Photo sent by <%= link_to media.account.name.truncate(21), location_path(media.location) if media.location %>
+            <p class="card-text text-box" style="font-size: 16px !important; word-break: break-all;"><%= media.description.squish!.strip.truncate(55) unless media.description.blank? %></p>
+            <p class="card-text" style="text-align: center; font-size: 12px;">
+              Photo sent by <%= link_to media.account.name.truncate(18), location_path(media.location) if media.location %>
               at 
-              <%= link_to media.location.name.truncate(30), location_path(media.location) if media.location %>
+              <%= link_to media.location.name.truncate(21), location_path(media.location) if media.location %>
             </p>
             <% if account_signed_in? %>
               <% if current_account.admin? or media.account.id == current_account.id %>
