@@ -85,11 +85,15 @@
           <br>
           <div class="card-img-top thumbnail" >
             <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-              <img src="<%= url_for(media.photo.variant(:medium)) %>" alt="Photo <%= media.description %>" title="Photo <%= media.description %>" class="img-fluid">
+              <img src="<%= url_for(media.photo.variant(:thumb)) %>" alt="Photo <%= media.description %>" title="Photo <%= media.description %>" class="img-fluid">
             </a>
           </div>
           <div class="card-body"  style="min-height: 180px;">
-            <p class="card-text text-box" style="font-size: 16px !important; word-break: break-all;"><%= media.description.squish!.strip.truncate(55) unless media.description.blank? %></p>
+            <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;">
+             <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
+             <%= media.description.squish!.strip.truncate(55) %>
+             </a>
+            </h4>
             <p class="card-text" style="text-align: center; font-size: 12px;">
               Photo sent by <%= link_to media.account.name.truncate(18), account_path(media.account) if media.location %>
               at 
