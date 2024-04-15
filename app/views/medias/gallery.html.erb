@@ -81,7 +81,7 @@
   <div class="row">
     <% @medias.each do |media| %>
       <div class="col-sm-3" style="cursor: pointer;" >
-        <div class="card" style="max-height: <%= account_signed_in? ? '400px' : '320px'%>;">
+        <div class="card" style="max-height: <%= account_signed_in? ? '375px' : '325px'%>;">
           <br>
           <div class="card-img-top thumbnail" >
             <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
