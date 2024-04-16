@@ -79,13 +79,16 @@
   <div class="row">
     <% @practices.each do |practice| %>
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
-        <div class="card" style="min-height: 340px;">
-          <br>
+        <div class="card">
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
-          <div class="card-body">
-            <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to practice.name.truncate(34), location_practice_path(practice.location, practice) %></h4>
-            <p class="card-text text-box"><b><%= t(:location) %></b><br> <%= link_to practice.location.name.truncate(40), location_path(practice.location) %></p>
-          </div>
+           <div class="card-body" style="min-height: 100px;">
+              <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to practice.name.truncate(34), practice_path(practice) %></h4>
+              <p class="card-text" style="text-align: center; font-size: 12px;">
+                  <%= link_to t(:details), practice_url(practice) %> |
+                  <%= link_to t(:location), location_path(practice.location) %> <%= "|" if practice.medias.size > 0 %>
+                  <%= link_to t(:gallery) + " (#{practice.medias.size})", practice_gallery_path(practice) if practice.medias.size > 0 %>
+              </p>
+            </div>
         </div>
         <br>
       </div>

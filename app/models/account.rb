@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  paginates_per 10
+  paginates_per 6
 
   scope :by_name, -> (name) { where("accounts.name ILIKE ?", "%#{name}%") }
 

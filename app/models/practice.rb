@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Practice < ApplicationRecord
-  paginates_per 10
+  paginates_per 6
 
   scope :by_name, -> (name) { where("practices.name ILIKE ?", "%#{name}%") }
   scope :by_food_system_components_addressed, -> (food_system_components_addressed) { joins(:characterise).where("characterises.food_system_components_addressed ILIKE ?", "%#{food_system_components_addressed}%") }
