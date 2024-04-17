@@ -1,13 +1,15 @@
 <% title t(:home) %>
 
 <style>
-  .container{width:100%;padding-left:0;padding-right:0}.leaflet-control-layers label{font-size:16px!important}.leaflet-control-layers-selector{margin-top:0;margin-right:1px}@media all and (max-width:500px){.leaflet-control-layers label{font-size:10px!important}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{max-width:115px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.leaflet-control-layers label b{font-size:12px!important}}
+  .container{width:100%;padding-left:0;padding-right:0}.leaflet-control-layers label{font-size:14px!important}.leaflet-control-layers-selector{margin-top:0;margin-right:1px}@media all and (max-width:500px){.leaflet-control-layers label{font-size:10px!important}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{max-width:115px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.leaflet-control-layers label b{font-size:12px!important}}
   <%= "html{position:inherit!important;min-height:90%}#map{position:absolute!important;width:100%!important;height:100%!important}" if request.path == '/map'%>
 </style>
 
 <div id="map" style="z-index: 1;"></div>
 
 <script>
-  <%= raw Terser.new.compile(render "load_maps", locations: @locations) %>
-  <%= raw Terser.new.compile(render "locations", locations: @locations) %>
+  <%= raw Terser.new.compile(render "home/maps/load_maps", locations: @locations) %>
+  <%= raw Terser.new.compile(render "home/maps/locations", locations: @locations) %>
+  <%= raw Terser.new.compile(render "home/maps/omv", locations: @locations) %>
+  <%= raw Terser.new.compile(render "home/maps/overlays", locations: @locations) %>
 </script>

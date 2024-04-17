@@ -1,0 +1,34 @@
+    // OverLay Maps
+    var geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
+
+    var biomes = L.tileLayer.wms(geoserver, {
+        layers: 'CMR-PUBLICO' + ':' + 'veg_biomas_a',
+        format: 'image/png',
+        transparent: true,
+        opacity: 0.3
+    });
+
+    var philippines = L.kmzLayer();
+    philippines.load('/philippines.kmz');
+
+    Object.assign(overlayMaps, {"<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomes (Brazil)</a>": biomes});
+    Object.assign(overlayMaps, {"<a href='https://www.google.com/maps/d/u/0/edit?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&usp=sharing' target='_blank'>Permaculture Philippines</a>": philippines});
+
+     var osmHot = L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.hotosm.org/" target="_blank">HOT OSM</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a></span>',
+        maxZoom: 18,
+    });
+
+    Object.assign(baseMaps, {"<a href='https://www.hotosm.org/' target='_blank'>Humanitarian OSM</a>": osmHot});
+
+    var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
+        attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | MapBox | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a></span>',
+        maxZoom: 18,
+    });
+
+    Object.assign(baseMaps, {"<a href='#'>Satellite Mapbox</a>": mapbox});
+
+    L.control.scale().addTo(this.map);
+    map.addControl(new L.control.zoom({position: 'topright'}));
+
+
