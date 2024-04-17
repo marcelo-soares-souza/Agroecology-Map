@@ -71,7 +71,8 @@
     <% end %>
   </h2>
 <% else %>
-  <% if @account.blank? %>
+<%=  %>
+  <% if @account.blank? and params[:location_id].blank? %>
       <span style="font-size: 14px; float: right;">
         <a href="/practices.csv">Export as CSV</a>
       </span><br>
@@ -80,6 +81,12 @@
     <% @practices.each do |practice| %>
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
         <div class="card">
+        <div style="float: right">
+          <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
+            <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>" style="float: right;  padding-left: 4px;">
+            <span class="badge bg-danger ms-2" style="font-size: 14px; float: right;"><%= practice.likes.count.to_s %></span>
+          <% end %>
+          </div>
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
            <div class="card-body" style="min-height: 100px;">
               <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to practice.name.truncate(34), practice_path(practice) %></h4>

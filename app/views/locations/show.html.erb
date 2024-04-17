@@ -21,10 +21,15 @@
   </li>
 </ul>
 
-<br>
-
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
+    <div class="like">
+      <%= link_to like_location_path(@location), method: "put", class: "btn text-white",  style: "background-color: #fff;", disabled: true do %>
+        <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
+        <span class="badge bg-danger ms-2" style="font-size: 14px"><%= @location.likes.count.to_s %></span>
+      <% end %>
+    </div>
+
     <div class="thumbnail">
       <%= photo_thumb(@location, @location.name, true) %>
     </div>

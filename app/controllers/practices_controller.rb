@@ -2,7 +2,7 @@
 
 class PracticesController < ApplicationController
   skip_before_action :authenticate, except: %i[index, show], if: -> { request.format.json? }
-  before_action :authenticate_account!, only: %i[new edit update destroy], if: -> { !request.format.json? }
+  before_action :authenticate_account!, only: %i[new edit update destroy like], if: -> { !request.format.json? }
 
   before_action lambda { check_owner Practice.friendly.find(params[:id]).account_id }, only: %i[edit update destroy]
   before_action :set_practice, only: %i[show edit update destroy]
@@ -14,6 +14,7 @@ class PracticesController < ApplicationController
   before_action :load_locations, only: %i[new]
   before_action :load_comments, only: %i[show]
   before_action :load_total
+  before_action :load_likes_info, only: %i[show]
 
   # GET /practices
   # GET /practices.json
@@ -145,6 +146,12 @@ class PracticesController < ApplicationController
     end
   end
 
+  def like
+    @practice = Practice.friendly.find(params[:id])
+    Like.create(account_id: current_account.id, practice_id: @practice.id)
+    redirect_to practice_path(@practice), notice: "Your like has been registered! Thanks!!"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_practice
@@ -172,7 +179,13 @@ class PracticesController < ApplicationController
       @practice_id = Practice.friendly.find(params[:id]).id
       @comments = Comment.where(practice_id: @practice_id).page(params[:page])
     end
+
     def load_total
       @total = Practice.count
+    end
+
+    def load_likes_info
+      likes = @practice.likes.map { |like| like.account.name }.join(", ")
+      @likes_info = likes.empty? ? "Like Button" : likes
     end
 end

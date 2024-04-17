@@ -3,7 +3,7 @@
 class LocationsController < ApplicationController
   skip_before_action :authenticate, except: %i[index, show], if: -> { request.format.json? }
 
-  before_action :authenticate_account!, only: %i[new edit update destroy], if: -> { !request.format.json? }
+  before_action :authenticate_account!, only: %i[new edit update destroy like], if: -> { !request.format.json? }
 
   before_action -> { check_owner Location.friendly.find(params[:id]).account_id }, only: %i[edit update destroy]
 
@@ -14,6 +14,7 @@ class LocationsController < ApplicationController
   before_action :load_options
   before_action :load_system_options
   before_action :load_total
+  before_action :load_likes_info, only: %i[show]
 
   # GET /locations
   # GET /locations.json
@@ -146,6 +147,12 @@ class LocationsController < ApplicationController
     @countries = ISO3166::Country.find_all_countries_by_continent(params[:continent]).map(&:alpha2)
   end
 
+  def like
+    @location = Location.friendly.find(params[:id])
+    Like.create(account_id: current_account.id, location_id: @location.id)
+    redirect_to location_path(@location), notice: "Your like has been registered! Thanks!!"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
@@ -220,5 +227,10 @@ class LocationsController < ApplicationController
 
       fc = GeojsonModel::FeatureCollection.new(features: locations)
       JSON.pretty_generate(JSON.parse(fc.to_json))
+    end
+
+    def load_likes_info
+      likes = @location.likes.map { |like| like.account.name }.join(", ")
+      @likes_info = likes.empty? ? "Like Button" : likes
     end
 end
