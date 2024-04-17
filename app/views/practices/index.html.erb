@@ -37,19 +37,19 @@
 <% end %>
 
 <% if hide_search == false %>
-<div style="margin-top: 8px; margin-bottom: 8px; text-align: left">
+<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
-  <br>
-  <span style="font-size: 14px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
+  <span style="font-size: 13px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
   <div id="more-filter">
+    <br>
     <%= select_tag "system_functions", options_from_collection_for_select(@system_functions_options, :last, :first, params[:system_functions] ? params[:system_functions] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_functions) %>
     <%= select_tag "system_components", options_from_collection_for_select(@system_components_options, :last, :first, params[:system_components] ? params[:system_components] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_components) %>
     <%= select_tag "components", options_from_collection_for_select(@food_system_components_addressed_options, :last, :first, params[:components] ? params[:components] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_system_component)  %>
     <%= select_tag "principles", options_from_collection_for_select(@agroecology_principles_addressed_options, :last, :first, params[:principles] ? params[:principles] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_agroecology_principle) %>
-    <%= country_select("country", "country", { selected: params[:country] ? params[:country] : '', :include_blank => t(:Filter_by_country) }, { class: "selectpicker", "data-live-search": true}) %>
+    <%= country_select("country", "country", { selected: params[:country] ? params[:country] : '', :include_blank => t(:country) }, { class: "selectpicker", "data-live-search": true}) %>
     <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
-    <div style="padding-top: 10px; padding-bottom: 10px; align-content: center; text-align: center; font-size: 21px">
+    <div style="padding-top: 8px; padding-bottom: 8px; align-content: center; text-align: left; font-size: 21px">
       <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
       <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
     </div>
@@ -73,7 +73,7 @@
 <% else %>
 <%=  %>
   <% if @account.blank? and params[:location_id].blank? %>
-      <span style="font-size: 14px; float: right;">
+      <span style="font-size: 13px; float: right;">
         <a href="/practices.csv">Export as CSV</a>
       </span><br>
   <% end %>
@@ -81,11 +81,11 @@
     <% @practices.each do |practice| %>
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
         <div class="card">
-        <div style="float: right">
-          <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
-            <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>" style="float: right;  padding-left: 4px;">
-            <span class="badge bg-danger ms-2" style="font-size: 14px; float: right;"><%= practice.likes.count.to_s %></span>
-          <% end %>
+          <div class="like">
+            <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
+              <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
+              <span class="badge bg-danger ms-2" style="font-size: 14px;"><%= practice.likes.count.to_s %></span>
+            <% end %>
           </div>
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
            <div class="card-body" style="min-height: 100px;">

@@ -8,18 +8,16 @@
   </li>
 </ul>
 
-
-<div style="margin-top: 8px; margin-bottom: 8px; text-align: left">
+<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
 </div>
-
 
 <% if @accounts.empty? %>
   <br>
   <h3>Nenhum Usuário Registrado</h3>
 <% else %>
-  <br><br>
+  <br>
   <div class="row">
     <% @accounts.each do |account| %>
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= account_path(account) %>';">

@@ -14,17 +14,17 @@
   </li>
 </ul>
 
-<div style="margin-top: 8px; margin-bottom: 8px; text-align: left">
+<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
-  <br>
-  <span style="font-size: 14px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
+  <span style="font-size: 13px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
   <div id="more-filter">
+    <br>
     <%= select_tag "system_functions", options_from_collection_for_select(@system_functions_options, :last, :first, params[:system_functions] ? params[:system_functions] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_functions) %>
     <%= select_tag "system_components", options_from_collection_for_select(@system_components_options, :last, :first, params[:system_components] ? params[:system_components] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_components) %>
     <%= country_select("country", "country", { selected: params[:country] ? params[:country] : '', :include_blank => t(:'filter_by_country') }, { class: "selectpicker", "data-live-search": true}) %>
     <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
-    <div style="padding-top: 10px; padding-bottom: 10px; align-content: center; text-align: center; font-size: 21px">
+    <div style="padding-top: 8px; padding-bottom: 8px; align-content: center; text-align: left; font-size: 21px">
       <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
       <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
     </div>
@@ -36,7 +36,7 @@
   <h2><%= t(:no_data_has_been_registered_so_far) %></h2>
 <% else %>
   <% if @account.blank? %>
-    <span style="font-size: 14px; float: right;">
+    <span style="font-size: 13px; float: right;">
       <a href="/locations.geojson"><%= t(:export_as_geojson) %></a>
       |
       <a href="/locations.csv">CSV</a>

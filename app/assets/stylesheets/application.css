@@ -789,14 +789,13 @@ strong {
     }
 }
 
-.more-filter {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    text-align: center;
+#more-filter {
+    margin-left: auto;
+    text-align: left;
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 400px;
+    width: 320px;
 }
 
 label.error {
