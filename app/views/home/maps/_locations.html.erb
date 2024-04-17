@@ -7,14 +7,12 @@
   });
 
   <% @locations.each do |location| %>
-    <% if location.latitude and location.longitude %>
       var popup = '';
       popup += '<div class="thumbnail-mini"><%= link_to photo_thumb(location), location_path(location) %></div><br>'
       popup += '<h4><%= "#{link_to location.name.truncate(64), location_path(location)}".html_safe %></h4>';
       var marker = new L.marker(new L.latLng([<%= location.latitude.round(5) %>, <%= location.longitude.round(5) %>]), { icon: Icon, title: '<%= location.name.truncate(64) %>' });
       marker.bindPopup(popup);
       markers.addLayer(marker);
-    <% end %>
   <% end %>
 
   map.addLayer(markers);

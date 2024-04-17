@@ -1,5 +1,7 @@
+    var collapsed = false;
+    if (window.innerWidth < 1000) { collapsed = true; }
+
     var omv = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 32 });
-    
     loadOMV().then(layer => {
         omv.addLayer(layer).addTo(map);
         Object.assign(overlayMaps, {"<a href='https://onemillionvoices.agroecologymap.org/' target='_blank'>One Million Voices</a>": omv});

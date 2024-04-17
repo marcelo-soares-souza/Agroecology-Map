@@ -3,7 +3,10 @@
 class HomeController < ApplicationController
   skip_before_action :authenticate, except: %i[index, show], if: -> { request.format.json? }
   def index
-    @locations = Location.where(hide_my_location: false).with_attached_photo
+    @locations = Location.where(hide_my_location: false)
+                         .and(Location.where.not(latitude: nil))
+                         .and(Location.where.not(longitude: nil))
+                         .with_attached_photo
   end
 
   def map
