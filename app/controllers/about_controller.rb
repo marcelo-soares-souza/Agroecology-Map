@@ -26,4 +26,7 @@ class AboutController < ApplicationController
 
   def contact
   end
+
+  def source_code_license
+  end
 end

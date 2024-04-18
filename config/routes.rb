@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get "friends", to: "about#partners"
     get "manual", to: "about#manual"
     get "license", to: "about#license"
+    get "source_code_license", to: "about#source_code_license"
     get "thank_you_notes", to: "about#thank_you_notes"
     get "contact", to: "about#contact"
     get "dashboard", to: "dashboard#index"
