@@ -236,13 +236,13 @@ GEM
       psych (>= 4.0.0)
     recaptcha (5.16.0)
     regexp_parser (2.9.0)
-    reline (0.5.2)
+    reline (0.5.3)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
-    rubocop (1.63.2)
+    rubocop (1.63.3)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -285,7 +285,7 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
-    sorbet-runtime (0.5.11352)
+    sorbet-runtime (0.5.11353)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -361,4 +361,4 @@ DEPENDENCIES
   web-console (>= 4.2.1)
 
 BUNDLED WITH
-   2.5.6
+   2.5.9
