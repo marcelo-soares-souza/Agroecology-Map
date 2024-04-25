@@ -149,8 +149,11 @@ class LocationsController < ApplicationController
 
   def like
     @location = Location.friendly.find(params[:id])
-    Like.create(account_id: current_account.id, location_id: @location.id)
-    redirect_to location_path(@location), notice: "Your like has been registered! Thanks!!"
+    @like = Like.new(account_id: current_account.id, location_id: @location.id)
+
+    if @like.save
+      redirect_to location_path(@location), notice: "Your like has been registered! Thanks!!"
+    end
   end
 
   private
