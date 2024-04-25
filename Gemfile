@@ -46,3 +46,5 @@ gem "kaminari", ">= 1.2.2"
 gem "geojson_model"
 gem "rdoc", ">= 6.6.3.1"
 gem "terser"
+
+gem "autotuner", "~> 1.0"

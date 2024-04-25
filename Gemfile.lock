@@ -76,6 +76,7 @@ GEM
       mutex_m
       tzinfo (~> 2.0)
     ast (2.4.2)
+    autotuner (1.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -285,7 +286,7 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
-    sorbet-runtime (0.5.11353)
+    sorbet-runtime (0.5.11357)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -329,6 +330,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  autotuner (~> 1.0)
   bcrypt (~> 3.1.20)
   bootstrap-icons-helper (>= 2.0.2)
   countries (>= 6.0.0)

@@ -148,8 +148,21 @@ class PracticesController < ApplicationController
 
   def like
     @practice = Practice.friendly.find(params[:id])
-    Like.create(account_id: current_account.id, practice_id: @practice.id)
-    redirect_to practice_path(@practice), notice: "Your like has been registered! Thanks!!"
+    @like = Like.new(account_id: current_account.id, practice_id: @practice.id)
+
+    if @like.save
+      subject = "[Agroecology Map] Someone liked your agroecological practice. "
+      body = "Liked by: #{@like.account.name} (" + account_url(@like.account) + ")"
+      body += "\r\n \r\n"
+      body += "Link to your practice: " + location_practice_url(@practice.location, @practice)
+      body += "\r\n \r\n"
+
+      if @practice.account.id != current_account.id
+        ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @practice.account.email, subject:,  body:).deliver
+      end
+
+      redirect_to practice_path(@practice), notice: "Your like has been registered! Thanks!!"
+    end
   end
 
   private
