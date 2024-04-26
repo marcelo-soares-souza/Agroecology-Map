@@ -1,15 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require rails-ujs
 //= require_tree .
 //= require activestorage
@@ -20,3 +8,36 @@ $(document).ready(function () {
     });
 });
 
+async function loadLayers(url, title, color) {
+    const response = await fetch(url);
+    const locations = await response.json();
+    const layers = L.markerClusterGroup();
+
+    const Icon = L.icon({
+        iconUrl: '/assets/leaflet/images/leaf-'+color+'.png',
+        shadowUrl: '/assets/leaflet/images/leaf-shadow.png',
+        iconSize: [38, 95],
+        shadowSize: [50, 64],
+        iconAnchor: [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
+    });
+
+    for (let location of locations) {
+        const hide_my_location = location['hide_my_location'];
+        if (!hide_my_location) {        
+            const name = location['name'];
+            const url = location['url'];
+            const image_url = location['image_url']
+            const latitude = location['latitude'];
+            const longitude = location['longitude'];
+
+            let popup = '<div class="thumbnail-mini"><a href="'+url+'"><img src="'+image_url+'" title="'+name+'" alt="'+name+'"/></a></div><br>';
+            popup += '<h4>'+title+'</h4><b><a href=" '+url+'">' + name.substring(0, 50) + "..." + '</a></b>';
+
+            layers.addLayer(new L.marker(new L.latLng(latitude, longitude), {icon: Icon}).bindPopup(popup));
+        }
+    };
+
+    return layers;
+}

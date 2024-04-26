@@ -1,6 +1,6 @@
-    loadLocations().then(layer => {
-       var locations = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+    loadLayers('/locations.json', 'Agroecology Map', 'green').then(layer => {
+        const locations = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
         locations.addLayer(layer).addTo(map);
         Object.assign(overlayMaps, {"<a href='https://agroecologymap.org/' target='_blank'>Agroecology Map</a>": locations});
-        L.control.layers(baseMaps, overlayMaps, {collapsed: collapsed, position: 'bottomright'}).addTo(map);
+        L.control.layers(baseMaps, overlayMaps, {collapsed: collapsed, position: 'bottomright'}).addTo(map);        
     });

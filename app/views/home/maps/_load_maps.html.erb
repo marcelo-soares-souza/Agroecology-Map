@@ -1,6 +1,6 @@
-    var lat = 16.0;
-    var lon = 1.0;
-    var zoom = 3.25;
+    const lat = 16.0;
+    const lon = 1.0;
+    const zoom = 3.25;
 
     if (window.devicePixelRatio > 2) {
         zoom = 3;
@@ -8,7 +8,7 @@
         lon = 15.00;
     }
 
-    var map = L.map('map', { fullscreenControl: true,
+    const map = L.map('map', { fullscreenControl: true,
                                 zoomControl: false,
                                 worldCopyJump: true,
                                 zoomSnap: 0.25,
@@ -17,13 +17,13 @@
                             }
                     ).setView([lat, lon], zoom);
 
-    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a></span>',
         maxZoom: 18,
     }).addTo(map);
     
-    var overlayMaps = {};
-    var baseMaps = {};
+    let overlayMaps = {};
+    let baseMaps = {};
 
     Object.assign(baseMaps, {"<a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap</a>": osm});
 
@@ -34,5 +34,6 @@
         }).trigger("resize");
     });
 
-    var collapsed = false;
+    const collapsed = false;
     if (window.innerWidth < 1000) { collapsed = true; }
+
