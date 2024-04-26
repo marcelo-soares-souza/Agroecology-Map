@@ -19,7 +19,7 @@ module ApplicationHelper
       name = "#{name}_thumb_#{number}.png"
       file_url = asset_url(name)
 
-      if use_gallery_photos && entity.medias && entity.medias.count > 0
+      if use_gallery_photos && entity.medias && entity.medias.any?
         if entity.medias[0].photo.attached?
           file_url = url_for(entity.medias[0].photo.variant(:thumb))
         end
@@ -44,7 +44,7 @@ module ApplicationHelper
 
       image_url = "/assets/#{name}_thumb_#{number}.png"
 
-      if use_gallery_photos && entity.medias && entity.medias.count > 0
+      if use_gallery_photos && entity.medias && entity.medias.any?
         if entity.medias[0].photo.attached?
           image_url = entity.medias[0].photo.variant(:thumb)
         end
