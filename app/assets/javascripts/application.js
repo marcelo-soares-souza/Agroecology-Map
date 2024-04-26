@@ -3,8 +3,8 @@
 //= require activestorage
 
 $(document).ready(function () {
-    $(".alert").fadeTo(6000, 500).slideUp(500, function () {
-        $(".alert").slideUp(500);
+    $(".alert").fadeTo(6000, 500).slideUp(600, function () {
+        $(".alert").slideUp(600);
     });
 });
 
