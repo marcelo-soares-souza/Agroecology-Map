@@ -1,0 +1,297 @@
+<%= form_for(location, html: { multipart: true }) do |f| %>
+  <%= "<div class='tip'>#{t(:start_by_adding_the_location_where_you_do_your_practices)}.</div>".html_safe unless params["action"] == 'edit' ||  params["action"] == 'update' %>
+
+  <% button_name = params["action"] == 'edit' ||  params["action"] == 'update' ? t(:save) : t(:save_and_add_a_practice) %>
+  <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
+
+  <br><br><br><br>
+
+  <% if location.errors.any? %>
+    <div id="error_explanation">
+      <b><%= location.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% location.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
+      <%= "<strong><i>*If you added a photo, please add it again.</i></strong><br>".html_safe if location.errors %>
+      <br>
+    </div>
+  <% end %>
+
+  <div class="forms">
+    <% if current_account.admin? %>
+      <div class="form-group row">
+        <%= f.label 'Responsável', class: "col-sm-2 col-form-label col-form-label-lg" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:account_id, Account.all, :id, :name, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+    <div class="form-group row required bg-light">
+      <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control", :required => true %>
+        <div class="tip">
+          <%= t(:how_would_you_like_to_name_the_place_where_you_practice_agroecology) %> (Minimum Size: 4 / Maximum Size: 100)
+          <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <div class="form-group required row">
+      <%= f.label t(:country), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-10">
+        <% country = @location.country ? @location.country : '' if params["action"] == 'edit' %>
+        <% country = request.location.country_code ? request.location.country_code : '' if params["action"] == 'new' %>
+        <%
+            if !params[:lat].blank? and !params[:lon].blank?
+              results = Geocoder.search([params[:lat], params[:lon]])
+              country = results.first.country_code.upcase
+            end
+        %>
+        <%= f.country_select :country, { selected: country, :include_blank => false }, { class: "form-control selectpicker", "data-live-search": true } %>
+        <div class="tip">
+          <%= t(:could_you_tell_us_which_country_this_place_is_in) %>
+          <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row required bg-light">
+      <%= f.label t(:is_it_a_farm), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-10">
+        <div style="text-align: left;">
+          <%= f.select :is_it_a_farm, options_for_select([[t(:yes_query), true], [t(:no_query), false]], @location.is_it_a_farm), { :include_blank => false }, { :class => 'form-control selectpicker', :id => 'is_it_a_farm' } %>
+        </div>
+        <div class="tip">
+          <%= t(:is_this_location_a_conventional_farm) %>
+          <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div id="farm_and_farming_system_options">
+      <div class="form-group required bg-light row" id="">
+        <%= f.label t(:what_do_you_have_on_your_farm), class: "col-sm-2 col-form-label col-form-label-lg" %>
+        <div class="col-sm-10">
+          <br>
+          <div style="text-align: left;">
+            <%= check_box_tag 'location[farm_and_farming_system_complement][]', 'Crops', checked_farm_and_farming_system_complement('Crops'), id: 'farm_and_farming_system_complement' %> 1 - <%= t(:crops) %>
+            <br>
+            <%= check_box_tag 'location[farm_and_farming_system_complement][]', 'Animals', checked_farm_and_farming_system_complement('Animals'), id: 'farm_and_farming_system_complement' %> 2 - <%= t(:animals) %>
+            <br>
+            <%= check_box_tag 'location[farm_and_farming_system_complement][]', 'Trees', checked_farm_and_farming_system_complement('Trees'), id: 'farm_and_farming_system_complement' %> 3 - <%= t(:trees) %>
+            <br>
+            <%= check_box_tag 'location[farm_and_farming_system_complement][]', 'Fish', checked_farm_and_farming_system_complement('Fish'), id: 'farm_and_farming_system_complement' %> 4 - <%= t(:fish) %>
+            <br>
+            <%= check_box_tag 'location[farm_and_farming_system_complement][]', 'Other', checked_farm_and_farming_system_complement('Other'), id: 'farm_and_farming_system_complement' %> 5 - <%= t(:other) %>
+          </div>
+          <br>
+        </div>
+        <%= f.label t(:what_the_main_purpose_of_your_farm), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:farm_and_farming_system, @farm_and_farming_system_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+          <%= f.text_area :farm_and_farming_system_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+          <div class="tip">
+            <%= t(:how_would_you_describe_what_you_do_in_your_location) %>
+            <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:what_is_your_dream_for_the_future_of_your_farm_and_or_your_location_in_general), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :what_is_your_dream, class: "form-control", :rows => "5" %>
+        <div class="tip"><%= t(:do_you_have_a_dream_of_transforming_your_farm_and_or_location_and_what_are_your_experienced_in_achieving_that_dream) %></div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row bg-light" >
+      <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-8">
+        <%= f.file_field :photo, class: "form-control", style: location.errors.blank? ? "" : "border-color: red" %>
+        <div class="tip"><%= t(:could_you_send_us_a_photo_that_represents_the_location) %>. (File Format: PNG, JPG or GIF. Size Limit: 16MB.)</div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:short_description), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :description, class: "form-control", :rows => "5" %>
+        <div class="tip"><%= t(:tell_us_a_bit_about_your_place_what_you_do_in_the_place_you_register_and_what_your_experiences_have_been) %></div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row bg-light">
+      <%= f.label t(:hide_my_location), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.select :hide_my_location, options_for_select([[t(:no_query), false], [t(:yes_query), true]], @location.hide_my_location), { :include_blank => false }, { :class => 'form-control selectpicker', :id => 'hide_my_location_on_map' } %>
+        <div class="tip"><%= t(:if_you_want_to_share_your_practices_but_dont_want_to_be_seen_on_the_map_you_will_be_listed_on_the_platform_but_your_location_will_be_hidden) %></div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row required bg-light" id="location">
+      <%= f.label t(:location), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-10">
+        <div id="map-sistema" style="z-index: 1;"></div>
+        <div class="tip">
+          <%= t(:please_show_us_on_the_map_where_you_practice_agroecology) %>
+          <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+        </div>
+      </div>
+    </div>
+
+    <%= f.hidden_field :latitude, id: "latitude" %>
+    <%= f.hidden_field :longitude, id: "longitude" %>
+
+    <hr>
+    <div class="actions">
+      <%= f.submit button_name, class: "btn btn-warning btn-lg" %>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("form").validate({
+                rules: {
+                    "location[name]": {
+                        required: true,
+                        minlength: 4
+                    },
+                    "location[description]": {
+                        minlength: 8
+                    }
+                }
+            });
+
+            $("#hide_my_location_on_map option:selected").val() == 'true' ? $("#location").hide() : $("#location").show();
+            $("#is_it_a_farm option:selected").val() == 'true' ? $("#farm_and_farming_system_options").show() : $("#farm_and_farming_system_options").hide();
+
+            $("#hide_my_location_on_map").change(function () {
+                $("#hide_my_location_on_map option:selected").val() == 'true' ? $("#location").hide() : $("#location").show();
+            });
+
+            $("#is_it_a_farm").change(function () {
+                $("#is_it_a_farm option:selected").val() == 'true' ? $("#farm_and_farming_system_options").show() : $("#farm_and_farming_system_options").hide();
+            });
+
+            // Location and Maps Things
+            // Default Location is Brasilia
+            var lat = -15.77835833463309;
+            var lon = -47.88219451904297;
+
+            <% if params[:action] == "new" %>
+                <% if request.location %>
+                  lat = <%= request.location.latitude ? request.location.latitude : -15.77835833463309 %>;
+                  lon = <%= request.location.longitude ? request.location.longitude : -47.88219451904297 %>;
+               <% end %>
+
+               <% if !params[:lat].blank? and !params[:lon].blank? %>
+                    lat = <%= params[:lat] %>;
+                    lon = <%= params[:lon] %>;
+               <% end %>
+            <% end %>
+
+            <% if params[:action] != "new" %>
+                lat = <%= f.object.latitude %>;
+                lon = <%= f.object.longitude %>;
+            <% end %>
+
+            var map = L.map('map-sistema', { zoomControl: false, worldCopyJump: true }).setView([lat, lon], 10);
+            var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<a href="https://agroecologymap.org/" target="_blank">Agroecology Map</a> | OpenStreetMap', maxZoom: 18, }).addTo(map);
+            var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: 'Agroecology Map | MapBox', maxZoom: 18,});
+            var baseMaps = {"OpenStreetMap": osm, "MapBox": mapbox};
+            L.control.layers(baseMaps).addTo(map);
+            map.addControl(new L.control.zoom({position: 'topright'}));
+
+            $(window).on("resize", function () {
+                $("#map-sistema").width($(window).width());
+                $("#map-sistema").height($(window).height());
+                map.invalidateSize();
+            }).trigger("resize");
+
+            var Icon = L.icon({
+                iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>', shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
+                iconSize: [38, 95], shadowSize: [50, 64],  iconAnchor: [22, 94],  shadowAnchor: [4, 62], popupAnchor: [-3, -76]
+            });
+
+            // Markers
+            var marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
+
+            $('#latitude').val(lat);
+            $('#longitude').val(lon);
+
+            map.on('click', function (e) {
+                marker.setLatLng(e.latlng);
+                $('#latitude').val(marker.getLatLng().lat);
+                $('#longitude').val(marker.getLatLng().lng);
+            });
+
+            marker.on('dragend', function (e) {
+                $('#latitude').val(marker.getLatLng().lat);
+                $('#longitude').val(marker.getLatLng().lng);
+            });
+
+            <% if params["action"] == "new" and params[:lat].blank? %>
+              location_country = $("#location_country option:selected").text();
+
+              $.get( "/coordinates?country=" + location_country, function( data ) {
+                  lat = data["latitude"] ? data["latitude"] : lat;
+                  lon = data["longitude"] ? data["longitude"] : lon;
+                  map.setView([lat, lon], 6);
+                  marker.remove()
+                  marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
+
+                  $('#latitude').val(lat);
+                  $('#longitude').val(lon);
+
+                  map.on('click', function (e) {
+                      marker.setLatLng(e.latlng);
+                      $('#latitude').val(marker.getLatLng().lat);
+                      $('#longitude').val(marker.getLatLng().lng);
+                  });
+
+                  marker.on('dragend', function (e) {
+                      $('#latitude').val(marker.getLatLng().lat);
+                      $('#longitude').val(marker.getLatLng().lng);
+                  });
+              });
+            <% end %>
+
+            $("#location_country").change(function () {
+                location_country = $("#location_country option:selected").text();
+                $.get( "/coordinates?country=" + location_country, function( data ) {
+                    lat = data["latitude"] ? data["latitude"] : lat;
+                    lon = data["longitude"] ? data["longitude"] : lon;
+                    map.setView([lat, lon], 6);
+                    marker.remove()
+                    marker = L.marker(new L.LatLng(lat, lon), {draggable: true, icon: Icon}).addTo(map);
+
+                    $('#latitude').val(lat);
+                    $('#longitude').val(lon);
+
+                    map.on('click', function (e) {
+                        marker.setLatLng(e.latlng);
+                        $('#latitude').val(marker.getLatLng().lat);
+                        $('#longitude').val(marker.getLatLng().lng);
+                    });
+
+                    marker.on('dragend', function (e) {
+                        $('#latitude').val(marker.getLatLng().lat);
+                        $('#longitude').val(marker.getLatLng().lng);
+                    });
+                });
+            });
+        });
+    </script>
+  </div>
+<% end %>

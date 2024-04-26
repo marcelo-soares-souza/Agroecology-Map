@@ -1,0 +1,145 @@
+<% title @evaluate.practice.name %>
+
+<div class="link-action">
+<% if account_signed_in? %>
+  <% if current_account.admin? or current_account.id == @evaluate.practice.account.id %>
+      <%= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_practice_media_path(@evaluate.practice), :class => "btn btn-warning" %>
+      <%= link_to (bootstrap_icon "file-earmark-text") + " " + t(:send_document), new_practice_document_path(@evaluate.practice), :class => "btn btn-secondary" %>
+  <% end %>
+<% end %>
+</div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to truncate(@evaluate.practice.location.name, length: 12), location_path(@evaluate.practice.location), title: @evaluate.practice.location.name,  :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to @evaluate.practice.name.truncate(18) , practice_path(@evaluate.practice), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:what_you_do), practice_what_you_do_path(@evaluate.practice, @evaluate.practice.what_you_do), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:characterise), practice_characterise_path(@evaluate.practice, @evaluate.practice.characterise), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:evaluate), practice_evaluate_path(@evaluate.practice, @evaluate.practice.evaluate), :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:acknowledge), practice_acknowledge_path(@evaluate.practice, @evaluate.practice.acknowledge), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:gallery)} (#{@evaluate.practice.medias.count})", practice_gallery_path(@evaluate.practice), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:documents)} (#{@evaluate.practice.documents.count})", practice_documents_path(@evaluate.practice), :class => "nav-link" %>
+  </li>
+</ul>
+
+<br>
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <br>
+    <% if @evaluate.general_performance_of_practice.blank? and
+      @evaluate.unintended_positive_side_effects_of_practice.blank? and
+      @evaluate.unintended_negative_side_effect_of_practice.blank? and
+      @evaluate.knowledge_and_skills_required_for_practice.blank? and
+      @evaluate.labour_required_for_practice.blank? and
+      @evaluate.cost_associated_with_practice.blank? and
+      @evaluate.does_it_work_in_degraded_environments.blank? and
+      @evaluate.does_it_help_restore_land.blank? and
+      @evaluate.climate_change_vulnerability_effects.blank? and
+      @evaluate.time_requirements.blank? %>
+      <h3><%= t(:no_data_has_been_registered_so_far) %>
+        <% if account_signed_in? %>
+          <% if current_account.admin? or current_account.id == @evaluate.practice.account.id %>
+            <%= link_to t(:register), edit_practice_evaluate_path(@evaluate.practice, @evaluate) %>
+          <% end %>
+        <% end %>
+      </h3>
+    <% else %>
+      <% if not @evaluate.general_performance_of_practice.blank?  %>
+        <div class="practices-box bg-light">
+          <%= "<h4>#{t(:general_performance_of_practice)}</h4><div class='text-box'>#{@effective_options.key(@evaluate.general_performance_of_practice)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.general_performance_of_practice_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.general_performance_of_practice_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.unintended_positive_side_effects_of_practice.blank? %>
+        <div class="practices-box">
+          <%= "<h4>#{t(:unintended_positive_side_effects_of_practice)}</h4><div class='text-box'>#{@yes_no_i_am_not_sure_not_applicable_options.key(@evaluate.unintended_positive_side_effects_of_practice)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.unintended_positive_side_effects_of_practice_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.unintended_positive_side_effects_of_practice_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.unintended_negative_side_effect_of_practice.blank? %>
+        <div class="practices-box bg-light">
+          <%= "<h4>#{t(:unintended_negative_side_effect_of_practice)}</h4><div class='text-box'>#{@yes_no_i_am_not_sure_not_applicable_options.key(@evaluate.unintended_negative_side_effect_of_practice)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.unintended_negative_side_effect_of_practice_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.unintended_negative_side_effect_of_practice_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.knowledge_and_skills_required_for_practice.blank? %>
+        <div class="practices-box">
+          <%= "<h4>#{t(:knowledge_and_skills_required_for_practice)}</h4><div class='text-box'>#{@knowledge_and_skills_required_for_practice_options.key(@evaluate.knowledge_and_skills_required_for_practice)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.knowledge_and_skills_required_for_practice_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.knowledge_and_skills_required_for_practice_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.labour_required_for_practice.blank? %>
+        <div class="practices-box bg-light">
+          <%= "<h4>#{t(:labour_required_for_practice)}</h4><div class='text-box'>#{@labour_required_for_practice_options.key(@evaluate.labour_required_for_practice)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.labour_required_for_practice_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.labour_required_for_practice_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.cost_associated_with_practice.blank? %>
+        <div class="practices-box">
+          <%= "<h4>#{t(:cost_associated_with_practice)}</h4><div class='text-box'>#{@cost_associated_with_practice_options.key(@evaluate.cost_associated_with_practice)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.cost_associated_with_practice_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.cost_associated_with_practice_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.does_it_work_in_degraded_environments.blank? %>
+        <div class="practices-box bg-light">
+          <%= "<h4>#{t(:does_it_work_in_degraded_environments)}</h4><div class='text-box'>#{@does_it_work_in_degraded_environments_options.key(@evaluate.does_it_work_in_degraded_environments)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.does_it_work_in_degraded_environments_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.does_it_work_in_degraded_environments_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.does_it_help_restore_land.blank? %>
+        <div class="practices-box">
+          <%= "<h4>#{t(:does_it_help_restore_land)}</h4><div class='text-box'>#{@effective_options.key(@evaluate.does_it_help_restore_land)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.does_it_help_restore_land_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.does_it_help_restore_land_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.climate_change_vulnerability_effects.blank? %>
+        <div class="practices-box bg-light">
+          <%= "<h4>#{t(:climate_change_vulnerability_effects)}</h4><div class='text-box'>#{@effective_options.key(@evaluate.climate_change_vulnerability_effects)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.climate_change_vulnerability_effects_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.climate_change_vulnerability_effects_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if ! @evaluate.time_requirements.blank? %>
+        <div class="practices-box">
+          <%= "<h4>#{t(:time_requirements)}</h4><div class='text-box'>#{@time_requirements_options.key(@evaluate.time_requirements)}</div>".html_safe %>
+          <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @evaluate.time_requirements_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @evaluate.time_requirements_details.blank? %>
+        </div>
+      <% end %>
+
+      <% if account_signed_in? %>
+        <% if current_account.admin? or current_account.id == @evaluate.practice.account.id %>
+          <hr>
+          <div id="practice-footer">
+            <div class="form-actions">
+              <%= link_to t(:edit), edit_practice_evaluate_path(@evaluate.practice, @evaluate), :class => 'btn btn-success' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <br><br>
+    <% end %>
+  </div>
+</div>
+

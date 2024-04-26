@@ -1,0 +1,112 @@
+<% title t(:thank_you_notes) %>
+<style>
+    .thank_you_notes {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 900px;
+        margin-top: 40px;
+    }
+
+    .logo {
+        width: 220px;
+        margin: auto;
+        background-color: transparent;
+    }
+
+    .thank_you_notes .card {
+        border: 0;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        margin-bottom: 32px;
+
+    }
+</style>
+
+<div class="thank_you_notes">
+  <br>
+  <h1><%= t(:thank_you_notes) %></h1>
+
+  <div class="text-box" style="line-height: 30px;">
+    <%= t(:thank_you_note_text) %>
+  </div>
+
+  <br><br>
+  <!--
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("agroecologymap.png", width: "180px", alt: "Agroecology Map Logo", title: "Agroecology Map Logo"), "https://agroecologymap.org", :target => "_blank", :alt => "Agroecology Map Logo", :title => "Agroecology Map Logo" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("tpp.jpg", width: "180px", alt: "The Transformative Partnership Platform on Agroecology", title: "The Transformative Partnership Platform on Agroecology"), "https://glfx.globallandscapesforum.org/topics/21467/page/TPP-home", :target => "_blank", :alt => "Agroecology Map Logo", :title => "The Transformative Partnership Platform on Agroecology" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("afa.jpg", width: "180px", alt: "AFA", title: "AFA"), "https://asianfarmers.org/", :target => "_blank", :alt => "AFA", :title => "AFA" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("sdc.png", width: "180px", alt: "SDC", title: "SDC"), "https://www.fdfa.admin.ch/sdc", :target => "_blank", :alt => "SDC", :title => "SDC" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("cifor_icraf.png", width: "180px", alt: "CIFOR-ICRAF", title: "CIFOR-ICRAF"), "https://www.cifor-icraf.org/", :target => "_blank", :alt => "CIFOR-ICRAF", :title => "CIFOR-ICRAF" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("groundswell.jpg", width: "180px", alt: "Groundswell International", title: "Groundswell International "), "https://www.groundswellinternational.org/", :target => "_blank", :alt => "Groundswell International ", :title => "Groundswell International " %></div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  -->
+  <strong><%= t(:technologies_and_arts_used_from) %></strong>
+  <div class="row">
+    <div class="col-sm-4" >
+      <div class="card" style="min-height: 200px">
+        <div class="logo"><%= link_to image_tag("rails.png", width: "180px", alt: "Ruby on Rails", title: "Ruby on Rails"), "https://rubyonrails.org/", :target => "_blank", :alt => "Ruby on Rails", :title => "Ruby on Rails" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4" >
+      <div class="card" style="min-height: 200px">
+        <div class="logo"><%= link_to image_tag("openstreetmap.png", width: "140px", alt: "Open Street Map", title: "Open Street Map"), "https://www.openstreetmap.org/", :target => "_blank", :alt => "Open Street Map", :title => "Open Street Map" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4" >
+      <div class="card" style="min-height: 200px">
+        <div class="logo"><%= link_to image_tag("leaflet.png", width: "180px", alt: "Leaflet", title: "Leaflet"), "https://leafletjs.com/", :target => "_blank", :alt => "Leaflet", :title => "Leaflet" %></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4" >
+      <div class="card" style="min-height: 200px">
+        <div class="logo"><%= link_to image_tag("codeberg.png", width: "140px", alt: "CodeBerg", title: "CodeBerg"), "https://codeberg.org/marcelo-soares-souza/Agroecology-Map", :target => "_blank", :alt => "CodeBerg", :title => "CodeBerg" %></div>
+      </div>
+    </div>
+    <div class="col-sm-4" >
+      <div class="card" style="min-height: 200px">
+        <div class="logo"><%= link_to image_tag("fsf.svg", width: "210px", alt: "Free Software Foundation", title: "Free Software Foundation"), "https://www.fsf.org/about/", :target => "_blank", :alt => "Free Software Foundation", :title => "Free Software Foundation" %></div>
+      </div>
+    </div>
+  </div>
+</div>

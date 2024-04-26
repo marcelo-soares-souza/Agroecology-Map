@@ -1,0 +1,125 @@
+<% title t(:locations) %>
+
+<div class="link-action">
+  <%= link_to (bootstrap_icon "geo-alt") + " " + t(:register_new_location), new_location_path, :class => "btn btn-primary" %>
+</div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <% if @account.blank? %>
+      <%= link_to t(:locations) + " (#{@locations.count} #{t(:of)} #{@total})", "#", :class => "nav-link active" %>
+    <% else %>
+      <%= link_to t(:locations) + " #{ @account.blank? ? '' : ' (' + @account.name.truncate(16) + ')' }", account_path(@account), :class => "nav-link active" %>
+    <% end %>
+  </li>
+</ul>
+
+<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
+  <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
+  <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
+  <span style="font-size: 13px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
+  <div id="more-filter">
+    <br>
+    <%= select_tag "system_functions", options_from_collection_for_select(@system_functions_options, :last, :first, params[:system_functions] ? params[:system_functions] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_functions) %>
+    <%= select_tag "system_components", options_from_collection_for_select(@system_components_options, :last, :first, params[:system_components] ? params[:system_components] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_components) %>
+    <%= country_select("country", "country", { selected: params[:country] ? params[:country] : '', :include_blank => t(:'filter_by_country') }, { class: "selectpicker", "data-live-search": true}) %>
+    <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
+    <div style="padding-top: 8px; padding-bottom: 8px; align-content: center; text-align: left; font-size: 21px">
+      <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
+      <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
+    </div>
+  </div>
+</div>
+
+<% if @locations.empty? %>
+  <br>
+  <h2><%= t(:no_data_has_been_registered_so_far) %></h2>
+<% else %>
+  <% if @account.blank? %>
+    <span style="font-size: 13px; float: right;">
+      <a href="/locations.geojson"><%= t(:export_as_geojson) %></a>
+      |
+      <a href="/locations.csv">CSV</a>
+    </span><br>
+  <% end %>
+  <div class="row">
+    <% @locations.each do |location| %>
+      <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_url(location) %>';">
+        <div class="card">
+          <div class="like">
+            <%= link_to like_location_path(location), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
+              <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
+              <span class="badge bg-danger ms-2" style="font-size: 14px;"><%= location.likes.count.to_s %></span>
+            <% end %>
+          </div>
+          <div class="card-img-top thumbnail"><%= link_to photo_thumb(location, location.name, true), location_path(location), alt: location.name, title: location.name %></div>
+          <div class="card-body" style="min-height: 100px;">
+             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to location.name.truncate(34), location_path(location) %></h4>
+             <p class="card-text" style="text-align: center; font-size: 12px;">
+                <%= link_to t(:details), location_url(location) %> <%= "|" if location.practices.size > 0 %>
+                <%= link_to t(:practices) + " (#{location.practices.size})", location_practices_path(location) if location.practices.size > 0 %> <%= "|" if location.medias.size > 0 %>
+                <%= link_to t(:gallery) + " (#{location.medias.size})", location_gallery_path(location) if location.medias.size > 0 %>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div>
+    <% end %>
+  </div>
+
+  <% if not params[:account_id] %>
+    <div>
+      <%= paginate @locations %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+    const controller = 'locations';
+
+    $(document).ready(function () {
+        <% if params[:filter].blank? or params[:name] %>
+          $("#more-filter").hide();
+          $("#searchButton").show();
+        <% else %>
+          $("#searchButton").hide();
+        <% end %>
+    });
+
+    $("#search").on('keyup', function (event) {
+        if (event.keyCode === 13) {
+            filter("search");
+        }
+    });
+
+    function filter() {
+        var name = $("#search").val();
+        var system_functions = $("#system_functions :selected").val();
+        var system_components = $("#system_components :selected").val();
+        var country = $("#country_country :selected").val();
+        var continent = $("#continent :selected").val();
+
+        var filter = "?filter=true"
+        filter += name ? "&name=" + name : "";
+        filter += system_functions ? "&system_functions=" + system_functions : "";
+        filter += system_components ? "&system_components=" + system_components : "";
+        filter += country ? "&country=" + country : "";
+        filter += continent ? "&continent=" + continent : "";
+        var url = "/" + controller + "/" + filter;
+
+
+        var lang = '<%= params[:locale] ? params[:locale] : 'en' %>'
+
+        if (url != '/' + controller + '/?filter=true') {
+            window.location.href =  '/' + lang + url;
+        }
+        else {
+            window.location.href = '/' + lang + '/' + controller;
+        }
+    }
+
+    function showAdvancedFilters() {
+        $("#more-filter").is(":visible") ? $("#more-filter").hide() : $("#more-filter").show();
+        $("#more-filter").is(":visible") ? $("#searchButton").hide() : $("#searchButton").show();
+    }
+</script>

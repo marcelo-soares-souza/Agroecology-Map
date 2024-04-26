@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  config.log_level = :debug
+
+  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  config.logger    = Logger.new(config.paths["log"].first, 10, 30.megabytes)
+
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_url_options = { host: ENV["HOST"], protocol: ENV["PROTOCOL"] }
 

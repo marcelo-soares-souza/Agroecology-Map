@@ -1,0 +1,74 @@
+<%= form_for_document params do |f| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> encontrado(s):</h2>
+
+      <ul>
+        <% document.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="forms">
+    <% if current_account.admin? %>
+      <div class="form-group row">
+        <%= f.label t(:responsible_for_information), class: "col-sm-2 col-form-label col-form-label-lg" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:account_id, Account.all, :id, :name, {:selected => @selected_id }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+    <div class="form-group required row">
+      <%= f.label t(:document), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-8">
+        <%= f.file_field :file, class: "form-control", :required => params["action"] == 'edit' ||  params["action"] == 'update' ? false : true %>
+        <div class="tip">
+          File Format: PDF. Size Limit: 16MB.
+          <%= "<span class='tip_alert' style='float: right;'>*#{t(:this_field_is_required)}.</span>".html_safe unless (params["action"] == 'edit' ||  params["action"] == 'update') %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row bg-light">
+      <%= f.label t(:description), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_field :description,  class: "form-control" %>
+        <div class="tip">(Minimum Size: 4 / Maximum Size: 200)</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="actions">
+    <%= f.submit t(:save), class: "btn btn-warning btn-lg" %>
+  </div>
+<% end %>
+
+<% if not @documents.blank? and params["action"] == 'new'%>
+  <br><br>
+  <div class="row">
+    <% @documents.each do |document| %>
+      <div class="col-sm-6" style="cursor: pointer;" >
+        <div class="card">
+          <div class="card-body"  style="min-height: 180px;">
+            <h4 class="card-title"><%= link_to document.file.filename.to_s.truncate(40), url_for(document.file), target: "_blank" %></h4>
+            <p class="card-text text-box"><%= document.description.truncate(200) if !document.description.blank? %></p>
+            <% if account_signed_in? %>
+              <% if current_account.admin? or document.account.id == current_account.id %>
+                <td><%= link_to t(:destroy), practice_document_path(document.practice, document), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) }, :class => 'btn btn-sm btn-danger' %></td>
+              <% else %>
+                <br><br>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <br>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= paginate @documents %>
+  </div>
+  <br>
+<% end %>

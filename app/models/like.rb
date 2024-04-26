@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Like < ApplicationRecord
-  belongs_to :usuario
-  belongs_to :experiencia_agroecologica, required: false
-  belongs_to :local, required: false
+  belongs_to :location, required: false
+  belongs_to :practice, required: false
+  belongs_to :account
 
-  validates :usuario_id, uniqueness: { scope: [:experiencia_agroecologica_id, :local_id] }
+  validates :account_id, uniqueness: { scope: [:location_id, :practice_id] }
 end

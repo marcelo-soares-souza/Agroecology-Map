@@ -1,6 +1,4 @@
-# Agroecology Map
-
-[![liberapay](https://img.shields.io/liberapay/gives/AgroecologyMap.svg?logo=liberapay)](https://liberapay.com/AgroecologyMap/donate)
+# Agroecology Map - Agroecology Map
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I0G99V3)
 
@@ -35,4 +33,3 @@ More info: https://agroecologymap.org/
 
 #### All content of Plataform is licensed under [Creative Commons (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) (See CONTENT_LICENSE.md)
 
-<a rel="me" href="https://mas.to/@AgroecologyMap">follow us on mastodon</a>

@@ -1,0 +1,24 @@
+<% title t(:locations) %>
+
+<div class="tip">Choose the location to add the Practice</div>
+<br>
+
+<% if @locations.empty? %>
+  <br>
+  <h2><%= t(:no_data_has_been_registered_so_far) %> <%= link_to t(:register_new_location), new_location_path if account_signed_in? %> first</h2>
+<% else %>
+  <div class="row">
+    <% @locations.each do |location| %>
+      <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= new_location_practice_path(location) %>';">
+        <div class="card">
+          <br>
+          <div  class="card-img-top thumbnail"><%= link_to photo_thumb(location), new_location_practice_path(location), alt: location.name, title: location.name %></div>
+          <div class="card-body"  style="min-height: 100px;">
+            <h3 class="card-title"><%= link_to location.name.truncate(40), new_location_practice_path(location) %></h3>
+          </div>
+        </div>
+        <br>
+      </div>
+    <% end %>
+  </div>
+<% end %>

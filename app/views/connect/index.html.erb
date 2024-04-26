@@ -1,0 +1,11 @@
+<% title t(:practices) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:connect), "#", :class => "nav-link active" %>
+    </li>
+</ul>
+
+<%= render 'practices', practices: @practices %>

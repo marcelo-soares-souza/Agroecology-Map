@@ -12,18 +12,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_13_162117) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_17_101531) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
+  create_table "accounts", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
+    t.string "unconfirmed_email"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.boolean "admin", default: false
+    t.string "name"
+    t.string "slug"
+    t.text "about"
+    t.string "website"
+    t.boolean "i_agree_with_terms_and_conditions"
+    t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["name"], name: "index_accounts_on_name", opclass: :gin_trgm_ops, using: :gin
+    t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_accounts_on_slug", unique: true
+  end
+
+  create_table "acknowledges", force: :cascade do |t|
+    t.bigint "practice_id", null: false
+    t.text "knowledge_source"
+    t.text "knowledge_timing"
+    t.text "knowledge_products"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+    t.text "uptake_motivation"
+    t.text "knowledge_source_details"
+    t.text "knowledge_timing_details"
+    t.index ["practice_id"], name: "index_acknowledges_on_practice_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -54,317 +88,156 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_162117) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "animais", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.string "nome_cientifico"
-    t.text "observacao"
-    t.bigint "usuario_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "imagem_file_name"
-    t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at", precision: nil
-    t.index ["slug"], name: "index_animais_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_animais_on_usuario_id"
+  create_table "characterises", force: :cascade do |t|
+    t.bigint "practice_id", null: false
+    t.text "agroecology_principles_addressed"
+    t.text "food_system_components_addressed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["practice_id"], name: "index_characterises_on_practice_id"
   end
 
-  create_table "blogs", force: :cascade do |t|
-    t.string "titulo"
-    t.string "slug"
-    t.text "texto"
-    t.bigint "usuario_id"
-    t.bigint "local_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["local_id"], name: "index_blogs_on_local_id"
-    t.index ["usuario_id"], name: "index_blogs_on_usuario_id"
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "account_id", null: false
+    t.bigint "practice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_comments_on_account_id"
+    t.index ["practice_id"], name: "index_comments_on_practice_id"
   end
 
-  create_table "comentarios", force: :cascade do |t|
-    t.string "texto"
-    t.string "slug"
-    t.bigint "experiencia_agroecologica_id"
-    t.bigint "usuario_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.bigint "local_id"
-    t.index ["experiencia_agroecologica_id"], name: "index_comentarios_on_experiencia_agroecologica_id"
-    t.index ["local_id"], name: "index_comentarios_on_local_id"
-    t.index ["usuario_id"], name: "index_comentarios_on_usuario_id"
+  create_table "documents", force: :cascade do |t|
+    t.text "description"
+    t.bigint "practice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "location_id", null: false
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_documents_on_account_id"
+    t.index ["location_id"], name: "index_documents_on_location_id"
+    t.index ["practice_id"], name: "index_documents_on_practice_id"
   end
 
-  create_table "experiencia_agroecologicas", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.bigint "usuario_id"
-    t.bigint "local_id"
-    t.bigint "tema_experiencia_agroecologica_id"
-    t.text "resumo"
-    t.text "observacao"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["local_id"], name: "index_experiencia_agroecologicas_on_local_id"
-    t.index ["slug"], name: "index_experiencia_agroecologicas_on_slug", unique: true
-    t.index ["tema_experiencia_agroecologica_id"], name: "idx_exp_agroecologicas_on_tema_exp_agroecologica_id"
-    t.index ["usuario_id"], name: "index_experiencia_agroecologicas_on_usuario_id"
+  create_table "evaluates", force: :cascade do |t|
+    t.bigint "practice_id", null: false
+    t.text "general_performance_of_practice"
+    t.text "unintended_positive_side_effects_of_practice"
+    t.text "unintended_negative_side_effect_of_practice"
+    t.text "knowledge_and_skills_required_for_practice"
+    t.text "labour_required_for_practice"
+    t.text "cost_associated_with_practice"
+    t.text "does_it_work_in_degraded_environments"
+    t.text "does_it_help_restore_land"
+    t.text "climate_change_vulnerability_effects"
+    t.text "time_requirements"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "general_performance_of_practice_details"
+    t.text "unintended_positive_side_effects_of_practice_details"
+    t.text "unintended_negative_side_effect_of_practice_details"
+    t.text "knowledge_and_skills_required_for_practice_details"
+    t.text "labour_required_for_practice_details"
+    t.text "cost_associated_with_practice_details"
+    t.text "does_it_work_in_degraded_environments_details"
+    t.text "does_it_help_restore_land_details"
+    t.text "climate_change_vulnerability_effects_details"
+    t.text "time_requirements_details"
+    t.index ["practice_id"], name: "index_evaluates_on_practice_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "usuario_id"
-    t.bigint "experiencia_agroecologica_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.bigint "local_id"
-    t.index ["experiencia_agroecologica_id"], name: "index_likes_on_experiencia_agroecologica_id"
-    t.index ["local_id"], name: "index_likes_on_local_id"
-    t.index ["usuario_id"], name: "index_likes_on_usuario_id"
+    t.bigint "location_id", null: false
+    t.bigint "practice_id", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_likes_on_account_id"
+    t.index ["location_id"], name: "index_likes_on_location_id"
+    t.index ["practice_id"], name: "index_likes_on_practice_id"
   end
 
-  create_table "locais", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.string "observacao"
-    t.float "latitude"
-    t.float "longitude"
-    t.bigint "usuario_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "imagem_file_name"
-    t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at", precision: nil
-    t.string "tipo"
-    t.string "hospedagem"
-    t.string "country"
-    t.index ["slug"], name: "index_locais_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_locais_on_usuario_id"
-  end
-
-  create_table "local_usuarios", force: :cascade do |t|
-    t.bigint "local_id"
-    t.bigint "usuario_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["local_id"], name: "index_local_usuarios_on_local_id"
-    t.index ["usuario_id"], name: "index_local_usuarios_on_usuario_id"
-  end
-
-  create_table "midias", force: :cascade do |t|
-    t.string "descricao"
-    t.string "slug"
-    t.bigint "saf_id"
-    t.bigint "experiencia_agroecologica_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "imagem_file_name"
-    t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at", precision: nil
-    t.bigint "usuario_id"
-    t.bigint "local_id"
-    t.index ["experiencia_agroecologica_id"], name: "index_midias_on_experiencia_agroecologica_id"
-    t.index ["local_id"], name: "index_midias_on_local_id"
-    t.index ["saf_id"], name: "index_midias_on_saf_id"
-    t.index ["slug"], name: "index_midias_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_midias_on_usuario_id"
-  end
-
-  create_table "organizacao_locais", force: :cascade do |t|
-    t.bigint "organizacao_id"
-    t.bigint "local_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["local_id"], name: "index_organizacao_locais_on_local_id"
-    t.index ["organizacao_id"], name: "index_organizacao_locais_on_organizacao_id"
-  end
-
-  create_table "organizacoes", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.string "sigla"
-    t.bigint "tipo_organizacao_id"
-    t.string "email"
-    t.string "telefone"
-    t.string "site"
-    t.text "descricao"
-    t.string "cidade"
-    t.string "uf"
-    t.string "pais"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "observacao"
-    t.bigint "usuario_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["email"], name: "index_organizacoes_on_email", unique: true
-    t.index ["slug"], name: "index_organizacoes_on_slug", unique: true
-    t.index ["tipo_organizacao_id"], name: "index_organizacoes_on_tipo_organizacao_id"
-    t.index ["usuario_id"], name: "index_organizacoes_on_usuario_id"
-  end
-
-  create_table "plantas", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.string "nome_cientifico"
-    t.text "observacao"
-    t.bigint "usuario_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "imagem_file_name"
-    t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at", precision: nil
-    t.index ["slug"], name: "index_plantas_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_plantas_on_usuario_id"
-  end
-
-  create_table "saf_animais", force: :cascade do |t|
-    t.bigint "saf_id"
-    t.bigint "animal_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["animal_id"], name: "index_saf_animais_on_animal_id"
-    t.index ["saf_id"], name: "index_saf_animais_on_saf_id"
-  end
-
-  create_table "saf_plantas", force: :cascade do |t|
-    t.bigint "saf_id"
-    t.bigint "planta_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["planta_id"], name: "index_saf_plantas_on_planta_id"
-    t.index ["saf_id"], name: "index_saf_plantas_on_saf_id"
-  end
-
-  create_table "safs", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.string "objetivo"
-    t.string "produto_principal"
-    t.date "inicio"
-    t.date "fim"
-    t.string "area"
-    t.bigint "local_id"
-    t.bigint "usuario_id"
-    t.text "observacao"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["local_id"], name: "index_safs_on_local_id"
-    t.index ["slug"], name: "index_safs_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_safs_on_usuario_id"
-  end
-
-  create_table "taggings", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at", precision: nil
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
-  create_table "tema_experiencia_agroecologicas", force: :cascade do |t|
-    t.string "nome"
     t.string "slug"
-    t.bigint "usuario_id"
+    t.string "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "account_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["slug"], name: "index_tema_experiencia_agroecologicas_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_tema_experiencia_agroecologicas_on_usuario_id"
+    t.boolean "hide_my_location"
+    t.string "country"
+    t.string "farm_and_farming_system"
+    t.text "farm_and_farming_system_details"
+    t.string "farm_and_farming_system_complement"
+    t.boolean "is_it_a_farm"
+    t.string "continent"
+    t.text "what_is_your_dream"
+    t.index ["account_id"], name: "index_locations_on_account_id"
+    t.index ["name"], name: "index_locations_on_name", opclass: :gin_trgm_ops, using: :gin
+    t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
 
-  create_table "tipo_organizacoes", force: :cascade do |t|
-    t.string "nome"
-    t.string "slug"
-    t.bigint "usuario_id"
+  create_table "medias", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["slug"], name: "index_tipo_organizacoes_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_tipo_organizacoes_on_usuario_id"
+    t.bigint "account_id"
+    t.bigint "location_id"
+    t.bigint "practice_id"
+    t.index ["account_id"], name: "index_medias_on_account_id"
+    t.index ["location_id"], name: "index_medias_on_location_id"
+    t.index ["practice_id"], name: "index_medias_on_practice_id"
   end
 
-  create_table "usuarios", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: nil
-    t.datetime "last_sign_in_at", precision: nil
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
-    t.string "unconfirmed_email"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.boolean "admin", default: false
-    t.string "nome"
+  create_table "practices", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "location_id", null: false
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
-    t.string "imagem_file_name"
-    t.string "imagem_content_type"
-    t.integer "imagem_file_size"
-    t.datetime "imagem_updated_at", precision: nil
-    t.string "about"
-    t.string "website"
-    t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
-    t.index ["slug"], name: "index_usuarios_on_slug", unique: true
+    t.index ["account_id"], name: "index_practices_on_account_id"
+    t.index ["location_id"], name: "index_practices_on_location_id"
+    t.index ["name"], name: "index_practices_on_name", opclass: :gin_trgm_ops, using: :gin
+    t.index ["slug"], name: "index_practices_on_slug", unique: true
   end
 
+  create_table "what_you_dos", force: :cascade do |t|
+    t.bigint "practice_id", null: false
+    t.text "summary_description_of_agroecological_practice"
+    t.text "type_of_agroecological_practice"
+    t.text "practical_implementation_of_the_practice"
+    t.text "why_you_use_and_what_you_expect_from_this_practice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "where_it_is_realized"
+    t.float "land_size"
+    t.string "substitution_of_less_ecological_alternative"
+    t.text "substitution_of_less_ecological_alternative_details"
+    t.string "unit_of_measure"
+    t.index ["practice_id"], name: "index_what_you_dos_on_practice_id"
+  end
+
+  add_foreign_key "acknowledges", "practices"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "animais", "usuarios"
-  add_foreign_key "blogs", "locais"
-  add_foreign_key "blogs", "usuarios"
-  add_foreign_key "comentarios", "experiencia_agroecologicas"
-  add_foreign_key "comentarios", "locais"
-  add_foreign_key "comentarios", "usuarios"
-  add_foreign_key "experiencia_agroecologicas", "locais"
-  add_foreign_key "experiencia_agroecologicas", "tema_experiencia_agroecologicas"
-  add_foreign_key "experiencia_agroecologicas", "usuarios"
-  add_foreign_key "likes", "experiencia_agroecologicas"
-  add_foreign_key "likes", "locais"
-  add_foreign_key "likes", "usuarios"
-  add_foreign_key "locais", "usuarios"
-  add_foreign_key "local_usuarios", "locais"
-  add_foreign_key "local_usuarios", "usuarios"
-  add_foreign_key "midias", "experiencia_agroecologicas"
-  add_foreign_key "midias", "locais"
-  add_foreign_key "midias", "safs"
-  add_foreign_key "midias", "usuarios"
-  add_foreign_key "organizacao_locais", "locais"
-  add_foreign_key "organizacao_locais", "organizacoes"
-  add_foreign_key "organizacoes", "tipo_organizacoes"
-  add_foreign_key "organizacoes", "usuarios"
-  add_foreign_key "plantas", "usuarios"
-  add_foreign_key "saf_animais", "animais"
-  add_foreign_key "saf_animais", "safs"
-  add_foreign_key "saf_plantas", "plantas"
-  add_foreign_key "saf_plantas", "safs"
-  add_foreign_key "safs", "locais"
-  add_foreign_key "safs", "usuarios"
-  add_foreign_key "tema_experiencia_agroecologicas", "usuarios"
-  add_foreign_key "tipo_organizacoes", "usuarios"
+  add_foreign_key "characterises", "practices"
+  add_foreign_key "comments", "accounts"
+  add_foreign_key "comments", "practices"
+  add_foreign_key "documents", "accounts"
+  add_foreign_key "documents", "locations"
+  add_foreign_key "documents", "practices"
+  add_foreign_key "evaluates", "practices"
+  add_foreign_key "likes", "accounts"
+  add_foreign_key "likes", "locations"
+  add_foreign_key "likes", "practices"
+  add_foreign_key "locations", "accounts"
+  add_foreign_key "medias", "accounts"
+  add_foreign_key "medias", "locations"
+  add_foreign_key "medias", "practices"
+  add_foreign_key "practices", "accounts"
+  add_foreign_key "practices", "locations"
+  add_foreign_key "what_you_dos", "practices"
 end

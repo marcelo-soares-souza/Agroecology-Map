@@ -1,519 +1,307 @@
-# yamllint disable rule:line-length
----
 fr:
-  site_description: "Agroecology Map est une plateforme Gratuite (Ouverte) pour cartographier les initiatives en Agroécologie, Permaculture et Agroforesterie"
-  site: "Agroecology Map"
+  a_about_page_still_in_development: Une page "à propos" est encore en cours d'élaboration
+  about: À propos
+  about_me: A propos de moi
+  accounts: Comptes
+  acknowledge: Reconnaître
+  add_a_practice: Ajouter une pratique
+  add_location: Ajouter une localisation
+  administrator: Administrateur
+  agroecology_is_free_software: Code source
+  agroecology_principles_addressed: Principes d'agroécologie invoqués
+  all_content_on_this_platform_is_licensed_under_the: Tout le contenu de cette plate-forme est sous licence
+  a_long_time_ago: Il y a longtemps
+  already_have_an_account_sign_in: Vous avez déjà un compte? Identifiez-vous.
+  and: et
+  animal_health: Santé animale
+  animals: Animaux
+  are_you_sure: Êtes-vous sûr ?
+  a_step_by_step_manual_is_still_in_development: Un manuel étape par étape est toujours en développement
+  back: Retour
+  biodiversity: Biodiversité
+  build_food_systems_based_on_the_culture_identity_tradition_social_and_gender_equ: Construisez des systèmes alimentaires basés sur la culture, l'identité, la tradition, l'équité sociale et entre les sexes des communautés de localisation qui fournissent des régimes sains, diversifiés, saisonnières et culturellement appropriés.
+  change_my_password: Changer mon mot de passe
+  characterise: Caractériser
+  choose_the_location_to_add_the_practice: Choisissez la localisation pour ajouter la pratique
+  clear_filters: Effacer les filtres
+  click_on_the_link_below_to_unlock_your_account: Cliquez sur le lien ci-dessous pour déverrouiller votre compte
+  climate_change_vulnerability_effects: Effets de vulnérabilité au changement climatique
+  co_creation_of_knowledge: Co-création de savoirs
+  comment: Commentaire
+  comments: commentaires
+  community: Communauté
+  confirm_my_account: Confirmer mon compte
+  connect: Connecter
+  connectivity: Connectivité
+  contributors: Comptes
+  cookie_notice_text: Ce site Web utilise des cookies ou des technologies similaires, pour améliorer votre expérience de navigation. En cliquant sur «Accepter tout», vous consentez à notre utilisation des cookies.
+  cost_associated_with_practice: Coût associé à la pratique
+  could_you_send_us_a_photo_that_represents_the_location: Pourriez-vous nous envoyer une photo qui représente la localisation
+  could_you_send_us_a_photo_that_represents_this_practice_later_you_can_send_more_photos_to_the_practice_gallery: Pourriez-vous nous envoyer une photo qui représente cette pratique. Plus tard, vous pouvez envoyer plus de photos (à la galerie de pratique).
+  could_you_tell_us_which_country_this_place_is_in: Pourriez-vous nous dire dans quel pays se trouve cet endroit?
+  country: Pays
+  crops: Cultures
+  description: Description
+  destroy: Supprimer
+  detail: Détail
+  details: Détails
+  developers: Développeurs
+  didnt_confirmation_instruction: Vous n'avez pas reçu le courrier électronique de confirmation?
+  discover_the_map: Découvrez la carte
+  diversify_on_farm_incomes_by_ensuring_small_scale_farmers_have_greater_financial: Diversifier les revenus à la ferme en garantissant que les petits agriculteurs ont une plus grande indépendance financière et des opportunités de valeur ajoutée tout en leur permettant de répondre à la demande des consommateurs.
+  document: Document
+  documents: Documents
+  does_it_help_restore_land: La pratique aide-t-elle à la restauration les terres?
+  does_it_work_in_degraded_environments: La pratique fonctionne-t-elle dans des environnements dégradés?
+  does_not_work_at_all_in_depleted_environment: Ne fonctionne pas du tout dans un environnement dégradé
+  does_rather_not_work_in_depleted_environment: Ne fonctionne plutôt pas dans un environnement dégradé
+  does_the_practice_engender_financial_costs: La pratique engendre-t-elle les coûts financiers?
+  does_the_practice_help_to_reduce_climate_change_effects_that_you_experienced_previously: La pratique aide-t-elle à réduire les effets du changement climatique que vous avez connues précédemment?
+  does_the_practice_help_to_restore_the_health_of_your_farm_and_or_its_surrounding: La pratique aide-t-elle à restaurer la santé de votre ferme et / ou de ses environs?
+  does_the_practice_require_a_lot_of_work: La pratique nécessite-t-elle beaucoup de travail?
+  does_the_practice_require_time_to_work_as_expected_as_the_system_heals: La pratique a-t-elle besoin de temps pour fonctionner comme prévu (pendant que le système se rétablit) ?
+  does_the_practice_substitute_and_or_reduce_a_less_ecological_alternative_ie_use_of_synthetic_inputs: La pratique substitute-t-elle / ou réduit-elle une alternative moins écologique (par exemple l'utilisation des intrants synthétiques)?
+  does_the_practice_work_as_intended_does_it_have_the_effect_you_expected: La pratique fonctionne-t-elle comme prévu - a-t-elle l'effet auquel vous vous attendiez?
+  does_the_practice_work_when_the_environment_land_and_soil_are_depleted: La pratique fonctionne-t-elle lorsque l'environnement, la terre et le sol sont dégradés?
+  does_the_practive_require_a_lot_of_formal_knowledge_and_training: La pratique nécessite-t-elle beaucoup de connaissances formelles et de formation?
+  does_using_the_practice_have_any_negative_side_effects_that_you_did_not_expect: L'utilisation de la pratique a-t-elle des effets secondaires négatifs auxquels vous ne vous attendiez pas?
+  does_using_the_practice_have_any_positive_side_effects_that_you_did_not_expect: L'utilisation de la pratique a-t-elle des effets secondaires positifs auxquels vous ne vous attendiez pas?
+  economic_diversification: Diversification économique
+  edit: Modifier
+  edit_your_profile: Modifier votre profil
+  encourage_social_organization_and_greater_participation_in_decision_making_by_fo: Encouragez l'organisation sociale et une plus grande participation à la prise de décision par les producteurs d'aliments et les consommateurs à soutenir la gouvernance décentralisée et la gestion adaptative de l'emplacement des systèmes agricoles et alimentaires.
+  energy: Énergie
+  enhance_co_creation_and_horizontal_sharing_of_knowledge_including_location_and_s: Améliorer la co-création et le partage horizontal des connaissances, y compris l'emplacement et l'innovation scientifique, en particulier grâce à l'échange d'agriculteurs à agriculteurs.
+  enhance_positive_ecological_interaction_synergy_integration_and_complementarity_: Améliorer l'interaction écologique positive, la synergie, l'intégration et la complémentarité entre les éléments des agroécosystèmes (plantes, animaux, arbres, sol, eau).
+  ensure_animal_health_and_welfare: Assurer la santé et le bien-être des animaux.
+  ensure_proximity_and_confidence_between_producers_and_consumers_through_promotio: Assurer la proximité et la confiance entre les producteurs et les consommateurs par la promotion de réseaux de distribution équitables et courts et en réincorporant les systèmes alimentaires dans les économies de localisation.
+  enter_your_password_again: Entrez à nouveau votre mot de passe
+  evaluate: Évaluer
+  fairness: Justice
+  farm_and_farming_system_details: Détails du système agricole
+  farm_and_farming_system: Ferme et système agricole
+  filter_by_agroecology_principle: Filtrer par principe d'agroécologie
+  filter_by_continent: Filtrer par continent
+  filter_by_country: Filtrer par pays
+  filter_by_farm_components: Filtrer par composantes de la ferme
+  filter_by_farm_functions: Filtrer par fonctions de la ferme
+  filter_by: Filtrer par
+  filter_by_it_help_restore_land: Filtrer par fonctionnement restauration des terres
+  filter_by_knowledge_and_skills_required_for_practice: Filtrer par connaissances et compétences nécessaires
+  filter_by_knowledge_source: Filtrer par source de savoir
+  filter_by_substitution_of_less_ecological_alternative: Filtrer par substitution d'alternatives moins écologiques
+  filter_by_system_component: Filtrer par composant du système
+  filter_by_where_it_is_realized: Filtrer par où la pratique est réalisée
+  filter_by_work_in_degraded_environments: Filtrer par fonctionnement dans des environnements dégradés
+  filter: Filtre
+  food_system_components_addressed: Composants du système alimentaire abordés
+  forgot_password: Mot de passe oublié?
+  formal_knowledge: Connaissances formelles
+  gallery: Galerie
+  general_performance_of_practice: Performance générale
+  hide_my_location: Masquer ma localisation sur la carte
+  high_costs: Coûts élevés
+  high_labour_required: Besoin important de main-d'œuvre
+  high_specialised_knowledge_required: Connaissances spécialisées élevées requises
+  hi: Salut
+  home: Maison
+  household: Ménage
+  how_did_you_learn_about_the_practice_you_can_choose_more_than_one_option: Comment avez-vous appris la pratique?Vous pouvez choisir plus d'une option.
+  how_do_you_do_prepare_and_or_implement_the_practice: Comment préparez-vous et / ou implémentez-vous la pratique?
+  how_long_ago_did_you_learn_about_the_practice: Depuis combien de temps connaissez-vous cette pratique ?
+  how_would_you_describe_what_you_do_in_your_location: Comment décririez-vous ce que vous faites dans votre localisation?
+  how_would_you_like_to_name_the_place_where_you_practice_agroecology: Comment aimeriez-vous nommer l'endroit où vous pratiquez l'agroécologie?
+  i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40: Je suis d'accord que mes données non personnelles partagées sur ce site Web seront traitées sous le
+  i_am_not_sure: je ne suis pas sûr
+  if_you_did_not_request_this_please_ignore_this_email: Si vous ne l'avez pas demandé, veuillez ignorer cet e-mail
+  if_you_dont_want_to_fill_in_everything_now_dont_worry_you_can_fill_in_all_the_questions_later_by_editing_each_section: Si vous ne voulez pas tout remplir maintenant, ne vous inquiétez pas, vous pouvez remplir toutes les questions plus tard en modifiant chaque section.
+  if_you_need_help_in_the_meantime_please_contact: Si vous avez besoin d'aide, en attendant veuillez contacter
+  if_you_want_to_share_your_practices_but_dont_want_to_be_seen_on_the_map_you_will_be_listed_on_the_platform_but_your_location_will_be_hidden: Si vous souhaitez partager vos pratiques mais que vous ne voulez pas être vu sur la carte vous serez répertorié sur la plate-forme, mais votre localisation sera cachée
+  indigenous_knowledge: Savoirs autochtones
+  input_reduction: Réduction des intrants
+  in_short_what_is_the_practice_that_you_want_to_map: En bref, quelle est la pratique que vous souhaitez cartographier?
+  is_it_a_farm: Est-ce une ferme?
+  is_this_location_a_conventional_farm: S'agit-il d'une ferme conventionnelle?
+  knowledge_and_skills_required_for_practice: Connaissances et compétences requises pour la pratique
+  knowledge_products: Produits de connaissance
+  knowledge_products_tip: Y a-t-il des ressources (livres, manuels, sites Web, vidéos, etc.) sur la pratique que vous utilisez et que vous souhaitez partager?Vous pourrez envoyer des fichiers de documents après
+  knowledge_source: Source de connaissances
+  knowledge_timing: Timing des connaissances
+  labour_required_for_practice: Travail requis pour la pratique
+  land_and_natural_resource_governance: Gouvernance des terres et des ressources naturelles
+  landing_page_text: Découvrez et partagez des ressources et des connaissances précieuses, trouvez des pratiques agroécologiques près de chez vous et connectez-vous avec une communauté partageant les mêmes idées.Créer un profil, explorer, être trouvé.
+  land_size: Superficie du terrain
+  license: Licence
+  license_note_text: La licence pour tout le contenu de cette plate-forme est «Creative Commons»
+  livestock: Bétail
+  local_knowledge: Savoir local
+  location_has_been_registered: La localisation a été enregistrée
+  location_has_been_updated: La localisation a été mise à jour
+  location: Localisation
+  locations: Localisations
+  login: Connexion
+  log_in_to_continue_registering_your_location_and_practices: Connectez-vous pour continuer à enregistrer votre localisation et vos pratiques
+  logout: Se déconnecter
+  low_costs: Faible coût
+  low_labour_required: Faible main-d'œuvre requise
+  mainly_commercial: Principalement commercial
+  mainly_crop_farming: Principalement agriculture des cultures
+  mainly_home_consumption: Principalement la consommation domestique
+  mainly_livestock_farming: Principalement l'élevage
+  maintain_and_enhance_diversity_of_species_functional_diversity_and_genetic_resou: Maintenir et améliorer la diversité des espèces, la diversité fonctionnelle et les ressources génétiques et maintenir la biodiversité dans l'agroécosystème au fil du temps et de l'espace à l'échelle du champ, de la ferme et du paysage.
+  manual: Manuel
+  map: Carte
+  minimum_is_8_characters: Le minimum est de 8 caractères
+  mixed_crop_livestock_farming: Agriculture mixte culture-élevage
+  mixed_home_consumption_and_commercial: Consommation domestique et production commerciale mélangées
+  name: Nom
+  name_this_practice_eg_my_agroforestry_permaculture_experiment_food_forest_medicinal_herb_garden_tree_planting_etc: Nommez cette pratique (par exemple mon agroforesterie, mon expérience de permaculture, la forêt alimentaire, le jardin d'herbes médicinales, la plantation d'arbres, etc.).
+  neither_effective_nor_uneffective: Ni efficace, ni inefficace
+  neither_high_nor_low_costs: Des coûts ni élevés ni faibles
+  neither_high_nor_low_labout_required: Pas de main-d'œuvre importante ni faible
+  neither_works_well_nor_poorly_in_depleted_environment: ne fonctionne ni bien ni mal dans un environnement dégradé
+  new_location: Ajouter un nouvel emplacement
+  new: Nouveau
+  new_practice: Enregistrer une pratique
+  next: Suivant
+  no_data_has_been_registered_so_far: Aucune donnée n'a été enregistrée jusqu'à présent.
+  no_file_submitted: Aucun fichier soumis
+  no_photo_submitted: Aucune photo téléchargée
+  no_query: Non
+  no_specialised_knowledge_required: Aucune connaissance spécialisée requise
+  not_applicable: N'est pas applicable
+  of_agroecology: de l'agroécologie
+  off_farm: Hors de la ferme
+  on_farm: À la ferme
+  on_how_much_land_do_you_implement_the_practice: Quelle est la superficie des terres sur lesquelles vous mettez en œuvre cette pratique ?
+  other: Autre
+  participation: Participation
+  password_confirm: Confirmez le mot de passe
+  password: Mot de passe
+  permission_denied: Permission refusée
+  personal_experimentation: Expérimentation personnelle
+  pests: Ravageurs
+  photo: Photo
+  photos: Photos
+  please_provide_additional_details: Veuillez fournir des détails supplémentaires ...
+  please_show_us_on_the_map_where_you_practice_agroecology: Veuillez nous montrer sur la carte où vous pratiquez l'agroécologie
+  please_sign_up: Vous n'avez pas de compte? Inscrivez-vous.
+  policy: Politique
+  practical_implementation_of_the_practice: Mise en œuvre de la pratique
+  practice: Pratique
+  practices: Les pratiques
+  preferentially_use_location_renewable_resources_and_close_as_far_as_possible_res: Utiliser préférentiellement les ressources renouvelables de l'emplacement et fermer les cycles de ressources possibles des nutriments et de la biomasse.
+  provide_at_least_one_name: Fournissez au moins un nom
+  rather_effective: Plutôt efficace
+  rather_high_costs: Coûts plutôt élevés
+  rather_high_labour_required: Besoin en main-d'œuvre plutôt élevé
+  rather_high_specialised_knowledge_required: Connaissances plutôt spécialisées requises
+  rather_low_costs: Coûts assez bas
+  rather_low_labour_required: Besoin en main-d'œuvre plutôt faible
+  rather_low_specialised_knowledge_required: Connaissances spécialisées plutôt faibles requises
+  rather_uneffective: Plutôt inefficace
+  recently: Récemment
+  recognize_and_support_the_needs_and_interests_of_family_farmers_smallholders_and: Reconnaitre et soutenir les besoins et les intérêts des agriculteurs familiaux, des petits exploitants et des producteurs de produits paysans en tant que gestionnaires durables et gardiens des ressources naturelles et génétiques.
+  recycling: Recyclage
+  reduce_or_eliminate_dependency_on_purchased_inputs: Réduire ou éliminer la dépendance à l'égard des intrants achetés.
+  register_a_location: Enregistrer une localisation
+  registered_locations: Localisations
+  register_new_location: Enregistrer une localisation
+  register_new_practice: Enregistrer une pratique
+  register: Enregistrer
+  remember_me: Rappelle-toi de moi?
+  researchers: Des chercheurs
+  resend_confirmation_by_email: Confirmation de renvoi par e-mail
+  resend: Renvoyer
+  responsible_for_information: Responsable des informations
+  save_and_add_a_practice: Sauvegarder et ajouter une pratique
+  save: Sauvegarder
+  search: Recherche
+  secure_and_enhance_soil_health_and_functioning_for_improved_plant_growth_particu: Sécuriser et améliorer la santé et le fonctionnement des sols pour une meilleure croissance des plantes, en particulier en gérant la matière organique et en améliorant l'activité biologique du sol.
+  see_all_practices: Voir toutes les pratiques
+  see_all_locations: "Voir tous les emplacements"
+  select_an_option: Choisir une option
+  send_document: Ajouter un document
+  send_me_the_reset_instructions: Envoyez-moi les instructions de réinitialisation
+  send_photo: Ajouter une photo
+  send_picture: Ajouter une photo
+  share_your_practices: Partagez vos pratiques
+  short_description: Brève description de votre localisation et de vos pratiques
+  show_more_filters: Montrer plus de filtres
+  sign_in: S'identifier
+  sign_in_to_comment: Connectez-vous pour commenter cette pratique agroécologique
+  sign_up_and_share_your_agroecological_practices: Inscrivez-vous et partagez vos pratiques agroécologiques
+  sign_up: S'inscrire
+  site_description: "Agroecology Map Knowledge and Practices is a Free (Open) Platform for Mapping Initiatives in Agroecology, Permaculture and Agroforestry Systems."
   site_name: "Agroecology Map"
-  true_value: "Yes"
-  false_value: "No"
-  users: "Users"
-  about: "About"
-  login: "Login"
-  logout: "Logout"
-  images: "Images"
-  submit: "Submit"
-  edit: "Edit"
-  destroy: "Effacer"
-  back: "Back"
-  new: "New"
-  all: "All"
-  file: "File"
-  title: "Title"
-  details: "Details"
-  home_page: "Home"
-  blog: "Blog"
-  news: "Actualités"
-  add_news: "Ajouter des nouvelles"
-  news_in_agroecology: "Actualités en agroécologie"
-  locations: "Emplacements"
-  experience_in_agroecology: "Expérience en Agroécologie"
-  experiences_in_agroecology: "Expériences en Agroécologie"
-  agroforestry_systems: "Agroforestry Systems"
-  organization: "Organization"
-  organizations: "Organizations"
-  contributors: "Contributeurs"
-  manual: "Manual"
-  register: "Register"
-  password: "Mot de passe"
-  agroecology_is_free_software: "Source Code"
-  submit_comment: "Submit Comment"
-  location:
-    data: "Emplacement"
-    list: "Liste des Emplacements"
-    register_new_location: "Register New Location"
-  experience: "Experience"
-  experiences: "Experiences"
-  type: "Type"
-  types: "Types"
-  central_theme: "Central Theme"
-  photo: "Photo"
-  photos: "Photos"
-  comment: "Comment"
-  comments: "Comments"
-  register_new_experience: "Register Experience"
-  latest_blog_post: "Latest Blog Post"
-  none_registered: "None Registered"
-  responsible_for_information: "Responsible for Information"
-  log_into_the_system_to_make_comments: "Log into the system to make comments"
-  systems: "Systèmes"
-  plants: "Végétaux"
-  animals: "Animaux"
-  safs: "Systèmes Agroforestiers"
-  register_new_agroforestry: "Register Agroforestiers"
-  send_photo: "Send Photo"
-  main_objective: "Objetivo Principal"
-  main_product: "Produto Principal"
-  settlement: "Settlement"
-  collective_property: "Collective Property"
-  public_property: "Public Property"
-  private_property: "Private Property"
-  familiar: "Familiar"
-  other: "Other"
-  yes_query: "Yes"
-  no_query: "No"
-  upon_consultation: "Upon Consultation"
-  accept_hosting: "Accept Hosting Person/Group?"
-  select_location_type: "Select a Location Type"
-  urban_agriculture: "Urban Agriculture"
-  food: "Food"
-  health_and_medicinal_plants: "Health and Medicinal Plants"
-  rural_development: "Rural Development"
-  local_development: "Local Development"
-  education: "Education"
-  agricultural_research_and_rural_extension: "Agricultural Research and Rural Extension"
-  management_of_water_resources: "Management of Water Resources"
-  certification: "Certification"
-  marketing: "Commercialization"
-  processing_and_processing_of_production: "Processing and Processing of Production"
-  seeds: "Seeds"
-  management_of_native_vegetation_and_agro_extractivism: "Management of native vegetation and agro extractivism"
-  animal_husbandry_systems: "Animal Husbandry Systems"
-  agricultural_production_system: "Agricultural Production System"
-  alternative_agriculture_currents: "Alternative Agriculture Currents"
-  management_of_pests__diseases_and_weeds: "Management of pests diseases and weeds"
-  soil_management: "Soil Management"
-  access_to_land_agrarian_reform_and_agroecology: "Access to land agrarian reform and agroecology"
-  relationship_with_the_markets: "Relationship with the markets"
-  others: "Others"
-  women_and_agroecology: "Women And Agroecology"
-  fruit_growing: "Fruit Growing"
-  extractivism: "Extractivism"
-  craftsmanship: "Craftsmanship"
-  periurban_agriculture: "Periurban Agriculture"
-  sovereignty_and_food_security: "Sovereignty and food security"
-  biodiversity: "Biodiversity"
-  financing: "Financing"
-  construction_of_agroecological_knowledge: "Construction of agroecological knowledge"
-  public_policies_with_an_agroecological_approach: "Public policies with an agroecological approach"
-  reforestation: "Reforestation"
-  compost: "Compost"
-  eco_tourism: "Eco Tourism"
-  rural_tourism: "Rural Tourism"
-  indigenous_agriculture: "Indigenous Agriculture"
-  map: "Carte"
-  search_by_address: "Rechercher par Adresse"
-  locate: "Localiser"
-  start: "Start"
-  end: "End"
-  area: "Area"
-  send_picture: "Send Picture"
-  scientific_name: "Nom scientifique"
-  no_photo_submitted: "Aucune photo soumise"
-  search_using_location_name: "Rechercher en utilisant le nom de l'emplacement"
-  sign_in_to_comment: "Connectez-vous pour commenter"
-  friend: "Amie"
-  friends: "Amies"
-  special_thanks: "Remerciement Spécial"
-  donors: "Donateurs (Temps, d'argent et/ou d'amour)"
-  donate: "Donner"
-  gallery: "Gallery"
-  activerecord:
-    attributes:
-      user:
-        confirmation_sent_at: Date d'envoi de la confirmation
-        confirmation_token: Clé de confirmation du mot de passe
-        confirmed_at: Date de confirmation
-        created_at: Date d'enregistrement
-        current_password: Mot de passe actuel
-        current_sign_in_at: Date de la connexion actuelle
-        current_sign_in_ip: IP de la connexion actuelle
-        email: Email
-        encrypted_password: Mot de passe chiffré
-        failed_attempts: Tentatives échouées
-        last_sign_in_at: Date de la dernière connexion
-        last_sign_in_ip: IP de la dernière connexion
-        locked_at: Verrouillé à
-        password: Mot de passe
-        password_confirmation: Confirmation du mot de passe
-        remember_created_at: Mémorisé à
-        remember_me: Se souvenir de moi ?
-        reset_password_sent_at: Clé de réinitialisation créée à
-        reset_password_token: Clé de réinitialisation du mot de passe
-        sign_in_count: Nombre des connexions
-        unconfirmed_email: Email non confirmé
-        unlock_token: Clé de déverrouillage
-        updated_at: Date de mise à jour
-    models:
-      user: Utilisateur
-    errors:
-      messages:
-        record_invalid: "Validation failed: %{errors}"
-        restrict_dependent_destroy:
-          has_one: "Cannot delete record because a dependent %{record} exists"
-          has_many: "Cannot delete record because dependent %{record} exist"
-  devise:
-    confirmations:
-      confirmed: Votre compte a bien été confirmé.
-      new:
-        resend_confirmation_instructions: Renvoyer les instructions de confirmation
-      send_instructions: Vous allez recevoir sous quelques minutes un email comportant des instructions pour confirmer votre compte.
-      send_paranoid_instructions: Si votre email existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
-    failure:
-      already_authenticated: Vous êtes déjà connecté(e).
-      inactive: Votre compte n’est pas encore activé.
-      invalid: "%{authentication_keys} ou mot de passe incorrect."
-      last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
-      locked: Votre compte est verrouillé.
-      not_found_in_database: "%{authentication_keys} ou mot de passe incorrect."
-      timeout: Votre session est expirée, veuillez vous reconnecter pour continuer.
-      unauthenticated: Vous devez vous connecter ou vous enregistrer pour continuer.
-      unconfirmed: Vous devez confirmer votre compte par email.
-    mailer:
-      confirmation_instructions:
-        action: Confirmer mon email
-        greeting: Bienvenue %{recipient} !
-        instruction: 'Vous pouvez confirmer votre email grâce au lien ci-dessous :'
-        subject: Instructions de confirmation
-      email_changed:
-        greeting: Bonjour %{recipient} !
-        message: Nous vous contactons pour vous informer que votre email a été changé en %{email}.
-        message_unconfirmed: Nous vous contactons pour vous informer que votre email est en train d'être changé par %{email}.
-        subject: Email modifié
-      password_change:
-        greeting: Bonjour %{recipient} !
-        message: Nous vous contactons pour vous notifier que votre mot de passe a été modifié.
-        subject: Mot de passe modifié
-      reset_password_instructions:
-        action: Changer mon mot de passe
-        greeting: Bonjour %{recipient} !
-        instruction: 'Quelqu''un a demandé un lien pour changer votre mot de passe, le voici :'
-        instruction_2: Si vous n'avez pas émis cette demande, merci d'ignorer cet email.
-        instruction_3: Votre mot de passe ne changera pas tant que vous n'aurez pas cliqué sur ce lien et renseigné un nouveau mot de passe.
-        subject: Instructions pour changer le mot de passe
-      unlock_instructions:
-        action: Débloquer mon compte
-        greeting: Bonjour %{recipient} !
-        instruction: 'Suivez ce lien pour débloquer votre compte :'
-        message: Votre compte a été bloqué suite à un nombre d'essais de connexions manquées trop important.
-        subject: Instructions pour déverrouiller le compte
-    omniauth_callbacks:
-      failure: 'Nous ne pouvons pas vous authentifier depuis %{kind} pour la raison suivante : ''%{reason}''.'
-      success: Autorisé par votre compte %{kind}.
-    passwords:
-      edit:
-        change_my_password: Changer mon mot de passe
-        change_your_password: Changer votre mot de passe
-        confirm_new_password: Confirmez votre nouveau mot de passe
-        new_password: Nouveau mot de passe
-      new:
-        forgot_your_password: Mot de passe oublié ?
-        send_me_reset_password_instructions: Envoyez-moi des instructions pour réinitialiser mon mot de passe
-      no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis un email de réinitialisation de mot de passe. Si vous venez en effet d’un tel email, vérifiez que vous avez copié l’adresse URL en entier.
-      send_instructions: Vous allez recevoir sous quelques minutes un email vous indiquant comment réinitialiser votre mot de passe.
-      send_paranoid_instructions: Si votre email existe dans notre base de données, vous recevrez un lien vous permettant de récupérer votre mot de passe.
-      updated: Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e).
-      updated_not_active: Votre mot de passe a bien été modifié.
-    registrations:
-      destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
-      edit:
-        are_you_sure: Êtes-vous sûr ?
-        cancel_my_account: Supprimer mon compte
-        currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
-        leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé
-        title: Éditer %{resource}
-        unhappy: Pas content ?
-        update: Modifier
-        we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
-      new:
-        sign_up: Inscription
-      signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).
-      signed_up_but_inactive: Vous vous êtes bien enregistré(e). Cependant, nous n’avons pas pu vous connecter car votre compte n’a pas encore été activé.
-      signed_up_but_locked: Vous vous êtes bien enregistré(e). Cependant, nous n’avons pas pu vous connecter car votre compte est verrouillé.
-      signed_up_but_unconfirmed: Un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
-      update_needs_confirmation: Vous avez bien modifié votre compte, mais nous devons vérifier votre nouvelle adresse email. Veuillez consulter vos emails et cliquer sur le lien de confirmation pour confirmer votre nouvelle adresse.
-      updated: Votre compte a bien été modifié.
-      updated_but_not_signed_in: Votre compte a été mis à jour avec succès. Vous devez vous reconnecter car votre mot de passe a été modifié.
-    sessions:
-      already_signed_out: Déconnecté(e).
-      new:
-        sign_in: Connexion
-      signed_in: Connecté(e).
-      signed_out: Déconnecté(e).
-    shared:
-      links:
-        back: Retour
-        didn_t_receive_confirmation_instructions: Vous n'avez pas reçu l'email de confirmation ?
-        didn_t_receive_unlock_instructions: Vous n'avez pas reçu l'email de déblocage ?
-        forgot_your_password: Mot de passe oublié ?
-        sign_in: Connexion
-        sign_in_with_provider: Connexion avec %{provider}
-        sign_up: Inscription
-      minimum_password_length:
-        one: "(%{count} caractère au moins)"
-        other: "(%{count} caractères au moins)"
-    unlocks:
-      new:
-        resend_unlock_instructions: Renvoyer les instructions de déblocage
-      send_instructions: Vous allez recevoir sous quelques minutes un email comportant des instructions pour déverrouiller votre compte.
-      send_paranoid_instructions: Si votre email existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour déverrouiller votre compte.
-      unlocked: Votre compte a bien été déverrouillé. Veuillez vous connecter.
-  errors:
-    messages:
-      already_confirmed: a déjà été confirmé(e)
-      confirmation_period_expired: doit être confirmé(e) en %{period}, veuillez en demander un(e) autre
-      expired: est expiré, veuillez en demander un autre
-      not_found: n’a pas été trouvé(e)
-      not_locked: n’était pas verrouillé(e)
-      not_saved:
-        one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e) :'
-        other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être enregistré(e) :"
-      accepted: must be accepted
-      blank: can't be blank
-      present: must be blank
-      confirmation: doesn't match %{attribute}
-      empty: can't be empty
-      equal_to: must be equal to %{count}
-      even: must be even
-      exclusion: is reserved
-      greater_than: must be greater than %{count}
-      greater_than_or_equal_to: must be greater than or equal to %{count}
-      inclusion: is not included in the list
-      invalid: is invalid
-      less_than: must be less than %{count}
-      less_than_or_equal_to: must be less than or equal to %{count}
-      model_invalid: "Validation failed: %{errors}"
-      not_a_number: is not a number
-      not_an_integer: must be an integer
-      odd: must be odd
-      required: must exist
-      taken: has already been taken
-      too_long:
-        one: is too long (maximum is 1 character)
-        other: is too long (maximum is %{count} characters)
-      too_short:
-        one: is too short (minimum is 1 character)
-        other: is too short (minimum is %{count} characters)
-      wrong_length:
-        one: is the wrong length (should be 1 character)
-        other: is the wrong length (should be %{count} characters)
-      other_than: must be other than %{count}
-    format: "%{attribute} %{message}"
-    template:
-      body: 'There were problems with the following fields:'
-      header:
-        one: 1 error prohibited this %{model} from being saved
-        other: "%{count} errors prohibited this %{model} from being saved"
-  send_me_the_reset_instructions: "Send me the Reset Instructions"
-  resend_confirmation_by_email: "Resend Confirmation by E-Mail"
-  resend: "Resend"
-  date:
-    abbr_day_names:
-      - Sun
-      - Mon
-      - Tue
-      - Wed
-      - Thu
-      - Fri
-      - Sat
-    abbr_month_names:
-      -
-      - Jan
-      - Feb
-      - Mar
-      - Apr
-      - May
-      - Jun
-      - Jul
-      - Aug
-      - Sep
-      - Oct
-      - Nov
-      - Dec
-    day_names:
-      - Sunday
-      - Monday
-      - Tuesday
-      - Wednesday
-      - Thursday
-      - Friday
-      - Saturday
-    formats:
-      default: "%Y-%m-%d"
-      long: "%B %d, %Y"
-      short: "%b %d"
-    month_names:
-      -
-      - January
-      - February
-      - March
-      - April
-      - May
-      - June
-      - July
-      - August
-      - September
-      - October
-      - November
-      - December
-    order:
-      - :year
-      - :month
-      - :day
-  datetime:
-    distance_in_words:
-      about_x_hours:
-        one: about 1 hour
-        other: about %{count} hours
-      about_x_months:
-        one: about 1 month
-        other: about %{count} months
-      about_x_years:
-        one: about 1 year
-        other: about %{count} years
-      almost_x_years:
-        one: almost 1 year
-        other: almost %{count} years
-      half_a_minute: half a minute
-      less_than_x_minutes:
-        one: less than a minute
-        other: less than %{count} minutes
-      less_than_x_seconds:
-        one: less than 1 second
-        other: less than %{count} seconds
-      over_x_years:
-        one: over 1 year
-        other: over %{count} years
-      x_days:
-        one: 1 day
-        other: "%{count} days"
-      x_minutes:
-        one: 1 minute
-        other: "%{count} minutes"
-      x_months:
-        one: 1 month
-        other: "%{count} months"
-      x_years:
-        one: 1 year
-        other: "%{count} years"
-      x_seconds:
-        one: 1 second
-        other: "%{count} seconds"
-    prompts:
-      day: Day
-      hour: Hour
-      minute: Minute
-      month: Month
-      second: Seconds
-      year: Year
-  helpers:
-    links:
-      confirm: Você tem Certeza
-    select:
-      prompt: Please select
-    submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
-  number:
-    currency:
-      format:
-        delimiter: ","
-        format: "%u%n"
-        precision: 2
-        separator: "."
-        significant: false
-        strip_insignificant_zeros: false
-        unit: "$"
-    format:
-      delimiter: ","
-      precision: 3
-      separator: "."
-      significant: false
-      strip_insignificant_zeros: false
-    human:
-      decimal_units:
-        format: "%n %u"
-        units:
-          billion: Billion
-          million: Million
-          quadrillion: Quadrillion
-          thousand: Thousand
-          trillion: Trillion
-          unit: ''
-      format:
-        delimiter: ''
-        precision: 3
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
-    percentage:
-      format:
-        delimiter: ''
-        format: "%n%"
-    precision:
-      format:
-        delimiter: ''
-  support:
-    array:
-      last_word_connector: ", and "
-      two_words_connector: " and "
-      words_connector: ", "
-  time:
-    am: am
-    formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
-      short: "%d %b %H:%M"
-    pm: pm
-  name: "Nom"
-  password_confirm: "Confirm Password"
-  registered_locations: "Emplacements"
-  registered_experiences: "Expériences"
-  sign_in: "S'identifier"
-  sign_up: "Enrol"
-  confirmation_instruction: "Vous n'avez pas reçu les instructions de confirmation ?"
-  remember_me: "Souviens-toi de moi?"
-  forgot_password: "Mot de passe oublié?"
-  observation: "Observation"
-  description: "La description"
-  accommodation: "Logement"
-  localization: "Emplacement"
-  partner_collaborators: "Collaborateurs partenaires?"
-  add_location: "Ajouter un emplacement"
-  invisible_captcha:
-    sentence_for_humans: "If you are human, ignore this field"
-    timestamp_error_message: "Sorry, that was too quick! Please resubmit in 5 seconds."
-  search: "Chercher"
-  showing: "Showing"
-  records: "Records"
-  next: "Next"
-  previous: "Previous"
-  first: "First"
-  last: "Last"
-  cookies_eu:
-    cookies_text: "Les cookies assurent le bon fonctionnement de nos services. En utilisant ces derniers, vous acceptez l'utilisation des cookies."
-    learn_more: "En savoir plus"
-    ok: "OK"
-  helpus: "Aidez nous"
-  i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40: "I agree that my non-personal data shared on this website will be treated under the"
-  all_content_on_this_platform_is_licensed_under_the: "All content on this platform is licensed under the"
-  data_summary: "Data summary"
+  social_values_and_diets: Valeurs sociales et régimes alimentaires
+  soil_health: Santé des sols
+  soil: Sol
+  someone_requested_a_link_to_change_your_password_you_can_do_this_using_the_link_: Quelqu'un a demandé un lien pour modifier votre mot de passe.Vous pouvez le faire en utilisant le lien ci-dessous
+  some_time_ago: Il y a quelque temps
+  specialised_knowledge_required_neither_high_nor_low: Connaissances spécialisées requises ni élevées ni faibles
+  start_by_adding_the_location_where_you_do_your_practices: Commencez par ajouter le lieu où vous exercez vos activités.
+  submit_comment: Commentaire
+  substitution_of_less_ecological_alternative: Substitution d'une alternative moins écologique
+  summary_description_of_agroecological_practice: Description sommaire de la pratique agroécologique
+  summary_description: Description sommaire
+  data_summary: "Résumé des données"
+  support_dignified_and_robust_livelihoods_for_all_actors_engaged_in_food_systems_: Soutenir les moyens de subsistance dignes et robustes pour tous les acteurs engagés dans des systèmes alimentaires, en particulier les producteurs d'aliments à petite échelle, sur la base du commerce équitable, de l'emploi équitable et du traitement équitable des droits de propriété intellectuelle
+  synergy: Synergie
+  takes_rather_long_to_work: Il faut un certain temps avant que la pratique ne fonctionne
+  takes_very_long_to_work: Il faut beaucoup de temps avant que la pratique ne fonctionne
+  technologies_and_arts_used_from: Technologies utilisés à partir de
+  tell_us_a_bit_about_your_place_what_you_do_in_the_place_you_register_and_what_your_experiences_have_been: Parlez-nous un peu de votre localisation, de ce que vous y faites et de vos expériences.
+  thank_you_notes: Note de remerciement
+  thank_you_note_text: La plate-forme Agroecology Map est entièrement gratuite et open source.Nous tenons à remercier tous les projets, artistes et partenaires qui contribuent à la plateforme Agroecology Map.
+  this_field_is_required: Ce champ est obligatoire
+  time_requirements: Délais nécessaires
+  trees: Des arbres
+  type_of_agroecological_practice_tip: Il n'y a pas de typologie standardisée pour les pratiques agroécologiques, alors décrivez brièvement de quel type de pratique il s'agit - ce qui pourrait être similaire au nom que vous avez donné votre pratique.(Par exemple, le contrôle de l'érosion du sol, la plantation d'arbres fruitiers, l'agroforesterie polyvalente, la coopérative productrice, la production d'herbes organiques, utilisation de contrôles biologiques, etc.)
+  type_of_agroecological_practice: Type de pratique agroécologique
+  unintended_negative_side_effect_of_practice: Effet secondaire négatif involontaire de la pratique
+  unintended_positive_side_effects_of_practice: Effets secondaires positifs involontaires de la pratique
+  unit_of_measurement: Unité de mesure
+  unlock_my_account: Débloquer mon compte
+  uptake_motivation: Motivation pour l'adoption
+  value_chain: Chaîne de valeur
+  very_effective: Très efficace
+  very_uneffective: Très inefficace
+  water: Eau
+  we_are_contacting_you_to_let_you_know_that_your_password_has_been_successfully_c: Nous vous contactons pour vous faire savoir que votre mot de passe a été modifié avec succès.
+  welcome: Bienvenu
+  we_will_use_this_to_send_you_a_confirmation_e_mail: Nous l'utiliserons pour vous envoyer un e-mail de confirmation
+  what_do_you_have_on_your_farm: Qu'avez-vous dans votre ferme?
+  what_motivated_you_to_adopt_the_practice: Qu'est-ce qui vous a motivé à adopter la pratique?
+  what_the_main_purpose_of_your_farm: Quel est le but principal de votre ferme?
+  what_you_do: Que faites vous
+  where_it_is_realized: Lieu de réalisation
+  which_agroecological_principles_are_addressed_or_invoked_through_the_practice: Quels principes agroécologiques sont abordés ou invoqués par la pratique?
+  which_effect_do_you_expect_the_practice_to_have: Quel effet attendez-vous que la pratique ait?
+  which_parts_of_the_food_system_are_concerned_or_engaged_through_the_practice: Quelles parties du système alimentaire sont concernées ou engagées par la pratique?
+  whole_food_system: Système alimentaire entier
+  who_we_are: Qui sommes-nous ?
+  why_you_use_and_what_you_expect_from_this_practice: Pourquoi utilisez-vous cette pratique et qu'attendez-vous d'elle ?
+  workers: Ouvriers
+  works_instantly: Fonctionne instantanément
+  works_neither_rapidly_nor_slowly: Fonctionne ni rapidement ni lentement
+  works_rather_rapidly: Fonctionne assez rapidement
+  works_rather_well_in_depleted_environment: Fonctionne plutôt bien dans un environnement dégradé
+  works_well_in_depleted_environment: Fonctionne bien dans un environnement dégradé
+  yes_query: Oui
+  you_can_confirm_your_account_through_the_link_below: Vous pouvez confirmer votre compte via le lien ci-dessous
+  your_account_has_been_blocked_due_to_too_many_unsuccessful_login_attempts: Votre compte a été bloqué en raison de trop de tentatives de connexion infructueuses
+  your_password_will_not_be_changed_until_you_access_the_link: Votre mot de passe ne sera pas modifié tant que vous n'aurez pas accédé au lien
+  you_will_receive_an_e_mail_with_a_link_to_confirm_your_registration: Vous recevrez un e-mail avec un lien pour confirmer votre inscription
+  what_is_your_dream_for_the_future_of_your_farm_and_or_your_location_in_general: "Quel est votre rêve pour l'avenir de votre ferme et/ou de votre site en général?"
+  do_you_have_a_dream_of_transforming_your_farm_and_or_location_and_what_are_your_experienced_in_achieving_that_dream: "Avez-vous un rêve de transformer votre ferme et/ou emplacement, et quelles sont vos expériences dans la réalisation de ce rêve?"
+  fish: "Poisson"
+  of: "sur"
+  dashboard: "Dashboard"
+  partners: "Partners"
+  friends: "Friends"
+  export_as_geojson: "Export as GeoJSON"
+  contact: "Contact"
+  profile: "Profile"
+  who_we_are_and_why: "Nous sommes une organisation à but non lucratif maintenue avec l'aide d'un groupe de bénévoles passionnés par l'agroécologie. Tout ce que nous créons et construisons, avec vous, est ouvert et gratuit pour tous."
+  thanks: "Merci pour"
