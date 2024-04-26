@@ -1,0 +1,5 @@
+    loadAgroecologyWorks().then(layer => {
+        var agroecologyworks = L.markerClusterGroup({ maxClusterRadius: 0 });
+        agroecologyworks.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://www.agroecologyworks.ch' target='_blank'>Agroecology Works!</a>": agroecologyworks});
+    });
