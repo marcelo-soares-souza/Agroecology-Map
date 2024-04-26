@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get "home/index"
 
     get "map", to: "home#index"
+    get "map_redux", to: "home#map_redux"
     get "landing", to: "about#landing"
     get "about", to: "about#index"
     get "who_we_are", to: "about#who_we_are"

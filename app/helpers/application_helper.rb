@@ -26,7 +26,7 @@ module ApplicationHelper
       end
     end
 
-    asset_url file_url
+    asset_url file_url.gsub("?locale=en", "")
   end
 
   def photo_thumb(entity, description = "", use_gallery_photos = false)
@@ -88,7 +88,7 @@ module ApplicationHelper
       file_url = asset_url(name)
     end
 
-    asset_url file_url
+    asset_url file_url.gsub("?locale=en", "")
   end
 
   def form_for_media(condition, &block)
