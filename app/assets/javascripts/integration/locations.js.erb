@@ -11,7 +11,7 @@
             popupAnchor: [-3, -76]
         });
 
-        const response = await fetch("locations.json");
+        const response = await fetch("/locations.json");
         const jsonData = await response.json();
 
         for (const location of jsonData) {
