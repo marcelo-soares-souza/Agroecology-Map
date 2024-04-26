@@ -8,8 +8,9 @@
 <div id="map" style="z-index: 1;"></div>
 
 <script>
-  <%= raw Terser.new.compile(render "home/maps/load_maps", locations: @locations) %>
+  <%= raw Terser.new.compile(render "home/maps/load_maps") %>
   <%= raw Terser.new.compile(render "home/maps/locations", locations: @locations) %>
-  <%= raw Terser.new.compile(render "home/maps/omv", locations: @locations) %>
-  <%= raw Terser.new.compile(render "home/maps/overlays", locations: @locations) %>
+  <%= raw Terser.new.compile(render "home/maps/agroecologyworks", agroecologyworks: @agroecologyworks) %>
+  <%= raw Terser.new.compile(render "home/maps/omv") %>
+  <%= raw Terser.new.compile(render "home/maps/overlays") %>
 </script>

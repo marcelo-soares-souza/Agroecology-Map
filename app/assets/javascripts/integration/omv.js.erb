@@ -15,15 +15,22 @@
         const jsonData = await response.json();
 
         for (const location of jsonData) {
-            const name = location['name'];
-            const url = location['url'];
-            const latitude = location['latitude'];
-            const longitude = location['longitude'];
+            const hide_my_location = location['hide_my_location'];
+            if (!hide_my_location) {        
+                const name = location['name'];
+                const url = location['url'];
+                const image_url = location['image_url']
+                const latitude = location['latitude'];
+                const longitude = location['longitude'];
 
-            var popup = '<h4>One Million Voices</h4></h3><b><a href=" '+url+'" target="_blank">' + name.substring(0, 60) + "..." + '</a></b>';
-            var marker = new L.marker(new L.latLng(latitude, longitude), {icon: Icon});
-            marker.bindPopup(popup);
-            omv.addLayer(marker);
+                var popup = '';
+                popup += '<div class="thumbnail-mini"><a href="'+url+'"><img src="'+image_url+'" title="'+name+'" alt="'+name+'"/></a></div><br>'            
+                popup += '<h4>One Million Voices</h4></h3><b><a href=" '+url+'" target="_blank">' + name.substring(0, 60) + "..." + '</a></b>';
+
+                var marker = new L.marker(new L.latLng(latitude, longitude), {icon: Icon});
+                marker.bindPopup(popup);
+                omv.addLayer(marker);
+            }
         }
 
         return omv;

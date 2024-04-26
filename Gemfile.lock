@@ -286,7 +286,7 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
-    sorbet-runtime (0.5.11357)
+    sorbet-runtime (0.5.11358)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)

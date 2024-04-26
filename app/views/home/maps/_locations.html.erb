@@ -1,19 +1,6 @@
-<% if @locations %>
-  var markers = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
-
-  var Icon = L.icon({
-    iconUrl: '<%= image_url "leaflet/images/leaf-green.png" %>', shadowUrl: '<%= image_url "leaflet/images/leaf-shadow.png" %>',
-    iconSize: [38, 95], shadowSize: [50, 64], iconAnchor: [22, 94], shadowAnchor: [4, 62], popupAnchor: [-3, -76]
-  });
-
-  <% @locations.each do |location| %>
-      var popup = '';
-      popup += '<div class="thumbnail-mini"><%= link_to photo_thumb(location), location_path(location) %></div><br>'
-      popup += '<h4><%= "#{link_to location.name.truncate(64), location_path(location)}".html_safe %></h4>';
-      var marker = new L.marker(new L.latLng([<%= location.latitude.round(5) %>, <%= location.longitude.round(5) %>]), { icon: Icon, title: '<%= location.name.truncate(64) %>' });
-      marker.bindPopup(popup);
-      markers.addLayer(marker);
-  <% end %>
-
-  map.addLayer(markers);
-<% end %>
+    loadLocations().then(layer => {
+       var locations = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        locations.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://agroecologymap.org/' target='_blank'>Agroecology Map</a>": locations});
+        L.control.layers(baseMaps, overlayMaps, {collapsed: collapsed, position: 'bottomright'}).addTo(map);
+    });
