@@ -32,8 +32,9 @@ async function loadLayers(url, title, color) {
             const latitude = location['latitude'];
             const longitude = location['longitude'];
 
-            let popup = '<div class="thumbnail-mini"><a href="'+url+'"><img src="'+image_url+'" title="'+name+'" alt="'+name+'"/></a></div><br>';
-            popup += '<h4>'+title+'</h4><b><a href=" '+url+'">' + name.substring(0, 50) + "..." + '</a></b>';
+            let popup = '<div class="thumbnail-mini" style="margin-bottom: 4px;"><a href="'+url+'"><img src="'+image_url+'" title="'+name+'" alt="'+name+'"/></a></div>';
+            popup += '<strong style="font-size: 12px;">'+title+'</strong><br>';
+            popup += '<strong><a href=" '+url+'">' + name.substring(0, 45) + "..." + '</a></b>';
 
             layers.addLayer(new L.marker(new L.latLng(latitude, longitude), {icon: Icon}).bindPopup(popup));
         }
