@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|pt-BR|es|fr/ do
+    get "health" => "rails/health#show", as: :rails_health_check
     get "errors/not_found"
     get "errors/internal_server_error"
 
