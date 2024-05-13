@@ -22,5 +22,8 @@ services:
     env_file: .env
     healthcheck:
       test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
 volumes:
   postgres:
