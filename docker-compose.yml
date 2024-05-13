@@ -1,6 +1,3 @@
----
-version: '2'
-
 services:
   postgres:
     image: 'postgres:latest'
@@ -10,6 +7,8 @@ services:
     volumes:
       - 'postgres:/var/lib/postgresql/data'
     env_file: .env
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
   website:
     build: .
     restart: always
@@ -21,6 +20,10 @@ services:
       - '/opt/agroecologymap:/app/storage'
       - '/opt/dockers/logs:/app/log'
     env_file: .env
-
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
 volumes:
   postgres:

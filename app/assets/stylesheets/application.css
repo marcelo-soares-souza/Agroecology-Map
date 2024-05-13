@@ -810,3 +810,8 @@ label.error {
     min-height: 60px !important;
     margin-bottom: 4px;
 }
+
+.alert {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}

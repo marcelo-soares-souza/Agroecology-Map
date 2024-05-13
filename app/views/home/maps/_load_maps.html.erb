@@ -1,6 +1,6 @@
-    const lat = 16.0;
-    const lon = 1.0;
-    const zoom = 3.25;
+    let lat = 16.0;
+    let lon = 1.0;
+    let zoom = 3.25;
 
     if (window.devicePixelRatio > 2) {
         zoom = 3;
@@ -34,6 +34,6 @@
         }).trigger("resize");
     });
 
-    const collapsed = false;
+    let collapsed = false;
     if (window.innerWidth < 1000) { collapsed = true; }
 

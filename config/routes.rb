@@ -2,12 +2,14 @@
 
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|pt-BR|es|fr/ do
+    get "health" => "rails/health#show", as: :rails_health_check
     get "errors/not_found"
     get "errors/internal_server_error"
 
     root to: "home#index"
     get "home/index"
 
+    get "reduced_map", to: "home#reduced_map"
     get "map", to: "home#index"
     get "landing", to: "about#landing"
     get "about", to: "about#index"
