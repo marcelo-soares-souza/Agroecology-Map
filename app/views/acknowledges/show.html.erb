@@ -1,0 +1,89 @@
+<% title @acknowledge.practice.name %>
+<div class="link-action">
+  <% if account_signed_in? %>
+    <% if current_account.admin? or current_account.id == @acknowledge.practice.account.id %>
+      <%= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_practice_media_path(@acknowledge.practice), :class => "btn btn-warning" %>
+      <%= link_to (bootstrap_icon "file-earmark-text") + " " + t(:send_document), new_practice_document_path(@acknowledge.practice), :class => "btn btn-secondary" %>
+    <% end %>
+  <% end %>
+</div>
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to truncate(@acknowledge.practice.location.name, length: 12), location_path(@acknowledge.practice.location), title: @acknowledge.practice.location.name,  :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to @acknowledge.practice.name.truncate(18) , practice_path(@acknowledge.practice), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:what_you_do), practice_what_you_do_path(@acknowledge.practice, @acknowledge.practice.what_you_do), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:characterise), practice_characterise_path(@acknowledge.practice, @acknowledge.practice.characterise), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:evaluate), practice_evaluate_path(@acknowledge.practice, @acknowledge.practice.evaluate), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:acknowledge), practice_acknowledge_path(@acknowledge.practice, @acknowledge.practice.acknowledge), :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:gallery)} (#{@acknowledge.practice.medias.count})", practice_gallery_path(@acknowledge.practice), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:documents)} (#{@acknowledge.practice.documents.count})", practice_documents_path(@acknowledge.practice), :class => "nav-link" %>
+  </li>
+</ul>
+<br>
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <br>
+    <% if @acknowledge.knowledge_source.blank? and
+      @acknowledge.knowledge_timing.blank? and
+      @acknowledge.knowledge_products.blank? and
+      @acknowledge.uptake_motivation.blank?
+    %>
+    <h3><%= t(:no_data_has_been_registered_so_far) %>
+      <% if account_signed_in? %>
+        <% if current_account.admin? or current_account.id == @acknowledge.practice.account.id %>
+          <%= link_to t(:register), edit_practice_acknowledge_path(@acknowledge.practice, @acknowledge) %>
+        <% end %>
+      <% end %>
+    </h3>
+  <% else %>
+    <% if ! @acknowledge.knowledge_source.blank? %>
+      <%
+         knowledge_source = @acknowledge.knowledge_source.split(',').map { | item | t(item.strip.gsub(/\s+/, '_').gsub(/-/, '_').downcase.to_sym) }
+         knowledge_source = knowledge_source.join(", ")
+      %>
+      <div class="practices-box bg-light">
+        <%= "<h4>#{t(:knowledge_source)}</h4><div class='text-box'>#{knowledge_source.gsub(/,/, '<br/>')}<br></div>".html_safe %>
+        <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @acknowledge.knowledge_source_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @acknowledge.knowledge_source_details.blank? %>
+      </div>
+    <% end %>
+    <% if ! @acknowledge.knowledge_timing.blank? %>
+      <div class="practices-box">
+        <%= "<h4>#{t(:knowledge_timing)}</h4><div class='text-box'>#{@knowledge_timing_options.key(@acknowledge.knowledge_timing)}</div>".html_safe %>
+        <%= "<br><strong>#{t(:details)}</strong><div class='text-box'>#{simple_format (h @acknowledge.knowledge_timing_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @acknowledge.knowledge_timing_details.blank? %>
+      </div>
+    <% end %>
+    <% if ! @acknowledge.uptake_motivation.blank? %>
+      <div class="practices-box bg-light"><%= "<h4>#{t(:uptake_motivation)}</h4><div class='text-box'>#{simple_format (h @acknowledge.uptake_motivation).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe %></div>
+    <% end %>
+    <% if ! @acknowledge.knowledge_products.blank? %>
+      <div class="practices-box"><%= "<h4>#{t(:knowledge_products)}</h4><div class='text-box'>#{simple_format (h @acknowledge.knowledge_products).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe %></div>
+    <% end %>
+    <% if account_signed_in? %>
+      <% if current_account.admin? or current_account.id == @acknowledge.practice.account.id %>
+        <hr>
+        <div id="practice-footer">
+          <div class="form-actions">
+            <%= link_to t(:edit), edit_practice_acknowledge_path(@acknowledge.practice, @acknowledge), :class => 'btn btn-success' %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <br>
+    <br>
+  <% end %>
+</div>
+</div>

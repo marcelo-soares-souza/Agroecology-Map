@@ -1,58 +1,76 @@
+<style>
+    .text-center {
+        text-align: center;
+    }
+
+    .g-recaptcha {
+        display: inline-block;
+    }
+</style>
+
 <% title t(:sign_up) %>
-<br>
-<br>
-<br>
-<ul class="nav nav-tabs flex-column flex-xl-row">
-  <li class="nav-item">
-    <%= link_to t(:sign_in), new_usuario_session_path, :class => "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:sign_up), new_usuario_registration_path, :class => "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to t(:forgot_password), new_password_path(resource_name), :class => "nav-link" %>
-  </li>
-</ul>
-<br>
-<div class="sign_in_up">
-  <h2><%= t(:sign_up) %></h2>
+
+<div class="sign_up">
+  <br><br>
+  <strong><%= t(:sign_up) %></strong>
+
+  <div class="tip" style="text-align: center"><%= t(:sign_up_and_share_your_agroecological_practices) %>.</div>
   <br>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="form-group row">
-      <%= f.label "E-Mail", class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { autocomplete: "off" }) do |f| %>
+    <% if resource.errors.any? %>
+      <div id="error_explanation">
+        <b><%= resource.errors.count.to_s + " Error(s)" %></b>
+        <br><br>
+        <% resource.errors.full_messages.each do |message| %>
+          <%= message %><br>
+        <% end %><br>
       </div>
-    </div>
-    <div class="form-group row">
-      <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.text_field :nome, class: "form-control" %>
+    <% end %>
+
+    <div class="forms">
+      <div class="form-group col-xs-2 col-md-4 required bg-light">
+        <%= f.label "E-Mail", class: "col-form-label-lg control-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control", :required => true, :autocomplete => "off" %>
+        <div class="tip" style="text-align: center"><%= t(:we_will_use_this_to_send_you_a_confirmation_e_mail) %>.</div>
       </div>
-    </div>
-    <div class="form-group row">
-      <%= f.label t(:password), class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+
+      <div class="form-group col-xs-2 col-md-4 required">
+        <%= f.label t(:name), class: "col-form-label-lg control-label" %>
+        <%= f.text_field :name, class: "form-control", :required => true, :autocomplete => "name"  %>
+        <div class="tip" style="text-align: center"><%= t(:provide_at_least_one_name) %></div>
       </div>
-    </div>
-    <div class="form-group row">
-      <%= f.label t(:password_confirm), class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+
+      <div class="form-group col-xs-2 col-md-4 required bg-light">
+        <%= f.label t(:password), class: "col-form-label-lg control-label" %>
+        <%= f.password_field :password, class: "form-control", :required => true, :autocomplete => "new-password"  %>
+        <div class="tip" style="text-align: center"><%= t(:minimum_is_8_characters) %></div>
       </div>
-    </div>
-    <div class="actions">
-      <%= button_tag(name: t(:sign_up), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
-        <span id="button_name"><%= t(:sign_up) %></span>
-        <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>
-      <% end %>
-    </div>
-    <div class="checkbox">
-      <label>
-        <strong><%= t(:i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40) %> <%= link_to "Creative Commons license CC BY-NC-SA 4.0", "https://creativecommons.org/licenses/by-nc-sa/4.0/", target: "_blank" %>.</strong>
-      </label>
+
+      <div class="form-group col-xs-2 col-md-4 required">
+        <%= f.label t(:password_confirm), class: "col-form-label-lg control-label" %>
+        <%= f.password_field :password_confirmation, class: "form-control", :required => true, :autocomplete => "off"  %>
+        <div class="tip" style="text-align: center"><%= t(:enter_your_password_again) %></div>
+      </div>
+      <div class="tip_alert" style="text-align: center"><%= t(:you_will_receive_an_e_mail_with_a_link_to_confirm_your_registration) %>.</div>
+
+      <br>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :i_agree_with_terms_and_conditions, {required: true}, true, false  %>
+          <strong><%= t(:i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40) %> <%= link_to "Creative Commons license CC BY-NC-SA 4.0", "https://creativecommons.org/licenses/by-nc-sa/4.0/", target: "_blank" %>
+          and my personal data under the <%= link_to('Privacy Policy', privacy_policy_path) %></strong>
+        </label>
+      </div>
+
+      <div><%= recaptcha_tags %></div>
+
+      <div class="actions">
+        <%= button_tag(name: t(:sign_up), type: 'submit', class: "btn btn-primary", id: 'submit', onSubmit: 'verifyTermOfUse()') do %>
+          <span id="button_name"><%= t(:sign_up) %></span>
+        <% end %>
+
+      </div>
     </div>
     <%= render "devise/shared/links" %>
     <br>
@@ -62,13 +80,5 @@
       <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
     </div>
     <br>
-    <div><%= invisible_captcha %></div>
-  <% end %>
+<% end %>
 </div>
-<script>
-  document.getElementById("submit").setAttribute("disabled", "disabled");
-  setTimeout(function () {
-      document.getElementById("submit").removeAttribute("disabled");
-      document.getElementById("spinner").remove();
-  }, 3600);
-</script>

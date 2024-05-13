@@ -1,0 +1,79 @@
+<% title @characterise.practice.name %>
+
+<div class="link-action">
+<% if account_signed_in? %>
+  <% if current_account.admin? or current_account.id == @characterise.practice.account.id %>
+      <%= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_practice_media_path(@characterise.practice), :class => "btn btn-warning" %>
+      <%= link_to (bootstrap_icon "file-earmark-text") + " " + t(:send_document), new_practice_document_path(@characterise.practice), :class => "btn btn-secondary" %>
+  <% end %>
+<% end %>
+</div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to truncate(@characterise.practice.location.name, length: 12), location_path(@characterise.practice.location), title: @characterise.practice.location.name,  :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to @characterise.practice.name.truncate(18) , practice_path(@characterise.practice), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:what_you_do), practice_what_you_do_path(@characterise.practice, @characterise.practice.what_you_do), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:characterise), practice_characterise_path(@characterise.practice, @characterise.practice.characterise), :class => "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:gallery)} (#{@characterise.practice.medias.count})", practice_gallery_path(@characterise.practice), :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{t(:documents)} (#{@characterise.practice.documents.count})", practice_documents_path(@characterise.practice), :class => "nav-link" %>
+  </li>
+</ul>
+
+<br>
+
+<div class="tab-content" style="min-height: 64px;">
+  <div class="tab-pane active">
+    <br>
+    <% if @characterise.agroecology_principles_addressed.blank? and
+      @characterise.food_system_components_addressed.blank? %>
+      <h3><%= t(:no_data_has_been_registered_so_far) %>
+        <% if account_signed_in? %>
+          <% if current_account.admin? or current_account.id == @characterise.practice.account.id %>
+            <%= link_to t(:register), edit_practice_characterise_path(@characterise.practice, @characterise) %>
+          <% end %>
+        <% end %>
+      </h3>
+    <% else %>
+
+      <% if ! @characterise.agroecology_principles_addressed.blank? %>
+        <%
+          agroecology_principles_addressed = @characterise.agroecology_principles_addressed.split(',').map { | item | t(item.strip.gsub(/\s+/, '_').gsub(/-/, '_').downcase.to_sym) }
+          agroecology_principles_addressed = agroecology_principles_addressed.join(", ")
+        %>
+        <div class="practices-box bg-light"><%= "<h4>#{t(:agroecology_principles_addressed)}</h4><div class='text-box'>#{agroecology_principles_addressed.gsub(/,/, '<br/>')}<br></div>".html_safe %></div>
+      <% end %>
+
+      <% if @characterise.food_system_components_addressed and @characterise.food_system_components_addressed .length() > 0 %>
+        <%
+          food_system_components_addressed = @characterise.food_system_components_addressed.split(',').map { | item | t(item.strip.gsub(/\s+/, '_').gsub(/-/, '_').downcase.to_sym) }
+          food_system_components_addressed = food_system_components_addressed.join(", ")
+        %>
+        <div class="practices-box"><%= "<h4>#{t(:food_system_components_addressed)}</h4><div class='text-box'>#{food_system_components_addressed.gsub(/,/, '<br/>')}<br></div>".html_safe %></div>
+      <% end %>
+
+      <% if account_signed_in? %>
+        <% if current_account.admin? or current_account.id == @characterise.practice.account.id %>
+          <hr>
+          <div id="practice-footer">
+            <div class="form-actions">
+              <%= link_to t(:edit), edit_practice_characterise_path(@characterise.practice, @characterise), :class => 'btn btn-success' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <br><br>
+    <% end %>
+  </div>
+</div>
+

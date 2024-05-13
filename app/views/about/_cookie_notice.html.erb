@@ -1,0 +1,16 @@
+<style>.light{position:fixed;bottom:0;width:100%;background:#fff;z-index:1;border:1px solid #ccc}.content-wrap{max-width:700px;margin:0 auto;padding:16px}.content-wrap p{font-size:18px!important;font-style:italic;font-family:verdana,arial,helvetica,sans-serif;line-height:25px!important}</style>
+<script>function setCookie(e,t,o){const n=new Date;n.setTime(n.getTime()+24*o*60*60*1e3);let i="expires="+n.toUTCString();document.cookie=e+"="+t+";"+i+";path=/"}function deleteCookie(e){const t=new Date;t.setTime(t.getTime()+864e5);let o="expires="+t.toUTCString();document.cookie=e+"=;"+o+";path=/"}function getCookie(e){let t=e+"=",o=decodeURIComponent(document.cookie).split(";");for(let e=0;e<o.length;e++){let n=o[e];for(;" "==n.charAt(0);)n=n.substring(1);if(0==n.indexOf(t))return n.substring(t.length,n.length)}return""}function acceptCookieConsent(){deleteCookie("user_cookie_consent"),setCookie("user_cookie_consent",1,30),document.getElementById("cookieNotice").style.display="none"}$(document).ready((function(){let e=getCookie("user_cookie_consent");document.getElementById("cookieNotice").style.display=""!=e?"none":"block"}));</script>
+
+<div id="cookieNotice" class="light display-right" style="display: none;">
+  <div id="closeIcon" style="display: none;">
+  </div>
+  <div class="content-wrap">
+    <div class="msg-wrap">
+      <p>
+        <%= t(:cookie_notice_text) %>
+        Read our  <%= link_to('Privacy Policy', privacy_policy_path) %>
+      </p>
+      <button class="btn-primary btn-sm" onclick="acceptCookieConsent();">Accept All</button>
+    </div>
+  </div>
+</div>

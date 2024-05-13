@@ -1,6 +1,4 @@
-# Agroecology Map
-
-[![liberapay](https://img.shields.io/liberapay/gives/AgroecologyMap.svg?logo=liberapay)](https://liberapay.com/AgroecologyMap/donate)
+# Agroecology Map - Agroecology Map
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I0G99V3)
 

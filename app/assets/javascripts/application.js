@@ -1,26 +1,44 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require rails-ujs
 //= require_tree .
-//= require cookies_eu
-//= require trix
-//= require actiontext
+//= require activestorage
 
 $(document).ready(function () {
-    $(".alert").fadeTo(2000, 500).slideUp(500, function () {
-        $(".alert").slideUp(500);
+    $(".alert").fadeTo(6000, 500).slideUp(600, function () {
+        $(".alert").slideUp(600);
     });
-    $.fn.datepicker.defaults.format = "dd/mm/yyyy";
 });
 
-Trix.config.textAttributes.textAlignJustify = { tagName: 'div-text-align-justify' };
+async function loadLayers(url, title, color) {
+    const response = await fetch(url);
+    const locations = await response.json();
+    const layers = L.markerClusterGroup();
+
+    const Icon = L.icon({
+        iconUrl: '/assets/leaflet/images/leaf-'+color+'.png',
+        shadowUrl: '/assets/leaflet/images/leaf-shadow.png',
+        iconSize: [38, 95],
+        shadowSize: [50, 64],
+        iconAnchor: [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
+    });
+
+    for (let location of locations) {
+        const hide_my_location = location['hide_my_location'];
+        if (!hide_my_location) {        
+            const name = location['name'];
+            const url = location['url'];
+            const image_url = location['image_url']
+            const latitude = location['latitude'];
+            const longitude = location['longitude'];
+
+            let popup = '<div class="thumbnail-mini" style="margin-bottom: 4px;"><a href="'+url+'"><img src="'+image_url+'" title="'+name+'" alt="'+name+'"/></a></div>';
+            popup += '<strong style="font-size: 12px;">'+title+'</strong><br>';
+            popup += '<strong><a href=" '+url+'">' + name.substring(0, 45) + "..." + '</a></b>';
+
+            layers.addLayer(new L.marker(new L.latLng(latitude, longitude), {icon: Icon}).bindPopup(popup));
+        }
+    };
+
+    return layers;
+}

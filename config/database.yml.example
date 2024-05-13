@@ -10,12 +10,12 @@ default: &default
 
 development:
   <<: *default
-  database: agroecologia_development
+  database: agroecologymap_development
 
 test:
   <<: *default
-  database: agroecologia_test
+  database: agroecologymap_test
 
 production:
   <<: *default
-  database: agroecologia_production
+  database: agroecologymap_production

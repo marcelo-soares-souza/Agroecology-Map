@@ -1,0 +1,124 @@
+<div class="more-filter">
+    <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
+    <%= country_select("country", "country", { selected: params[:country] ? params[:country] : '', :include_blank => t(:filter_by_country) }, { class: "selectpicker", "data-live-search": true}) %>
+    <%= select_tag "system_functions", options_from_collection_for_select(@system_functions_options, :last, :first, params[:system_functions] ? params[:system_functions] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_functions) %>
+    <%= select_tag "system_components", options_from_collection_for_select(@system_components_options, :last, :first, params[:system_components] ? params[:system_components] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_farm_components) %>
+    <%= select_tag "where_it_is_realized", options_from_collection_for_select(@where_it_is_realized_options, :last, :first, params[:where_it_is_realized] ? params[:where_it_is_realized] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_where_it_is_realized)  %>
+    <%= select_tag "components", options_from_collection_for_select(@food_system_components_addressed_options, :last, :first, params[:components] ? params[:components] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_system_component)  %>
+    <%= select_tag "principles", options_from_collection_for_select(@agroecology_principles_addressed_options, :last, :first, params[:principles] ? params[:principles] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_agroecology_principle) %>
+    <%= select_tag "knowledge_source", options_from_collection_for_select(@knowledge_source_options, :last, :first, params[:knowledge_source] ? params[:knowledge_source] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_knowledge_source)  %>
+    <%= select_tag "substitution_of_less_ecological_alternative", options_from_collection_for_select(@yes_no_i_am_not_sure_not_applicable_options, :last, :first, params[:substitution_of_less_ecological_alternative] ? params[:substitution_of_less_ecological_alternative] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_substitution_of_less_ecological_alternative) %>
+    <%= select_tag "does_it_help_restore_land", options_from_collection_for_select(@effective_options, :last, :first, params[:does_it_help_restore_land] ? params[:does_it_help_restore_land] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_it_help_restore_land) %>
+    <%= select_tag "does_it_work_in_degraded_environments", options_from_collection_for_select(@does_it_work_in_degraded_environments_options, :last, :first, params[:does_it_work_in_degraded_environments] ? params[:does_it_work_in_degraded_environments] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_work_in_degraded_environments) %>
+    <%= select_tag "knowledge_and_skills_required_for_practice", options_from_collection_for_select(@knowledge_and_skills_required_for_practice_options, :last, :first, params[:knowledge_and_skills_required_for_practice] ? params[:knowledge_and_skills_required_for_practice] : ''), class: "selectpicker", "data-live-search": true, :include_blank => t(:filter_by_knowledge_and_skills_required_for_practice) %>
+
+    <div style="padding-top: 10px; padding-bottom: 10px; align-content: center; text-align: center; font-size: 21px">
+      <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
+      <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
+    </div>
+</div>
+
+<% if @practices.empty? %>
+  <br>
+  <h2><%= t(:no_data_has_been_registered_so_far) %></h2>
+<% else %>
+  <div class="row">
+    <% @practices.each do |practice| %>
+      <div class="col-sm-6" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
+        <div class="card" style="min-height: 340px;">
+          <br>
+          <div class="card-img-top thumbnail"><%= link_to photo_medium(practice, practice.name), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to practice.name.truncate(40), location_practice_path(practice.location, practice) %></h4>
+            <p class="card-text text-box"><b><%= t(:location) %></b><br> <%= link_to practice.location.name.truncate(40), location_path(practice.location) %></p>
+          </div>
+        </div>
+        <br>
+      </div>
+    <% end %>
+  </div>
+
+  <% if not params[:account_id] and not params[:location_id] %>
+    <div>
+      <%= paginate @practices %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+    const controller = 'connect';
+
+    $(document).ready(function () {
+        continent = $("#continent option:selected").text()
+        if (continent != '<%= t(:filter_by_continent) %>')
+            updateCountries(continent)
+    });
+
+    $("#continent").change(function () {
+        $("#country_country").val($("#country_country option:first").val());
+        updateCountries($("#continent option:selected").text())
+    });
+
+    async function updateCountries(continent) {
+        $.get( "/countries.json?continent=" + continent, function( data ) {
+            const countries = data["countries"]
+
+            $("#country_country option").each(function() {
+                const country = $(this).val()
+                if (countries.length > 0) {
+                    if (country) {
+                      if (!countries.includes(country))
+                          $("#country_country option[value='" + country + "']").hide();
+                      else
+                          $("#country_country option[value='" + country + "']").show();
+                    }
+                }
+                else {
+                    $("#country_country option[value='" + country + "']").show();
+                }
+                $('#country_country').selectpicker('refresh');
+            });
+        });
+    }
+
+    function filter() {
+        var name = $("#search").val();
+        var system_functions = $("#system_functions :selected").val();
+        var system_components = $("#system_components :selected").val();
+        var components = $("#components :selected").val();
+        var principles = $("#principles :selected").val();
+        var country = $("#country_country :selected").val();
+        var continent = $("#continent :selected").val();
+        var where_it_is_realized = $("#where_it_is_realized :selected").val();
+        var knowledge_source = $("#knowledge_source :selected").val();
+        var substitution_of_less_ecological_alternative = $("#substitution_of_less_ecological_alternative :selected").val();
+        var does_it_help_restore_land = $("#does_it_help_restore_land :selected").val();
+        var does_it_work_in_degraded_environments = $("#does_it_work_in_degraded_environments :selected").val();
+        var knowledge_and_skills_required_for_practice = $("#knowledge_and_skills_required_for_practice :selected").val();
+
+        var filter = "?filter=true"
+        filter += name ? "&name=" + name : "";
+        filter += system_functions ? "&system_functions=" + system_functions : "";
+        filter += system_components ? "&system_components=" + system_components : "";
+        filter += components ? "&components=" + components : "";
+        filter += principles ? "&principles=" + principles : "";
+        filter += country ? "&country=" + country : "";
+        filter += continent ? "&continent=" + continent : "";
+        filter += where_it_is_realized ? "&where_it_is_realized=" + where_it_is_realized : "";
+        filter += knowledge_source ? "&knowledge_source=" + knowledge_source : "";
+        filter += substitution_of_less_ecological_alternative ? "&substitution_of_less_ecological_alternative=" + substitution_of_less_ecological_alternative : "";
+        filter += does_it_help_restore_land ? "&does_it_help_restore_land=" + does_it_help_restore_land : "";
+        filter += does_it_work_in_degraded_environments ? "&does_it_work_in_degraded_environments=" + does_it_work_in_degraded_environments : "";
+        filter += knowledge_and_skills_required_for_practice ? "&knowledge_and_skills_required_for_practice=" + knowledge_and_skills_required_for_practice : "";
+        var url = "/" + controller + "/" + filter;
+
+        var lang = '<%= params[:locale] ? params[:locale] : 'en' %>'
+
+        if (url != '/' + controller + '/?filter=true') {
+            window.location.href =  '/' + lang + url;
+        }
+        else {
+            window.location.href = '/' + lang + '/' + controller;
+        }
+    }
+</script>

@@ -1,0 +1,76 @@
+<%= form_for(practice, html: { multipart: true }) do |f| %>
+  <% button_name = params["action"] == 'edit' ? t(:save) :  t(:next ) %>
+  <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
+
+  <br><br>
+
+  <% if practice.errors.any? %>
+    <div id="error_explanation">
+      <b><%= practice.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% practice.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
+      <%= "<strong><i>*If you added a photo, please add it again.</i></strong><br>".html_safe if practice.errors %>
+      <br>
+    </div>
+
+  <% end %>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <% if params[:location_id] %>
+        <%= f.hidden_field :location_id, id: "location_id", :value => Location.friendly.find(params[:location_id]).id %>
+      <% else %>
+        <%= f.hidden_field :location_id, id: "location_id", :value => @practice.location.id %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="forms">
+    <% if current_account.admin? %>
+      <div class="form-group row">
+        <%= f.label t(:responsible_for_information), class: "col-sm-2 col-form-label col-form-label-lg" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:account_id, Account.all, :id, :name, {}, { class: "form-control selectpicker", "data-live-search": true }) %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+    <div class="form-group row bg-light required">
+      <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control", :required => true  %>
+        <div class="tip">
+          <%= t(:name_this_practice_eg_my_agroforestry_permaculture_experiment_food_forest_medicinal_herb_garden_tree_planting_etc) %>
+          <br>Minimum Size: 4 / Maximum Size: 100
+          <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-8">
+        <%= f.file_field :photo, class: "form-control", style: practice.errors.blank? ? "" : "border-color: red" %>
+        <div class="tip">
+          <%= t(:could_you_send_us_a_photo_that_represents_this_practice_later_you_can_send_more_photos_to_the_practice_gallery) %>
+          <br>File Format: PNG, JPG or GIF. Size Limit: 16MB.
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+    $(document).ready(function () {
+        $("form").validate({
+            rules: {
+                "practice[name]": {
+                    required: true,
+                    minlength: 4
+                }
+            }
+        });
+    });
+</script>

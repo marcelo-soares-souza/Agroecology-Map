@@ -4,4 +4,6 @@
 
 require_relative "config/environment"
 
+use(Autotuner::RackPlugin)
+
 run Rails.application

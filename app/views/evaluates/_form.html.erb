@@ -1,0 +1,151 @@
+<%= form_for(evaluate, html: { multipart: true }) do |f| %>
+  <%= link_to t(:back), "javascript:history.back()", class: "btn btn-danger btn-lg", style: "float: left; margin-bottom: 16px;" unless params["action"] == 'edit' %>
+  <% button_name = params["action"] == 'edit' ? t(:save) :  t(:next ) %>
+  <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
+
+  <br><br>
+
+  <% if evaluate.errors.any? %>
+    <div id="error_explanation">
+      <b><%= evaluate.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% evaluate.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
+    </div>
+
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <% if params[:practice_id] %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => Practice.friendly.find(params[:practice_id]).id %>
+      <% else %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => @evaluate.practice.id %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="forms">
+    <div class="form-group row bg-light">
+      <%= f.label t(:general_performance_of_practice), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:general_performance_of_practice, @effective_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :general_performance_of_practice_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_work_as_intended_does_it_have_the_effect_you_expected) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row">
+      <%= f.label t(:unintended_positive_side_effects_of_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:unintended_positive_side_effects_of_practice, @yes_no_i_am_not_sure_not_applicable_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :unintended_positive_side_effects_of_practice_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_using_the_practice_have_any_positive_side_effects_that_you_did_not_expect) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row bg-light">
+      <%= f.label t(:unintended_negative_side_effect_of_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:unintended_negative_side_effect_of_practice, @yes_no_i_am_not_sure_not_applicable_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :unintended_negative_side_effect_of_practice_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_using_the_practice_have_any_negative_side_effects_that_you_did_not_expect) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row">
+      <%= f.label t(:knowledge_and_skills_required_for_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:knowledge_and_skills_required_for_practice, @knowledge_and_skills_required_for_practice_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :knowledge_and_skills_required_for_practice_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practive_require_a_lot_of_formal_knowledge_and_training) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row bg-light">
+      <%= f.label t(:labour_required_for_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:labour_required_for_practice, @labour_required_for_practice_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :labour_required_for_practice_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_require_a_lot_of_work) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row">
+      <%= f.label t(:cost_associated_with_practice), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:cost_associated_with_practice, @cost_associated_with_practice_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :cost_associated_with_practice_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_engender_financial_costs) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row bg-light">
+      <%= f.label t(:does_it_work_in_degraded_environments), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:does_it_work_in_degraded_environments, @does_it_work_in_degraded_environments_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :does_it_work_in_degraded_environments_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_work_when_the_environment_land_and_soil_are_depleted) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row">
+      <%= f.label t(:does_it_help_restore_land), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:does_it_help_restore_land, @effective_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :does_it_help_restore_land_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_help_to_restore_the_health_of_your_farm_and_or_its_surrounding) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row bg-light">
+      <%= f.label t(:climate_change_vulnerability_effects), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:climate_change_vulnerability_effects, @effective_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :climate_change_vulnerability_effects_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_help_to_reduce_climate_change_effects_that_you_experienced_previously) %>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group row">
+      <%= f.label t(:time_requirements), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:time_requirements, @time_requirements_options, :last, :first, { :include_blank => t(:select_an_option) }, { class: "form-control selectpicker", "data-live-search": true }) %>
+        <%= f.text_area :time_requirements_details, class: "form-control", :rows => "3", :placeholder => t(:please_provide_additional_details) %>
+        <div class="tip">
+          <%= t(:does_the_practice_require_time_to_work_as_expected_as_the_system_heals) %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit button_name, class: "btn btn-warning btn-lg" %>
+  </div>
+  <br><br>
+<% end %>

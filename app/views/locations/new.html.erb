@@ -1,0 +1,16 @@
+<% title t(:add_location) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:locations), locations_path, :class => "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(:new), new_location_path, :class => "nav-link active" %>
+  </li>
+</ul>
+
+<br>
+
+<%= render 'form', location: @location %>

@@ -1,0 +1,143 @@
+<style>
+  .forms {
+      font-size: 18px;
+  }
+
+  .tip-explanation {
+      text-align: left;
+      font-size: 16px;
+      font-style: italic;
+      color: #124400 !important;
+  }
+
+  input[type="checkbox"] {
+      margin-bottom: 16px;
+  }
+</style>
+
+<%= form_for(characterise, html: { multipart: true }) do |f| %>
+  <%= link_to t(:back), "javascript:history.back()", class: "btn btn-danger btn-lg", style: "float: left; margin-bottom: 16px;" unless params["action"] == 'edit' %>
+  <% button_name = params["action"] == 'edit' ? t(:save) :  t(:save) %>
+  <%= f.submit button_name, class: "btn btn-warning btn-lg", style: "float: right; margin-bottom: 16px;" %>
+
+  <br><br>
+
+  <% if characterise.errors.any? %>
+    <div id="error_explanation">
+      <b><%= characterise.errors.count.to_s + " Error(s)" %></b>
+      <br><br>
+      <% characterise.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %><br>
+    </div>
+
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <% if params[:practice_id] %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => Practice.friendly.find(params[:practice_id]).id %>
+      <% else %>
+        <%= f.hidden_field :practice_id, id: "practice_id", :value => @characterise.practice.id %>
+      <% end %>
+    </div>
+  </div>
+  <div class="forms">
+    <div class="form-group row bg-light">
+      <%= f.label t(:agroecology_principles_addressed), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <div class="tip"><%= t(:which_agroecological_principles_are_addressed_or_invoked_through_the_practice) %></div>
+        <br>
+        <div style="text-align: left;">
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Recycling', checked_characterises('Recycling'), id: 'principle' %> 1 - <%= t(:recycling) %>
+          <div class="tip-explanation"><%= t(:preferentially_use_location_renewable_resources_and_close_as_far_as_possible_res) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Input reduction', checked_characterises('Input reduction'), id: 'principle' %> 2 - <%= t(:input_reduction) %>
+          <div class="tip-explanation"><%= t(:reduce_or_eliminate_dependency_on_purchased_inputs) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Soil health', checked_characterises('Soil health'), id: 'principle' %> 3 - <%= t(:soil_health) %>
+          <div class="tip-explanation"><%= t(:secure_and_enhance_soil_health_and_functioning_for_improved_plant_growth_particu) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Animal health', checked_characterises('Animal health'), id: 'principle' %> 4 - <%= t(:animal_health) %>
+          <div class="tip-explanation"><%= t(:ensure_animal_health_and_welfare) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Biodiversity', checked_characterises('Biodiversity'), id: 'principle' %> 5 - <%= t(:biodiversity) %>
+          <div class="tip-explanation"><%= t(:maintain_and_enhance_diversity_of_species_functional_diversity_and_genetic_resou) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Synergy', checked_characterises('Synergy'), id: 'principle' %> 6 - <%= t(:synergy) %>
+          <div class="tip-explanation"><%= t(:enhance_positive_ecological_interaction_synergy_integration_and_complementarity_) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Economic diversification', checked_characterises('Economic diversification'), id: 'principle' %> 7 - <%= t(:economic_diversification) %>
+          <div class="tip-explanation"><%= t(:diversify_on_farm_incomes_by_ensuring_small_scale_farmers_have_greater_financial) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Co-creation of knowledge', checked_characterises('Co-creation of knowledge'), id: 'principle' %> 8 - <%= t(:co_creation_of_knowledge) %>
+          <div class="tip-explanation"><%= t(:enhance_co_creation_and_horizontal_sharing_of_knowledge_including_location_and_s) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Social values and diets', checked_characterises('Social values and diets'), id: 'principle' %> 9 - <%= t(:social_values_and_diets) %>
+          <div class="tip-explanation"><%= t(:build_food_systems_based_on_the_culture_identity_tradition_social_and_gender_equ) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Fairness', checked_characterises('Fairness'), id: 'principle' %> 10 - <%= t(:fairness) %>
+          <div class="tip-explanation"><%= t(:support_dignified_and_robust_livelihoods_for_all_actors_engaged_in_food_systems_) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Connectivity', checked_characterises('Connectivity'), id: 'principle' %> 11 - <%= t(:connectivity) %>
+          <div class="tip-explanation"><%= t(:ensure_proximity_and_confidence_between_producers_and_consumers_through_promotio) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Land and natural resource governance', checked_characterises('Land and natural resource governance'), id: 'principle' %> 12 - <%= t(:land_and_natural_resource_governance) %>
+          <div class="tip-explanation"><%= t(:recognize_and_support_the_needs_and_interests_of_family_farmers_smallholders_and) %></div>
+          <br>
+          <%= check_box_tag 'characterise[agroecology_principles_addressed][]', 'Participation', checked_characterises('Participation'), id: 'principle' %> 13 - <%= t(:participation) %>
+          <div class="tip-explanation"><%= t(:encourage_social_organization_and_greater_participation_in_decision_making_by_fo) %></div>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="form-group row">
+
+      <%= f.label t(:food_system_components_addressed), class: "col-sm-2 col-form-label col-form-label-lg" %>
+
+      <div class="col-sm-10">
+        <div class="tip">
+          <%= t(:which_parts_of_the_food_system_are_concerned_or_engaged_through_the_practice) %>
+        </div>
+        <br>
+        <div style="text-align: left;">
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Soil', checked_components('Soil'), id: 'food_system_components_addressed' %> 1 - <%= t(:soil) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Water', checked_components('Water'), id: 'food_system_components_addressed' %> 2 - <%= t(:water) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Crops', checked_components('Crops'), id: 'food_system_components_addressed' %> 3 - <%= t(:crops) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Livestock', checked_components('Livestock'), id: 'food_system_components_addressed' %> 4 - <%= t(:livestock) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Fish', checked_components('Fish'), id: 'food_system_components_addressed' %> 5 - <%= t(:fish) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Trees', checked_components('Trees'), id: 'food_system_components_addressed' %> 6 - <%= t(:trees) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Pests', checked_components('Pests'), id: 'food_system_components_addressed' %> 7 - <%= t(:pests) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Energy', checked_components('Energy'), id: 'food_system_components_addressed' %> 8 - <%= t(:energy) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Household', checked_components('Household'), id: 'food_system_components_addressed' %> 9 - <%= t(:household) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Workers', checked_components('Workers'), id: 'food_system_components_addressed' %> 10 - <%= t(:workers) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Community', checked_components('Community'), id: 'food_system_components_addressed' %> 11 - <%= t(:community) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Value chain', checked_components('Value chain'), id: 'food_system_components_addressed' %> 12 - <%= t(:value_chain) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Policy', checked_components('Policy'), id: 'food_system_components_addressed' %> 13 - <%= t(:policy) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Whole Food System', checked_components('Whole Food System'), id: 'food_system_components_addressed' %> 14 - <%= t(:whole_food_system) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'Other', checked_components('Other'), id: 'food_system_components_addressed' %> 15 - <%= t(:other) %>
+          <br>
+          <%= check_box_tag 'characterise[food_system_components_addressed][]', 'I am not sure', checked_components('I am not sure'), id: 'food_system_components_addressed' %> 16 - <%= t(:i_am_not_sure) %>
+        </div>
+        <br>
+      </div>
+    </div>
+    <%= f.submit button_name, class: "btn btn-warning btn-lg" %>
+  </div>
+<% end %>

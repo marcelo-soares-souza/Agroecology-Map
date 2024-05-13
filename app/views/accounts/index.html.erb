@@ -1,0 +1,87 @@
+<% title t(:contributors) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+    <%= link_to t(:contributors) + " (#{@accounts.count} #{t(:of)} #{@total})", accounts_path, :class => "nav-link active" %>
+  </li>
+</ul>
+
+<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
+  <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
+  <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
+</div>
+
+<% if @accounts.empty? %>
+  <br>
+  <h3>Nenhum Usuário Registrado</h3>
+<% else %>
+  <br>
+  <div class="row">
+    <% @accounts.each do |account| %>
+      <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= account_path(account) %>';">
+        <div class="card">
+          <div  class="card-img-top thumbnail"><%= link_to photo_thumb(account, account.name, true), account_path(account), alt: account.name, title: account.name %></div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to account.name, account_path(account) %></h5>
+            <p class="card-text" style="text-align: center; font-size: 12px;">
+              <%= link_to t(:profile), account_path(account) %> <%= "|" if account.locations.size > 0 %>
+              <%= link_to t(:locations) + " (#{account.locations.size})", account_locations_path(account) if account.locations.size > 0 %> <%= "|" if account.practices.size > 0 %>
+              <%= link_to t(:practices) + " (#{account.practices.size})", account_practices_path(account) if account.practices.size > 0 %> <%= "|" if account.medias.size > 0 %>
+              <%= link_to t(:gallery) + " (#{account.medias.size})", account_gallery_path(account) if account.medias.size > 0 %>
+            </p>
+            <% if account_signed_in? %>
+              <% if current_account.admin? or account.id == current_account.id %>
+                <td><%= link_to t(:edit), edit_account_path(account), :class => 'btn btn-sm btn-success' %></td>
+              <% else %>
+                <br><br>
+              <% end %>
+            <% end %>
+          </div>
+        </div><br>
+      </div>
+    <% end %>
+  </div>
+
+  <% if not params[:account_id] %>
+    <div>
+      <%= paginate @accounts %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+  const controller = 'accounts';
+
+  $(document).ready(function () {
+      <% if params[:filter].blank? or params[:name] %>
+        $("#more-filter").hide();
+        $("#searchButton").show();
+      <% else %>
+        $("#searchButton").hide();
+      <% end %>
+  });
+
+  $("#search").on('keyup', function (event) {
+      if (event.keyCode === 13) {
+          filter("search");
+      }
+  });
+
+  function filter() {
+      var name = $("#search").val();
+      var filter = "?filter=true"
+
+      filter += name ? "&name=" + name : "";
+      var url = "/" + controller + "/" + filter;
+      var lang = '<%= params[:locale] ? params[:locale] : 'en' %>'
+
+      if (url != '/' + controller + '/?filter=true') {
+          window.location.href =  '/' + lang + url;
+      }
+      else {
+          window.location.href = '/' + lang + '/' + controller;
+      }
+  }
+</script>
