@@ -147,8 +147,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_101531) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "location_id", null: false
-    t.bigint "practice_id", null: false
+    t.bigint "location_id"
+    t.bigint "practice_id"
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
