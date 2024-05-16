@@ -1,3 +1,5 @@
+<% title t(:sign_in) %>
+
 <style>
     .text-center {
         text-align: center;
@@ -8,10 +10,20 @@
     }
 </style>
 
-<% title t(:sign_in) %>
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:login), new_account_session_path, :class => "nav-link active" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link" %>
+  </li>
+</ul>
 
 <div class="sign_in_up">
-  <br><br>
+  <br>
   <strong><%= t(:sign_in) %></strong>
   <div class="tip" style="text-align: center"><%= t(:log_in_to_continue_registering_your_location_and_practices) %></div>
   <br>
@@ -47,11 +59,11 @@
     <%= render "devise/shared/links" %>
     <br>
     <div>
-      <strong><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
+      <strong style="font-size: 14px"><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
       <br>
-      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
+      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-sa/4.0/', target: '_blank' %>
       <br>
-      <strong><%= link_to('Read our Privacy Policy', privacy_policy_path, :class => "nav-link") %></strong>
+      <strong style="font-size: 14px"><%= link_to('Read our Privacy Policy', privacy_policy_path, :class => "nav-link") %></strong>
     </div>
     <br>
   <% end %>

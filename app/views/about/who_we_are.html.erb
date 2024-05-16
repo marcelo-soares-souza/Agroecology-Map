@@ -1,4 +1,41 @@
 <% title t(:who_we_are) %>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:who_we_are), who_we_are_path, :class => "nav-link active" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:data_summary), dashboard_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:friends), partners_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:thank_you_notes), thank_you_notes_path, :class => "nav-link" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to t(:contact), contact_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to 'Privacy Policy', privacy_policy_path, :class => "nav-link" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to 'Content License', license_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to 'Code License', source_code_license_path, :class => "nav-link" %>
+  </li>    
+</ul>
+
 <div class="about">
   <%= image_tag ("logo.png"), width: 300, class: "error" %>
   <div style="max-width: 600px; margin-left: auto; margin-right: auto; text-align: justify;">
