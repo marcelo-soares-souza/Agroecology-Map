@@ -1,14 +1,5 @@
 <% title t(:sign_up) %>
 
-<style>
-    .text-center {
-        text-align: center;
-    }
-
-    .g-recaptcha {
-        display: inline-block;
-    }
-</style>
 
 <div class="link-action"></div>
 
@@ -22,6 +13,7 @@
   </li>
 </ul>
 
+<% if not browser.bot? and not request.is_crawler? %>
 <div class="sign_up">
   <br>
   <strong><%= t(:sign_up) %></strong>
@@ -75,8 +67,6 @@
         </label>
       </div>
 
-      <div><%= recaptcha_tags %></div>
-
       <div class="actions">
         <%= button_tag(name: t(:sign_up), type: 'submit', class: "btn btn-primary", id: 'submit', onSubmit: 'verifyTermOfUse()') do %>
           <span id="button_name"><%= t(:sign_up) %></span>
@@ -87,3 +77,7 @@
     <br>
 <% end %>
 </div>
+<% else %>
+<br><br>
+<h1>You are probably a Robot, so we're sorry but you can't register. If you are a human and have arrived at this page, please contact us.</h1>
+<% end %>

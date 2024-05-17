@@ -1,15 +1,4 @@
 <% title t(:sign_in) %>
-
-<style>
-    .text-center {
-        text-align: center;
-    }
-
-    .g-recaptcha {
-        display: inline-block;
-    }
-</style>
-
 <div class="link-action"></div>
 
 <ul class="nav nav-tabs flex-column flex-xl-row">
@@ -22,6 +11,7 @@
   </li>
 </ul>
 
+<% if not browser.bot? and not request.is_crawler? %>
 <div class="sign_in_up">
   <br>
   <strong><%= t(:sign_in) %></strong>
@@ -47,8 +37,6 @@
         </div>
       <% end -%>
 
-      <div><%= recaptcha_tags %></div>
-
       <div class="actions">
         <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
           <span id="button_name"><%= t(:sign_in) %></span>
@@ -68,3 +56,7 @@
     <br>
   <% end %>
 </div>
+<% else %>
+<br><br>
+<h1>You are probably a Robot, so we're sorry but you can't register. If you are a human and have arrived at this page, please contact us.</h1>
+<% end %>
