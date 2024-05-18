@@ -96,7 +96,7 @@ GEM
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
-    countries (6.0.0)
+    countries (6.0.1)
       unaccent (~> 0.3)
     country_select (9.0.0)
       countries (> 5.0, < 7.0)
@@ -129,6 +129,7 @@ GEM
       virtus (~> 1.0.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    humanizer (2.7.0)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -293,7 +294,7 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
-    sorbet-runtime (0.5.11383)
+    sorbet-runtime (0.5.11385)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -349,6 +350,7 @@ DEPENDENCIES
   friendly_id (>= 5.5.1)
   geocoder (>= 1.8.2)
   geojson_model
+  humanizer
   image_processing (>= 1.12.2)
   jbuilder (>= 2.11.5)
   jwt (~> 2.8.1)

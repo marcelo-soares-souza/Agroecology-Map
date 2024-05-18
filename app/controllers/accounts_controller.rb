@@ -59,9 +59,9 @@ class AccountsController < ApplicationController
 
     def account_params
       if current_account.admin?
-        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions, :admin)
+        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions, :humanizer_answer, :humanizer_question_id, :admin)
       else
-        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions)
+        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions, :humanizer_answer, :humanizer_question_id)
       end
     end
 

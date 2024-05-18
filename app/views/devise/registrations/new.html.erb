@@ -56,6 +56,13 @@
         <%= f.password_field :password_confirmation, class: "form-control", :required => true, :autocomplete => "off"  %>
         <div class="tip" style="text-align: center"><%= t(:enter_your_password_again) %></div>
       </div>
+
+      <div class="form-group col-xs-2 col-md-4 required bg-light">
+        <%= f.label @account.humanizer_question, class: "col-form-label-lg control-label" %>
+        <%= f.text_field :humanizer_answer, class: "form-control", :required => true, :autocomplete => "name"  %>
+        <%= f.hidden_field :humanizer_question_id %>
+      </div>
+      
       <div class="tip_alert" style="text-align: center"><%= t(:you_will_receive_an_e_mail_with_a_link_to_confirm_your_registration) %>.</div>
 
       <br>

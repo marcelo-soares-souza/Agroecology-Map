@@ -47,5 +47,6 @@ gem "rdoc", ">= 6.6.3.1"
 gem "terser"
 gem "browser"
 gem "crawler_detect"
+gem "humanizer"
 
 gem "autotuner", "~> 1.0"
