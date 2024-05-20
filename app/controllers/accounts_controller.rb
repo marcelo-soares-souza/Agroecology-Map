@@ -52,6 +52,23 @@ class AccountsController < ApplicationController
     end
   end
 
+  def message
+    message = params["account"]["message"]
+    @account = Account.friendly.find(params[:id])
+
+    if not message.nil?
+      subject = "[Agroecology Map] #{current_account.name} sent you a message"
+      body = "Message: #{message}"
+      body += "\r\n \r\n"
+      body += "Link to the Account: " + account_url(current_account)
+      ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @account.email, subject:,  body:).deliver
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @account, notice: "A message was sent to #{@account.name}." }
+    end
+  end
+
   private
     def set_account
       @account = Account.friendly.find(params[:id])

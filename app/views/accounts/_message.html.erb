@@ -1,0 +1,6 @@
+ <%= form_with scope: "account", url: message_account_path, method: :post do |f| %>
+   <div class="col-xs-4" style="padding-bottom: 25px">
+    <%= f.text_area :message, rows: 4, class: "form-control", placeholder: t(:message) %>
+    <%= f.submit t(:submit_message), class: "btn btn-info", style: "float: right; margin-top: 8px; margin-bottom: 8px;" %>
+  </div>
+<% end %>
