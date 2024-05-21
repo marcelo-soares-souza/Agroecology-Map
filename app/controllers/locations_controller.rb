@@ -159,7 +159,7 @@ class LocationsController < ApplicationController
       body += "\r\n \r\n"
 
       if @location.account.id != current_account.id
-        ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @location.account.email, subject:,  body:).deliver
+        MailJob.perform_async(@location.account.email, subject, body)
       end
 
       redirect_to location_path(@location), notice: "Your like has been registered! Thanks!!"

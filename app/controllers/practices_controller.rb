@@ -158,7 +158,7 @@ class PracticesController < ApplicationController
       body += "\r\n \r\n"
 
       if @practice.account.id != current_account.id
-        ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @practice.account.email, subject:,  body:).deliver
+        MailJob.perform_async(@practice.account.email, subject, body)
       end
 
       redirect_to practice_path(@practice), notice: "Your like has been registered! Thanks!!"
