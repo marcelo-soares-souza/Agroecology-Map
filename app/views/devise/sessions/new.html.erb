@@ -1,17 +1,19 @@
-<style>
-    .text-center {
-        text-align: center;
-    }
-
-    .g-recaptcha {
-        display: inline-block;
-    }
-</style>
-
 <% title t(:sign_in) %>
+<div class="link-action"></div>
 
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:login), new_account_session_path, :class => "nav-link active" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link" %>
+  </li>
+</ul>
+
+<% if not browser.bot? and not request.is_crawler? %>
 <div class="sign_in_up">
-  <br><br>
+  <br>
   <strong><%= t(:sign_in) %></strong>
   <div class="tip" style="text-align: center"><%= t(:log_in_to_continue_registering_your_location_and_practices) %></div>
   <br>
@@ -35,8 +37,6 @@
         </div>
       <% end -%>
 
-      <div><%= recaptcha_tags %></div>
-
       <div class="actions">
         <%= button_tag(name: t(:sign_in), type: 'submit', class: "btn btn-primary", id: 'submit') do %>
           <span id="button_name"><%= t(:sign_in) %></span>
@@ -47,12 +47,16 @@
     <%= render "devise/shared/links" %>
     <br>
     <div>
-      <strong><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
+      <strong style="font-size: 14px"><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
       <br>
-      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
+      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-sa/4.0/', target: '_blank' %>
       <br>
-      <strong><%= link_to('Read our Privacy Policy', privacy_policy_path, :class => "nav-link") %></strong>
+      <strong style="font-size: 14px"><%= link_to('Read our Privacy Policy', privacy_policy_path, :class => "nav-link") %></strong>
     </div>
     <br>
   <% end %>
 </div>
+<% else %>
+<br><br>
+<h1>You are probably a Robot, so we're sorry but you can't register. If you are a human and have arrived at this page, please contact us.</h1>
+<% end %>

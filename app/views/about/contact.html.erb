@@ -28,13 +28,48 @@
 
     }
 </style>
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:who_we_are), who_we_are_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:data_summary), dashboard_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:friends), partners_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:thank_you_notes), thank_you_notes_path, :class => "nav-link" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to t(:contact), contact_path, :class => "nav-link active" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to 'Privacy Policy', privacy_policy_path, :class => "nav-link" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to 'Content License', license_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to 'Code License', source_code_license_path, :class => "nav-link" %>
+  </li>    
+</ul>
 
 <div class="thank_you_notes">
-  <br>
   <h1><%= t(:contact) %></h1>
 
   <div class="text-box" style="line-height: 30px;">
-    <strong>On the <a href="https://en.wikipedia.org/wiki/Fediverse" target="_blank">Fediverse</a> Mastodon:</strong><br> <b><a href="https://social.agroecologymap.org/@AgroecologyMap" target="_blank">https://social.agroecologymap.org/@AgroecologyMap</a></b>
+    <strong>Mastodon <span style="font-size:12px;">(<a href="https://blog.mozilla.org/en/internet-culture/how-to-get-started-on-mastodon/">How to use</a>)</span>:</strong><br><b style="color: #0078a8 !important">@AgroecologyMap@social.agroecologymap.org</b>
+    <br><br><strong>Matrix <span style="font-size:12px;">(<a href="https://matrix.org/try-matrix/">How to use</a>)</span></strong><br> <b style="color: #0078a8 !important"> @agroecologymap.org:matrix.org</b>
     <br><br>
-    <strong>Bug Report:</strong><br> <b><a href="https://codeberg.org/marcelo-soares-souza/Agroecology-Map/issues" target="_blank">codeberg.org/marcelo-soares-souza/Agroecology-Map/issues</a></b>
+    <strong>Bug Report</strong><br> <b><a href="https://codeberg.org/marcelo-soares-souza/Agroecology-Map/issues" target="_blank">https://codeberg.org/marcelo-soares-souza/Agroecology-Map/issues</a></b>
   </div>

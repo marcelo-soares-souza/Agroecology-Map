@@ -52,6 +52,25 @@ class AccountsController < ApplicationController
     end
   end
 
+  def message
+    message = params["account"]["message"]
+
+    if not message.nil?
+      @account = Account.friendly.find(params[:id])
+      to = @account.email
+      subject = "[Agroecology Map] #{current_account.name} sent you a message"
+      body = "Message: #{message}"
+      body += "\r\n \r\n"
+      body += "Link to the Account: " + account_url(current_account)
+
+      MailJob.perform_async(to, subject, body)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @account, notice: "A message was sent to #{@account.name}." }
+    end
+  end
+
   private
     def set_account
       @account = Account.friendly.find(params[:id])
@@ -59,9 +78,9 @@ class AccountsController < ApplicationController
 
     def account_params
       if current_account.admin?
-        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions, :admin)
+        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions, :humanizer_answer, :humanizer_question_id, :admin)
       else
-        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions)
+        params.require(:account).permit(:id, :email, :name, :about, :website, :slug, :photo, :i_agree_with_terms_and_conditions, :humanizer_answer, :humanizer_question_id)
       end
     end
 

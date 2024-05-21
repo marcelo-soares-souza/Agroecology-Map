@@ -58,6 +58,13 @@
   </div>
 </div>
 
+<% if  account_signed_in? %>
+<div class='comment-box'>
+  <%= render 'message' %>
+</div>
+<br>
+<% end %>
+
 <% if account_signed_in? %>
   <% if current_account.admin? or current_account.id == @account.id %>
     <hr>

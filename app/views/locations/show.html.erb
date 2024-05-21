@@ -23,11 +23,18 @@
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
+
     <div class="like">
-      <%= link_to like_location_path(@location), method: "put", class: "btn text-white",  style: "background-color: #fff;", disabled: true do %>
-        <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-        <span class="badge bg-danger ms-2" style="font-size: 14px"><%= @location.likes.count.to_s %></span>
+      <% likes = @location.likes.count.to_s %>
+      <% visits = @location.visits.to_s %>
+      <%= link_to like_location_path(@location), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
+        <img src="/like.png" alt="<%= @likes_info %>" title="<%= likes %> Like(s)">
+        <span class="badge bg-danger ms-2" style="font-size: 12px;" title="<%= likes %> Like(s)"><%= @location.likes.count.to_s %></span>
       <% end %>
+      <div class="btn text-white" style="padding-left: 0px;">
+        <img src="<%= image_url("eye.png") %>" alt="Visits" title="<%= visits %> Visits">
+        <span class="badge bg-success ms-2 text-white" style="font-size: 12px;" title="<%= visits %> Visits"><%= @location.visits.to_s %></span>
+      </div>
     </div>
 
     <div class="thumbnail">
@@ -80,7 +87,7 @@
   <script>
       $(document).ready(function () {
           var map = L.map('map-show', { zoomControl: false, worldCopyJump: true }).setView([<%= @location.latitude %>, <%= @location.longitude %>], 10);
-          var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-NC-SA</a>'
+          var attributions = '<a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY-SA</a>'
           var osm = L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: attributions, maxZoom: 18, }).addTo(map);
           var mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', { attribution: 'Mapa da Agroecologia | MapBox', maxZoom: 18, });
           var baseMaps = {"OpenStreetMap": osm, "Satélite (MapBox)": mapbox};

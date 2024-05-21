@@ -1,17 +1,21 @@
-<style>
-    .text-center {
-        text-align: center;
-    }
-
-    .g-recaptcha {
-        display: inline-block;
-    }
-</style>
-
 <% title t(:sign_up) %>
 
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:login), new_account_session_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link active" %>
+  </li>
+</ul>
+
+<% if not browser.bot? and not request.is_crawler? %>
 <div class="sign_up">
-  <br><br>
+  <br>
   <strong><%= t(:sign_up) %></strong>
 
   <div class="tip" style="text-align: center"><%= t(:sign_up_and_share_your_agroecological_practices) %>.</div>
@@ -52,33 +56,35 @@
         <%= f.password_field :password_confirmation, class: "form-control", :required => true, :autocomplete => "off"  %>
         <div class="tip" style="text-align: center"><%= t(:enter_your_password_again) %></div>
       </div>
+
+      <div class="form-group col-xs-2 col-md-4 required bg-light">
+        <%= f.label @account.humanizer_question, class: "col-form-label-lg control-label" %>
+        <%= f.text_field :humanizer_answer, class: "form-control", :required => true, :autocomplete => "name"  %>
+        <%= f.hidden_field :humanizer_question_id %>
+      </div>
+      
       <div class="tip_alert" style="text-align: center"><%= t(:you_will_receive_an_e_mail_with_a_link_to_confirm_your_registration) %>.</div>
 
       <br>
       <div class="checkbox">
         <label>
           <%= f.check_box :i_agree_with_terms_and_conditions, {required: true}, true, false  %>
-          <strong><%= t(:i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40) %> <%= link_to "Creative Commons license CC BY-NC-SA 4.0", "https://creativecommons.org/licenses/by-nc-sa/4.0/", target: "_blank" %>
+          <strong><%= t(:i_agree_that_my_non_personal_data_shared_on_this_website_will_be_treated_under_the_creative_commons_license_cc_by_nc_sa_40) %> <%= link_to "Creative Commons license CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/", target: "_blank" %>
           and my personal data under the <%= link_to('Privacy Policy', privacy_policy_path) %></strong>
         </label>
       </div>
-
-      <div><%= recaptcha_tags %></div>
 
       <div class="actions">
         <%= button_tag(name: t(:sign_up), type: 'submit', class: "btn btn-primary", id: 'submit', onSubmit: 'verifyTermOfUse()') do %>
           <span id="button_name"><%= t(:sign_up) %></span>
         <% end %>
-
       </div>
     </div>
     <%= render "devise/shared/links" %>
     <br>
-    <div>
-      <strong><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
-      <br>
-      <%= link_to image_tag('CC.png', width: 120), 'https://creativecommons.org/licenses/by-nc-sa/4.0/', target: '_blank' %>
-    </div>
-    <br>
 <% end %>
 </div>
+<% else %>
+<br><br>
+<h1>You are probably a Robot, so we're sorry but you can't register. If you are a human and have arrived at this page, please contact us.</h1>
+<% end %>

@@ -45,12 +45,14 @@
           <%= link_to("#{t(:logout)}", destroy_account_session_path, :method => :delete, :class => "nav-link") %>
         </li>
       <% else %>
-        <li class="nav-item">
-          <strong><%= link_to(t(:login), new_account_session_path, :class => "nav-link") %></strong>
-        </li>
-        <li>
-          <strong><%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link" %></strong>
-        </li>
+        <% if not browser.bot? and not request.is_crawler? %>
+          <li class="nav-item">
+            <strong><%= link_to(t(:login), new_account_session_path, :class => "nav-link") %></strong>
+          </li>
+          <li>
+            <strong><%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link" %></strong>
+          </li>
+        <% end %>
       <% end %>
        
       <li>
@@ -61,12 +63,14 @@
           <option value="fr">Français</option>
         </select>
       </li>
+      <!-- >
       <li style="padding-left: 4px;">
         <%= link_to image_tag("google-badge.png", title: "Agroecology Map Play Store"), "https://play.google.com/store/apps/details?id=org.agroecologymap" %>
       </li>
       <li style="padding-left: 4px;">
         <%= link_to image_tag("fdroid.png", title: "Agroecology Map F-Droid repository"), "https://fdroid.agroecologymap.org/repo/" %>
       </li>
+      -->
     </ul>
   </div>
 </nav>

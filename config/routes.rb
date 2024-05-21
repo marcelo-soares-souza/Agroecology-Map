@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+  resources :jobs, only: [:create]
+
+  authenticate :account, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
+
   scope "(:locale)", locale: /en|pt-BR|es|fr/ do
     get "health" => "rails/health#show", as: :rails_health_check
     get "errors/not_found"
@@ -30,6 +38,7 @@ Rails.application.routes.draw do
 
     put "/practices/:id/like", to: "practices#like", as: "like_practice"
     put "/locations/:id/like", to: "locations#like", as: "like_location"
+    post "/accounts/:id/message", to: "accounts#message", as: "message_account"
 
     resources :practices
     resources :acknowledges

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
+  include Humanizer
+  attr_accessor :bypass_humanizer
+  require_human_on :create, unless: :bypass_humanizer
+
   paginates_per 6
 
   scope :by_name, -> (name) { where("accounts.name ILIKE ?", "%#{name}%") }

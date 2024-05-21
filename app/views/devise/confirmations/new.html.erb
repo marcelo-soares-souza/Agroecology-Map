@@ -1,7 +1,19 @@
 <% title t(:resend_confirmation_by_email) %>
 
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:login), new_account_session_path, :class => "nav-link active" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:sign_up), new_account_registration_path, :class => "nav-link" %>
+  </li>
+</ul>
+
 <div class="sign_in_up">
-  <br><br>
+  <br>
   <strong><%= t(:resend_confirmation_by_email) %></strong>
   <div class="tip" style="text-align: center">Would you like to receive the confirmation link again?</div>
   <br>

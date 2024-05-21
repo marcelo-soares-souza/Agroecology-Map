@@ -14,7 +14,6 @@ class PracticesController < ApplicationController
   before_action :load_locations, only: %i[new]
   before_action :load_comments, only: %i[show]
   before_action :load_total
-  before_action :load_likes_info, only: %i[show]
 
   # GET /practices
   # GET /practices.json
@@ -69,6 +68,11 @@ class PracticesController < ApplicationController
   # GET /practices/1.json
   def show
     @comment = Comment.new
+
+    if (not browser.bot?) && (not request.is_crawler?)
+      @practice.visits += 1
+      @practice.save!
+    end
   end
 
   # GET /practices/new
@@ -158,7 +162,7 @@ class PracticesController < ApplicationController
       body += "\r\n \r\n"
 
       if @practice.account.id != current_account.id
-        ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @practice.account.email, subject:,  body:).deliver
+        MailJob.perform_async(@practice.account.email, subject, body)
       end
 
       redirect_to practice_path(@practice), notice: "Your like has been registered! Thanks!!"
@@ -195,10 +199,5 @@ class PracticesController < ApplicationController
 
     def load_total
       @total = Practice.count
-    end
-
-    def load_likes_info
-      likes = @practice.likes.map { |like| like.account.name }.join(", ")
-      @likes_info = likes.empty? ? "Like Button" : likes
     end
 end
