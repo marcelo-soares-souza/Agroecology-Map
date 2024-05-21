@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_17_101531) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_21_145258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -174,6 +174,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_101531) do
     t.boolean "is_it_a_farm"
     t.string "continent"
     t.text "what_is_your_dream"
+    t.integer "visits", default: 0
     t.index ["account_id"], name: "index_locations_on_account_id"
     t.index ["name"], name: "index_locations_on_name", opclass: :gin_trgm_ops, using: :gin
     t.index ["slug"], name: "index_locations_on_slug", unique: true

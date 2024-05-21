@@ -70,7 +70,10 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   # GET /locations/1.json
-  def show; end
+  def show
+    @location.visits += 1
+    @location.save!
+  end
 
   # GET /locations/new
   def new

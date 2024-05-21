@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :jobs, only: [:create]
 
   authenticate :account, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
 
   scope "(:locale)", locale: /en|pt-BR|es|fr/ do
