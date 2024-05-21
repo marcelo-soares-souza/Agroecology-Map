@@ -23,17 +23,20 @@
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
+
     <div class="like">
+      <% likes = @location.likes.count.to_s %>
+      <% visits = @location.visits.to_s %>
       <%= link_to like_location_path(@location), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
-        <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-        <span class="badge bg-danger ms-2" style="font-size: 12px;"><%= @location.likes.count.to_s %></span>
+        <img src="/like.png" alt="<%= @likes_info %>" title="<%= likes %> Like(s)">
+        <span class="badge bg-danger ms-2" style="font-size: 12px;" title="<%= likes %> Like(s)"><%= @location.likes.count.to_s %></span>
       <% end %>
       <div class="btn text-white" style="padding-left: 0px;">
-        <img src="<%= image_url("eye.png") %>" alt="Visits" title="Visits">
-        <span class="badge bg-success ms-2 text-white" style="font-size: 12px;"><%= @location.visits.to_s %></span>
+        <img src="<%= image_url("eye.png") %>" alt="Visits" title="<%= visits %> Visits">
+        <span class="badge bg-success ms-2 text-white" style="font-size: 12px;" title="<%= visits %> Visits"><%= @location.visits.to_s %></span>
       </div>
     </div>
-    
+
     <div class="thumbnail">
       <%= photo_thumb(@location, @location.name, true) %>
     </div>

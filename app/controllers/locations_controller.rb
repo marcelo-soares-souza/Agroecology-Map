@@ -14,7 +14,6 @@ class LocationsController < ApplicationController
   before_action :load_options
   before_action :load_system_options
   before_action :load_total
-  before_action :load_likes_info, only: %i[show]
 
   # GET /locations
   # GET /locations.json
@@ -245,10 +244,5 @@ class LocationsController < ApplicationController
 
       fc = GeojsonModel::FeatureCollection.new(features: locations)
       JSON.pretty_generate(JSON.parse(fc.to_json))
-    end
-
-    def load_likes_info
-      likes = @location.likes.map { |like| like.account.name }.join(", ")
-      @likes_info = likes.empty? ? "Like Button" : likes
     end
 end
