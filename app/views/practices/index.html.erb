@@ -82,10 +82,14 @@
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
         <div class="card">
           <div class="like">
-            <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
+            <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
               <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-              <span class="badge bg-danger ms-2" style="font-size: 14px;"><%= practice.likes.count.to_s %></span>
+              <span class="badge bg-danger ms-2" style="font-size: 12px;"><%= practice.likes.count.to_s %></span>
             <% end %>
+            <div class="btn text-white" style="padding-left: 0px;">
+              <img src="<%= image_url("eye.png") %>" alt="Visits" title="Visits">
+              <span class="badge bg-success ms-2 text-white" style="font-size: 12px;"><%= practice.visits.to_s %></span>
+            </div>
           </div>
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
            <div class="card-body" style="min-height: 100px;">

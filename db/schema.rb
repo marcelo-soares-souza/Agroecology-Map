@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_21_145258) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_21_161832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -199,6 +199,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_145258) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.integer "visits", default: 0
     t.index ["account_id"], name: "index_practices_on_account_id"
     t.index ["location_id"], name: "index_practices_on_location_id"
     t.index ["name"], name: "index_practices_on_name", opclass: :gin_trgm_ops, using: :gin

@@ -69,6 +69,11 @@ class PracticesController < ApplicationController
   # GET /practices/1.json
   def show
     @comment = Comment.new
+
+    if (not browser.bot?) && (not request.is_crawler?)
+      @practice.visits += 1
+      @practice.save!
+    end
   end
 
   # GET /practices/new

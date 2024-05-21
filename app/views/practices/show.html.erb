@@ -33,11 +33,16 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <div class="like">
-      <%= link_to like_practice_path(@practice), method: "put", class: "btn text-white",  style: "background-color: #fff;", disabled: true do %>
+      <%= link_to like_practice_path(@practice), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
         <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-        <span class="badge bg-danger ms-2" style="font-size: 14px"><%= @practice.likes.count.to_s %></span>
+        <span class="badge bg-danger ms-2" style="font-size: 12px;"><%= @practice.likes.count.to_s %></span>
       <% end %>
+      <div class="btn text-white" style="padding-left: 0px;">
+        <img src="<%= image_url("eye.png") %>" alt="Visits" title="Visits">
+        <span class="badge bg-success ms-2 text-white" style="font-size: 12px;"><%= @practice.visits.to_s %></span>
+      </div>
     </div>
+
     <div class="thumbnail">
       <%= photo_thumb(@practice, @practice.name, true) %>
     </div>

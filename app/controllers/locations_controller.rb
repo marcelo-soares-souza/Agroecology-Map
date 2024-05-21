@@ -71,8 +71,10 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
-    @location.visits += 1
-    @location.save!
+    if (not browser.bot?) && (not request.is_crawler?)
+      @location.visits += 1
+      @location.save!
+    end
   end
 
   # GET /locations/new

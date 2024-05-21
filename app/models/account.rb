@@ -2,7 +2,8 @@
 
 class Account < ApplicationRecord
   include Humanizer
-  require_human_on :create
+  attr_accessor :bypass_humanizer
+  require_human_on :create, unless: :bypass_humanizer
 
   paginates_per 6
 
