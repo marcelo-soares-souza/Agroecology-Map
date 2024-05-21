@@ -8,5 +8,5 @@ COPY Gemfile Gemfile.lock ./
 RUN gem install bundler:2.5.9
 RUN bundle install
 COPY . .
-RUN bundle exec rails assets:precompile
-CMD puma -C config/puma.rb
+# RUN bundle exec rails assets:precompile
+# CMD puma -C config/puma.rb

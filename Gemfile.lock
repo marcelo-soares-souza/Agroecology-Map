@@ -243,6 +243,8 @@ GEM
       ffi (~> 1.0)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
+    redis-client (0.22.1)
+      connection_pool
     regexp_parser (2.9.2)
     reline (0.5.7)
       io-console (~> 0.5)
@@ -294,6 +296,11 @@ GEM
       tilt
     schema_dot_org (2.2.3)
       validated_object (~> 2.3)
+    sidekiq (7.2.4)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.19.0)
     sorbet-runtime (0.5.11385)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -369,6 +376,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6.0.0)
   schema_dot_org (~> 2.2.3)
+  sidekiq (~> 7.2)
   terser
   tzinfo-data
   web-console (>= 4.2.1)

@@ -10,13 +10,17 @@ services:
     healthcheck:
       test: ['CMD', 'pg_isready', '-U', 'postgres']
   website:
-    build: .
+    build:
+      context: .
+    command: bash -c "bundle exec rails assets:precompile && puma -C config/puma.rb"
     restart: always
     depends_on:
       - 'postgres'
+      - 'sidekiq'
     expose:
       - '3000'
     volumes:
+      - '.:/app'
       - '/opt/agroecologymap:/app/storage'
       - '/opt/dockers/logs:/app/log'
     env_file: .env
@@ -25,5 +29,27 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
+  sidekiq:
+    build:
+      context: .
+    command: bundle exec sidekiq
+    restart: always
+    depends_on:
+      - 'postgres'
+      - 'valkey'
+    volumes:
+      - '.:/app'
+    env_file: .env
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+  valkey:
+    restart: always
+    image: valkey/valkey:latest
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+
 volumes:
   postgres:

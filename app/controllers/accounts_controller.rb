@@ -54,14 +54,16 @@ class AccountsController < ApplicationController
 
   def message
     message = params["account"]["message"]
-    @account = Account.friendly.find(params[:id])
 
     if not message.nil?
+      @account = Account.friendly.find(params[:id])
+      to = @account.email
       subject = "[Agroecology Map] #{current_account.name} sent you a message"
       body = "Message: #{message}"
       body += "\r\n \r\n"
       body += "Link to the Account: " + account_url(current_account)
-      ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @account.email, subject:,  body:).deliver
+
+      MailJob.perform_async(to, subject, body)
     end
 
     respond_to do |format|
