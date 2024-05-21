@@ -4,7 +4,10 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
   resources :jobs, only: [:create]
-  mount Sidekiq::Web => "/sidekiq"
+
+  authenticate :account, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   scope "(:locale)", locale: /en|pt-BR|es|fr/ do
     get "health" => "rails/health#show", as: :rails_health_check
