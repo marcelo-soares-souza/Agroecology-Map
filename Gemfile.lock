@@ -81,8 +81,10 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    backport (1.2.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    benchmark (0.3.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
     bootstrap-icons (1.0.14)
@@ -113,7 +115,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.1)
     drb (2.2.1)
+    e2mmap (0.1.0)
     equalizer (0.0.11)
     erubi (1.12.0)
     execjs (2.9.1)
@@ -140,6 +144,7 @@ GEM
     irb (1.13.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jaro_winkler (1.5.6)
     jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -158,6 +163,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    kramdown (2.4.0)
+      rexml
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -241,7 +250,8 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.6.3.1)
+    rbs (2.8.4)
+    rdoc (6.7.0)
       psych (>= 4.0.0)
     redis-client (0.22.2)
       connection_pool
@@ -251,9 +261,11 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    reverse_markdown (2.1.1)
+      nokogiri
     rexml (3.2.8)
       strscan (>= 3.0.9)
-    rubocop (1.63.5)
+    rubocop (1.64.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -301,7 +313,23 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.19.0)
-    sorbet-runtime (0.5.11386)
+    solargraph (0.50.0)
+      backport (~> 1.2)
+      benchmark
+      bundler (~> 2.0)
+      diff-lcs (~> 1.4)
+      e2mmap
+      jaro_winkler (~> 1.5)
+      kramdown (~> 2.3)
+      kramdown-parser-gfm (~> 1.1)
+      parser (~> 3.0)
+      rbs (~> 2.0)
+      reverse_markdown (~> 2.0)
+      rubocop (~> 1.38)
+      thor (~> 1.0)
+      tilt (~> 2.0)
+      yard (~> 0.9, >= 0.9.24)
+    sorbet-runtime (0.5.11388)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -340,6 +368,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    yard (0.9.36)
     zeitwerk (2.6.14)
 
 PLATFORMS
@@ -377,6 +406,7 @@ DEPENDENCIES
   sass-rails (>= 6.0.0)
   schema_dot_org (~> 2.2.3)
   sidekiq (~> 7.2)
+  solargraph
   terser
   tzinfo-data
   web-console (>= 4.2.1)

@@ -18,6 +18,7 @@ gem "sass-rails", ">= 6.0.0"
 group :development do
   gem "listen", ">= 3.9.0"
   gem "web-console", ">= 4.2.1"
+  gem "solargraph", group: :development
 end
 
 group :rubocop do

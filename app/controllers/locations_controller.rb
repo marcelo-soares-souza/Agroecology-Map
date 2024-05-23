@@ -13,8 +13,7 @@ class LocationsController < ApplicationController
   before_action :load_total_medias, only: %i[show]
   before_action :load_options
   before_action :load_system_options
-  
-    before_action :load_total
+  before_action :load_total
 
   # GET /locations
   # GET /locations.json
