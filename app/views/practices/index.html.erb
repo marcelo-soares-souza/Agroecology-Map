@@ -51,7 +51,7 @@
     <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
     <div style="padding-top: 8px; padding-bottom: 8px; align-content: center; text-align: left; font-size: 21px">
       <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
-      <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
+      <%= link_to " " + t(:clear_filters), practices_path, class: "btn btn-info btn-lg" %>
     </div>
   </div>
 </div>
