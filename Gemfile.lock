@@ -121,7 +121,7 @@ GEM
     equalizer (0.0.11)
     erubi (1.12.0)
     execjs (2.9.1)
-    ffi (1.16.3)
+    ffi (1.17.0-x86_64-linux-gnu)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     geocoder (1.8.3)
@@ -184,7 +184,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.23.1)
     mutex_m (0.2.0)
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
       net-protocol
     net-pop (0.1.2)
@@ -329,7 +329,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.11406)
+    sorbet-runtime (0.5.11409)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
