@@ -1,13 +1,3 @@
-    let lat = 16.0;
-    let lon = 1.0;
-    let zoom = 3.25;
-
-    if (window.devicePixelRatio > 2) {
-        zoom = 3;
-        lat = 15.00;
-        lon = 15.00;
-    }
-
     const map = L.map('map', { fullscreenControl: true,
                                 zoomControl: false,
                                 worldCopyJump: true,
@@ -15,7 +5,7 @@
                                 minZoom: 2,
                                 maxZoom: 18,
                             }
-                    ).setView([lat, lon], zoom);
+                    ).setView([15, 15], 3.25);
 
     const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a></span>',
@@ -33,7 +23,3 @@
             map.invalidateSize();
         }).trigger("resize");
     });
-
-    let collapsed = false;
-    if (window.innerWidth < 1000) { collapsed = true; }
-

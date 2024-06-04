@@ -9,11 +9,7 @@
     });
 
     Object.assign(overlayMaps, {"<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomes (Brazil)</a>": biomes});
-
-    const philippines = L.kmzLayer('/philippines.kmz');
-
-    Object.assign(overlayMaps, {"<a href='https://www.google.com/maps/d/u/0/edit?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&usp=sharing' target='_blank'>Permaculture Philippines</a>": philippines});
-
+    
     const osmHot = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.hotosm.org/" target="_blank">HOT OSM</a> | <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a></span>',
         maxZoom: 18,
