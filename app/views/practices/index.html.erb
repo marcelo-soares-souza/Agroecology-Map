@@ -74,7 +74,9 @@
 <%=  %>
   <% if @account.blank? and params[:location_id].blank? %>
       <span style="font-size: 13px; float: right;">
-        <a href="/practices.csv">Export as CSV</a>
+        <a href="/practices.json">Export as JSON</a>
+        |
+        <a href="/practices.csv">CSV</a>
       </span><br>
   <% end %>
   <div class="row">
