@@ -17,5 +17,6 @@ json.url location_url(location)
 json.image_url photo_thumb_url(location, "", true)
 json.hide_my_location location.hide_my_location
 json.responsible_for_information location.account.name
+json.account_id practice.account.id
 json.created_at location.created_at
 json.updated_at location.updated_at

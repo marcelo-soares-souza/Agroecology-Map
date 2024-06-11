@@ -10,5 +10,7 @@ json.url practice_url(practice)
 json.image_url photo_thumb_url(practice, "", true)
 json.location_name practice.location.name
 json.responsible_for_information practice.account.name
+json.account_id practice.account.id
+json.location_id practice.location_id
 json.created_at practice.created_at
 json.updated_at practice.updated_at
