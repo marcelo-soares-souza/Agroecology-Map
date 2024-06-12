@@ -640,10 +640,10 @@ input::file-selector-button {
 }
 
 .about {
-    margin: 32px auto;
+    margin: 8px auto;
     font-size: 21px;
     text-align: justify-all;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .forms {
