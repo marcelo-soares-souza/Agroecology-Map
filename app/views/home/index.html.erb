@@ -10,9 +10,10 @@
 <script>
   <%= raw Terser.new.compile(render "home/maps/load_maps") %>
   <%= raw Terser.new.compile(render "home/maps/locations") %>
-  <%= raw Terser.new.compile(render "home/maps/agroecologyworks") %>
   <%= raw Terser.new.compile(render "home/maps/brigadesactionspaysannes") %>
   <%= raw Terser.new.compile(render "home/maps/philippines") %>
+  <%= raw Terser.new.compile(render "home/maps/agroecologyeurope") %>
   <%= raw Terser.new.compile(render "home/maps/omv") %>
+  <%#= raw Terser.new.compile(render "home/maps/agroecologyworks") %>
   <%= raw Terser.new.compile(render "home/maps/overlays") %>
 </script>
