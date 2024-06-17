@@ -79,32 +79,3 @@ async function loadBrigadesActionsPaysannes(url, title, color) {
 
     return layers;
 }
-
-async function loadPhilippines(url, title, color) {
-    const response = await fetch(url);
-    const locations = await response.json();
-    const layers = L.markerClusterGroup();
-
-    const Icon = L.icon({
-        iconUrl: '/assets/leaflet/images/leaf-'+color+'.png',
-        shadowUrl: '/assets/leaflet/images/leaf-shadow.png',
-        iconSize: [38, 95],
-        shadowSize: [50, 64],
-        iconAnchor: [22, 94],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    });
-
-    for (let location of locations['features']) {
-        const name = location['properties']['Name'];
-        const latitude = location['geometry']['coordinates'][1];
-        const longitude = location['geometry']['coordinates'][0];
-        
-        let popup = '<strong style="font-size: 12px;">' + title + '</strong><br>';
-        popup += '<strong><a href="https://www.google.com/maps/d/u/0/viewer?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&ll=12.338748639470754%2C122.35766269999999&z=6" target="_blank">' + name + '</a></strong>';
-
-        layers.addLayer(new L.marker(new L.latLng(latitude, longitude), {icon: Icon}).bindPopup(popup));
-    };
-
-    return layers;
-}
