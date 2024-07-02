@@ -1,6 +1,6 @@
     loadLayers('/philippines.json', 'Collaborative Permaculture Map of the Philippines', 'orange').then(layer => {
         const philippines = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
         philippines.addLayer(layer).addTo(map);
-        Object.assign(overlayMaps, {"<a href='https://www.google.com/maps/d/u/0/viewer?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&ll=12.338748639470754%2C122.35766269999999&z=6' target='_blank'>Permaculture Philippines</a>": philippines});
+        Object.assign(overlayMaps, {"<a href='https://www.google.com/maps/d/u/0/viewer?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&ll=12.338748639470754%2C122.35766269999999&z=6' target='_blank' style='color: orange;'>Permaculture Philippines</a>": philippines});
     });
 

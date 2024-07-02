@@ -1,5 +1,5 @@
     loadLayers('https://onemillionvoices.agroecologymap.org/locations.json', 'One Million Voices', 'red').then(layer => {
         const omv = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 32 });
         omv.addLayer(layer).addTo(map);
-        Object.assign(overlayMaps, {"<a href='https://onemillionvoices.agroecologymap.org/' target='_blank'>One Million Voices</a>": omv});
+        Object.assign(overlayMaps, {"<a href='https://onemillionvoices.agroecologymap.org/' target='_blank' style='color: red;'>One Million Voices</a>": omv});
     });

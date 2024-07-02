@@ -58,7 +58,7 @@
     <%= "<div class='text-box'>#{farm_and_farming_system_complement}</div><br>".html_safe unless farm_and_farming_system_complement.blank? %>
     <%= "<h4>#{t(:farm_and_farming_system_details)}</h4><div class='text-box'>#{simple_format (h @location.farm_and_farming_system_details).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.farm_and_farming_system_details.blank? %>
     <%= "<h4>#{t(:what_is_your_dream_for_the_future_of_your_farm_and_or_your_location_in_general)}</h4><div class='text-box'>#{simple_format (h @location.what_is_your_dream).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.what_is_your_dream.blank? %>
-
+    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@location.created_at.to_s}</div>".html_safe %>
     <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @location.account.name, account_path(@location.account)}&nbsp;".html_safe if @location.account.name? %></div>
 
     <% if @location.hide_my_location == false %>
