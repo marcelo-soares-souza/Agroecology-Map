@@ -4,7 +4,7 @@
         margin-left: auto;
         margin-right: auto;
         max-width: 900px;
-        margin-top: 40px;
+        margin-top: 25px;
     }
 
     .logo {
@@ -59,7 +59,6 @@
 
 <div class="thank_you_notes">
   <h1><%= t(:friends) %>/<%= t(:partners) %></h1>
-  <br><br>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
@@ -80,9 +79,21 @@
       <div class="card">
         <div class="logo"><%= link_to image_tag("partners/regen10.jpg", width: "140px", alt: "Regen10 Experts Network Logo", title: "Agroecology Works! Logo"), "https://regen10.org/experts-network/", :target => "_blank", :alt => "Regen10 Experts Network Logo", :title => "Regen10 Experts Network Logo" %></div></div>
     </div>
-    <div class="col-sm-4">
+    <!-- **************** -->
+     <div class="col-sm-4">
       <div class="card">
-        <div class="logo"><%= link_to image_tag("partners/PGI.webp", width: "220px", alt: "Post Growth Institute", title: "Post Growth Institute"), "https://postgrowth.org/", :target => "_blank", :alt => "Post Growth Institute", :title => "Post Growth Institute" %></div></div>
+        <div class="logo">
+          <% title = "Agroecology TPP" %>
+          <%= link_to image_tag("groups/TPP.jpg",
+                                 width: "150px",
+                                 alt: title,
+                                 title: title),
+                                 "https://glfx.globallandscapesforum.org/topics/21467/page/TPP-home", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
