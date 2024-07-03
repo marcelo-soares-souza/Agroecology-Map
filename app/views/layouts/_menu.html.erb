@@ -57,7 +57,7 @@
           </li>
         <% end %>
       <% end %>
-       
+       <%= link_to(t(:projects_and_groups), projects_and_groups_path, :class => "nav-link") %>
       <li>
         <select id="locale" onchange="if (this.value) window.location.href='/' + this.value" class="form-control">
           <option value="en">English</option>
