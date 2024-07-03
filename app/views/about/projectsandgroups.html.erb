@@ -1,0 +1,294 @@
+<% title t(:projects_and_groups) %>
+<style>
+    .thank_you_notes {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 900px;
+        margin-top: 40px;
+    }
+
+    .logo {
+        width: 220px;
+        margin: auto;
+        background-color: transparent;
+    }
+
+    .thank_you_notes .card {
+        border: 0;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        margin-bottom: 32px;
+        margin-top: 32px;
+    }
+</style>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:who_we_are), who_we_are_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:data_summary), dashboard_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:friends), partners_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:thank_you_notes), thank_you_notes_path, :class => "nav-link" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to t(:contact), contact_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+     <%= link_to t(:projects_and_groups), projects_and_groups_path, :class => "nav-link active" %>
+  </li>
+</ul>
+
+<div class="thank_you_notes">
+  <h1><%= t(:projects_and_groups) %></h1>
+  <br><br>
+  <div class="row">
+    <!-- **************** -->
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology Coalition" %>
+          <%= link_to image_tag("groups/AC-logo.png",
+                                 width: "200px",
+                                 alt: title,
+                                 title: title),
+                                 "https://agroecology-coalition.org/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology Fund" %>
+          <%= link_to image_tag("groups/AEF.png",
+                                 width: "250px",
+                                 alt: title,
+                                 title: title),
+                                 "https://agroecologyfund.org/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Associação Brasileira de Agroecologia" %>
+          <%= link_to image_tag("groups/ABA.png",
+                                 width: "250px",
+                                 alt: title,
+                                 title: title),
+                                 "https://aba-agroecologia.org.br/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Articulação Nacional de Agroecologia" %>
+          <%= link_to image_tag("groups/ANA.png",
+                                 width: "250px",
+                                 alt: title,
+                                 title: title),
+                                 "https://agroecologia.org.br/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "AGROECOLOGY EUROPE​" %>
+          <%= link_to image_tag("groups/AEEU.png",
+                                 width: "180px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.agroecology-europe.org/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "SOCLA" %>
+          <%= link_to image_tag("groups/SOCLA.png",
+                                 width: "180px",
+                                 alt: title,
+                                 title: title),
+                                 "https://soclaglobal.com/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology Partnership" %>
+          <%= link_to image_tag("groups/AgroecologyPartnership.png",
+                                 width: "180px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.agroecologypartnership.eu/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology TPP" %>
+          <%= link_to image_tag("groups/TPP.jpg",
+                                 width: "100px",
+                                 alt: title,
+                                 title: title),
+                                 "https://glfx.globallandscapesforum.org/topics/21467/page/TPP-home", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "CANALLS" %>
+          <%= link_to image_tag("groups/CANALS.jpg",
+                                 width: "180px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.canalls-project.eu/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "NATAE Foster agroecological transition in North Africa" %>
+          <%= link_to image_tag("groups/NATAE.png",
+                                 width: "180px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.natae-agroecology.eu/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology Works!" %>
+          <%= link_to image_tag("partners/agroecologyworks.png",
+                                 width: "180px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.agroecologyworks.ch", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "FAO Agroecology" %>
+          <%= link_to image_tag("groups/FAO.png",
+                                 width: "120px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.fao.org/agroecology/overview/en/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology GOOD" %>
+          <%= link_to image_tag("groups/GOOD.png",
+                                 width: "150px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.goodhorizon.eu/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Agroecology-TRANSECT" %>
+          <%= link_to image_tag("groups/TRANSECT.png",
+                                 width: "150px",
+                                 alt: title,
+                                 title: title),
+                                 "https://www.agroecology-transect.net/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "The House of Agroecology" %>
+          <%= link_to image_tag("groups/TheHouseofAgroecology.png",
+                                 width: "150px",
+                                 alt: title,
+                                 title: title),
+                                 "https://houseofagroecology.org/fr/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

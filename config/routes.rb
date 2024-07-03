@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get "source_code_license", to: "about#source_code_license"
     get "thank_you_notes", to: "about#thank_you_notes"
     get "contact", to: "about#contact"
+    get "projects_and_groups", to: "about#projectsandgroups"
     get "dashboard", to: "dashboard#index"
     get "privacy_policy", to: "about#privacy_policy"
 
