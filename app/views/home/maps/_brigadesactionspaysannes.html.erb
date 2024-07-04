@@ -1,5 +1,0 @@
-    loadBrigadesActionsPaysannes('/brigadesactionspaysannes.json', 'Brigades d’actions paysannes', 'orange').then(layer => {
-        const brigadesactionspaysannes = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
-        brigadesactionspaysannes.addLayer(layer).addTo(map);
-        Object.assign(overlayMaps, {"<a href='https://www.brigadesactionspaysannes.be/' target='_blank' style='color: orange;'>Brigades d’actions paysannes</a>": brigadesactionspaysannes});
-    });
