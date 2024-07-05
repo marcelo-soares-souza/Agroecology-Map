@@ -40,10 +40,10 @@
         L.control.layers(baseMaps, overlayMaps, { collapsed: (window.innerWidth < 900 ? true : false), position: 'bottomright'}).addTo(map);
     });
 
-    loadLayers('/accounts/agroecology-works/locations.json', 'Agroecology Works!', 'orange').then(layer => {
+    loadLayers('/accounts/agroecology-works/locations.json', 'Agroecology Works!', 'blue').then(layer => {
         const agroecologyworks = L.markerClusterGroup({ maxClusterRadius: 0 });
         agroecologyworks.addLayer(layer).addTo(map);
-        Object.assign(overlayMaps, {"<a href='https://www.agroecologyworks.ch' target='_blank' style='color: orange;'>Agroecology Works!</a>": agroecologyworks});
+        Object.assign(overlayMaps, {"<a href='https://www.agroecologyworks.ch' target='_blank'>Agroecology Works!</a>": agroecologyworks});
     });
 
     loadLayers('https://onemillionvoices.agroecologymap.org/locations.json', 'One Million Voices', 'red').then(layer => {
@@ -82,17 +82,18 @@
         Object.assign(overlayMaps, {"<a href='https://feirasorganicas.org.br/sobre-nos/' target='_blank' style='color: orange;'>Organic Food Fairs (Brazil)</a>": feirasorganicas});
     });
 
-    // OverLay Maps
-    const geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
+    (async () => {
+        const geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
 
-    const biomes = L.tileLayer.wms(geoserver, {
-        layers: 'CMR-PUBLICO' + ':' + 'veg_biomas_a',
-        format: 'image/png',
-        transparent: true,
-        opacity: 0.3
-    });
+        const biomes = L.tileLayer.wms(geoserver, {
+            layers: 'CMR-PUBLICO' + ':' + 'veg_biomas_a',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.3
+        });
 
-    Object.assign(overlayMaps, {"<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomes (Brazil)</a>": biomes});
+        Object.assign(overlayMaps, {"<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomes (Brazil)</a>": biomes});
+    })()
 
     const osmHot = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.hotosm.org/" target="_blank">HOT OSM</a> | <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a></span>',
