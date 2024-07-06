@@ -82,6 +82,12 @@
         Object.assign(overlayMaps, {"<a href='https://feirasorganicas.org.br/sobre-nos/' target='_blank' style='color: orange;'>Organic Food Fairs (Brazil)</a>": feirasorganicas});
     });
 
+    loadLayers('/sampamaisrural.json', 'Sampa+Rural', 'orange').then(layer => {
+        const sampamaisrural = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        sampamaisrural.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://sampamaisrural.prefeitura.sp.gov.br/' target='_blank' style='color: orange;'>Sampa+Rural Agroecology</a>": sampamaisrural});
+    });
+
     (async () => {
         const geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
 
