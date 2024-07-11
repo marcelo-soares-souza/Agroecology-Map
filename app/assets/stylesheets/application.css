@@ -687,6 +687,8 @@ h4 {
 
 h1 {
     color: #eb9100ea !important;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .practices-box h4 {
@@ -770,7 +772,7 @@ strong {
 }
 
 .tab-content > .active {
-    max-width: 900px;
+    max-width: 915px;
     margin-left: auto;
     margin-right: auto;
 }
