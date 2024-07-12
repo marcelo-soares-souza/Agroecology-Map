@@ -33,7 +33,8 @@
             map.invalidateSize();
         }).trigger("resize");
     });
-      loadLayers('/reduced_map.json', 'Agroecology Map', 'green').then(layer => {
+    
+    loadLayers('/reduced_map.json', 'Agroecology Map', 'green').then(layer => {
         const locations = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
         locations.addLayer(layer).addTo(map);
         Object.assign(overlayMaps, {"<a href='https://agroecologymap.org/' target='_blank' style='color: green;'>Agroecology Map</a>": locations});
@@ -92,6 +93,12 @@
         const permakultur = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
         permakultur.addLayer(layer).addTo(map);
         Object.assign(overlayMaps, {"<a href='https://permakultur-landwirtschaft.org/hoefe/' target='_blank' style='color: orange;'>Permakultur Höfe-Netz Schweiz</a>": permakultur});
+    });
+
+    loadLayers('/permacultureglobal.json', 'Permaculture Global', 'orange').then(layer => {
+        const permacultureglobal = L.markerClusterGroup({ disableClusteringAtZoom: 10, maxClusterRadius: 64 });
+        permacultureglobal.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://permacultureglobal.org/projects' target='_blank' style='color: orange;'>Permaculture Global</a>": permacultureglobal});
     });
 
     (async () => {
