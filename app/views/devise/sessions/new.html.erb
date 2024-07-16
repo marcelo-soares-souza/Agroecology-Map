@@ -19,7 +19,7 @@
   <br>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), style: "form-floating", html: { data: { turbo: false } }) do |f| %>
-    <div class="forms">
+    <div class="forms" style="padding-bottom: 16px;">
       <div class="form-group col-xs-2 col-md-4 required bg-light">
         <%= f.label "E-Mail", class: "col-form-label-lg control-label" %>
         <%= f.email_field :email, autofocus: true, class: "form-control", :required => true, :autocomplete => "email" %>
@@ -45,7 +45,8 @@
     </div>
 
     <%= render "devise/shared/links" %>
-    <br>
+
+    <hr>
     <div>
       <strong style="font-size: 14px"><%= t(:all_content_on_this_platform_is_licensed_under_the) %></strong>
       <br>
