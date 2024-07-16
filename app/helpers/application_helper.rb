@@ -53,6 +53,30 @@ module ApplicationHelper
     end
   end
 
+  def photo_mini(entity, description = "", use_gallery_photos = false)
+    description || ""
+    if entity.photo.attached?
+      image_tag entity.photo.variant(:thumb), title: description, alt: description, class: "img-fluid", size: "21x21"
+    else
+      name = "place"
+      number = default_image_number
+
+      if entity.class.to_s == "Account"
+        name = "avatar"
+        number = rand(0..9)
+      end
+
+      image_url = "/assets/#{name}_thumb_#{number}.png"
+
+      if use_gallery_photos && entity.medias && entity.medias.any?
+        if entity.medias[0].photo.attached?
+          image_url = entity.medias[0].photo.variant(:thumb)
+        end
+      end
+      image_tag image_url, title: description, alt: description, class: "img-fluid", size: "21x21"
+    end
+  end
+
   def photo_medium(entity, description = "")
     description || ""
     if entity.photo.attached?
