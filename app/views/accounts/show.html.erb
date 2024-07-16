@@ -69,8 +69,8 @@
   <% if current_account.admin? or current_account.id == @account.id %>
     <hr>
     <div class="form-actions">
-      <%= link_to t(:register_new_location), new_location_path, :class => "btn btn-primary" %>
       <%= link_to t(:edit_your_profile), edit_account_path(@account), :class => 'btn btn-success' %>
+      <%= link_to t(:register_new_location), new_location_path, :class => "btn btn-primary" %>
       <br><br>
       <%= link_to t(:destroy), account_path(@account), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger', :style => 'width: 250px;' if @account.id != 1 %>
       <br><br>

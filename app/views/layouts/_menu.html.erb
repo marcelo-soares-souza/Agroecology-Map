@@ -59,7 +59,10 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= photo_mini(current_account, current_account.name) %></a>
           <div class="dropdown-menu" style="text-align: left; padding-left: 6px">
             <%= link_to "Profile", account_path(current_account), :class => "nav-link" %>
-            <%= link_to("#{t(:logout)}", destroy_account_session_path, :method => :delete, :class => "nav-link") %>
+            <%= link_to t(:locations) + " (#{current_account.locations.size})", account_locations_path(current_account), :class => "nav-link" %>
+            <%= link_to t(:practices) + " (#{current_account.practices.size})", account_practices_path(current_account), :class => "nav-link" %>
+            <%= link_to t(:gallery) + " (#{current_account.medias.size})", account_gallery_path(current_account), :class => "nav-link" %>
+            <%= link_to "#{t(:logout)}", destroy_account_session_path, :method => :delete, :class => "nav-link" %>
           </div>          
         </li>
       <% end %>
