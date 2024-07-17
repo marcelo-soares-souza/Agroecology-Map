@@ -51,16 +51,16 @@
     </div>
 
     <br>
-    <h1><%= @practice.name.truncate(72) %></h1>
+    <h1><%= @practice.name.truncate(128) %></h1>
     <br>
 
     <% if ! @practice.what_you_do.summary_description_of_agroecological_practice.blank? %>
       <%= "<h4>#{t(:summary_description)}</h4>".html_safe  %>
-      <div class="text-box"><%= @practice.what_you_do.summary_description_of_agroecological_practice.truncate(512) %></div>
+      <div class="text-box"><%= @practice.what_you_do.summary_description_of_agroecological_practice.truncate(4058) %></div>
       <br>
     <% end %>
 
-    <%= "<h4>#{t(:location)}</h4>#{link_to @practice.location.name.truncate(40), location_path(@practice.location)}&nbsp;".html_safe if @practice.location.name? %>
+    <%= "<h4>#{t(:location)}</h4>#{link_to @practice.location.name.truncate(64), location_path(@practice.location)}&nbsp;".html_safe if @practice.location.name? %>
     <br><br>
     <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@practice.created_at.to_s}</div>".html_safe %>
     <br><br>

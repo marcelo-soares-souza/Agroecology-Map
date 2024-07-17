@@ -42,7 +42,7 @@
     </div>
 
     <br>
-    <h1><%= @location.name.truncate(80) %></h1>
+    <h1><%= @location.name.truncate(128) %></h1>
     <br>
 
     <%= "<h4>#{t(:short_description)}</h4><div class='text-box'>#{simple_format (h @location.description).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.description.blank? %>
