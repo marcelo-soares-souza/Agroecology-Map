@@ -14,7 +14,7 @@
   </li>
 </ul>
 
-<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
+<div style="text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
   <span style="font-size: 13px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
@@ -78,7 +78,7 @@
   </div>
 
   <% if not params[:account_id] %>
-    <div>
+    <div style="margin-top: -14px;">
       <%= paginate @locations %>
     </div>
   <% end %>

@@ -41,8 +41,8 @@
         L.control.layers(baseMaps, overlayMaps, { collapsed: (window.innerWidth < 900 ? true : false), position: 'bottomright'}).addTo(map);
     });
 
-    loadLayers('/accounts/agroecology-works/locations.json', 'Agroecology Works!', 'blue').then(layer => {
-        const agroecologyworks = L.markerClusterGroup({ maxClusterRadius: 0 });
+    loadLayers('/agroecologyworks.json', 'Agroecology Works!', 'blue').then(layer => {
+        const agroecologyworks = L.markerClusterGroup({ disableClusteringAtZoom: 10, maxClusterRadius: 2 });
         agroecologyworks.addLayer(layer).addTo(map);
         Object.assign(overlayMaps, {"<a href='https://www.agroecologyworks.ch' target='_blank'>Agroecology Works!</a>": agroecologyworks});
     });

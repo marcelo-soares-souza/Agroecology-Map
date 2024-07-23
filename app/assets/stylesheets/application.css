@@ -124,7 +124,7 @@ strong {
 }
 
 .btn:not(:disabled):not(.disabled) {
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .nav-tabs .nav-item.show .nav-link,

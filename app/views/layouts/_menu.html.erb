@@ -46,7 +46,7 @@
       <% if not current_account %>
         <% if not browser.bot? and not request.is_crawler? %>
           <li class="nav-item">
-            <strong><%= link_to(t(:login), new_account_session_path, :class => "nav-link") %></strong>
+            <strong><%= link_to(t(:login), new_account_session_path, :class => "nav-link", :style => "color: #dc3545;") %></strong>
           </li>
           <!-- >
           <li>
