@@ -150,6 +150,21 @@ strong {
     overflow: hidden;
 }
 
+.thumbnail-photo-menu {
+    background: #ffffff;
+    margin-right: -5px;
+    position: relative;
+    width: 21px;
+    height: 21px;
+    overflow: hidden;
+
+    object-fit: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
 .thumbnail img {
     position: absolute;
     left: 50%;

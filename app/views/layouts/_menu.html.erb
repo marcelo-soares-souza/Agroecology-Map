@@ -56,7 +56,9 @@
         <% end %>
       <% else %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= photo_mini(current_account, current_account.name) %></a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= photo_mini(current_account, current_account.name) %>
+          </a>
           <div class="dropdown-menu" style="text-align: left; padding-left: 6px">
             <%= link_to "Profile", account_path(current_account), :class => "nav-link" %>
             <%= link_to t(:locations) + " (#{current_account.locations.size})", account_locations_path(current_account), :class => "nav-link" %>

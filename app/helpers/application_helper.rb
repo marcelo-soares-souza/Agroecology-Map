@@ -56,7 +56,7 @@ module ApplicationHelper
   def photo_mini(entity, description = "", use_gallery_photos = false)
     description || ""
     if entity.photo.attached?
-      image_tag entity.photo.variant(:thumb), title: description, alt: description, class: "img-fluid", size: "21x21", style: "border: 1px solid #000; background: #fff;"
+      image_tag entity.photo.variant(:thumb), title: description, alt: description, class: "thumbnail-photo-menu", size: "21x21"
     else
       name = "place"
       number = default_image_number
@@ -73,7 +73,7 @@ module ApplicationHelper
           image_url = entity.medias[0].photo.variant(:thumb)
         end
       end
-      image_tag image_url, title: description, alt: description, class: "img-fluid", size: "21x21", style: "border: 1px solid #000; background: #fff;"
+      image_tag image_url, title: description, alt: description, class: "thumbnail-photo-menu", size: "21x21"
     end
   end
 
