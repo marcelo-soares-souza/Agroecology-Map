@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     put "/practices/:id/like", to: "practices#like", as: "like_practice"
     put "/locations/:id/like", to: "locations#like", as: "like_location"
     post "/accounts/:id/message", to: "accounts#message", as: "message_account"
+    post "/home/message", to: "home#message", as: "message_contact"
 
     resources :practices
     resources :acknowledges

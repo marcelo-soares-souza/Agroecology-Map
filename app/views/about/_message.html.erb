@@ -1,0 +1,8 @@
+ <%= form_with scope: "contact", url: message_contact_path, method: :post do |f| %>
+   <div class="col-xs-4" style="padding-bottom: 25px">
+    <%= f.text_field :email, class: "form-control", :required => true, :placeholder => 'E-Mail' %>
+    <br>
+    <%= f.text_area :message, rows: 4, class: "form-control", placeholder: t(:message) %>
+    <%= f.submit t(:submit_message), class: "btn btn-info", style: "margin-top: 8px; margin-bottom: 8px;" %>
+  </div>
+<% end %>
