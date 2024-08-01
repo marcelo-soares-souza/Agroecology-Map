@@ -139,6 +139,21 @@
      <div class="col-sm-3">
       <div class="card">
         <div class="logo">
+          <% title = "Slow Food Kenya" %>
+          <%= link_to image_tag("groups/slowfoodkenya.png",
+                                 width: "200px",
+                                 alt: title,
+                                 title: title),
+                                 "https://slowfoodkenya.org/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>       
+    <!-- **************** -->
+     <div class="col-sm-3">
+      <div class="card">
+        <div class="logo">
           <% title = "Seed Savers Kenya" %>
           <%= link_to image_tag("groups/seedsaverskenya.png",
                                  width: "130px",
