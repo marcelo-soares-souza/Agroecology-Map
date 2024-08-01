@@ -378,28 +378,28 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  autotuner (~> 1.0)
+  autotuner (~> 1.0.2)
   bcrypt (~> 3.1.20)
   bootstrap-icons-helper (>= 2.0.2)
   browser
-  countries (>= 6.0.0)
+  countries (>= 6.0.1)
   country_select (>= 9.0.0)
   crawler_detect
-  devise (~> 4.9.3)
+  devise (~> 4.9.4)
   friendly_id (>= 5.5.1)
-  geocoder (>= 1.8.2)
+  geocoder (>= 1.8.3)
   geojson_model
   humanizer
   image_processing (>= 1.12.2)
-  jbuilder (>= 2.11.5)
+  jbuilder (>= 2.12.0)
   jwt (~> 2.8.1)
   kaminari (>= 1.2.2)
   listen (>= 3.9.0)
-  nokogiri (>= 1.16.3)
-  pg (>= 1.5.6)
+  nokogiri (>= 1.16.7)
+  pg (>= 1.5.7)
   puma (>= 6.4.2)
   rails (>= 7.1)
-  rdoc (>= 6.6.3.1)
+  rdoc (>= 6.7.0)
   rubocop (>= 1.62.1)
   rubocop-md
   rubocop-minitest
@@ -408,11 +408,11 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6.0.0)
   schema_dot_org (~> 2.2.3)
-  sidekiq (~> 7.2)
+  sidekiq (~> 7.3)
   solargraph
   terser
   tzinfo-data
   web-console (>= 4.2.1)
 
 BUNDLED WITH
-   2.5.11
+   2.5.16
