@@ -832,3 +832,9 @@ label.error {
     margin-top: 4px;
     margin-bottom: 4px;
 }
+
+#searchtext9 {
+    font-size: 16px;
+    min-width: 200px;
+    min-height: 24px;
+}

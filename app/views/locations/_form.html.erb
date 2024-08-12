@@ -209,6 +209,7 @@
             var baseMaps = {"OpenStreetMap": osm, "MapBox": mapbox};
             L.control.layers(baseMaps).addTo(map);
             map.addControl(new L.control.zoom({position: 'topright'}));
+            L.control.locate({ position: 'topleft' }).addTo(map);    
 
             $(window).on("resize", function () {
                 $("#map-sistema").width($(window).width());

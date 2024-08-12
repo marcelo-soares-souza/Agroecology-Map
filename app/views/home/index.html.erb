@@ -39,6 +39,17 @@
         locations.addLayer(layer).addTo(map);
         Object.assign(overlayMaps, {"<a href='https://agroecologymap.org/' target='_blank' style='color: green;'>Agroecology Map</a>": locations});
         L.control.layers(baseMaps, overlayMaps, { collapsed: (window.innerWidth < 900 ? true : false), position: 'bottomright'}).addTo(map);
+
+        L.control.locate({ position: 'topleft' }).addTo(map);    
+
+        const controlSearch = new L.Control.Search({
+            position:'topleft',		
+            layer: locations,
+            initial: false,
+            zoom: 18,
+            marker: false
+        });
+        map.addControl( controlSearch );
     });
 
     loadLayers('/agroecologyworks.json', 'Agroecology Works!', 'blue').then(layer => {
@@ -127,6 +138,5 @@
     });
 
     Object.assign(baseMaps, {"<a href='#'>Satellite Mapbox</a>": mapbox});
-
     map.addControl(new L.control.zoom({position: 'topright'}));
 </script>
