@@ -109,7 +109,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to new_location_practice_path(@location), notice: t(:location_has_been_registered) }
+        format.html { redirect_to location_path(@location), notice: t(:location_has_been_registered) }
         format.json { render json: { message: "created" }, status: :created }
       else
         format.html { render :new }

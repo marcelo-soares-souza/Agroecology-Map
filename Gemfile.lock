@@ -179,7 +179,7 @@ GEM
     marcel (1.0.4)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (5.24.1)
+    minitest (5.25.0)
     net-imap (0.4.14)
       date
       net-protocol
@@ -328,7 +328,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.11518)
+    sorbet-runtime (0.5.11520)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
