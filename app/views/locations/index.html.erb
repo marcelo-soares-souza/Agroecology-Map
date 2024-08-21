@@ -64,8 +64,10 @@
 
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(location, location.name, true), location_path(location), alt: location.name, title: location.name %></div>
           <div class="card-body" style="min-height: 100px;">
-             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to location.name.truncate(34), location_path(location) %></h4>
-             <p class="card-text" style="text-align: center; font-size: 12px;">
+             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to location.name.truncate(34), location_path(location) %>
+              <div style="font-size: 12px !important"><%= location.country ? ISO3166::Country[location.country].iso_short_name : "" %></div>
+             </h4>
+             <p class="card-text" style="text-align: center; font-size: 12px; margin-top: -8px; ">
                 <%= link_to t(:details), location_url(location) %> <%= "|" if location.practices.size > 0 %>
                 <%= link_to t(:practices) + " (#{location.practices.size})", location_practices_path(location) if location.practices.size > 0 %> <%= "|" if location.medias.size > 0 %>
                 <%= link_to t(:gallery) + " (#{location.medias.size})", location_gallery_path(location) if location.medias.size > 0 %>
