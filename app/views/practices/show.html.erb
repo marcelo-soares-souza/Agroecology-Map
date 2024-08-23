@@ -62,8 +62,7 @@
 
     <%= "<h4>#{t(:location)}</h4>#{link_to @practice.location.name.truncate(64), location_path(@practice.location)}&nbsp;".html_safe if @practice.location.name? %>
     <br><br>
-    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@practice.created_at.to_s}</div>".html_safe %>
-    <br><br>
+    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@practice.created_at.strftime('%Y-%m-%d')}</div>".html_safe %>
     <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @practice.account.name, account_path(@practice.account)}&nbsp;".html_safe if @practice.account.name? %></div>
 
     <h4><%= @practice.comments.count.to_s + " " + t(:comments) + "(s)" %>:</h4>

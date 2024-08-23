@@ -1,13 +1,13 @@
 <%= "<h4>Sensors</h4><div class='text-box'>Temperature: #{@location.sensors.last.temperature.to_s} 🌞<br>Humidity: #{@location.sensors.last.humidity.to_s} 💦<br>Soil Moisture: #{@location.sensors.last.moisture.to_s} 🚰</div><br>".html_safe %>
 
 <a class="btn btn-info" data-toggle="collapse" href="#showCharts" role="button" aria-expanded="false" aria-controls="showCharts">Show sensors charts</a>
+<br><br>
 
 <div class="collapse" id="showCharts">
     <br>
     <canvas id='sensors'></canvas>
+    <br>
 </div>
-
-<br><br>
 
 <script>
   const ctx = document.getElementById('sensors');

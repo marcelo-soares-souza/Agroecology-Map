@@ -61,7 +61,7 @@
 
     <%= render 'sensors', location: @location unless @location.sensors.blank? %>
 
-    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@location.created_at.to_s}</div>".html_safe %>
+    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@location.created_at.strftime('%Y-%m-%d')}</div>".html_safe %>
     <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @location.account.name, account_path(@location.account)}&nbsp;".html_safe if @location.account.name? %></div>
 
     <% if @location.hide_my_location == false %>
