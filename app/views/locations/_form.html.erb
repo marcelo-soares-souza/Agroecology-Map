@@ -31,7 +31,6 @@
 
     <div class="form-group row required bg-light">
       <%= f.label t(:name), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
-
       <div class="col-sm-10">
         <%= f.text_field :name, class: "form-control", :required => true %>
         <div class="tip">
@@ -39,9 +38,23 @@
           <span class="tip_alert" style="float: right;">*<%= t(:this_field_is_required) %>.</span>
         </div>
       </div>
-
     </div>
-
+    <br>
+    <div class="form-group row">
+      <%= f.label t(:short_description), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-10">
+        <%= f.text_area :description, class: "form-control", :rows => "10" %>
+        <div class="tip"><%= t(:tell_us_a_bit_about_your_place_what_you_do_in_the_place_you_register_and_what_your_experiences_have_been) %></div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row bg-light" >
+      <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-8">
+        <%= f.file_field :photo, class: "form-control", style: location.errors.blank? ? "" : "border-color: red" %>
+        <div class="tip"><%= t(:could_you_send_us_a_photo_that_represents_the_location) %>. (File Format: PNG, JPG or GIF. Size Limit: 16MB.)</div>
+      </div>
+    </div>
     <br>
     <div class="form-group required row">
       <%= f.label t(:country), class: "col-sm-2 col-form-label col-form-label-lg control-label" %>
@@ -113,22 +126,6 @@
       <div class="col-sm-10">
         <%= f.text_area :what_is_your_dream, class: "form-control", :rows => "5" %>
         <div class="tip"><%= t(:do_you_have_a_dream_of_transforming_your_farm_and_or_location_and_what_are_your_experienced_in_achieving_that_dream) %></div>
-      </div>
-    </div>
-    <br>
-    <div class="form-group row bg-light" >
-      <%= f.label t(:photo), class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-8">
-        <%= f.file_field :photo, class: "form-control", style: location.errors.blank? ? "" : "border-color: red" %>
-        <div class="tip"><%= t(:could_you_send_us_a_photo_that_represents_the_location) %>. (File Format: PNG, JPG or GIF. Size Limit: 16MB.)</div>
-      </div>
-    </div>
-    <br>
-    <div class="form-group row">
-      <%= f.label t(:short_description), class: "col-sm-2 col-form-label col-form-label-lg" %>
-      <div class="col-sm-10">
-        <%= f.text_area :description, class: "form-control", :rows => "5" %>
-        <div class="tip"><%= t(:tell_us_a_bit_about_your_place_what_you_do_in_the_place_you_register_and_what_your_experiences_have_been) %></div>
       </div>
     </div>
     <br>
@@ -212,6 +209,7 @@
             var baseMaps = {"OpenStreetMap": osm, "MapBox": mapbox};
             L.control.layers(baseMaps).addTo(map);
             map.addControl(new L.control.zoom({position: 'topright'}));
+            L.control.locate({ position: 'topleft' }).addTo(map);    
 
             $(window).on("resize", function () {
                 $("#map-sistema").width($(window).width());

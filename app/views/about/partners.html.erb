@@ -4,7 +4,7 @@
         margin-left: auto;
         margin-right: auto;
         max-width: 900px;
-        margin-top: 40px;
+        margin-top: 25px;
     }
 
     .logo {
@@ -25,36 +25,90 @@
 
     .card {
         margin-bottom: 32px;
-
+        margin-top: 32px;
     }
 </style>
 
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to t(:who_we_are), who_we_are_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:data_summary), dashboard_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:friends), partners_path, :class => "nav-link active" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to t(:thank_you_notes), thank_you_notes_path, :class => "nav-link" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to t(:contact), contact_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+     <%= link_to t(:projects_and_groups), projects_and_groups_path, :class => "nav-link" %>
+  </li>
+</ul>
+
 <div class="thank_you_notes">
-  <br>
   <h1><%= t(:friends) %>/<%= t(:partners) %></h1>
-  <br><br>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <div class="logo"><%= link_to image_tag("partners/idn.png", width: "180px", alt: "International Degrowth Network Logo", title: "International Degrowth Network Logo"), "https://degrowth.net/", :target => "_blank", :alt => "International Degrowth Network Logo", :title => "International Degrowth Network Logo" %></div>
+        <div class="logo"><%= link_to image_tag("partners/omv.png", width: "160px", alt: "One Million Voices of Agroecology Logo", title: "Agroecology Map Logo"), "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :alt => "One Million Voices of Agroecology Logo", :title => "One Million Voices of Agroecology Logo" %></div>
       </div>
     </div>
-
-    <div class="col-sm-4">
+    <!-- **************** -->
+     <div class="col-sm-4">
       <div class="card">
-        <div class="logo"><%= link_to image_tag("partners/omv.png", width: "200px", alt: "One Million Voices of Agroecology Logo", title: "Agroecology Map Logo"), "https://onemillionvoices.agroecologymap.org/", :target => "_blank", :alt => "One Million Voices of Agroecology Logo", :title => "One Million Voices of Agroecology Logo" %></div>
+        <div class="logo">
+          <% title = "Agroecology TPP" %>
+          <%= link_to image_tag("groups/TPP.jpg",
+                                 width: "150px",
+                                 alt: title,
+                                 title: title),
+                                 "https://glfx.globallandscapesforum.org/topics/21467/page/TPP-home", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
       </div>
-    </div>
-
+    </div>    
     <div class="col-sm-4">
       <div class="card">
         <div class="logo"><%= link_to image_tag("partners/agroecologyworks.png", width: "250px", alt: "Agroecology Works! Logo", title: "Agroecology Works! Logo"), "https://agroecologyworks.ch/de", :target => "_blank", :alt => "Agroecology Works! Logo", :title => "Agroecology Works! Logo" %></div>
       </div>
     </div>
-
-        <div class="col-sm-4">
+    <div class="col-sm-4">
       <div class="card">
-        <div class="logo"><%= link_to image_tag("partners/regen10.jpg", width: "160px", alt: "Regen10 Experts Network Logo", title: "Agroecology Works! Logo"), "https://regen10.org/experts-network/", :target => "_blank", :alt => "Regen10 Experts Network Logo", :title => "Regen10 Experts Network Logo" %></div>      </div>
+        <div class="logo"><%= link_to image_tag("partners/regen10.jpg", width: "130px", alt: "Regen10 Experts Network Logo", title: "Agroecology Works! Logo"), "https://regen10.org/experts-network/", :target => "_blank", :alt => "Regen10 Experts Network Logo", :title => "Regen10 Experts Network Logo" %></div></div>
     </div>
+    <!-- **************** -->
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="logo">
+          <% title = "Farmtopia" %>
+          <%= link_to image_tag("partners/Farmtopia.png",
+                                 width: "260px",
+                                 alt: title,
+                                 title: title),
+                                 "https://farmtopia.eu/", :target => "_blank",
+                                 :alt => title,
+                                 :title => title %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="logo"><%= link_to image_tag("partners/idn.png", width: "130px", alt: "International Degrowth Network Logo", title: "International Degrowth Network Logo"), "https://degrowth.net/", :target => "_blank", :alt => "International Degrowth Network Logo", :title => "International Degrowth Network Logo" %></div>
+      </div>
+    </div>    
+
   </div>
 </div>

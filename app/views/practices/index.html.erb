@@ -37,7 +37,7 @@
 <% end %>
 
 <% if hide_search == false %>
-<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
+<div style="text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
   <span style="font-size: 13px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
@@ -51,7 +51,7 @@
     <%= select_tag "continent", options_from_collection_for_select(@continent_options, :last, :first, params[:continent] ? params[:continent] : ''), class: "selectpicker",  "data-live-search": true, :include_blank => t(:filter_by_continent) %>
     <div style="padding-top: 8px; padding-bottom: 8px; align-content: center; text-align: left; font-size: 21px">
       <%= link_to (bootstrap_icon "search", width: 16, style: "margin-bottom: 3px") + " " + t(:filter), "#", onclick: 'filter()', class: "btn btn-warning btn-lg" %>
-      <%= link_to " " + t(:clear_filters), locations_path, class: "btn btn-info btn-lg" %>
+      <%= link_to " " + t(:clear_filters), practices_path, class: "btn btn-info btn-lg" %>
     </div>
   </div>
 </div>
@@ -74,19 +74,29 @@
 <%=  %>
   <% if @account.blank? and params[:location_id].blank? %>
       <span style="font-size: 13px; float: right;">
-        <a href="/practices.csv">Export as CSV</a>
+        <a href="/practices.json">Export as JSON</a>
+        |
+        <a href="/practices.csv">CSV</a>
       </span><br>
   <% end %>
   <div class="row">
     <% @practices.each do |practice| %>
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_practice_path(practice.location, practice) %>';">
         <div class="card">
+
           <div class="like">
-            <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
-              <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-              <span class="badge bg-danger ms-2" style="font-size: 14px;"><%= practice.likes.count.to_s %></span>
+            <% likes = practice.likes.count.to_s %>
+            <% visits = practice.visits.to_s %>
+            <%= link_to like_practice_path(practice), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
+              <img src="/like.png" alt="<%= @likes_info %>" title="<%= likes %> Like(s)">
+              <span class="badge bg-danger ms-2" style="font-size: 12px;" title="<%= likes %> Like(s)"><%= practice.likes.count.to_s %></span>
             <% end %>
+            <div class="btn text-white" style="padding-left: 0px;">
+              <img src="<%= image_url("eye.png") %>" alt="Visits" title="<%= visits %> Visit(s)">
+              <span class="badge bg-success ms-2 text-white" style="font-size: 12px;" title="<%= visits %> Visit(s)"><%= practice.visits.to_s %></span>
+            </div>
           </div>
+
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(practice, practice.name, true), practice_path(practice), alt: practice.location.name, title: practice.location.name %></div>
            <div class="card-body" style="min-height: 100px;">
               <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to practice.name.truncate(34), practice_path(practice) %></h4>
@@ -103,7 +113,7 @@
   </div>
 
   <% if not params[:account_id] and not params[:location_id] %>
-    <div>
+    <div style="margin-top: -14px;">
       <%= paginate @practices %>
     </div>
   <% end %>

@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+  resources :jobs, only: [:create]
+
+  authenticate :account, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
+
   scope "(:locale)", locale: /en|pt-BR|es|fr/ do
     get "health" => "rails/health#show", as: :rails_health_check
     get "errors/not_found"
@@ -21,6 +29,7 @@ Rails.application.routes.draw do
     get "source_code_license", to: "about#source_code_license"
     get "thank_you_notes", to: "about#thank_you_notes"
     get "contact", to: "about#contact"
+    get "projects_and_groups", to: "about#projectsandgroups"
     get "dashboard", to: "dashboard#index"
     get "privacy_policy", to: "about#privacy_policy"
 
@@ -30,6 +39,8 @@ Rails.application.routes.draw do
 
     put "/practices/:id/like", to: "practices#like", as: "like_practice"
     put "/locations/:id/like", to: "locations#like", as: "like_location"
+    post "/accounts/:id/message", to: "accounts#message", as: "message_account"
+    post "/home/message", to: "home#message", as: "message_contact"
 
     resources :practices
     resources :acknowledges

@@ -8,9 +8,135 @@
 <div id="map" style="z-index: 1;"></div>
 
 <script>
-  <%= raw Terser.new.compile(render "home/maps/load_maps") %>
-  <%= raw Terser.new.compile(render "home/maps/locations") %>
-  <%= raw Terser.new.compile(render "home/maps/agroecologyworks") %>
-  <%= raw Terser.new.compile(render "home/maps/omv") %>
-  <%= raw Terser.new.compile(render "home/maps/overlays") %>
+    const map = L.map('map', { fullscreenControl: true,
+                                zoomControl: false,
+                                worldCopyJump: true,
+                                zoomSnap: 0.25,
+                                minZoom: 2,
+                                maxZoom: 18,
+                            }
+                    ).setView([15, 15], 3.25);
+
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> | <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a></span>',
+        maxZoom: 18,
+    }).addTo(map);
+
+    let overlayMaps = {};
+    let baseMaps = {};
+
+    Object.assign(baseMaps, {"<a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap</a>": osm});
+
+    $(document).ready(function () {
+        $(window).on("resize", function () {
+            $("#map").height($(window).height() - 80);
+            map.invalidateSize();
+        }).trigger("resize");
+    });
+    
+    loadLayers('/reduced_map.json', 'Agroecology Map', 'green').then(layer => {
+        const locations = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        locations.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://agroecologymap.org/' target='_blank' style='color: green;'>Agroecology Map</a>": locations});
+        L.control.layers(baseMaps, overlayMaps, { collapsed: (window.innerWidth < 900 ? true : false), position: 'bottomright'}).addTo(map);
+
+        L.control.locate({ position: 'topleft' }).addTo(map);    
+
+        const controlSearch = new L.Control.Search({
+            position:'topleft',		
+            layer: locations,
+            initial: false,
+            zoom: 18,
+            marker: false
+        });
+        map.addControl( controlSearch );
+    });
+
+    loadLayers('/agroecologyworks.json', 'Agroecology Works!', 'blue').then(layer => {
+        const agroecologyworks = L.markerClusterGroup({ disableClusteringAtZoom: 10, maxClusterRadius: 2 });
+        agroecologyworks.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://www.agroecologyworks.ch' target='_blank'>Agroecology Works!</a>": agroecologyworks});
+    });
+
+    loadLayers('https://onemillionvoices.agroecologymap.org/locations.json', 'One Million Voices', 'red').then(layer => {
+        const omv = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 32 });
+        omv.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://onemillionvoices.agroecologymap.org/' target='_blank' style='color: red;'>One Million Voices</a>": omv});
+    });
+
+    loadBrigadesActionsPaysannes('/brigadesactionspaysannes.json', 'Brigades d’actions paysannes', 'orange').then(layer => {
+        const brigadesactionspaysannes = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        brigadesactionspaysannes.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://www.brigadesactionspaysannes.be/' target='_blank' style='color: orange;'>Brigades d’actions paysannes</a>": brigadesactionspaysannes});
+    });
+
+    loadLayers('/philippines.json', 'Collaborative Permaculture Map of the Philippines', 'orange').then(layer => {
+        const philippines = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        philippines.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://www.google.com/maps/d/u/0/viewer?mid=1c_yQmnWt0_IXzCxexx-xEEt_PqqcLmbm&ll=12.338748639470754%2C122.35766269999999&z=6' target='_blank' style='color: orange;'>Permaculture Philippines</a>": philippines});
+    });
+
+    loadLayers('/agroecology-europe.json', 'Agroecology Europe', 'orange').then(layer => {
+        const agroecologyeurope = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        agroecologyeurope.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://www.agroecology-europe-hub.org' target='_blank' style='color: orange;'>Agroecology Europe</a>": agroecologyeurope});
+    });
+
+    loadLayers('/mapapermakultury.json', 'Mapa Permakultury', 'orange').then(layer => {
+        const mapapermakultury = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        mapapermakultury.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://mapa.permakultura.edu.pl/' target='_blank' style='color: orange;'>Mapa Permakultury</a>": mapapermakultury});
+    });
+
+    loadLayers('/feirasorganicas.json', 'Mapa de Feiras Orgânicas', 'orange').then(layer => {
+        const feirasorganicas = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        feirasorganicas.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://feirasorganicas.org.br/sobre-nos/' target='_blank' style='color: orange;'>Organic Food Fairs (Brazil)</a>": feirasorganicas});
+    });
+
+    loadLayers('/sampamaisrural.json', 'Sampa+Rural', 'orange').then(layer => {
+        const sampamaisrural = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        sampamaisrural.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://sampamaisrural.prefeitura.sp.gov.br/' target='_blank' style='color: orange;'>Sampa+Rural Agroecology</a>": sampamaisrural});
+    });
+
+    loadLayers('/permakultur-landwirtschaft.json', 'Permakultur Höfe-Netz Schweiz', 'orange').then(layer => {
+        const permakultur = L.markerClusterGroup({ disableClusteringAtZoom: 12, maxClusterRadius: 16 });
+        permakultur.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://permakultur-landwirtschaft.org/hoefe/' target='_blank' style='color: orange;'>Permakultur Höfe-Netz Schweiz</a>": permakultur});
+    });
+
+    loadLayers('/permacultureglobal.json', 'Permaculture Global', 'orange').then(layer => {
+        const permacultureglobal = L.markerClusterGroup({ disableClusteringAtZoom: 10, maxClusterRadius: 64 });
+        permacultureglobal.addLayer(layer).addTo(map);
+        Object.assign(overlayMaps, {"<a href='https://permacultureglobal.org/projects' target='_blank' style='color: orange;'>Permaculture Global</a>": permacultureglobal});
+    });
+
+    (async () => {
+        const geoserver = 'https://funai.mapadaagroecologia.org/geoserver/ows?';
+
+        const biomes = L.tileLayer.wms(geoserver, {
+            layers: 'CMR-PUBLICO' + ':' + 'veg_biomas_a',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.3
+        });
+
+        Object.assign(overlayMaps, {"<a href='https://cmr.funai.gov.br/geoserver' target='_blank'>Biomes (Brazil)</a>": biomes});
+    })()
+
+    const osmHot = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | <a href="https://www.hotosm.org/" target="_blank">HOT OSM</a> | <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a></span>',
+        maxZoom: 18,
+    });
+
+    Object.assign(baseMaps, {"<a href='https://www.hotosm.org/' target='_blank'>Humanitarian OSM</a>": osmHot});
+
+    const mapbox = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyY2Vsb3NvYXJlc3NvdXphIiwiYSI6ImNpZ2NpNXFmMzNvaDh3Ym0zeXM3aWN3Y2EifQ.1xOQgKK1MioUioN0B4DVog', {
+        attribution: '<span style="font-size: 10px"><a href="https://codeberg.org/marcelo-soares-souza/agroecology-map" target="_blank">Agroecology Map</a> | MapBox | <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a></span>',
+        maxZoom: 18,
+    });
+
+    Object.assign(baseMaps, {"<a href='#'>Satellite Mapbox</a>": mapbox});
+    map.addControl(new L.control.zoom({position: 'topright'}));
 </script>

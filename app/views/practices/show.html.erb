@@ -32,27 +32,37 @@
 
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
+
     <div class="like">
-      <%= link_to like_practice_path(@practice), method: "put", class: "btn text-white",  style: "background-color: #fff;", disabled: true do %>
-        <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-        <span class="badge bg-danger ms-2" style="font-size: 14px"><%= @practice.likes.count.to_s %></span>
+      <% likes = @practice.likes.count.to_s %>
+      <% visits = @practice.visits.to_s %>
+      <%= link_to like_practice_path(@practice), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
+        <img src="/like.png" alt="<%= @likes_info %>" title="<%= likes %> Like(s)">
+        <span class="badge bg-danger ms-2" style="font-size: 12px;" title="<%= likes %> Like(s)"><%= @practice.likes.count.to_s %></span>
       <% end %>
+      <div class="btn text-white" style="padding-left: 0px;">
+        <img src="<%= image_url("eye.png") %>" alt="Visits" title="<%= visits %> Visit(s)">
+        <span class="badge bg-success ms-2 text-white" style="font-size: 12px;" title="<%= visits %> Visit(s)"><%= @practice.visits.to_s %></span>
+      </div>
     </div>
+
     <div class="thumbnail">
       <%= photo_thumb(@practice, @practice.name, true) %>
     </div>
 
     <br>
-    <h1><%= @practice.name.truncate(45) %></h1>
+    <h1><%= @practice.name.truncate(128) %></h1>
     <br>
 
     <% if ! @practice.what_you_do.summary_description_of_agroecological_practice.blank? %>
       <%= "<h4>#{t(:summary_description)}</h4>".html_safe  %>
-      <div class="text-box"><%= @practice.what_you_do.summary_description_of_agroecological_practice.truncate(512) %></div>
+      <div class="text-box"><%= @practice.what_you_do.summary_description_of_agroecological_practice.truncate(4058) %></div>
       <br>
     <% end %>
 
-    <%= "<h4>#{t(:location)}</h4>#{link_to @practice.location.name.truncate(40), location_path(@practice.location)}&nbsp;".html_safe if @practice.location.name? %>
+    <%= "<h4>#{t(:location)}</h4>#{link_to @practice.location.name.truncate(64), location_path(@practice.location)}&nbsp;".html_safe if @practice.location.name? %>
+    <br><br>
+    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@practice.created_at.to_s}</div>".html_safe %>
     <br><br>
     <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @practice.account.name, account_path(@practice.account)}&nbsp;".html_safe if @practice.account.name? %></div>
 

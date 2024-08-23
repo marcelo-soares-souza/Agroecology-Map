@@ -1,0 +1,921 @@
+{"type": "FeatureCollection",
+	"features": [
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.4172120094299325, 50.80704370838671]},
+		"id":"1",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermeduchantdescailles'>La Ferme du Chant des Cailles<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.484323501586914, 50.53599657862153]},
+		"id":"2",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermelarock'>La Ferme Larock<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.7925362586975093, 50.66895314875735]},
+		"id":"3",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedes2yannick'>Ferme des 2 Yannick<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.113294999999994, 50.083627]},
+		"id":"4",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermearcenciel'>La ferme Arc-en-ciel<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.342769099999941, 49.74054870000001]},
+		"id":"5",
+		"properties": {
+			"title":"<a href='les-fermes\/#collectifgachewarche'>Collectif G\u00e2che Warche<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.303159300000061, 49.68923359999999]},
+		"id":"6",
+		"properties": {
+			"title":"<a href='les-fermes\/#ptitenature'>P\u2019tite nature<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.7223903999999948, 50.7186235]},
+		"id":"7",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedudorlou'>La ferme du D\u00f4rlo\u00fb<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.499895000000038, 50.3521446]},
+		"id":"8",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedutrieu'>La ferme du trieu <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.584235199999966, 50.2331772]},
+		"id":"9",
+		"properties": {
+			"title":"<a href='les-fermes\/#bergeriedelisbelle'>Bergerie de l\u2019Isbelle<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.324281100000007, 50.63556550000001]},
+		"id":"10",
+		"properties": {
+			"title":"<a href='les-fermes\/#lechampdelalouette'>Le champ de l\u2019Alouette<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.142626999999948, 50.75063879999999]},
+		"id":"12",
+		"properties": {
+			"title":"<a href='les-fermes\/#degroentelaar'>De Groentelaar<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.801623599999971, 50.61405540000001]},
+		"id":"13",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedebernardraucent'>La ferme de Bernard Raucent<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.458530800000062, 50.179882]},
+		"id":"14",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedumontaval'>ferme du Montaval <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.7190319000000045, 50.3748686]},
+		"id":"15",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedelasarthe'>Ferme de la Sarthe<\/a>",
+			"description":"<p>Ferme familiale depuis plusieurs g\u00e9n\u00e9rations, en Bio-dynamie depuis 1981, toujours en qu\u00eate de son identit\u00e9 en tant qu&#8217;organisme agricole, la Ferme de la Sarthe s&#8217;oriente plus sp\u00e9cialement depuis quelques ann\u00e9es vers la production de lait et sa transformation.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.960519999999974, 50.309579]},
+		"id":"16",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedestroispommiers'>La Ferme Des Trois Pommiers<\/a>",
+			"description":"<p>Petite ferme familiale \u00e0 taille humaine et aux id\u00e9ologies d\u00e9mesur\u00e9es<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.631424000000038, 50.631001]},
+		"id":"17",
+		"properties": {
+			"title":"<a href='les-fermes\/#triodelagrelinette'>Trio de la Grelinette<\/a>",
+			"description":"<p>S\u00e9bastien et Fran\u00e7ois ont d\u00e9cid\u00e9 de se consacrer \u00e0 la production de l\u00e9gumes en activit\u00e9 compl\u00e9mentaire, \u00e0 c\u00f4t\u00e9 de leurs boulots respectifs. Ils ont pour ce faire un statut officiel d&#8217;ind\u00e9pendants compl\u00e9mentaires, ainsi qu&#8217;un num\u00e9ro de TVA au nom de l&#8217;association de fait \"Le Trio de la Grelinette\".<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.66307269999993, 50.4685873]},
+		"id":"18",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesdelicesdombelle'>Les D\u00e9lices d\u2019Ombelle<\/a>",
+			"description":"<p>La nature nous offre des spectacles saisissants de beaut\u00e9 et nous ram\u00e8ne aussi \u00e0 notre simple condition d&#8217;\u00eatre humain. Elle est propice \u00e0 la d\u00e9couverte et nous incite \u00e0 percer ses secrets. Dans ce grand jardin, on trouve une multitude de mets riches et savoureux.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.460085, 49.59131]},
+		"id":"19",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermeduhayon'>Ferme du Hayon<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.559826, 50.620797]},
+		"id":"21",
+		"properties": {
+			"title":"<a href='les-fermes\/#asbllautrejardin'>Asbl L\u2019Autre Jardin<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.298229217529298, 50.83473484803428]},
+		"id":"22",
+		"properties": {
+			"title":"<a href='les-fermes\/#grainesdepaysans'>Graines de Paysans<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.298229217529298, 50.83473484803428]},
+		"id":"22",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdelabondance'>Graines de Paysans<\/a>",
+			"description":"<p>Ferme maraich\u00e8re en espace test dans le collectif des Graines de paysans \u00e0 Anderlecht, port\u00e9e par Abdoullah, lanc\u00e9 en 2020.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.380736999999954, 50.901067]},
+		"id":"23",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermeurbainedenederoverheembeek'>La ferme Urbaine de Neder-over-Heembeek<\/a>",
+			"description":"<p>La ferme urbaine est une jeune exploitation en agriculture mara\u00eech\u00e8re situ\u00e9e \u00e0 Neder Over Hembeek. Depuis 2010, la ferme approvisionne trois GASAP Bruxellois (groupement d&#8217;achat et de soutien \u00e0 l&#8217;agriculture paysanne).<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.204130699999951, 49.7161852]},
+		"id":"24",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedumarronnier'>Ferme du Marronnier<\/a>",
+			"description":"<p>La ferme se d\u00e9ploie sur une bonne soixantaine d&#8217;hectares, dont une vingtaine autour de l&#8217;\u00e9table. Il s&#8217;agit principalement de prairies et d&#8217;une dizaine d&#8217;hectares de c\u00e9r\u00e9ales.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.040414, 50.161766]},
+		"id":"25",
+		"properties": {
+			"title":"<a href='les-fermes\/#lejardinvergerdamehourethetrehumainasbl'>Le jardin-verger d\u2019\u00c2me-Hour et H\u00eatreHumain asbl<\/a>",
+			"description":"<p>Tout jeune mara\u00eechage agro-\u00e9cologique \u00e0 Hour (Houyet), appuy\u00e9 par L&#8217;ASBL H\u00eatre Humain qui est une plateforme en d\u00e9veloppement regroupant un ensemble de comp\u00e9tences et services d\u00e9di\u00e9s au mieux \u00eatre et aux alternatives de vie.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.4533980999999585, 49.8868038]},
+		"id":"26",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedelagagiere'>Ferme de la Gagi\u00e8re<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.044464000000062, 50.4778485]},
+		"id":"27",
+		"properties": {
+			"title":"<a href='les-fermes\/#alamodedecheznous'>A la mode de chez nous<\/a>",
+			"description":"<p>Faites confiance \u00e0 votre mara\u00eech\u00e8re pour vous livrer des l\u00e9gumes sains et d\u2019une fra\u00eecheur incomparable. \"A la mode de chez nous\" cultive des l\u00e9gumes et des petits fruits, de mani\u00e8re saine, responsable pour l\u2019environnement et pour votre sant\u00e9. <br class='autobr' \/>\nNous utilisons des plantes, des semences et du terreau. Tout est cultiv\u00e9 \u00e0 la main, sans pesticide ni insecticide. Les fruits et l\u00e9gumes poussent \u00e0 l\u2019air libre dans le champ ou sous serre.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.71780549999994, 50.3764022]},
+		"id":"28",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermeducoin'>La Ferme du Coin\u00b2<\/a>",
+			"description":"<p>La Ferme du Coin2 est une petite ferme tout pr\u00e8s de Fosses-La-Ville qui est n\u00e9e de la rencontre entre Terre-en-Vue et Quentin Ledoux un porteur de projet.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.81308480000007, 50.4940764]},
+		"id":"29",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdarthey'>Les Jardins d\u2019Arthey<\/a>",
+			"description":"<p>Les fruits et l\u00e9gumes biologiques de la coop\u00e9rative sont vendus en circuits-courts et utilis\u00e9s directement par le g\u00eete et les chambres d\u2019h\u00f4tes.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.424801200000047, 49.92787999999999]},
+		"id":"30",
+		"properties": {
+			"title":"<a href='les-fermes\/#alamainverte'>A La Main Verte<\/a>",
+			"description":"<p>\"De la graine \u00e0 la production en permaculture\"<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.22164029999999, 50.3981288]},
+		"id":"31",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermevrancken'>Ferme Vrancken<\/a>",
+			"description":"<p>Petite exploitation familiale situ\u00e9e \u00e0 Ossogne qui propose des fruits et l\u00e9gumes produits par des artisans passionn\u00e9s de la terre.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.743388500000037, 50.6917556]},
+		"id":"32",
+		"properties": {
+			"title":"<a href='les-fermes\/#compagnonsdelaterre'>Compagnons de la Terre<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.4734230041503915, 49.50599071396025]},
+		"id":"33",
+		"properties": {
+			"title":"<a href='les-fermes\/#simplesauvage'>Simple & Sauvage<\/a>",
+			"description":"<p>Simple &amp; Sauvage, c\u2019est la production de tisanes et d\u2019aromates \u00e0 partir d\u2019une trentaine de plantes 100&nbsp;% locales\u2026 pour certaines, cueillies dans la nature environnante, et pour d\u2019autres, cultiv\u00e9es dans un jardin de 45 ares am\u00e9nag\u00e9 dans l\u2019esprit de la permaculture.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.503423399999974, 50.4873278]},
+		"id":"34",
+		"properties": {
+			"title":"<a href='les-fermes\/#jardindantan'>Jardin d\u2019antan<\/a>",
+			"description":"<p>Laurent du Jardin d\u2019antan (Hody) cultive des l\u00e9gumes diversifi\u00e9s de plein champs depuis une quinzaine d\u2019ann\u00e9es.<br class='autobr' \/>\nAvec un minimum d\u2019intrants, Laurent sait produire du go\u00fbt, de la fra\u00eecheur, de la diversit\u00e9, son menu pr\u00e9f\u00e9r\u00e9&nbsp;;&nbsp;: les anciennes vari\u00e9t\u00e9s.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.341965999999957, 50.0115323]},
+		"id":"35",
+		"properties": {
+			"title":"<a href='les-fermes\/#lejardindeden'>Le jardin d\u2019Eden<\/a>",
+			"description":"<p>Le jardin d\u2019Eden est un projet de culture mara\u00eech\u00e8re bas\u00e9 sur la permaculture dans ces principes.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.321692900000016, 50.83241169999999]},
+		"id":"36",
+		"properties": {
+			"title":"<a href='les-fermes\/#wonderlecht'>wonderlecht<\/a>",
+			"description":"<p>Le nouveau site d&#8217;apprentissage du D\u00e9but des Haricots.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.17264780000005, 50.59447979999999]},
+		"id":"39",
+		"properties": {
+			"title":"<a href='les-fermes\/#aloreedubois'>A l\u2019Or\u00e9e du Bois<\/a>",
+			"description":"<p>A l&#8217;Or\u00e9e du Bois est un projet qui a pour objectif de sensibiliser \u00e0 l\u2019autonomie alimentaire en la partageant \u00e0 travers diff\u00e9rentes activit\u00e9s allant du mara\u00eechage en auto-r\u00e9colte aux ateliers culinaires.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.157304, 50.625678]},
+		"id":"40",
+		"properties": {
+			"title":"<a href='les-fermes\/#fanesdecarotte'>Fan(e)s de Carotte<\/a>",
+			"description":"<p>Coop\u00e9rative paysanne et participative,  production locale biologique.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.266315599999984, 50.8270004]},
+		"id":"41",
+		"properties": {
+			"title":"<a href='les-fermes\/#lechampotagerdelamaisonverteetbleue'>Le Cham - Potager de la Maison verte et bleue<\/a>",
+			"description":"<p>Le ChAM est un jardin de 20 ares (3,8 ares en culture). Il est un outil productif et p\u00e9dagogique o\u00f9 cohabitent la biodiversit\u00e9 sauvage et la biodiversit\u00e9 cultiv\u00e9e. Il nous permet d\u2019exp\u00e9rimenter, valoriser et illustrer concr\u00e8tement l\u2019ensemble de la fili\u00e8re alimentaire durable&nbsp;:<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.267741399999977, 50.8254101]},
+		"id":"42",
+		"properties": {
+			"title":"<a href='les-fermes\/#lechampduchaudron'>Le Champ du Chaudron<\/a>",
+			"description":"<p>La Ferme du Chaudron propose un mod\u00e8le de production et de transformation locale aux activit\u00e9s diverses, int\u00e9gr\u00e9 dans un maillage environnemental et social, pour accro\u00eetre la r\u00e9silience du syst\u00e8me alimentaire bruxellois.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.834671020507813, 50.596655933260145]},
+		"id":"43",
+		"properties": {
+			"title":"<a href='les-fermes\/#champdefredjadoul'>Champ de Fred Jadoul<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.040322, 50.161186]},
+		"id":"44",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdamehour'>Les Jardins d\u2019\u00c2me Hour<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.451744, 50.454764]},
+		"id":"45",
+		"properties": {
+			"title":"<a href='les-fermes\/#rouliberwete'>Rouliberw\u00e8te<\/a>",
+			"description":"<p>Asbl de maraichage bio. Nous travaillons avec des clients de notre r\u00e9gion ( petite \u00e9picerie, Biofagnes Dolembreux, des \u00e9coles faisant des plats \u00e0 base de l\u00e9gumes non trait\u00e9s pour les enfants). Notre terrain se trouve sur la Ferme Demoiti\u00e9 \u00e0 Lizin.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.67476, 50.783375]},
+		"id":"46",
+		"properties": {
+			"title":"<a href='les-fermes\/#galipac'>GALIPAC<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.726757, 50.675324]},
+		"id":"47",
+		"properties": {
+			"title":"<a href='les-fermes\/#lebuisson'>Le Buisson<\/a>",
+			"description":"<p>Au sein du Pays des collines, le Buisson vous propose des l\u00e9gumes issus de l\u2019agriculture mara\u00eech\u00e8re \u00e9cologique et respectueuse des ressources naturelles.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.906286899999941, 50.47001239999999]},
+		"id":"48",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdelescalier'>Les Jardins de l\u2019Escalier<\/a>",
+			"description":"<p>\"Les Jardins de l\u2019Escalier\" est une micro-ferme situ\u00e9e en plein c\u0153ur du village de Beez, o\u00f9 30 ares sont cultiv\u00e9s en mara\u00eechage biologique et o\u00f9 l\u2019on r\u00e9colte ses l\u00e9gumes en auto-cueillette.<br class='autobr' \/>\nEn pratiquant le mara\u00eechage agro\u00e9cologique sur une petite surface, nous souhaitons d\u00e9montrer que cr\u00e9er des alternatives aux pratiques actuelles est possible. Au-del\u00e0 de l\u2019agriculture, c\u2019est le mod\u00e8le de notre soci\u00e9t\u00e9 qui est remis en question. Imaginez l\u2019impact du d\u00e9veloppement de micro-fermes en terme d\u2019emplois mais \u00e9galement en terme de relocalisation de l\u2019\u00e9conomie. Ce type d\u2019agriculture repr\u00e9sente une des pistes de d\u00e9veloppement les plus pertinentes pour un syst\u00e8me de production et de consommation durables.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.362156, 50.57994]},
+		"id":"49",
+		"properties": {
+			"title":"<a href='les-fermes\/#racontemoidessalades'>Raconte-moi des salades<\/a>",
+			"description":"<p>Production de paniers de l\u00e9gumes bios et de saison propos\u00e9s via une formule d&#8217;abonnement annuel.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.264032, 50.812079]},
+		"id":"50",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesmoutonsbruxellois'>Les moutons bruxellois<\/a>",
+			"description":"<p>Projet urbain d&#8217;\u00e9levage de moutons (viande\/laine) en travaillant de mani\u00e8re extensive (\u00e9levage hybride en m\u00e9lange de \"prairies\" permanentes et pastoralisme agro\u00e9cologique).<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.5218565461837, 50.24785667660456]},
+		"id":"51",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermemelimelo'>Ferme M\u00e9li-m\u00e9lo <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.29954697836307, 50.88209216233568]},
+		"id":"52",
+		"properties": {
+			"title":"<a href='les-fermes\/#houblonsdebruxelles'>Houblons de Bruxelles<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.456597, 50.2899588]},
+		"id":"53",
+		"properties": {
+			"title":"<a href='les-fermes\/#panierculture'>Panier Culture<\/a>",
+			"description":"<p>Panier Culture est un projet d\u2019agriculture alternative situ\u00e9 \u00e0 Gourdinne. Nous proposons des fruits et l\u00e9gumes de saison garantis sans engrais chimiques ou de synth\u00e8se.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.770812988281251, 50.50993330845745]},
+		"id":"56",
+		"properties": {
+			"title":"<a href='les-fermes\/#jardinbeeoh'>Jardin Bee\u2019Oh<\/a>",
+			"description":"<p>Mara\u00eechage local et \u00e9cologique<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.976463317871095, 50.495589302731204]},
+		"id":"57",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesterresdecrompechine'>Les Terres de Crompechine<\/a>",
+			"description":"<p>Dans le cadre d\u2019une agriculture durable, Frederic de Baere et Gilles Lainel avons lanc\u00e9 le vignoble de Crompechine tout en pr\u00e9servant la nature. Ce petit coin bucolique est constitu\u00e9 de fruitiers haut tige de vari\u00e9t\u00e9s anciennes en pr\u00e9s p\u00e2tur\u00e9s par des moutons, de haie mellif\u00e8re et \u00e0 petit fruits, de zone \u00e0 haute valeur biologique, d\u2019un petit vignoble de 8000 plants. Pour le vignoble, celui-ci a \u00e9t\u00e9 install\u00e9 en avril 2018<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.170951, 50.56117]},
+		"id":"58",
+		"properties": {
+			"title":"<a href='les-fermes\/#pommepoirepeche'>Pomme Poire P\u00eache <\/a>",
+			"description":"<p>Micro-ferme en permaculture<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.549600481987, 50.739563453898256]},
+		"id":"59",
+		"properties": {
+			"title":"<a href='les-fermes\/#capucineatable'>Capucine \u00e0 table<\/a>",
+			"description":"<p>Herbes aromatiques et fleurs comestibles<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.388824, 50.36784]},
+		"id":"60",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedumartinpecheur'>Ferme du Martin-P\u00eacheur<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.706045627593994, 50.51050051928807]},
+		"id":"61",
+		"properties": {
+			"title":"<a href='les-fermes\/#jardindumontpointu'>Jardin du Mont Pointu<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.016039371490479, 50.67295904738774]},
+		"id":"62",
+		"properties": {
+			"title":"<a href='les-fermes\/#terroirdenghien'>Terroir d\u2019Enghien<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [2.3514616, 48.8566969]},
+		"id":"63",
+		"properties": {
+			"title":"<a href='les-fermes\/#lespoussespoussent'>Les Pousses Poussent<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.3805665, 50.1523804]},
+		"id":"66",
+		"properties": {
+			"title":"<a href='les-fermes\/#lamauvaiseherbe'>La Mauvaise Herbe<\/a>",
+			"description":"<p>Une mauvaise herbe est une plante qui a maitris\u00e9e toutes les comp\u00e9tences de survie, sauf celle d&#8217;apprendre \u00e0 grandir dans le rang.... SOYEZ UNE MAUVAISE HERBE&nbsp;!!!<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.747519, 50.346336]},
+		"id":"68",
+		"properties": {
+			"title":"<a href='les-fermes\/#dunjardinalautre'>D\u2019un Jardin \u00e0 l\u2019Autre<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.412056, 50.3578843]},
+		"id":"69",
+		"properties": {
+			"title":"<a href='les-fermes\/#dansonslacapucine'>Dansons la capucine<\/a>",
+			"description":"<p>Dansons la capucine \u2026 c\u2019est un projet qui tourne\u2026 qui danse autour des fleurs.<br class='autobr' \/>\nCulture durable et locale de fleurs dans le respect des personnes et de la nature.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.303841, 50.881644]},
+		"id":"70",
+		"properties": {
+			"title":"<a href='les-fermes\/#leshoublonsdebruxelles'>Les Houblons de Bruxelles<\/a>",
+			"description":"<p>Notre houblonni\u00e8re est situ\u00e9e rue au bois, \u00e0 l&#8217;or\u00e9e du Bois du Laerbeek, juste \u00e0 la fronti\u00e8re entre Jette et Ganshoren, dans la vall\u00e9e du Molenbeek, le long de la Promenade Verte<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.84961, 50.34776]},
+		"id":"72",
+		"properties": {
+			"title":"<a href='les-fermes\/#lespetitscabris'>Les Petits Cabris<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.5956839, 50.5737084]},
+		"id":"73",
+		"properties": {
+			"title":"<a href='les-fermes\/#ventdeterre'>Vent de Terre<\/a>",
+			"description":"<p>De l&#8217;amour des saisons \u00e0 la juste r\u00e9colte.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.6547993, 50.6340944]},
+		"id":"74",
+		"properties": {
+			"title":"<a href='les-fermes\/#lechampdespossibles'>Le Champ des Possibles<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.6572921, 50.27234068556354]},
+		"id":"75",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdoster'>Les Jardins d\u2019Oster <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.149959492064622, 50.5480860045887]},
+		"id":"76",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdelongpre'>Les jardins de Longpr\u00e9<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.5990653, 50.4750367]},
+		"id":"77",
+		"properties": {
+			"title":"<a href='les-fermes\/#jardindelafouarge'>Jardin de la Fouarge<\/a>",
+			"description":"<p><img src=\"squelettes-dist\/puce.gif\" width=\"8\" height=\"11\" class=\"puce\" alt=\"-\" \/>&nbsp;Mara\u00eechage villageois en traction animale -<br class='autobr' \/>\nProduction locale de le\u0301gumes frais et naturels cultiv\u00e9s dans le village d\u2019Oneux, sur les hauteurs de Comblain-au-Pont.<br class='autobr' \/>\nTout le travail se fait dans le respect de la terre, sans pesticides et sans engrais chimique, avec l&#8217;aide de P\u00e9tula, un cheval de trait ardennais.<br class='autobr' \/>\nAu fil des saisons, nous proposons en vrac ou en panier de nombreux l\u00e9gumes, petits fruits et autres saveurs locales.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.247309984513408, 50.12054723981794]},
+		"id":"78",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermemarion'>La Ferme Marion  <\/a>",
+			"description":"<p>Ferme familiale s&#8217;est sp\u00e9cialis\u00e9e dans l\u2019\u00e9levage bovin des Blondes d\u2019Aquitaine en agriculture biologique<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.46, 50.6767]},
+		"id":"79",
+		"properties": {
+			"title":"<a href='les-fermes\/#filonsvert'>Filons Vert<\/a>",
+			"description":"<p>Projet de mara\u00eechage agro\u00e9cologique en auto-cueillette<br class='autobr' \/>\ninfo<span class='mcrypt'> [chez] <\/span>filonsvert.be<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.7, 50.3]},
+		"id":"80",
+		"properties": {
+			"title":"<a href='les-fermes\/#parthenaisesfamenne'>Parthenaises Famenne<\/a>",
+			"description":"<p>\u00c9levage de vaches de race Parthenaises (20 vaches \u2013 50 b\u00eates), bien adapt\u00e9es \u00e0 la Famenne. Viande \u00e9lev\u00e9e \u00e0 l\u2019herbe et valoris\u00e9e autant que possible en vente directe par colis.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.229392, 50.6159971]},
+		"id":"81",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdelava'>Les Jardins Delava<\/a>",
+			"description":"<p>Conscient de la rigueur et des efforts \u00e0 fournir dans le m\u00e9tier, Fran\u00e7ois et Joachim sont convaincus que le mara\u00eechage et l\u2019agriculture en g\u00e9n\u00e9ral ont un r\u00f4le important \u00e0 jouer dans la transition \u00e9cologique de nos soci\u00e9t\u00e9s. Ils souhaitent contribuer \u00e0 la construction d\u2019une soci\u00e9t\u00e9 durable et \u00e9cologique. C\u2019est pourquoi Les Jardins Delava proposent des l\u00e9gumes de saison, sans pesticide et sans produits ajout\u00e9s.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.8968758, 50.3623556]},
+		"id":"82",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafrisetteduchou'>Ferme du moulin \u00e0 eau<\/a>",
+			"description":"<p>Ferme en mara\u00eechage 100% naturel \u00e0 Blaregnies.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.9681365, 50.413376]},
+		"id":"85",
+		"properties": {
+			"title":"<a href='les-fermes\/#lepiceriedeschamps'>L\u2019\u00e9picerie des champs <\/a>",
+			"description":"<p>Mara\u00eechage sur sol vivant<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.3109558055555555, 50.69519369444444]},
+		"id":"86",
+		"properties": {
+			"title":"<a href='les-fermes\/#guiguisfarm'>Guigui\u2019s Farm<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.5624978888888887, 50.68435494444444]},
+		"id":"87",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermebeltaine'>Ferme Beltaine<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.6748305, 50.7831872]},
+		"id":"88",
+		"properties": {
+			"title":"<a href='les-fermes\/#grainesdevie'>Graines de Vie<\/a>",
+			"description":"<p>Graines de Vie est une coop\u00e9rative agricole \u00e0 finalit\u00e9 sociale qui r\u00e9unit mara\u00eechage, boulangerie, \u00e9levage, arboriculture, restauration, transformation, formation\u2026<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.5667, 50.2667]},
+		"id":"90",
+		"properties": {
+			"title":"<a href='les-fermes\/#chateaudefisenne'>Ch\u00e2teau de Fisenne<\/a>",
+			"description":"<p>Le ch\u00e2teau de Fisenne est un lieu collectif o\u00f9 diff\u00e9rents projets d\u2019artisanat et d\u2019accueil sont en train de s\u2019y implanter tous en lien&nbsp;: boulangerie, accueil de jeunes en transition, transformation et ateliers sur l\u2019autonomie alimentaire, mara\u00eechage,... <br class='autobr' \/>\nA c\u00f4t\u00e9 du terrain de mara\u00eechage, nous avons plein de petits fruits que nous vendons sur les march\u00e9s locaux, \u00e0 une glaci\u00e8re du coin, une petite \u00e9picerie de produits artisanaux. Nous les traitons aussi en confitures, coulis, boissons et aliments ferment\u00e9s,...<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.908158, 50.5385445]},
+		"id":"91",
+		"properties": {
+			"title":"<a href='les-fermes\/#alaterrenative'>A la Terre Native<\/a>",
+			"description":"<p>Une nouvelle ferme maraich\u00e8re \u00e0 Jurbise, lancement en 2023&nbsp;!<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.3, 50.8333]},
+		"id":"94",
+		"properties": {
+			"title":"<a href='les-fermes\/#smalafarming'>Smala Farming<\/a>",
+			"description":"<p>L\u2019aventure a d\u00e9marr\u00e9 avec Ana\u00efs et Arth par Smala Cooking, traiteur et atelier de production \u00e0 Saint-Gilles avec comme philosophie, l\u2019utilisation de produits locaux et de saison.<\/p>\n<p>Smala Farming est arriv\u00e9 fin 2018 avec Zofia, la mara\u00eech\u00e8re. Associ\u00e9e \u00e0 Ana\u00efs et Arth, le trio a r\u00e9pondu \u00e0 l\u2019appel d\u2019offre de Bruxelles Environnement et \u00e0 d\u00e9marr\u00e9 l\u2019activit\u00e9 de mara\u00eechage sur le champ \u00e0 Anderlecht.<\/p>\n<p>Le projet Smala, du champ \u00e0 l\u2019assiette \u00e0 Bruxelles \u00e9tait n\u00e9&nbsp;!<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.8370323, 50.7090414]},
+		"id":"95",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermeduchantdesarbres'>La Ferme du Chant des Arbres<\/a>",
+			"description":"<p>Ferme autonome et p\u00e9dagogique \u00e0 Jodoigne-Souveraine<br class='autobr' \/>\nContact&nbsp;: alexia.lebrun<span class='mcrypt'> [chez] <\/span>icloud.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.3886939, 49.5667414]},
+		"id":"96",
+		"properties": {
+			"title":"<a href='les-fermes\/#centredepartagedavioth'>Centre de Partage d\u2019Avioth<\/a>",
+			"description":"<p>Cr\u00e9\u00e9e en 1975, le Centre de Partage est un lieu d\u2019h\u00e9bergement simple et convivial&nbsp;: &#171;&nbsp;Nous avons choisi de vivre les gestes essentiels du quotidien dans le calme, profitant de la nature qui nous entoure, mettant en pratique la co-responsabilit\u00e9. Cette maison est une maison de partage, un lieu qui se veut particuli\u00e8rement protecteur pour les fragilit\u00e9s des uns et des autres (dont, ni alcool, ni drogue, ni violence). Nous voulons \u00eatre pr\u00e9sents \u00e0 l\u2019instant qui se vit, simplement&nbsp;&#187;.<br class='autobr' \/>\nContact&nbsp;: alain.dangoisse<span class='mcrypt'> [chez] <\/span>gmail.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.6994579, 50.5193725]},
+		"id":"97",
+		"properties": {
+			"title":"<a href='les-fermes\/#asblekikrok'>Asbl Ekikrok<\/a>",
+			"description":"<p>info<span class='mcrypt'> [chez] <\/span>ekikrok.be<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.9924948, 50.3646176]},
+		"id":"98",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedelizee'>La ferme de Liz\u00e9e<\/a>",
+			"description":"<p>timothee.claessens<span class='mcrypt'> [chez] <\/span>gmail.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.985598564147949, 50.43241882324219]},
+		"id":"99",
+		"properties": {
+			"title":"<a href='les-fermes\/#cedric'>C\u00e9dric<\/a>",
+			"description":"<p>Initiative de for\u00eat jardin, for\u00eat comestible ou encore d&#8217;agro-\u00e9cologie \u00e0 Mons.<br class='autobr' \/>\nContact&nbsp;: cirdec25<span class='mcrypt'> [chez] <\/span>gmail.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.7604713, 50.7510299]},
+		"id":"100",
+		"properties": {
+			"title":"<a href='les-fermes\/#pomone'>POm\u2019One<\/a>",
+			"description":"<p><a href=\"http:\/\/www.pomone.be\/\" class='spip_url spip_out auto' rel='nofollow external'>http:\/\/www.pomone.be\/<\/a><\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.531937, 50.290297]},
+		"id":"101",
+		"properties": {
+			"title":"<a href='les-fermes\/#chateaudefisenne'>Ch\u00e2teau de Fisenne<\/a>",
+			"description":"<p><a href=\"https:\/\/www.fermeduchateaudefisenne.be\/\" class='spip_url spip_out auto' rel='nofollow external'>https:\/\/www.fermeduchateaudefisenne.be\/<\/a><br class='autobr' \/>\nContact&nbsp;: olivia<span class='mcrypt'> [chez] <\/span>utopi.be<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.1896884, 50.2484753]},
+		"id":"102",
+		"properties": {
+			"title":"<a href='les-fermes\/#nadir'>NADIR<\/a>",
+			"description":"<p>NADIR, c\u2019est une ferme de mara\u00eechage agro\u00e9cologique sur un terrain de jeu de 2,5ha, qui abritent 7 serres-tunnels, une serre \u00e0 semis, 12 jardins potagers, des milliers de l\u00e9gumes, des centaines d\u2019arbres, une for\u00eat-jardin en devenir et 2 habitats auto-construits.<br class='autobr' \/>\nContact&nbsp;: lafermeasbl<span class='mcrypt'> [chez] <\/span>gmail.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.0703167, 50.6179463]},
+		"id":"103",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedepeyo'>Ferme de peyo(FB:JO peyo)<\/a>",
+			"description":"<p>Contact&nbsp;: josiane.mahy<span class='mcrypt'> [chez] <\/span>skynet.be<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.4274513, 50.4484832]},
+		"id":"104",
+		"properties": {
+			"title":"<a href='les-fermes\/#jumetbiofermeurbaine'>jumet.bio, ferme urbaine<\/a>",
+			"description":"<p><a href=\"https:\/\/www.jumet.bio\/\" class='spip_url spip_out auto' rel='nofollow external'>https:\/\/www.jumet.bio\/<\/a> <br class='autobr' \/>\nContact&nbsp;: agnesblocteur2021<span class='mcrypt'> [chez] <\/span>gmail.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.4349331, 50.3603031]},
+		"id":"105",
+		"properties": {
+			"title":"<a href='les-fermes\/#chevreriedeborlon'>Ch\u00e8vrerie de Borlon<\/a>",
+			"description":"<p>Petite ferme familiale qui s\u2018est progressivement sp\u00e9cialis\u00e9e dans l\u2019\u00e9levage de ch\u00e8vres et dans la fabrication de fromage de ch\u00e8vre au lait cru \u00e0 Borlon (Durbuy). <br class='autobr' \/>\nContact&nbsp;: info<span class='mcrypt'> [chez] <\/span>chevreriedeborlon.be<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.1350276, 50.6735582]},
+		"id":"106",
+		"properties": {
+			"title":"<a href='les-fermes\/#fruitcollect'>FruitCollect<\/a>",
+			"description":"<p>Fruitcollect est une asbl qui lutte contre le gaspillage alimentaire, en r\u00e9coltant les fruits non-consomm\u00e9s dans les jardins de particuliers.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.5358192, 50.5041814]},
+		"id":"107",
+		"properties": {
+			"title":"<a href='les-fermes\/#leslegumesdes2vernes'>Les L\u00e9gumes des 2 Vernes<\/a>",
+			"description":"<p>Agriculture 100% biologique r\u00e9gie par la vision de l&#8217;agro\u00e9cologie<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.3038881, 50.8346237]},
+		"id":"108",
+		"properties": {
+			"title":"<a href='les-fermes\/#radiskale'>RadisKale<\/a>",
+			"description":"<p>Production et vente de l\u00e9gumes bio \u00e0 Anderlecht, de petits fruits et d&#8217;\u0153ufs frais.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.9483954, 50.2963523]},
+		"id":"109",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedufreshtry'>Ferme du Fresh Try<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.3054732, 50.6113809]},
+		"id":"110",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermewera'>Ferme Wera<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.3074135, 50.8829337]},
+		"id":"111",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesgarconsmaraichers'>Les Gar\u00e7ons Mara\u00eechers<\/a>",
+			"description":"<p>Le projet est ax\u00e9 sur l\u2019alimentation durable et la sensibilisation \/ formation en circuit court<br class='autobr' \/>\nContact&nbsp;: lesgarconsmaraichers<span class='mcrypt'> [chez] <\/span>gmail.com<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.3020286, 50.6645854]},
+		"id":"112",
+		"properties": {
+			"title":"<a href='les-fermes\/#terresdehautittre'>Terres de Haut-Ittre<\/a>",
+			"description":"<p>La coop\u00e9rative Terre-en-vue a acquis 12 ha \u00e0 Haut-Ittre qui seront prochainement mis \u00e0 disposition d\u2019agriculteurs.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.1910504, 50.4856144]},
+		"id":"114",
+		"properties": {
+			"title":"<a href='les-fermes\/#apiflora'>ApiFlora<\/a>",
+			"description":"<p>P\u00e9pini\u00e8re sp\u00e9cialis\u00e9e dans la production de plantes sauvages indig\u00e8nes, vous trouverez des plantes r\u00e9sistantes, faciles d&#8217;entretien, comestibles, m\u00e9dicinales...<\/p>\n<p>La part belle est donn\u00e9e aux plantes vivaces, qui \u00e9gaieront votre jardin durant plusieurs ann\u00e9es.<\/p>\n<p>Quelques plantes aromatiques et l\u00e9gumes anciens compl\u00e8tent l&#8217;assortiment afin de rester dans l&#8217;esprit d&#8217;un jardin beau et utile&nbsp;!<\/p>\n<p>... Et puis aussi notre miel&nbsp;!<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.685803, 50.692754]},
+		"id":"115",
+		"properties": {
+			"title":"<a href='les-fermes\/#cynorhodonasbl'>Cynorhodon ASBL<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.556931, 50.583736]},
+		"id":"116",
+		"properties": {
+			"title":"<a href='les-fermes\/#potinge'>Pot\u2019Ing\u00e9<\/a>",
+			"description":"<p>Inaugur\u00e9 en 2019, le projet Pot&#8217;Ing\u00e9 est \u00e0 l&#8217;initiative d&#8217;un petit groupe de doctorant\u00b7e\u00b7s de la Facult\u00e9 des Sciences Appliqu\u00e9es. L&#8217;\u00e9quipe s&#8217;est vite agrandie&nbsp;: une vingtaine de membres se partagent leurs id\u00e9es et viennent r\u00e9guli\u00e8rement entretenir la parcelle situ\u00e9e \u00e0 deux pas du B52. Ce projet collectif souhaite conscientiser la communaut\u00e9 universitaire sur la biodiversit\u00e9, les circuits courts et le d\u00e9veloppement durable.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.477602, 50.707109]},
+		"id":"117",
+		"properties": {
+			"title":"<a href='les-fermes\/#labourracheasbl'>La Bourrache ASBL<\/a>",
+			"description":"<p>Centre d&#8217;Insertion Socioprofessionnelle (CISP).<br class='autobr' \/>\nFormation dans les domaines du mara\u00eechage biologique et de l\u2019entretien \u00e9cologique de parcs et jardins. <br class='autobr' \/>\nProductions de l\u00e9gumes Bio sur le terrain.<br class='autobr' \/>\nInterventions chez les particuliers afin de r\u00e9aliser et entretenir leurs jardins.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.0833, 50.55]},
+		"id":"118",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedementen'>Ferme de Menten <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.421870231628418, 49.86785125732422]},
+		"id":"119",
+		"properties": {
+			"title":"<a href='les-fermes\/#bufflardenne'>Buffl\u2019Ardenne<\/a>",
+			"description":"<p>A Semel, dans la commune de Neufch\u00e2teau, se trouve la fromagerie Buffl\u2019Ardenne, le long de la N40. M.&nbsp;et Mme&nbsp;Cornelissen y produisent une mozzarella 100% ardennaise et certifi\u00e9e &#171;&nbsp;bio&nbsp;&#187; depuis 2013. Ce fromage cr\u00e9meux et moelleux ravira les palets des gourmands avec son petit go\u00fbt de noisette inimitable.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.261323, 50.834437]},
+		"id":"120",
+		"properties": {
+			"title":"<a href='les-fermes\/#herbea'>Herb\u00e9a<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.672562, 50.546708]},
+		"id":"121",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedesforges'>La Ferme des Forges<\/a>",
+			"description":"<p>Ferme de production maraich\u00e8re en traction animale port\u00e9 par Marie-Liza dans la province de Li\u00e8ge<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.936585903167725, 50.23270797729492]},
+		"id":"122",
+		"properties": {
+			"title":"<a href='les-fermes\/#jardindessence'>Jardin d\u2019Essence<\/a>",
+			"description":"<p>Herboristerie<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.859182, 50.593632]},
+		"id":"123",
+		"properties": {
+			"title":"<a href='les-fermes\/#lespotionsdemana'>Les Potions de Mana<\/a>",
+			"description":"<p>Bouquets \u00e0 infuser, tisanes magiques, sirops aromatiques, fleurs comestibles et plantes goutues.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.7618159, 50.8022432]},
+		"id":"124",
+		"properties": {
+			"title":"<a href='les-fermes\/#augroinduvillage'>Au Groin du Village <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.7969359, 50.722805]},
+		"id":"125",
+		"properties": {
+			"title":"<a href='les-fermes\/#aupetithappeau'>Au Petit Happeau <\/a>",
+			"description":"<p>production artisanale de produits \u00e0 base de lait de ch\u00e8vres<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.284035, 50.3086254]},
+		"id":"126",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedelescafene'>Ferme de l\u2019Escaf\u00e8ne<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.4754099, 50.5092311]},
+		"id":"127",
+		"properties": {
+			"title":"<a href='les-fermes\/#acterre'>Acterre<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.54753303527832, 50.55554962158203]},
+		"id":"128",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermedebeauregard'>La Ferme de Beauregard<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.516858050801656, 50.70930117112594]},
+		"id":"130",
+		"properties": {
+			"title":"<a href='les-fermes\/#mcjmaraichageclubdejuprelle'>MCJ- Mara\u00eechage Club de Juprelle <\/a>",
+			"description":"<p>Vivre les saisons, vivre au pas de la m\u00e9t\u00e9o,<br class='autobr' \/>\nCr\u00e9er un lieu d\u2019abondances alimentaire et relationnelle,<br class='autobr' \/>\nFaire \u00e9merger un lieu de production, d\u2019exp\u00e9rimentations et d\u2019\u00e9changes,<br class='autobr' \/>\nDans le respect de l\u2019humain et de la terre<br class='autobr' \/>\n&#171;&nbsp;des l\u00e9gumes produits avec que de l\u2019amour, du fumier et de l\u2019huile de coude&nbsp;!&nbsp;&#187;<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.8146615, 50.6846417]},
+		"id":"131",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedugasi'>Ferme du GaSi <\/a>",
+			"description":"<p>La Ferme du GaSi est une ferme de production maraich\u00e8re et horticole.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.0936428, 50.6638038]},
+		"id":"132",
+		"properties": {
+			"title":"<a href='les-fermes\/#censeequivocasbl'>Cense \u00e9qui\u2019voc asbl<\/a>",
+			"description":"<p>Cense \u00e9qui&#8217;voc est une ferme et un centre de formation en permaculture<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.6945021, 50.7503738]},
+		"id":"133",
+		"properties": {
+			"title":"<a href='les-fermes\/#domainedelowas'>Domaine de Lowas <\/a>",
+			"description":"<p>Le Domaine des Lowas est un vignoble en bio depuis 2019.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.9281077, 50.413232]},
+		"id":"134",
+		"properties": {
+			"title":"<a href='les-fermes\/#lechene'>Le Ch\u00eane<\/a>",
+			"description":"<p>Le Ch\u00eane est un lieu de vie communautaire o\u00f9 cohabitent 9 adultes et 6 enfants.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.1809434, 50.6305928]},
+		"id":"135",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafermeduplanois'>La Ferme du Planois<\/a>",
+			"description":"<p>La Ferme du Planois est une ferme diversifi\u00e9e&nbsp;:<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.545068, 50.6254937]},
+		"id":"136",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedeladistillerie'>Ferme de la distillerie<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.2774567, 50.8276786]},
+		"id":"137",
+		"properties": {
+			"title":"<a href='les-fermes\/#hierbabuenatisanes'>Hierba Buena Tisanes <\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.7205, 50.3575]},
+		"id":"138",
+		"properties": {
+			"title":"<a href='les-fermes\/#communautedehercana'>Communaut\u00e9 de Hercana<\/a>",
+			"description":"<p>La ferme est situ\u00e9e sur un plateau. C&#8217;est un environnement agricole tr\u00e8s \"agro-industriel\". Les paysages sont fort de type \"monocultures\", les haies ont quasiment disparu, peu de diversit\u00e9 paysag\u00e8re.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.557835, 50.663684]},
+		"id":"139",
+		"properties": {
+			"title":"<a href='les-fermes\/#lejardinvivifiant'>Le Jardin Vivifiant<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.481231, 50.706435]},
+		"id":"140",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesglaneurs'>Les Glaneurs<\/a>",
+			"description":"<p>Culture bio de fruits en auto-cueillette \u00e0 Lasne, ventes pr\u00e9vues pour l&#8217;\u00e9t\u00e9 2025<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.3167, 50.3]},
+		"id":"141",
+		"properties": {
+			"title":"<a href='les-fermes\/#oasisnatureetsante'>Oasis Nature et Sant\u00e9<\/a>",
+			"description":"<p>Les plantes aromatiques et m\u00e9dicinales (PAM) sont cultiv\u00e9es dans notre jardin mandala et une petite parcelle de moins de 10 ares, compl\u00e9t\u00e9es de cueillettes sauvages sur des sites pr\u00e9serv\u00e9s. Les pratiques et les am\u00e9nagements sont favorables \u00e0 l\u2019accueil et l\u2019\u00e9panouissement de la biodiversit\u00e9. Les plantes sont r\u00e9colt\u00e9es \u00e0 la main, s\u00e9ch\u00e9es sur claies \u00e0 basse temp\u00e9rature, tri\u00e9es et ensach\u00e9es avec soin. Ces attentions particuli\u00e8res permettent de pr\u00e9server leurs parfums et leurs vertus pour vous offrir le meilleur des petites feuilles et fleurs.<br class='autobr' \/>\nVente directe et formations, transmission.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [5.882294, 50.628994]},
+		"id":"142",
+		"properties": {
+			"title":"<a href='les-fermes\/#lepotagerdisalie'>Le potager d\u2019Isalie<\/a>",
+			"description":""
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.298741, 50.660724]},
+		"id":"143",
+		"properties": {
+			"title":"<a href='les-fermes\/#jardindessaules'>Jardin des Saules<\/a>",
+			"description":"<p>Andy De Paepe et Pauline Biot vous proposent une production de l\u00e9gumes biologiques de saison sur un terrain de 1.3ha situ\u00e9 sur la chauss\u00e9e de Hal entre Nivelles et Bois-Seigneur-Isaac \u00e0 Haut-Ittre.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.7076564, 50.5333813]},
+		"id":"145",
+		"properties": {
+			"title":"<a href='les-fermes\/#lesjardinsdesymbiooz'>Les Jardins de Symbiooz<\/a>",
+			"description":"<p>Les Jardins de Symbiooz c\u2019est un mara\u00eechage agro\u00e9cologique sur sol vivant et des l\u00e9gumes en auto-cueillette. Les nouvelles du champ sont \u00e0 lire ici&nbsp;: <a href=\"https:\/\/symbiooz.be\/maraichage\/les-nouvelles-du-champ\/\" class='spip_url spip_out auto' rel='nofollow external'>https:\/\/symbiooz.be\/maraichage\/les-nouvelles-du-champ\/<\/a><\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [3.896634817123413, 50.36215591430664]},
+		"id":"146",
+		"properties": {
+			"title":"<a href='les-fermes\/#lafrisetteduchou'>La Frisette du chou <\/a>",
+			"description":"<p>Ferme en mara\u00eechage 100% naturel \u00e0 Blaregnies.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.1192412, 50.3390351]},
+		"id":"147",
+		"properties": {
+			"title":"<a href='les-fermes\/#fermedubesigneul'>Ferme du Besigneul<\/a>",
+			"description":"<p>La ferme du Besigneul se situe \u00e0 Peissant dans la commune d&#8217;Estinnes.<\/p>"
+		}},
+		{"type": "Feature",
+		"geometry": {"type": "Point", "coordinates": [4.778818, 50.423248]},
+		"id":"148",
+		"properties": {
+			"title":"<a href='les-fermes\/#lagrangecocotte'>La grange Cocotte<\/a>",
+			"description":"<p>Maraichage en auto-cueillette et en agro\u00e9cologie<\/p>"
+		}}
+	]
+}

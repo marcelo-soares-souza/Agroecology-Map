@@ -14,7 +14,6 @@ class LocationsController < ApplicationController
   before_action :load_options
   before_action :load_system_options
   before_action :load_total
-  before_action :load_likes_info, only: %i[show]
 
   # GET /locations
   # GET /locations.json
@@ -70,7 +69,12 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   # GET /locations/1.json
-  def show; end
+  def show
+    if (not browser.bot?) && (not request.is_crawler?)
+      @location.visits += 1
+      @location.save!
+    end
+  end
 
   # GET /locations/new
   def new
@@ -105,7 +109,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to new_location_practice_path(@location), notice: t(:location_has_been_registered) }
+        format.html { redirect_to location_path(@location), notice: t(:location_has_been_registered) }
         format.json { render json: { message: "created" }, status: :created }
       else
         format.html { render :new }
@@ -159,7 +163,7 @@ class LocationsController < ApplicationController
       body += "\r\n \r\n"
 
       if @location.account.id != current_account.id
-        ActionMailer::Base.mail(from: '"Agroecology Map" <noreply@agroecologymap.org>', to: @location.account.email, subject:,  body:).deliver
+        MailJob.perform_async(@location.account.email, subject, body)
       end
 
       redirect_to location_path(@location), notice: "Your like has been registered! Thanks!!"
@@ -223,7 +227,9 @@ class LocationsController < ApplicationController
             name: location.name,
             country: location.country ? ISO3166::Country[location.country].iso_short_name : "",
             country_code: location.country || "",
+            continent: location.continent || "",
             farm_and_farming_system: location.farm_and_farming_system || "",
+            farm_and_farming_system_details: location.farm_and_farming_system_details || "",
             farm_and_farming_system_complement: location.farm_and_farming_system_complement || "",
             description: location.description || "",
             latitude:  location.latitude,
@@ -240,10 +246,5 @@ class LocationsController < ApplicationController
 
       fc = GeojsonModel::FeatureCollection.new(features: locations)
       JSON.pretty_generate(JSON.parse(fc.to_json))
-    end
-
-    def load_likes_info
-      likes = @location.likes.map { |like| like.account.name }.join(", ")
-      @likes_info = likes.empty? ? "Like Button" : likes
     end
 end

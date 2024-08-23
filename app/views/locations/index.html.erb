@@ -14,7 +14,7 @@
   </li>
 </ul>
 
-<div style="margin-top: 2px; margin-bottom: 2px; text-align: left">
+<div style="text-align: left">
   <%= text_field_tag "search", {}, class: "btn dropdown-toggle btn-default search", placeholder: t(:search) %>
   <%= link_to (bootstrap_icon "search"), "#", id: 'searchButton', onclick: 'filter()' %>
   <span style="font-size: 13px;"><a href="#" onclick="showAdvancedFilters()"><%= t(:show_more_filters) %></a></span>
@@ -39,6 +39,8 @@
     <span style="font-size: 13px; float: right;">
       <a href="/locations.geojson"><%= t(:export_as_geojson) %></a>
       |
+      <a href="/locations.json">JSON</a>
+      |
       <a href="/locations.csv">CSV</a>
     </span><br>
   <% end %>
@@ -46,16 +48,26 @@
     <% @locations.each do |location| %>
       <div class="col-sm-4" style="cursor: pointer;" onclick="window.location='<%= location_url(location) %>';">
         <div class="card">
+
           <div class="like">
-            <%= link_to like_location_path(location), method: "put", class: "btn text-white",  style: "background-color: #fff; width: 90px; float: right;", disabled: true do %>
-              <img src="/like.png" alt="<%= @likes_info %>" title="<%= @likes_info %>">
-              <span class="badge bg-danger ms-2" style="font-size: 14px;"><%= location.likes.count.to_s %></span>
+            <% likes = location.likes.count.to_s %>
+            <% visits = location.visits.to_s %>
+            <%= link_to like_location_path(location), method: "put", class: "btn text-white",  style: "background-color: #fff; padding-right: 5px;", disabled: true do %>
+              <img src="/like.png" alt="<%= @likes_info %>" title="<%= likes %> Like(s)">
+              <span class="badge bg-danger ms-2" style="font-size: 12px;" title="<%= likes %> Like(s)"><%= location.likes.count.to_s %></span>
             <% end %>
+            <div class="btn text-white" style="padding-left: 0px;">
+              <img src="<%= image_url("eye.png") %>" alt="Visits" title="<%= visits %> Visit(s)">
+              <span class="badge bg-success ms-2 text-white" style="font-size: 12px;" title="<%= visits %> Visit(s)"><%= location.visits.to_s %></span>
+            </div>
           </div>
+
           <div class="card-img-top thumbnail"><%= link_to photo_thumb(location, location.name, true), location_path(location), alt: location.name, title: location.name %></div>
           <div class="card-body" style="min-height: 100px;">
-             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to location.name.truncate(34), location_path(location) %></h4>
-             <p class="card-text" style="text-align: center; font-size: 12px;">
+             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;"><%= link_to location.name.truncate(34), location_path(location) %>
+              <div style="font-size: 12px !important"><%= location.country ? ISO3166::Country[location.country].iso_short_name : "" %></div>
+             </h4>
+             <p class="card-text" style="text-align: center; font-size: 12px; margin-top: -8px; ">
                 <%= link_to t(:details), location_url(location) %> <%= "|" if location.practices.size > 0 %>
                 <%= link_to t(:practices) + " (#{location.practices.size})", location_practices_path(location) if location.practices.size > 0 %> <%= "|" if location.medias.size > 0 %>
                 <%= link_to t(:gallery) + " (#{location.medias.size})", location_gallery_path(location) if location.medias.size > 0 %>
@@ -68,7 +80,7 @@
   </div>
 
   <% if not params[:account_id] %>
-    <div>
+    <div style="margin-top: -14px;">
       <%= paginate @locations %>
     </div>
   <% end %>

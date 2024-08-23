@@ -7,6 +7,23 @@
         margin-top: 40px;
     }
 </style>
+
+<div class="link-action"></div>
+
+<ul class="nav nav-tabs flex-column flex-xl-row">
+  <li class="nav-item">
+      <%= link_to 'Privacy Policy', privacy_policy_path, :class => "nav-link active" %>
+  </li>
+  
+  <li class="nav-item">
+      <%= link_to 'Content License', license_path, :class => "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+      <%= link_to 'Code License', source_code_license_path, :class => "nav-link" %>
+  </li>    
+</ul>
+
 <div class="privacy">
     <h1>Privacy Policy</h1>
     <p><strong>Last updated: March 21, 2024</strong></p>

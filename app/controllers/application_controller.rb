@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys: [:name])
       devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :i_agree_with_terms_and_conditions])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :i_agree_with_terms_and_conditions, :humanizer_answer, :humanizer_question_id])
     end
 
     def check_owner(account_id)

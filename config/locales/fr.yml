@@ -280,7 +280,7 @@ fr:
   which_effect_do_you_expect_the_practice_to_have: Quel effet attendez-vous que la pratique ait?
   which_parts_of_the_food_system_are_concerned_or_engaged_through_the_practice: Quelles parties du système alimentaire sont concernées ou engagées par la pratique?
   whole_food_system: Système alimentaire entier
-  who_we_are: Qui sommes-nous ?
+  who_we_are: Qui sommes-nous?
   why_you_use_and_what_you_expect_from_this_practice: Pourquoi utilisez-vous cette pratique et qu'attendez-vous d'elle ?
   workers: Ouvriers
   works_instantly: Fonctionne instantanément
@@ -305,3 +305,7 @@ fr:
   profile: "Profile"
   who_we_are_and_why: "Nous sommes une organisation à but non lucratif maintenue avec l'aide d'un groupe de bénévoles passionnés par l'agroécologie. Tout ce que nous créons et construisons, avec vous, est ouvert et gratuit pour tous."
   thanks: "Merci pour"
+  message: "Message"
+  submit_message: "Envoyer le message"
+  registered_on: "Inscrit le"
+  projects_and_groups: "Découvrez d'autres groupes en Agroécologie"

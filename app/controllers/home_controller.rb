@@ -13,6 +13,24 @@ class HomeController < ApplicationController
   def reduced_map
   end
 
+  def message
+    email = params["contact"]["email"]
+    message = params["contact"]["message"]
+
+    if not message.nil?
+      to = "marcelo@agroecologymap.org"
+      subject = "[Agroecology Map] #{email} sent you a message"
+      body = "Message: #{message}"
+      body += "\r\n \r\n"
+
+      MailJob.perform_async(to, subject, body)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to contact_path, notice: "A message was sent to Agroecology Map" }
+    end
+  end
+
   private
     def load_locations
       @locations = Location.where(hide_my_location: false)
