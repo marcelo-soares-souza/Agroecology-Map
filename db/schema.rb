@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_21_161832) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_23_113739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -176,6 +176,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_161832) do
     t.text "what_is_your_dream"
     t.integer "visits", default: 0
     t.index ["account_id"], name: "index_locations_on_account_id"
+    t.index ["hide_my_location", "latitude", "longitude"], name: "idx_map"
+    t.index ["hide_my_location"], name: "idx_hide_my_location"
+    t.index ["latitude"], name: "idx_map_lat"
+    t.index ["longitude"], name: "idx_map_lon"
     t.index ["name"], name: "index_locations_on_name", opclass: :gin_trgm_ops, using: :gin
     t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
@@ -204,6 +208,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_161832) do
     t.index ["location_id"], name: "index_practices_on_location_id"
     t.index ["name"], name: "index_practices_on_name", opclass: :gin_trgm_ops, using: :gin
     t.index ["slug"], name: "index_practices_on_slug", unique: true
+  end
+
+  create_table "sensors", force: :cascade do |t|
+    t.float "temperature"
+    t.float "humidity"
+    t.float "moisture"
+    t.float "sun"
+    t.bigint "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_sensors_on_location_id"
   end
 
   create_table "what_you_dos", force: :cascade do |t|
@@ -241,5 +256,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_161832) do
   add_foreign_key "medias", "practices"
   add_foreign_key "practices", "accounts"
   add_foreign_key "practices", "locations"
+  add_foreign_key "sensors", "locations"
   add_foreign_key "what_you_dos", "practices"
 end
