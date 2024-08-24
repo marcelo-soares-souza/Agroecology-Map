@@ -56,8 +56,7 @@
 
     <% if ! @practice.what_you_do.summary_description_of_agroecological_practice.blank? %>
       <%= "<h4>#{t(:summary_description)}</h4>".html_safe  %>
-      <div class="text-box"><%= @practice.what_you_do.summary_description_of_agroecological_practice.truncate(4058) %></div>
-      <br>
+      <div class="text-box"><%= "<div class='text-box'>#{simple_format (h @practice.what_you_do.summary_description_of_agroecological_practice).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe %></div>
     <% end %>
 
     <%= "<h4>#{t(:location)}</h4>#{link_to @practice.location.name.truncate(64), location_path(@practice.location)}&nbsp;".html_safe if @practice.location.name? %>

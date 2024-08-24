@@ -5,7 +5,9 @@
 
 <div class="collapse" id="showCharts">
     <br>
-    <canvas id='sensors'></canvas>
+    <div class="chart-container" style="position: relative;">
+      <canvas id='sensors'></canvas>
+    </div>
     <br>
 </div>
 
@@ -31,9 +33,8 @@
   const options = {
     responsive: true,
     maintainAspectRatio: true,
-    scales: { y: { beginAtZero: true, max: 100} },
+    scales: { y: { beginAtZero: true, max: 120} },
     plugins: {
-     
       legend: {
         display: true
       }
