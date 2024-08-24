@@ -1,6 +1,12 @@
-<%= "<h4>Sensors</h4><div class='text-box'>Temperature: #{@location.sensors.last.temperature.to_s} 🌞<br>Humidity: #{@location.sensors.last.humidity.to_s} 💦<br>Soil Moisture: #{@location.sensors.last.moisture.to_s} 🚰</div><br>".html_safe %>
 
-<a class="btn btn-info" data-toggle="collapse" href="#showCharts" role="button" aria-expanded="false" aria-controls="showCharts">Show sensors charts</a>
+<%= "<h4>Sensors</h4>
+    <div class='text-box' style='font-size: 21px; text-align-last: start; width: 250px; padding: 4px;'>
+      <span style='color: #B71C1C; font-size: 24px'>🌡</span>Temperature: #{@location.sensors.last.temperature.to_s}°C<br>
+      💦 Humidity: #{@location.sensors.last.humidity.to_s}%<br>
+      🚰 Soil Moisture: #{@location.sensors.last.moisture.to_s}%
+    </div><br>".html_safe %>
+
+<a class="btn btn-info" data-toggle="collapse" href="#showCharts" role="button" aria-expanded="false" aria-controls="showCharts">Show Sensors Charts</a>
 <br><br>
 
 <div class="collapse" id="showCharts">
