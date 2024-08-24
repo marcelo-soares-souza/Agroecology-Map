@@ -14,6 +14,7 @@ gem "pg", ">= 1.5.7"
 gem "puma", ">= 6.4.2"
 gem "jbuilder", ">= 2.12.0"
 gem "sass-rails", ">= 6.0.0"
+gem "rexml", ">= 3.3.6"
 
 group :development do
   gem "listen", ">= 3.9.0"

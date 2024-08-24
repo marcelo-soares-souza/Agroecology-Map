@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class LocationsController < ApplicationController
+  protect_from_forgery except: [:sensors]
   skip_before_action :authenticate, except: %i[index, show], if: -> { request.format.json? }
 
   before_action :authenticate_account!, only: %i[new edit update destroy like], if: -> { !request.format.json? }
@@ -168,6 +169,12 @@ class LocationsController < ApplicationController
 
       redirect_to location_path(@location), notice: "Your like has been registered! Thanks!!"
     end
+  end
+
+  def sensors
+    @location = Location.friendly.find(params[:id])
+    @sensor = Sensor.new(location: @location, temperature: params[:temperature], humidity: params[:humidity], moisture: params[:moisture])
+    @sensor.save!
   end
 
   private

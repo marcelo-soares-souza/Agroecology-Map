@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "landing", to: "about#landing"
     get "about", to: "about#index"
     get "who_we_are", to: "about#who_we_are"
+    get "how_to_register", to: "about#how_to_register"
     get "partners", to: "about#partners"
     get "friends", to: "about#partners"
     get "manual", to: "about#manual"
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
     put "/locations/:id/like", to: "locations#like", as: "like_location"
     post "/accounts/:id/message", to: "accounts#message", as: "message_account"
     post "/home/message", to: "home#message", as: "message_contact"
+    post "/locations/:id/sensors", to: "locations#sensors", as: "sensors_location"
 
     resources :practices
     resources :acknowledges
