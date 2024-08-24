@@ -38,3 +38,4 @@ yarn.lock
 .idea
 .env
 storage
+*.mp4

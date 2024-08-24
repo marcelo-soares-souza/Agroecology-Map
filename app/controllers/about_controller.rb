@@ -29,4 +29,7 @@ class AboutController < ApplicationController
 
   def source_code_license
   end
+
+  def how_to_register
+  end
 end

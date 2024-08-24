@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "landing", to: "about#landing"
     get "about", to: "about#index"
     get "who_we_are", to: "about#who_we_are"
+    get "how_to_register", to: "about#how_to_register"
     get "partners", to: "about#partners"
     get "friends", to: "about#partners"
     get "manual", to: "about#manual"
