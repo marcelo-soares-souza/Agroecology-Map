@@ -2,6 +2,8 @@
 
 class HomeController < ApplicationController
   skip_before_action :authenticate, except: %i[index, show], if: -> { request.format.json? }
+  before_action :authenticate_account!, only: %i[message]
+
   before_action :load_locations, only: %i[index map reduced_map]
 
   def index
