@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", ">=7.1"
+gem "rails", ">=7.2"
 
 gem "nokogiri", ">= 1.16.7"
 gem "pg", ">= 1.5.7"
@@ -23,7 +23,7 @@ group :development do
 end
 
 group :rubocop do
-  gem "rubocop", ">= 1.62.1", require: false
+  gem "rubocop", ">= 1.65.1", require: false
   gem "rubocop-minitest", require: false
   gem "rubocop-packaging", require: false
   gem "rubocop-performance", require: false

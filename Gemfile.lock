@@ -407,10 +407,10 @@ DEPENDENCIES
   nokogiri (>= 1.16.7)
   pg (>= 1.5.7)
   puma (>= 6.4.2)
-  rails (>= 7.1)
+  rails (>= 7.2)
   rdoc (>= 6.7.0)
   rexml (>= 3.3.6)
-  rubocop (>= 1.62.1)
+  rubocop (>= 1.65.1)
   rubocop-md
   rubocop-minitest
   rubocop-packaging
