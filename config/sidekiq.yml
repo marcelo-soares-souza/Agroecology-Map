@@ -1,0 +1,5 @@
+:scheduler:
+  :schedule:
+    CleanupJob:
+      every: 60m
+      class: CleanupJob
