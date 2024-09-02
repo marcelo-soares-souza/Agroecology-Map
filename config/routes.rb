@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "sidekiq/web"
-
 Rails.application.routes.draw do
   resources :jobs, only: [:create]
 
@@ -43,6 +41,7 @@ Rails.application.routes.draw do
     post "/accounts/:id/message", to: "accounts#message", as: "message_account"
     post "/home/message", to: "home#message", as: "message_contact"
     post "/locations/:id/sensors", to: "locations#sensors", as: "sensors_location"
+    get "/locations/:id/sensors", to: "locations#show_sensors", as: "show_sensors_location"
 
     resources :practices
     resources :acknowledges
