@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     get "reduced_map", to: "home#reduced_map"
     get "map", to: "home#index"
+    get "agroecology", to: "about#agroecology"
     get "landing", to: "about#landing"
     get "about", to: "about#index"
     get "who_we_are", to: "about#who_we_are"

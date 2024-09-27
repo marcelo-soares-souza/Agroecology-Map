@@ -6,6 +6,9 @@ class AboutController < ApplicationController
   def index
   end
 
+  def agroecology
+  end
+
   def who_we_are
   end
 
