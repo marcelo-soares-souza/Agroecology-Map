@@ -177,6 +177,11 @@ class LocationsController < ApplicationController
     @sensor.save!
   end
 
+  def show_sensors
+    location = Location.friendly.find(params[:id])
+    @sensor = Sensor.where(location_id: location.id).last
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location

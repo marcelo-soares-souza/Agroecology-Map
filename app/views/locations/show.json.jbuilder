@@ -18,6 +18,10 @@ json.latitude  @location.latitude
 json.longitude @location.longitude
 json.responsible_for_information @location.account.name
 json.url location_url(@location)
+json.temperature @location.sensors.blank? ? nil : @location.sensors.last.temperature
+json.humidity @location.sensors.blank? ? nil : @location.sensors.last.humidity
+json.moisture @location.sensors.blank? ? nil : @location.sensors.last.moisture
+json.sensors_last_updated_at @location.sensors.blank? ? nil : @location.sensors.last.updated_at.strftime("%Y-%m-%d %H:%M:%S")
 json.account_id @location.account_id
 json.created_at @location.created_at
 json.updated_at @location.updated_at

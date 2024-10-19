@@ -217,12 +217,13 @@ strong {
 }
 
 .text-box {
-    font-size: 18px;
+    font-size: 20px;
     margin-right: auto;
     margin-left: auto;
-    max-width: 720px;
+    max-width: 750px;
     text-align: justify;
     text-align-last: center;
+    line-height: 1.6;
 }
 
 .text-box p {

@@ -39,7 +39,9 @@
   const options = {
     responsive: true,
     maintainAspectRatio: true,
-    scales: { y: { beginAtZero: true, max: 120} },
+    scales: { y: { beginAtZero: true, max: 120 },
+              x: { title: { display: true, text: 'UTC' }}
+            },
     plugins: {
       legend: {
         display: true
