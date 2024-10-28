@@ -31,8 +31,7 @@
 </ul>
 
 <% if @medias.empty? %>
-  <br>
-
+  <br><br>
   <h3><%= t(:no_photo_submitted) %>
     <% if account_signed_in? %>
       <% if params[:practice_id] %>
@@ -40,7 +39,6 @@
       <% end %>
     <% end %>
   </h3>
-
 <% else %>
 
   <br>

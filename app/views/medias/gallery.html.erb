@@ -67,8 +67,7 @@
 
 <% if @medias.empty? %>
   <br><br>
-
-  <h2><%= t(:no_photo_submitted) %>
+  <h3><%= t(:no_photo_submitted) %>
     <% if account_signed_in? %>
       <% if params[:practice_id] %>
         <%= link_to t(:send_picture), new_practice_media_path(@practice) if current_account.admin? or @practice.account_id == current_account.id %>

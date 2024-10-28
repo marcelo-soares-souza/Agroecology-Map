@@ -839,3 +839,10 @@ label.error {
     min-width: 200px;
     min-height: 24px;
 }
+
+#main-menu {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid #cccccc;
+}
