@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Agroecologia
   class Application < Rails::Application
-    config.load_defaults 7.1
+    config.load_defaults 8.0
     config.exceptions_app = self.routes
 
     logger           = ActiveSupport::Logger.new(STDOUT)
