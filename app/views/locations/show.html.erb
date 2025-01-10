@@ -43,10 +43,8 @@
 
     <br>
     <h1><%= @location.name.truncate(128) %></h1>
-    <br>
-
+    <%= "<div><b style='color: black !important'>#{ISO3166::Country[@location.country]}</b></div><br>".html_safe unless @location.country.blank? %>
     <%= "<h4>#{t(:short_description)}</h4><div class='text-box'>#{simple_format (h @location.description).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.description.blank? %>
-    <%= "<h4>#{t(:country)}</h4><div class='text-box'>#{ISO3166::Country[@location.country]}</div><br>".html_safe unless @location.country.blank? %>
     <%= "<h4>#{t(:farm_and_farming_system)}</h4>".html_safe unless @location.farm_and_farming_system.blank? && @location.farm_and_farming_system_complement.blank? %>
     <%= "<div class='text-box'>#{@farm_and_farming_system_options.key(@location.farm_and_farming_system)}&nbsp;<br></div>".html_safe unless @location.farm_and_farming_system.blank? %>
     <%
@@ -61,15 +59,16 @@
 
     <%= render 'sensors', location: @location unless @location.sensors.blank? %>
 
-    <%= "<h4>#{t(:registered_on)}</h4><div class='text-box'>#{@location.created_at.strftime('%Y-%m-%d')}</div>".html_safe %>
-    <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @location.account.name, account_path(@location.account)}&nbsp;".html_safe if @location.account.name? %></div>
-
     <% if @location.hide_my_location == false %>
+      <%= "<h4>#{t(:location)}</h4>".html_safe %>
       <% if @location.latitude and @location.longitude %>
         <div id="map-show" style="z-index: 1;"></div>
       <% end %>
     <% end %>
-  </div>
+
+      <%= "<br><h4>#{t(:registered_on)}</h4><div class='text-box'>#{@location.created_at.strftime('%Y-%m-%d')}</div>".html_safe %>
+      <div class="practices-box bg-light"><%= "<h4>#{t(:responsible_for_information)}</h4>#{link_to @location.account.name, account_path(@location.account)}&nbsp;".html_safe if @location.account.name? %></div>
+    </div>
 </div>
 
 <% if account_signed_in? %>

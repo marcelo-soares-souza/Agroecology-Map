@@ -220,7 +220,7 @@ strong {
     font-size: 20px;
     margin-right: auto;
     margin-left: auto;
-    max-width: 750px;
+    max-width: 920px;
     text-align: justify;
     text-align-last: center;
     line-height: 1.6;
@@ -264,8 +264,8 @@ strong {
 }
 
 #map-show {
-    max-width: 700px;
-    max-height: 300px;
+    max-width: 920px;
+    max-height: 350px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -691,7 +691,7 @@ input::file-selector-button {
 
 .practices-box {
     border: 1px solid #dedee0;
-    max-width: 800px;
+    max-width: 900px;
     padding: 18px 8px;
     margin: 8px auto 20px;
 }
