@@ -35,35 +35,32 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <br>
-    <div class="practices-box">
-      <h4>Number of locations registered</h4>
-      Locations: <%= @locations_count %>
+    <div class="practices-box bg-light" style="max-width: 270px; background: #dedee0;" >
+      <h4>
+      Accounts: <span style="color: #000"><%= @accounts_count %></span>
+      <br>
+      Locations: <span style="color: #000"><%= @locations_count %></span>
+      <br>
+      Practices: <span style="color: #000"><%= @practices_count %></span>
+      </h4>
     </div>
-    <div class="practices-box">
-      <h4>Number of practices registered</h4>
-      Practices: <%= @practices_count %>
-    </div>
-    <div class="practices-box">
-      <h4>Number of Accounts registered</h4>
-      Locations: <%= @accounts_count %>
-    </div>
-    <div class="practices-box">
-      <h4>Locations per country</h4>
-      <div id="regions_div"></div>
-    </div>
-
-    <div class="practices-box">
-      <h4>Locations per continent</h4>
-      <div id="continents_div"></div>
-    </div>
-
     <div class="practices-box bg-light">
       <h4>Number of locations registered per continent</h4>
       <div>
         <canvas id="per-continent-chart"></canvas>
       </div>
+    </div>    
+    <div class="practices-box">
+      <h4>Locations per country</h4>
+      <div id="regions_div"></div>
     </div>
-    <!--
+<!--
+    <div class="practices-box">
+      <h4>Locations per continent</h4>
+      <div id="continents_div"></div>
+    </div>
+-->
+
     <div class="practices-box">
       <h4>Where it is realized?</h4>
       <div>
@@ -82,19 +79,20 @@
         <canvas id="components-chart"></canvas>
       </div>
     </div>
+<!--
     <div class="practices-box">
       <h4>Knowledge source</h4>
       <div>
         <canvas id="knowledge-and-skills-required-for-practice-chart"></canvas>
       </div>
     </div>
+-->
     <div class="practices-box">
       <h4>Farm and farming system</h4>
       <div>
         <canvas id="farm-and-farming-system-chart"></canvas>
       </div>
     </div>
-    -->
   </div>
 </div>
 <!-- Script for ChartJS -->
@@ -255,8 +253,8 @@
   const ctxPerContinent = document.getElementById('per-continent-chart');
   const labels = []
   const values = []
-
-  <% @locations.group(:continent).count.each do |location| %>
+  
+  <% @locations.group(:continent).count.sort_by {|_key, value| value}.reverse.each do |location| %>
         labels.push('<%= location[0] %> (<%= location[1] %>)');
         values.push(<%= location[1] %>)
   <% end %>
@@ -361,7 +359,7 @@
 
   const datasetFarmAndFarmingSystem = [{
       label: '',
-      data: [<%= @practices_farm_system_crops_count %>, <%= @practices_farm_system_animals_count %>, <%= @practices_farm_system_trees_count %>, <%= @practices_farm_system_fish_count %>, <%= @practices_farm_system_other_count %>],
+      data: [<%= @practices_farm_system_crops_count %>, <%= @practices_farm_system_trees_count %>, <%= @practices_farm_system_animals_count %>, <%= @practices_farm_system_other_count %>, <%= @practices_farm_system_fish_count %>],
       backgroundColor: [
       'rgba(255, 99, 132, 0.5)',
       'rgba(45, 192, 192, 0.5)',
@@ -403,7 +401,7 @@
       countries.push(['Country', 'Locations'])
 
       <% @location_by_country.each do |country| %>
-        countries.push(['<%= ::ISO3166::Country[country[0]].iso_short_name %>', <%= country[1] %>])
+        countries.push(['<%= country[0] %>', <%= country[1] %>])
       <% end %>
 
       function drawRegionsMap() {
