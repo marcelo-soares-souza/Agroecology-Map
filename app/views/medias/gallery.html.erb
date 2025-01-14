@@ -98,7 +98,7 @@
           <div class="card-body"  style="min-height: <%= account_signed_in? ? '145px' : '85px'%>">
             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;">
              <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-             <%= media.description.blank? ? media.location.name.squish!.strip.truncate(35) : media.description.squish!.strip.truncate(35) %>
+             <%= media.description.blank? ? media.location.name.squish!.strip.truncate(32) : media.description.squish!.strip.truncate(35) %>
              </a>
             </h4>
             <p class="card-text" style="text-align: center; font-size: 12px;">
@@ -133,7 +133,7 @@
   <script>
       $(document).on('click', '[data-toggle="lightbox"]', function(event) {
           event.preventDefault();
-          $(this).ekkoLightbox();
+          $(this).ekkoLightbox({showArrows: false});
       });
   </script>
 <% end %>
