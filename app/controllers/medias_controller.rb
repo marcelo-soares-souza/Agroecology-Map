@@ -19,6 +19,9 @@ class MediasController < ApplicationController
   # GET /gallery
   # GET /gallery.json
   def gallery
+    if request.path == "/en/gallery" || request.path == "/gallery"
+      @medias = Media.all.order("updated_at desc").page(params[:page]).per(32)
+    end
   end
 
   # GET /medias/1
