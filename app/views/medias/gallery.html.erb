@@ -95,10 +95,10 @@
               <img src="<%= url_for(media.photo.variant(:thumb)) %>" alt="Photo <%= media.description %>" title="Photo <%= media.description %>" class="img-fluid">
             </a>
           </div>
-          <div class="card-body"  style="min-height: <%= account_signed_in? ? '145px' : '84px'%>">
+          <div class="card-body"  style="min-height: <%= account_signed_in? ? '145px' : '85px'%>">
             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;">
              <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-             <%= media.description.squish!.strip.truncate(39) %>
+             <%= media.description.blank? ? media.location.name.squish!.strip.truncate(35) : media.description.squish!.strip.truncate(35) %>
              </a>
             </h4>
             <p class="card-text" style="text-align: center; font-size: 12px;">
