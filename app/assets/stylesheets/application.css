@@ -135,6 +135,7 @@ strong {
 }
 
 .thumbnail {
+    margin-top: 5px;
     margin-right: auto;
     margin-left: auto;    
     width: 180px;
