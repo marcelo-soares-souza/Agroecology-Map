@@ -87,24 +87,22 @@
   <br>
   <div class="row">
     <% @medias.each do |media| %>
-      <div class="col-sm-3" style="cursor: pointer;" >
+      <div class="col-sm-2" style="cursor: pointer;" >
         <div class="card" style="max-height: <%= account_signed_in? ? '375px' : '325px'%>;">
           <br>
           <div class="card-img-top thumbnail" >
             <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-              <img src="<%= url_for(media.photo.variant(:thumb)) %>" alt="Photo <%= media.description %>" title="Photo <%= media.description %>" class="img-fluid">
+              <img src="<%= url_for(media.photo.variant(:thumb)) %>" alt="<%= media.description.blank? ? media.location.name.squish!.strip.truncate(21) : media.description.squish!.strip.truncate(21) %>" title="<%= media.description.blank? ? media.location.name.squish!.strip.truncate(21) : media.description.squish!.strip.truncate(21) %>" class="img-fluid">
             </a>
           </div>
           <div class="card-body"  style="min-height: <%= account_signed_in? ? '145px' : '85px'%>">
             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;">
              <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-             <%= media.description.blank? ? media.location.name.squish!.strip.truncate(32) : media.description.squish!.strip.truncate(35) %>
+             <%= media.description.blank? ? media.location.name.squish!.strip.truncate(21) : media.description.squish!.strip.truncate(21) %>
              </a>
             </h4>
-            <p class="card-text" style="text-align: center; font-size: 12px;">
-              By <%= link_to media.account.name.truncate(16), account_path(media.account) if media.location %>
-              at 
-              <%= link_to media.location.name.truncate(20), location_path(media.location) if media.location %>
+            <p class="card-text" style="text-align: center; font-size: 11px; margin-top: -10px;">
+              <%= link_to media.location.name.truncate(18), location_path(media.location) if media.location %>
             </p>
             <% if account_signed_in? %>
               <% if current_account.admin? or media.account.id == current_account.id %>
