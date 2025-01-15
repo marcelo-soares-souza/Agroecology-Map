@@ -84,10 +84,18 @@
   </h3>
 
 <% else %>
+  <%
+    if request.path == "/en/gallery" || request.path == "/gallery"
+      size='col-sm-2'
+    else 
+      size='col-sm-3'
+    end
+  %>
+
   <br>
   <div class="row">
     <% @medias.each do |media| %>
-      <div class="col-sm-2" style="cursor: pointer;" >
+      <div class="<%= size %>" style="cursor: pointer;" >
         <div class="card" style="max-height: <%= account_signed_in? ? '375px' : '325px'%>;">
           <br>
           <div class="card-img-top thumbnail" >
