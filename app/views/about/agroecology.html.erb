@@ -1,9 +1,14 @@
 <% title t(:what_is_agroecology) %>
 
+
 <div class="about">
+    <%= image_tag("agroecology.jpg", width: "600px", alt: "What is Agroecology?", title: "What is Agroecology?", style: "width: 100%; max-width: 600px; height: auto;") %>
     <h1>What is Agroecology?</h1>
-    10 elements of agroecology according to FAO
-    <br><br>
+    <p class="text-box">
+    Agroecology is an integrative approach to agriculture that combines ecological principles with social equity to create sustainable and resilient food systems. It emphasizes working with nature rather than against it, promoting biodiversity, soil health, and ecosystem services while reducing dependence on synthetic inputs. Beyond farming practices, agroecology incorporates local knowledge, cultural traditions, and participatory decision-making to empower communities and support food sovereignty. It seeks to address environmental challenges like climate change and habitat loss while fostering economic and social justice for farmers and consumers alike.
+    </p>
+    <br>
+    <h1>10 elements of agroecology according to <a target="_blank" href="https://www.fao.org/agroecology/overview/overview10elements/en/">FAO</a></h1>
     <h4>Diversity</h4>
     <p class="text-box">Agroecology promotes biodiversity at all levels—genetic, species, and ecosystem. Scientifically, this diversity enhances ecosystem resilience, nutrient cycling, and pest regulation. Socially, it supports food sovereignty by enabling farmers to cultivate a variety of crops, enhancing dietary diversity, cultural practices, and income streams. Diverse farms are better equipped to adapt to climate change and market fluctuations.</p>
 
@@ -33,4 +38,6 @@
 
     <h4>Circular and Solidarity Economy</h4>
     <p class="text-box">Agroecology advocates for economies that prioritize community well-being over profit maximization. Socially, this means building solidarity among farmers, consumers, and other stakeholders, fostering local markets and fair trade systems. Scientifically, this circular approach reduces waste, enhances resource efficiency, and promotes the sustainable use of local ecosystems, contributing to long-term ecological and social health.</p>
+
+    <h1> <%= link_to(t(:projects_and_groups), projects_and_groups_path, :class => "nav-link") %></h1>
 </div>
