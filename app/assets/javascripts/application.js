@@ -37,7 +37,7 @@ async function loadLayers(url, title, color) {
                 popup += '<div class="thumbnail-mini" style="margin-bottom: 4px;"><a href="'+url+'"><img src="'+image_url+'" title="'+name+'" alt="'+name+'"/></a></div>';
 
             popup += '<strong style="font-size: 12px;">'+title+'</strong><br>';
-            popup += '<strong><a href=" '+url+'" target="_blank">' + name.substring(0, 45) + "..." + '</a></b>';
+            popup += '<strong style="font-size: 18px;"><a href=" '+url+'" target="_blank">' + name.substring(0, 55) + "..." + '</a></b>';
 
             layers.addLayer(new L.marker(new L.latLng(latitude, longitude), {icon: Icon, alt: name.substring(0, 45), title: name}).bindPopup(popup));
         }
