@@ -142,7 +142,8 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-console (0.8.0)
-    irb (1.14.3)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jaro_winkler (1.6.0)
@@ -205,6 +206,9 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     psych (5.2.3)
       date
       stringio
@@ -271,7 +275,7 @@ GEM
     reverse_markdown (3.0.0)
       nokogiri
     rexml (3.4.0)
-    rubocop (1.70.0)
+    rubocop (1.71.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -327,7 +331,7 @@ GEM
       rufus-scheduler (~> 3.2)
       sidekiq (>= 6, < 8)
       tilt (>= 1.4.0, < 3)
-    solargraph (0.51.0)
+    solargraph (0.51.1)
       backport (~> 1.2)
       benchmark
       bundler (~> 2.0)
@@ -345,7 +349,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.11766)
+    sorbet-runtime (0.5.11780)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -433,4 +437,4 @@ DEPENDENCIES
   web-console (>= 4.2.1)
 
 BUNDLED WITH
-   2.6.2
+   2.6.3

@@ -44,7 +44,7 @@
     <br>
     <h1><%= @location.name.truncate(128) %></h1>
     <%= "<div><b style='color: black !important'>#{ISO3166::Country[@location.country]}</b></div><br>".html_safe unless @location.country.blank? %>
-    <%= "<h4>#{t(:short_description)}</h4><div class='text-box'>#{simple_format (h @location.description).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @location.description.blank? %>
+    <%= "<h4>#{t(:short_description)}</h4><div class='text-box'>#{simple_format (h @location.description).gsub(URI.regexp, '<a target="_blank" href="\0">\0</a>'), {}, sanitize: false}</div>".html_safe unless @location.description.blank? %>
     <%= "<h4>#{t(:farm_and_farming_system)}</h4>".html_safe unless @location.farm_and_farming_system.blank? && @location.farm_and_farming_system_complement.blank? %>
     <%= "<div class='text-box'>#{@farm_and_farming_system_options.key(@location.farm_and_farming_system)}&nbsp;<br></div>".html_safe unless @location.farm_and_farming_system.blank? %>
     <%
