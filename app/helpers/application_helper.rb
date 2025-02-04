@@ -1,9 +1,25 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def markdown(text)
+    options = {
+      filter_html: true,
+      hard_wrap: true,
+      link_attributes: { rel: "nofollow", target: "_blank" },
+      space_after_headers: true,
+      fenced_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, {})
+
+    markdown.render(text).html_safe
+  end
+
   def default_image_number
     rand(0..5)
   end
+
   def photo_thumb_url(entity, description = "", use_gallery_photos = false)
     description || ""
     if entity.photo.attached?

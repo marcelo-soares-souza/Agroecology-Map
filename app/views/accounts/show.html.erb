@@ -39,7 +39,9 @@
     <% end %>
 
     <% if @account.about %>
-      <%= "<h4>#{t(:about_me)}</h4><div class='text-box'>#{simple_format (h @account.about).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @account.about.blank? %>
+      <%#= "<h4>#{t(:about_me)}</h4><div class='text-box'>#{simple_format (h @account.about).gsub(URI.regexp, '<a href="\0">\0</a>')}</div>".html_safe unless @account.about.blank? %>
+      <%= "<h4>#{t(:about_me)}</h4><div class='text-box'>#{markdown(@account.about).gsub(URI.regexp, '<a target="_blank" href="\0">\0</a>')}</div>".html_safe unless @account.about.blank? %>
+
     <% end %>
 
     <% if @account.website %>
