@@ -1,0 +1,52 @@
+<style>
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+</style>
+<% title t(:gallery) + " #{@location.name}" if params[:location_id] %>
+<% title t(:gallery) + " #{@practice.name}" if params[:practice_id] %>
+<% title t(:gallery) + " #{@account.name}" if params[:account_id] %>
+<% title t(:gallery) if @full_gallery %>
+
+
+<% if account_signed_in? %>
+  <% if params[:practice_id] %>
+    <% if current_account.admin? or current_account.id == @practice.account.id %>
+        <%= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_practice_media_path(@practice), :class => "btn btn-warning" %>
+        <%= link_to (bootstrap_icon "file-earmark-text") + " " + t(:send_document), new_practice_document_path(@practice), :class => "btn btn-secondary" %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+
+<% if @medias.empty? %>
+  <br><br>
+  <h3><%= t(:no_photo_submitted) %>
+    <% if account_signed_in? %>
+      <% if params[:practice_id] %>
+        <%= link_to t(:send_picture), new_practice_media_path(@practice) if current_account.admin? or @practice.account_id == current_account.id %>
+      <% end %>
+    <% end %>
+  </h3>
+
+<% else %>
+  <br>
+    <% @medias.each do |media| %>
+      <div style="max-width: 616px; max-height: 616px; min-width: 601px; min-heigth: 620px; margin: auto;">
+        <img style="padding:8px; border:1px solid #cfcfcf; margin: auto; display: block; text-align: center; max-width: 600px; max-height: 600px;" src="<%= url_for(media.photo.variant(:original)) %>" alt="<%= media.description.blank? ? media.location.name.squish!.strip.truncate(21) : media.description.squish!.strip.truncate(21) %>" title="<%= media.description.blank? ? media.location.name.squish!.strip.truncate(21) : media.description.squish!.strip.truncate(21) %>">
+        <div style="margin: auto; display: block; text-align: center; padding-top: 4px;">
+          <b>Photo by: </b><%= link_to media.location.name, location_url(media.location) %>
+        </div>
+      </div>
+
+      <hr style="max-width: 650px;">
+
+    <% end %>
+  <div>
+    <%= paginate @medias %>
+  </div>
+  <br>
+<% end %>

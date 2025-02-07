@@ -35,66 +35,63 @@
 <div class="tab-content" style="min-height: 64px;">
   <div class="tab-pane active">
     <br>
-    <div class="practices-box">
-      <h4>Number of locations registered</h4>
-      Locations: <%= @locations_count %>
-    </div>
-    <div class="practices-box">
-      <h4>Number of practices registered</h4>
-      Practices: <%= @practices_count %>
-    </div>
-    <div class="practices-box">
-      <h4>Number of Accounts registered</h4>
-      Locations: <%= @accounts_count %>
+    <div class="practices-box bg-light" style="max-width: 270px; background: #dedee0;" >
+      <h4>
+      Accounts: <span style="color: #000"><%= @accounts_count %></span>
+      <br>
+      Locations: <span style="color: #000"><%= @locations_count %></span>
+      <br>
+      Practices: <span style="color: #000"><%= @practices_count %></span>
+      </h4>
     </div>
     <div class="practices-box">
       <h4>Locations per country</h4>
       <div id="regions_div"></div>
     </div>
-
-    <div class="practices-box">
-      <h4>Locations per continent</h4>
-      <div id="continents_div"></div>
-    </div>
-
     <div class="practices-box bg-light">
       <h4>Number of locations registered per continent</h4>
-      <div>
+      <div style="max-width: 780px; max-height: 320px; ">
         <canvas id="per-continent-chart"></canvas>
       </div>
-    </div>
-    <!--
+    </div>    
     <div class="practices-box">
       <h4>Where it is realized?</h4>
-      <div>
-        <canvas id="where-it-is-realized-chart"></canvas>
+      <div style="max-width: 780px; max-height: 380px; ">
+        <canvas id="where-it-is-realized-chart" height="390" width="780"></canvas>
       </div>
     </div>
     <div class="practices-box bg-light">
       <h4>Number of practices addressing specific agroecology principles</h4>
-      <div>
+      <div style="max-width: 780px; max-height: 320px; ">
         <canvas id="principles-chart"></canvas>
       </div>
     </div>
     <div class="practices-box">
       <h4>Number of practices addressing specific system components</h4>
-      <div>
+      <div style="max-width: 780px; max-height: 320px; ">
         <canvas id="components-chart"></canvas>
       </div>
     </div>
+    <div class="practices-box">
+      <h4>Farm and farming system</h4>
+      <div style="max-width: 780px; max-height: 320px; ">
+        <canvas id="farm-and-farming-system-chart"></canvas>
+      </div>
+    </div>
+<!--
+    <div class="practices-box">
+      <h4>Locations per continent</h4>
+      <div id="continents_div"></div>
+    </div>
+-->
+<!--
     <div class="practices-box">
       <h4>Knowledge source</h4>
       <div>
         <canvas id="knowledge-and-skills-required-for-practice-chart"></canvas>
       </div>
     </div>
-    <div class="practices-box">
-      <h4>Farm and farming system</h4>
-      <div>
-        <canvas id="farm-and-farming-system-chart"></canvas>
-      </div>
-    </div>
-    -->
+-->
   </div>
 </div>
 <!-- Script for ChartJS -->
@@ -110,12 +107,14 @@
 <script>
   const ctx = document.getElementById('components-chart');
   const opt = {
-                plugins: {
-                  patterns: {
-                    backgroundColor: ['#ff0000', '#00ff00', '#0000ff'], 
-                    pattern: ['dot', 'line', 'circle']
-                }
-              }
+    responsive: true,
+    maintainAspectRatio: true,
+    scales: { y: { beginAtZero: true } },
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
   }
   const data = {
     labels: [
@@ -177,7 +176,7 @@
   };
 
   var chart = new Chart(ctx, {
-    type: 'polarArea',
+    type: 'bar',
     data: data,
     options: opt
   });
@@ -187,7 +186,17 @@
 </script>
 <script>
   const ctxComponents = document.getElementById('principles-chart');
-  const optComponents= {}
+  const optComponents = {
+    responsive: true,
+    maintainAspectRatio: true,
+    scales: { y: { beginAtZero: true } },
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
+  }
+
   const dataComponents = {
   labels: [
       'Recycling (<%= @practices_recycling_count %>)',
@@ -197,11 +206,11 @@
       'Biodiversity (<%= @practices_biodiversity_count %>)',
       'Synergy (<%= @practices_synergy_count %>)',
       'Economic diversification (<%= @practices_economic_diversification_count %>)',
-      'Co-creation of knowledge (<%= @practices_co_creation_of_knowledge_count %>)',
+      'Co-creation (<%= @practices_co_creation_of_knowledge_count %>)',
       'Social values and diets (<%= @practices_social_values_and_diets_count %>)',
       'Fairness (<%= @practices_fairness_count %>)',
       'Connectivity (<%= @practices_connectivity_count %>)',
-      'Land and natural resource governance (<%= @practices_land_and_natural_resource_governance_count %>)',
+      'Natural resource governance (<%= @practices_land_and_natural_resource_governance_count %>)',
       'Participation (<%= @practices_participation_count %>)'
   ],
   datasets: [{
@@ -242,7 +251,7 @@
   };
 
   var chartComponents = new Chart(ctxComponents, {
-    type: 'polarArea',
+    type: 'bar',
     data: dataComponents,
     options: optComponents
   });
@@ -255,8 +264,8 @@
   const ctxPerContinent = document.getElementById('per-continent-chart');
   const labels = []
   const values = []
-
-  <% @locations.group(:continent).count.each do |location| %>
+  
+  <% @locations.group(:continent).count.sort_by {|_key, value| value}.reverse.each do |location| %>
         labels.push('<%= location[0] %> (<%= location[1] %>)');
         values.push(<%= location[1] %>)
   <% end %>
@@ -304,21 +313,20 @@
       data: [<%= @practices_on_count %>, <%= @practices_off_count %>, <%= @practices_other_count %>],
       pattern: ['dot', 'line', 'circle'],
       backgroundColor: [
-      'rgba(255, 99, 132, 0.5)',
+      'rgba(153, 102, 255, 0.5)',
       'rgba(75, 192, 192, 0.5)',
       'rgba(54, 162, 235, 0.5)',
-      'rgba(153, 102, 255, 0.5)',
-      'rgba(201, 203, 207, 0.5)'
     ],
 
     }]
   const optionsWhereItIsRealized = {
     responsive: true,
     maintainAspectRatio: true,
+    scales: { y: { beginAtZero: true } },
   }
 
   var chart_where_it_is_realized = new Chart(ctxWhereItIsRealized, {
-    type: 'doughnut',
+    type: 'pie',
     data: {
       labels: ['On-farm (<%= @practices_on_count %>)', 'Off-farm (<%= @practices_off_count %>)', 'Other (<%= @practices_other_count %>)'],
       datasets: datasetWhereItIsRealized,
@@ -361,7 +369,7 @@
 
   const datasetFarmAndFarmingSystem = [{
       label: '',
-      data: [<%= @practices_farm_system_crops_count %>, <%= @practices_farm_system_animals_count %>, <%= @practices_farm_system_trees_count %>, <%= @practices_farm_system_fish_count %>, <%= @practices_farm_system_other_count %>],
+      data: [<%= @practices_farm_system_crops_count %>, <%= @practices_farm_system_trees_count %>, <%= @practices_farm_system_animals_count %>, <%= @practices_farm_system_other_count %>, <%= @practices_farm_system_fish_count %>],
       backgroundColor: [
       'rgba(255, 99, 132, 0.5)',
       'rgba(45, 192, 192, 0.5)',
@@ -403,12 +411,12 @@
       countries.push(['Country', 'Locations'])
 
       <% @location_by_country.each do |country| %>
-        countries.push(['<%= ::ISO3166::Country[country[0]].iso_short_name %>', <%= country[1] %>])
+        countries.push(['<%= country[0] %>', <%= country[1] %>])
       <% end %>
 
       function drawRegionsMap() {
         var data = google.visualization.arrayToDataTable(countries);
-        var options = {};
+        var options = {height: 400};
         options['legend'] = 'none';
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
         chart.draw(data, options);

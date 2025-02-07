@@ -7,8 +7,8 @@
 <% if account_signed_in? %>
   <% if params[:practice_id] %>
     <div class="link-action">
-      <%= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_practice_media_path(@practice), :class => "btn btn-warning" %>
-      <%= link_to (bootstrap_icon "file-earmark-text") + " " + t(:send_document), new_practice_document_path(@practice), :class => "btn btn-secondary" %>
+      <%#= link_to (bootstrap_icon "file-earmark-image") + " " + t(:send_photo), new_practice_media_path(@practice), :class => "btn btn-warning" %>
+      <%#= link_to (bootstrap_icon "file-earmark-text") + " " + t(:send_document), new_practice_document_path(@practice), :class => "btn btn-secondary" %>
     </div>
   <% end %>
 <% end %>

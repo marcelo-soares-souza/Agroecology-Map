@@ -12,10 +12,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_23_113739) do
+ActiveRecord::Schema[8.0].define(version: 2024_08_23_113739) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
-  enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -176,10 +176,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_113739) do
     t.text "what_is_your_dream"
     t.integer "visits", default: 0
     t.index ["account_id"], name: "index_locations_on_account_id"
-    t.index ["hide_my_location", "latitude", "longitude"], name: "idx_map"
-    t.index ["hide_my_location"], name: "idx_hide_my_location"
-    t.index ["latitude"], name: "idx_map_lat"
-    t.index ["longitude"], name: "idx_map_lon"
     t.index ["name"], name: "index_locations_on_name", opclass: :gin_trgm_ops, using: :gin
     t.index ["slug"], name: "index_locations_on_slug", unique: true
   end

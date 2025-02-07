@@ -1,3 +1,11 @@
+<style>
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+</style>
 <% title t(:gallery) + " #{@location.name}" if params[:location_id] %>
 <% title t(:gallery) + " #{@practice.name}" if params[:practice_id] %>
 <% title t(:gallery) + " #{@account.name}" if params[:account_id] %>
@@ -67,8 +75,7 @@
 
 <% if @medias.empty? %>
   <br><br>
-
-  <h2><%= t(:no_photo_submitted) %>
+  <h3><%= t(:no_photo_submitted) %>
     <% if account_signed_in? %>
       <% if params[:practice_id] %>
         <%= link_to t(:send_picture), new_practice_media_path(@practice) if current_account.admin? or @practice.account_id == current_account.id %>
@@ -77,27 +84,33 @@
   </h3>
 
 <% else %>
+  <%
+    if request.path == "/en/gallery" || request.path == "/gallery"
+      size='col-sm-2'
+    else 
+      size='col-sm-3'
+    end
+  %>
+
   <br>
   <div class="row">
     <% @medias.each do |media| %>
-      <div class="col-sm-3" style="cursor: pointer;" >
+      <div class="<%= size %>" style="cursor: pointer;" >
         <div class="card" style="max-height: <%= account_signed_in? ? '375px' : '325px'%>;">
           <br>
           <div class="card-img-top thumbnail" >
             <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-              <img src="<%= url_for(media.photo.variant(:thumb)) %>" alt="Photo <%= media.description %>" title="Photo <%= media.description %>" class="img-fluid">
+              <img src="<%= url_for(media.photo.variant(:thumb)) %>" alt="<%= media.description.blank? ? media.location.name.squish!.strip.truncate(128) : media.description.squish!.strip.truncate(128) %>" title="<%= media.description.blank? ? media.location.name.squish!.strip.truncate(128) : media.description.squish!.strip.truncate(128) %>" class="img-fluid">
             </a>
           </div>
-          <div class="card-body"  style="min-height: 180px;">
+          <div class="card-body"  style="min-height: <%= account_signed_in? ? '155px' : '145px'%>">
             <h4 class="card-title" style="font-size: 18px !important; word-break: break-all;">
              <a href="<%= url_for(media.photo.variant(:original)) %>>" data-toggle="lightbox" data-gallery="media-gallery" data-max-width="900">
-             <%= media.description.squish!.strip.truncate(55) %>
+             <%= media.description.blank? ? media.location.name.squish!.strip.truncate(50) : media.description.squish!.strip.truncate(50) %>
              </a>
             </h4>
-            <p class="card-text" style="text-align: center; font-size: 12px;">
-              Photo sent by <%= link_to media.account.name.truncate(18), account_path(media.account) if media.location %>
-              at 
-              <%= link_to media.location.name.truncate(21), location_path(media.location) if media.location %>
+            <p class="card-text" style="text-align: center; font-size: 11px; margin-top: -10px;">
+              <%= link_to media.location.name.truncate(18), location_path(media.location) if media.location %>
             </p>
             <% if account_signed_in? %>
               <% if current_account.admin? or media.account.id == current_account.id %>
@@ -126,7 +139,7 @@
   <script>
       $(document).on('click', '[data-toggle="lightbox"]', function(event) {
           event.preventDefault();
-          $(this).ekkoLightbox();
+          $(this).ekkoLightbox({showArrows: false});
       });
   </script>
 <% end %>
