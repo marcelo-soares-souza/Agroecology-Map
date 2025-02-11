@@ -97,6 +97,7 @@ Rails.application.routes.draw do
 
     scope(locations: {}) do
       resources :locations, path: "locais"
+      resources :locations, path: "l"
     end
 
     scope(practices: {}) do
