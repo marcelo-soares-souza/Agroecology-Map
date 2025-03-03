@@ -11,9 +11,17 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
   before_action :set_schema_org
+  before_action :set_og
   rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_authenticity_token
 
   protected
+    def set_og
+      @og_title = "Agroecology Map"
+      @og_description = "Agroecology Map Knowledge and Practices is a Free (Open) Platform for Mapping Initiatives in Agroecology, Permaculture and Agroforestry Systems"
+      @og_image = "https://agroecologymap.org/logo.png"
+      @og_url = "https://agroecologymap.org/"
+    end
+
     def set_schema_org
       @schema_org = SchemaDotOrg::Organization.new(
         name:             "Agroecology Map",

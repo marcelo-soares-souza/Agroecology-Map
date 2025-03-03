@@ -279,7 +279,7 @@ GEM
     reverse_markdown (3.0.0)
       nokogiri
     rexml (3.4.1)
-    rubocop (1.73.0)
+    rubocop (1.73.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -305,7 +305,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.2)
+    rubocop-rails (2.30.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -340,7 +340,7 @@ GEM
       rufus-scheduler (~> 3.2)
       sidekiq (>= 6, < 8)
       tilt (>= 1.4.0, < 3)
-    solargraph (0.51.2)
+    solargraph (0.52.0)
       backport (~> 1.2)
       benchmark
       bundler (~> 2.0)
@@ -358,7 +358,8 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.11862)
+      yard-solargraph (~> 0.1)
+    sorbet-runtime (0.5.11875)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -401,6 +402,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yard (0.9.37)
+    yard-solargraph (0.1.0)
+      yard (~> 0.9)
     zeitwerk (2.7.2)
 
 PLATFORMS

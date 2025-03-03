@@ -71,6 +71,10 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @og_title = @location.name + " - Agroecology Map"
+    @og_url = location_url(@location)
+    @og_description = helpers.truncate(@location.description.strip, length: 200)
+    @og_image = helpers.photo_original_url(@location, "")
     if (not browser.bot?) && (not request.is_crawler?)
       @location.visits += 1
       @location.save!
