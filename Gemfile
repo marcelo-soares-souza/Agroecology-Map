@@ -9,12 +9,13 @@ end
 
 gem "rails", ">=8.0"
 
-gem "nokogiri", ">= 1.18.0"
+gem "nokogiri", ">= 1.18.6"
 gem "pg", ">= 1.5.9"
 gem "puma", ">= 6.5.0"
 gem "jbuilder", ">= 2.13.0"
 gem "sass-rails", ">= 6.0.0"
 gem "rexml", ">= 3.4.0"
+gem "rack", ">= 3.1.12"
 
 group :development do
   gem "listen", ">= 3.9.0"

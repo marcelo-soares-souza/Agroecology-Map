@@ -343,7 +343,7 @@ GEM
       rufus-scheduler (~> 3.2)
       sidekiq (>= 6, < 8)
       tilt (>= 1.4.0, < 3)
-    solargraph (0.53.2)
+    solargraph (0.53.3)
       backport (~> 1.2)
       benchmark
       bundler (~> 2.0)
@@ -430,9 +430,10 @@ DEPENDENCIES
   jwt (~> 2.9.3)
   kaminari (>= 1.2.2)
   listen (>= 3.9.0)
-  nokogiri (>= 1.18.0)
+  nokogiri (>= 1.18.6)
   pg (>= 1.5.9)
   puma (>= 6.5.0)
+  rack (>= 3.1.12)
   rails (>= 8.0)
   rdoc (>= 6.10.0)
   redcarpet
